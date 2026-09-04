@@ -1,0 +1,31 @@
+# environments
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+
+# model weights / caches — never commit
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+models/
+checkpoints/
+cache/
+activations/
+hf_cache/
+
+# data dumps and outputs (keep small curated files under docs/)
+data/raw/
+outputs/
+results/*.jsonl
+*.parquet
+*.npy
+*.npz
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
