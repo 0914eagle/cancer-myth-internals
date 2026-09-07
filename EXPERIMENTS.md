@@ -59,7 +59,7 @@ cat $ART/reports/judge_calibration/codex_default/calibration.md
 ```
 
 Read the *PCR agree* column (the paper validated GPT-4o against physicians
-on PCR, 100%). Above ~95% with kappa above ~0.8: use it, and report the
+on PCR, 100%). Above 약 95% with kappa above 약 0.8: use it, and report the
 model name the banner recorded. Below that: switch backend/model. Whatever
 judge passes scores every row of every table; Table 1's closed-model rows
 stay GPT-4o-scored and are marked as such.
@@ -73,7 +73,7 @@ source scripts/env.sh /data1/heejae     # prints host, roots, GPUs, whether the 
 pytest -q                                # 24 tests, no GPU
 ```
 
-## E0 — rows (once, CPU + API, ~10 min)
+## E0 — rows (once, CPU + API, 약 10 min)
 
 ```bash
 DATA_ROOT=/data1/heejae bash scripts/run_e0_rows.sh
@@ -86,7 +86,7 @@ readout. The TPQ loader prints the HF columns it found; if
 `shenranw/CancerMyth-TPQ` names its presupposition field differently from
 `presuppositions`, fix `src/rows.py::_first_presupposition` and rerun.
 
-## E1 — pre-diagnostic on four cards (~2 days)
+## E1 — pre-diagnostic on four cards (약 2 days)
 
 ```bash
 nohup bash scripts/run_e1_4gpu_125.sh \

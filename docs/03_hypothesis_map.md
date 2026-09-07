@@ -10,12 +10,12 @@
 
 | | 내부 상태 | 이게 원인이면 처방 | 지금까지 증거 |
 |---|---|---|---|
-| **H1 모른다** | P가 거짓이라는 지식 자체가 없음 | 검색·지식 주입 | Well-Actually Table 1: 직접 물으면 96~100% → **주요 원인 아님** |
+| **H1 모른다** | P가 거짓이라는 지식 자체가 없음 | 검색·지식 주입 | Well-Actually Table 1: 직접 물으면 96–100% → **주요 원인 아님** |
 | **H2 못 봤다** | P가 단언이 아닌 전제라 진위 판정 회로가 안 돔. P는 표상되지만 "검사할 주장"으로 취급 안 됨 | P를 전경으로 — 그런데 이게 H6을 부름 | 언어학적 presupposition. 직접 검증한 연구 없음 |
-| **H3 알지만 따라간다** | P를 거짓으로 표상하면서 출력은 동조 (Contextual-Truth *performative*) | 내부 신호로 게이트·개입 — **우리 방법이 통하는 경우** | Contextual-Truth 22.7% / MedMisBench trace 81~98% vs 응답 7~90% |
+| **H3 알지만 따라간다** | P를 거짓으로 표상하면서 출력은 동조 (Contextual-Truth *performative*) | 내부 신호로 게이트·개입 — **우리 방법이 통하는 경우** | Contextual-Truth 22.7% / MedMisBench trace 81–98% vs 응답 7–90% |
 | **H4 말하면서 뒤집힌다** | prefill 땐 거짓, 생성 중 P를 되뇌며 참으로 이동 (Contextual-Truth *representational*) | prefill에서 읽고 되뇌기 전에 개입 | Contextual-Truth 되뇔 때 58.7% |
 | **H5 알지만 우선순위 밀림** | 거짓으로 표상하나 "얼마나 걸려요?"가 계획을 지배 | H3와 같음 | H3와 행동으로 구분 불가 |
-| **H6 판정시키면 "아니오"** | 판정 모드에 negative bias. 참 P의 58~93%를 거짓이라 함 | **판정을 시키지 말 것** | Well-Actually Table 1. extract-and-verify가 NFP에서 무너지는 이유 |
+| **H6 판정시키면 "아니오"** | 판정 모드에 negative bias. 참 P의 58–93%를 거짓이라 함 | **판정을 시키지 말 것** | Well-Actually Table 1. extract-and-verify가 NFP에서 무너지는 이유 |
 
 H1~H5는 **거짓 전제를 못 고치는 이유**, H6은 **고치려는 방법이 참 전제까지 망가뜨리는 이유**. 둘이 합쳐져야 Table 1의 시소가 설명된다.
 

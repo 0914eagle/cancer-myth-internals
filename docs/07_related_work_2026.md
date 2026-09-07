@@ -1,4 +1,4 @@
-# 07. 2025~2026 관련 연구 — 일반 도메인과 직접 경쟁자
+# 07. 2025–2026 관련 연구 — 일반 도메인과 직접 경쟁자
 
 2026-09-07 기준. 02는 Cancer-Myth **인용 그래프 안쪽**만 다뤘다. 여기는 그 바깥 — 일반 도메인 거짓 전제 QA, sycophancy 내부 표상, 조건부 steering, 그리고 "탐지는 되는데 제어는 안 된다"는 경고 논문들.
 
@@ -14,13 +14,13 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 
 | 신호 | 범위 |
 |---|---|
-| raw answer-confidence / 학습된 output readout | 0.49~0.58 |
-| P(IK) / P(True) | 0.54~0.66 / 0.54~0.58 |
-| **"이 질문은 거짓 전제 위에 있나?" 직접 질문** | 0.43~0.67 (Qwen2.5-3B는 거의 전부 "멀쩡하다"고 답함) |
+| raw answer-confidence / 학습된 output readout | 0.49–0.58 |
+| P(IK) / P(True) | 0.54–0.66 / 0.54–0.58 |
+| **"이 질문은 거짓 전제 위에 있나?" 직접 질문** | 0.43–0.67 (Qwen2.5-3B는 거의 전부 "멀쩡하다"고 답함) |
 | bag-of-words 상한 | 0.59 |
-| **hidden-state logistic probe** | **0.69~0.73** |
-| **difference-of-means 방향** | **0.74~0.78** |
-| SelfAware→CREPE 전이 | 0.65~0.70 |
+| **hidden-state logistic probe** | **0.69–0.73** |
+| **difference-of-means 방향** | **0.74–0.78** |
+| SelfAware→CREPE 전이 | 0.65–0.70 |
 
 **확인 항목 답.**
 - *위치·층*: **마지막 프롬프트 토큰** hidden state (chat template 적용, 깊이 0.4/0.6/0.8 중 nested calibration으로 선택). 전제 구간 위치는 안 봄. 프롬프트는 "Answer the question in a few words."
@@ -29,7 +29,7 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 - *교정 품질*: 지적한 것 중 NLI 검증 통과 47% (Llama) / 61% (Qwen). 나머지는 자신 있게 틀린 교정 — 게이트를 통과해도 프롬프트 개입은 confabulate.
 - *인과 개입*: 없음 (limitations에 명시). 게이트는 두 프롬프트 사이 라우팅.
 
-**H6 재해석.** Well-Actually(Well)는 *추출한 전제 문장*의 진위를 물으면 참 전제의 58~93%를 거짓이라 한다(negative bias). 이 논문은 *질문*이 거짓 전제 위에 있냐 물으면 거의 전부 멀쩡하다고 한다(accommodation). **판정을 시키면 framing에 따라 어느 한쪽으로 쏠리고, 어느 쪽이든 판별은 chance.** "판정 대신 표상"의 근거가 양방향에서 확정됐다.
+**H6 재해석.** Well-Actually(Well)는 *추출한 전제 문장*의 진위를 물으면 참 전제의 58–93%를 거짓이라 한다(negative bias). 이 논문은 *질문*이 거짓 전제 위에 있냐 물으면 거의 전부 멀쩡하다고 한다(accommodation). **판정을 시키면 framing에 따라 어느 한쪽으로 쏠리고, 어느 쪽이든 판별은 chance.** "판정 대신 표상"의 근거가 양방향에서 확정됐다.
 
 **우리와의 거리.**
 
@@ -40,12 +40,12 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 | 읽는 위치 | 마지막 토큰만 | 전제 구간 / 질문 끝 / 응답 시작 |
 | 읽는 축 | 답변 가능성 1축 | **진위(A) × 태도(C)** |
 | 개입 | 프롬프트 라우팅 | 내부 방향 (C) |
-| 개입 후 교정 품질 | 47~61% | 측정 필요 |
+| 개입 후 교정 품질 | 47–61% | 측정 필요 |
 
 **가져올 것.**
 1. **실험 3 baseline에 "probe-gated FP Identification" 추가.** Well-Actually의 FP Identification 프롬프트를 우리 A probe로 게이트한 것. 싸고 강하다. 우리 C 개입은 GEPA가 아니라 **이것**을 이겨야 한다 — 특히 교정 품질(PCS)에서.
 2. 실험 1 기대치: 마지막 토큰 probe **0.70 안팎**이 일반 도메인 기준선. 의료 전제는 의사 검증이라 더 깨끗할 수 있고, 전제 구간 위치는 더 높을 수 있다. 0.70 아래면 CREPE보다 못 읽는 것.
-3. difference-of-means 방향이 logistic probe보다 높았다 (0.74~0.78 vs 0.69~0.73). 우리도 둘 다.
+3. difference-of-means 방향이 logistic probe보다 높았다 (0.74–0.78 vs 0.69–0.73). 우리도 둘 다.
 4. 통제 프로토콜: 4-way split (probe-train / tune / certify / test), bag-of-words 상한, 100 resplit 감사. 그대로 쓴다.
 
 ### A2. Gated Activation Steering for Medical QA — Tripathi et al., [2608.23666](https://arxiv.org/abs/2608.23666) (2026-08)
@@ -76,14 +76,14 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 - *우리 모델*: **Gemma-2-27B-IT** 패널 포함 — 26/39 head 공유, projection ablation으로 sycophancy 10.5→100%, faithfulness K=8. **Llama-3.1-8B** — 21/32 공유이나 per-head patching 교집합 3/15로 패널 중 가장 약함, head별 cos 0.44. **Gemma-3-27B-IT는 per-head 분석에서 제외** — layer-0 head 출력 norm이 다른 층의 100배라 중요도 순위가 망가짐 (residual cos 0.494는 유지). 
 - *"사실 정확도 유지" 통제*: 단언문 true/false 판정 과제 정확도 (Gemma-2-2B 69→70, Qwen3-8B 50→50, Qwen2.5-32B 68.5→67.5). **참 의견 문항에서 동의율이 어떻게 변하는지(NFP 상당)는 보고 안 함.**
 - *설정*: 단일 턴, "I believe the answer to 'q' is w. Am I correct?" — **전경화된 단언 + 판정 요청.** TriviaQA/NQ. 배경 전제 아님, 의료 아님.
-- *방향*: 마지막 프롬프트 토큰 mean-diff. **sycophancy 방향과 진위 방향의 residual cos 0.44~0.73, head별 0.43~0.81** — 정렬돼 있으나 동일하진 않음. probe 층 ⌊0.85L⌋. syc-probe→lie 전이 AUROC 0.83~0.85.
+- *방향*: 마지막 프롬프트 토큰 mean-diff. **sycophancy 방향과 진위 방향의 residual cos 0.44–0.73, head별 0.43–0.81** — 정렬돼 있으나 동일하진 않음. probe 층 ⌊0.85L⌋. syc-probe→lie 전이 AUROC 0.83–0.85.
 - *인과 방향*: 실험은 전부 **회로 제거 → sycophancy 증가**. 즉 이 head들은 동조를 *억제*하는 쪽. 동조를 *줄이는* 개입(방향 추가·head 증폭)과 그것의 참 전제 부작용은 안 했다.
 - *logit-lens*: 2B·7B는 중간층에서 정답 쪽 피크 후 후기층에서 뒤집힘(detect-then-override), **70B는 단조** — 분산 실행. H4 검증 시 70B에서는 층별 신호가 안 보일 수 있다.
 
 **우리와의 거리.** H3(알면서 따라간다)의 일반 도메인 회로 수준 증거. 다만 전제가 *전경*에 있는 설정이라, **배경화된 전제에서 같은 head가 켜지는가**는 그대로 우리 H2 질문이다.
 
 **가져올 것.**
-1. **cos(A, C)를 재야 한다.** 이 논문에서 진위 방향과 동조 방향은 cos 0.4~0.8이다. 우리 A(진위 probe)와 C(PCR+1 vs −1 응답 시작 대조 방향)가 이만큼 겹치면 "A로 게이트하고 C를 민다"는 부분적으로 A를 미는 것이고, 지식을 안 건드린다는 주장이 약해진다. 실험 1 산출물에 추가.
+1. **cos(A, C)를 재야 한다.** 이 논문에서 진위 방향과 동조 방향은 cos 0.4–0.8이다. 우리 A(진위 probe)와 C(PCR+1 vs −1 응답 시작 대조 방향)가 이만큼 겹치면 "A로 게이트하고 C를 민다"는 부분적으로 A를 미는 것이고, 지식을 안 건드린다는 주장이 약해진다. 실험 1 산출물에 추가.
 2. C 개입 후보로 **head 수준**: A3의 공유 head 집합(Gemma-2-27B는 26개)을 증폭하는 것과 A2식 head별 방향 추가. residual 방향 addition과 셋을 비교.
 3. Gemma-3-27B-IT의 layer-0 norm 문제 — NLA/AO 본진 모델에서 head 중요도 계산 시 layer 0 제외.
 4. Llama-3.1-8B는 회로가 가장 흐린 모델 — 싼 sweep 모델로 시작하되 여기서 안 갈려도 접지 말 것.
@@ -100,7 +100,7 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 | [HACK](https://arxiv.org/abs/2510.24222) (2025-10) | 환각을 지식 있음(HK+)/없음(HK−)으로 나누고 steering이 HK+에서만 통함 | "지식이 있을 때만 개입이 먹힌다" — A 게이트의 논리 |
 | [Do I Know This Entity?](https://arxiv.org/abs/2411.14257) (Ferrando et al., ICLR 2025) | SAE로 "아는/모르는 entity" 방향, 그것이 refusal을 인과적으로 게이트 | **지식 신호가 태도 회로를 게이트하는 선례** (관찰, 개입 방법 아님) |
 
-### B2. sycophancy 내부 표상 (2025-08 ~ 2026-07)
+### B2. sycophancy 내부 표상 (2025-08 약 2026-07)
 
 | 논문 | 핵심 | 관계 |
 |---|---|---|
@@ -126,31 +126,31 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 
 | 논문 | 주장 |
 |---|---|
-| [Perfect Detection, Failed Control](https://arxiv.org/abs/2606.24952) (2026-06) | 가짜 entity 탐지 AUC 1.0인데 그 방향 steering 효과 0. 탐지 방향과 제어 방향 cos 0.1~0.2, 4모델, 사전학습 기원 |
+| [Perfect Detection, Failed Control](https://arxiv.org/abs/2606.24952) (2026-06) | 가짜 entity 탐지 AUC 1.0인데 그 방향 steering 효과 0. 탐지 방향과 제어 방향 cos 0.1–0.2, 4모델, 사전학습 기원 |
 | [Detection Without Correction](https://arxiv.org/abs/2604.13068) (2026-04) | 7/7 모델에서 probe 방향 steering이 환각을 못 고침. probe의 가치는 생성 전 플래그 |
-| [Readable but Not Controllable](https://arxiv.org/abs/2607.00158) (2026-06, 의료) | 4모델 16조합 probe AUROC 0.77~0.86, 뉴런 수준 제어 불가 |
+| [Readable but Not Controllable](https://arxiv.org/abs/2607.00158) (2026-06, 의료) | 4모델 16조합 probe AUROC 0.77–0.86, 뉴런 수준 제어 불가 |
 
-셋 다 "**탐지 probe 방향으로 밀지 말라**". 우리는 A probe를 게이트로만 쓰고 C는 따로 뽑으므로 직접 반박은 아니다. 다만 (a) C 대조 방향이 causal한지 별도 증명, (b) A3가 보인 cos(진위, 동조) 0.4~0.8 때문에 C가 A와 겹칠 수 있음 — 이 둘이 우리 리스크다.
+셋 다 "**탐지 probe 방향으로 밀지 말라**". 우리는 A probe를 게이트로만 쓰고 C는 따로 뽑으므로 직접 반박은 아니다. 다만 (a) C 대조 방향이 causal한지 별도 증명, (b) A3가 보인 cos(진위, 동조) 0.4–0.8 때문에 C가 A와 겹칠 수 있음 — 이 둘이 우리 리스크다.
 
 ## C. 갭 갱신 — 02 표 이후 달라진 것
 
 | 제안 요소 | 02 시점 | 지금 |
 |---|---|---|
-| 배경화된 거짓 전제가 hidden state에서 읽힌다 | 비어 있음 | **A1이 CREPE에서 0.69~0.78 (마지막 토큰).** 의료·전제 구간 위치·NFP는 남음 |
+| 배경화된 거짓 전제가 hidden state에서 읽힌다 | 비어 있음 | **A1이 CREPE에서 0.69–0.78 (마지막 토큰).** 의료·전제 구간 위치·NFP는 남음 |
 | 판정시키면 오탐 | Well-Actually negative bias | **A1이 반대 방향(accommodation)도 확인.** framing 무관하게 chance |
 | probe 게이트 × 개입 | 비어 있음 | **A1이 프롬프트 라우팅으로 함** (일반 도메인). 내부 개입 게이트는 남음 |
 | 의료 + 게이트 + ITI steering | 비어 있음 | **A2가 함** (멀티턴 압력, 게이트 = 압력 감지) |
 | 알면서 따라간다 — head 수준 | Contextual-Truth 단언문 probe | **A3가 12모델 회로로.** 배경 전제에서는 남음 |
-| 진위 × 태도 분해 | 비어 있음 | **아직 비어 있음.** 단 A3: 두 방향 cos 0.4~0.8 — 분해 가능성 자체를 재야 함 |
+| 진위 × 태도 분해 | 비어 있음 | **아직 비어 있음.** 단 A3: 두 방향 cos 0.4–0.8 — 분해 가능성 자체를 재야 함 |
 | 진위로 게이트한 태도 개입 + NFP 통제 | 비어 있음 | **비어 있음** |
 | Cancer-Myth+NFP를 verbalizer 통제 벤치마크로 | 비어 있음 | 비어 있음 |
 
-**차별점 문장 (갱신).** 게이트 steering도, probe 게이트 프롬프트도, 의료 게이트 ITI도 있다. 우리 것은 (a) 게이트 신호(진위)와 개입 대상(태도)이 **다른 개념**이고, (b) 통제군이 **표면상 구분 불가능한 NFP**이며, (c) 개입이 내부라 프롬프트 라우팅(A1)의 교정 품질 한계(47~61%)를 넘는지 잴 수 있고, (d) Cancer-Myth Table 1에 행을 넣는다.
+**차별점 문장 (갱신).** 게이트 steering도, probe 게이트 프롬프트도, 의료 게이트 ITI도 있다. 우리 것은 (a) 게이트 신호(진위)와 개입 대상(태도)이 **다른 개념**이고, (b) 통제군이 **표면상 구분 불가능한 NFP**이며, (c) 개입이 내부라 프롬프트 라우팅(A1)의 교정 품질 한계(47–61%)를 넘는지 잴 수 있고, (d) Cancer-Myth Table 1에 행을 넣는다.
 
 ## 설계에 반영할 것
 
 1. **실험 3 baseline 추가**: probe-gated FP Identification (A1식). 이것이 GEPA보다 강한 진짜 대조군.
-2. **실험 1 산출물 추가**: cos(A 방향, C 방향), 층별. A3 기준 0.4~0.8이면 분해 주장을 "부분 분해"로 낮춰 쓴다.
+2. **실험 1 산출물 추가**: cos(A 방향, C 방향), 층별. A3 기준 0.4–0.8이면 분해 주장을 "부분 분해"로 낮춰 쓴다.
 3. **C 개입 세 후보**: residual 방향 addition / A2식 head별 방향 / A3식 공유 head 증폭. 셋 다 NFP로 채점.
 4. **A 게이트 추가 통제**: 전제가 참인데 Plain이 틀리게 답한 문항에서 게이트 발화율 (A2의 "정당한 교정" 관찰).
 5. **Gemma-3-27B-IT**: head 중요도 계산에서 layer 0 제외.
@@ -160,4 +160,4 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 
 - [Perfect Detection, Failed Control](https://arxiv.org/abs/2606.24952) — "제어 방향"을 어떻게 찾았는지, 게이트 후 *다른* 방향으로 개입해도 실패하는지
 - [Dual-Stance Evaluation](https://arxiv.org/abs/2606.11205) — 평가 프로토콜 (우리 CAA 대조군 평가에 그대로 빌릴 수 있는지)
-- Well-Actually — Well [2608.06539](https://arxiv.org/abs/2608.06539) Appendix I, Table 8~10 — TPQ 주석 방식, baseline 실행 설정
+- Well-Actually — Well [2608.06539](https://arxiv.org/abs/2608.06539) Appendix I, Table 8–10 — TPQ 주석 방식, baseline 실행 설정

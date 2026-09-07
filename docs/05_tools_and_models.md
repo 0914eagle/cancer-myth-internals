@@ -15,7 +15,7 @@
 | Qwen3-8B | ✗ | ✅ | ✗ | Qwen-Scope ✅ |
 
 NLA 체크포인트 (HF `kitft/`): `nla-qwen2.5-7b-L20-{av,ar}`, `nla-gemma3-12b-L32-{av,ar}`, `nla-gemma3-27b-L41-{av,ar}`, `Llama-3.3-70B-NLA-L53-{av,ar}`.
-AO 체크포인트 (HF `adamkarvonen/` 컬렉션 12개): gemma-2-9b-it, gemma-2-27b-it, gemma-3-1b-it, gemma-3-27b-it, Qwen3-1.7B/4B/8B/14B/32B, Llama-3.2-1B-Instruct, Llama-3.1-8B-Instruct, Llama-3.3-70B-Instruct. (1~4B는 OOD 성능 약하다고 저자 주의)
+AO 체크포인트 (HF `adamkarvonen/` 컬렉션 12개): gemma-2-9b-it, gemma-2-27b-it, gemma-3-1b-it, gemma-3-27b-it, Qwen3-1.7B/4B/8B/14B/32B, Llama-3.2-1B-Instruct, Llama-3.1-8B-Instruct, Llama-3.3-70B-Instruct. (1–4B는 OOD 성능 약하다고 저자 주의)
 
 ## 배치
 
@@ -24,7 +24,7 @@ AO 체크포인트 (HF `adamkarvonen/` 컬렉션 12개): gemma-2-9b-it, gemma-2-
 | **Gemma-3-27B-IT** | verbalizer 비교의 본진 | NLA + AO 둘 다 있음 → 같은 활성값에 두 verbalizer. Plain PCR은 `evaluate.py`로 한 번 측정해 Table 3 새 행으로 |
 | **Gemma-2-27B-it** | 개입의 본진 | Table 3 1위 행을 직접 개선. Gemma Scope로 feature 수준 개입 가능 |
 | **Llama-3.1-8B-Instruct** | sweep·probe | 싸고(24GB), Llama Scope 전 층, Table 3 행 |
-| **Llama-3.3-70B** | 70B 재현 | NLA + AO. bf16 ~140GB. 컴퓨트 되면 |
+| **Llama-3.3-70B** | 70B 재현 | NLA + AO. bf16 약 140GB. 컴퓨트 되면 |
 | Qwen2.5-7B-Instruct | NLA 판독 보조 | Table 3 행이고 Well-Actually의 Table 8 baseline 8종이 같은 데이터로 있음 |
 
 ## 메모리

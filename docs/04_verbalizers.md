@@ -45,7 +45,7 @@ d가 맞아야 하고, 무엇보다 **residual stream의 "언어"가 모델마�
 - 주입 위치는 토큰 ID + 양옆 이웃(`>`, `<`)으로 검출. 이 부분만 유지하면 주변 텍스트는 바꿀 수 있다 (단 OOD).
 - `injection_scale` 필수 (Qwen 150, Gemma-3-12B 80000). `embed_scale` Gemma는 √d.
 - SGLang `input_embeds`, `--disable-radix-cache` 필수.
-- **AR 왕복 `mse_nrm` = 2(1−cos)**: <0.5 좋음, ~2 무작위. 샘플별 신뢰도 게이트.
+- **AR 왕복 `mse_nrm` = 2(1−cos)**: <0.5 좋음, 약 2 무작위. 샘플별 신뢰도 게이트.
 - 층 20 = HF `hidden_states[21]`. temp 0.
 
 ## AO 인터페이스

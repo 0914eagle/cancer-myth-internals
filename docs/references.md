@@ -31,7 +31,7 @@
 - HACK: Hallucinations Along Certainty and Knowledge Axes — [2510.24222](https://arxiv.org/abs/2510.24222)
 - Do I Know This Entity? — [2411.14257](https://arxiv.org/abs/2411.14257) (ICLR 2025)
 
-## sycophancy 내부 표상 (2025~2026)
+## sycophancy 내부 표상 (2025–2026)
 - Sycophancy Is Not One Thing — [2509.21305](https://arxiv.org/abs/2509.21305)
 - Dissociating the Internal Representations of Sycophancy — [2607.07003](https://arxiv.org/abs/2607.07003)
 - Gotta Catch them all: the modes of Sycophancy — [2607.20146](https://arxiv.org/abs/2607.20146)
