@@ -24,6 +24,9 @@
 - Gated Activation Steering for Reducing Sycophancy & Hallucination in Medical QA — [2608.23666](https://arxiv.org/abs/2608.23666) · [HF](https://huggingface.co/himanshu5trpth/medgemma-sycophancy-hallucination-gated-steering)
 - LLMs Know They're Wrong and Agree Anyway: The Shared Sycophancy-Lying Circuit — [2604.19117](https://arxiv.org/abs/2604.19117)
 
+## 의료 현장 근거
+- Qazi et al., Automation Bias in LLM-Assisted Diagnostic Reasoning among Physicians Trained in AI Literacy — [NEJM AI](https://ai.nejm.org/doi/full/10.1056/AIoa2501001) · [medRxiv 2025.08.23.25334280](https://www.medrxiv.org/content/10.1101/2025.08.23.25334280v1) — RCT, 44명, 오류 LLM 제안 시 진단 정확도 −14.0%p (1순위 −18.3%p)
+
 ## 일반 도메인 거짓 전제 QA
 - CREPE — Yu et al., ACL 2023 · QA² — Kim et al. 2023 · FalseQA — [thunlp/FalseQA](https://github.com/thunlp/FalseQA) (ACL 2023) · Syn-QA² — [2403.12145](https://arxiv.org/abs/2403.12145)
 - Identifying and Answering Questions with False Assumptions — [2508.15139](https://arxiv.org/abs/2508.15139) (EMNLP 2025)
