@@ -27,6 +27,7 @@
 | [docs/05_tools_and_models.md](docs/05_tools_and_models.md) | NLA·AO 체크포인트, SAE 스위트, 모델별 배치 |
 | [docs/06_experiment_plan.md](docs/06_experiment_plan.md) | 실험 1 설계, 캐시, 통제, baseline 비교표, 갈림길 |
 | [docs/07_related_work_2026.md](docs/07_related_work_2026.md) | 인용 그래프 바깥 — 일반 도메인 거짓 전제 QA, sycophancy 회로, 조건부 steering, 직접 경쟁자 3편 원문 검토 |
+| [docs/08_story_outline.md](docs/08_story_outline.md) | 논문 서사 양식 채우기 — 의료→CoT 한계→내부 모니터링→왜 NLA→NLA 개선(데이터·구조·목적식), contribution, 정의. 06과의 긴장 |
 | [docs/references.md](docs/references.md) | 링크 전부 |
 | [docs/appendix/candidates_screening.md](docs/appendix/candidates_screening.md) | 후보 논문 22편 스크리닝 결과 |
 
