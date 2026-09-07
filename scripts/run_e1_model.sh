@@ -20,6 +20,7 @@ ROWS_NAME="${ROWS_NAME:-e1_rows_v1}"
 RUN_NAME="${RUN_NAME:-e1}"
 STAGES="${STAGES:-1 2 3 4 5 6 7}"
 LIMIT="${LIMIT:-}"
+JUDGE_BACKEND="${JUDGE_BACKEND:-codex}"
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source "${DATA_ROOT}/uv/cancer_myth_internals/bin/activate"
@@ -56,10 +57,14 @@ if has 2; then
 fi
 
 if has 3; then
-  echo "[stage 3/7] judge (GPT-4o)"
-  [[ -n "${OPENAI_API_KEY:-}" ]] || { echo "[error] OPENAI_API_KEY not set" >&2; exit 2; }
+  echo "[stage 3/7] judge via ${JUDGE_BACKEND}"
+  if [[ "${JUDGE_BACKEND}" == "openai" ]]; then
+    [[ -n "${OPENAI_API_KEY:-}" ]] || { echo "[error] OPENAI_API_KEY not set" >&2; exit 2; }
+  else
+    command -v codex >/dev/null 2>&1 || { echo "[error] codex not on PATH" >&2; exit 2; }
+  fi
   python scripts/run_judge.py --config "${CONFIG}" --responses "${RES}/plain_responses.jsonl" \
-    --questions "${ROWS}/questions.jsonl" --output "${RES}/plain_judge.jsonl"
+    --questions "${ROWS}/questions.jsonl" --output "${RES}/plain_judge.jsonl" --backend "${JUDGE_BACKEND}"
   python scripts/summarize_judge.py --scores "${RES}/plain_judge.jsonl" \
     --questions "${ROWS}/questions.jsonl" --output "${RES}/plain_summary.json"
 fi

@@ -22,6 +22,7 @@ E2_NAME="${E2_NAME:-e2}"
 ROWS_NAME="${ROWS_NAME:-e1_rows_v1}"
 N_FPQ="${N_FPQ:-100}"
 N_NFP="${N_NFP:-100}"
+JUDGE_BACKEND="${JUDGE_BACKEND:-codex}"
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source "${DATA_ROOT}/uv/cancer_myth_internals/bin/activate"
@@ -35,7 +36,7 @@ DIRS="${ART}/results/${RUN_NAME}/${MODEL}/direction_c/directions.npz"
 OUT="${ART}/results/${E2_NAME}/${MODEL}"
 mkdir -p "${OUT}"
 test -s "${DIRS}" || { echo "[error] missing ${DIRS}; run E1 stage 7 first" >&2; exit 2; }
-[[ -n "${OPENAI_API_KEY:-}" ]] || { echo "[error] OPENAI_API_KEY not set (judge)" >&2; exit 2; }
+if [[ "${JUDGE_BACKEND}" == "openai" ]]; then [[ -n "${OPENAI_API_KEY:-}" ]] || { echo "[error] OPENAI_API_KEY not set" >&2; exit 2; }; else command -v codex >/dev/null || { echo "[error] codex not on PATH" >&2; exit 2; }; fi
 
 run_one() {
   local policy="$1" alpha="$2" tag="$3"
@@ -44,7 +45,7 @@ run_one() {
     --gate-layer "${GATE_LAYER}" --gate-threshold "${GATE_THRESHOLD}" \
     --n-fpq "${N_FPQ}" --n-nfp "${N_NFP}" --seed 17 --output "${OUT}/${tag}.jsonl"
   python scripts/run_judge.py --config "${CONFIG}" --responses "${OUT}/${tag}.jsonl" \
-    --questions "${ROWS}/questions.jsonl" --output "${OUT}/${tag}_judge.jsonl"
+    --questions "${ROWS}/questions.jsonl" --output "${OUT}/${tag}_judge.jsonl" --backend "${JUDGE_BACKEND}"
   python scripts/summarize_judge.py --scores "${OUT}/${tag}_judge.jsonl" \
     --questions "${ROWS}/questions.jsonl" --output "${OUT}/${tag}_summary.json"
 }

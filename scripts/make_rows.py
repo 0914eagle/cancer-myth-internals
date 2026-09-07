@@ -8,7 +8,8 @@ Outputs (under ${ART}/data/e1_rows_v1/):
     sample_alignments.md   40 random (question, premise, span) triples to eyeball
 
 Premise spans are found by an LLM (verbatim-substring extraction, verified)
-when OPENAI_API_KEY is set, with a content-word heuristic as fallback. Run
+through `codex exec` or the OpenAI API, with a content-word heuristic as
+fallback when neither is available. Run
 once; the row files are inputs to every later stage.
 """
 
@@ -30,25 +31,13 @@ from src.jsonl import read_jsonl, write_jsonl
 from src.rows import activation_rows, align_premise, load_fpq, load_nfp, load_tpq
 
 
-def make_llm(model: str, temperature: float):
-    import os
+def make_llm(backend: str, model: str, codex_cmd: str):
+    from src.llm_backend import backend_available, make_caller
 
-    if not os.environ.get("OPENAI_API_KEY"):
+    if not backend_available(backend, codex_cmd):
         return None
-    from openai import OpenAI
-
-    client = OpenAI()
-
-    def call(prompt: str) -> str:
-        reply = client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=temperature,
-            max_tokens=120,
-        )
-        return reply.choices[0].message.content or ""
-
-    return call
+    call = make_caller(backend, model, timeout=120, codex_cmd=codex_cmd, temperature=0.0, max_tokens=120)
+    return lambda prompt: call(prompt)[0]
 
 
 def main() -> None:
@@ -56,7 +45,9 @@ def main() -> None:
     parser.add_argument("--config", default="configs/default.yaml")
     parser.add_argument("--out-name", default="e1_rows_v1")
     parser.add_argument("--align", choices=["llm", "heuristic", "none"], default="llm")
-    parser.add_argument("--align-model", default="gpt-4o")
+    parser.add_argument("--align-backend", choices=["codex", "openai"], default=None, help="default: config judge.backend")
+    parser.add_argument("--align-model", default=None, help="default: config judge model for the backend")
+    parser.add_argument("--codex-cmd", default="codex")
     parser.add_argument("--limit", type=int, default=None, help="Per set, for a smoke run.")
     parser.add_argument("--seed", type=int, default=17)
     args = parser.parse_args()
@@ -77,9 +68,16 @@ def main() -> None:
         cache = {r["id"]: r for r in read_jsonl(existing)}
         print(f"[rows] reusing {len(cache)} alignments from {existing}", flush=True)
 
-    llm = make_llm(args.align_model, 0.0) if args.align == "llm" else None
+    judge_cfg = cfg["judge"]
+    backend = args.align_backend or judge_cfg.get("backend", "codex")
+    model = args.align_model if args.align_model is not None else (
+        judge_cfg.get("model", "gpt-4o") if backend == "openai" else judge_cfg.get("codex_model", "")
+    )
+    llm = make_llm(backend, model, args.codex_cmd) if args.align == "llm" else None
     if args.align == "llm" and llm is None:
-        print("[align] OPENAI_API_KEY not set -> heuristic alignment", flush=True)
+        print(f"[align] backend {backend} unavailable (no key / no codex on PATH) -> heuristic alignment", flush=True)
+    elif llm is not None:
+        print(f"[align] via {backend} model={model or 'backend default'}", flush=True)
 
     questions = []
     for row in fpq + nfp + tpq:

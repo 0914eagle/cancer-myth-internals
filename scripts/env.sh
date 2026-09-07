@@ -68,5 +68,5 @@ echo "[env]           $_CMI_FOUND"
 echo "[env] code root $CANCER_MYTH_CODE_ROOT"
 echo "[env] hf cache  $HF_HOME"
 echo "[env] gpus      CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
-echo "[env] openai    $([ -n "${OPENAI_API_KEY:-}" ] && echo set || echo 'NOT SET (judge and LLM span alignment will not run)')"
+echo "[env] judge     codex=$(command -v codex >/dev/null 2>&1 && echo "$(command -v codex)" || echo 'NOT ON PATH') | OPENAI_API_KEY=$([ -n "${OPENAI_API_KEY:-}" ] && echo set || echo unset)"
 unset _CMI_FOUND

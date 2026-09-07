@@ -39,11 +39,30 @@ huggingface-cli login      # newer clients: hf auth login
 huggingface-cli whoami
 ```
 
-The judge and the premise-span alignment call GPT-4o:
+The judge and the premise-span alignment need an LLM. Default transport is
+`codex exec` (medical_nla's `run_judge.py` pattern; uses the codex login, no
+API key). The OpenAI API is the alternative:
 
 ```bash
-export OPENAI_API_KEY=...   # put it in ~/.bashrc on the server, never in the repo
+codex --version                       # JUDGE_BACKEND=codex (default)
+export OPENAI_API_KEY=...             # JUDGE_BACKEND=openai; ~/.bashrc, never the repo
 ```
+
+**The judge is a measurement instrument and must be calibrated once.** The
+paper's judge was GPT-4o; `all_data.json` ships GPT-4o's scores for eight
+models' answers on all 585 questions, so any judge can be checked against it
+without generating anything:
+
+```bash
+python scripts/calibrate_judge.py --backend codex --models GPT-4o Claude-3.5-Sonnet DeepSeek-R1 --n 150
+cat $ART/reports/judge_calibration/codex_default/calibration.md
+```
+
+Read the *PCR agree* column (the paper validated GPT-4o against physicians
+on PCR, 100%). Above ~95% with kappa above ~0.8: use it, and report the
+model name the banner recorded. Below that: switch backend/model. Whatever
+judge passes scores every row of every table; Table 1's closed-model rows
+stay GPT-4o-scored and are marked as such.
 
 ## Every session
 
@@ -51,7 +70,7 @@ export OPENAI_API_KEY=...   # put it in ~/.bashrc on the server, never in the re
 cd /home/eagle0914/cancer-myth-internals
 source /data1/heejae/uv/cancer_myth_internals/bin/activate
 source scripts/env.sh /data1/heejae     # prints host, roots, GPUs, whether the key is set
-pytest -q                                # 23 tests, no GPU
+pytest -q                                # 24 tests, no GPU
 ```
 
 ## E0 — rows (once, CPU + API, ~10 min)
@@ -78,7 +97,7 @@ tail -f /data1/heejae/cancer_myth_internals/logs/e1_4gpu_125.log
 Phase 1 runs Llama-3.1-8B (GPU 0), Qwen2.5-7B (GPU 1), Gemma-2-9B (GPU 2)
 in parallel: Plain responses, then A/B/D activations at every hidden-state
 index. Phase 2 runs Gemma-2-27B in bf16 on GPUs 1,2,3 (no quantization: it
-changes activation values). Phase 3, per model: GPT-4o judge, position-E
+changes activation values). Phase 3, per model: judge (`JUDGE_BACKEND`, default codex), position-E
 rows, E activations, the A readout sweep, the C direction.
 
 One model, one stage at a time (each stage resumes):
@@ -128,7 +147,8 @@ table: PCR, PCS, NFP, TPQ per condition. The row that matters is
 | `scripts/make_rows.py` | E0 rows + premise alignment (LLM verbatim substring, heuristic fallback) |
 | `scripts/run_generate.py` | Plain responses (HF generate, greedy; `--paper-protocol` for T=0.7) |
 | `src/extract_activations.py` | hidden states at A/B/D/E, every layer, medical_nla layout |
-| `scripts/run_judge.py` | GPT-4o with validate.py / validate_nfp.py prompts; resumable; `--dry-run` prices |
+| `scripts/run_judge.py` | validate.py / validate_nfp.py prompts through codex exec or OpenAI; resumable; lock; `--dry-run` |
+| `scripts/calibrate_judge.py` | agreement of the chosen judge with GPT-4o on the answers shipped in all_data.json |
 | `scripts/summarize_judge.py` | PCR / PCS / NFP / TPQ, by category |
 | `scripts/make_response_rows.py`, `merge_labels_into_manifests.py` | E rows and labels |
 | `scripts/run_probe_sweep.py` | A readout, grouped 5-fold, heatmap |

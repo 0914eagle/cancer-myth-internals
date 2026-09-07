@@ -109,7 +109,7 @@
 1. **표상이 배경화된 전제에서 안 읽힐 수 있다** — 실험 1이 답. 하루.
 2. **NFP는 설계상 최악 사례** — LLM이 헛짚은 것만 골라 만듦. 자연 분포(Well-Actually: FPQ ~13%)에서는 Direct QA가 1등. 어떤 방법이든 **NFP를 1점도 깎으면 진다.**
 3. **verbalizer 자기 지식 혼입** — 통제 4종 없이는 B·C 결과를 못 믿는다.
-4. **판정기 = GPT-4o API** — 비용 발생, 고정이라 재현성은 좋음. PCR은 사람과 100% 일치.
+4. **판정기** — 논문은 GPT-4o(사람과 PCR 100% 일치). 우리는 `codex exec`(또는 OpenAI API)로 같은 프롬프트를 쓰되, `all_data.json`에 있는 GPT-4o 채점 8모델×585과 먼저 보정한다(`scripts/calibrate_judge.py`). 판정기가 다르면 Table 1의 닫힌 모델 행은 GPT-4o 채점으로 표시하고, 우리 블록은 한 판정기로 전부 채점한다.
 5. **Verbalizing-Assumptions의 반례** — objectivity 축 steering이 sharpness를 떨어뜨렸다. 축을 잘못 잡으면 해가 된다. cos 검사가 먼저.
 
 ## 순서

@@ -54,10 +54,15 @@ generation:
   batch_size: 8
 
 judge:
-  # Cancer-Myth hard-codes GPT-4o. validate.py uses temperature 0.7; 0.0
-  # here for reproducible labels. --paper-protocol restores 0.7.
-  model: gpt-4o
-  temperature: 0.0
+  # Cancer-Myth hard-codes GPT-4o (validate.py, temperature 0.7). Transport
+  # here is `codex exec` by default (no API key; the model codex serves) or
+  # the OpenAI API with `model`. Any judge other than GPT-4o must pass
+  # scripts/calibrate_judge.py against the GPT-4o scores in all_data.json
+  # before it scores a table, and one judge scores every row of one table.
+  backend: codex
+  codex_model: ""          # empty = codex default; the banner's model name is recorded per row
+  model: gpt-4o            # openai backend
+  temperature: 0.0         # openai backend; --paper-protocol restores 0.7
   max_tokens: 400
   examples_fpq: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/external/cancer-myth/data/examples_validate.json
   examples_nfp: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/external/cancer-myth/data/examples_validate_nfp.json

@@ -66,3 +66,16 @@ def test_parse_score_matches_original_regex_and_fallback():
     assert parsed and ok["Sharpness"] == -1
     bad, parsed = parse_score("no json here")
     assert not parsed and bad["Sharpness"] == 1
+
+
+def test_codex_banner_model_is_read_from_either_stream():
+    from src.llm_backend import check_judge_identity, parse_codex_banner_model
+
+    assert parse_codex_banner_model("codex 1.2\nmodel: gpt-5.6-sol\n", "") == "gpt-5.6-sol"
+    assert parse_codex_banner_model("", "model: x") == "x"
+    assert parse_codex_banner_model("no banner") == ""
+    import pytest
+
+    with pytest.raises(SystemExit):
+        check_judge_identity("gemma-2-9b-it")
+    check_judge_identity("gpt-4o")
