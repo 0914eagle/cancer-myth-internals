@@ -1,0 +1,40 @@
+[project]
+name = "cancer-myth-internals"
+version = "0.1.0"
+description = "Read and gate on internal representations of false presuppositions in patient questions (Cancer-Myth)."
+requires-python = ">=3.11"
+dependencies = [
+  "accelerate>=0.33",
+  "datasets>=2.20",
+  "huggingface-hub>=0.24",
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "openai>=1.40",
+  "pyyaml>=6.0",
+  "safetensors>=0.4",
+  "scikit-learn>=1.4",
+  "torch>=2.3",
+  "transformers>=4.50,<5",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.5",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# scripts insert the repo root on sys.path before importing src, as medical_nla does.
+"scripts/*.py" = ["E402"]

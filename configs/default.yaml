@@ -1,0 +1,76 @@
+run_name: e1
+seed: 17
+
+paths:
+  code_root: ${CANCER_MYTH_CODE_ROOT}
+  artifact_root: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals
+  data_dir: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/data
+  external_dir: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/external
+  activation_dir: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/activations
+  result_dir: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/results
+  report_dir: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/reports
+  log_dir: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/logs
+  # The hub directory itself, not its parent -- same reason as medical_nla:
+  # from_pretrained(cache_dir=X) treats X as the hub cache, while HF_HOME
+  # puts the cache in HF_HOME/hub. Pointing both at one path duplicates every
+  # checkpoint.
+  cache_dir: ${CANCER_MYTH_DATA_ROOT}/hf_cache/hub
+
+# Which backbone this config drives. One config per model; the model-specific
+# files under configs/ override only this block.
+source_model:
+  model_id: meta-llama/Llama-3.1-8B-Instruct
+  short_name: llama31_8b
+  dtype: bfloat16
+  # An 8B model in bfloat16 is ~16GB and fits one 24GB card. device_map is
+  # still "auto" with an explicit budget so accelerate never offloads to meta
+  # silently (see medical_nla/src/modeling.py for the failure this prevents).
+  device_map: auto
+  max_memory:
+    0: 22GiB
+  trust_remote_code: false
+  # Number of transformer blocks; hidden_states has n_layers + 1 entries
+  # (index 0 = embeddings, index n_layers = post-final-norm).
+  n_layers: 32
+  d_model: 4096
+
+activation:
+  # Rows name their own position_mode; this is only the fallback.
+  position_mode: last_token
+  target_text_strategy: last_subtoken
+  target_text_occurrence: 0
+  batch_size: 8
+  # Store every hidden-state index. ~1.5GB per model for the E1 row set.
+  layers: all
+
+generation:
+  # Cancer-Myth "Plain": the question alone as the user turn, no system prompt,
+  # temperature 0.7 in the paper. Greedy here so a rerun reproduces the same
+  # PCR labels; use --paper-protocol on run_generate.py for 0.7 sampling.
+  do_sample: false
+  temperature: null
+  top_p: null
+  max_new_tokens: 512
+  batch_size: 8
+
+judge:
+  # Cancer-Myth hard-codes GPT-4o (validate.py, temperature 0.7). Transport
+  # here is `codex exec` by default (no API key; the model codex serves) or
+  # the OpenAI API with `model`. Any judge other than GPT-4o must pass
+  # scripts/calibrate_judge.py against the GPT-4o scores in all_data.json
+  # before it scores a table, and one judge scores every row of one table.
+  backend: codex
+  codex_model: ""          # empty = codex default; the banner's model name is recorded per row
+  model: gpt-4o            # openai backend
+  temperature: 0.0         # openai backend; --paper-protocol restores 0.7
+  max_tokens: 400
+  examples_fpq: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/external/cancer-myth/data/examples_validate.json
+  examples_nfp: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/external/cancer-myth/data/examples_validate_nfp.json
+
+data:
+  cancer_myth_repo: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/external/cancer-myth
+  well_repo: ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals/external/Well
+  # Hugging Face copies. The GitHub all_data.json lacks the premise text
+  # (source_myth); the HF dataset carries it. The TPQ split is Well's.
+  hf_cancer_myth: Cancer-Myth/Cancer-Myth
+  hf_tpq: shenranw/CancerMyth-TPQ

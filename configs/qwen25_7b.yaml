@@ -1,0 +1,13 @@
+# Qwen2.5-7B-Instruct: Cancer-Myth Table 3 row (PCR 6.3), NLA L20 checkpoint,
+# Well baselines exist on the same data. One 24GB card.
+_base: default.yaml
+source_model:
+  model_id: Qwen/Qwen2.5-7B-Instruct
+  short_name: qwen25_7b
+  dtype: bfloat16
+  device_map: auto
+  max_memory:
+    0: 22GiB
+  trust_remote_code: false
+  n_layers: 28
+  d_model: 3584

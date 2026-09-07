@@ -1,0 +1,26 @@
+# Gemma-2-9B-it: Gemma Scope SAEs, Activation Oracle checkpoint, the largest
+# Gemma-2 that fits one 24GB card in bfloat16 (~18.5GB of weights).
+_base: default.yaml
+source_model:
+  model_id: google/gemma-2-9b-it
+  short_name: gemma2_9b
+  dtype: bfloat16
+  device_map: auto
+  max_memory:
+    0: 22GiB
+  trust_remote_code: false
+  n_layers: 42
+  d_model: 3584
+activation:
+  position_mode: last_token
+  target_text_strategy: last_subtoken
+  target_text_occurrence: 0
+  # 9B leaves less headroom than 8B; smaller batches keep long prompts safe.
+  batch_size: 4
+  layers: all
+generation:
+  do_sample: false
+  temperature: null
+  top_p: null
+  max_new_tokens: 512
+  batch_size: 4

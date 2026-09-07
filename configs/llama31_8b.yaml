@@ -1,0 +1,13 @@
+# Llama-3.1-8B-Instruct: Cancer-Myth Table 3 row (PCR 4.8), Llama Scope SAEs,
+# Activation Oracle checkpoint. One 24GB card.
+_base: default.yaml
+source_model:
+  model_id: meta-llama/Llama-3.1-8B-Instruct
+  short_name: llama31_8b
+  dtype: bfloat16
+  device_map: auto
+  max_memory:
+    0: 22GiB
+  trust_remote_code: false
+  n_layers: 32
+  d_model: 4096

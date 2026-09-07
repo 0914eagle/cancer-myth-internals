@@ -39,7 +39,7 @@ LLM 생성기가 암 관련 myth 994개에서 전제를 깐 환자 질문 생성
 | 0 | 어렴풋이 건드림 |
 | +1 | 명확히 짚고 바로잡음 |
 
-- **PCS** (Presupposition Correction Score) = 평균, −1~+1
+- **PCS** (Presupposition Correction Score) = 평균, −1–+1
 - **PCR** (Presupposition Correction Rate) = **+1 비율**
 
 Appendix Table 2 — GPT-4o 판정 vs 사람: **PCR 100% 일치**, PCS 71.1%. → PCR을 주지표로.

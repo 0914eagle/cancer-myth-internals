@@ -1,9 +1,26 @@
 # environments
 .venv/
+.uv/
 venv/
 __pycache__/
+.pytest_cache/
+.ruff_cache/
 *.pyc
 .env
+
+# Keep code in git; keep large/runtime artifacts outside the repo
+# (they live under ${CANCER_MYTH_DATA_ROOT}/cancer_myth_internals).
+activations/
+checkpoints/
+datasets/
+external/
+logs/
+models/
+outputs/
+results/
+reports/
+cache/
+hf_cache/
 
 # model weights / caches — never commit
 *.safetensors
@@ -11,19 +28,13 @@ __pycache__/
 *.pt
 *.pth
 *.gguf
-models/
-checkpoints/
-cache/
-activations/
-hf_cache/
-
-# data dumps and outputs (keep small curated files under docs/)
-data/raw/
-outputs/
-results/*.jsonl
+*.ckpt
 *.parquet
 *.npy
 *.npz
+
+# API keys
+key.py
 
 # OS / editor
 .DS_Store
