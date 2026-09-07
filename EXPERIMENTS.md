@@ -24,11 +24,23 @@ cd cancer-myth-internals
 DATA_ROOT=/data1/heejae bash scripts/bootstrap_server.sh
 ```
 
-The bootstrap creates the uv venv (python 3.11, `uv pip install -e ".[dev]"`),
-clones `bill1235813/cancer-myth` and `ShenranTomWang/Well` under
-`${DATA_ROOT}/cancer_myth_internals/external`, and runs the GPU check.
-If the resolver picked a CPU torch, install the server's CUDA wheel into the
-venv afterwards.
+The bootstrap creates the uv venv (python 3.11), installs torch 2.5.1 from the
+cu121 index first (the same pin as medical_nla's bootstrap), then
+`uv pip install -e ".[dev]"`, clones `bill1235813/cancer-myth` and
+`ShenranTomWang/Well` under `${DATA_ROOT}/cancer_myth_internals/external`, and
+runs the GPU check.
+
+Server 125's driver is CUDA 12.2 (`nvidia-smi` shows 535.x). A torch wheel
+built against a newer CUDA loads but reports "The NVIDIA driver on your system
+is too old" and `torch.cuda.is_available()` is False, so every worker stops at
+the GPU check. If a venv ended up with such a wheel, replace it in place:
+
+```bash
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+uv pip install "torch==2.5.1" --index-url https://download.pytorch.org/whl/cu121
+python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.device_count())"
+# expect: 2.5.1+cu121 True 4
+```
 
 Gated checkpoints (Llama-3.1, Gemma-2, Gemma-3) need the account that accepted
 the licences:
