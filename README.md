@@ -13,7 +13,7 @@
 | 기존 완화책의 실패 | GEPA·Monitor는 Cancer-Myth를 올리는 대신 **전제 없는 질문에서 없는 전제를 지어낸다** (NFP −29, −55) |
 | 왜 실패하나 | 모델은 거짓 전제를 96~100% *알면서* 안 꺼낸다 (②). 판정을 시키면 참 전제의 58~93%도 거짓이라 한다 (negative bias) |
 | 우리 베팅 | 판정을 시키지 말고 **표상을 읽어라**. 진위(A)와 태도(C)를 같이 읽으면 sycophancy가 갈리고, A로 게이트한 C 개입은 설계상 NFP를 건드리지 않는다 |
-| 선행연구와의 거리 | 사용자 태도(①), 전역 동조 벡터(CAA), 단언문 진위(④), 강제 판정(②), CoT 언급(③)은 있었다. **"모델이 P를 읽는 순간 P가 어떤 자격으로 표상되고, 어떤 태도로 답하려 하는가"** 는 없다 |
+| 선행연구와의 거리 | 사용자 태도(①), 전역 동조 벡터(CAA), 단언문 진위(④), 강제 판정(②), CoT 언급(③)은 있었다. 일반 도메인에선 probe 게이트 **프롬프트**(Two Axes), 의료에선 압력 감지 게이트 ITI(Tripathi)까지 있다. **"게이트 신호(진위)와 개입 대상(태도)이 다른 개념이고, 통제군이 표면상 구분 불가능한 NFP"** 인 것은 없다 ([07](docs/07_related_work_2026.md)) |
 
 ## 문서
 
@@ -26,6 +26,7 @@
 | [docs/04_verbalizers.md](docs/04_verbalizers.md) | verbalizer 바닥부터 — 추출·주입·생성, 네 종류, 함정과 통제 |
 | [docs/05_tools_and_models.md](docs/05_tools_and_models.md) | NLA·AO 체크포인트, SAE 스위트, 모델별 배치 |
 | [docs/06_experiment_plan.md](docs/06_experiment_plan.md) | 실험 1 설계, 캐시, 통제, baseline 비교표, 갈림길 |
+| [docs/07_related_work_2026.md](docs/07_related_work_2026.md) | 인용 그래프 바깥 — 일반 도메인 거짓 전제 QA, sycophancy 회로, 조건부 steering, 직접 경쟁자 3편 원문 검토 |
 | [docs/references.md](docs/references.md) | 링크 전부 |
 | [docs/appendix/candidates_screening.md](docs/appendix/candidates_screening.md) | 후보 논문 22편 스크리닝 결과 |
 
@@ -34,6 +35,7 @@
 - [x] 앵커 논문 확정, 표·지표·저장소 확인
 - [x] 후속 연구 전수 확인 (Semantic Scholar 인용 14편, 핵심 4편 본문 검토)
 - [x] 가설 지도, 읽을 층, 도구 선정
+- [x] 인용 그래프 바깥 관련 연구 (2025~2026), 직접 경쟁자 3편 원문 검토 → baseline·산출물 갱신
 - [ ] **실험 1** — 표상이 배경화된 전제에서 읽히는가 (A·B·C, 4 모델)
 - [ ] 개입 설계 (A 게이트 × C 방향)
 - [ ] baseline 재실행 (②의 코드, Cancer-Myth 판정기로 채점)

@@ -85,7 +85,13 @@ MedRedFlag (2601.09853) · Evaluating LLMs on Misconceptions in Multi-Turn Medic
 | 사회적 가정 → probe → steer | ①이 했고 Cancer-Myth에서 약함 |
 | 영화 데이터 head 차단 | ②가 했고 무효 |
 | 판정 probe | ④가 단언문에서 |
+| 배경 전제가 hidden state에서 읽힌다 (일반 도메인) | **Two Axes**가 CREPE 마지막 토큰에서 AUROC 0.69~0.78 ([07 A1](07_related_work_2026.md)). 의료·전제 구간 위치·NFP는 남음 |
+| probe 게이트 × 전제 검사 **프롬프트** | **Two Axes**가 함 — 항상 켜면 멀쩡한 질문 57% 오지적, probe 게이트 시 14% ([07 A1](07_related_work_2026.md)). 실험 3 baseline으로 |
+| 의료 + 게이트 + ITI steering | **Tripathi et al.**이 함 — 단 멀티턴 압력, 게이트 = 압력 감지 ([07 A2](07_related_work_2026.md)) |
+| 알면서 따라간다 — head 회로 | **Pandey**가 12모델에서 — 단 전경화된 단언 ([07 A3](07_related_work_2026.md)) |
 | **P가 어떤 자격으로(사실/믿음) 표상되는가** | 비어 있음 |
 | **어떤 태도로 답하려 하는가 (disposition)** | 비어 있음 — 인접: refusal direction, CAA, persona vectors (전역 방향, 게이트 없음) |
-| **진위 × 태도 분해와 진위로 게이트한 태도 개입** | 비어 있음 |
+| **진위 × 태도 분해와 진위로 게이트한 태도 개입** | 비어 있음. 단 Pandey: 진위·동조 방향 cos 0.4~0.8 → 분해 가능성을 먼저 재야 함 |
 | **Cancer-Myth+NFP를 verbalizer의 통제 벤치마크로** | 비어 있음 — ICML 2026 비판 논문이 요구한 것 |
+
+인용 그래프 바깥의 2025~2026 연구는 [07](07_related_work_2026.md).

@@ -19,6 +19,46 @@
 - SYCON-Bench — [EMNLP 2025 Findings](https://aclanthology.org/2025.findings-emnlp.121.pdf) · [GitHub](https://github.com/JiseungHong/SYCON-Bench)
 - PARROT — [2511.17220](https://arxiv.org/pdf/2511.17220)
 
+## 직접 경쟁자 · 일반 도메인 (원문 확인, [07](07_related_work_2026.md))
+- Two Axes of LLM Abstention — [2607.08456](https://arxiv.org/abs/2607.08456)
+- Gated Activation Steering for Reducing Sycophancy & Hallucination in Medical QA — [2608.23666](https://arxiv.org/abs/2608.23666) · [HF](https://huggingface.co/himanshu5trpth/medgemma-sycophancy-hallucination-gated-steering)
+- LLMs Know They're Wrong and Agree Anyway: The Shared Sycophancy-Lying Circuit — [2604.19117](https://arxiv.org/abs/2604.19117)
+
+## 일반 도메인 거짓 전제 QA
+- CREPE — Yu et al., ACL 2023 · QA² — Kim et al. 2023 · FalseQA — [thunlp/FalseQA](https://github.com/thunlp/FalseQA) (ACL 2023) · Syn-QA² — [2403.12145](https://arxiv.org/abs/2403.12145)
+- Identifying and Answering Questions with False Assumptions — [2508.15139](https://arxiv.org/abs/2508.15139) (EMNLP 2025)
+- LLMs Struggle to Reject False Presuppositions when Stakes are High — [2505.22354](https://arxiv.org/abs/2505.22354)
+- HACK: Hallucinations Along Certainty and Knowledge Axes — [2510.24222](https://arxiv.org/abs/2510.24222)
+- Do I Know This Entity? — [2411.14257](https://arxiv.org/abs/2411.14257) (ICLR 2025)
+
+## sycophancy 내부 표상 (2025~2026)
+- Sycophancy Is Not One Thing — [2509.21305](https://arxiv.org/abs/2509.21305)
+- Dissociating the Internal Representations of Sycophancy — [2607.07003](https://arxiv.org/abs/2607.07003)
+- Gotta Catch them all: the modes of Sycophancy — [2607.20146](https://arxiv.org/abs/2607.20146)
+- Sycophancy Hides Linearly in the Attention Heads — [2601.16644](https://arxiv.org/abs/2601.16644) (EACL 2026)
+- When Truth Is Overridden — [2508.02087](https://arxiv.org/abs/2508.02087) (AAAI 2026) · [GitHub](https://github.com/kaustpradalab/LLM-sycophancy)
+- Dual-Stance Evaluation of Sycophancy — [2606.11205](https://arxiv.org/abs/2606.11205)
+- Detecting and Controlling Sycophancy with Cascading Linear Features — [2606.26155](https://arxiv.org/abs/2606.26155) · [GitHub](https://github.com/maty-bohacek/cascading-feats)
+- Playing Devil's Advocate: Persona Vectors for Sycophancy — [2605.21006](https://arxiv.org/abs/2605.21006)
+- Sycophancy Suppression Can Impair Rational Updating — [2608.26511](https://arxiv.org/abs/2608.26511)
+- Linear Probe Penalties Reduce LLM Sycophancy — [2412.00967](https://arxiv.org/abs/2412.00967)
+
+## 조건부 steering
+- CAST: Programming Refusal with Conditional Activation Steering — [2409.05907](https://arxiv.org/abs/2409.05907) (ICLR 2025)
+- GAPS: Dimension-Level Gates for Conditional Activation Steering — [2609.01878](https://arxiv.org/abs/2609.01878)
+- Steering Vector Fields — [2602.01654](https://arxiv.org/abs/2602.01654)
+- Hallucination as an Anomaly (PCNET) — [2605.05953](https://arxiv.org/abs/2605.05953)
+
+## 탐지 ≠ 제어 (경고)
+- Perfect Detection, Failed Control — [2606.24952](https://arxiv.org/abs/2606.24952)
+- Detection Without Correction — [2604.13068](https://arxiv.org/abs/2604.13068)
+- Readable but Not Controllable (의료) — [2607.00158](https://arxiv.org/abs/2607.00158)
+
+## 의료 sycophancy 벤치마크 (인접)
+- MedMisBench — [2606.12291](https://arxiv.org/abs/2606.12291)
+- When Correct Beliefs Collapse (Med-Stress / R-FT) — [2605.23932](https://arxiv.org/abs/2605.23932)
+- CausalT3 — [2601.08258](https://arxiv.org/abs/2601.08258v3)
+
 ## Verbalizer
 - Natural Language Autoencoders — [transformer-circuits.pub/2026/nla](https://transformer-circuits.pub/2026/nla/) · [Anthropic](https://www.anthropic.com/research/natural-language-autoencoders) · [kitft/natural_language_autoencoders](https://github.com/kitft/natural_language_autoencoders) · [kitft/nla-inference](https://github.com/kitft/nla-inference) · [HF collection](https://huggingface.co/collections/kitft/nla-models) · [Neuronpedia](https://www.neuronpedia.org/blog/nlas)
 - Activation Oracles — [2512.15674](https://arxiv.org/abs/2512.15674) · [GitHub](https://github.com/adamkarvonen/activation_oracles) · [HF collection](https://huggingface.co/collections/adamkarvonen/activation-oracles) · [Anthropic alignment](https://alignment.anthropic.com/2025/activation-oracles)
