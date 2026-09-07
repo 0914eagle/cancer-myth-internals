@@ -31,7 +31,7 @@
 
 | 층 | 방법 | 출력 |
 |---|---|---|
-| **A 판정** | linear probe, 층×위치 sweep, 5-fold | 거짓 vs 참 전제 **AUROC** |
+| **A 판정** | linear probe, 층×위치 sweep, 5-fold | 거짓 vs 참 전제 **AUROC**. 기준선 = 같은 모델의 언어 판정 AUROC (②의 extract-and-verify를 같은 문항에 돌려 적중/오탐으로 계산; ② Table 1 환산값 0.7~0.8) |
 | **B 내용** | AO: "what the model has taken as given / what it plans to address" (위치 A, B) | P의 자격(사실/믿음/주장) 분류, 계획에 '바로잡기' 유무 |
 | **C 태도** | 대조 방향: PCR +1 응답 vs −1 응답의 응답 시작 활성값 평균 차 → 위치 D 투영. AO: "accept / correct / sidestep?" | 생성 전 태도 점수, AUROC vs 실제 PCR |
 | NLA | Gemma-3-27B(L41), Llama-70B(L53), Qwen2.5-7B(L20). 원 템플릿 + 수정 템플릿. AR `mse_nrm` < 0.5 게이트 | 전제 언급률, NFP confabulation률 |
@@ -46,6 +46,7 @@
 ### 산출물
 
 - 층×위치 AUROC 히트맵 (모델별)
+- **언어 판정 AUROC vs probe AUROC**, 모델별 한 줄 — "판정 대신 표상"의 직접 증거
 - **2×2 분포표** (A × C), 7 카테고리별
 - P의 자격 분포 (사실/믿음/주장), Cancer-Myth vs NFP
 - verbalizer 통제 4종 표
@@ -58,6 +59,7 @@
 | A에서 분리 | 전제를 읽는 순간 판정이 나 있다 | ④의 빈칸 직접 채움 → 개입 |
 | B에서만 분리 | 질문 전체를 본 뒤 판정 | 개입 위치도 B |
 | 다른 층에서만 분리 | NLA 고정층은 못 씀, probe로만 | AO 층 지정으로 대응 |
+| probe AUROC ≈ 언어 판정 AUROC | 표상에도 그만큼밖에 없다. H1 부활 | 내부를 읽어도 얻을 게 없음. 지식 주입 쪽으로 방향 전환 |
 | **어디서도 안 갈림** | 표상에 신호 없음 | **접는다.** 음성 결과도 ④의 빈칸 |
 | 2×2에서 H2 지배 | sycophancy가 아니라 화용론적 누락 | 그 결론 자체가 논문 |
 | 2×2에서 H3 지배 | 알지만 따라간다 | 게이트 개입으로 |
