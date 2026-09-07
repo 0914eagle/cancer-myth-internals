@@ -99,3 +99,11 @@
 - MA-RAG — [2603.03292](https://arxiv.org/abs/2603.03292) · [GitHub](https://github.com/NJU-RL/MA-RAG)
 - AnesSuite — [2504.02404](https://arxiv.org/abs/2504.02404) · [GitHub](https://github.com/MiliLab/AnesSuite)
 - FAITH (Whispers that Shake Foundations) — [2402.19103](https://arxiv.org/abs/2402.19103) · EMNLP 2024
+
+
+## 2026-09-08 논의 통합
+
+- [연구계획과 예상 기여](09_research_proposal.md)
+- [근거와 재사용 baseline](10_evidence_and_baselines.md) — 논문별 원문 링크 및 주장 범위
+- [Tripathi 원문·공개 산출물 검토](11_tripathi_review.md)
+- [논의 결정 기록](12_discussion_decisions.md) — CoT, AO/NLA, split, 통계와 정의

@@ -1,8 +1,10 @@
 # 06. 실험 계획
 
+> **2026-09-08 후속 정리.** 아래 번호는 초기 실행 단계다. 현재 Task 1–3, 일반 의료 QA 보존과 표 구성은 [09](09_research_proposal.md), split ID·통계 정정은 [12](12_discussion_decisions.md)를 우선한다. Well의 분할 개수는 알려져 있지만 저자 test ID를 확보한 것은 아니다.
+
 ## 실험 1 — 표상이 배경화된 전제에서 읽히는가
 
-이 프로젝트의 성패가 갈리는 실험. 학습 없음. 모델당 하루.
+초기 표상 탐색 단계. 타깃 모델 가중치는 고정하지만 probe/readout 학습은 수행한다. 소요 시간은 실제 설정에서 확인한다.
 
 ### 입력
 
@@ -52,7 +54,7 @@
 - verbalizer 통제 4종 표
 - Verbalizing-Assumptions의 validation 방향과 우리 교정-vs-동조 방향의 cos
 - **cos(A 방향, C 방향), 층별** — Pandey([07 A3](07_related_work_2026.md))에서 진위·동조 방향 cos 0.4–0.8. 그만큼 겹치면 "지식은 안 건드린다"를 "부분 분해"로 낮춰 쓴다
-- 기준선: 마지막 토큰 probe AUROC **0.70** (Two Axes의 CREPE). 이 아래면 CREPE보다 못 읽는 것
+- 참고: Two Axes의 CREPE 결과는 다른 도메인의 보고치이며 우리 성공 문턱이 아니다. 같은 의료 held-out에서 텍스트/CoT와 직접 비교한다
 
 ### 갈림길
 
@@ -62,7 +64,7 @@
 | B에서만 분리 | 질문 전체를 본 뒤 판정 | 개입 위치도 B |
 | 다른 층에서만 분리 | NLA 고정층은 못 씀, probe로만 | AO 층 지정으로 대응 |
 | 내부 readout ≈ 출력 readout | 시험한 readout의 추가 이득을 검출 못 함. 지식 부재의 증명은 아님 | 층·위치·probe 종류·표본을 재검토. 그래도 같으면 "라우팅 가치 없음"을 결과로 보고 |
-| **어디서도 안 갈림** | 표상에 신호 없음 | **접는다.** 음성 결과도 Contextual-Truth의 빈칸 |
+| **어디서도 안 갈림** | 시험한 readout에서 분리를 검출하지 못함 | RH1 지지 실패로 보고한다. 지식 부재나 모든 내부 방법의 불가능성을 뜻하지 않는다 |
 | 2×2에서 "A 낮음" 칸 지배 | H2(화용론적 누락) 쪽 시사 | shortcut 통제 후 확정. 그 자체로 기술 결과 |
 | 2×2에서 "A 높음 × C 따라감" 칸 지배 | H3 쪽 시사 | 게이트 개입의 대상 집합 |
 
@@ -87,7 +89,7 @@
 
 ### 분할 (고정, 실험 1·2·3 공통)
 
-Well-Actually의 Cancer-Myth 분할을 그대로 쓴다: FPQ **383 / 100 / 100**, TPQ **30 / 18 / 100** (train / dev / test), 별도로 FPQ·TPQ 각 2개가 few-shot 예약. TPQ 148 + 예약 2 = NFP 150이므로 NFP 전체가 이 분할 안에 있다.
+Well-Actually가 보고한 Cancer-Myth 분할 개수는 다음과 같다. **정확한 저자 ID manifest는 미확보이며 아래는 보고된 분할을 기준으로 한 초기 계획**이다 ([12](12_discussion_decisions.md)). FPQ **383 / 100 / 100**, TPQ **30 / 18 / 100** (train / dev / test), 별도로 FPQ·TPQ 각 2개가 few-shot 예약. TPQ와 NFP의 대응·중복 및 예약 문항은 실제 ID manifest로 확인해야 한다.
 
 | 데이터 | 용도 |
 |---|---|
@@ -105,7 +107,7 @@ Well-Actually의 Cancer-Myth 분할을 그대로 쓴다: FPQ **383 / 100 / 100**
 
 ### 열과 판정기
 
-**PCR, PCS** (`validate.py`, GPT-4o) + **NFP** (`validate_nfp.py`) + **TPQ** (참 전제를 부당하게 부정·교정했는가를 재는 별도 루브릭 — NFP 루브릭에 참 전제를 넣으면 뒤집힌다, 리뷰 5; Well-Actually의 S5와 같은 이름으로 부르지 않는다). 판정기는 표에 들어가는 숫자 전부 GPT-4o API. 외부 벤치마크 5개는 제외 (필요 시 후속).
+**PCR, PCS** (`validate.py`, GPT-4o) + **NFP** (`validate_nfp.py`) + **TPQ** (참 전제를 부당하게 부정·교정했는가를 재는 별도 루브릭 — NFP 루브릭에 참 전제를 넣으면 뒤집힌다, 리뷰 5; Well-Actually의 S5와 같은 이름으로 부르지 않는다). 판정기는 표에 들어가는 숫자 전부 GPT-4o API. 현재 계획에서는 별도 의료 QA 보존을 Task 3에 포함한다 ([09](09_research_proposal.md)). 아래는 FPQ/TPQ 평가 프로토콜의 초기 기록이다.
 
 ### 원본 표와의 관계
 
