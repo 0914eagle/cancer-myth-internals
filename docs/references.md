@@ -4,10 +4,10 @@
 - Cancer-Myth — [arXiv 2504.11373](https://arxiv.org/abs/2504.11373) · [OpenReview](https://openreview.net/forum?id=fOXLhZIaUj) · [GitHub](https://github.com/bill1235813/cancer-myth) · [HF](https://huggingface.co/datasets/Cancer-Myth/Cancer-Myth) · [project](https://cancermyth.github.io/)
 
 ## Cancer-Myth 후속 (직접 관련)
-- ① Verbalizing LLMs' assumptions to explain and control sycophancy — [2604.03058](https://arxiv.org/abs/2604.03058)
-- ② Don't 'Well, Actually' Me… Weak Presupposition Verification Degrades General QA — [2608.06539](https://arxiv.org/abs/2608.06539) · [GitHub](https://github.com/ShenranTomWang/Well) · [HF TPQ](https://huggingface.co/datasets/shenranw/CancerMyth-TPQ)
-- ③ Untangling the Mechanisms of Misleading Context in Medical QA — [2609.02754](https://arxiv.org/abs/2609.02754)
-- ④ Language Models Encode the Contextual Truth of Propositions — [2608.03035](https://arxiv.org/abs/2608.03035)
+- Verbalizing-Assumptions — Verbalizing LLMs' assumptions to explain and control sycophancy — [2604.03058](https://arxiv.org/abs/2604.03058)
+- Well-Actually — Don't 'Well, Actually' Me… Weak Presupposition Verification Degrades General QA — [2608.06539](https://arxiv.org/abs/2608.06539) · [GitHub](https://github.com/ShenranTomWang/Well) · [HF TPQ](https://huggingface.co/datasets/shenranw/CancerMyth-TPQ)
+- MedMisBench — Untangling the Mechanisms of Misleading Context in Medical QA — [2609.02754](https://arxiv.org/abs/2609.02754)
+- Contextual-Truth — Language Models Encode the Contextual Truth of Propositions — [2608.03035](https://arxiv.org/abs/2608.03035)
 
 ## Cancer-Myth 후속 (인접)
 - MedRedFlag — [2601.09853](https://arxiv.org/abs/2601.09853)

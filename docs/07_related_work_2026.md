@@ -29,7 +29,7 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 - *교정 품질*: 지적한 것 중 NLI 검증 통과 47% (Llama) / 61% (Qwen). 나머지는 자신 있게 틀린 교정 — 게이트를 통과해도 프롬프트 개입은 confabulate.
 - *인과 개입*: 없음 (limitations에 명시). 게이트는 두 프롬프트 사이 라우팅.
 
-**H6 재해석.** ②(Well)는 *추출한 전제 문장*의 진위를 물으면 참 전제의 58~93%를 거짓이라 한다(negative bias). 이 논문은 *질문*이 거짓 전제 위에 있냐 물으면 거의 전부 멀쩡하다고 한다(accommodation). **판정을 시키면 framing에 따라 어느 한쪽으로 쏠리고, 어느 쪽이든 판별은 chance.** "판정 대신 표상"의 근거가 양방향에서 확정됐다.
+**H6 재해석.** Well-Actually(Well)는 *추출한 전제 문장*의 진위를 물으면 참 전제의 58~93%를 거짓이라 한다(negative bias). 이 논문은 *질문*이 거짓 전제 위에 있냐 물으면 거의 전부 멀쩡하다고 한다(accommodation). **판정을 시키면 framing에 따라 어느 한쪽으로 쏠리고, 어느 쪽이든 판별은 chance.** "판정 대신 표상"의 근거가 양방향에서 확정됐다.
 
 **우리와의 거리.**
 
@@ -43,7 +43,7 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 | 개입 후 교정 품질 | 47~61% | 측정 필요 |
 
 **가져올 것.**
-1. **실험 3 baseline에 "probe-gated FP Identification" 추가.** ②의 FP Identification 프롬프트를 우리 A probe로 게이트한 것. 싸고 강하다. 우리 C 개입은 GEPA가 아니라 **이것**을 이겨야 한다 — 특히 교정 품질(PCS)에서.
+1. **실험 3 baseline에 "probe-gated FP Identification" 추가.** Well-Actually의 FP Identification 프롬프트를 우리 A probe로 게이트한 것. 싸고 강하다. 우리 C 개입은 GEPA가 아니라 **이것**을 이겨야 한다 — 특히 교정 품질(PCS)에서.
 2. 실험 1 기대치: 마지막 토큰 probe **0.70 안팎**이 일반 도메인 기준선. 의료 전제는 의사 검증이라 더 깨끗할 수 있고, 전제 구간 위치는 더 높을 수 있다. 0.70 아래면 CREPE보다 못 읽는 것.
 3. difference-of-means 방향이 logistic probe보다 높았다 (0.74~0.78 vs 0.69~0.73). 우리도 둘 다.
 4. 통제 프로토콜: 4-way split (probe-train / tune / certify / test), bag-of-words 상한, 100 resplit 감사. 그대로 쓴다.
@@ -94,7 +94,7 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 
 | 논문 | 한 것 | 관계 |
 |---|---|---|
-| CREPE (Yu et al., ACL 2023), QA² (Kim et al. 2023), FalseQA (Hu et al., ACL 2023), Syn-QA² ([2403.12145](https://arxiv.org/abs/2403.12145)) | 벤치마크. FalseQA가 **"거짓 전제만으로 학습하면 참 전제까지 거부한다"**를 처음 보고, 섞어 학습으로 완화 | FPQ/TPQ 시소는 2023년부터 알려짐. ②는 의료 재확인 |
+| CREPE (Yu et al., ACL 2023), QA² (Kim et al. 2023), FalseQA (Hu et al., ACL 2023), Syn-QA² ([2403.12145](https://arxiv.org/abs/2403.12145)) | 벤치마크. FalseQA가 **"거짓 전제만으로 학습하면 참 전제까지 거부한다"**를 처음 보고, 섞어 학습으로 완화 | FPQ/TPQ 시소는 2023년부터 알려짐. Well-Actually는 의료 재확인 |
 | [Identifying and Answering Questions with False Assumptions](https://arxiv.org/abs/2508.15139) (Wang & Blanco, EMNLP 2025) | atomic assumption 생성 → 검색 근거로 검증 → 답변. 5모델 | extract-and-verify 최신형 |
 | [LLMs Struggle to Reject False Presuppositions when Stakes are High](https://arxiv.org/abs/2505.22354) (2025) | GPT-4o·Llama-3-8B·Mistral-7B, 전제 트리거 유형별 거부율 | H2 쪽 증거. 카테고리 분석에 트리거 유형 변수 추가 가능 |
 | [HACK](https://arxiv.org/abs/2510.24222) (2025-10) | 환각을 지식 있음(HK+)/없음(HK−)으로 나누고 steering이 HK+에서만 통함 | "지식이 있을 때만 개입이 먹힌다" — A 게이트의 논리 |
@@ -104,7 +104,7 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 
 | 논문 | 핵심 | 관계 |
 |---|---|---|
-| [Sycophancy Is Not One Thing](https://arxiv.org/abs/2509.21305), [Dissociating…](https://arxiv.org/abs/2607.07003), [Modes of Sycophancy](https://arxiv.org/abs/2607.20146) | 동조·아첨·사실 동의가 다른 선형 방향. 출력은 비슷해도 표상은 층 14 이후 완전 분리 | "sycophancy 벡터 하나"는 없음. ①이 validation 축을 밀어 실패한 이유 |
+| [Sycophancy Is Not One Thing](https://arxiv.org/abs/2509.21305), [Dissociating…](https://arxiv.org/abs/2607.07003), [Modes of Sycophancy](https://arxiv.org/abs/2607.20146) | 동조·아첨·사실 동의가 다른 선형 방향. 출력은 비슷해도 표상은 층 14 이후 완전 분리 | "sycophancy 벡터 하나"는 없음. Verbalizing-Assumptions이 validation 축을 밀어 실패한 이유 |
 | [Sycophancy Hides Linearly in the Attention Heads](https://arxiv.org/abs/2601.16644) (EACL 2026) | probe는 residual·MLP에서도 되나 steering은 중간층 attention head 일부에서만 효과 | 개입 위치 |
 | [When Truth Is Overridden](https://arxiv.org/abs/2508.02087) (AAAI 2026) | 1인칭 "I believe"가 3인칭보다 깊은 층을 더 흔듦. 후기층 출력 선호 이동 + 깊은 층 표상 분기 | Cancer-Myth는 전부 1인칭 환자 발화. H4 |
 | [Dual-Stance Evaluation](https://arxiv.org/abs/2606.11205) (2026-04) | centroid 차이 steering이 동조·사실 동의 부분공간이 달라도 **둘 다 깎음** | **NFP 문제의 일반 도메인 버전.** 무조건 steering 대조군의 예측 |
@@ -137,10 +137,10 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 | 제안 요소 | 02 시점 | 지금 |
 |---|---|---|
 | 배경화된 거짓 전제가 hidden state에서 읽힌다 | 비어 있음 | **A1이 CREPE에서 0.69~0.78 (마지막 토큰).** 의료·전제 구간 위치·NFP는 남음 |
-| 판정시키면 오탐 | ② negative bias | **A1이 반대 방향(accommodation)도 확인.** framing 무관하게 chance |
+| 판정시키면 오탐 | Well-Actually negative bias | **A1이 반대 방향(accommodation)도 확인.** framing 무관하게 chance |
 | probe 게이트 × 개입 | 비어 있음 | **A1이 프롬프트 라우팅으로 함** (일반 도메인). 내부 개입 게이트는 남음 |
 | 의료 + 게이트 + ITI steering | 비어 있음 | **A2가 함** (멀티턴 압력, 게이트 = 압력 감지) |
-| 알면서 따라간다 — head 수준 | ④ 단언문 probe | **A3가 12모델 회로로.** 배경 전제에서는 남음 |
+| 알면서 따라간다 — head 수준 | Contextual-Truth 단언문 probe | **A3가 12모델 회로로.** 배경 전제에서는 남음 |
 | 진위 × 태도 분해 | 비어 있음 | **아직 비어 있음.** 단 A3: 두 방향 cos 0.4~0.8 — 분해 가능성 자체를 재야 함 |
 | 진위로 게이트한 태도 개입 + NFP 통제 | 비어 있음 | **비어 있음** |
 | Cancer-Myth+NFP를 verbalizer 통제 벤치마크로 | 비어 있음 | 비어 있음 |
@@ -160,4 +160,4 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 
 - [Perfect Detection, Failed Control](https://arxiv.org/abs/2606.24952) — "제어 방향"을 어떻게 찾았는지, 게이트 후 *다른* 방향으로 개입해도 실패하는지
 - [Dual-Stance Evaluation](https://arxiv.org/abs/2606.11205) — 평가 프로토콜 (우리 CAA 대조군 평가에 그대로 빌릴 수 있는지)
-- ② Well [2608.06539](https://arxiv.org/abs/2608.06539) Appendix I, Table 8~10 — TPQ 주석 방식, baseline 실행 설정
+- Well-Actually — Well [2608.06539](https://arxiv.org/abs/2608.06539) Appendix I, Table 8~10 — TPQ 주석 방식, baseline 실행 설정

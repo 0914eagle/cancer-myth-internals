@@ -1,0 +1,145 @@
+# Experiments — server setup and run commands
+
+Layout follows `medical_nla` exactly, with the `CANCER_MYTH_` prefix:
+
+| | server 125 | server 62 |
+|---|---|---|
+| code | `/home/eagle0914/cancer-myth-internals` | same |
+| data root | `/data1/heejae` | `/data/heejae` |
+| artifacts | `${DATA_ROOT}/cancer_myth_internals/{data,external,activations,results,reports,logs}` | same |
+| venv | `${DATA_ROOT}/uv/cancer_myth_internals` | same |
+| HF cache | `${DATA_ROOT}/hf_cache` (HF_HOME only, never TRANSFORMERS_CACHE) | same |
+| GPUs | four RTX 4090, physical 0-3 | physical 2,3 |
+
+Paths are not written into configs. One variable per machine,
+`CANCER_MYTH_DATA_ROOT`, is substituted into every `configs/*.yaml`
+(`src/config.py`). `scripts/env.sh` finds it from the venv location.
+
+## First time on a machine
+
+```bash
+mkdir -p /home/eagle0914 && cd /home/eagle0914
+git clone https://github.com/0914eagle/cancer-myth-internals.git
+cd cancer-myth-internals
+DATA_ROOT=/data1/heejae bash scripts/bootstrap_server.sh
+```
+
+The bootstrap creates the uv venv (python 3.11, `uv pip install -e ".[dev]"`),
+clones `bill1235813/cancer-myth` and `ShenranTomWang/Well` under
+`${DATA_ROOT}/cancer_myth_internals/external`, and runs the GPU check.
+If the resolver picked a CPU torch, install the server's CUDA wheel into the
+venv afterwards.
+
+Gated checkpoints (Llama-3.1, Gemma-2, Gemma-3) need the account that accepted
+the licences:
+
+```bash
+export HF_HOME=/data1/heejae/hf_cache
+huggingface-cli login      # newer clients: hf auth login
+huggingface-cli whoami
+```
+
+The judge and the premise-span alignment call GPT-4o:
+
+```bash
+export OPENAI_API_KEY=...   # put it in ~/.bashrc on the server, never in the repo
+```
+
+## Every session
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+source scripts/env.sh /data1/heejae     # prints host, roots, GPUs, whether the key is set
+pytest -q                                # 23 tests, no GPU
+```
+
+## E0 — rows (once, CPU + API, ~10 min)
+
+```bash
+DATA_ROOT=/data1/heejae bash scripts/run_e0_rows.sh
+```
+
+Writes `$DATA/e1_rows_v1/{questions,activation_rows}.jsonl`, an alignment
+audit and 40 sample alignments. **Read `sample_alignments.md` before E1**:
+the premise span is the position-A readout, and a bad alignment is a bad
+readout. The TPQ loader prints the HF columns it found; if
+`shenranw/CancerMyth-TPQ` names its presupposition field differently from
+`presuppositions`, fix `src/rows.py::_first_presupposition` and rerun.
+
+## E1 — pre-diagnostic on four cards (~2 days)
+
+```bash
+nohup bash scripts/run_e1_4gpu_125.sh \
+  > /data1/heejae/cancer_myth_internals/logs/e1_4gpu_125.log 2>&1 &
+tail -f /data1/heejae/cancer_myth_internals/logs/e1_4gpu_125.log
+```
+
+Phase 1 runs Llama-3.1-8B (GPU 0), Qwen2.5-7B (GPU 1), Gemma-2-9B (GPU 2)
+in parallel: Plain responses, then A/B/D activations at every hidden-state
+index. Phase 2 runs Gemma-2-27B in bf16 on GPUs 1,2,3 (no quantization: it
+changes activation values). Phase 3, per model: GPT-4o judge, position-E
+rows, E activations, the A readout sweep, the C direction.
+
+One model, one stage at a time (each stage resumes):
+
+```bash
+CONFIG=configs/llama31_8b.yaml GPUS=0 STAGES="1 2" bash scripts/run_e1_model.sh
+CONFIG=configs/llama31_8b.yaml GPUS=0 STAGES="3 4 5 6 7" bash scripts/run_e1_model.sh
+LIMIT=20 CONFIG=configs/llama31_8b.yaml GPUS=0 bash scripts/run_e1_model.sh   # smoke
+```
+
+Outputs per model under `$ART/results/e1/<model>/`:
+
+| file | what |
+|---|---|
+| `plain_responses.jsonl`, `plain_judge.jsonl`, `plain_summary.json` | Plain PCR / PCS / NFP / TPQ (Table 3 reproduction) |
+| `probe_sweep/heatmap.png`, `summary.md` | A readout AUROC, layer x position, logistic and diff-of-means |
+| `direction_c/table.md`, `directions.npz` | PCR predictability at D, cos(A, C) per layer, gate probe |
+
+Activations: `$ART/activations/e1_<model>_ad/layerNN/{last_token,last_subtoken,span_mean}/manifest.jsonl`
+and `e1_<model>_e/…` — the medical_nla manifest layout, readable by its
+`src.run_nla` for the NLA test on Gemma-3-12B (`configs/gemma3_12b.yaml`, GPUs 2,3).
+
+## Reading E1 (the fork)
+
+| step | number | read |
+|---|---|---|
+| 1 | best A AUROC at `A_premise` or `B_question_end` | ≥ 0.80 strong; ≈ 0.70 = Two Axes' CREPE level; < 0.65 the representation is weak |
+| 2 | `pcr_auroc_D_diffmeans` and `cos_A_C_at_D` | PCR predictable (≥ 0.75) and cos < 0.5: the A × C decomposition holds. cos > 0.8: A and C are one direction |
+| 3 | E2 below | gated PCR up with NFP ≈ Plain: framework paper |
+
+## E2 — steering (one model, one card, ~half a day)
+
+```bash
+DATA_ROOT=/data1/heejae CONFIG=configs/llama31_8b.yaml GPUS=0 \
+  LAYER=16 ALPHAS="2 4 8" bash scripts/run_e2_steer_125.sh
+```
+
+Pick `LAYER` from `direction_c/table.md`. Runs plain / unconditional /
+A-gated at each alpha on fpq 100 + nfp 100 + tpq, judges, and prints one
+table: PCR, PCS, NFP, TPQ per condition. The row that matters is
+`gated_*` against `uncond_*` at the same alpha.
+
+## What each script does
+
+| script | stage |
+|---|---|
+| `scripts/make_rows.py` | E0 rows + premise alignment (LLM verbatim substring, heuristic fallback) |
+| `scripts/run_generate.py` | Plain responses (HF generate, greedy; `--paper-protocol` for T=0.7) |
+| `src/extract_activations.py` | hidden states at A/B/D/E, every layer, medical_nla layout |
+| `scripts/run_judge.py` | GPT-4o with validate.py / validate_nfp.py prompts; resumable; `--dry-run` prices |
+| `scripts/summarize_judge.py` | PCR / PCS / NFP / TPQ, by category |
+| `scripts/make_response_rows.py`, `merge_labels_into_manifests.py` | E rows and labels |
+| `scripts/run_probe_sweep.py` | A readout, grouped 5-fold, heatmap |
+| `scripts/run_direction_c.py` | C direction, cos(A,C), PCR predictability, gate probe |
+| `scripts/run_steer.py` | unconditional / gated steering with the C direction |
+
+## Rules carried over from medical_nla
+
+- No vLLM/SGLang in the activation path; generation and extraction both go
+  through `transformers` so the same tokenization serves both.
+- No quantization unless approved: it changes activation values.
+- Never `rm` an activation run to "start clean"; extraction resumes by id.
+- Restricted or personal data does not enter the repo; Cancer-Myth and NFP
+  are public and live under `external/`.

@@ -1,8 +1,23 @@
 # 02. 후속 연구와 남은 틈
 
+## 논문 약칭
+
+이 저장소의 문서는 아래 약칭으로 인용한다.
+
+| 약칭 | 논문 | arXiv |
+|---|---|---|
+| **Cancer-Myth** | Cancer-Myth: Evaluating LLMs on Patient Questions with False Presuppositions (Zhu et al., ICLR 2026) | 2504.11373 |
+| **Verbalizing-Assumptions** | Verbalizing LLMs' assumptions to explain and control sycophancy | 2604.03058 |
+| **Well-Actually** | Don't 'Well, Actually' Me Unless You Know What You're Talking About (Wang, Shwartz, Gonen) | 2608.06539 |
+| **MedMisBench** | Untangling the Mechanisms of Misleading Context in Medical QA | 2609.02754 |
+| **Contextual-Truth** | Language Models Encode the Contextual Truth of Propositions | 2608.03035 |
+| **Two Axes** | Two Axes of LLM Abstention: Answer Correctness and Question Answerability (Wagner) | 2607.08456 |
+| **Tripathi** | Gated Activation Steering for Reducing Sycophancy & Hallucination in Medical QA (Tripathi et al.) | 2608.23666 |
+| **Pandey** | LLMs Know They're Wrong and Agree Anyway: The Shared Sycophancy-Lying Circuit (Pandey) | 2604.19117 |
+
 2026-09-04 기준, Cancer-Myth를 인용한 논문 14편 (Semantic Scholar). 그중 이 문제를 직접 다룬 4편을 본문까지 확인했다.
 
-## ① Verbalizing LLMs' assumptions to explain and control sycophancy
+## Verbalizing-Assumptions — Verbalizing LLMs' assumptions to explain and control sycophancy
 [arXiv 2604.03058](https://arxiv.org/abs/2604.03058) · 2026-04
 
 **한 일**: 모델에게 "사용자의 심적 모델을 추론해봐"라고 **직접 물어** 가정을 뽑고(open-ended 또는 9개 고정 축에 0~1 점수), 그 점수를 라벨로 **내부 표상(mean-pooled)에 linear probe 63개** 학습, probe 방향으로 steering `h + αv` (α ∈ [−4, 4]).
@@ -12,9 +27,9 @@
 **NFP**: 안 씀.
 **Table 4의 예시** — Gemini가 대장암·장루 질문(거짓 전제 문항)에 *"user rightness 1.0: The user's premise of planning travel after a colostomy surgery is completely reasonable"*. 전제의 진위를 사용자 태도로 읽었다.
 
-→ **읽은 것**: 사용자에 대한 모델의 사회적 가정. **못 본 것**: 전제 P 자체의 자격·진위. "지식 부족" 결론은 ②의 Table 1과 어긋난다.
+→ **읽은 것**: 사용자에 대한 모델의 사회적 가정. **못 본 것**: 전제 P 자체의 자격·진위. "지식 부족" 결론은 Well-Actually의 Table 1과 어긋난다.
 
-## ② Don't 'Well, Actually' Me Unless You Know What You're Talking About
+## Well-Actually — Don't 'Well, Actually' Me Unless You Know What You're Talking About
 [arXiv 2608.06539](https://arxiv.org/abs/2608.06539) · 2026-08 · [GitHub ShenranTomWang/Well](https://github.com/ShenranTomWang/Well) · [HF TPQ split](https://huggingface.co/datasets/shenranw/CancerMyth-TPQ)
 
 **주장**: FPQ(거짓 전제)에 강한 방법일수록 TPQ(참 전제)에서 나빠진다. 원인은 "참인 전제까지 기각하는 약한 fact-checking". 4개 벤치마크(Cancer-Myth, QA², Syn-QA², CREPE), 5개 모델 계열.
@@ -50,7 +65,7 @@
 
 → **읽은 것**: 강제 언어 판정(출력 수준). 내부는 안 봄. **남긴 것**: 해법 자리 전체, 그리고 FPQ/TPQ 분할·evaluator·6개 방법군 코드.
 
-## ③ Untangling the Mechanisms of Misleading Context in Medical QA
+## MedMisBench — Untangling the Mechanisms of Misleading Context in Medical QA
 [arXiv 2609.02754](https://arxiv.org/abs/2609.02754) · 2026-09-02
 
 MedMisBench 8,627문항. 오도 맥락 두 종류(날조 근거 / 맨주장). 추론 모델 3개의 **reasoning trace** 분석.
@@ -61,7 +76,7 @@ MedMisBench 8,627문항. 오도 맥락 두 종류(날조 근거 / 맨주장). �
 
 → **읽은 것**: CoT 텍스트. "모델은 감지하지만 출력으로 안 꺼낸다"의 trace 수준 증거. 활성값 아님, Cancer-Myth 아님.
 
-## ④ Language Models Encode the Contextual Truth of Propositions
+## Contextual-Truth — Language Models Encode the Contextual Truth of Propositions
 [arXiv 2608.03035](https://arxiv.org/abs/2608.03035) · 2026-08
 
 맥락 속 명제의 참/거짓이 **선형 표상**으로 존재. ExploreToM 스토리 + "Statement: … TRUE or FALSE" 형식. Llama-2-13B/70B, Qwen3-14B/32B/VL-32B. probe 정확도 74.4~89.4% (Llama-2-13B는 14층, Qwen3-32B는 49/64층).
@@ -80,11 +95,11 @@ MedRedFlag (2601.09853) · Evaluating LLMs on Misconceptions in Multi-Turn Medic
 
 | 제안 요소 | 상태 |
 |---|---|
-| 모델은 내부적으로 안다, 안 꺼낸다 | ② Table 1 + ③ + ④가 확정. **더 이상 논문거리 아님** |
-| 무조건 개입은 NFP를 무너뜨린다 | ②가 6개 방법군에서 일반화 |
-| 사회적 가정 → probe → steer | ①이 했고 Cancer-Myth에서 약함 |
-| 영화 데이터 head 차단 | ②가 했고 무효 |
-| 판정 probe | ④가 단언문에서 |
+| 모델은 내부적으로 안다, 안 꺼낸다 | Well-Actually Table 1 + MedMisBench + Contextual-Truth가 확정. **더 이상 논문거리 아님** |
+| 무조건 개입은 NFP를 무너뜨린다 | Well-Actually가 6개 방법군에서 일반화 |
+| 사회적 가정 → probe → steer | Verbalizing-Assumptions이 했고 Cancer-Myth에서 약함 |
+| 영화 데이터 head 차단 | Well-Actually가 했고 무효 |
+| 판정 probe | Contextual-Truth가 단언문에서 |
 | 배경 전제가 hidden state에서 읽힌다 (일반 도메인) | **Two Axes**가 CREPE 마지막 토큰에서 AUROC 0.69~0.78 ([07 A1](07_related_work_2026.md)). 의료·전제 구간 위치·NFP는 남음 |
 | probe 게이트 × 전제 검사 **프롬프트** | **Two Axes**가 함 — 항상 켜면 멀쩡한 질문 57% 오지적, probe 게이트 시 14% ([07 A1](07_related_work_2026.md)). 실험 3 baseline으로 |
 | 의료 + 게이트 + ITI steering | **Tripathi et al.**이 함 — 단 멀티턴 압력, 게이트 = 압력 감지 ([07 A2](07_related_work_2026.md)) |

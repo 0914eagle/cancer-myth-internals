@@ -6,11 +6,11 @@
 
 ## 물리적으로 벌어지는 일
 
-**① 추출.** 타깃 모델에 입력을 넣고 forward. 층 ℓ, 토큰 위치 p의 residual stream 벡터 v ∈ ℝ^d. (Qwen2.5-7B d=3584, Gemma-3-12B d=3840)
+**Verbalizing-Assumptions 추출.** 타깃 모델에 입력을 넣고 forward. 층 ℓ, 토큰 위치 p의 residual stream 벡터 v ∈ ℝ^d. (Qwen2.5-7B d=3584, Gemma-3-12B d=3840)
 
-**② 주입.** verbalizer도 LM이라 입력이 토큰 임베딩 열. 프롬프트 안의 **자리표시 토큰**(NLA `㈎`, AO `<ACT>`)의 임베딩을 v로 **덮어쓴다.** 나머지 토큰은 평범한 텍스트. v는 학습 때 norm으로 맞춘다 (NLA-Qwen: L2=150).
+**Well-Actually 주입.** verbalizer도 LM이라 입력이 토큰 임베딩 열. 프롬프트 안의 **자리표시 토큰**(NLA `㈎`, AO `<ACT>`)의 임베딩을 v로 **덮어쓴다.** 나머지 토큰은 평범한 텍스트. v는 학습 때 norm으로 맞춘다 (NLA-Qwen: L2=150).
 
-**③ 생성.** verbalizer가 평소처럼 autoregressive 생성. 그 텍스트를 읽는다.
+**MedMisBench 생성.** verbalizer가 평소처럼 autoregressive 생성. 그 텍스트를 읽는다.
 
 가능한 이유: **덮어쓴 자리를 읽도록 파인튜닝됐기 때문.** 파인튜닝 안 된 모델에 꽂으면(Patchscopes) 읽긴 하나 흐릿하다.
 
@@ -28,7 +28,7 @@ d가 맞아야 하고, 무엇보다 **residual stream의 "언어"가 모델마�
 | **NLA** (Anthropic 2026) | **비지도**. AV(벡터→글)·AR(글→벡터)를 GRPO로 — AV 글로 AR이 벡터를 복원하면 보상. Opus 요약으로 SFT 워밍업 | 벡터 **1** | **고정** | 스니펫 3개 | 체크포인트당 **1층** |
 
 핵심 구분 두 축:
-- **지도 vs 비지도.** AO는 "질문에 답하기"를, NLA는 "복원 가능하게 묘사하기"를 배웠다. 복원을 최대화하려면 **분산이 큰 방향**(형식·주제·다음 토큰)을 말해야 하므로 NLA 출력이 거기로 수렴한다. ④의 참/거짓은 선형 방향 하나 — 분산이 작아 NLA가 말할 유인이 없다.
+- **지도 vs 비지도.** AO는 "질문에 답하기"를, NLA는 "복원 가능하게 묘사하기"를 배웠다. 복원을 최대화하려면 **분산이 큰 방향**(형식·주제·다음 토큰)을 말해야 하므로 NLA 출력이 거기로 수렴한다. Contextual-Truth의 참/거짓은 선형 방향 하나 — 분산이 작아 NLA가 말할 유인이 없다.
 - **질문 가능 vs 불가.** AO엔 묻고, NLA는 못 묻는다 (프롬프트를 바꿔 물을 수는 있으나 학습 분포 밖이고 AR 게이트를 잃는다).
 
 ## NLA 실제 출력 — Qwen2.5-7B L20, "What are you hiding?"
@@ -66,7 +66,7 @@ ICML 2026 *Do Activation Verbalization Methods Convey Privileged Information?* �
 
 | 층 | 주 도구 | 보조 | 이유 |
 |---|---|---|---|
-| A 판정 | **linear probe** | ④식 | 판정을 verbalizer에 안 맡김 — H6 회피, 게이트 신호 |
+| A 판정 | **linear probe** | Contextual-Truth식 | 판정을 verbalizer에 안 맡김 — H6 회피, 게이트 신호 |
 | B 내용 | **AO 서술 질문** | NLA (AR 게이트 통과분) | LatentQA의 "숨은 시스템 프롬프트 복원"이 "흡수된 전제 복원"과 같은 구조 |
 | C 태도 | **대조 방향** (CAA식) + AO 질문 | persona-vector식 | refusal direction·persona vector 선례 |
 
