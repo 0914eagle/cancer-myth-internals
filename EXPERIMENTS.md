@@ -124,9 +124,8 @@ readout. The TPQ loader prints the HF columns it found; if
 ## E1 — pre-diagnostic on four cards (약 2 days)
 
 ```bash
-nohup bash scripts/run_e1_4gpu_125.sh \
-  > /data1/heejae/cancer_myth_internals/logs/e1_4gpu_125.log 2>&1 &
-tail -f /data1/heejae/cancer_myth_internals/logs/e1_4gpu_125.log
+bash scripts/run_e1_4gpu_125.sh      # detaches itself; prints the log path
+bash scripts/jobs.sh gpu
 ```
 
 Phase 1 runs Llama-3.1-8B (GPU 0), Qwen2.5-7B (GPU 1), Gemma-2-9B (GPU 2)
@@ -134,6 +133,20 @@ in parallel: Plain responses, then A/B/D activations at every hidden-state
 index. Phase 2 runs Gemma-2-27B in bf16 on GPUs 1,2,3 (no quantization: it
 changes activation values). Phase 3, per model: judge (`JUDGE_BACKEND`, default codex), position-E
 rows, E activations, the A readout sweep, the C direction.
+
+While the 27B is still in phase 2, GPU 0 is idle and the judge needs no
+GPU, so the finished small models can start their stages 3-7 early:
+
+```bash
+bash scripts/run_e1_stages_125.sh    # llama, qwen, gemma9b in sequence on GPU 0; stages 3-7
+```
+
+Every stage resumes, so when the driver later reaches phase 3 for the same
+model its judge finds nothing left and the rest recomputes from disk. The
+one thing to avoid is two judges on one output file at the same time:
+`run_judge.py` holds a lock per file and the second writer exits, which
+fails that driver worker. If that happens, rerun `run_e1_stages_125.sh`
+with `MODELS=` set to whatever is still missing.
 
 One model, one stage at a time (each stage resumes):
 
