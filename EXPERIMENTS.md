@@ -58,11 +58,12 @@ python scripts/calibrate_judge.py --backend codex --models GPT-4o Claude-3.5-Son
 cat $ART/reports/judge_calibration/codex_default/calibration.md
 ```
 
-Read the *PCR agree* column (the paper validated GPT-4o against physicians
-on PCR, 100%). Above 약 95% with kappa above 약 0.8: use it, and report the
-model name the banner recorded. Below that: switch backend/model. Whatever
-judge passes scores every row of every table; Table 1's closed-model rows
-stay GPT-4o-scored and are marked as such.
+Result on 2026-09-07 (codex served gpt-5.6-sol): 3-way agreement 58%,
+kappa 0.28, and only 58% of GPT-4o's +1 labels kept as +1 -- a consistently
+*stricter* judge (PCR 22-30% lower, PCS 0.25 lower), not noise. Rankings are
+preserved. Decision (docs/experiments/01): iterate with codex (relative
+comparisons only), score every number that enters a table with the OpenAI
+API and gpt-4o (`JUDGE_BACKEND=openai`), so it matches the paper's judge.
 
 ## Every session
 

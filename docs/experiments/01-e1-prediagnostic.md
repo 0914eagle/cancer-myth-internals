@@ -47,6 +47,24 @@ Cancer-Myth 585(FPQ) vs NFP 150 + TPQ(참 전제)에서, 전제 구간·질문 �
 | ≥0.70 | >0.8 | — | A≈C. "부분 분해"로 낮추고 NFP·게이트 신호로 차별 |
 | <0.65 | — | — | 음성 결과 — H2 논문 |
 
+## 판정기 보정 결과 (2026-09-07)
+
+`scripts/calibrate_judge.py --backend codex`, all_data.json의 GPT-4o 채점과 대조, 답변 모델 3종 × 150문항 = 450건. codex가 서빙한 모델은 `gpt-5.6-sol`.
+
+| 답변 모델 | 3-way 일치 | GPT-4o의 +1 중 codex도 +1 | PCR GPT-4o → codex | PCS GPT-4o → codex |
+|---|---:|---:|---|---|
+| Claude-3.5-Sonnet | 62.7% | | 22.0 → 16.0 | −0.23 → −0.51 |
+| DeepSeek-R1 | 48.7% | | 15.3 → 10.7 | −0.26 → −0.57 |
+| GPT-4o | 63.3% | | 6.0 → 4.7 | −0.49 → −0.75 |
+| 전체 | 58.2%, κ 0.28 | 38/65 = 58% | | |
+
+confusion(행 GPT-4o, 열 codex): 0→−1이 132/173, +1→0이 26/65. 위로 올린 경우는 29/450. **일관되게 한 방향으로 엄격한 판정기**이지 무작위 노이즈가 아니다. 논문은 GPT-4o의 PCR이 의사와 100% 일치한다고 했으므로, codex는 사람보다 엄격하다.
+
+**결정.**
+- 상대 비교(같은 판정기로 채점한 조건끼리: Plain vs 무조건 vs 게이트, alpha·층 스윕)는 codex로 한다. 순위가 보존되고(22>15.3>6 → 16>10.7>4.7) 비용이 없다.
+- **표에 들어가는 숫자는 GPT-4o API(`JUDGE_BACKEND=openai`)로 채점한다.** Table 1·3과 같은 판정기여야 비교가 된다. codex 채점 PCR을 Table 3 옆에 놓지 않는다.
+- 두 판정기의 결과 파일은 이름으로 구분한다: `*_judge.jsonl`(codex) / `*_judge_gpt4o.jsonl`.
+
 ## 상태
 
 - [ ] E0 rows (alignment audit 확인)
