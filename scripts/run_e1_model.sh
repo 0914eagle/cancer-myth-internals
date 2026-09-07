@@ -12,6 +12,10 @@ set -euo pipefail
 #
 #   CONFIG=configs/llama31_8b.yaml GPUS=0 bash scripts/run_e1_model.sh
 #   STAGES="1 2" ...   to run a subset (each stage resumes where it left off)
+#
+# Detaches under nohup by default (scripts/lib/detach.sh); FOREGROUND=1 to run
+# inline. run_e1_4gpu_125.sh calls this with DETACHED=1 so its own workers
+# stay attached to the parent that waits on them.
 
 DATA_ROOT="${DATA_ROOT:-/data1/heejae}"
 CONFIG="${CONFIG:?Set CONFIG=configs/<model>.yaml}"
@@ -21,6 +25,10 @@ RUN_NAME="${RUN_NAME:-e1}"
 STAGES="${STAGES:-1 2 3 4 5 6 7}"
 LIMIT="${LIMIT:-}"
 JUDGE_BACKEND="${JUDGE_BACKEND:-codex}"
+
+_tag="$(basename "${CONFIG}" .yaml)"
+[[ -n "${LIMIT}" ]] && _tag="${_tag}_smoke${LIMIT}"
+source "$(dirname "${BASH_SOURCE[0]}")/lib/detach.sh" "e1_${_tag}_s$(echo "${STAGES}" | tr -d " ")"
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source "${DATA_ROOT}/uv/cancer_myth_internals/bin/activate"

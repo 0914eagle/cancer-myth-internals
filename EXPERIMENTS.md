@@ -54,9 +54,14 @@ models' answers on all 585 questions, so any judge can be checked against it
 without generating anything:
 
 ```bash
-python scripts/calibrate_judge.py --backend codex --models GPT-4o Claude-3.5-Sonnet DeepSeek-R1 --n 150
+bash scripts/run_calibrate_judge.sh                          # codex default model, detaches
+BACKEND=openai bash scripts/run_calibrate_judge.sh           # gpt-4o via API (should agree ~100% with itself)
 cat $ART/reports/judge_calibration/codex_default/calibration.md
 ```
+
+codex with a ChatGPT login cannot serve gpt-4o ("not supported when using
+Codex with a ChatGPT account", checked 2026-09-07), so the paper's judge is
+reachable only through the OpenAI API.
 
 Result on 2026-09-07 (codex served gpt-5.6-sol): 3-way agreement 58%,
 kappa 0.28, and only 58% of GPT-4o's +1 labels kept as +1 -- a consistently
@@ -64,6 +69,23 @@ kappa 0.28, and only 58% of GPT-4o's +1 labels kept as +1 -- a consistently
 preserved. Decision (docs/experiments/01): iterate with codex (relative
 comparisons only), score every number that enters a table with the OpenAI
 API and gpt-4o (`JUDGE_BACKEND=openai`), so it matches the paper's judge.
+
+## Long jobs detach themselves
+
+Every wrapper that can take more than half an hour (`run_e0_rows.sh`,
+`run_e1_model.sh`, `run_e1_4gpu_125.sh`, `run_e2_steer_125.sh`,
+`run_calibrate_judge.sh`) re-launches itself under `nohup` and returns at
+once, printing the log path (`scripts/lib/detach.sh`). A dropped SSH session
+never kills a run.
+
+```bash
+bash scripts/jobs.sh          # every launch: running/done, last log line
+bash scripts/jobs.sh gpu      # plus nvidia-smi
+tail -f <log path printed at launch>
+FOREGROUND=1 bash scripts/...   # run inline instead (debugging)
+```
+
+Logs live under `$ART/logs/<tag>_<timestamp>.log`; `jobs.tsv` there is the index.
 
 ## Every session
 

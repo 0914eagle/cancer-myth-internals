@@ -125,7 +125,7 @@ def main() -> None:
     call = make_caller(backend, model, timeout=args.timeout, codex_cmd=args.codex_cmd,
                        temperature=temperature, max_tokens=int(judge_cfg.get("max_tokens", 400)))
     acquire_lock(out_path)
-    failures = 0
+    failures, consecutive = 0, 0
     for n, (job_id, row, q, kind, prompt) in enumerate(jobs, start=1):
         text, model_used = "", model
         for attempt in range(4):
@@ -138,8 +138,12 @@ def main() -> None:
                 time.sleep(wait)
         if not text:
             failures += 1
+            consecutive += 1
             print(f"[judge] {job_id}: FAILED, skipped (rerun to retry)", file=sys.stderr)
+            if consecutive >= 3:
+                raise SystemExit("three consecutive failures -- backend/model not usable; fix and rerun")
             continue
+        consecutive = 0
         score, parsed = parse_score(text)
         append_jsonl(
             out_path,

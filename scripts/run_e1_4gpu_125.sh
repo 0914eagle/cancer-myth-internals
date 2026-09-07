@@ -15,7 +15,7 @@ set -euo pipefail
 # calls are not four-way parallel. Stage 5 (extract E) needs the card again
 # and is run per model at the end.
 #
-#   nohup bash scripts/run_e1_4gpu_125.sh > /data1/heejae/cancer_myth_internals/logs/e1_4gpu_125.log 2>&1 &
+#   bash scripts/run_e1_4gpu_125.sh        # detaches itself; prints the log path
 
 DATA_ROOT="${DATA_ROOT:-/data1/heejae}"
 RUN_NAME="${RUN_NAME:-e1}"
@@ -28,13 +28,15 @@ if [[ "${DATA_ROOT}" != "/data1/heejae" ]]; then
   exit 2
 fi
 
+source "$(dirname "${BASH_SOURCE[0]}")/lib/detach.sh" "e1_4gpu_${RUN_NAME}"
+
 cd /home/eagle0914/cancer-myth-internals
 LOG_ROOT="${DATA_ROOT}/cancer_myth_internals/logs"
 mkdir -p "${LOG_ROOT}"
 
 worker() {
   local config="$1" gpus="$2" stages="$3" tag="$4"
-  DATA_ROOT="${DATA_ROOT}" CONFIG="${config}" GPUS="${gpus}" STAGES="${stages}" \
+  DETACHED=1 DATA_ROOT="${DATA_ROOT}" CONFIG="${config}" GPUS="${gpus}" STAGES="${stages}" \
     RUN_NAME="${RUN_NAME}" ROWS_NAME="${ROWS_NAME}" LIMIT="${LIMIT}" \
     bash scripts/run_e1_model.sh > "${LOG_ROOT}/${RUN_NAME}_${tag}.log" 2>&1
 }

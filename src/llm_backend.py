@@ -57,7 +57,9 @@ def run_codex(prompt: str, model: str, timeout: int, codex_cmd: str = "codex") -
         cmd += ["-"]
         proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout)
         if proc.returncode != 0:
-            raise RuntimeError(f"codex exec failed ({proc.returncode}): {proc.stderr[-800:]}")
+            err_lines = [ln for ln in (proc.stderr + proc.stdout).splitlines() if "ERROR" in ln or "error" in ln.lower()]
+            detail = " | ".join(err_lines[-3:]) if err_lines else proc.stderr[-300:]
+            raise RuntimeError(f"codex exec failed ({proc.returncode}): {detail[:600]}")
         answer = Path(out_file).read_text(encoding="utf-8").strip()
         if not answer:
             raise RuntimeError(f"codex wrote no final message; stdout tail: {proc.stdout[-400:]!r}")

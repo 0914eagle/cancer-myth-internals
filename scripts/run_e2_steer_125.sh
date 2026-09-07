@@ -24,6 +24,8 @@ N_FPQ="${N_FPQ:-100}"
 N_NFP="${N_NFP:-100}"
 JUDGE_BACKEND="${JUDGE_BACKEND:-codex}"
 
+source "$(dirname "${BASH_SOURCE[0]}")/lib/detach.sh" "e2_$(basename "${CONFIG}" .yaml)_L${LAYER}"
+
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source "${DATA_ROOT}/uv/cancer_myth_internals/bin/activate"
 unset CANCER_MYTH_DATA_ROOT HF_HOME TRANSFORMERS_CACHE

@@ -3,6 +3,7 @@ set -euo pipefail
 
 # E0: question table + activation rows. CPU + codex/OpenAI (span alignment). Once.
 #   JUDGE_BACKEND=codex (default) | openai
+# Detaches under nohup (scripts/lib/detach.sh); FOREGROUND=1 to run inline.
 #
 #   DATA_ROOT=/data1/heejae bash scripts/run_e0_rows.sh
 
@@ -10,6 +11,8 @@ DATA_ROOT="${DATA_ROOT:-/data1/heejae}"
 ROWS_NAME="${ROWS_NAME:-e1_rows_v1}"
 ALIGN="${ALIGN:-llm}"
 JUDGE_BACKEND="${JUDGE_BACKEND:-codex}"
+
+source "$(dirname "${BASH_SOURCE[0]}")/lib/detach.sh" "e0_rows_${ROWS_NAME}"
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source "${DATA_ROOT}/uv/cancer_myth_internals/bin/activate"

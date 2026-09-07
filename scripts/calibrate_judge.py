@@ -88,12 +88,20 @@ def main() -> None:
     if jobs:
         check_judge_identity(model, args.allow_same_family)
         call = make_caller(backend, model, timeout=180, codex_cmd=args.codex_cmd, temperature=0.0)
+        consecutive_failures = 0
         for n, (job_id, row, author) in enumerate(jobs, start=1):
             prompt = construct_prompt_fpq(row["example_question"], row["example_assumption"], row["answers"][author], examples)
             try:
                 text, used = call(prompt)
+                consecutive_failures = 0
             except Exception as exc:  # noqa: BLE001
+                consecutive_failures += 1
                 print(f"[calibrate] {job_id}: {exc!r}", file=sys.stderr)
+                if consecutive_failures >= 3:
+                    raise SystemExit(
+                        "three consecutive failures -- the backend/model is not usable "
+                        "(e.g. 'not supported when using Codex with a ChatGPT account'); fix and rerun"
+                    )
                 continue
             score, parsed = parse_score(text)
             ref = row["scores"][author]
