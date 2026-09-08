@@ -90,6 +90,22 @@ def cv_auroc_diffmeans(
     return float(roc_auc_score(y, oof)), oof
 
 
+def cv_auroc_transfer(
+    X_fit: np.ndarray, X_eval: np.ndarray, y: np.ndarray, groups: list[str], *, n_splits: int = 5, seed: int = 17
+) -> tuple[float, np.ndarray]:
+    """Diff-means direction learned at one position (X_fit) and scored at another
+    (X_eval) for the same items, cross-validated by item so the direction never
+    sees the labels of the items it is scored on. Rows of X_fit and X_eval must
+    be aligned (same item, same order)."""
+    from sklearn.metrics import roc_auc_score
+
+    oof = np.zeros(len(y), dtype=np.float64)
+    for train, test in _folds(groups, y, n_splits, seed):
+        d = diff_means_direction(X_fit[train], y[train])
+        oof[test] = X_eval[test] @ d
+    return float(roc_auc_score(y, oof)), oof
+
+
 def fit_probe(X: np.ndarray, y: np.ndarray, *, C: float = 1.0) -> dict[str, np.ndarray]:
     """Full-data logistic probe as raw arrays, for use inside a steering gate
     without importing sklearn at generation time: score = (x - mu) / sd @ w + b."""

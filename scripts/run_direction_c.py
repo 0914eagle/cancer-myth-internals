@@ -38,9 +38,12 @@ from src.probes import (
     cosine,
     cv_auroc_diffmeans,
     cv_auroc_logistic,
+    cv_auroc_transfer,
     diff_means_direction,
     fit_probe,
 )
+
+MIN_POSITIVES = 50  # below this the C direction is a handful of items, not a disposition
 
 
 def _layer_of(manifest: Path) -> int:
@@ -111,6 +114,10 @@ def main() -> None:
         if len(e_fpq) < 20 or len(d_fpq) < 20:
             print(f"[C] L{layer}: too few PCR-labelled fpq rows ({len(e_fpq)}/{len(d_fpq)})")
             continue
+        # The E -> D transfer needs the same items in the same order at both positions.
+        d_by_id = {str(r.get("base_id")): r for r in d_fpq}
+        e_fpq = [r for r in e_fpq if str(r.get("base_id")) in d_by_id]
+        d_fpq = [d_by_id[str(r.get("base_id"))] for r in e_fpq]
         XE, yE = matrix(e_fpq), np.asarray([1 if r["pcr"] == 1 else 0 for r in e_fpq])
         XD, yD = matrix(d_fpq), np.asarray([1 if r["pcr"] == 1 else 0 for r in d_fpq])
         gE = [str(r.get("base_id")) for r in e_fpq]
@@ -121,9 +128,10 @@ def main() -> None:
         # --- PCR predictability before generation (position D) ---
         rec["pcr_auroc_D_logistic"], _ = cv_auroc_logistic(XD, yD, gD, n_splits=args.folds, seed=args.seed)
         rec["pcr_auroc_D_diffmeans"], _ = cv_auroc_diffmeans(XD, yD, gD, n_splits=args.folds, seed=args.seed)
-        from sklearn.metrics import roc_auc_score
-
-        rec["pcr_auroc_D_via_cE"] = float(roc_auc_score(yD, XD @ c_e))
+        # c_E learned on the training items' response openings, scored on the
+        # held-out items' pre-generation D vectors: no item's label is used to
+        # build the direction it is scored with.
+        rec["pcr_auroc_D_via_cE"], _ = cv_auroc_transfer(XE, XD, yD, gD, n_splits=args.folds, seed=args.seed)
         rec["pcr_auroc_E_diffmeans"], _ = cv_auroc_diffmeans(XE, yE, gE, n_splits=args.folds, seed=args.seed)
         # --- A at D and at the premise position ---
         XDa = matrix(d_all)
@@ -170,6 +178,11 @@ def main() -> None:
     for r in table:
         md.append("| " + " | ".join(f"{r.get(k, ''):.3f}" if isinstance(r.get(k), float) else str(r.get(k, "")) for k in keys) + " |")
     best = max(table, key=lambda r: r["pcr_auroc_D_diffmeans"])
+    n_pos = min(r["n_correct"] for r in table)
+    if n_pos < MIN_POSITIVES:
+        md += ["", f"**Caution: only {n_pos} PCR=+1 items.** C is the mean of {n_pos} responses minus the rest; "
+               "treat every column as provisional and prefer a backbone with more corrections "
+               "(or the paired construction) before drawing conclusions."]
     md += ["", f"Best pre-generation PCR readout at D: L{best['layer']} diff-means {best['pcr_auroc_D_diffmeans']:.3f}.",
            "Pandey reports cos(truth, sycophancy) 0.44-0.73 in the residual stream; compare cos_A_C_at_D.",
            "Two Axes' CREPE readout is 0.69-0.78; the gate probe lives in directions.npz as a_probe_D_*."]
