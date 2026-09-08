@@ -25,10 +25,10 @@ from src.jsonl import read_jsonl, write_jsonl
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-dir", required=True)
-    parser.add_argument("--rows", required=True)
+    parser.add_argument("--rows", required=True, nargs="+", help="row files whose ids are kept")
     args = parser.parse_args()
 
-    keep = {r["id"] for r in read_jsonl(args.rows)}
+    keep = {r["id"] for path in args.rows for r in read_jsonl(path)}
     n_files, n_rows, n_dropped = 0, 0, 0
     for manifest in sorted(Path(args.run_dir).glob("layer*/*/manifest.jsonl")):
         rows = list(read_jsonl(manifest))

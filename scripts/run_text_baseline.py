@@ -52,16 +52,25 @@ def cv_text_auroc(texts: list[str], y: np.ndarray, groups: list[str], *, n_split
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--questions", required=True)
+    parser.add_argument("--questions", required=True, nargs="+", help="one or more question files (e.g. questions.jsonl questions_twins.jsonl)")
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--positive", nargs="+", default=["fpq"])
     parser.add_argument("--negative", nargs="+", default=["nfp", "tpq"])
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--seed", type=int, default=17)
+    parser.add_argument("--paired-only", action="store_true")
     args = parser.parse_args()
 
-    rows = list(read_jsonl(args.questions))
+    rows = [r for path in args.questions for r in read_jsonl(path)]
     pos, neg = set(args.positive), set(args.negative)
+    if args.paired_only:
+        pos_ids = {r.get("pair_id") for r in rows if r.get("set") in pos}
+        neg_ids = {r.get("pair_id") for r in rows if r.get("set") in neg}
+        both = pos_ids & neg_ids
+        rows = [r for r in rows if r.get("pair_id") in both]
+
+    def group_of(r: dict) -> str:
+        return str(r.get("pair_id") or r["question"])
 
     # B/D-equivalent: whole question, nfp/tpq twins collapsed to one text.
     seen, q_texts, q_y, q_groups = set(), [], [], []
@@ -78,7 +87,7 @@ def main() -> None:
             continue
         q_texts.append(r["question"])
         q_y.append(y)
-        q_groups.append(r["question"])
+        q_groups.append(group_of(r))
     # A-equivalent: the premise span text only, rows that have one.
     a_texts, a_y, a_groups = [], [], []
     for r in rows:
@@ -88,7 +97,7 @@ def main() -> None:
             continue
         a_texts.append(r["question"][int(span[0]):int(span[1])])
         a_y.append(1 if s in pos else 0)
-        a_groups.append(r["question"])
+        a_groups.append(group_of(r))
 
     out = {}
     for name, texts, y, groups in (("question_text", q_texts, np.asarray(q_y), q_groups), ("premise_span_text", a_texts, np.asarray(a_y), a_groups)):

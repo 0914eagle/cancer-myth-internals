@@ -10,6 +10,7 @@ set -euo pipefail
 #   6 sweep      A readout heatmap
 #   7 direction  C direction, cos(A,C), PCR predictability, gate probe
 #   8 paired     paired C (reference +1 minus -1 answers, teacher-forced), extract + direction
+#   9 twins      A readout on minimal pairs (fpq vs its true-premise twin); needs run_e0_twins.sh
 #
 #   CONFIG=configs/llama31_8b.yaml GPUS=0 bash scripts/run_e1_model.sh
 #   STAGES="1 2" ...   to run a subset (each stage resumes where it left off)
@@ -23,7 +24,7 @@ CONFIG="${CONFIG:?Set CONFIG=configs/<model>.yaml}"
 GPUS="${GPUS:?Set GPUS, e.g. 0 or 1,2,3}"
 ROWS_NAME="${ROWS_NAME:-e1_rows_v1}"
 RUN_NAME="${RUN_NAME:-e1}"
-STAGES="${STAGES:-1 2 3 4 5 6 7 8}"
+STAGES="${STAGES:-1 2 3 4 5 6 7 8 9}"
 LIMIT="${LIMIT:-}"
 JUDGE_BACKEND="${JUDGE_BACKEND:-codex}"
 
@@ -53,24 +54,26 @@ test -s "${ROWS}/questions.jsonl" || { echo "[error] run scripts/run_e0_rows.sh 
 python scripts/check_gpu_setup.py --config "${CONFIG}" --require-free-gb 20
 
 if has 1; then
-  echo "[stage 1/8] plain responses (${MODEL})"
+  echo "[stage 1/9] plain responses (${MODEL})"
   python scripts/run_generate.py --config "${CONFIG}" --questions "${ROWS}/questions.jsonl" \
     --run-name "${RUN_NAME}" --output "${RES}/plain_responses.jsonl" "${limit_args[@]}"
 fi
 
 if has 2; then
-  echo "[stage 2/8] extract A/B/D (${MODEL})"
+  echo "[stage 2/9] extract A/B/D (${MODEL})"
   extra=()
   [[ -n "${LIMIT}" ]] && extra=(--limit-prompts "${LIMIT}")
   python -m src.extract_activations --config "${CONFIG}" --input "${ROWS}/activation_rows.jsonl" \
     --output-dir "${ACT_AD}" --layers all --strategies last_subtoken span_mean "${extra[@]}"
   # A rows carry the span in their id; after a re-alignment the old rows are
   # removed from the manifests so nothing is counted twice.
-  python scripts/prune_manifests.py --run-dir "${ACT_AD}" --rows "${ROWS}/activation_rows.jsonl"
+  prune_rows=("${ROWS}/activation_rows.jsonl")
+  [[ -s "${ROWS}/activation_rows_twins.jsonl" ]] && prune_rows+=("${ROWS}/activation_rows_twins.jsonl")
+  python scripts/prune_manifests.py --run-dir "${ACT_AD}" --rows "${prune_rows[@]}"
 fi
 
 if has 3; then
-  echo "[stage 3/8] judge via ${JUDGE_BACKEND}"
+  echo "[stage 3/9] judge via ${JUDGE_BACKEND}"
   if [[ "${JUDGE_BACKEND}" == "openai" ]]; then
     [[ -n "${OPENAI_API_KEY:-}" ]] || { echo "[error] OPENAI_API_KEY not set" >&2; exit 2; }
   else
@@ -83,14 +86,14 @@ if has 3; then
 fi
 
 if has 4; then
-  echo "[stage 4/8] response rows + labels"
+  echo "[stage 4/9] response rows + labels"
   python scripts/make_response_rows.py --questions "${ROWS}/questions.jsonl" \
     --activation-rows "${ROWS}/activation_rows.jsonl" --responses "${RES}/plain_responses.jsonl" \
     --scores "${RES}/plain_judge.jsonl" --out-dir "${RES}/rows"
 fi
 
 if has 5; then
-  echo "[stage 5/8] extract E (${MODEL})"
+  echo "[stage 5/9] extract E (${MODEL})"
   python -m src.extract_activations --config "${CONFIG}" --input "${RES}/rows/response_rows.jsonl" \
     --output-dir "${ACT_E}" --layers all --strategies span_mean last_subtoken
   # Join the judge labels onto the A/B/D and E manifests (tensors untouched).
@@ -101,18 +104,18 @@ if has 5; then
 fi
 
 if has 6; then
-  echo "[stage 6/8] A readout sweep + text-only ceiling"
+  echo "[stage 6/9] A readout sweep + text-only ceiling"
   python scripts/run_probe_sweep.py --run-dir "${ACT_AD}" --out-dir "${RES}/probe_sweep"
   python scripts/run_text_baseline.py --questions "${ROWS}/questions.jsonl" --out-dir "${RES}/probe_sweep"
 fi
 
 if has 7; then
-  echo "[stage 7/8] C direction"
+  echo "[stage 7/9] C direction"
   python scripts/run_direction_c.py --run-ad "${ACT_AD}" --run-e "${ACT_E}" --out-dir "${RES}/direction_c"
 fi
 
 if has 8; then
-  echo "[stage 8/8] paired C (${MODEL})"
+  echo "[stage 8/9] paired C (${MODEL})"
   python scripts/make_paired_rows.py --config "${CONFIG}" --questions "${ROWS}/questions.jsonl" \
     --responses "${RES}/plain_responses.jsonl" --labels "${RES}/rows/labels.jsonl" \
     --output "${RES}/rows/paired_rows.jsonl"
@@ -120,5 +123,16 @@ if has 8; then
     --output-dir "${ACT_PAIR}" --layers all --strategies span_mean
   python scripts/run_direction_pair.py --run-pair "${ACT_PAIR}" --run-ad "${ACT_AD}" \
     --directions "${RES}/direction_c/directions.npz" --out-dir "${RES}/direction_c"
+fi
+if has 9; then
+  echo "[stage 9/9] minimal pairs: fpq vs true-premise twin (${MODEL})"
+  test -s "${ROWS}/activation_rows_twins.jsonl" || { echo "[error] run scripts/run_e0_twins.sh first" >&2; exit 2; }
+  python -m src.extract_activations --config "${CONFIG}" --input "${ROWS}/activation_rows_twins.jsonl" \
+    --output-dir "${ACT_AD}" --layers all --strategies last_subtoken span_mean
+  python scripts/prune_manifests.py --run-dir "${ACT_AD}" --rows "${ROWS}/activation_rows.jsonl" "${ROWS}/activation_rows_twins.jsonl"
+  python scripts/run_probe_sweep.py --run-dir "${ACT_AD}" --out-dir "${RES}/probe_sweep_twins" \
+    --positive fpq --negative tpair --paired-only
+  python scripts/run_text_baseline.py --questions "${ROWS}/questions.jsonl" "${ROWS}/questions_twins.jsonl" \
+    --out-dir "${RES}/probe_sweep_twins" --positive fpq --negative tpair --paired-only
 fi
 echo "[done] ${MODEL}: ${RES}"

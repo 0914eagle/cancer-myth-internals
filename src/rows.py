@@ -230,6 +230,7 @@ def load_fpq(cfg: dict[str, Any]) -> list[dict[str, Any]]:
                     "id": f"fpq_{qid}",
                     "set": "fpq",
                     "label_false_premise": 1,
+                    "pair_id": f"fpq_{qid}",
                     "question": str(item["question"]).strip(),
                     "premise_text": item.get("source_myth"),
                     "correction": item.get("presupposition_correction"),
@@ -250,6 +251,7 @@ def load_fpq(cfg: dict[str, Any]) -> list[dict[str, Any]]:
                 "id": f"fpq_{item['QID']}",
                 "set": "fpq",
                 "label_false_premise": 1,
+                "pair_id": f"fpq_{item['QID']}",
                 "question": str(item["example_question"]).strip(),
                 "premise_text": myth if _usable_myth(myth) else None,
                 "correction": item.get("example_assumption"),
@@ -349,6 +351,8 @@ PASSTHROUGH = [
     "pcr",
     "nfp_score",
     "judge_parsed",
+    # minimal pairs: the fpq id shared by an fpq row and its true-premise twin
+    "pair_id",
 ]
 
 
@@ -489,3 +493,74 @@ def paired_rows(
                     }
                 )
     return out
+
+
+# --- minimal pairs: the same question with the premise made true -----------
+
+TWIN_PROMPT = (
+    "A patient's question rests on a false belief. The stretch of the question "
+    "that carries the belief is marked between [[ and ]]. Rewrite ONLY that "
+    "stretch so that the patient now holds the correct belief given below, in "
+    "the same voice and about the same situation, keeping length and tone as "
+    "close as possible. Everything outside the brackets must stay exactly as "
+    "it is, so return only the replacement text for the bracketed stretch, "
+    "nothing else, no quotes, no brackets.\n\n"
+    "QUESTION: {marked}\n"
+    "FALSE BELIEF: {premise}\n"
+    "CORRECT BELIEF: {correction}\n\n"
+    "REPLACEMENT:"
+)
+
+TWIN_CHECK_PROMPT = (
+    "Does the following patient question state or take for granted the belief "
+    "below? Answer with one word, YES or NO.\n\n"
+    "QUESTION: {question}\n"
+    "BELIEF: {premise}\n\n"
+    "ANSWER:"
+)
+
+
+def make_true_twin(q: dict[str, Any], llm) -> tuple[dict[str, Any] | None, str]:
+    """Build the true-premise twin of one fpq row.
+
+    The replacement is spliced into the original question at the aligned span,
+    so the twin differs from the original only inside that span (a minimal
+    pair). A second call checks that the false belief is gone. Returns
+    (twin_row, status) with status in {ok, no_span, empty, unchanged,
+    still_false, too_long}.
+    """
+    span = q.get("premise_span")
+    if not span or not q.get("premise_text") or not q.get("correction"):
+        return None, "no_span"
+    s, e = int(span[0]), int(span[1])
+    question = q["question"]
+    marked = question[:s] + "[[" + question[s:e] + "]]" + question[e:]
+    reply = llm(TWIN_PROMPT.format(marked=marked, premise=q["premise_text"], correction=q["correction"]))
+    new = (reply or "").strip().strip("\"'“”‘’[] ")
+    if not new:
+        return None, "empty"
+    if new.lower() == question[s:e].lower():
+        return None, "unchanged"
+    if len(new) > 3 * max(len(question[s:e]), 40):
+        return None, "too_long"
+    twin = question[:s] + new + question[e:]
+    verdict = (llm(TWIN_CHECK_PROMPT.format(question=twin, premise=q["premise_text"])) or "").strip().upper()
+    if not verdict.startswith("NO"):
+        return None, "still_false"
+    row = {
+        "id": f"{q['id']}_true",
+        "set": "tpair",
+        "label_false_premise": 0,
+        "pair_id": q["id"],
+        "question": twin,
+        "premise_text": q["correction"],
+        "premise_span": [s, s + len(new)],
+        "align_score": 1.0,
+        "align_method": "twin",
+        "replaced": question[s:e],
+        "replaced_with": new,
+        "category": q.get("category"),
+        "cancer": q.get("cancer"),
+        "from_model": q.get("from_model"),
+    }
+    return row, "ok"

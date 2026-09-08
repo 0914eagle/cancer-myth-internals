@@ -59,6 +59,7 @@ PASSTHROUGH_FIELDS = [
     "judge_parsed",
     "pair_role",
     "pair_author",
+    "pair_id",
 ]
 
 SPAN_SELECTION = "span"

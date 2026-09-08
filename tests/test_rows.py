@@ -115,3 +115,30 @@ def test_paired_rows_share_the_prompt_and_differ_only_in_the_answer():
     assert len(corr5["chat_messages"][1]["content"]) == 800 and corr5["pair_author"] == "Gemini-1.5-Pro"
     own = next(r for r in rows if r["pair_role"] == "own" and r["prefix_tokens"] == 32)
     assert own["pcr"] == -1 and own["base_id"] == "fpq_1"
+
+
+def test_true_twin_is_spliced_and_checked():
+    from src.rows import make_true_twin
+
+    q = {"id": "fpq_9", "set": "fpq", "question": Q_BLADDER, "premise_text": P_BLADDER,
+         "correction": "Surgery is one of several options; bladder-sparing treatments exist.",
+         "premise_span": [Q_BLADDER.index("he believes"), Q_BLADDER.index("treat it") + len("treat it")]}
+
+    def llm(prompt):
+        if prompt.startswith("Does the following"):
+            return "NO"
+        return "he knows surgery is one of several ways to treat it"
+
+    twin, status = make_true_twin(q, llm)
+    assert status == "ok" and twin["set"] == "tpair" and twin["pair_id"] == "fpq_9"
+    s, e = twin["premise_span"]
+    assert twin["question"][s:e] == "he knows surgery is one of several ways to treat it"
+    # everything outside the span is byte-identical
+    os_, oe = q["premise_span"]
+    assert twin["question"][:s] == Q_BLADDER[:os_] and twin["question"][e:] == Q_BLADDER[oe:]
+
+    def still_false(prompt):
+        return "YES" if prompt.startswith("Does the following") else "he believes surgery is the only way to fix it"
+
+    assert make_true_twin(q, still_false)[1] == "still_false"
+    assert make_true_twin({**q, "premise_span": None}, llm)[1] == "no_span"
