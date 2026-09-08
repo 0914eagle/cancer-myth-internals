@@ -1,6 +1,6 @@
-# 14. 교수님 보고 2 — 후속 연구와 연구 방향 (2026-09-08 초안)
+# 14. 교수님 보고 2 — 후속 연구와 연구 방향 (2026-09-08 발송)
 
-첫 보고(Cancer-Myth 소개, 후속 연구를 확인하겠다는 약속)에 이어 보내는 글. 근거는 [09](09_research_proposal.md), [10](10_evidence_and_baselines.md), [13](13_task_spec.md). 목요일 미팅 전에 보내고, 피드백은 [12](12_discussion_decisions.md)의 미결정 항목에 반영한다.
+첫 보고(Cancer-Myth 소개, 후속 연구를 확인하겠다는 약속)에 이어 2026-09-08에 보낸 글. 아래 본문이 발송본(작성자 초안에 여섯 군데 수정 반영). Task 1–3과 표는 이메일에서 빼고 목요일 미팅에서 [13](13_task_spec.md)으로 설명한다. anchor 표를 Well-Actually로 바꾸는 대안은 이메일에 넣지 않았고 [12 §11](12_discussion_decisions.md)에 기록. 근거는 [09](09_research_proposal.md), [10](10_evidence_and_baselines.md), [13](13_task_spec.md). 목요일 미팅 전에 보내고, 피드백은 [12](12_discussion_decisions.md)의 미결정 항목에 반영한다.
 
 **이 논문이 될 수 있는가에 대한 답 (보고서에는 마지막 문단으로 압축).**
 - method 논문은 아니다. 골라서 개입하는 틀은 CAST, Two Axes, Tripathi에 있다.
@@ -13,43 +13,28 @@
 
 안녕하세요 교수님.
 
-저번에 말씀드린 Cancer-Myth의 후속 논문과, 일반 도메인에서 진행된 "전제가 잘못된 질문"에 대한 논문들을 찾아봤습니다.
+저번에 말씀드린 Cancer-Myth의 후속 논문과 의료 domain에서 비슷한 sycophancy 논문, 일반 domain에서 잘못된 전제가 깔린 질문을 다룬 논문들을 찾아봤습니다.
 
-**1. Cancer-Myth의 문제를 직접 다룬 후속 연구**
+**1. Cancer-Myth의 문제를 직접 다룬 후속 연구**: *Don't 'Well, Actually' Me Unless You Know What You're Talking About: Weak Presupposition Verification Degrades General QA Performance*
 
-*Don't 'Well, Actually' Me Unless You Know What You're Talking About: Weak Presupposition Verification Degrades General QA* (Wang, Shwartz, Gonen, 2026)
+이 논문은 Cancer-Myth 논문이 발견한, 잘못된 전제를 잘 고치게 만들수록 오히려 옳은 전제를 망치게 되는 문제를 다뤘습니다. Cancer-Myth 585개를 False Presupposition Question (FPQ)으로, Cancer-Myth의 NFP 150개에 참 전제를 주석해 True Presupposition Question (TPQ)으로 만들어 총 8가지 방법을 적용했습니다. "먼저 잘못된 가정이 있는지 판별하라"는 prompt, 질문에서 전제를 뽑아 모델에게 직접 사실 확인, 질문을 평서문으로 바꿔 T/F 판별, self-critique, prompt 최적화(GEPA), finetuning, 특정 attention head 차단입니다. 결과는 전부 FPQ 성능을 올리면 trade-off로 TPQ 성능이 내려가는 현상을 보였습니다.
 
-이 논문은 Cancer-Myth 논문이 발견한 상충, 즉 거짓 전제를 잘 고치게 만들수록 참인 전제까지 의심하게 되는 문제를 정면으로 다뤘습니다. Cancer-Myth 585문항을 거짓 전제 질문(FPQ)으로, NFP 150문항에 참 전제를 수동으로 주석해 참 전제 질문(TPQ)으로 만들고, 공개 모델(Qwen2.5-7B, Gemma, Llama-3-8B)에 8가지 방법을 적용했습니다. "먼저 거짓 가정이 있는지 판별하라"는 프롬프트, 전제를 뽑아 사실 확인, 질문을 진술문으로 바꿔 검증, 자기 비판, 프롬프트 최적화(GEPA), 파인튜닝, attention head 차단 등입니다. 결과는 전부 같은 방향이었습니다. 예를 들어 판별 프롬프트는 거짓 전제 질문의 75%를 고치지만 참 전제 질문에서 정상 답변이 0%가 되고, 파인튜닝도 62% 대 0%였습니다. 파인튜닝은 거짓 전제 질문과 교정 답변 383쌍으로 LoRA 학습을 한 것인데 참 전제 질문에도 교정 어투로 답하게 된 것이고, head 차단은 영화 개봉 연도 같은 단일 사실 질문에서 찾은 head 20개를 끈 것이라 환자 질문에는 효과가 없었습니다.
+특히 WildChat이라는 실제 사용자 대화 기록을 표본 추출했을 때 잘못된 전제가 깔린 질문이 약 13%였고, "잘못된 전제 질문 점수 × 0.13 + 정상 질문 점수 × 0.87"로 계산하면 아무 방법도 적용하지 않은 바닐라 모델이 가장 높았습니다.
 
-이 논문은 실제 사용자 대화 기록(WildChat)을 표본 추출해 거짓 전제가 깔린 질문이 약 13%임을 확인하고, 실제 서비스 기준 총점을 "거짓 전제 질문 점수 × 0.13 + 정상 질문 점수 × 0.87"로 계산했습니다. 기존 방법들은 13% 쪽에서 크게 벌고 87% 쪽에서 크게 잃었기 때문에, 합쳐 보면 아무 처리도 안 한 모델이 가장 좋았습니다. 해법은 제안하지 않았습니다.
+또한 질문에서 전제 문장을 따로 꺼내 모델에게 "이 문장이 참인가 거짓인가"를 물으면, 거짓 전제는 96–98% 거짓이라 답하지만 참 전제도 58–93%를 거짓이라 답했습니다.
 
-하나 더 중요한 관찰이 있습니다. 질문에서 전제 문장을 따로 꺼내 모델에게 "이 문장이 참인가 거짓인가"를 물으면, 거짓 전제는 96–98% 거짓이라 답하지만 참 전제도 58–93%를 거짓이라 답했습니다. 판정을 시키면 거짓 쪽으로 쏠린다는 뜻이고, 그래서 "모델이 아는지"를 이 방식으로는 확인할 수 없습니다.
+**2. 관련 연구**
 
-**2. 관련 연구 (한 줄씩)**
+*Two Axes of LLM Abstention: Answer Correctness and Question Answerability*. 일반 domain에서 모델에게 직접 물으면 잘못된 전제 질문을 잘 못 판정하지만(AUROC 0.64–0.67) 내부 hidden state에 classifier를 걸면 더 잘 판정하고(0.69–0.78), 그 점수로 고른 질문에만 교정 prompt를 주면 정상 질문을 잘못 지적하는 것이 57%에서 14%로 줄었습니다.
 
-- *Two Axes of LLM Abstention: Answer Correctness and Question Answerability* (Wagner, 2026). 일반 도메인. 모델에게 직접 물으면 거짓 전제 질문을 잘 못 가르지만(AUROC 0.64–0.67) 내부 hidden state에 분류기를 걸면 더 잘 가르고(0.69–0.78), 그 점수로 고른 질문에만 교정 프롬프트를 주면 정상 질문 오지적이 57%에서 14%로 줄었습니다. 단 골라진 뒤 교정 내용이 맞는 비율은 절반 정도였고, 내부에 개입하지는 않았습니다.
-- *Gated Activation Steering for Reducing Sycophancy & Hallucination in Medical Question Answering* (Tripathi et al., 2026). 의료. 환자 기록을 주고 사용자가 여러 턴 압력을 넣는 상황에서, 내부 분류기로 개입 여부를 정하고 필요할 때만 attention head 수준 steering을 걸어 정상 응답을 보존했습니다. 저희와 다른 점은 거짓의 근거가 제공된 기록 안에 있고 압력이 명시적이라는 것이며, 질문에 말없이 깔린 전제에서는 시도되지 않았습니다.
-- *Language Models Encode the Contextual Truth of Propositions* (2026). 직접 진술된 문장의 참/거짓은 내부에 선형으로 표상돼 있습니다(74–89%). 사용자가 거짓 주장을 하면 모델이 동조하는데, 속으로는 거짓이라 판단하면서 말만 맞춰주는 경우가 대부분(77%)입니다. 그런데 모델이 그 거짓 주장을 자기 말로 되풀이하고 나면 내부 판단까지 참으로 바뀐 경우가 59%로 늘었습니다. 전제를 말로 꺼내 검토시키는 방식이 오히려 판단을 오염시킬 수 있다는 뜻입니다.
-- *LLMs Know They're Wrong and Agree Anyway: The Shared Sycophancy-Lying Circuit* (Pandey, 2026). "사용자 주장이 틀렸다"는 신호를 나르는 attention head들을 끄면 동조율이 28%에서 81%로 뛰지만 사실 판정 정확도는 그대로였습니다. 지식은 남아 있고 그 지식을 앞세울지 정하는 회로만 꺼진 것입니다.
-- *Untangling the Mechanisms of Misleading Context in Medical QA* (2026). 잘못된 단서가 추론 모델의 사고 과정에는 81–98% 등장하지만 최종 답을 바꾸는 비율은 설정에 따라 7–90%였습니다. 보는 것과 답에 반영하는 것이 다릅니다.
-- *Verbalizing LLMs' Assumptions to Explain and Control Sycophancy* (2026). 사용자에 대한 모델의 가정을 축으로 steering하는 방법을 Cancer-Myth에도 적용해봤는데 효과가 약했습니다. 일반적인 sycophancy 축은 이 문제에 옮겨지지 않습니다.
+*Gated Activation Steering for Reducing Sycophancy & Hallucination in Medical Question Answering*. 의료 domain에서 사용자가 멀티 턴에 걸쳐 자신의 의견을 주장하는 상황에서 내부 classifier로 steering 여부를 결정하여, 정상적인 상황에서의 output은 바꾸지 않으면서 sycophancy를 줄였습니다.
 
-정리하면, 출력 수준에서 교정을 강화하는 방법은 전부 정상 질문을 희생했고, 개입할 질문을 내부 신호로 골라서만 개입하면 그 희생이 줄어든다는 것이 일반 도메인과 의료 기록 상황에서 각각 확인됐지만, 환자 질문 속에 깔린 전제에서는 시도된 적이 없습니다.
+모델이 전제를 내부에서 어떻게 처리하는지 분석한 연구들도 있었는데(*Language Models Encode the Contextual Truth of Propositions* 등), 문장의 참/거짓이 내부에 선형으로 읽힌다는 것까지만 보였고 개입은 없었습니다.
 
-**3. 생각하고 있는 방향**
+결국 출력 수준에서 교정을 강화하는 방법은 전부 정상 질문의 성능이 낮아졌고, 개입할 질문을 내부 신호로 골라서만 개입하면 그 trade-off가 줄어든다는 것이 일반 domain과 의료 기록 상황에서 각각 확인됐지만, Cancer-Myth처럼 환자 질문 안에 깔린 전제에 대해서는 시도된 적이 없습니다.
 
-steering을 모든 질문에 걸지 않고, **steering이 필요한 질문만 모델 내부 표상으로 골라서 개입하는 방법을 Cancer-Myth 평가 체계 안에서 검증**하려고 합니다. 새 알고리즘이 아니라 위 틀을 이 문제에 적용하고, 정상 질문 보존을 사전에 정한 허용폭 안으로 제한하면서 어디까지 되는지를 재는 것입니다. 실험은 셋입니다. (1) 고르는 신호로 내부 표상이 질문 문장 분류기나 CoT 판독보다 나은지, (2) 같은 개입에서 내부 신호로 고른 것이 모든 질문·무작위 선택보다 허용폭 안에서 교정률을 올리는지, (3) 그 시스템이 MedQA·PubMedQA·Medbullets를 유지하는지. 산출물은 Cancer-Myth Table 1의 열을 그대로 쓴 공개 모델 비교표이고, 모델은 Qwen2.5-7B와 Llama-3.1-8B부터 시작합니다.
+그래서 위 두 논문을 포함해 최근 여러 조건부 steering 연구가 쓰는 방식, 즉 모델 내부 hidden state에 classifier를 걸어 "이 질문에 잘못된 전제가 있는가"를 점수로 매기고 threshold를 넘는 질문에만 개입하는 방식을 Cancer-Myth에 적용해서, FPQ 성능을 올리면서 TPQ와 일반 QA 성능은 지키는 것이 되는지 보려고 합니다. 개입은 교정 prompt와 steering 둘 다 해보고, 결과는 Cancer-Myth Table 1의 열을 그대로 써서 기존 방법들과 같은 표에 놓을 생각입니다.
 
-**4. 목요일에 확인받고 싶은 것**
-
-1. **이 방향이 논문이 되는지.** 제가 하려는 것은 "모델 내부를 읽어 언제 steering(또는 다른 개입)을 걸지 정한다"는 틀을 Cancer-Myth에 적용하는 것인데, 이 틀 자체는 Two Axes, Tripathi, CAST에 이미 있습니다. 그러니 "Cancer-Myth에서 아무도 안 했으니 한다"가 근거의 전부라면 약합니다. 제가 그 이상이라고 보는 이유는 셋입니다. (a) 문제 구조가 다릅니다. 기존 조건부 개입은 표면에 단서가 있거나(압력 턴, 유해 요청) 참 전제 통제군이 무작위라 쉬운 상황이었는데, 환자 질문의 배경 전제는 표면 단서가 없고 모델에게 물으면 양방향으로 쏠리며 통제군(NFP)은 표면상 구분이 안 되도록 만들어졌습니다. 그 틀이 여기서도 되는지는 자명하지 않습니다. (b) 결과물이 아무도 못 낸 행입니다. Cancer-Myth와 Well-Actually 둘 다 "교정률을 올리면서 정상 질문을 지키는" 행을 못 냈습니다. (c) 같은 문항에서 "무엇으로 고르나(텍스트/CoT/내부)"와 "무엇으로 고치나(프롬프트/steering)"를 따로 잰 것이 이 문제에 없습니다. 반대로 위험은, 결과가 약하면 리뷰어가 "CAST를 새 데이터에 돌린 것"이라 볼 수 있다는 것입니다. 이 정도 근거로 실증·분석 논문으로 가도 되는지, 아니면 방법상의 변경을 하나 넣어 안전장치를 만들어야 하는지 여쭙고 싶습니다. 후자라면 후보는 개입 방향을 지식이 아니라 "고치려는 태도"에서 뽑는 것인데, 아직 검증 전입니다.
-
-2. **정상 질문 손실의 허용폭.** "정상 질문을 유지한다"를 "손실이 사전에 정한 폭 안"으로 정의하려 합니다. NFP 150문항에서 Plain 대비 몇 점까지를 유지로 볼지가 결정 사항입니다. 참고로 150문항에서 오류가 0건이어도 통계적 상한이 약 2%라 아주 좁은 폭은 검출이 안 됩니다. 3점 정도를 생각하고 있는데 의견을 여쭙고 싶습니다.
-
-3. **첫 실험이 약하게 나올 때.** 실험 (1)에서 내부 표상이 질문 문장만 보는 단순 분류기보다 못 고르면, "내부"는 빠지고 "선택적 개입만으로 상충이 끊긴다"는 더 작은 논문이 됩니다. 그 경우에도 진행할지, 아니면 그 시점에 방향을 바꿀지 미리 정해두고 싶습니다.
-
-4. **모델 범위.** Qwen2.5-7B와 Llama-3.1-8B는 Cancer-Myth, Well-Actually, Two Axes 세 논문의 표에 모두 있어 비교가 됩니다. 이 둘로 시작하고 Gemma-2-27B(Cancer-Myth 공개 모델 1위)는 결과를 보고 붙이려 하는데, 처음부터 27B를 넣어야 한다고 보시는지 여쭙고 싶습니다.
-
-5. **평가 방식.** 585문항 전체에서 5-fold cross-fitting(4/5로 학습하고 1/5에서 평가를 돌려가며 전 문항에 결과)으로 하려 합니다. 원 논문 표와 분모를 맞추기 위해서인데, 잠근 test 100문항으로 하는 것이 더 낫다고 보시는지 여쭙고 싶습니다.
+다만 이 방식 자체는 이미 여러 논문에서 쓰고 있어서, 이걸 Cancer-Myth에 적용해 아직 아무도 못 낸 "FPQ를 올리면서 TPQ를 지키는" 결과를 내는 것으로 논문이 되는지, 아니면 방법론 자체가 새로워야 하는지 여쭤보고 싶습니다.
 
 감사합니다.

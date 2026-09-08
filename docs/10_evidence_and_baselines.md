@@ -35,6 +35,20 @@ Figure 1은 FPQ와 TPQ 평균 점수를 비교하는 그림이며 S5 비율 자�
 
 TPQ 점수가 높다는 것과 답변의 모든 의학적 내용이 정확하다는 것은 다르다. 일반 의료 QA 보존은 별도 측정한다.
 
+### 저장소 코드로 확인한 세부 (2026-09-08, 논문 본문은 미확인)
+
+| 항목 | 확인 내용 | 출처 파일 |
+|---|---|---|
+| 판정 | gemini 0–5점. 표의 숫자는 **5점(S5) 비율**. "TPQ 0"은 참 전제 질문 100개 중 만점 응답이 0개라는 뜻이지 "전부 거짓이라 했다"가 아님. 0–4점 정의는 논문 확인 필요 | `evaluator/`, 02 |
+| Fine-tuning | Qwen2.5-7B-Instruct, LoRA (r 16, α 32, dropout 0.05), lr 2.5e-4, 3 epoch, 답변 토큰만 loss. Cancer-Myth 실행 스크립트는 **FPQ train 383만** 학습하고 30 batch마다 ARC-DA replay를 섞음 (`train_arc_da.py`). FPQ+TPQ 혼합 스크립트(`train.py`)도 있으나 Cancer-Myth 셀에 쓰였는지는 논문 확인 필요 | `FalseQA/train.py`, `train_arc_da.py`, `job_scripts/FalseQA/train_arc_da.sh` |
+| FAITH head 차단 | 원 논문 *Whispers that Shake Foundations* (EMNLP 2024). Wikidata 영화 개봉 연도·노벨상 연도 템플릿 질문에서 path patching(정상 / 거짓 연도 / patch 세 프롬프트 비교)으로 정답 토큰 확률 기여가 큰 head를 샘플당 20개 → 빈도 집계 → 최종 20개. 생성 시 attention 출력의 해당 head 차원을 **0으로 덮어씀** (`h[:, :, dim_start:dim_end] = 0`), 위치는 질문 끝 또는 프롬프트 전체 | `FAITH/identify_heads.py`, `pipeline_operator/direct_qa_operator/knock_out_direct_qa_operator.py` |
+| PreWoMe | 3단계: 전제 추출("참일 수도 거짓일 수도") → 거짓 가정 피드백 + 답변 가이드라인 → 가이드라인대로 최종 답. 옵션 RAG | `prompting/run_prewome.py` |
+| Question-to-Statement | 질문을 뜻이 같은 진술문 하나로 변환 → 원자적 가정 추출 → (옵션) 지식 생성 → 가정별 "true/false 한 단어" 사실 확인 → 결과대로 답변 | `prompting/run_question_to_statement_pipeline.py` |
+| FP Identification | "Input: … Question: Does the input contain any false assumptions?" → Yes/No → Yes면 거짓 가정 설명 후 답, No면 그냥 답 | `prompting/run_fp_identification_pipeline.py` |
+| Extract+FactCheck | 미리 추출한 전제를 MiniCheck(flan-t5-large) / transformers / gemini로 검증 | `prompting/run_fact_check.py` |
+
+**Verbalizing-Assumptions의 자리.** 이 논문은 Cancer-Myth 문제를 풀려던 것이 아니라 사회적 sycophancy 제어가 목표이고, Cancer-Myth는 전이 평가셋 중 하나였다. "기존 해법이 실패했다" 문단에 넣지 않는다. 관련 연구의 steering 계열에 두고, "일반 sycophancy 축(사용자 태도)은 Cancer-Myth에 옮겨지지 않았다"는 관찰만 가져온다. 우리 C 방향을 사용자 태도가 아니라 교정/비교정 응답 대조에서 뽑는 이유의 방증.
+
 ## 3. GEPA가 정확히 무엇인가
 
 GEPA는 **Genetic-Pareto** 기반 프롬프트 최적화다. 개발 문항에서 실행 → 결과와 실패 흔적에 대한 자연어 피드백 → 수정된 프롬프트 후보 생성 → 문항별 강점이 다른 후보를 Pareto 방식으로 선택·결합하는 절차다. 타깃 모델의 가중치 학습이나 하나의 고정된 “다시 생각하라” 프롬프트와 구분한다. [원 논문](https://arxiv.org/abs/2507.19457) · [공식 구현](https://github.com/gepa-ai/gepa)
