@@ -31,6 +31,14 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 - *교정 품질*: 지적한 것 중 NLI 검증 통과 47% (Llama) / 61% (Qwen). 나머지는 자신 있게 틀린 교정 — 게이트를 통과해도 프롬프트 개입은 confabulate.
 - *인과 개입*: 없음 (limitations에 명시). 게이트는 두 프롬프트 사이 라우팅.
 
+**원문 PDF 재확인 (2026-09-08).**
+- **직접 질문은 수용 쪽, 지시하면 거부 쪽 — 한 논문 안에 둘 다 있다.** §5: "Asked outright, even the best models mostly assert their questions are sound (mean premise-check scores 0.93 on sound versus 0.84 on false-premise questions for Qwen2.5-7B)." §6: 도전 프롬프트("if the question contains a false assumption, briefly point out what is wrong with it instead of answering")를 주면 거짓 전제 74%를 지적하지만 **멀쩡한 질문 57%(Qwen 78%)도 지적**, 없는 문제를 지어냄("Neosporin is not an antibiotic"). 저자 문장: *"The instruction moves the model's threshold, not its knowledge."* Well-Actually가 이 논문을 "거부 편향"의 근거로 인용한 것은 §6의 도전 프롬프트 결과를 가리킨 것. 우리 08의 "판정을 시키면 framing에 따라 양방향으로 쏠린다"는 이 한 논문으로 근거가 닫힘.
+- **readout 설정.** 마지막 프롬프트 토큰 hidden state, 깊이 0.4/0.6/0.8 중 nested calibration으로 선택. 출력 feature는 greedy 답의 평균 log-prob과 첫 토큰 entropy. **출력과 내부 모두 같은 용량의 L2 로지스틱으로 학습**("symmetric readouts", 학습된 probe 대 학습 안 된 scalar 비교를 피하려고) — 리뷰 1의 7번이 요구한 그 방식. 7B·8B는 8-bit 양자화.
+- **라우팅 파일럿은 사전 등록.** 가설·kill-criteria를 스크립트 헤더에 고정한 뒤 실행. probe 학습에 안 쓴 절반에서 120+120. "지적"의 판정은 명시적 전제 부정 템플릿의 **strict detector**. 생성은 greedy **48토큰 최대** — 교정 품질(NLI 47%/61%)은 아주 짧은 출력에서 잰 것이라 Cancer-Myth의 긴 답변과 직접 비교 불가.
+- **한계 절.** 인과 개입 없음: "unlike Slobodkin et al. (2023) and Lavi et al. (2026) we do not intervene causally on the answerability direction." CREPE 주석의 모호성, 영어만, 2B–14B만.
+- **이 논문이 인용한, 우리가 아직 안 본 선행연구.** **Lavi et al. (2026)**: 선형 unanswerability 방향을 SelfAware·CREPE로 전이하고 **abstention을 인과적으로 steering**. 거짓 전제 데이터에 방향 steering을 건 직접 선행이라 07 B3에 넣어야 함 (개입 대상이 거부이지 교정은 아님). Slobodkin et al. (2023): hidden state가 답변 불가능성을 부호화하고 그 부분공간을 지움. Chen et al. (2026): query-level uncertainty. Huang et al. (2024): 외부 신호 없는 자기 교정은 실패.
+- **논문의 본 기여**는 라우팅이 아니라 C/W/U 삼분류 selective acceptance와 exact binomial bound 인증(α_U 0.15, α_W 0.50, δ 0.10). 라우팅은 §6 파일럿. 우리 06의 "인증과 선택 분리"는 이 논문의 틀.
+
 **H6 재해석.** Well-Actually(Well)는 *추출한 전제 문장*의 진위를 물으면 참 전제의 58–93%를 거짓이라 한다(negative bias). 이 논문은 *질문*이 거짓 전제 위에 있냐 물으면 거의 전부 멀쩡하다고 한다(accommodation). 질문 형식과 데이터가 다른 결과를 하나의 통제 실험처럼 해석하지 않는다. 시험된 출력 방식의 편향은 내부 readout 비교의 동기이며, 모든 CoT/텍스트 판정의 실패를 확정하지 않는다.
 
 **우리와의 거리.**
@@ -146,6 +154,8 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 6. 실험 1 기준선: 마지막 토큰 AUROC 0.70. 이 아래면 CREPE보다 못 읽는 것.
 
 ## 아직 원문이 필요한 것
+
+- **Lavi et al. (2026)** — 선형 unanswerability 방향, CREPE 전이, abstention 인과 steering. Two Axes가 "nearest prior work"로 든 것. 거짓 전제 데이터에 steering을 건 직접 선행 (Two Axes §2, §9)
 
 - [Perfect Detection, Failed Control](https://arxiv.org/abs/2606.24952) — "제어 방향"을 어떻게 찾았는지, 게이트 후 *다른* 방향으로 개입해도 실패하는지
 - [Dual-Stance Evaluation](https://arxiv.org/abs/2606.11205) — 평가 프로토콜 (우리 CAA 대조군 평가에 그대로 빌릴 수 있는지)

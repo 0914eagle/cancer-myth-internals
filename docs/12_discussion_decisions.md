@@ -138,6 +138,11 @@ CAST(ICLR 2025), DSAS, GAPS, Steering Vector Fields, PCNET, Tripathi, Two Axes �
 ### 교수님 지침과 anchor 표
 원 지침은 "논문 하나를 따라가되(스토리·데이터·baseline·task) 내 방법론 행을 추가". 새 알고리즘을 요구한 것이 아니라 **표에 넣을 수 있는 정의된 행**을 요구한 것으로 읽힌다. 문자 그대로 따르면 따라갈 논문은 Cancer-Myth(Table 1이 전부 닫힌 모델)보다 **Well-Actually**가 맞을 수 있다: Table 8–10(방법 × FPQ/TPQ, 공개 모델 3개, 코드 전부)에 우리 행을 넣고, CREPE·QA²·Syn-QA²까지 같은 행을 넣으면 일반성이 따라오며, Cancer-Myth는 동기와 의료 QA 열(Task 3)을 준다. 대가: Well 판정기(gemini 0–5)를 그대로 돌려야 하고 분할 ID 확보 또는 고정 재실행 필요. **목요일 결정 사항.** 이메일에는 이 대안을 넣지 않았다.
 
+### Well ↔ Two Axes 불일치 해소 (PDF 확인)
+Well-Actually는 Two Axes를 한 문장으로만 인용한다: *"LLM-based fact checking has a strong prior to reject presuppositions regardless of their truth value (Wagner, 2026)."* Two Axes 원문에는 두 결과가 다 있다. 중립적으로 물으면 거의 다 "멀쩡"(0.93 vs 0.84), 지적하라고 지시하면 멀쩡한 질문 57–78%까지 지적. Well은 후자를, 우리 07은 전자를 기록했던 것. 둘 다 맞고, "판정을 시키면 framing에 따라 양방향으로 쏠린다"는 이제 한 논문으로 근거가 닫힌다. Well-Actually 본문에 probe·hidden state·라우팅은 없다 — Table 8–10의 빈 행 확인. 세부는 [07 A1](07_related_work_2026.md), [10 §2](10_evidence_and_baselines.md).
+
+추가로 확인된 것: Well의 "TPQ 0"은 S1(참 전제를 잘못 고치려 함)이 93–100%라는 뜻이라 실질적으로 "거의 전부 거짓이라 했다"가 맞다(앞선 답변 정정). Two Axes 라우팅 파일럿은 48토큰 greedy 생성이라 교정 품질 47–61%를 긴 답변과 직접 비교할 수 없다. Two Axes가 든 nearest prior **Lavi et al. (2026)**(CREPE에서 abstention 방향 steering)은 아직 미확인.
+
 ### 2026-09-08 발송 이메일의 질문
 "내부 신호로 골라 개입하는 방식은 이미 여러 논문에 있다. 이걸 Cancer-Myth에 적용해 아직 아무도 못 낸 'FPQ를 올리면서 TPQ를 지키는' 결과를 내는 것으로 논문이 되는지, 아니면 방법론 자체가 새로워야 하는지." 전문은 [14](14_advisor_report_2.md).
 
