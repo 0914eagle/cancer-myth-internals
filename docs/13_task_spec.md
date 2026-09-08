@@ -8,10 +8,10 @@
 
 | 항목 | 값 |
 |---|---|
-| 모델 | Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct 우선 (Cancer-Myth Table 3, Well Table 8, Two Axes Table 2에 겹침). Gemma-2-27B는 자원에 따라 |
+| 모델 | Qwen2.5-7B-Instruct(세 논문 표에 모두 있음), Llama-3.1-8B-Instruct(Cancer-Myth·Two Axes; Well은 Llama-3-8B라 "다른 버전"으로 표기) 우선. Gemma-2-27B는 자원에 따라 |
 | 데이터 | Cancer-Myth FPQ 585 (`all_data.json`), NFP/TPQ 150 (`nfp.json`, Well의 참 전제 주석) |
 | 라벨 (Task 1·2 공통) | **질문에 거짓 전제가 있는가.** FPQ = 1, TPQ/NFP = 0. 의사 검증. 모델 행동과 무관 |
-| 판정기 | GPT-4o API. `validate.py`(PCR/PCS), `validate_nfp.py`(NFP) 원문 그대로. TPQ 오교정은 새 루브릭 (참 전제를 부당하게 부정·교정했는가), Well의 S5와 다른 이름 |
+| 판정기 | GPT-4o API. `validate.py`(PCR/PCS), `validate_nfp.py`(NFP) 원문 그대로. **TPQ 오교정은 Well-Actually의 TPQ 루브릭(App. E: 1 = 참 전제를 잘못 고치려 함 … 5 = 교정 시도 없음)을 GPT-4o로 돌려 재사용** — 리뷰 1의 5번 해결. 부록에서는 Well 판정기(gemini-3-flash)로도 |
 | 평가 단위 | **585 전체 + 150 전체.** 아래 cross-fitting으로 전 문항에 out-of-fold 결과를 낸다 |
 | 허용폭 | ε_normal (NFP/TPQ), ε_QA (의료 QA)를 실행 전에 숫자로 적는다 |
 
@@ -95,7 +95,7 @@ FPR 5%의 문턱은 내부 dev에서 정하고, 평가 fold에서 실제 FPR을 
 | **C residual steering** | 교정(PCR +1)/비교정(−1) Plain 응답의 응답 시작 활성값 평균 차. **후보(층 × 위치) 선택은 AUROC가 아니라 Lavi et al.식 steering score(내부 dev에서 교정 행동을 얼마나 유발하는가)로** — 탐지≠제어 경고 대응. α도 내부 dev | 우리 (선택 절차는 Lavi et al. 2026) |
 | head steering | Tripathi식 head별 방향 | 확장 |
 
-**Table 3 뼈대** (한 모델. 셀 = PCR / NFP / TPQ 오교정률)
+**Table 3 뼈대** (한 모델. 셀 = PCR / NFP / TPQ 오교정률). 행 구조는 Two Axes Table 3(Never / Always / Random / Probe-gated)을 따르고, 파일럿 규율도 따른다: 가설과 kill-criteria를 스크립트에 먼저 고정, 무작위 조건은 같은 예산, 지적 여부는 판정기(Two Axes는 strict 템플릿 detector, 48토큰 greedy였음 — 우리는 전체 답변에 GPT-4o).
 
 | 조건 \ 개입 | 없음 | FP 프롬프트 | C steering |
 |---|---|---|---|
@@ -138,7 +138,7 @@ harm = Plain에서 맞았는데 개입 후 틀림. rescue = 그 반대. 순손�
 |---|---|---|---|---|---|---|---|---|---|
 | Plain | Cancer-Myth | | | | | | | | 0 |
 | FP Identification | Well-Actually | | | | | | | | 100 |
-| GEPA (FPQ+TPQ) | Cancer-Myth / Well 구현 | | | | | | | | 100 |
+| GEPA (FPQ+TPQ) | Cancer-Myth / Well 구현. **Well은 Gemini·Gemma-4에만 돌렸으므로 Qwen·Llama용은 우리가 실행** (예산 500, 검증 50) | | | | | | | | 100 |
 | CAA (무조건 C) | Rimsky 2023 | | | | | | | | 100 |
 | CAST (같은 train) | Lee, ICLR 2025 | | | | | | | | |
 | Two Axes 라우팅 (hidden + FP 프롬프트) | Wagner 2026 | | | | | | | | |
