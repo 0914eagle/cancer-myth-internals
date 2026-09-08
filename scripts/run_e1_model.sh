@@ -88,8 +88,11 @@ if has 5; then
   echo "[stage 5/7] extract E (${MODEL})"
   python -m src.extract_activations --config "${CONFIG}" --input "${RES}/rows/response_rows.jsonl" \
     --output-dir "${ACT_E}" --layers all --strategies span_mean last_subtoken
-  # Join the judge labels onto the A/B/D manifests (tensors untouched).
+  # Join the judge labels onto the A/B/D and E manifests (tensors untouched).
+  # Idempotent, so an E run extracted before the rows carried labels is fixed
+  # here without re-running the backbone.
   python scripts/merge_labels_into_manifests.py --run-dir "${ACT_AD}" --labels "${RES}/rows/labels.jsonl"
+  python scripts/merge_labels_into_manifests.py --run-dir "${ACT_E}" --labels "${RES}/rows/labels.jsonl"
 fi
 
 if has 6; then

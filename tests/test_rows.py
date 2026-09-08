@@ -81,3 +81,10 @@ def test_response_rows_are_teacher_forced_transcripts():
     assert rows[0]["position_mode"] == "assistant_prefix"
     assert rows[0]["chat_messages"][1]["role"] == "assistant"
     assert response_rows([q], {}) == []
+
+
+def test_response_rows_carry_judge_labels():
+    q = {"id": "fpq_1", "set": "fpq", "question": "Q?", "pcr": -1, "judge_parsed": True}
+    row = response_rows([q], {"fpq_1": "answer"}, prefix_tokens=5)[0]
+    assert row["pcr"] == -1 and row["judge_parsed"] is True
+    assert row.get("nfp_score") is None

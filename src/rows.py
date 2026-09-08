@@ -321,6 +321,11 @@ PASSTHROUGH = [
     "align_score",
     "align_method",
     "tpq_split",
+    # judge labels, present once make_response_rows.py has joined them; the
+    # C direction reads `pcr` off the position-E manifest
+    "pcr",
+    "nfp_score",
+    "judge_parsed",
 ]
 
 
