@@ -101,8 +101,9 @@ if has 5; then
 fi
 
 if has 6; then
-  echo "[stage 6/8] A readout sweep"
+  echo "[stage 6/8] A readout sweep + text-only ceiling"
   python scripts/run_probe_sweep.py --run-dir "${ACT_AD}" --out-dir "${RES}/probe_sweep"
+  python scripts/run_text_baseline.py --questions "${ROWS}/questions.jsonl" --out-dir "${RES}/probe_sweep"
 fi
 
 if has 7; then

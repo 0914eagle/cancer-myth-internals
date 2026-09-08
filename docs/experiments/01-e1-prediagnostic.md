@@ -95,6 +95,10 @@ confusion(행 GPT-4o, 열 codex): 0→−1이 132/173, +1→0이 26/65. 위로 �
 - **카테고리 편중.** 고치는 문항이 "no symptoms means no disease"(13–15 %)와 "causal misattribution"(qwen 13 %)에 몰리고 "inevitable side effect"는 0–2 %. C가 이 유형의 내용 방향과 섞일 위험이 있어 짝지은 구성이 필요했다.
 - **판정기.** codex는 GPT-4o의 +1 중 58 %만 인정하므로 절대값은 낮게 나온다. NFP/TPQ 루브릭은 보정하지 않았으니 45–51 %는 모델 간 비교에만 쓴다. 표에 넣을 값은 gpt-4o API로 다시 판정한다.
 
+### A 0.8이 진위인지 문체인지
+
+probe가 fpq/tpq를 가른다는 것은 그 벡터에 두 무리를 구분하는 정보가 있다는 것까지다. fpq는 GPT-4o가 신화에서 만든 질문, NFP는 LLM이 오경보를 낸 질문이라 출처가 달라 문체가 다를 수 있다. Two Axes와 같은 통제를 둔다: 질문 텍스트(B/D 대응)와 전제 구간 텍스트(A 대응)만으로 TF-IDF 로지스틱을 같은 폴드에서 돌린 AUROC를 `probe_sweep/text_baseline.md`에 놓는다. probe가 텍스트 상한을 뚜렷이 넘어야 "문체 이상의 것"이고, 못 넘으면 같은 질문의 전제만 참/거짓으로 바꾼 최소 짝(Pandey·Contextual-Truth 방식)이 필수가 된다.
+
 ### 그래서 stage 8: 짝지은 C
 
 C를 모델 자신의 응답으로 못 만드니 Cancer-Myth `all_data.json`의 참조 응답을 쓴다. 232개 질문에 GPT-4o가 +1로 판정한 답과 −1로 판정한 답이 둘 다 있다. 같은 Plain 프롬프트 뒤에 두 답을 teacher-forcing하고 응답 첫 5/32토큰 평균의 **문항별 차이**를 평균한 것이 `c_pair`. 질문 내용은 뺄셈에서 사라지고 고치기/동조 차이만 남는다. 저자 스타일이 섞이지 않도록 +1 쪽과 −1 쪽의 저자 분포를 맞췄다. 확인 열:
@@ -120,7 +124,9 @@ C를 모델 자신의 응답으로 못 만드니 Cancer-Myth `all_data.json`의 
 - [x] E1 phase 3 gemma-2-9b, gemma-2-27b
 - [ ] E1 stage 8 짝지은 C (4모델)
 - [ ] E0 재정렬 (새 프롬프트, heuristic 없이) → stage 2 재추출(A만) → 6·7 다시
-- [ ] A 읽기의 문체 통제 (같은 질문의 거짓/참 전제 짝)
+- [x] A 읽기의 문체 상한 (Two Axes식 bag-of-words: `run_text_baseline.py`, stage 6에 포함) — 재정렬 후 값 확인
+- [ ] A 읽기의 최소 짝 통제 (같은 질문의 거짓/참 전제 짝) — 텍스트 상한이 probe에 근접하면 필수
+- [ ] NFP/TPQ 라벨 표본 검수 (예: tpq_1001 "AML은 주로 소아암"은 의학적으로 거짓에 가까움)
 - [ ] E2 (Gemma-2-27B, L28; c_e / c_pair32 / A-직교화 C; 무조건 vs 게이트)
 - [ ] gpt-4o API 재판정 (표 숫자)
 - [ ] AO 통제 4종 (gemma-2-9b, 별도 스크립트 예정)
