@@ -60,7 +60,7 @@ subject to  TPQ/NFP performance loss ≤ ε_normal
 
 **질문:** 내부에서 읽는 것이 질문이나 CoT를 읽는 것보다 유용한가?
 
-라벨은 우선 전문가 검증 FPQ 대 TPQ/NFP다. “전제가 거짓인가”와 “Plain이 교정을 실패할 것인가”는 다른 예측 목표이므로 뒤의 목표는 별도 분석으로 둔다.
+라벨은 하나다: **질문에 거짓 전제가 있는가** (전문가 검증 FPQ = 1, TPQ/NFP = 0). “Plain이 교정을 실패할 것인가”는 다른 예측 목표이므로 Table 2에 넣지 않고 부록 소표와 Task 2의 A∧C 조건에서만 다룬다.
 
 비교 readout:
 
@@ -104,25 +104,27 @@ Task 2에서 선택한 gate·개입·문턱·강도를 고정한 **전체 시스
 
 ## 8. 논문 표 — Task 번호와 표 번호를 혼동하지 않는다
 
+실행 수준의 행·열·출처는 [13](13_task_spec.md). 요약:
+
 | 산출물 | 열 | 행 / 역할 | 연결 |
 |---|---|---|---|
-| **Table 1: 본 결과** | PCR, PCS, NFP/TPQ, MedQA, PubMedQA, Medbullets, 비용 | Plain·기존 완화책·조건부 방법·평가 대상 정책 | **Task 2+3**. Cancer-Myth Table 1의 평가 축을 재사용한 공개 모델 held-out 블록 |
-| **Table 2: 탐지 비교** | AUROC, TPR@개발 FPR 목표, 실제 test FPR, 비용 | 질문·CoT·내부·결합 readout | **Task 1**. Two Axes의 readout 비교 틀을 참고 |
-| **Table 3: 요인 분해** | PCR, PCS, 정상 질문 오교정, 발화율 | gate × intervention | **Task 2**. 내부 신호와 steering 효과를 분리 |
-| **Figure 1: FPQ–TPQ 관계** | x=TPQ 점수, y=FPQ 점수 | 모델×방법×평가조건별 점 | Well-Actually 그림의 표현 및 채점 프로토콜 재사용 |
-| 부록 | 카테고리, A×C 분포, 층별 cosine, AO/NLA 통제 | 진단 및 해석 한계 | 주장을 보조 |
+| **Table 1: 본 결과** | PCR, PCS, NFP, TPQ 오교정, MedQA, PubMedQA, Medbullets, 발화율 | 8행 = 선행 6 (Plain, FP Identification, GEPA, CAA, CAST, Two Axes 라우팅) + 무작위 ablation + 우리. 원 논문 수치는 참고 행으로 분리 | **Task 2+3**. Cancer-Myth Table 1의 열 구성을 계승한 공개 모델 블록. 585/150 전체, cross-fitting |
+| **Table 2: 개입 조건 비교** | AUROC, TPR@FPR 5% | 텍스트 분류기·직접 질문·extract-and-verify·CoT monitor·hidden probe·결합 | **Task 1**. 라벨은 "거짓 전제가 있는가" 하나. Two Axes Table 2의 틀 |
+| **Table 3: 요인 분해** | PCR / NFP / TPQ 오교정 | 조건 {항상, 무작위, 텍스트, CoT, hidden, oracle} × 개입 {없음, FP 프롬프트, C steering} | **Task 2**. 칸이 곧 선행 방법 (항상+프롬프트 = Well, 항상+C = CAA, hidden+프롬프트 = Two Axes) |
+| **Figure 1: FPQ–TPQ** | x = TPQ 보존, y = PCR | Table 1·3의 모든 행이 점 | Well-Actually Figure 1의 표현 재사용 |
+| 부록 | 카테고리, A×C 분포, 층별 cosine, AO/NLA 통제, Well 판정기 재채점 | 진단 및 해석 한계 | 주장을 보조 |
 
-논문은 독자에게 본 결과 Table 1을 먼저 보여줄 수 있다. 실행 의존성은 readout 개발 → 선택/개입 검증 → 고정 시스템의 최종 평가다. “Table 2 → 3 → 1”은 그 의존성을 설명한 것이지 고정된 논문 순서나 새로운 Task 분류가 아니다. 독립 baseline 준비는 병행 가능하다.
+평가 단위는 585 전체와 150 전체다. 학습형 부품(probe, C 방향, CAST, GEPA, 분류기)은 nested grouped 5-fold cross-fitting으로 전 문항에 out-of-fold 결과를 낸다. 그래야 Cancer-Myth Table 1·3과 분모가 같다. Well의 잠근 분할은 저자 ID를 얻으면 부록에서 Well 판정기로 한 번 더 한다 ([12 §5](12_discussion_decisions.md)).
 
-원본 표의 숫자를 그대로 붙이려면 **모델 버전, 문항 ID, 분할, 입력, few-shot/RAG, 생성 및 판정 조건**이 같아야 한다. 그렇지 않으면 보고된 참고 결과와 같은 조건에서 재실행한 비교를 구분한다. 기존 표의 형식을 쓰는 것과 기존 숫자를 직접 비교하는 것은 다르다.
+원본 표의 숫자를 그대로 붙이려면 **모델 버전, 문항 ID, 분할, 입력, few-shot/RAG, 생성 및 판정 조건**이 같아야 한다. 닫힌 모델 행과 판정 시점이 다른 행은 참고 결과로 분리한다. 기존 표의 형식을 쓰는 것과 기존 숫자를 직접 비교하는 것은 다르다.
 
 ## 9. 예상 contribution — 실험이 가설을 지지할 때
 
-- **방법:** 정상 질문의 성능 보존을 명시적인 목표로 삼는 내부 신호 기반 의료 전제 선택적 교정 정책을 제시한다.
-- **분석:** 의료 전제 교정에서 내부 신호의 추가 가치와 개입 대상 선택의 역할을 분리하여 규명한다.
-- **실증:** 기존 평가체계에서 FPQ 교정 성능 향상과 TPQ·일반 의료 QA 성능 보존을 함께 달성한다.
+- **방법.** 의료 환자 질문의 배경 전제 교정에, 정상 질문 보존을 사전 허용폭으로 명시한 내부 신호 기반 선택적 개입 정책을 제시하고, 조건부 steering(CAST), probe 라우팅(Two Axes), 의료 gated steering(Tripathi)과 같은 데이터에서 비교한다.
+- **분석.** 개입 조건과 개입 방식을 요인 분해해, 의료 배경 전제에서 내부 표상 readout이 질문 텍스트와 CoT 기반 readout에 더하는 정보량과, 같은 조건 아래 활성값 개입이 프롬프트 개입에 더하는 교정 품질을 각각 정량화한다.
+- **실증.** Cancer-Myth 평가 체계(PCR/PCS/NFP와 의료 QA 3종)를 계승한 공개 모델 비교표를 제공하고, 교정률 향상과 정상 질문 보존을 동시에 만족하는 조건을 보고한다.
 
-첫 항목의 정확한 지위는 현재 **기존 조건부 방법의 적용·정책 구성**이다. 새로운 알고리즘 기여를 원한다면 기존 방법의 구체적 한계, 변경, 그 변경을 검증할 ablation을 추가로 사전 명세해야 한다. AO/NLA 사용이나 허용폭 추가만으로 방법론 독창성을 확정하지 않는다. 세 항목이 있다고 독립적인 새 기여가 세 개 자동으로 확보되는 것은 아니다.
+첫 항목의 정확한 지위는 현재 **기존 조건부 방법의 적용·정책 구성**이다. 새로운 알고리즘 기여를 원한다면 기존 방법의 구체적 한계, 변경, 그 변경을 검증할 ablation을 추가로 사전 명세해야 한다. AO/NLA 사용이나 허용폭 추가만으로 방법론 독창성을 확정하지 않는다. 세 항목이 있다고 독립적인 새 기여가 세 개 자동으로 확보되는 것은 아니다. RH1이 기각되면 방법 기여는 "텍스트나 CoT 조건으로도 되는 선택적 교정"으로 바뀌고 분석 기여가 남는다. RH2가 기각되면 "의료 배경 전제에서는 선택적 개입이 시소를 개선하지 못한다"는 결과가 남는다. 어느 쪽이든 Table 1·2·3은 나온다.
 
 ## 10. 실행 전에 고정할 사항
 

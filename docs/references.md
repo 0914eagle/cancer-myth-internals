@@ -107,3 +107,4 @@
 - [근거와 재사용 baseline](10_evidence_and_baselines.md) — 논문별 원문 링크 및 주장 범위
 - [Tripathi 원문·공개 산출물 검토](11_tripathi_review.md)
 - [논의 결정 기록](12_discussion_decisions.md) — CoT, AO/NLA, split, 통계와 정의
+- [Task 명세와 표 뼈대](13_task_spec.md) — Table 1·2·3, Figure 1, 출처, cross-fitting

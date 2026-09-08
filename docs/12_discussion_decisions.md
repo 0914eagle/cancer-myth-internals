@@ -59,6 +59,8 @@ Well-Actually 논문의 보고 분할은 FPQ 383/100/100, TPQ 30/18/100이며 �
 
 NFP와 TPQ가 동일 질문인 경우 하나의 그룹으로 분할한다. “NFP 150에서 TPQ test 100을 빼면 50개를 전부 train에 쓸 수 있다”는 계산에는 dev/few-shot 예약과 실제 중복이 빠져 있다. 실제 manifest를 기준으로 사용 가능 수를 센다.
 
+**2026-09-08 추가 결정.** 본 표의 평가 단위는 585 전체와 150 전체로 하고, 학습형 부품은 nested grouped 5-fold cross-fitting으로 out-of-fold 결과를 낸다 ([13 §0](13_task_spec.md)). 이유는 Cancer-Myth Table 1·3과 분모를 맞추는 것과 학습 음성(TPQ) 표본을 늘리는 것이다. 층·α·문턱 선택도 fold 안에서 한다. Well의 잠근 분할은 저자 ID 확보 시 부록.
+
 원 test 고정과 myth 단위 분리가 충돌할 수 있다. 이 경우 original-protocol 비교와 myth-disjoint 일반화 평가를 분리하고, 원 분할이 보장하지 않는 일반화를 주장하지 않는다. 외부 CREPE 보강은 별도 학습 조건으로 보고한다.
 
 ## 6. 성능 보존과 통계
