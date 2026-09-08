@@ -24,11 +24,23 @@ cd cancer-myth-internals
 DATA_ROOT=/data1/heejae bash scripts/bootstrap_server.sh
 ```
 
-The bootstrap creates the uv venv (python 3.11, `uv pip install -e ".[dev]"`),
-clones `bill1235813/cancer-myth` and `ShenranTomWang/Well` under
-`${DATA_ROOT}/cancer_myth_internals/external`, and runs the GPU check.
-If the resolver picked a CPU torch, install the server's CUDA wheel into the
-venv afterwards.
+The bootstrap creates the uv venv (python 3.11), installs torch 2.5.1 from the
+cu121 index first (the same pin as medical_nla's bootstrap), then
+`uv pip install -e ".[dev]"`, clones `bill1235813/cancer-myth` and
+`ShenranTomWang/Well` under `${DATA_ROOT}/cancer_myth_internals/external`, and
+runs the GPU check.
+
+Server 125's driver is CUDA 12.2 (`nvidia-smi` shows 535.x). A torch wheel
+built against a newer CUDA loads but reports "The NVIDIA driver on your system
+is too old" and `torch.cuda.is_available()` is False, so every worker stops at
+the GPU check. If a venv ended up with such a wheel, replace it in place:
+
+```bash
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+uv pip install "torch==2.5.1" --index-url https://download.pytorch.org/whl/cu121
+python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.device_count())"
+# expect: 2.5.1+cu121 True 4
+```
 
 Gated checkpoints (Llama-3.1, Gemma-2, Gemma-3) need the account that accepted
 the licences:
@@ -112,9 +124,8 @@ readout. The TPQ loader prints the HF columns it found; if
 ## E1 — pre-diagnostic on four cards (약 2 days)
 
 ```bash
-nohup bash scripts/run_e1_4gpu_125.sh \
-  > /data1/heejae/cancer_myth_internals/logs/e1_4gpu_125.log 2>&1 &
-tail -f /data1/heejae/cancer_myth_internals/logs/e1_4gpu_125.log
+bash scripts/run_e1_4gpu_125.sh      # detaches itself; prints the log path
+bash scripts/jobs.sh gpu
 ```
 
 Phase 1 runs Llama-3.1-8B (GPU 0), Qwen2.5-7B (GPU 1), Gemma-2-9B (GPU 2)
@@ -122,6 +133,20 @@ in parallel: Plain responses, then A/B/D activations at every hidden-state
 index. Phase 2 runs Gemma-2-27B in bf16 on GPUs 1,2,3 (no quantization: it
 changes activation values). Phase 3, per model: judge (`JUDGE_BACKEND`, default codex), position-E
 rows, E activations, the A readout sweep, the C direction.
+
+While the 27B is still in phase 2, GPU 0 is idle and the judge needs no
+GPU, so the finished small models can start their stages 3-7 early:
+
+```bash
+bash scripts/run_e1_stages_125.sh    # llama, qwen, gemma9b in sequence on GPU 0; stages 3-7
+```
+
+Every stage resumes, so when the driver later reaches phase 3 for the same
+model its judge finds nothing left and the rest recomputes from disk. The
+one thing to avoid is two judges on one output file at the same time:
+`run_judge.py` holds a lock per file and the second writer exits, which
+fails that driver worker. If that happens, rerun `run_e1_stages_125.sh`
+with `MODELS=` set to whatever is still missing.
 
 One model, one stage at a time (each stage resumes):
 

@@ -16,6 +16,12 @@ ART="${DATA_ROOT}/cancer_myth_internals"
 VENV="${DATA_ROOT}/uv/cancer_myth_internals"
 INSTALL_ENV="${INSTALL_ENV:-1}"
 CLONE_EXTERNAL="${CLONE_EXTERNAL:-1}"
+# Same torch as medical_nla/scripts/bootstrap_direct_server.sh. Server 125's
+# driver is CUDA 12.2 (nvidia-smi: 535.x), so the wheel must be a cu121 build;
+# the PyPI default wheel is built against a newer CUDA and torch then reports
+# "The NVIDIA driver on your system is too old" and sees no GPU.
+TORCH_VERSION="${TORCH_VERSION:-2.5.1}"
+TORCH_INDEX_URL="${TORCH_INDEX_URL:-https://download.pytorch.org/whl/cu121}"
 
 mkdir -p "${ART}"/{data,external,activations,results,reports,logs} "${DATA_ROOT}/hf_cache" "${DATA_ROOT}/uv"
 
@@ -31,11 +37,18 @@ if [[ "${INSTALL_ENV}" == "1" ]]; then
   # shellcheck disable=SC1091
   source "${VENV}/bin/activate"
   cd "${CODE_ROOT}"
+  # torch first, pinned to the driver-compatible build; the editable install
+  # below then keeps it (torch>=2.3 is satisfied) instead of resolving anew.
+  uv pip install "torch==${TORCH_VERSION}" --index-url "${TORCH_INDEX_URL}"
   uv pip install -e ".[dev]"
-  # Install the CUDA build of torch the server needs if the resolver did not.
   python - <<'EOF'
 import torch
-print(f"[torch] {torch.__version__} cuda={torch.cuda.is_available()} devices={torch.cuda.device_count()}")
+ok = torch.cuda.is_available()
+print(f"[torch] {torch.__version__} cuda={ok} devices={torch.cuda.device_count() if ok else 0}")
+if not ok:
+    raise SystemExit("[error] torch sees no GPU. If the warning says the driver is too old, "
+                     "rerun with a matching build, e.g. TORCH_VERSION=2.5.1 "
+                     "TORCH_INDEX_URL=https://download.pytorch.org/whl/cu121")
 EOF
 fi
 
