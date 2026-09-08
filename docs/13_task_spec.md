@@ -92,7 +92,7 @@ FPR 5%의 문턱은 내부 dev에서 정하고, 평가 fold에서 실제 FPR을 
 | 개입 | 정의 | 출처 |
 |---|---|---|
 | FP Identification 프롬프트 | Well 원문 프롬프트 | Well |
-| **C residual steering** | 교정(PCR +1)/비교정(−1) Plain 응답의 응답 시작 활성값 평균 차. 층·α 내부 dev | 우리 |
+| **C residual steering** | 교정(PCR +1)/비교정(−1) Plain 응답의 응답 시작 활성값 평균 차. **후보(층 × 위치) 선택은 AUROC가 아니라 Lavi et al.식 steering score(내부 dev에서 교정 행동을 얼마나 유발하는가)로** — 탐지≠제어 경고 대응. α도 내부 dev | 우리 (선택 절차는 Lavi et al. 2026) |
 | head steering | Tripathi식 head별 방향 | 확장 |
 
 **Table 3 뼈대** (한 모델. 셀 = PCR / NFP / TPQ 오교정률)

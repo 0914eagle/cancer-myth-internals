@@ -115,6 +115,18 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 | [CAST](https://arxiv.org/abs/2409.05907) (ICLR 2025), DSAS, [GAPS](https://arxiv.org/abs/2609.01878) (2026-09) | 조건 방향 정렬로 hard gate / probe 출력을 연속 gate / 차원 수준 gate. toxicity에서 capability 손실 없이 억제 | 게이트 방법론은 있음. CAST는 조건 벡터와 행동 벡터를 **따로** 뽑고 층도 따로 고른다 — 구조는 분리돼 있다. 다른 것은 조건 신호의 내용(유해성·주제)이지 구조가 아니다. 우리 데이터로 학습한 CAST식 벡터가 실험 3 baseline |
 | [Steering Vector Fields](https://arxiv.org/abs/2602.01654), [PCNET](https://arxiv.org/abs/2605.05953) | 맥락 의존 개입 / 확률 회로로 환각 탐지 후 동적 개입 | 대안 게이트 구현 |
 
+### B3-1. Lavi, Milo, Geva — *Detecting (Un)answerability in Large Language Models with Linear Directions* (EACL 2026) — 원문 확인 2026-09-08
+
+Two Axes가 "nearest prior work"로 든 논문. **과제는 거짓 전제가 아니라 추출형 QA의 답변 불가능성**(주어진 지문에 답이 있는가). SQuAD 2.0, RepLiQA, NQ, MuSiQue. 모델 Llama-3-8B-Instruct, Gemma-3-12B-IT.
+
+**방법.** (1) 층 × chat-template 토큰 위치마다 answerable/unanswerable 평균 차 방향 후보를 만든다. (2) **후보 선택을 probe 정확도가 아니라 인과 효과로 한다**: 검증셋에서 각 후보를 residual에 더했을 때 "unanswerable" 토큰의 log-odds가 얼마나 오르는지(steering score)로 최고 후보를 고른다. (3) 그 방향에 hidden state를 투영한 스칼라로 분류. F1 75.9–96.4, 로지스틱 분류기와 비슷하되 데이터 간 전이는 평균 8–10점 더 좋음.
+
+**CREPE.** 추출형 QA에서 뽑은 방향을 **그대로 CREPE에 얹어 분류만** 함. 보정 없이 F1 36–46, 문턱 보정 후 59–62. CREPE로 학습하지도, CREPE에서 개입하지도 않음. **인과 개입**은 추출형 QA에서 abstention 제어: 방향을 더하면 96% 기권, 지우면 기권률이 answerable 2.0% / unanswerable 19.4%로 떨어짐.
+
+**우리와의 거리.** 거짓 전제 데이터에서 교정을 steering한 것이 아니다. 개입 대상이 "기권"이고 CREPE는 분류 전이뿐. 통제군 개념(TPQ/NFP)도, 게이트도 없다. 따라서 Two Axes의 "Lavi et al. steer abstention causally"는 맞지만 CREPE에서가 아니라 추출형 QA에서다.
+
+**가져올 것 (중요).** **C 방향 후보를 AUROC가 아니라 steering score로 고르는 절차.** 07 B5의 "탐지 ≠ 제어" 경고(읽기 좋은 방향이 밀기 좋은 방향은 아님)에 대한 선택 단계의 답이 이것이다. 우리 C 후보(층 × 위치 × 추출 방식)를 내부 dev에서 "교정 행동을 얼마나 유발하는가"(예: 교정 표지 토큰 log-odds 또는 판정기 PCR 변화)로 고르고, A probe는 AUROC로 고른다. 13 §2에 반영.
+
 ### B4. 의료 sycophancy 벤치마크
 
 [MedPRESS](https://arxiv.org/html/2608.02520), [Med-Stress / R-FT](https://arxiv.org/abs/2605.23932), [MedMisBench](https://arxiv.org/abs/2606.12291), [CausalT3](https://arxiv.org/abs/2601.08258v3) (Skepticism Trap과 Sycophancy Trap을 한 벤치마크에 — FPQ/TPQ 시소 그 자체). 전부 멀티턴 압력 또는 오도 맥락. 단일 질문 속 배경 전제는 Cancer-Myth뿐.
@@ -155,7 +167,6 @@ A절 3편은 원문 전체를 읽었다. B절은 검색 스니펫 기준이라 �
 
 ## 아직 원문이 필요한 것
 
-- **Lavi et al. (2026)** — 선형 unanswerability 방향, CREPE 전이, abstention 인과 steering. Two Axes가 "nearest prior work"로 든 것. 거짓 전제 데이터에 steering을 건 직접 선행 (Two Axes §2, §9)
 
 - [Perfect Detection, Failed Control](https://arxiv.org/abs/2606.24952) — "제어 방향"을 어떻게 찾았는지, 게이트 후 *다른* 방향으로 개입해도 실패하는지
 - [Dual-Stance Evaluation](https://arxiv.org/abs/2606.11205) — 평가 프로토콜 (우리 CAA 대조군 평가에 그대로 빌릴 수 있는지)

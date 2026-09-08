@@ -73,6 +73,7 @@
 - SelfIE — [2403.10949](https://arxiv.org/pdf/2403.10949)
 
 ## 행동 방향 · steering
+- Detecting (Un)answerability in Large Language Models with Linear Directions — Lavi, Milo, Geva, EACL 2026 · [GitHub](https://github.com/MaorLavi/unanswerability-directions) · 방향 후보를 steering score로 선택
 - Contrastive Activation Addition — [2312.06681](https://arxiv.org/abs/2312.06681)
 - Sparse Activation Steering — [2503.00177](https://arxiv.org/html/2503.00177)
 - A Few Bad Neurons: Isolating and Surgically Correcting Sycophancy — [2601.18939](https://arxiv.org/html/2601.18939v1)
