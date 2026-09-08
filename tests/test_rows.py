@@ -88,3 +88,19 @@ def test_response_rows_carry_judge_labels():
     row = response_rows([q], {"fpq_1": "answer"}, prefix_tokens=5)[0]
     assert row["pcr"] == -1 and row["judge_parsed"] is True
     assert row.get("nfp_score") is None
+
+
+def test_paired_rows_share_the_prompt_and_differ_only_in_the_answer():
+    from src.rows import paired_rows
+
+    q = {"id": "fpq_1", "set": "fpq", "question": "Q?", "pcr": -1}
+    refs = {"fpq_1": {"corr": ("Gemini-1.5-Pro", "Actually, that is not right. " * 100), "follow": ("GPT-3.5", "Yes, indeed.")}}
+    rows = paired_rows([q, {"id": "nfp_1", "set": "nfp", "question": "N?"}], refs, {"fpq_1": "own answer"}, prefix_tokens=(5, 32))
+    assert len(rows) == 6
+    assert {r["pair_role"] for r in rows} == {"corr", "follow", "own"}
+    assert {r["position_family"] for r in rows} == {"E_pair_first5", "E_pair_first32"}
+    assert all(r["chat_messages"][0]["content"] == "Q?" for r in rows)
+    corr5 = next(r for r in rows if r["id"] == "fpq_1__corr5")
+    assert len(corr5["chat_messages"][1]["content"]) == 800 and corr5["pair_author"] == "Gemini-1.5-Pro"
+    own = next(r for r in rows if r["pair_role"] == "own" and r["prefix_tokens"] == 32)
+    assert own["pcr"] == -1 and own["base_id"] == "fpq_1"

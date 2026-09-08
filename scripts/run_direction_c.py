@@ -23,7 +23,6 @@ a plot. The .npz is what run_steer.py consumes.
 from __future__ import annotations
 
 import argparse
-import re
 import sys
 from pathlib import Path
 
@@ -33,7 +32,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from src.jsonl import read_jsonl
+from src.manifests import dedupe_negatives, load_family, matrix
 from src.probes import (
     cosine,
     cv_auroc_diffmeans,
@@ -44,41 +43,6 @@ from src.probes import (
 )
 
 MIN_POSITIVES = 50  # below this the C direction is a handful of items, not a disposition
-
-
-def _layer_of(manifest: Path) -> int:
-    return int(re.fullmatch(r"layer(\d+)", manifest.parent.parent.name).group(1))
-
-
-def load_family(run_dir: Path, family: str, selection: str) -> dict[int, list[dict]]:
-    """layer -> manifest rows of one position family / reduction."""
-    out: dict[int, list[dict]] = {}
-    for manifest in sorted(run_dir.glob(f"layer*/{selection}/manifest.jsonl")):
-        rows = [r for r in read_jsonl(manifest) if r.get("position_family") == family]
-        if rows:
-            out[_layer_of(manifest)] = rows
-    return out
-
-
-def matrix(rows: list[dict]):
-    import torch
-
-    X = np.stack(
-        [torch.load(r["activation_path"], map_location="cpu", weights_only=True).reshape(-1).float().numpy() for r in rows]
-    )
-    return X
-
-
-def dedupe_negatives(rows: list[dict]) -> list[dict]:
-    seen, out = set(), []
-    for r in rows:
-        if str(r.get("set")) in {"nfp", "tpq"}:
-            key = (r.get("chat_text"), str(r.get("position")))
-            if key in seen:
-                continue
-            seen.add(key)
-        out.append(r)
-    return out
 
 
 def main() -> None:

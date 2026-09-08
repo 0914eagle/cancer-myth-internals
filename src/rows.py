@@ -407,3 +407,59 @@ def response_rows(
             }
         )
     return out
+
+
+PAIR_TEXT_CHARS = 800  # teacher-forced reference answers are cut here; only the opening is read
+
+
+def paired_rows(
+    question_rows: list[dict[str, Any]],
+    references: dict[str, dict[str, Any]],
+    own_responses: dict[str, str],
+    *,
+    prefix_tokens: tuple[int, ...] = (5, 32),
+) -> list[dict[str, Any]]:
+    """Position-E rows for the paired C construction.
+
+    For one fpq question the prompt is identical across three assistant
+    texts, teacher-forced: a reference answer GPT-4o scored +1 (`corr`), one
+    it scored -1 (`follow`), and the model's own Plain response (`own`,
+    carrying its `pcr`). corr minus follow at the same question cancels the
+    question's content and leaves the correcting-vs-following difference;
+    `own` lets the direction be checked against what the model itself did.
+
+    references: question id -> {"corr": (author, text), "follow": (author, text)}
+    """
+    out = []
+    for q in question_rows:
+        if q.get("set") != "fpq":
+            continue
+        ref = references.get(q["id"], {})
+        variants = []
+        for role in ("corr", "follow"):
+            if role in ref:
+                author, text = ref[role]
+                variants.append((role, author, text[:PAIR_TEXT_CHARS]))
+        own = own_responses.get(q["id"])
+        if own:
+            variants.append(("own", "self", own[:PAIR_TEXT_CHARS]))
+        common = {k: q.get(k) for k in PASSTHROUGH}
+        for role, author, text in variants:
+            for n in prefix_tokens:
+                out.append(
+                    {
+                        "id": f"{q['id']}__{role}{n}",
+                        "base_id": q["id"],
+                        "chat_messages": [
+                            {"role": "user", "content": q["question"]},
+                            {"role": "assistant", "content": text},
+                        ],
+                        "position_mode": "assistant_prefix",
+                        "prefix_tokens": n,
+                        "position_family": f"E_pair_first{n}",
+                        "pair_role": role,
+                        "pair_author": author,
+                        **common,
+                    }
+                )
+    return out

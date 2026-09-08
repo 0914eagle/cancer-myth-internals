@@ -57,6 +57,8 @@ PASSTHROUGH_FIELDS = [
     "pcr",
     "nfp_score",
     "judge_parsed",
+    "pair_role",
+    "pair_author",
 ]
 
 SPAN_SELECTION = "span"
