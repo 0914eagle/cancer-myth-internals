@@ -35,17 +35,26 @@ Figure 1은 FPQ와 TPQ 평균 점수를 비교하는 그림이며 S5 비율 자�
 
 TPQ 점수가 높다는 것과 답변의 모든 의학적 내용이 정확하다는 것은 다르다. 일반 의료 QA 보존은 별도 측정한다.
 
-### 저장소 코드로 확인한 세부 (2026-09-08, 논문 본문은 미확인)
+### 저장소 코드와 논문 PDF로 확인한 세부 (2026-09-08)
 
 | 항목 | 확인 내용 | 출처 파일 |
 |---|---|---|
-| 판정 | gemini 0–5점. 표의 숫자는 **5점(S5) 비율**. "TPQ 0"은 참 전제 질문 100개 중 만점 응답이 0개라는 뜻이지 "전부 거짓이라 했다"가 아님. 0–4점 정의는 논문 확인 필요 | `evaluator/`, 02 |
-| Fine-tuning | Qwen2.5-7B-Instruct, LoRA (r 16, α 32, dropout 0.05), lr 2.5e-4, 3 epoch, 답변 토큰만 loss. Cancer-Myth 실행 스크립트는 **FPQ train 383만** 학습하고 30 batch마다 ARC-DA replay를 섞음 (`train_arc_da.py`). FPQ+TPQ 혼합 스크립트(`train.py`)도 있으나 Cancer-Myth 셀에 쓰였는지는 논문 확인 필요 | `FalseQA/train.py`, `train_arc_da.py`, `job_scripts/FalseQA/train_arc_da.sh` |
-| FAITH head 차단 | 원 논문 *Whispers that Shake Foundations* (EMNLP 2024). Wikidata 영화 개봉 연도·노벨상 연도 템플릿 질문에서 path patching(정상 / 거짓 연도 / patch 세 프롬프트 비교)으로 정답 토큰 확률 기여가 큰 head를 샘플당 20개 → 빈도 집계 → 최종 20개. 생성 시 attention 출력의 해당 head 차원을 **0으로 덮어씀** (`h[:, :, dim_start:dim_end] = 0`), 위치는 질문 끝 또는 프롬프트 전체 | `FAITH/identify_heads.py`, `pipeline_operator/direct_qa_operator/knock_out_direct_qa_operator.py` |
+| 판정 | gemini-3-flash. FPQ는 선행연구의 1–5점(1 = 거짓 전제 무시·강화, 5 = 명확히 짚고 근거)에 0(횡설수설) 추가. TPQ는 대칭 기준(1 = 참 전제를 잘못 고치려 함, 5 = 교정 시도 없음). 표는 S1–S5 분포, Figure 1은 0 제외 평균. **"TPQ 0"의 실제 분포**: Fine-tuning은 TPQ S1 = 100%, FP Identification은 S1 93% / S2 7% — 참 전제 거의 전부를 잘못 고치려 한 것 (Table 8) | §2.5, App. E, Table 8 |
+| Fine-tuning | Qwen2.5-7B-Instruct만, LoRA (r 16, α 32, dropout 0.05), lr 2.5e-4, 3 epoch, A6000 4장. **각주 3: Cancer-Myth는 TPQ 정답이 없어 FPQ는 Cancer-Myth, TPQ는 ARC-DA로 학습** (FalseQA 레시피). 코드의 `train_arc_da.py`가 이것. 결과 FPQ S5 62 / TPQ S1 100 | §2.2 각주 3, App. D, `FalseQA/train_arc_da.py` |
+| FAITH head 차단 | 원 논문 *Whispers that Shake Foundations* (Yuan et al., EMNLP 2024). **논문: Yuan et al.이 영화 데이터(Wikidata triplet) 실험에서 보고한 head를 그대로 끔** ("cross-task transferability"를 근거로). 코드에는 재탐색 스크립트도 있음: path patching(정상 / 거짓 연도 / patch)으로 정답 토큰 기여가 큰 head 샘플당 20개 → 빈도 집계 → 20개. 생성 시 attention 출력의 해당 head 차원을 **0으로 덮어씀**, 위치는 질문 끝 또는 프롬프트 전체 | §2.2, `FAITH/identify_heads.py`, `knock_out_direct_qa_operator.py` |
 | PreWoMe | 3단계: 전제 추출("참일 수도 거짓일 수도") → 거짓 가정 피드백 + 답변 가이드라인 → 가이드라인대로 최종 답. 옵션 RAG | `prompting/run_prewome.py` |
 | Question-to-Statement | 질문을 뜻이 같은 진술문 하나로 변환 → 원자적 가정 추출 → (옵션) 지식 생성 → 가정별 "true/false 한 단어" 사실 확인 → 결과대로 답변 | `prompting/run_question_to_statement_pipeline.py` |
 | FP Identification | "Input: … Question: Does the input contain any false assumptions?" → Yes/No → Yes면 거짓 가정 설명 후 답, No면 그냥 답 | `prompting/run_fp_identification_pipeline.py` |
 | Extract+FactCheck | 미리 추출한 전제를 MiniCheck(flan-t5-large) / transformers / gemini로 검증 | `prompting/run_fact_check.py` |
+
+**논문 PDF에서 추가 확인 (2026-09-08).**
+- **Two Axes 인용은 한 문장.** §3 사실 확인 병목 문단: *"Recent work showed that LLM-based fact checking has a strong prior to reject presuppositions regardless of their truth value (Wagner, 2026)."* 거부 편향의 출처로만 인용. probe·hidden state·라우팅 파일럿은 본문에 없음 (전문 검색 0건). 따라서 Table 8–10에 "probe로 골라 개입" 행이 없다는 것이 확인됨. 단, 07 A1은 Two Axes의 직접 질문 결과를 accommodation(거의 다 멀쩡)으로 기록했는데 Well은 같은 논문을 거부 편향의 근거로 씀 — Two Axes 원문에서 어느 부분인지 확인 필요.
+- **가중 총점**: E[V] = P_F·V_F + (1−P_F)·V_T, P_F = 0.13. WildChat 500개 추출 → 저자 1명이 100개 주석(TPQ/FPQ/discard) → 2차 주석자, 일치 85%. Kim et al. 2021은 21%, CREPE는 25%와 대비. **한계 절에 "의료·법률은 일반인의 지식 부족으로 FPQ 비율이 더 높을 수 있으니 도메인별 추정을 해서 Cancer-Myth에 적용해야 한다"고 저자가 명시** — 리뷰 2의 10번과 같은 지적.
+- **GEPA**: Gemini-3-flash와 Gemma-4-E4B만. 판정·반성 LM 모두 gemini-3-flash, 평가 예산 500 호출, FPQ/TPQ 검증 분할에서 50개 예약. FPQ만 / FPQ+TPQ 두 변형.
+- **Table 1 분모**: FPQ 100, TPQ 116 (저자가 NFP에 주석한 참 전제 수). 모델별 TPQ 정확도 None 조건 15.5–32.8%, Top-4 RAG로 일부 개선(Llama 22.4→42.2)이나 All RAG는 악화.
+- **Figure 1**: 각 점 = 방법 × 모델의 RAG 조건 평균 점수(0 제외). 등고선 = 가중 총점 동일선.
+- **모델**: Gemma-3-E4B-it(본문 표기), Llama-3-8B-Instruct, Qwen2.5-7B-Instruct, OLMo-3-7B-Instruct, Gemini-3-flash. Table 8 = Qwen, 9 = Gemma, 10 = Llama, 이후 CREPE·QA²·Syn-QA² 표(Table 26까지).
+- few-shot 예약: 벤치마크마다 FPQ 2 + TPQ 2. 분할 개수(383/100/100 등)는 이 PDF 텍스트에서 직접 찾지 못함 — App. A 표 확인 필요.
 
 **Verbalizing-Assumptions의 자리.** 이 논문은 Cancer-Myth 문제를 풀려던 것이 아니라 사회적 sycophancy 제어가 목표이고, Cancer-Myth는 전이 평가셋 중 하나였다. "기존 해법이 실패했다" 문단에 넣지 않는다. 관련 연구의 steering 계열에 두고, "일반 sycophancy 축(사용자 태도)은 Cancer-Myth에 옮겨지지 않았다"는 관찰만 가져온다. 우리 C 방향을 사용자 태도가 아니라 교정/비교정 응답 대조에서 뽑는 이유의 방증.
 
