@@ -45,6 +45,8 @@ def main() -> None:
     parser.add_argument("--config", default="configs/default.yaml")
     parser.add_argument("--out-name", default="e1_rows_v1")
     parser.add_argument("--align", choices=["llm", "heuristic", "none"], default="llm")
+    parser.add_argument("--heuristic-fallback", action="store_true",
+                        help="when the LLM finds no verbatim span, fall back to content-word overlap (off: A dropped for that row)")
     parser.add_argument("--align-backend", choices=["codex", "openai"], default=None, help="default: config judge.backend")
     parser.add_argument("--align-model", default=None, help="default: config judge model for the backend")
     parser.add_argument("--codex-cmd", default="codex")
@@ -91,7 +93,10 @@ def main() -> None:
         elif args.align == "none" or not row.get("premise_text"):
             row.update(premise_span=None, align_score=None, align_method="none")
         else:
-            span, score, method = align_premise(row["question"], row["premise_text"], llm=llm)
+            span, score, method = align_premise(
+                row["question"], row["premise_text"], llm=llm,
+                heuristic_fallback=args.heuristic_fallback or args.align == "heuristic",
+            )
             row.update(premise_span=span, align_score=score, align_method=method)
         questions.append(row)
 

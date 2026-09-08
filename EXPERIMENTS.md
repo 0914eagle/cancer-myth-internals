@@ -121,6 +121,13 @@ readout. The TPQ loader prints the HF columns it found; if
 `shenranw/CancerMyth-TPQ` names its presupposition field differently from
 `presuppositions`, fix `src/rows.py::_first_presupposition` and rerun.
 
+Re-alignment (after changing the prompt, or to retry rows that got no span):
+`run_e0_rows.sh` reuses every verified LLM span and asks the LLM again only
+for the rest; A rows carry the span in their id, so `STAGES="2"` then
+extracts only the new A rows and `prune_manifests.py` drops the old ones from
+the manifests. Rerun stages 4-8 afterwards (CPU except 5 and 8, which find
+nothing new to extract).
+
 ## E1 — pre-diagnostic on four cards (약 2 days)
 
 ```bash

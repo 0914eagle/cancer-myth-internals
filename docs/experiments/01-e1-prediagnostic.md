@@ -23,7 +23,9 @@ Cancer-Myth 585(FPQ) vs NFP 150 + TPQ(참 전제)에서, 전제 구간·질문 �
 | `D_last_prompt_token` | D | assistant 턴 직전 마지막 프롬프트 토큰 | `__last` |
 | `E_response_first5` | E | Plain 응답 첫 5토큰 평균, teacher-forced | `__resp5` |
 
-전제 구간은 GPT-4o가 질문에서 **verbatim substring**을 뽑고 exact match로 검증한다(`align_method=llm`). 실패하면 content-word 겹침 heuristic, 그것도 실패하면 A 없이 B·D만. `alignment_audit.md`에 방법별 수가 나온다.
+전제 구간은 LLM(codex)이 질문에서 **verbatim substring**을 뽑고 exact match로 검증한다(`align_method=llm`). 검증 실패 시 한 번 재시도하고, 그래도 안 되면 그 문항은 A 없이 B·D만 쓴다. `alignment_audit.md`에 방법별 수가 나온다.
+
+**정렬 감사 (2026-09-08, 첫 codex 실행).** fpq 585 중 llm 294 / heuristic 225 / none 66. llm 표본은 전부 정확했고 heuristic 표본은 6/6 틀렸다(진단을 말하는 첫 문장 통째를 잡음: "My father was diagnosed with bile duct cancer last month."). 원인은 프롬프트가 "전제를 **표현하는** 구절"을 요구한 것. Cancer-Myth 질문의 절반은 전제를 말하지 않고 **전제로 삼는다**("we're preparing her for life with a prosthetic eye"는 안구 적출을 전제). 그래서 (1) 프롬프트를 "믿음을 말하거나 당연시하는 구절"로 바꾸고 재시도를 넣었고, (2) heuristic 대체는 기본 꺼서 틀린 구간 대신 A 없음으로 두며, (3) A row id에 구간 해시를 넣어 재정렬 시 새 row만 다시 추출하고 옛 row는 manifest에서 지운다(`prune_manifests.py`). llama·qwen의 A 0.80–0.82는 heuristic 225개가 섞인 값이라 재정렬 후 다시 잰다. NFP는 전제 구간이 없으므로(none 150) A 위치의 음성은 TPQ의 참 전제 구간뿐이다. 즉 A 읽기는 "거짓 전제 구절 vs 참 전제 구절"이다.
 
 ## 라벨
 
@@ -115,6 +117,7 @@ C를 모델 자신의 응답으로 못 만드니 Cancer-Myth `all_data.json`의 
 - [x] E1 phase 3 llama, qwen (judge → E → sweep → C)
 - [ ] E1 phase 3 gemma-2-9b, gemma-2-27b
 - [ ] E1 stage 8 짝지은 C (4모델)
+- [ ] E0 재정렬 (새 프롬프트, heuristic 없이) → stage 2 재추출(A만) → 6·7 다시
 - [ ] A 읽기의 문체 통제 (같은 질문의 거짓/참 전제 짝)
 - [ ] E2 (한 모델; c_pair32 우선)
 - [ ] gpt-4o API 재판정 (표 숫자)

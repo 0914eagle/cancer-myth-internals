@@ -26,6 +26,7 @@ method, so a downstream table can be restricted to high-confidence spans.
 
 from __future__ import annotations
 
+import hashlib
 import re
 from pathlib import Path
 from typing import Any
@@ -156,29 +157,51 @@ def find_verbatim(question: str, snippet: str) -> tuple[int, int] | None:
 
 
 LLM_ALIGN_PROMPT = (
-    "A patient question contains a presupposition, stated separately below. "
-    "Return the shortest contiguous substring of the QUESTION, copied exactly "
-    "character for character, that expresses that presupposition. Do not "
-    "paraphrase, do not add quotes, do not explain. If no substring expresses "
-    "it, return NONE.\n\n"
+    "A patient's question rests on a false belief, given below as a plain "
+    "statement. The question usually does not state the belief outright; it "
+    "assumes it, in the patient's own words (\"we're preparing her for life with "
+    "a prosthetic eye\" assumes that the eye will be removed). Find the shortest "
+    "contiguous stretch of the QUESTION that carries this belief, whether it "
+    "states it or takes it for granted, and return it copied exactly, character "
+    "for character. Do not paraphrase, do not add quotes, do not explain. Only if "
+    "no part of the question carries the belief, return NONE.\n\n"
     "QUESTION: {question}\n"
-    "PRESUPPOSITION: {premise}\n\n"
-    "SUBSTRING:"
+    "FALSE BELIEF: {premise}\n\n"
+    "STRETCH OF THE QUESTION:"
+)
+
+LLM_ALIGN_RETRY = (
+    "Your answer was not an exact copy of any part of the question. Copy the "
+    "stretch again, exactly as it appears in the QUESTION above, character for "
+    "character, or return NONE.\n\nSTRETCH OF THE QUESTION:"
 )
 
 
 def align_premise(
-    question: str, premise: str | None, *, llm=None
+    question: str, premise: str | None, *, llm=None, heuristic_fallback: bool = False
 ) -> tuple[list[int] | None, float | None, str]:
-    """Returns (span, score, method). method in {llm, heuristic, none}."""
+    """Returns (span, score, method). method in {llm, heuristic, none}.
+
+    The LLM gets one retry when its answer is not verbatim. The content-word
+    heuristic is off by default: on Cancer-Myth it mostly returns the sentence
+    that names the diagnosis, which is not the premise, and a wrong span is
+    worse for the A readout than no span (the row then has B and D only).
+    """
     if not premise:
         return None, None, "none"
     if llm is not None:
-        reply = llm(LLM_ALIGN_PROMPT.format(question=question, premise=premise))
-        if reply and reply.strip().upper() != "NONE":
+        prompt = LLM_ALIGN_PROMPT.format(question=question, premise=premise)
+        reply = llm(prompt)
+        for attempt in range(2):
+            if not reply or reply.strip().upper() == "NONE":
+                break
             found = find_verbatim(question, reply)
             if found is not None:
                 return [found[0], found[1]], 1.0, "llm"
+            if attempt == 0:
+                reply = llm(prompt + " " + reply.strip() + "\n\n" + LLM_ALIGN_RETRY)
+    if not heuristic_fallback:
+        return None, None, "none"
     result = align_premise_heuristic(question, premise)
     if result is None:
         return None, None, "none"
@@ -334,7 +357,7 @@ def activation_rows(question_rows: list[dict[str, Any]]) -> list[dict[str, Any]]
 
     __last  position D  last prompt token (assistant turn about to start)
     __qend  position B  last token of the question text
-    __prem  position A  last token of the premise span, plus its mean (C-mean)
+    __prem_<hash>  position A  last token of the premise span, plus its mean (C-mean)
     """
     out: list[dict[str, Any]] = []
     for q in question_rows:
@@ -365,9 +388,12 @@ def activation_rows(question_rows: list[dict[str, Any]]) -> list[dict[str, Any]]
         span = q.get("premise_span")
         if span:
             s, e = int(span[0]), int(span[1])
+            # the span is part of the id, so a re-alignment yields a new row
+            # (extracted on resume) instead of silently reusing the old tensor
+            tag = hashlib.sha1(q["question"][s:e].encode("utf-8")).hexdigest()[:8]
             out.append(
                 {
-                    "id": f"{base}__prem",
+                    "id": f"{base}__prem_{tag}",
                     "base_id": base,
                     "prompt": q["question"],
                     "position_mode": "target_text",

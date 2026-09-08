@@ -39,12 +39,23 @@ def test_find_verbatim_tolerates_quotes_and_case():
     assert find_verbatim(Q_BLADDER, "not in the question at all") is None
 
 
-def test_llm_alignment_is_verified_and_falls_back():
+def test_llm_alignment_is_verified_retried_and_dropped():
+    calls = []
+
     def bad_llm(prompt):
+        calls.append(prompt)
         return "he thinks surgery is his only option"  # paraphrase, not verbatim
 
     span, score, method = align_premise(Q_BLADDER, P_BLADDER, llm=bad_llm)
+    assert method == "none" and span is None and len(calls) == 2  # one retry, then A is dropped
+    span, score, method = align_premise(Q_BLADDER, P_BLADDER, llm=bad_llm, heuristic_fallback=True)
     assert method == "heuristic" and span is not None
+
+    def fixed_on_retry(prompt):
+        return "he believes surgery is the only way to treat it" if "not an exact copy" in prompt else "he thinks surgery"
+
+    span, score, method = align_premise(Q_BLADDER, P_BLADDER, llm=fixed_on_retry)
+    assert method == "llm"
 
     def good_llm(prompt):
         return "he believes surgery is the only way to treat it"

@@ -64,6 +64,9 @@ if has 2; then
   [[ -n "${LIMIT}" ]] && extra=(--limit-prompts "${LIMIT}")
   python -m src.extract_activations --config "${CONFIG}" --input "${ROWS}/activation_rows.jsonl" \
     --output-dir "${ACT_AD}" --layers all --strategies last_subtoken span_mean "${extra[@]}"
+  # A rows carry the span in their id; after a re-alignment the old rows are
+  # removed from the manifests so nothing is counted twice.
+  python scripts/prune_manifests.py --run-dir "${ACT_AD}" --rows "${ROWS}/activation_rows.jsonl"
 fi
 
 if has 3; then
