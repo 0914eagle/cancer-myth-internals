@@ -181,7 +181,22 @@ C는 교정/비교정 응답 대조에서 얻는 후보 방향이다. 현재 후
 
 **행:** Plain, FP Identification, GEPA, 균형 전제 검토 CoT prompting, Unconditional C steering, CAST, Hidden gate + FP prompt, Hidden gate + C steering. Tripathi adaptation/전이는 구현·호환 범위에 맞춰 본 표 또는 부록에서 직접 비교한다. 실행하지 못한 범위는 제한으로 남긴다.
 
-**열:** PCR, PCS, NFP, TPQ 오교정, MedQA, PubMedQA, Medbullets. 손실 방향을 통일하고 CI·허용폭을 명확히 표시한다. TPQ에서 참 전제를 부정하지 않았다는 것과 답변 내용 전체의 정확성은 다르다.
+**논문용 Table 2.** Task 2와 Task 3의 결과를 같은 행에서 읽도록 일반 의료 QA 세 열을 오른쪽에 붙인다.
+
+| Method | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | TPQ 오교정률 (%) ↓ | MedQA ACC (%) ↑ | PubMedQA ACC (%) ↑ | Medbullets ACC (%) ↑ |
+|---|---|---|---|---|---|---|---|
+| Plain | — | — | — | — | — | — | — |
+| FP Identification | — | — | — | — | — | — | — |
+| GEPA (FPQ+TPQ) | — | — | — | — | — | — | — |
+| 균형 전제 검토 CoT prompting | — | — | — | — | — | — | — |
+| Unconditional C steering | — | — | — | — | — | — | — |
+| CAST (같은 의료 train) | — | — | — | — | — | — | — |
+| Hidden gate + FP prompt | — | — | — | — | — | — | — |
+| Hidden gate + C steering | — | — | — | — | — | — | — |
+
+**Table 2 캡션 초안.** *End-to-end premise correction and medical QA performance.* 동일 모델의 방법별 결과를 비교한다. Cancer-Myth의 PCR·PCS는 거짓 전제 교정, NFP와 TPQ 오교정률은 정상 질문의 부당한 전제 교정을 평가한다. MedQA·PubMedQA·Medbullets는 정답 정확도(ACC)다. PCS를 제외한 성능은 백분율이며, 각 성능 셀은 `추정값 [95% CI]`로 채운다. Cancer-Myth 열은 grouped cross-fitting의 out-of-fold 결과, 의료 QA 열은 QA test를 보지 않고 별도 최종 train/calibration 규칙으로 고정한 시스템의 결과다. `—`는 미측정이며 0을 뜻하지 않는다.
+
+**보고 규칙.** 모델마다 동일한 행 블록을 반복하고, 세 QA 열을 모든 주 비교 방법에 채운다. 정상 지표·QA의 보존 여부는 Plain 대비 paired 차이의 CI와 사전 허용폭으로 판정하며, 해당 차이와 판정은 표 주석 또는 동반 부록 표에 제시한다. NFP와 TPQ는 같은 정상 문항에 적용하는 서로 다른 루브릭이고, TPQ 오교정률의 이산화 규칙은 평가 전에 고정한다. 정확한 답 추출·무효 출력 처리 규칙도 QA별로 잠근다. 데이터셋별 개입률·harm/rescue·비용은 부록에 보고하여 QA를 하나의 불명확한 발화율로 합치지 않는다.
 
 **결과 문단에 쓸 순서:** Plain 대비 FPQ 변화 → NFP/TPQ 비열등성 → 기존 방법 대비 같은 허용폭에서의 차이 → QA 보존 → 비용·실패 사례. 먼저 주 결과를 답하고 모델별 경향은 뒤에 설명한다. 다른 baseline이 같은 목표를 달성하면 그것도 보고한다.
 
@@ -189,39 +204,34 @@ C는 교정/비교정 응답 대조에서 얻는 후보 방향이다. 현재 후
 
 ### 6.3 Table 3: 어느 부품이 개선에 기여했는가? (Task 2, RH2/RH2b)
 
-Table 2는 방법별 최종 정책을 비교한다. Table 3에서는 **우리 방법의 부품 하나만 바꾸는 세 비교**를 한다. 전체 방법 순위표나 불필요한 모든 조합을 반복하지 않는다.
+Table 2는 각각 개발한 완성 방법을 비교하고, Table 3은 고정한 부품에서 선택 방식과 개입 방식을 바꾼다. 아래 두 패널이 실제 논문 결과표 형식이다. 기존의 ‘고정하는 것 / 바꾸는 것 / 질문’ 설계표를 대체하며, 모든 결과 칸은 미측정이다.
 
-| 비교 블록 | 고정하는 것 | 비교할 행 | 보고할 핵심 변화 |
-|---|---|---|---|
-| **A. 선택해서 개입할 가치** | 동일 C 방향·층·강도·토큰 스케줄 | 항상 / 무작위 / 내부 gate | PCR·PCS·정상 손실; 내부 vs 무작위로 선택의 가치, 내부 vs 항상으로 개입 빈도까지 포함한 정책 변화 |
-| **B. 내부 신호로 선택할 가치** | 동일 C 개입, 사전에 정한 선택 예산 | 텍스트 / CoT / 내부 gate | 같은 개입 예산에서 PCR·PCS·정상 손실 차이 |
-| **C. 활성값으로 개입할 가치** | 원 질문에서 저장한 동일한 문항별 gate mask | FP prompt / C steering | 동일 문항에 개입했을 때 교정 성능·품질과 정상 손실 차이 |
+**Table 3(a). 선택 방식 비교 — 교정 연산 C 고정**
 
-**실제 표에 들어갈 행 뼈대** (한 모델·한 고정 설정의 예, 모든 결과 칸은 비워 둠):
-
-| ID | gate | 개입 | PCR [CI] | PCS [CI] | TPQ 오교정 [CI] | NFP [CI] | 개입률 |
+| ID | 교정 대상 선택 | 교정 방식 | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | TPQ 오교정률 (%) ↓ | 개입률 (%) |
 |---|---|---|---|---|---|---|---|
-| P | 없음 | Plain | | | | | 0 |
-| U | 항상 | 고정 C | | | | | 100% |
-| R | 무작위, 여러 seed | 고정 C | | | | | |
-| T | 텍스트 | 고정 C | | | | | |
-| Q | CoT monitor | 고정 C | | | | | |
-| H | 내부 probe | 고정 C | | | | | |
-| H-P | **H와 동일한 mask** | FP prompt | | | | | H와 동일 |
+| U | 모든 질문 | 고정 C steering | — | — | — | — | 100 |
+| R | 무작위 K개, 5 seeds | 고정 C steering | — | — | — | — | 100K/N |
+| T | 질문 텍스트 점수 상위 K개 | 고정 C steering | — | — | — | — | 100K/N |
+| Q | CoT monitor 점수 상위 K개 | 고정 C steering | — | — | — | — | 100K/N |
+| H | 내부 probe 점수 상위 K개 | 고정 C steering | — | — | — | — | 100K/N |
 
-읽는 법: **U/R/H → 블록 A, T/Q/H → 블록 B, H/H-P → 블록 C**. 핵심 짝 비교의 Δ와 CI를 표의 패널 또는 바로 아래 문장으로 제시한다. QA 세 열은 Table 2에서 이미 평가하므로 여기서 반복할 필요가 없다. oracle과 A∧C/head는 추가 진단이며 표가 커지면 부록으로 둔다.
+**Table 3(b). 개입 방식 비교 — H가 선택한 질문 목록 고정**
 
-**개입 예산의 의미:** 개발에서 고정한 문턱은 test에서 정확히 같은 발화율을 보장하지 않는다. 문턱 정책의 실제 개입률을 보고하는 비교와, 사전에 정한 top-k 비율로 test 라벨 없이 예산을 맞추는 배치 진단을 구분한다. 후자는 단일 질문 배포 정책의 성능으로 부르지 않는다. FPQ/TPQ별 정답 라벨을 보고 선택 수를 조정하지 않는다. 같은 횟수에 개입해도 CoT 생성 비용까지 같은 것은 아니다. 정확한 실행 규칙은 [13](13_task_spec.md)에 둔다.
+| ID | 교정 대상 선택 | 교정 방식 | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | TPQ 오교정률 (%) ↓ | 개입률 (%) |
+|---|---|---|---|---|---|---|---|
+| H-P | H와 동일한 문항 목록 | FP correction prompt | — | — | — | — | H와 동일 |
+| H | H와 동일한 문항 목록 | 고정 C steering | — | — | — | — | H와 동일 |
 
-**Table 1과 Table 3의 차이:** Table 1은 거짓 전제를 구분하는 능력이다. Table 3-B는 그 선택으로 실제 교정 이득을 얻는지다. 탐지한 FPQ가 현재 C로 고칠 수 없는 문항이라면 두 결과는 다를 수 있다.
+**Table 3 캡션 초안.** *Controlled comparisons of question selection and correction interventions.* (a) C의 방향·층·강도·적용 토큰 구간을 고정하여 대상 선택을 비교한다. R/T/Q/H는 fold별 동일한 K개를 선택하며, U는 모든 질문에 개입한다. (b) H의 개입 전 선택 목록을 그대로 재사용하여 교정 프롬프트와 C steering을 비교한다. H는 (a)와 동일한 응답·측정값을 재사용하며 독립 실험이 아니다. 지표는 선택된 문항에 한정하지 않고 전체 평가 FPQ 또는 정상 문항을 해당 분모로 계산한다. 각 성능 셀은 절대값과 95% CI를 보고하고, `—`는 미측정이다. PCS 외 성능은 백분율이다. N은 전체 평가 문항 수, K는 fold별 선택 수를 합한 값이며 개입률은 그 비율이다. 이 표의 상위 K 선택은 예산 통제용 배치 진단으로, Table 2의 고정 문턱 정책과 구분한다.
 
-**Table 2와 중복을 다루는 규칙:**
+**핵심 비교.** H−U는 선택에 따른 개입 빈도 변화를 포함한 효과, H−R은 같은 개입 수에서 정보에 따라 고르는 효과, H−T와 H−Q는 선택 신호의 효과, H − (H-P)는 동일 대상에서 개입 방식의 효과다. 본문에 각 비교의 ΔPCR·ΔPCS·ΔNFP·ΔTPQ 오교정률과 paired 95% CI를 보고한다. 비율 차이는 %p, PCS 차이는 점수 단위다. PCR·PCS·NFP는 양수, 오교정률은 음수가 유리하다. 차이만 제시하지 않고 위 표에서 절대 성능도 보여준다.
 
-- 모델·fold·부품·하이퍼파라미터·mask·생성·judge가 같으면 같은 결과를 재사용하고 원래 행을 참조한다. 별도 독립 실험처럼 세지 않는다.
-- Table 2에서 각 방법을 따로 조정했다면, 이름이 같은 행도 Table 3의 고정 부품 조건과 다를 수 있다. config ID와 비교 목적을 표시한다.
-- Table 2가 이미 세 통제 비교까지 충족하면 Table 3을 독립 표로 만들지 않고 구성 요소 분석 블록으로 합친다. 별도 표의 필요성은 추가로 답하는 질문과 지면에 달려 있다.
+**통제 규칙.** C와 개입 비율 q는 각 outer fold의 내부 dev에서 고정하고, K = round(q × 평가 fold 문항 수)로 정한다. R/T/Q/H의 선택 수는 같고, 상위 K 선택과 동점 처리는 평가 라벨을 쓰지 않는다. (b)는 원 질문에서 저장한 H의 문항 목록을 사용하며 프롬프트 추가 후 다시 판정하지 않는다. 선택되지 않은 질문은 동일한 Plain 응답을 사용한다. 교정 프롬프트는 선택 후 개입 부분이며 전체 FP Identification 절차를 재실행하지 않는다. 이진 TPQ 오교정 규칙·무작위 5 seeds의 집계·CI는 [13 §2](13_task_spec.md)에 따라 고정한다.
 
-**캡션 초안:** "Controlled component comparisons for selective premise correction. We hold the correction operator fixed when comparing gates and reuse identical gate decisions when comparing interventions. Shared reference rows are reused from Table 2 only when configurations match."
+**Table 1과의 차이:** Table 1은 실제 거짓 전제 유무를 잘 구분하는지, Table 3(a)는 그 선택을 이용했을 때 실제 교정과 정상 질문 보존이 좋아지는지를 평가한다. 탐지한 FPQ가 C로 고칠 수 없는 질문이라면 판별 성능과 교정 성능의 순위는 다를 수 있다.
+
+**Table 2와의 차이:** Table 2는 dev에서 고정한 문턱을 사용하는 최종 시스템이고, Table 3(a)는 같은 수에 개입하는 배치 진단이다. 같은 명칭의 방법이라도 선택 규칙이나 C 설정이 다르면 결과를 그대로 복사하지 않는다. 모델·fold·선택 목록·부품·생성·판정 조건이 일치할 때만 재사용하고 표시한다. 일반 의료 QA 세 열은 Table 2에 있으므로 여기서는 반복하지 않는다. 개입 횟수가 같다는 것이 CoT 생성까지 포함한 계산 비용이 같다는 뜻은 아니다. 비용·카테고리·추가 진단은 부록에서 보고한다.
 
 ### 6.4 결과가 다르게 나왔을 때의 서술
 
@@ -257,7 +267,7 @@ CI가 넓어 비열등성을 확인하지 못한 경우와 허용폭을 넘는 �
 
 1. [16 §6–7](16_code_overview.md)의 분할·judge·TPQ 루브릭·캐시·resume scale 문제를 해결한다. 문서 갱신은 구현 완료가 아니다.
 2. 일차 지표와 ε_NFP·ε_TPQ·QA별 허용폭, CI·다중 비교·미판정 처리, 최종 QA 정책 선택 규칙을 고정한다.
-3. Table 1의 동일 입력 비교와 Table 3의 세 통제 비교를 config·mask ID 수준으로 명세한다. Table 2의 별도 최적화와 구분한다.
+3. Table 1의 동일 입력 비교와 Table 3(a)/(b)의 통제 비교를 config·mask ID 수준으로 명세한다. Table 2의 별도 최적화와 구분한다.
 4. Table 1–3을 채운 뒤, Intro의 결과 예고·contribution과 Conclusion을 실제 지지 범위에 맞춰 작성한다. 추가 문헌 비교가 미실행이면 그대로 한계로 표시한다.
 
 현재 E1 중간 수치는 [15](15_progress_summary.md)·[실험 기록](experiments/01-e1-prediagnostic.md)에 두고, 최종 결과 칸으로 옮기지 않는다.
