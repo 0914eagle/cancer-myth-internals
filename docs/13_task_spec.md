@@ -8,6 +8,8 @@
 
 용어: 09의 gate를 여기서는 **개입 조건**이라 부른다. "이 질문에 손을 댈까 말까"를 정하는 점수와 문턱이다. 관련 연구 절에서는 원문 용어 gate를 병기한다.
 
+**Method 구체화:** [19](19_method_protocol.md)가 주 학습·추론 명세다. 주 C는 fit 질문의 +1/−1 참조 답변 첫 32토큰 평균 차다. A probe는 마지막 프롬프트 토큰의 표준화+L2 logistic이며, scaler·probe·C·scale은 fit에서만 만든다. 층·문턱·강도는 내부 dev에서 고정한다. 아래의 다른 방향 후보는 부록 ablation으로 읽는다.
+
 ## 0. 공통 설정
 
 | 항목 | 값 |
@@ -64,16 +66,16 @@ probe·C 방향·CAST 벡터·GEPA 프롬프트를 Cancer-Myth 문항으로 학�
 
 **Table 1 뼈대** (모델당 하나. 라벨 = 거짓 전제 유무. 585 vs 150, out-of-fold)
 
-| readout | AUROC [CI] | dev FPR 5% 문턱의 test TPR [CI] |
-|---|---|---|
-| 텍스트 분류기 | | |
-| 직접 질문 | | |
-| extract-and-verify | | |
-| CoT monitor | | |
-| **hidden probe** | | |
-| 텍스트 + hidden | | |
+| readout | AUROC ↑ | TPR (%) ↑ | FPR (%) ↓ |
+|---|---|---|---|
+| 텍스트 분류기 | — | — | — |
+| 직접 질문 | — | — | — |
+| extract-and-verify | — | — | — |
+| CoT monitor | — | — | — |
+| hidden probe | — | — | — |
+| 텍스트 + hidden | — | — | — |
 
-FPR 5%를 목표로 하는 문턱은 내부 dev에서 정한다. 표의 해당 열은 정확히 **"dev FPR 5% 문턱의 test TPR"**로 표기하고, 평가 fold의 실제 FPR과 그 불확실성을 함께 보고한다. 평가 라벨을 보고 문턱을 옮겨 test FPR을 5%로 맞추지 않는다.
+각 셀에 95% CI를 보고한다. TPR·FPR은 내부 dev FPR≤5%에서 TPR 최대인 탐지용 문턱 τ_det를 고정한 test 결과다. 두 지표는 같은 문턱에서 계산하며, 방법마다 같은 숫자의 문턱을 강제하지 않는다. 정상 dev가 적어 FPR이 거칠게 변하는 한계와 실제 분모를 보고한다. AUROC는 점수 순위의 판별 성능이며 ACC가 아니다. 이진 출력만 있는 방법은 고정 TPR/FPR만 보고하고, AUROC에는 확률·logit을 얻는 버전을 사용한다. [정확한 probe·동점 규칙](19_method_protocol.md#3-a-어디서-무엇을-추출해-probe를-학습하는가)
 
 **같이 내는 것 (부록).** 층×위치 AUROC 히트맵. shortcut 통제: 암종별 holdout, 텍스트 분류기 대비 이득. "Plain이 못 고칠 문항인가"(PCR −1 vs +1) 라벨의 AUROC는 별도 소표 — Task 2의 A∧C 조건용.
 
@@ -100,7 +102,7 @@ FPR 5%를 목표로 하는 문턱은 내부 dev에서 정한다. 표의 해당 �
 | 개입 | 정의 | 출처·선택 규칙 |
 |---|---|---|
 | FP Identification 프롬프트 | 고정한 교정 지시를 추가하여 응답 생성 | Well 프롬프트를 사용하는 경우 정확한 템플릿을 기록 |
-| **C residual steering** | 교정/비교정 응답의 활성값 대조. 후보: (i) 다른 질문의 교정·비교정 Plain 응답 평균 차, (ii) 같은 질문에 시스템 지시만 바꾼 응답 쌍의 차, (iii) 같은 질문의 기준 교정·비교정 답변을 teacher-forcing한 활성값 차 | 짝 대조는 질문 차이의 교란을 줄이는 장치이며, 질문 내용의 정확한 상쇄나 순수 행동 방향을 보장하지 않는다. 후보·층·위치·α는 내부 dev에서 실제 교정·정상 손실로 선택한다. AUROC만으로 제어력을 판정하지 않는다. CAA·Persona Vectors·RepE·Lavi 관련 근거는 [10](10_evidence_and_baselines.md), [12](12_discussion_decisions.md) 참조 |
+| **C residual steering** | 교정/비교정 응답의 활성값 대조. 후보: (i) 다른 질문의 교정·비교정 Plain 응답 평균 차, (ii) 같은 질문에 시스템 지시만 바꾼 응답 쌍의 차, (iii) 같은 질문의 기준 교정·비교정 답변을 teacher-forcing한 활성값 차 | 짝 대조는 질문 차이의 교란을 줄이는 장치이며, 질문 내용의 정확한 상쇄나 순수 행동 방향을 보장하지 않는다. 주 방법은 (iii)의 첫 32토큰으로 고정하고, 층·α는 내부 dev의 실제 교정·정상 손실로 선택한다. (i)·(ii)는 부록 후보이며 [19](19_method_protocol.md)가 우선한다. AUROC만으로 제어력을 판정하지 않는다. CAA·Persona Vectors·RepE·Lavi 관련 근거는 [10](10_evidence_and_baselines.md), [12](12_discussion_decisions.md) 참조 |
 | head steering | head별 방향을 적용하는 변형 | Tripathi 관련 전이·재학습 비교와 함께 부록 확장 |
 
 ### 2.1a Table 2 — 전제 교정과 일반 의료 QA를 합친 본 결과표

@@ -1,6 +1,6 @@
 # Cancer-Myth Internals
 
-> **2026-09-10 교수님 발표 준비:** [18 — 슬라이드별 상세 발표 원고](docs/18_professor_presentation_script.md). Introduction의 단계별 근거와 마지막 contribution 세 개, Related Work, Method, 결과표 개요를 18장으로 구성했다. 정상 질문은 NFP와 Well TPQ를 합친 300개가 아니라 **동일한 150개**이며, FPQ를 포함한 명목상 전체 질문 수는 **735개**다.
+> **2026-09-10 교수님 발표 준비:** [18 — 슬라이드별 상세 발표 원고](docs/18_professor_presentation_script.md). Introduction의 단계별 근거와 마지막 contribution 세 개, Related Work, Method, 결과표 개요를 23장으로 구성했다. Two Axes·Gated Activation Steering은 각각 2장, Method는 4장이다. 정상 질문은 NFP와 Well TPQ를 합친 300개가 아니라 **동일한 150개**이며, FPQ를 포함한 명목상 전체 질문 수는 **735개**다.
 
 > **2026-09-09 현재 연구계획:** 논문 전체의 이야기는 [17 — Introduction부터 Conclusion까지](docs/17_manuscript_storyline.md), 주장·가설은 [09](docs/09_research_proposal.md), 실행 명세는 [13](docs/13_task_spec.md)을 읽는다. Table 1은 판별 신호, Table 2는 최종 교정·보존 성능과 일반 의료 QA ACC 세 열을 합친 본 결과표, Table 3은 (a) 같은 steering의 선택 방식과 (b) 같은 질문의 개입 방식을 비교하는 두 패널 결과표다. [10 — 근거](docs/10_evidence_and_baselines.md), [11 — Tripathi 검토](docs/11_tripathi_review.md), [12 — 결정 기록](docs/12_discussion_decisions.md), [15 — 진행 현황](docs/15_progress_summary.md), [16 — 코드 지도](docs/16_code_overview.md)가 이를 뒷받침한다. 일반 의료 QA 보존은 Task 3이며 독립적인 새 방법 기여가 아니다. 아래 초기 요약과 충돌하면 이 문서들이 우선한다. 계획 갱신은 실험 성공을 뜻하지 않는다.
 
@@ -47,11 +47,13 @@
 | [docs/15_progress_summary.md](docs/15_progress_summary.md) | 결정·탐색 결과·미결 사항의 현재 요약 |
 | [docs/16_code_overview.md](docs/16_code_overview.md) | 실험 코드와 구현·리뷰 대응 상태 |
 | [docs/17_manuscript_storyline.md](docs/17_manuscript_storyline.md) | 논문 절별 스토리라인·문단 초안·표 읽는 법·결과별 결론 범위 |
-| [docs/18_professor_presentation_script.md](docs/18_professor_presentation_script.md) | 교수님 발표 18장 상세 원고 — 단계별 Intro·예상 기여 세 개·선행연구·방법·빈 결과표·질문 대비 |
+| [docs/18_professor_presentation_script.md](docs/18_professor_presentation_script.md) | 교수님 발표 23장 상세 원고 — 단계별 Intro·예상 기여 세 개·선행연구·방법·빈 결과표·질문 대비 |
 | [docs/experiments/01-e1-prediagnostic.md](docs/experiments/01-e1-prediagnostic.md) | E1 사전 진단 — 모델·GPU 배치, 위치 정의, 라벨, 산출물, 갈림길, 상태 |
 | [EXPERIMENTS.md](EXPERIMENTS.md) | 서버 세팅(125번, medical_nla 관례)과 실행 명령 전부 |
 | [docs/references.md](docs/references.md) | 링크 전부 |
 | [docs/appendix/candidates_screening.md](docs/appendix/candidates_screening.md) | 후보 논문 22편 스크리닝 결과 |
+
+[19 — Method 실행 명세](docs/19_method_protocol.md): 마지막 프롬프트 표상, probe 목적식·문턱, paired C 추출, 생성 hook·강도 및 구현 과제.
 
 ## 상태
 
