@@ -24,7 +24,7 @@
 | **2. Related Work** | 기존 연구가 이미 한 것과 남은 질문은 무엇인가? | 의료 FPQ 평가, prompting/CoT, 내부 readout, 조건부 steering | 우리 방법에서 실제로 선택·검증할 부품 |
 | **3. Methodology** | 입력을 받아 어떤 절차로 답하며, 무엇을 학습하는가? | 문제 정의, gate, 교정 개입, 제약 아래 개발, 비교 조건 | 이 정책을 어떻게 공정하게 평가하는가 |
 | **4. Experimental Setup** | 데이터·baseline·판정·분할이 타당한가? | Cancer-Myth/Well 활용 범위, 모델, nested grouped cross-fitting, 지표·허용폭 | 세 연구 질문을 검증하는 결과 |
-| **5. Experimental Results** | 신호가 유용한가, 최종 성능이 좋은가, 외부 근거에서도 효과가 남는가? | Table 1 판별, Table 2 최종 효용, Table 3 외부 근거 평가 | 성공·실패의 범위를 해석 |
+| **5. Experimental Results** | 신호가 유용한가, 최종 성능이 좋은가, 전제를 직접 주어도 사실 확인이 어려운가? | Table 1 판별, Table 2 최종 효용, Table 3 전제 사실 확인 진단 | 성공·실패의 범위를 해석 |
 | **6. Discussion and Limitations** | 결과가 어디까지 말해주며 무엇은 남았는가? | readout 해석, 작은 정상 표본, judge·도메인·방법 독창성 한계 | 검증한 사실만 결론으로 |
 | **7. Conclusion** | 결국 무엇을 알게 되었는가? | 문제, 지지된 결과, 적용 범위 | 새 주장·새 결과를 추가하지 않음 |
 
@@ -163,8 +163,8 @@ C는 fit FPQ의 +1/−1 참조 응답을 같은 타깃 모델에 teacher-forcing
 
 1. **데이터·중복:** Cancer-Myth 585 FPQ와 150 NFP/TPQ의 유효 ID·라벨 대응을 확인한다. 같은 myth, 의역, NFP–TPQ, 합성 참·거짓 쌍을 같은 그룹으로 묶는다. 합성 쌍은 원래 정상 질문 평가를 대체하지 않는다.
 2. **평가 분할:** nested grouped 5-fold cross-fitting을 사용한다. probe·C·GEPA·CAST 등 모든 학습 부품은 outer train에서, 종류·층·문턱·강도 선택은 inner dev에서만 정한다. outer 평가 결과로 gate 우승자를 고른 뒤 같은 결과를 다시 확증 자료로 쓰지 않는다.
-3. **모델·baseline:** 모델 revision·chat template·생성 설정·추가 데이터·탐색 예산을 보고한다. Table 2는 완성 방법을 공통 규칙 아래 조정한다. 두 Hidden 행은 같은 gate를 공유한다. Table 3는 외부 근거 조건, 부록 Table A1은 같은 C·K의 선택 비교다.
-4. **판정:** 본 표의 PCR/PCS·공식 NFP는 Cancer-Myth 판정 절차다. Table 3는 Well FPQ/TPQ S5, 부록은 전체 점수 분포로 두고 judge 등이 다르면 adaptation으로 표시한다. 미확정 TPQ 이산화 지표는 주 제약에 쓰지 않는다. parse 실패를 정답으로 세지 않고, 미판정률·재시도 및 분모 처리 규칙을 공개한다.
+3. **모델·baseline:** 모델 revision·chat template·생성 설정·추가 데이터·탐색 예산을 보고한다. Table 2는 완성 방법을 공통 규칙 아래 조정한다. 두 Hidden 행은 같은 gate를 공유한다. Table 3는 주석 전제 사실 확인 조건, 부록 Table A1은 같은 C·K의 선택 비교다.
+4. **판정:** 본 표의 PCR/PCS·공식 NFP는 Cancer-Myth 판정 절차다. Table 3는 Well 사실 확인 정확도, 최종 응답 S5·분포는 부록으로 두고 judge 등이 다르면 adaptation으로 표시한다. 미확정 TPQ 이산화 지표는 주 제약에 쓰지 않는다. parse 실패를 정답으로 세지 않고, 미판정률·재시도 및 분모 처리 규칙을 공개한다.
 5. **통계:** 주 지표·비열등성 허용폭·신뢰수준·다중 비교 처리를 고정한다. 같은 문항의 방법 간 차이를 짝지어 추정하고, myth·짝 문항의 의존성을 반영한다. 고정된 OOF 예측을 재표집한 CI는 학습/모델 선택의 전체 불확실성을 포함하지 않음을 명시한다. 방법별 CI의 겹침만으로 우열을 판정하지 않는다.
 6. **QA:** MedQA·PubMedQA·Medbullets에 사전에 지정한 최종 정책을 적용한다. benchmark 이름으로 gate를 끄지 않는다. fold별 정책으로 낸 FPQ OOF 성능과 사전 지정한 최종 train/calibration 규칙으로 재적합한 QA 정책의 관계를 설명한다. 개별 QA의 CI와 발화율을 보고한다.
 7. **원 표 재사용:** 데이터 수와 열이 같아도 cross-fitting·판정기·모델이 다르면 원본과 동일 실험이 아니다. Well의 실제 split ID를 확보하기 전에는 Table 8–10에 직접 비교 가능한 행을 붙였다고 쓰지 않는다. 출판 수치는 참고 행으로 분리하고 재실행 수치로 비교한다.
@@ -216,46 +216,71 @@ C는 fit FPQ의 +1/−1 참조 응답을 같은 타깃 모델에 teacher-forcing
 
 **Table 2 캡션 초안.** *End-to-end premise correction and medical QA performance.* 동일 모델의 방법별 결과를 비교한다. Cancer-Myth의 PCR·PCS는 거짓 전제 교정, NFP는 정상 질문에 없는 거짓 전제를 지어내 지적하지 않은 비율이다. NFP는 답변 전체의 의학적 정확도를 뜻하지 않으며, 별도 QA 열은 일반 의료 문제의 정답 정확도를 평가한다. MedQA·PubMedQA·Medbullets는 정답 정확도(ACC)다. PCS를 제외한 성능은 백분율이며, 각 성능 셀은 `추정값 [95% CI]`로 채운다. Cancer-Myth 열은 grouped cross-fitting의 out-of-fold 결과, 의료 QA 열은 QA test를 보지 않고 별도 최종 train/calibration 규칙으로 고정한 시스템의 결과다. `—`는 미측정이며 0을 뜻하지 않는다.
 
-**보고 규칙.** 모델마다 동일한 행 블록을 반복하고, 세 QA 열을 모든 주 비교 방법에 채운다. 정상 지표·QA의 보존 여부는 Plain 대비 paired 차이의 CI와 사전 허용폭으로 판정하며, 해당 차이와 판정은 표 주석 또는 동반 부록 표에 제시한다. NFP와 Well TPQ는 같은 정상 질문이다. 본 표는 공식 NFP 하나를 주 지표로 쓰고, Well FPQ/TPQ S5는 외부 근거 조건의 Table 3에서 보고하고, 0–5 전체 분포는 부록에 둔다. 미확정 TPQ 이산화 지표는 주 평가에서 제외한다. 정확한 답 추출·무효 출력 처리 규칙도 QA별로 잠근다. 데이터셋별 개입률·harm/rescue·비용은 부록에 보고하여 QA를 하나의 불명확한 발화율로 합치지 않는다.
+**보고 규칙.** 모델마다 동일한 행 블록을 반복하고, 세 QA 열을 모든 주 비교 방법에 채운다. 정상 지표·QA의 보존 여부는 Plain 대비 paired 차이의 CI와 사전 허용폭으로 판정하며, 해당 차이와 판정은 표 주석 또는 동반 부록 표에 제시한다. NFP와 Well TPQ는 같은 정상 질문이다. 본 표는 공식 NFP 하나를 주 지표로 쓰고, Table 3는 주석 전제의 참·거짓 정확도이며 Well 최종 응답 S5와 0–5 분포는 부록에 둔다. 미확정 TPQ 이산화 지표는 주 평가에서 제외한다. 정확한 답 추출·무효 출력 처리 규칙도 QA별로 잠근다. 데이터셋별 개입률·harm/rescue·비용은 부록에 보고하여 QA를 하나의 불명확한 발화율로 합치지 않는다.
 
 **결과 문단에 쓸 순서:** Plain 대비 FPQ 변화 → NFP 비열등성 → 기존 방법 대비 같은 허용폭에서의 차이 → QA 보존 → 비용·실패 사례. 먼저 주 결과를 답하고 모델별 경향은 뒤에 설명한다. 다른 baseline이 같은 목표를 달성하면 그것도 보고한다.
 
 **Figure 1:** 완성 시스템의 NFP(x)–PCR(y)을 그린다. 경계는 Plain NFP − ε_NFP이다. 판별기만 있는 Table 1의 행은 좌표가 없으므로 찍지 않는다. Well Figure 1의 표현을 참고하되 PCR/오교정 비율을 쓰면 원문의 평균 점수 축과 다름을 표시한다.
 
-### 6.3 Table 3: 외부 근거가 주어져도 선택적 교정이 유용한가? (Task 2 확장)
+### 6.3 Table 3 후보: 전제를 직접 주어도 사실 확인에 실패하는가? (Task 1 진단)
 
-**질문:** 외부 근거를 제공하면 기존 방법으로 충분한가, 같은 근거를 제공한 상황에서도 선택적 교정의 이득이 남는가?
+**현재 위치와 확정 범위.** 가져올 선행표는 Well-Actually Table 1로 확정한다. 이 표는 교수님 발표의 기존 연구 근거로 사용할 수 있다. 아래의 우리 Table 3 및 추가 probe 행은 사실 확인 진단을 독립 연구 질문으로 채택할 경우의 후보이며 본 실험으로 확정한 것은 아니다. 기존 결과를 인용하는 것만으로 우리 실험 결과표가 되지 않는다. 현재 질문 gate의 검증이 목적이면 Table 1의 질문 단위 탐지 비교에 RAG 기반 전제 추출·검증을 추가하는 방안도 가능하며, gold 전제를 받는 원 Table 1의 숫자와 직접 섞지 않는다.
 
-Well의 근거 없음 / Top-4 / 전체 근거 조건과 FPQ·TPQ S5 평가 형식을 계승한다. Top-4는 질문별 저장 문서 안에서 검색한 네 문단이며 전체 근거도 해당 질문의 문서 목록 전체다. 아래 출판값과 재실행값은 분할·자료 snapshot의 일치를 확인하지 못했으므로 별도 패널이다. 우리 행을 출판값 바로 아래 붙여 동일 조건의 순위로 읽지 않는다. [GitHub·공개 데이터 재현 점검](21_well_rag_reproducibility.md)
+**계승하는 표는 Well-Actually의 본문 Table 1, “Fact-checking accuracy on CancerMyth”다.** 이전 문서의 Table 8 S5 표로 대체한 구성은 철회한다. 사람이 주석한 전제 문장을 입력으로 주고 참·거짓 판정 정확도를 잰다. 최종 환자 답변 생성이나 PCR·PCS·S5를 평가하는 표가 아니다.
 
-**Table 3(a): 원 논문 보고값 — Qwen2.5-7B, 참고 전용.** 각 셀은 FPQ S5 / TPQ S5 (%). 아래는 Table 8의 주요 행 발췌이며 새로운 실험 결과가 아니다. `—`는 원문 해당 조건의 보고값이 없음을 뜻한다. [Well-Actually Table 8](https://arxiv.org/html/2608.06539v1)
+**Table 3(a): Well-Actually Table 1의 원 보고값 — 참고 자료.** Model → RAG → FPQ Accuracy → TPQ Accuracy의 원 구조를 유지했다. 수치는 정확도 % (정답 수/전제 수)다. FPQ Accuracy는 거짓 전제를 거짓으로 판정한 비율, TPQ Accuracy는 참 전제를 참으로 판정한 비율이다. 원 표의 분모 100·116은 전제 문장 수이며 116개의 정상 질문을 뜻하지 않는다. [원문 §3.2·Table 1](https://arxiv.org/html/2608.06539v1#S3.SS2)
 
-| 방법 | 근거 없음 | Top-4 | 전체 근거 |
+| Model | RAG | FPQ Accuracy | TPQ Accuracy |
 |---|---|---|---|
-| Direct QA | 1 / 100 | 3 / 100 | 0 / 78 |
-| FP Identification | 75 / 0 | 53 / 34 | 70 / 6 |
-| 전제 추출 + 사실 확인 — LLM | 28 / 56 | 30 / 48 | 37 / 47 |
-| 전제 추출 + 사실 확인 — MiniCheck | — | 5 / 99 | 1 / 98 |
-| PreWoMe | 14 / 94 | 13 / 95 | 5 / 89 |
-| Self-Dual-Critique | 6 / 85 | 7 / 85 | 1 / 61 |
+| Llama3-Med42-8B | None | 95 (95/100) | 31 (36/116) |
+| Llama3-Med42-8B | Top-4 | 96 (96/100) | 32.8 (38/116) |
+| Llama3-Med42-8B | All | 98 (98/100) | 20.7 (24/116) |
+| Llama-3-8B-Instruct | None | 97 (97/100) | 22.4 (26/116) |
+| Llama-3-8B-Instruct | Top-4 | 94 (94/100) | 42.2 (49/116) |
+| Llama-3-8B-Instruct | All | 100 (100/100) | 16.4 (19/116) |
+| Olmo-3-7B-Instruct | None | 100 (100/100) | 17.2 (20/116) |
+| Olmo-3-7B-Instruct | Top-4 | 93 (93/100) | 8.6 (10/116) |
+| Olmo-3-7B-Instruct | All | 100 (100/100) | 11.2 (13/116) |
+| Qwen2.5-7B-Instruct | None | 96 (96/100) | 15.5 (18/116) |
+| Qwen2.5-7B-Instruct | Top-4 | 97 (97/100) | 12.9 (15/116) |
+| Qwen2.5-7B-Instruct | All | 100 (100/100) | 6.9 (8/116) |
+| Gemini-3-flash | None | 93 (93/100) | 32.8 (38/116) |
+| Gemini-3-flash | None + reasoning | 98 (98/100) | 21.6 (25/116) |
+| Gemini-3-flash | Top-4 | 95 (95/100) | 26.7 (31/116) |
+| Gemini-3-flash | Top-4 + reasoning | 96 (96/100) | 17.2 (20/116) |
+| Gemini-3-flash | All | 98 (98/100) | 25 (29/116) |
+| Gemini-3-flash | All + reasoning | 96 (96/100) | 12.9 (15/116) |
+| Gemini-3-flash | Web | 96 (96/100) | 31 (36/116) |
+| Gemini-3-flash | Web + reasoning | 98 (98/100) | 20.7 (24/116) |
+| Gemma-4-E4B-it | None | 98 (98/100) | 23.3 (27/116) |
+| Gemma-4-E4B-it | Top-4 | 96 (96/100) | 16.4 (19/116) |
+| Gemma-4-E4B-it | All | 61 (61/100) | 37.1 (43/116) |
+| MiniCheck | Top-4 | 99 (99/100) | 10.3 (13/116)† |
+| MiniCheck | All | 95 (95/100) | 11.2 (14/116)† |
 
-**Table 3(b): 동일한 우리 분할·근거 조건으로 재실행 — 미측정.** 이 패널 안에서만 직접 비교한다. 원 표의 숫자와 우리 cross-fitting 숫자를 섞어 순위·차이·CI를 만들지 않는다. C의 주 실험과 Well식 생성 길이가 다르면 조건별로 다시 실행하며 이름을 명시한다.
+† MiniCheck 두 TPQ 셀은 원문·사용자 첨부 표를 그대로 옮겼다. 다만 13/116≈11.2%, 14/116≈12.1%로 원문의 앞 백분율과 일치하지 않는다. 원 결과 파일 확인 전에는 어느 값을 정정값으로 채택할지 단정하지 않으며, 이 두 셀로 차이·순위를 계산하지 않는다.
 
-| 방법 | 근거 없음 | Top-4 | 전체 근거 |
+**Table 3(b): 같은 전제·근거를 사용하는 재실행 및 내부 readout 진단 — 미측정 초안.** 독립 진단을 채택할 경우 Qwen에서 아래 조건을 비교할 수 있다. (a)의 기존 모델·RAG 조건은 보고값으로 소개하고, 직접 우위 비교는 같은 우리 분할에서 baseline까지 재실행한 (b) 안에서만 한다. 원 split·문서와 일치하지 않는 새 결과를 (a)에 그대로 붙이지 않는다.
+
+| Model / 판별 방식 | RAG | FPQ Accuracy (%) ↑ | TPQ Accuracy (%) ↑ |
 |---|---|---|---|
-| Direct QA | 미측정 | 미측정 | 미측정 |
-| FP Identification | 미측정 | 미측정 | 미측정 |
-| 전제 추출 + 사실 확인 — LLM | 미측정 | 미측정 | 미측정 |
-| 균형 전제 검토 CoT | 미측정 | 미측정 | 미측정 |
-| Hidden gate + FP prompt | 미측정 | 미측정 | 미측정 |
-| Hidden gate + C steering | 미측정 | 미측정 | 미측정 |
+| Qwen2.5-7B / 원 사실 확인 프롬프트 | None | — | — |
+| Qwen2.5-7B / 원 사실 확인 프롬프트 | Top-4 | — | — |
+| Qwen2.5-7B / 원 사실 확인 프롬프트 | All | — | — |
+| Qwen2.5-7B / 전제 검토 CoT 후 판정 | None | — | — |
+| Qwen2.5-7B / 전제 검토 CoT 후 판정 | Top-4 | — | — |
+| Qwen2.5-7B / 전제 검토 CoT 후 판정 | All | — | — |
+| Qwen2.5-7B / 전제 입력 내부 probe (진단) | None | — | — |
+| Qwen2.5-7B / 전제 입력 내부 probe (진단) | Top-4 | — | — |
+| Qwen2.5-7B / 전제 입력 내부 probe (진단) | All | — | — |
 
-**캡션 초안.** *Premise correction with external evidence under the Well-Actually evaluation.* (a) Published reference percentages from Well-Actually, Table 8. (b) New evaluations on a shared, frozen medical split and documented evidence snapshots. Entries report FPQ/TPQ S5 percentages; new results include confidence intervals and sample sizes. S5 is not Cancer-Myth PCR or NFP. Published and new evaluations are not pooled. For the two hidden-gated methods, gate decisions are shared and evidence is supplied to answer generation; evidence-conditioned detection is outside this comparison.
+**추가 행의 범위.** 내부 행은 주석 전제와 해당 근거를 입력받는 판별기의 진단이다. 원 질문만 읽도록 학습한 현재 A gate를 그대로 옮기거나 C steering의 최종 응답 점수를 붙이는 행이 아니다. 동일한 전제·근거·few-shot 문맥에서 출력 판정과 내부 readout을 비교한다. probe는 전제 단위 fit 자료에서 별도로 학습하고 층·문턱은 dev에서 고정한다. 같은 질문의 여러 전제와 같은 myth는 같은 fold에 묶는다. 추가 CoT 행은 전제를 검토한 뒤 참·거짓을 판정하는 비교이며 별도 모니터가 환자 답변을 채점하는 절차가 아니다. 원 모델이 지원하는 reasoning 설정과 추가 CoT 프롬프트도 구분한다.
 
-Table 3는 RAG가 있는 기존 방법으로 충분한지, 같은 근거·같은 대상에서 steering의 효과가 남는지, 근거와 개입이 보완적인지를 본다. RAG 후에도 실패했다는 사실만으로 지식 부족을 배제하지 않는다. 검색 근거의 실제 관련성과 충분성을 따로 확인한다. 이 실험을 넣었다는 사실만으로 새 알고리즘 기여가 생기는 것도 아니다.
+**캡션 초안.** *Fact-checking accuracy on annotated medical presuppositions under external evidence conditions.* (a) Published results from Well-Actually Table 1. (b) New evaluations on shared held-out presuppositions and frozen evidence. Accuracy is computed separately for false and true presuppositions. New entries report estimates, 95% confidence intervals, and correct/total counts. The premise-input probe is a diagnostic readout, distinct from the question-level deployment gate. Published and new results are not pooled.
 
+**세 표의 차이.** 우리 Table 1은 원 질문에서 잘못된 전제를 탐지하는 능력, Table 2는 최종 교정·정상 질문·의료 QA 성능, Table 3는 전제를 직접 제공해 추출 단계를 제거한 사실 확인 능력을 평가한다. Table 3에서만 주석 전제를 입력으로 제공하며 정답 진위 라벨은 입력하지 않는다. 이는 Task 1의 원인 진단 확장이다. 같은 개입량의 선택 비교는 부록 A1, 동일 gate 뒤의 prompt/C 효과는 Table 2에 남긴다.
 
-**결과 서술:** 같은 재실행 패널에서 각 방법의 근거 없음→Top-4→전체 근거 변화를 읽고, 같은 근거에서 Hidden prompt/C 차이를 비교한다. S5 상승과 TPQ 손실을 함께 보고한다. 검색 문서가 관련 없거나 부족하면 근거 제공 자체의 효과와 구분한다. 선택 정보의 효과는 [부록 Table A1 명세](13_task_spec.md)에 남기고, 동일 gate의 개입 방식 효과는 Table 2에서 보고한다.
+**해석 범위.** RAG 후에도 참 전제를 부정한다면 그 근거 조건에서 사실 확인 문제가 남았다는 결과다. 문서의 관련성·충분성을 확인하지 않은 채 지식 부족을 배제하지 않는다. 전제 입력 probe가 더 좋아도 실제 환자 질문을 읽는 A gate의 우위나 steering의 교정 효과를 입증한 것은 아니다.
 
 ### 6.4 결과가 다르게 나왔을 때의 서술
 
@@ -291,7 +316,7 @@ CI가 넓어 비열등성을 확인하지 못한 경우와 허용폭을 넘는 �
 
 1. [16 §6–7](16_code_overview.md)의 분할·judge·TPQ 루브릭·캐시·resume scale 문제를 해결한다. 문서 갱신은 구현 완료가 아니다.
 2. 일차 지표와 ε_NFP·QA별 허용폭, CI·다중 비교·미판정 처리, 최종 QA 정책 선택 규칙을 고정한다.
-3. Table 1 readout, Table 2 공유 gate, Table 3 근거 snapshot·Well 판정과 부록 A1의 예산을 config·mask ID 수준으로 명세한다. 출판값과 우리 재실행값을 분리한다.
+3. Table 1 readout, Table 2 공유 gate, Table 3 전제 manifest·근거 snapshot·진위 판정과 부록 A1의 예산을 config·mask ID 수준으로 명세한다. 출판값과 우리 재실행값을 분리한다.
 4. Table 1–3을 채운 뒤, Intro의 결과 예고·contribution과 Conclusion을 실제 지지 범위에 맞춰 작성한다. 추가 문헌 비교가 미실행이면 그대로 한계로 표시한다.
 
 현재 E1 중간 수치는 [15](15_progress_summary.md)·[실험 기록](experiments/01-e1-prediagnostic.md)에 두고, 최종 결과 칸으로 옮기지 않는다.

@@ -31,5 +31,14 @@
     "LLM generation",
     "judge API",
     "paper result reproduction"
-  ]
+  ],
+  "target_paper_table": "Well-Actually Table 1: Fact-checking accuracy on CancerMyth",
+  "factcheck_entrypoint": "prompting/run_fact_check.py --check_gold --pipeline fact_check",
+  "factcheck_aggregation": "run_check_gold_eval.py evaluate: reports incorrect_rate; accuracy=1-incorrect_rate",
+  "factcheck_transformers_max_new_tokens": 36,
+  "original_evaluation_premise_counts": {
+    "FP": 100,
+    "TP": 116
+  },
+  "original_evaluation_premise_manifest_available": false
 }

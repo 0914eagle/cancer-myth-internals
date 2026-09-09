@@ -6,7 +6,9 @@
 
 > **Method 14–17장 상세화:** [질문 벡터와 학습 자료](docs/18_professor_presentation_script.md#method-input) → [probe 목적식·층·문턱](docs/18_professor_presentation_script.md#method-probe) → [응답 쌍의 교정 방향](docs/18_professor_presentation_script.md#method-direction) → [새 질문의 steering](docs/18_professor_presentation_script.md#method-inference). 각 장에 화면 구성, 단계별 발표 원고, 계산 예시, 저장 값, 설정 근거와 구현 상태를 넣었다. 예시 수치는 실제 결과가 아니다.
 
-> **2026-09-10 현재 연구계획:** 논문 전체의 이야기는 [17 — Introduction부터 Conclusion까지](docs/17_manuscript_storyline.md), 주장·가설은 [09](docs/09_research_proposal.md), 실행 명세는 [13](docs/13_task_spec.md)을 읽는다. Table 1은 판별 신호, Table 2는 최종 교정·보존 성능과 일반 의료 QA ACC 세 열을 합친 본 결과표, Table 3는 외부 근거 없음·Top-4·전체 근거의 Well FPQ/TPQ S5 비교다. 같은 gate의 prompt/C 비교는 Table 2에 통합하고 같은 C·K의 선택 통제는 부록 A1에 둔다. [10 — 근거](docs/10_evidence_and_baselines.md), [11 — Tripathi 검토](docs/11_tripathi_review.md), [12 — 결정 기록](docs/12_discussion_decisions.md), [15 — 진행 현황](docs/15_progress_summary.md), [16 — 코드 지도](docs/16_code_overview.md)가 이를 뒷받침한다. 일반 의료 QA 보존은 Task 3이며 독립적인 새 방법 기여가 아니다. 아래 초기 요약과 충돌하면 이 문서들이 우선한다. 계획 갱신은 실험 성공을 뜻하지 않는다.
+> **현재 표 정정:** **현재 위치와 확정 범위.** 가져올 선행표는 Well-Actually Table 1로 확정한다. 이 표는 교수님 발표의 기존 연구 근거로 사용할 수 있다. 아래의 우리 Table 3 및 추가 probe 행은 사실 확인 진단을 독립 연구 질문으로 채택할 경우의 후보이며 본 실험으로 확정한 것은 아니다. 기존 결과를 인용하는 것만으로 우리 실험 결과표가 되지 않는다. 현재 질문 gate의 검증이 목적이면 Table 1의 질문 단위 탐지 비교에 RAG 기반 전제 추출·검증을 추가하는 방안도 가능하며, gold 전제를 받는 원 Table 1의 숫자와 직접 섞지 않는다.
+
+> **2026-09-10 현재 연구계획:** 논문 전체의 이야기는 [17 — Introduction부터 Conclusion까지](docs/17_manuscript_storyline.md), 주장·가설은 [09](docs/09_research_proposal.md), 실행 명세는 [13](docs/13_task_spec.md)을 읽는다. Table 1은 판별 신호, Table 2는 최종 교정·보존 성능과 일반 의료 QA ACC 세 열을 합친 본 결과표, Table 3는 Well 본문 Table 1을 계승한 주석 전제의 사실 확인 정확도 비교다. 같은 gate의 prompt/C 비교는 Table 2에 통합하고 같은 C·K의 선택 통제는 부록 A1에 둔다. [10 — 근거](docs/10_evidence_and_baselines.md), [11 — Tripathi 검토](docs/11_tripathi_review.md), [12 — 결정 기록](docs/12_discussion_decisions.md), [15 — 진행 현황](docs/15_progress_summary.md), [16 — 코드 지도](docs/16_code_overview.md)가 이를 뒷받침한다. 일반 의료 QA 보존은 Task 3이며 독립적인 새 방법 기여가 아니다. 아래 초기 요약과 충돌하면 이 문서들이 우선한다. 계획 갱신은 실험 성공을 뜻하지 않는다.
 
 의료 LLM이 환자 질문 속 **잘못된 전제(false presupposition)** 를 왜 못 고치는지를 **내부 표상**에서 읽고, 그 신호로 **조건부로** 고치는 연구.
 
@@ -15,7 +17,7 @@
 
 > **중심 문장.** 고정된 held-out 평가에서, 정상 질문의 추가 오교정 위험을 사전에 정한 범위로 제한하면서 거짓 전제 교정률을 높일 수 있는지 검증한다. 그 과정에서 내부 신호의 라우팅 가치와 활성값 개입의 추가 효과를 분리해 측정한다.
 
-> **표·기여 후속 정리:** [20 — 기존 방법의 기여와 의료 적용](docs/20_baseline_transfer_and_novelty.md). Table 1은 Two Axes의 핵심 readout 비교를 의료에서 재평가하고 검증 모니터를 추가한 10행이며 별도 새 Ours 탐지 행은 없다. Table 2는 NFP 주 지표 하나와 QA ACC 세 열, 의료 재학습 Gated·Extract+FactCheck를 포함한 아홉 방법이다. Well S5는 RAG Table 3, 전체 분포와 Unconditional C 선택 통제는 부록에 둔다. 두 선행 방법 모두 적용 가능하며 재학습 필요성을 실패 증거로 부르지 않는다.
+> **표·기여 후속 정리:** [20 — 기존 방법의 기여와 의료 적용](docs/20_baseline_transfer_and_novelty.md). Table 1은 Two Axes의 핵심 readout 비교를 의료에서 재평가하고 검증 모니터를 추가한 10행이며 별도 새 Ours 탐지 행은 없다. Table 2는 NFP 주 지표 하나와 QA ACC 세 열, 의료 재학습 Gated·Extract+FactCheck를 포함한 아홉 방법이다. Well 최종 응답 S5는 부록이며 Table 3는 전제 참·거짓 정확도다. Unconditional C 선택 통제도 부록에 둔다. 두 선행 방법 모두 적용 가능하며 재학습 필요성을 실패 증거로 부르지 않는다.
 
 > **RAG를 가져올 수 있는 범위 확인:** [21 — Well GitHub·공개 데이터 감사](docs/21_well_rag_reproducibility.md). 검색·생성·판정 코드와 TPQ 148문항의 파일을 확인했고 147문항에 근거 문서가 있다. 당시 split·Top-4·모델 응답은 확인되지 않아 원 수치 인용과 새 재실행을 구분한다. [버전·SHA256·개수 manifest](docs/audits/well_rag_inventory_2026-09-10.json). 모델 실험은 아직 실행하지 않았다.
 
@@ -76,7 +78,7 @@
 - [~] **실험 1** — 표상이 배경화된 전제에서 읽히는가 (A·B·C, 4 모델). llama·qwen 완료: A 0.81, Plain PCR 3–6 %라 자연 C 재료 부족 → stage 8 짝지은 C ([experiments/01 중간 결과](docs/experiments/01-e1-prediagnostic.md))
 - [ ] 개입 설계 (A 게이트 × C 방향)
 - [ ] baseline 재실행 (Well-Actually의 코드, Cancer-Myth 판정기로 채점)
-- [ ] Table 1 판별 / Table 2 최종 효용·QA / Table 3 외부 근거 비교와 부록 A1 선택 통제 완성
+- [ ] Table 1 판별 / Table 2 최종 효용·QA / 부록 A1 선택 통제 완성; 전제 사실 확인 Table 3 후보의 독립적 필요성 검토
 
 ## 코드
 

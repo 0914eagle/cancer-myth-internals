@@ -128,7 +128,7 @@ fold/model별 저장할 것은 split manifest, chat template/revision, probe(μ�
 | 참조 응답 쌍·C | [make_paired_rows.py](../scripts/make_paired_rows.py), [run_direction_pair.py](../scripts/run_direction_pair.py) | 참조 선택 전 fit 필터, fold별 방향, span·출처 기록 |
 | gate와 residual hook | [steering.py](../src/steering.py) | ≥ 판정 규약 통일, score 기록, 고정 scale 로드 |
 | 실행기 | [run_steer.py](../scripts/run_steer.py) | 전체 fold orchestration, dev 정책 선택, random/top-K·프롬프트 경로 |
-| 보존 판정 | [13](13_task_spec.md), [16](16_code_overview.md) | NFP·QA의 ε·CI 확정, judge 파싱/캐시와 QA 평가 구현, Table 3 Well S5와 전체 점수 분포 부록 경로 |
+| 보존 판정 | [13](13_task_spec.md), [16](16_code_overview.md) | NFP·QA의 ε·CI 확정, judge 파싱/캐시와 QA 평가 구현, Table 3 gold 전제 사실 확인과 최종 응답 점수 부록 경로 |
 
 현재 코드 주석의 ‘같은 질문이라 내용이 정확히 상쇄된다’는 표현은 이 명세의 인과적 주장으로 채택하지 않는다. `steering.py` 상단의 ‘generated positions only’ 요약보다 실제 마지막 프롬프트 토큰부터 시작하는 hook 동작이 정확한 실행 기준이다. 현재 `run_steer.py`의 첫 batch norm 계산도 본 실험에는 그대로 사용하지 않는다.
 
@@ -141,12 +141,16 @@ Table 2의 Gated head steering은 원 artifacts를 다른 모델에 꽂는 조�
 CAST도 원 PCA 조건/행동 벡터와 유사도 문턱의 의료 adaptation을 별도로 명세한다. logistic gate를 넣고 CAST 원 방법이라고 부르지 않는다. 이러한 재학습 baseline의 성능이 없으면 비교 우위를 주장할 수 없다. 미구현 행은 미측정 상태로 남긴다.
 
 
-## 10. 외부 근거 조건의 Table 3 실행 경계
+## 10. Table 3 후보: Well Table 1을 계승한 사실 확인 진단
 
-Well GitHub의 검색·답변·판정 코드를 재사용하되 원 숫자를 재현한 것으로 간주하지 않는다. [21 — 실제 공개 파일, 버전, 누락 항목, 명령 예시](21_well_rag_reproducibility.md)에 점검 결과를 고정했다. 우선 Qwen2.5-7B와 RAG=0/4/all에서 Direct QA, FP Identification, Extract+FactCheck, 균형 CoT, 두 Hidden 행을 같은 우리 평가 문항으로 실행한다. FPQ/TPQ S5와 전체 분포를 채점한다.
+**현재 위치와 확정 범위.** 가져올 선행표는 Well-Actually Table 1로 확정한다. 이 표는 교수님 발표의 기존 연구 근거로 사용할 수 있다. 아래의 우리 Table 3 및 추가 probe 행은 사실 확인 진단을 독립 연구 질문으로 채택할 경우의 후보이며 본 실험으로 확정한 것은 아니다. 기존 결과를 인용하는 것만으로 우리 실험 결과표가 되지 않는다. 현재 질문 gate의 검증이 목적이면 Table 1의 질문 단위 탐지 비교에 RAG 기반 전제 추출·검증을 추가하는 방안도 가능하며, gold 전제를 받는 원 Table 1의 숫자와 직접 섞지 않는다.
 
-질문별 문서 snapshot·chunk·검색 질의·retriever revision·단계별 Top-4·원문 URL·수집 날짜·길이 초과 처리 규칙을 저장한다. 공개 TPQ 148개 중 147개에 passages가 있으며 원 NFP 150개와의 ID 대응을 유지한다. FPQ 문서는 별도로 준비하고 정상/거짓 질문 간 출처 차이를 진단한다. gold 전제나 교정 답변은 전체 QA의 검색 query로 사용하지 않는다. 원 전제 추출 방법은 예측한 전제를 query로 쓰는 단계를 명시한다.
+Table 3 후보는 최종 환자 답변을 평가하는 RAG 표가 아니다. 주석 전제를 직접 제공하고 근거 조건별 참·거짓 정확도를 평가한다. 원 보고값은 참고 패널에 두고, 같은 우리 전제·문서에서 재실행한 baseline과 추가 진단을 별도 비교한다. [21 — 원 표·공개 코드·재현 범위](21_well_rag_reproducibility.md)
 
-두 Hidden 행은 Table 2에서 학습·고정한 질문 전용 A/τ_policy/C를 유지하고, 질문 기반으로 검색한 같은 문서를 최종 생성에 제공한다. gate=0에서도 근거를 제공하며 같은 RAG Direct QA 응답을 재사용한다. gate=1에서만 prompt/C가 달라진다. RAG 입력을 붙인 뒤 gate를 재계산하지 않으며 근거에 맞춘 재학습·강도 조정은 별도 adaptation이다. 원 Well 방법의 문서 입력 단계가 다르면 그 차이를 기록한다.
+실행은 `prompting/run_fact_check.py --check_gold --pipeline fact_check`이며 주석 전제별로 검색하고 판정한다. 주석 전제 자체는 이 진단의 허용 입력이고 진위 정답 라벨은 입력하지 않는다. 원 질문 기반 gate 평가와 배포 응답에는 gold 전제를 제공하지 않는다. FP/TP 정확도는 별도 분모로 계산한다. `run_check_gold_eval.py`는 오답률을 반환하므로 표의 정확도로 변환한다. response-level S5 judge는 이 경로가 아니다.
 
-원 생성 helper 기본값은 2,048개 새 토큰으로 현재 512 주 정책과 다르다. Table 3 재실행 패널은 동일 생성 예산·모델 revision·judge로 맞추고, 길이 변경 시 응답을 재생성한다. 단계 수가 다른 방법의 전체 토큰·시간은 별도로 보고한다. 공개 S5 집계는 유효한 0–5 판정 중 5의 비율이며 0도 분모에 포함한다. 파싱 실패는 별도다. 이 경로는 아직 구현·모델 실행되지 않았고, 문서와 공개 데이터의 정적 감사만 마쳤다.
+내부 readout 추가행은 전제·근거 입력으로 별도 학습하는 진단이다. 기존 질문 A gate의 숫자를 복사하지 않는다. 기본 학습기는 §3의 표준화+L2 logistic을 사용하되 입력은 원 사실 확인 템플릿의 마지막 프롬프트 토큰이고, 레이블은 해당 전제의 FP=1/TP=0이다. RAG 조건별 fit/dev/held-out 그룹 목록은 공유하며 readout artifact는 조건별로 분리한다. fit에서만 scaler·probe를 학습하고 dev에서 층·규제·문턱을 선택한다. 이 진단의 문턱은 dev balanced accuracy를 최대화하도록 정하고 동률이면 참 전제 오탐이 낮은 쪽으로 고정한다. 기존 질문 gate의 τ_det/τ_policy와 다른 문턱이다. 같은 질문·myth의 전제는 같은 fold에 묶는다.
+
+출력과 내부의 비교 입력은 같은 전제·문서·few-shot 및 허용 문맥이다. CoT 행은 동일 전제를 검토한 뒤 참·거짓을 판정하며 추가 토큰·시간을 기록한다. 원 지원 reasoning 설정과 별도 CoT 프롬프트를 혼동하지 않는다. doctor_suggestion 문맥을 사용하면 양쪽에 동일하게 제공하고 해당 shortcut 가능성은 별도 분석한다. 새 정확도에는 전체 전제 분모·95% CI·무효율을 기록하고, 같은 질문의 전제를 함께 재표집한다.
+
+Table 3는 사실 확인 단계의 진단이며 실제 질문의 교정 효과는 Table 2에서만 주장한다. 같은 gate prompt/C 및 부록 A1 규칙은 유지한다. 사실 확인 재실행과 추가 probe 경로는 아직 실행되지 않았다.

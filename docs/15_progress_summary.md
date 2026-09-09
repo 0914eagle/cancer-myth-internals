@@ -16,10 +16,10 @@
 |---|---|---|
 | 중심 문장 | 고정 held-out 평가에서 정상 질문의 추가 오교정을 사전 허용폭 안으로 제한하면서 거짓 전제 교정률을 높일 수 있는지 검증. 내부 신호의 라우팅 가치와 활성값 개입의 추가 효과를 분리해 측정 | 09 §1, README |
 | 가설 | RH1 내부 신호의 추가 가치 / RH2 선택적 개입의 효과 (+RH2b steering vs prompt) / RH3 일반 의료 QA 보존 | 09 §3 |
-| Task ↔ 표 | Task 1 → Table 1 (판별) / Task 2 → Table 2 (최종 효용) + Table 3 (외부 근거) + 부록 A1 (같은 C·K 선택 통제) / Task 3 → Table 2의 QA 열. 같은 결과의 반복을 독립 증거로 세지 않음 | 13, 17 §6 |
+| Task ↔ 표 | Task 1 → Table 1 (판별) / Task 2 → Table 2 (최종 효용) + 부록 A1 (같은 C·K 선택 통제); Table 3는 Task 1의 주석 전제 진단 후보 / Task 3 → Table 2의 QA 열. 같은 결과의 반복을 독립 증거로 세지 않음 | 13, 17 §6 |
 | 본 표 행 | Plain, FP Identification, Extract+FactCheck, GEPA, 균형 CoT, CAST, Gated head 의료 adaptation, Hidden+prompt, Hidden+C. Unconditional C·무작위는 부록 A1, 출판 수치는 별도 참고 | 13 §3 |
 | 평가 단위 | 585 + 150 전체, nested grouped 5-fold cross-fitting. Well 잠근 분할은 ID 확보 시 부록 | 13 §0, 12 §5 |
-| 판정기 | 본 표 GPT-4o의 PCR/PCS·공식 NFP. 같은 정상 질문의 중복 열 제거. Table 3는 Well S5, 전체 0–5 분포는 부록 | 13 §0, 10 §2 |
+| 판정기 | 본 표 GPT-4o의 PCR/PCS·공식 NFP. 같은 정상 질문의 중복 열 제거. Table 3는 Well 사실 확인 정확도, 최종 응답 S5·분포는 부록 | 13 §0, 10 §2 |
 | 모델 | Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct 먼저. Gemma-2-27B는 E2 1순위(E1 결과) | 13 §0, experiments/01 |
 | C 방향 | 주 실행안은 fit FPQ의 교정/비교정 참조 응답 첫 32토큰 평균 차. 후보·층·강도는 dev, 최종 test 고정. 다른 방향은 부록이며 과거 E1 관찰과 구분 | 19, 20 |
 | 용어 | gate → 개입 조건 / 선택적 개입. 분류기 = linear probe(hidden), text classifier(BoW) | 12 §11 |
@@ -88,5 +88,5 @@
 1. 목요일 미팅 → §5 미결 채우기 → 12 §9 갱신.
 2. 실험 세션: E0 재정렬 → stage 9 쌍둥이 → A probe 대 텍스트 재측정 (RH1의 첫 답).
 3. 코드 리뷰 잔여 항목(16 §6)과 13 대비 빠진 부품(16 §7) 구현.
-4. E2 탐색 설정과 최종 평가를 구분하고, Table 2의 공유 gate prompt/C, 부록 A1 선택 통제, Table 3 RAG 조건을 고정해 실행.
-5. 미측정 Table 1·2·3 채우기. Table 2는 Cancer 판정, Table 3는 Well 판정을 적용하고 출판값과 새 결과를 분리.
+4. E2 탐색 설정과 최종 평가를 구분하고, Table 2의 공유 gate prompt/C와 부록 A1 선택 통제를 실행. Well Table 1은 선행 근거로 소개하고 추가 사실 확인 진단의 필요성을 정한 뒤 Table 3 채택 여부를 결정.
+5. 미측정 Table 1·2를 채우고 출판값과 새 결과를 분리. Table 3 후보는 최종 응답 S5가 아니라 주석 전제의 진위 판정 정확도다.

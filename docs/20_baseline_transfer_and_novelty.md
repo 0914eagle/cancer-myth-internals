@@ -49,7 +49,7 @@ CoT monitor는 `원 질문 → 전제 검토 글 생성 → 별도 판정기가 
 
 Cancer-Myth NFP 150개와 Well TPQ는 같은 정상 질문이다. Cancer의 NFP는 없는 거짓 전제를 지어내 지적하지 않은 비율이다. Well은 부당한 부정·의심·회피를 단계적 점수로 평가한다. 둘 다 답변 전체의 의학적 정확도는 아니다. [Cancer NFP 판정 코드](https://github.com/Bill1235813/cancer-myth/blob/main/validate_nfp.py) · [Well Appendix E](https://arxiv.org/html/2608.06539v1#A5)
 
-Table 2의 정상 질문 주 지표는 공식 NFP 하나다. Table 3는 Well의 근거 없음·Top-4·전체 근거 조건에서 FPQ/TPQ S5를 보고한다. 전체 0–5 분포는 부록에 둔다. NFP와 TPQ는 같은 원 정상 질문에 다른 루브릭을 적용한 것이며 공개 TPQ 파일의 148개는 150개에서 정상 few-shot 2개를 뺀 집합이다. 실제 평가 분모와 ID를 따로 기록한다. S5를 PCR/NFP로 바꾸어 읽거나 두 정상 집합을 더하지 않는다. [공개 파일 점검](21_well_rag_reproducibility.md)
+Table 2의 정상 질문 주 지표는 공식 NFP 하나다. Table 3 후보는 Well 본문 Table 1의 근거 조건별 전제 참·거짓 정확도다. 최종 응답 S5는 부록이다. 전체 0–5 분포는 부록에 둔다. NFP와 TPQ는 같은 원 정상 질문에 다른 루브릭을 적용한 것이며 공개 TPQ 파일의 148개는 150개에서 정상 few-shot 2개를 뺀 집합이다. 실제 평가 분모와 ID를 따로 기록한다. S5를 PCR/NFP로 바꾸어 읽거나 두 정상 집합을 더하지 않는다. [공개 파일 점검](21_well_rag_reproducibility.md)
 
 ## 5. Table 2의 행을 고르는 기준
 
@@ -79,7 +79,9 @@ Unconditional C는 부록 Table A1의 U행으로 이동한다. R/T/Q/H의 C도 �
 
 부록 Table A1은 같은 C·강도·층·위치에서 R/T/Q/H의 개입 수 K를 맞춰 선택 효과를 비교한다. U는 전체에 개입한다. 개입률은 성능 지표가 아니라 통제 확인 열이다. 동일 대상의 prompt/C 비교는 Table 2의 두 Hidden 행에 통합했으므로 별도 Table 3(b)로 반복하지 않는다. A1의 상위 K는 Table 2의 개별 질문 고정 문턱과 다른 배치 진단이다.
 
-새 Table 3는 외부 근거를 주면 기존 방법으로 충분한지와, 같은 근거 아래 steering의 효과가 남는지를 본다. 원 논문 Table 8 집계값은 참고 패널, 같은 우리 분할·문서에서 재실행할 결과는 비교 패널로 분리한다. GitHub의 RAG·생성·판정 코드는 공개이고 TPQ 147문항에는 근거 문서가 있지만, 당시 Top-4·원 split·최종 답변은 점검한 파일에서 확인되지 않았다. 원 수치의 정확한 재현을 완료했다고 말하지 않는다. [재현 범위와 실제 표](21_well_rag_reproducibility.md)
+**현재 위치와 확정 범위.** 가져올 선행표는 Well-Actually Table 1로 확정한다. 이 표는 교수님 발표의 기존 연구 근거로 사용할 수 있다. 아래의 우리 Table 3 및 추가 probe 행은 사실 확인 진단을 독립 연구 질문으로 채택할 경우의 후보이며 본 실험으로 확정한 것은 아니다. 기존 결과를 인용하는 것만으로 우리 실험 결과표가 되지 않는다. 현재 질문 gate의 검증이 목적이면 Table 1의 질문 단위 탐지 비교에 RAG 기반 전제 추출·검증을 추가하는 방안도 가능하며, gold 전제를 받는 원 Table 1의 숫자와 직접 섞지 않는다.
+
+Well Table 1은 gold 전제의 사실 확인 정확도이고 Table 8은 최종 응답 점수다. RAG가 포함됐다는 이유로 두 표를 바꾸어 가져오지 않는다. 코드·TPQ 문서의 공개 여부 감사는 유지하며 사실 확인 실행 경로는 [21](21_well_rag_reproducibility.md)에 수정했다.
 
 ## 7. 우리 방법을 정한 근거와 기여 범위
 

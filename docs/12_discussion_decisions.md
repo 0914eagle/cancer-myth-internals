@@ -241,3 +241,14 @@ Well-Actually는 Two Axes를 한 문장으로만 인용한다: *"LLM-based fact 
 6. 원자료는 ignored external 폴더에 내려받고 Git에는 감사 문서·metadata만 남긴다. 재검색·생성·judge 실행은 하지 않았다. 다음 실행은 자료·분할·길이·판정기를 고정해 baseline과 우리 방법을 함께 재평가하는 adaptation이다.
 
 Task 3는 계속 일반 의료 QA 보존이며 Table 2의 QA 세 열로 평가한다. RAG 조건은 Task 2의 확장이고 새 독립 task나 그 자체로 새 방법론 contribution을 뜻하지 않는다.
+
+
+## 2026-09-10 사용자 첨부 표에 따른 정정 — Well Table 1
+
+사용자가 지정한 표는 “Fact-checking accuracy on CancerMyth”인 Well 본문 Table 1이다. 이전 RAG 논의에서 이를 Table 8의 최종 응답 S5로 바꾸어 문서화한 것은 assistant의 잘못된 범위 변경이었다. 위의 ‘새 Table 3는 S5 RAG’ 결정은 철회한다. 원 Model/RAG/FPQ Accuracy/TPQ Accuracy 구조와 전체 보고값을 복원했다.
+
+원 Table 1의 100·116은 평가 전제 문장 수다. 모델은 gold 전제를 받아 참·거짓을 판정하며 RAG는 그 사실 확인의 근거 조건이다. 실행은 `run_fact_check.py --check_gold`, 집계는 `run_check_gold_eval.py`의 오답률을 정확도로 변환한다. S5 judge를 사용하지 않는다. 공개 transformers fact_check 상한은 36토큰이다. MiniCheck 두 TPQ 셀의 인쇄된 백분율과 분자/분모 불일치는 원문 그대로 표시하고 원 결과 확인 전 단정하지 않는다.
+
+추가 사용자 질문에 따라 이 표를 선행 근거로 소개하는 것과 우리 독립 결과 Table 3로 확장하는 것을 구분한다. gold 전제 내부 readout은 별도 진단 후보이며 의무 본 실험으로 확정하지 않는다. 주 연구 질문이 실제 환자 질문의 판별이면 기존 Table 1에 RAG 기반 추출·검증을 추가하는 편이 직접적일 수 있다. 그 경우 자동 추출과 질문 단위 집계가 필요하므로 원 Well Table 1의 숫자와 같은 입력 조건이라고 부르지 않는다.
+
+Well Table 1은 외부 근거 아래에서도 참 전제의 과잉 부정이 남는다는 사실 확인 분석이다. 답변 지식 부족과 질문의 성립 여부를 두 라벨로 분리한 실험으로 해석하지 않는다. 같은 gate의 prompt/C는 Table 2, 같은 C·K의 선택 통제는 부록 A1로 유지한다. 코드·데이터 정적 감사 외 모델 실험은 실행하지 않았다.

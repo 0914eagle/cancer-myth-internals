@@ -88,7 +88,7 @@ Cancer-Myth 및 Well-Actually 평가를 기반으로 한다. 핵심 비교 행�
 
 Table 2는 완성 방법의 PCR·PCS·NFP와 일반 의료 QA를 함께 비교한다. 두 Hidden 행은 같은 probe·문턱·문항 목록을 공유해 prompt/C 효과를 비교한다. 기존 Table 3(b)는 여기에 통합하고 같은 결과를 독립 증거로 세지 않는다.
 
-Table 3는 외부 근거 없음·Top-4·전체 근거에서 Well FPQ/TPQ S5를 비교한다. 출판값은 참고 패널에 두고, 공통으로 고정한 우리 split·문서에서 baseline과 우리 방법을 재실행한 값을 비교 패널에 둔다. 질문 전용 gate는 고정하고 두 Hidden 행의 최종 생성에 같은 근거를 제공한다. RAG가 있는 기존 방법으로 충분한지, 동일 근거에서 steering의 이득이 남는지 본다. [공개 자료·재현 범위](21_well_rag_reproducibility.md)
+사용자가 지정한 선행표는 Well Table 1의 전제 사실 확인 정확도다. 이를 소개하고, 전제를 직접 주었을 때의 내부/출력 판별 차이를 별도 연구 질문으로 채택하면 Table 3 진단으로 확장할 수 있다. 현재 C steering의 필요성을 이 표 자체로 입증하지 않는다. **현재 위치와 확정 범위.** 가져올 선행표는 Well-Actually Table 1로 확정한다. 이 표는 교수님 발표의 기존 연구 근거로 사용할 수 있다. 아래의 우리 Table 3 및 추가 probe 행은 사실 확인 진단을 독립 연구 질문으로 채택할 경우의 후보이며 본 실험으로 확정한 것은 아니다. 기존 결과를 인용하는 것만으로 우리 실험 결과표가 되지 않는다. 현재 질문 gate의 검증이 목적이면 Table 1의 질문 단위 탐지 비교에 RAG 기반 전제 추출·검증을 추가하는 방안도 가능하며, gold 전제를 받는 원 Table 1의 숫자와 직접 섞지 않는다.
 
 같은 C·K에서 전체/무작위/텍스트/CoT/내부 선택을 비교하는 이전 Table 3(a)는 부록 Table A1로 옮긴다. 탐지 순위가 실제로 고칠 수 있는 질문의 선택 순위와 같은지는 여전히 확인한다.
 
@@ -96,7 +96,7 @@ Table 3는 외부 근거 없음·Top-4·전체 근거에서 Well FPQ/TPQ S5를 �
 
 oracle gate는 gold FPQ 라벨로 개입하는 진단 조건이다. gold가 있어도 모든 FPQ에 개입하는 것이 항상 최적은 아니므로 전체 성능의 엄밀한 상한이라고 부르지 않는다.
 
-지표: Table 2는 PCR·PCS·공식 NFP, Table 3는 Well FPQ/TPQ S5, 부록은 전체 점수 분포다. 같은 정상 질문의 중복 지표를 본 표에서 제거하며 전체 의료 정답 정확도는 별도 QA로 평가한다. 전체 평균과 문항별 harm/rescue, 게이트 발화율, 비용을 함께 보고한다.
+지표: Table 2는 PCR·PCS·공식 NFP, Table 3는 Well 전제 사실 확인 정확도, 부록은 최종 응답 S5·분포다. 같은 정상 질문의 중복 지표를 본 표에서 제거하며 전체 의료 정답 정확도는 별도 QA로 평가한다. 전체 평균과 문항별 harm/rescue, 게이트 발화율, 비용을 함께 보고한다.
 
 ## 7. Task 3 — 일반 의료 QA 성능 보존
 
@@ -114,13 +114,13 @@ Task 2의 개발 절차를 거쳐 고정한 **전체 시스템**을 적용한다
 |---|---|---|---|
 | **Table 1: 판별 신호 비교** | AUROC와 CI, dev에서 고정한 문턱의 test TPR·실제 FPR | BoW / 직접 질문 / 학습된 출력 readout / Raw / P(IK) / P(True) / 내부 DiM / 내부 logistic / 전제 추출·검증 / CoT monitor. 결합은 부록 | **Task 1**. 무엇으로 거짓 전제 문항을 구분할 수 있는가 |
 | **Table 2: 본 결과** | PCR, PCS, NFP, MedQA, PubMedQA, Medbullets와 CI | Plain / FP Identification / Extract+FactCheck / GEPA / 균형 CoT / CAST / Gated head / Hidden+prompt / Hidden+C. 출판 수치는 참고 행으로 분리 | **Task 2 + Task 3**. 완성된 방법의 교정·보존 효용; 원 평가 요소를 계승한 재실행 비교 |
-| **Table 3: 외부 근거 평가** | Well FPQ S5 / TPQ S5; 새 결과 CI | 근거 없음 / Top-4 / 전체 근거 × 기존 검증 방법·CoT·두 Hidden 행 | **Task 2 확장**. 근거 제공 후에도 선택적 교정이 유용한가. 출판 참고값과 재실행값 분리 |
+| **Table 3 후보: 전제 사실 확인** | FPQ/TPQ 전제 진위 판정 ACC와 정답 수/분모 | Model·판별 방식 × RAG; Well Table 1 원본 및 동일 입력 재실행 후보 | **Task 1 진단 후보**. 전제 추출을 제거해도 사실 확인 오류가 남는가. 독립 본문 표 채택은 미확정 |
 | **Figure 1: PCR–NFP** | x = NFP, y = PCR | 완성된 정책만. 부록 A1 배치 진단을 넣으면 별도 표시 | Well Figure 1의 표현을 참고하되 원문의 평균 점수와 구분 |
 | 부록 | A1 같은 C·K의 선택 비교, 전이 readout, 카테고리, A×C 분포, 층별 cosine, AO/NLA 통제, Well 판정기 재채점, 일반 도메인 3종 | 진단 및 해석 한계 | 주장을 보조 |
 
-Task와 Table은 일대일이 아니다. 본문 세 표는 판별 신호 → 최종 교정·QA → 외부 근거 조건을 각각 보여준다. 동일 선택의 prompt/C 차이는 Table 2, 같은 개입량에서의 선택 정보 효과는 부록 A1이다. [17 §6](17_manuscript_storyline.md)에 실제 표와 결과 서술 순서를 적었다.
+Task와 Table은 일대일이 아니다. 본문 세 표는 판별 신호 → 최종 교정·QA → 선택 시 전제 사실 확인 진단을 각각 보여준다. 동일 선택의 prompt/C 차이는 Table 2, 같은 개입량에서의 선택 정보 효과는 부록 A1이다. [17 §6](17_manuscript_storyline.md)에 실제 표와 결과 서술 순서를 적었다.
 
-Table 1·2의 평가 단위는 585 전체와 150 전체다. Table 3 주석 평가 대상은 공개 TPQ와의 ID 대응·few-shot 제외를 명시하고 별도 분모를 고정한다. 학습형 부품(probe, C 방향, CAST, GEPA, 분류기)은 nested grouped 5-fold cross-fitting으로 전 문항에 out-of-fold 결과를 낸다. 그래야 Cancer-Myth Table 1·3과 분모가 같다. Well의 잠근 분할은 저자들이 원 실험에서 사용한 **분할별 문항 식별자 목록**을 확보하면 부록에서 Well 판정기로 한 번 더 한다 ([12 §5](12_discussion_decisions.md)).
+Table 1·2의 평가 단위는 585 전체와 150 전체다. Table 3 진단을 채택하면 평가 전제를 질문 ID·전제 index·few-shot과 대응시켜 전제 단위 분모를 별도로 고정한다. 학습형 부품(probe, C 방향, CAST, GEPA, 분류기)은 nested grouped 5-fold cross-fitting으로 전 문항에 out-of-fold 결과를 낸다. 그래야 Cancer-Myth Table 1·3과 분모가 같다. Well의 잠근 분할은 저자들이 원 실험에서 사용한 **분할별 문항 식별자 목록**을 확보하면 부록에서 Well 판정기로 한 번 더 한다 ([12 §5](12_discussion_decisions.md)).
 
 원본 표의 숫자를 그대로 붙이려면 **모델 버전, 문항 ID, 분할, 입력, few-shot/RAG, 생성 및 판정 조건**이 같아야 한다. 닫힌 모델 행과 판정 시점이 다른 행은 참고 결과로 분리한다. 기존 표의 형식을 쓰는 것과 기존 숫자를 직접 비교하는 것은 다르다.
 
