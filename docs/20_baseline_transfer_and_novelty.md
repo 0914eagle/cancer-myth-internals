@@ -1,6 +1,6 @@
 # 20. 기존 방법의 기여, 의료 적용, 표의 역할
 
-2026-09-09. Table 1–3, NFP/TPQ, baseline 선정, Two Axes·Gated Activation Steering의 기여와 적용 가능성에 대한 후속 논의를 반영한다. 실행 명세는 [13](13_task_spec.md), 주 방법은 [19](19_method_protocol.md), 교수님 발표 원고는 [18](18_professor_presentation_script.md)와 함께 읽는다. 문서의 계획을 실행·성공한 결과로 읽지 않는다.
+2026-09-10 갱신. Table 1–3, NFP/TPQ, baseline 선정, Two Axes·Gated Activation Steering의 기여와 적용 가능성에 대한 후속 논의를 반영한다. 실행 명세는 [13](13_task_spec.md), 주 방법은 [19](19_method_protocol.md), 교수님 발표 원고는 [18](18_professor_presentation_script.md)와 함께 읽는다. 문서의 계획을 실행·성공한 결과로 읽지 않는다.
 
 ## 1. 두 논문에서 무엇이 새롭나
 
@@ -37,7 +37,7 @@ Gated는 정상 보존 625문항/모델, 강도 선택 중 MedQuAD 20문항의 �
 
 ## 3. Table 1은 기존 비교의 의료 확장이다
 
-Table 1의 일곱 행은 (1) BoW, (2) 직접 전제 질문, (3) 학습된 출력 readout, (4) 내부 평균 차 방향, (5) 내부 logistic probe, (6) 전제 추출+사실 확인, (7) CoT monitor다. 앞 다섯은 Two Axes Table 2의 핵심 비교를 계승하고, 뒤 둘은 명시적 전제 검증과의 비교를 위해 추가한다. 원 표의 모든 행을 복제한 것은 아니다. 텍스트+hidden 결합은 부록 분석으로 둔다.
+Table 1의 10행은 BoW, 직접 전제 질문, 학습된 출력 readout, Raw 답변 확신도, P(IK), P(True), 내부 평균 차 방향, 내부 logistic probe, 전제 추출+사실 확인, CoT monitor다. Two Axes의 도메인 내 비교 8종을 모두 포함하고 명시적 검증 비교 2종을 추가한다. 원 표의 SelfAware→CREPE 전이 조건은 별도 전이 실험이므로 부록의 SelfAware/CREPE→의료 평가로 구분한다. 원 숫자를 의료 성능으로 복사하지 않는다. 텍스트+hidden 결합도 부록이다.
 
 **현재 별도의 새 탐지 알고리즘 ‘Ours’ 행은 없다.** 내부 logistic probe를 ‘우리 시스템에 채택한 게이트’라고 표시한다. 교정 방향 C를 결합해도 탐지기가 새로 생기지는 않는다. 전체 정책은 Table 2의 평가 대상 행이다.
 
@@ -49,11 +49,11 @@ CoT monitor는 `원 질문 → 전제 검토 글 생성 → 별도 판정기가 
 
 Cancer-Myth NFP 150개와 Well TPQ는 같은 정상 질문이다. Cancer의 NFP는 없는 거짓 전제를 지어내 지적하지 않은 비율이다. Well은 부당한 부정·의심·회피를 단계적 점수로 평가한다. 둘 다 답변 전체의 의학적 정확도는 아니다. [Cancer NFP 판정 코드](https://github.com/Bill1235813/cancer-myth/blob/main/validate_nfp.py) · [Well Appendix E](https://arxiv.org/html/2608.06539v1#A5)
 
-본 Table 2·3의 정상 질문 주 지표는 **공식 NFP 하나**로 통일한다. Well 원 프로토콜의 FPQ/TPQ 평균 점수·S5 분포는 부록에서 함께 보고한다. S5를 Cancer PCR과 동일시하지 않는다. 기존 계획의 ‘TPQ 오교정률’은 원 지표가 아니라 미확정 이산화였으므로 본 표·주 보존 제약에서 제외한다. 두 루브릭을 합산·평균하거나 정확한 보수 관계로 취급하지 않는다.
+Table 2의 정상 질문 주 지표는 공식 NFP 하나다. Table 3는 Well의 근거 없음·Top-4·전체 근거 조건에서 FPQ/TPQ S5를 보고한다. 전체 0–5 분포는 부록에 둔다. NFP와 TPQ는 같은 원 정상 질문에 다른 루브릭을 적용한 것이며 공개 TPQ 파일의 148개는 150개에서 정상 few-shot 2개를 뺀 집합이다. 실제 평가 분모와 ID를 따로 기록한다. S5를 PCR/NFP로 바꾸어 읽거나 두 정상 집합을 더하지 않는다. [공개 파일 점검](21_well_rag_reproducibility.md)
 
 ## 5. Table 2의 행을 고르는 기준
 
-선정 기준은 문제를 직접 다룬 출력 방법, 가까운 조건부 개입 방법, 평가 대상 전체 정책이다. 설계 요소 대조군은 Table 3에 둔다. 결과가 좋을 것으로 예상되는 비교만 고른 목록이 아니다.
+선정 기준은 문제를 직접 다룬 출력 방법, 가까운 조건부 개입 방법, 평가 대상 전체 정책이다. 같은 C·K의 선택 대조군은 부록 A1에 둔다. 결과가 좋을 것으로 예상되는 비교만 고른 목록이 아니다.
 
 | 본 표의 방법 | 절차와 선정 이유 |
 |---|---|
@@ -67,15 +67,19 @@ Cancer-Myth NFP 150개와 Well TPQ는 같은 정상 질문이다. Cancer의 NFP�
 | Hidden gate + FP prompt | 의료 probe가 고른 질문에만 교정 지시. Two Axes식 정책이며 선택 후 FP 판별을 다시 하지 않음 |
 | Hidden gate + C steering | 같은 종류의 probe와 교정 응답 대조 residual 방향을 결합한 현재 평가 대상 정책 |
 
-Unconditional C는 Table 3(a)의 U행으로 이동한다. R/T/Q/H의 C도 동일하게 고정한다. 완성 정책별 조정은 Table 2, 부품을 고정한 효과 비교는 Table 3이다. CAST·Gated adaptation에는 원 방법에서 유지/변경한 부분과 미구현 부분을 공개하며, 구현되지 않은 행의 성능을 추정해 채우지 않는다. 해당 비교 없이 그 방법에 대한 우위를 주장하지 않는다.
+Unconditional C는 부록 Table A1의 U행으로 이동한다. R/T/Q/H의 C도 동일하게 고정한다. Table 2의 두 Hidden 행은 동일 gate를 공유하며, 그 밖의 baseline은 공통 개발 규칙으로 조정한다. CAST·Gated adaptation에는 원 방법에서 유지/변경한 부분과 미구현 부분을 공개하며, 구현되지 않은 행의 성능을 추정해 채우지 않는다. 해당 비교 없이 그 방법에 대한 우위를 주장하지 않는다.
 
-## 6. Table 3의 개입률
+**Table 2의 동일 선택 비교.** Hidden gate + FP prompt와 Hidden gate + C steering은 probe·문턱·문항별 gate mask를 정확히 공유한다. 현재 주 정책의 probe와 τ_policy·C를 내부 dev에서 선택한 뒤 FP prompt 행에도 그 gate를 적용한다. 프롬프트 버전은 dev에서 정하되 gate를 다시 고르지 않는다. 선택되지 않은 질문에는 같은 Plain 응답을 사용하고, 선택된 질문에서만 교정 연산을 바꾼다. 따라서 이 두 행은 같은 대상에서의 교정 방식 비교이며, 각 교정 방식에 독립적으로 최적화된 gate끼리의 비교가 아니다. 프롬프트에 맞춰 gate까지 별도 최적화한 Two Axes식 정책은 필요하면 부록에 구분해 보고한다. 이 두 행의 paired ΔPCR·ΔPCS·ΔNFP와 95% CI를 함께 해석하고 별도 Table 3에서 같은 결과를 반복하지 않는다.
+
+## 6. 부록 A1의 개입률과 새 Table 3의 역할
 
 `개입률 = 교정 분기를 실행한 질문 수 / 전체 평가 질문 수 × 100`이다. 답변이 실제로 바뀐 비율이나 교정 성공률이 아니다. 모니터는 모든 질문을 검사할 수 있지만 교정은 일부에만 적용된다.
 
 설명용 예: FPQ 20개·정상 80개 중 FPQ 16개·정상 4개에 개입하면 개입률 20%, TPR 80%, FPR 5%다. 실제 실험 결과나 목표 비율이 아니다.
 
-Table 3(a)는 같은 C·강도·층·위치에서 R/T/Q/H의 개입 수 K를 맞춰 선택의 효과를 비교한다. U는 전체에 개입하므로 100%다. Table 3(b)는 H의 동일 질문 목록에서 프롬프트와 steering을 비교한다. 개입률은 높을수록 좋은 지표가 아니라 통제 조건이다. 본 표에서는 확인용 열로 유지한다. Table 2의 개별 질문 고정 문턱과 Table 3의 라벨 없는 상위 K 배치 진단을 구분한다.
+부록 Table A1은 같은 C·강도·층·위치에서 R/T/Q/H의 개입 수 K를 맞춰 선택 효과를 비교한다. U는 전체에 개입한다. 개입률은 성능 지표가 아니라 통제 확인 열이다. 동일 대상의 prompt/C 비교는 Table 2의 두 Hidden 행에 통합했으므로 별도 Table 3(b)로 반복하지 않는다. A1의 상위 K는 Table 2의 개별 질문 고정 문턱과 다른 배치 진단이다.
+
+새 Table 3는 외부 근거를 주면 기존 방법으로 충분한지와, 같은 근거 아래 steering의 효과가 남는지를 본다. 원 논문 Table 8 집계값은 참고 패널, 같은 우리 분할·문서에서 재실행할 결과는 비교 패널로 분리한다. GitHub의 RAG·생성·판정 코드는 공개이고 TPQ 147문항에는 근거 문서가 있지만, 당시 Top-4·원 split·최종 답변은 점검한 파일에서 확인되지 않았다. 원 수치의 정확한 재현을 완료했다고 말하지 않는다. [재현 범위와 실제 표](21_well_rag_reproducibility.md)
 
 ## 7. 우리 방법을 정한 근거와 기여 범위
 

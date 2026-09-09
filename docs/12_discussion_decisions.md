@@ -227,3 +227,17 @@ Well-Actually는 Two Axes를 한 문장으로만 인용한다: *"LLM-based fact 
 - 17장: 선택 pass와 답변 pass, 마지막 프롬프트 상태와 첫 답변 토큰의 관계, 고정 ρ와 α, dev 실제 응답으로 정책 선택, 저장 artifact와 Table 3 통제의 연결.
 
 네 장 모두 화면 구성과 설명할 질문을 추가했다. 교육용 예시는 실제 모델 출력·fit 개수·실험 성능과 구분하고, 허용폭·남은 구현 규칙은 확정되지 않은 상태로 유지했다. 코드나 본 실험 결과를 변경한 것은 아니다.
+
+
+## 2026-09-10 후속 결정 — 표 중복 정리와 RAG 공개 자료 감사
+
+이 항목이 위의 이전 Table 3(a)/(b) 배치보다 우선한다. 현재 표·실행안은 [13](13_task_spec.md), 교수님 상세 원고는 [18](18_professor_presentation_script.md), 공개 파일 감사는 [21](21_well_rag_reproducibility.md)다.
+
+1. Table 1은 Two Axes의 도메인 내 8종 readout과 추가 전제 검증·CoT monitor를 합한 10행이다. 생략했던 Raw·P(IK)·P(True)를 복원했다. 원 9번째 SelfAware→CREPE 전이는 부록에서 별도 전이 질문으로 정의한다. 선행연구 소개는 원 5개 모델 열과 9행 전체를 보여주고, 의료 본 평가의 숫자는 재실행 전까지 미측정으로 둔다.
+2. 이전 Table 3(b)는 Table 2의 Hidden gate + FP prompt / Hidden gate + C steering과 중복되므로 통합한다. 두 행은 원 질문 probe·τ_policy·정확한 mask와 비선택 Plain 응답을 공유한다. 주 C 정책에서 dev로 고른 gate를 프롬프트 행에 재사용하는 통제 비교이며 프롬프트용 독립 최적 gate와의 비교라고 부르지 않는다.
+3. 이전 Table 3(a)의 같은 C·K 선택 비교는 부록 A1로 옮긴다. 선택 신호의 실제 교정 효용을 확인하는 진단은 유지하고 상세 설명도 18 보충 원고에 보존한다.
+4. 새 Table 3는 근거 없음·Top-4·전체 근거에서 Well FPQ/TPQ S5를 비교한다. 원 Table 8 출판값은 참고 패널, 같은 우리 split·근거 snapshot·평가 조건으로 재실행한 결과는 비교 패널이다. 원 분할·문서 일치가 확인되지 않은 채 기존 숫자 옆에 우리 행을 직접 붙여 우위를 주장하지 않는다.
+5. GitHub revision a7ee871eadde1104f7560a2874a03cbf5221dbaa와 HF TPQ revision f44ef11fc86805e2e09b5ac66536a37b8e1b410e를 확인했다. 공개 TPQ는 NFP 150 중 정상 few-shot 1002·1003을 제외한 148개이며 전제 문장 178개, 147문항에 passages가 있다. 신규 정상 집합으로 더하지 않는다. 당시 Top-4·명시적 split·생성 응답은 점검한 파일에 없고 원 전처리 generate 경로도 seed가 고정되지 않았다.
+6. 원자료는 ignored external 폴더에 내려받고 Git에는 감사 문서·metadata만 남긴다. 재검색·생성·judge 실행은 하지 않았다. 다음 실행은 자료·분할·길이·판정기를 고정해 baseline과 우리 방법을 함께 재평가하는 adaptation이다.
+
+Task 3는 계속 일반 의료 QA 보존이며 Table 2의 QA 세 열로 평가한다. RAG 조건은 Task 2의 확장이고 새 독립 task나 그 자체로 새 방법론 contribution을 뜻하지 않는다.

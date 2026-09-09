@@ -111,9 +111,11 @@ g = 1[s ≥ τ_policy]
 
 현 구현은 gate forward와 답변 생성을 별도로 수행한다. 따라서 ‘추가 forward 없이 무료’라고 설명하지 않고 실제 지연을 측정한다. 선택된 질문도 먼저 읽은 KV cache를 무심코 재사용하면 첫 토큰 개입 정의와 달라질 수 있으므로, 초기 구현은 명시적으로 새 생성 pass를 사용한다.
 
-## 7. Table 3와의 연결 및 저장 파일
+## 7. Table 2·부록 A1과의 연결 및 저장 파일
 
-Table 3에서는 내부 dev에서 고정한 동일 C·scale·α를 모든 steering 행에 공유한다. 개입 비율 q는 0<q<1인 사전 후보 {0.1,0.2,0.35,0.5}에서 dev의 같은 보존/교정 규칙으로 정한다. q를 만족하는 설정이 없으면 ‘해당 제약 아래 선택 불가’로 보고한다. 평가 fold에서는 라벨 없이 K개를 골라 3(a)를 채우고, 내부 H의 문항 목록을 그대로 프롬프트와 steering에 공유하여 3(b)를 채운다. 이 q는 Table 2의 질문별 문턱을 대체하지 않는다.
+부록 Table A1에서는 내부 dev에서 고정한 동일 C·scale·α를 모든 steering 행에 공유한다. 개입 비율 q는 사전 후보 {0.1,0.2,0.35,0.5}에서 dev의 보존/교정 규칙으로 정한다. 제약을 만족하는 설정이 없으면 선택 불가로 보고한다. 평가 fold에서는 라벨 없이 K=round(qN)개를 골라 선택 신호를 비교한다. 이 배치 진단은 Table 2의 질문별 문턱을 대체하지 않는다.
+
+**Table 2의 동일 선택 비교.** Hidden gate + FP prompt와 Hidden gate + C steering은 probe·문턱·문항별 gate mask를 정확히 공유한다. 현재 주 정책의 probe와 τ_policy·C를 내부 dev에서 선택한 뒤 FP prompt 행에도 그 gate를 적용한다. 프롬프트 버전은 dev에서 정하되 gate를 다시 고르지 않는다. 선택되지 않은 질문에는 같은 Plain 응답을 사용하고, 선택된 질문에서만 교정 연산을 바꾼다. 따라서 이 두 행은 같은 대상에서의 교정 방식 비교이며, 각 교정 방식에 독립적으로 최적화된 gate끼리의 비교가 아니다. 프롬프트에 맞춰 gate까지 별도 최적화한 Two Axes식 정책은 필요하면 부록에 구분해 보고한다. 이 두 행의 paired ΔPCR·ΔPCS·ΔNFP와 95% CI를 함께 해석하고 별도 Table 3에서 같은 결과를 반복하지 않는다.
 
 fold/model별 저장할 것은 split manifest, chat template/revision, probe(μ·σ·w·b·k_A), τ_det/τ_policy, pair manifest(질문·응답·출처·판정·토큰 span), c·k_C·ρ·α, dev 선택 기록, 평가 문항별 score·gate·응답·judge provenance다. run/config hash로 캐시를 구분한다. 학습된 숫자를 다른 모델에 그대로 복사하지 않는다.
 
@@ -126,14 +128,25 @@ fold/model별 저장할 것은 split manifest, chat template/revision, probe(μ�
 | 참조 응답 쌍·C | [make_paired_rows.py](../scripts/make_paired_rows.py), [run_direction_pair.py](../scripts/run_direction_pair.py) | 참조 선택 전 fit 필터, fold별 방향, span·출처 기록 |
 | gate와 residual hook | [steering.py](../src/steering.py) | ≥ 판정 규약 통일, score 기록, 고정 scale 로드 |
 | 실행기 | [run_steer.py](../scripts/run_steer.py) | 전체 fold orchestration, dev 정책 선택, random/top-K·프롬프트 경로 |
-| 보존 판정 | [13](13_task_spec.md), [16](16_code_overview.md) | NFP·QA의 ε·CI 확정, judge 파싱/캐시와 QA 평가 구현, Well 원 점수 부록 경로 |
+| 보존 판정 | [13](13_task_spec.md), [16](16_code_overview.md) | NFP·QA의 ε·CI 확정, judge 파싱/캐시와 QA 평가 구현, Table 3 Well S5와 전체 점수 분포 부록 경로 |
 
 현재 코드 주석의 ‘같은 질문이라 내용이 정확히 상쇄된다’는 표현은 이 명세의 인과적 주장으로 채택하지 않는다. `steering.py` 상단의 ‘generated positions only’ 요약보다 실제 마지막 프롬프트 토큰부터 시작하는 hook 동작이 정확한 실행 기준이다. 현재 `run_steer.py`의 첫 batch norm 계산도 본 실험에는 그대로 사용하지 않는다.
 
 ## 9. 직접 baseline의 구현 경계
 
-Table 1은 [13 §1](13_task_spec.md#1-task-1--판별-신호-비교--table-1)의 일곱 readout이다. 새 detector Ours 행은 없다. 출력 readout은 생성 이후 정보이며 CoT monitor의 모델·템플릿·점수 추출 규칙은 실행 전에 추가로 확정한다. 최종 응답이나 judge 라벨을 입력에 유출하지 않는다.
+Table 1은 [13 §1](13_task_spec.md#1-task-1--판별-신호-비교--table-1)의 열 가지 readout이다. 새 detector Ours 행은 없다. 출력 readout은 생성 이후 정보이며 CoT monitor의 모델·템플릿·점수 추출 규칙은 실행 전에 추가로 확정한다. 최종 응답이나 judge 라벨을 입력에 유출하지 않는다.
 
 Table 2의 Gated head steering은 원 artifacts를 다른 모델에 꽂는 조건이 아니다. 동일 의료 fit 질문과 교정/비교정 쌍으로 head를 탐색하고, FPQ/정상 gate를 학습하여 의료 전제 목표의 head 개입을 평가한다. 원 H/S 이중 제어에서 사용자 압력 축은 주 Cancer-Myth 라벨에 없으므로 FP 교정 adaptation으로 명명한다. 사용한 원 head ranking·ablation·방향·강도 규칙과 변경한 입력·라벨을 기록한다. head 선택의 ablation 점수·토큰 pooling·연속 gate 강도 매핑 및 원 학습 코드와의 대응은 아직 구현 명세를 보완해야 한다. 현재 residual C 실행안과 동일한 구현이라고 간주하지 않는다.
 
 CAST도 원 PCA 조건/행동 벡터와 유사도 문턱의 의료 adaptation을 별도로 명세한다. logistic gate를 넣고 CAST 원 방법이라고 부르지 않는다. 이러한 재학습 baseline의 성능이 없으면 비교 우위를 주장할 수 없다. 미구현 행은 미측정 상태로 남긴다.
+
+
+## 10. 외부 근거 조건의 Table 3 실행 경계
+
+Well GitHub의 검색·답변·판정 코드를 재사용하되 원 숫자를 재현한 것으로 간주하지 않는다. [21 — 실제 공개 파일, 버전, 누락 항목, 명령 예시](21_well_rag_reproducibility.md)에 점검 결과를 고정했다. 우선 Qwen2.5-7B와 RAG=0/4/all에서 Direct QA, FP Identification, Extract+FactCheck, 균형 CoT, 두 Hidden 행을 같은 우리 평가 문항으로 실행한다. FPQ/TPQ S5와 전체 분포를 채점한다.
+
+질문별 문서 snapshot·chunk·검색 질의·retriever revision·단계별 Top-4·원문 URL·수집 날짜·길이 초과 처리 규칙을 저장한다. 공개 TPQ 148개 중 147개에 passages가 있으며 원 NFP 150개와의 ID 대응을 유지한다. FPQ 문서는 별도로 준비하고 정상/거짓 질문 간 출처 차이를 진단한다. gold 전제나 교정 답변은 전체 QA의 검색 query로 사용하지 않는다. 원 전제 추출 방법은 예측한 전제를 query로 쓰는 단계를 명시한다.
+
+두 Hidden 행은 Table 2에서 학습·고정한 질문 전용 A/τ_policy/C를 유지하고, 질문 기반으로 검색한 같은 문서를 최종 생성에 제공한다. gate=0에서도 근거를 제공하며 같은 RAG Direct QA 응답을 재사용한다. gate=1에서만 prompt/C가 달라진다. RAG 입력을 붙인 뒤 gate를 재계산하지 않으며 근거에 맞춘 재학습·강도 조정은 별도 adaptation이다. 원 Well 방법의 문서 입력 단계가 다르면 그 차이를 기록한다.
+
+원 생성 helper 기본값은 2,048개 새 토큰으로 현재 512 주 정책과 다르다. Table 3 재실행 패널은 동일 생성 예산·모델 revision·judge로 맞추고, 길이 변경 시 응답을 재생성한다. 단계 수가 다른 방법의 전체 토큰·시간은 별도로 보고한다. 공개 S5 집계는 유효한 0–5 판정 중 5의 비율이며 0도 분모에 포함한다. 파싱 실패는 별도다. 이 경로는 아직 구현·모델 실행되지 않았고, 문서와 공개 데이터의 정적 감사만 마쳤다.
