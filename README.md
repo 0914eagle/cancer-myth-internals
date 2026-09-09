@@ -4,6 +4,8 @@
 
 > **질문했던 설명도 같은 원고 안에서 읽기:** 18의 각 장에 환자 질문부터 판정·개입까지의 상세 노트를 넣었다. [출력 readout](docs/18_professor_presentation_script.md#learned-output-readout), [CoT와 별도 모니터](docs/18_professor_presentation_script.md#cot-monitor-details), [TPR·FPR·AUROC·문턱](docs/18_professor_presentation_script.md#threshold-details), [아홉 교정 방법](docs/18_professor_presentation_script.md#table2-method-details), [Table 3의 고정 조건과 개입률](docs/18_professor_presentation_script.md#table3-details)을 예시와 함께 설명한다. 문서 앞부분의 질문별 바로가기를 이용할 수 있다.
 
+> **Method 14–17장 상세화:** [질문 벡터와 학습 자료](docs/18_professor_presentation_script.md#method-input) → [probe 목적식·층·문턱](docs/18_professor_presentation_script.md#method-probe) → [응답 쌍의 교정 방향](docs/18_professor_presentation_script.md#method-direction) → [새 질문의 steering](docs/18_professor_presentation_script.md#method-inference). 각 장에 화면 구성, 단계별 발표 원고, 계산 예시, 저장 값, 설정 근거와 구현 상태를 넣었다. 예시 수치는 실제 결과가 아니다.
+
 > **2026-09-09 현재 연구계획:** 논문 전체의 이야기는 [17 — Introduction부터 Conclusion까지](docs/17_manuscript_storyline.md), 주장·가설은 [09](docs/09_research_proposal.md), 실행 명세는 [13](docs/13_task_spec.md)을 읽는다. Table 1은 판별 신호, Table 2는 최종 교정·보존 성능과 일반 의료 QA ACC 세 열을 합친 본 결과표, Table 3은 (a) 같은 steering의 선택 방식과 (b) 같은 질문의 개입 방식을 비교하는 두 패널 결과표다. [10 — 근거](docs/10_evidence_and_baselines.md), [11 — Tripathi 검토](docs/11_tripathi_review.md), [12 — 결정 기록](docs/12_discussion_decisions.md), [15 — 진행 현황](docs/15_progress_summary.md), [16 — 코드 지도](docs/16_code_overview.md)가 이를 뒷받침한다. 일반 의료 QA 보존은 Task 3이며 독립적인 새 방법 기여가 아니다. 아래 초기 요약과 충돌하면 이 문서들이 우선한다. 계획 갱신은 실험 성공을 뜻하지 않는다.
 
 의료 LLM이 환자 질문 속 **잘못된 전제(false presupposition)** 를 왜 못 고치는지를 **내부 표상**에서 읽고, 그 신호로 **조건부로** 고치는 연구.
