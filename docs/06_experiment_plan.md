@@ -9,7 +9,8 @@
 ### 입력
 
 - Cancer-Myth 585 (`data/all_data.json`, `wrong_assumption` 필드로 전제 텍스트)
-- NFP 150 (`data/nfp.json`) + Well-Actually의 참 전제 수동 주석 116개 (`Well/data_gen/CancerMythNFP/`, HF `shenranw/CancerMyth-TPQ`)
+- NFP 150 (`data/nfp.json`). Well-Actually의 TPQ는 **이 150개 질문에 참 전제 주석을 추가한 것**이므로 별도 질문으로 합산하지 않는다 (`Well/data_gen/CancerMythNFP/`, HF `shenranw/CancerMyth-TPQ`). 원 논문 Table 1의 116은 사실 확인 평가의 참 전제 단위 분모이며, 추가 질문 116개가 아니다. [Well-Actually §3.2](https://arxiv.org/html/2608.06539v1#S3.SS2)
+- 명목상 고유 질문은 **FPQ 585 + NFP/TPQ 150 = 735개**다. 실제 로딩·분할 후 유효 질문 수와 전제 주석 수는 별도로 보고한다.
 - 각 문항에 타깃 모델의 chat template 적용
 
 ### 위치 (prefill)

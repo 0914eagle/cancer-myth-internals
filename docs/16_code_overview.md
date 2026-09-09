@@ -41,6 +41,8 @@ E2   run_e2_steer_125.sh     run_steer.py (policy none / unconditional / gated, 
      check_gpu_setup.py      GPU 가시성·메모리 확인, 오프로드 거부
 ```
 
+위 파이프라인의 `nfp`와 `tpq`는 같은 원 질문의 서로 다른 주석·평가 행이다. Cancer-Myth의 명목상 고유 질문은 **FPQ 585 + NFP/TPQ 150 = 735개**이며, 두 행 유형을 더해 정상 질문을 300개로 세지 않는다. 질문별 전제 주석·활성값 위치·합성 쌍에 따라 산출물의 행 수는 고유 질문 수와 다르므로 manifest에 별도로 기록한다.
+
 산출물 위치: `data/e1_rows_v1/` (행), `activations/e1/<model>/{ad,e,pair}/layerNN/<position>/manifest.jsonl + .pt`, `results/e1/<model>/{plain_responses, plain_judge, probe_sweep/, direction_c/, direction_pair/}`, `results/e2/<model>/<tag>{,_judge,_summary}.jsonl`.
 
 ## 3. src 모듈

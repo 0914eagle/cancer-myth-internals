@@ -25,8 +25,10 @@ probe·C 방향·CAST 벡터·GEPA 프롬프트를 Cancer-Myth 문항으로 학�
 
 | 방식 | 장점 | 단점 |
 |---|---|---|
-| 잠근 test 100/100 (Well 분할) | 규율 명확. 저자 ID를 얻으면 Well 표와 같은 문항 | 분모 100, CI 넓음, TPQ train 30개. 저자 ID 미확보 ([12 §5](12_discussion_decisions.md)) |
-| **5-fold cross-fitting, 735 전체** | 585/150 전체에 숫자. Cancer-Myth Table 1·3과 분모가 같음. 학습 음성 120개 | 층·α·문턱 선택도 fold 안에서(nested). 학습형 baseline을 5번 학습 |
+| 잠근 test 100/100 (Well 분할) | 저자들이 실제 사용한 분할의 **문항 식별자 목록**을 확보하면 Well 표와 같은 test 질문으로 평가 가능 | 분모 100, CI 넓음, 보고된 TPQ train 30개. 원 실험의 정확한 분할 목록 미확보 ([12 §5](12_discussion_decisions.md)) |
+| **5-fold cross-fitting, 735 전체** | 585/150 전체에 숫자. Cancer-Myth Table 1·3과 분모가 같음. 정상 질문 outer-train은 명목상 약 120개 | 그룹 크기에 따라 fold별 수가 다름. 내부 dev를 제외한 실제 fit은 더 적음. 층·α·문턱 선택도 fold 안에서(nested). 학습형 baseline을 5번 학습 |
+
+**분할 문항 ID의 뜻.** 저자 계정이나 ORCID가 아니라, 원 논문 실행에서 어떤 원 질문을 train/dev/test 및 few-shot에 배정했는지 연결하는 목록(split manifest)이다. 원본 ID, 질문 원문 또는 데이터 버전과 대응 가능한 식별 정보를 사용한다. 개수만 같은 100/100은 같은 시험지가 아니다. 같은 문항을 확보한 뒤에도 모델 revision·프롬프트·RAG·생성·판정 조건을 맞춰야 원 표와 직접 비교할 수 있다. NFP 150개와 Well TPQ 주석은 동일 질문 집합이므로 별도로 합산하지 않는다.
 
 규칙. (1) NFP와 TPQ는 같은 질문이므로 같은 그룹. 같은 myth에서 나온 문항도 같은 그룹. (2) 방향·probe·분류기·GEPA·CAST는 학습 fold에서만. (3) 게이트 종류·층·α·문턱·개입 예산은 학습 fold 안의 내부 dev에서만 선택한다. (4) 평가 fold의 라벨·출력 채점 결과는 그 fold의 어떤 선택에도 안 쓴다. Table 3의 사전 지정된 배치 예산 통제만 평가 fold의 라벨 없는 점수 순위를 이용한다. (5) Plain은 학습이 없으니 585 전체를 그대로 재고, 원 논문 Table 3 값(Qwen2.5-7B 6.3, Llama-3.1-8B 4.8)을 참고로 나란히 적는다. 숫자가 비슷하다는 것만으로 생성·판정 조건이 같다고 판단하지 않는다. (6) Well 분할 ID를 얻으면 부록에서 Well 판정기로 한 번 더.
 
