@@ -1,6 +1,6 @@
 # 08. 논문 서사 — 양식에 맞춰
 
-> **2026-09-08 후속 정리.** 아래는 초기 서사 기록이다. 현재 교수님 설명용 주장·가설·예상 기여는 [09](09_research_proposal.md), 근거는 [10](10_evidence_and_baselines.md)을 따른다. “모델은 안다 → CoT는 안 된다 → NLA가 필수”라는 논리를 사용하지 않는다.
+> **2026-09-09 대체 문서.** 아래는 초기 서사를 보존한 역사 기록이며 현재 원고 초안으로 사용하지 않는다. Introduction부터 Conclusion까지의 현재 구성은 [17](17_manuscript_storyline.md), 주장·가설은 [09](09_research_proposal.md), 실험은 [13](13_task_spec.md), 근거는 [10](10_evidence_and_baselines.md)·[11](11_tripathi_review.md)을 따른다. 아래에 남은 내부 readout의 무편향성, A/C로 확정 원인을 분류한다는 설명, Two Axes의 47–61%를 gated 조건부 품질로 해석한 문장, Well test 확보 및 네 contribution 초안은 현재 주장으로 채택하지 않는다.
 
 양식(빌린 것): 도메인 요구 → 모델은 능력이 있다 → 그런데 기존 검증 방식은 문제 → 그러니 내부에서 → 내부 방법 중 왜 이것 → 기존 것을 그대로 못 쓰는 이유(데이터·구조·목적식) → 방법론 TL;DR·contribution → 정의.
 

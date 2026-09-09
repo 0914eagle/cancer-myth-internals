@@ -14,8 +14,8 @@
 |---|---|---|
 | 중심 문장 | 고정 held-out 평가에서 정상 질문의 추가 오교정을 사전 허용폭 안으로 제한하면서 거짓 전제 교정률을 높일 수 있는지 검증. 내부 신호의 라우팅 가치와 활성값 개입의 추가 효과를 분리해 측정 | 09 §1, README |
 | 가설 | RH1 내부 신호의 추가 가치 / RH2 선택적 개입의 효과 (+RH2b steering vs prompt) / RH3 일반 의료 QA 보존 | 09 §3 |
-| Task ↔ 표 | Task 1 → Table 1 (탐지 AUROC) / Task 2 → Table 2 (본 표) + Table 3 (조건 × 개입) / Task 3 → Table 2의 QA 열 | 13 상단, 12 §11 끝 |
-| 본 표 행 | Plain, FP Identification, GEPA, CAA, CAST, Two Axes 라우팅, 무작위 ablation, 우리. 원 논문 수치는 참고 행 | 13 §3 |
+| Task ↔ 표 | Task 1 → Table 1 (판별) / Task 2 → Table 2 (최종 효용) + Table 3 (선택·신호·개입의 통제 비교) / Task 3 → Table 2의 QA 열. 같은 결과의 반복을 독립 증거로 세지 않음 | 13, 17 §6 |
+| 본 표 행 | Plain, FP Identification, GEPA, 균형 전제 검토 CoT, Unconditional C steering, CAST, Hidden gate + FP prompt, Hidden gate + C. 무작위는 Table 3, 출판 수치는 참고 행 | 13 §3 |
 | 평가 단위 | 585 + 150 전체, nested grouped 5-fold cross-fitting. Well 잠근 분할은 ID 확보 시 부록 | 13 §0, 12 §5 |
 | 판정기 | 본 표 GPT-4o API (`validate.py`, `validate_nfp.py`). TPQ 오교정은 Well의 TPQ 루브릭(App. E). 부록에 gemini-3-flash 재채점 | 13 §0, 10 §2 |
 | 모델 | Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct 먼저. Gemma-2-27B는 E2 1순위(E1 결과) | 13 §0, experiments/01 |
@@ -29,7 +29,7 @@
 |---|---|---|
 | Cancer-Myth | 저장소 코드 + 논문 | Table 1은 닫힌 모델. GPT-4o 판정기. NFP 150 |
 | Well-Actually | **PDF 전문 + 저장소 코드** | 8개 방법 전부 시소. TPQ 0 = S1 93–100%. 파인튜닝은 Cancer-Myth FPQ + ARC-DA TPQ. FAITH는 Yuan et al.이 보고한 영화 head. 가중식 0.13/0.87. Two Axes를 한 문장으로만 인용, probe·라우팅 없음. 한계 절에 "의료는 FPQ 비율이 더 높을 수 있다" ([10 §2](10_evidence_and_baselines.md)) |
-| Two Axes | **PDF 전문** | 중립 질문 → 거의 다 "멀쩡"(0.93/0.84), 도전 지시 → 멀쩡한 질문 57–78% 지적. 라우팅 파일럿 사전 등록, 48토큰 greedy, 교정 정확도 47–61%. 인과 개입 없음. 가중 계산하면 probe-gated도 Direct QA에 짐 ([07 A1](07_related_work_2026.md), [12 §11](12_discussion_decisions.md)) |
+| Two Axes | **PDF 전문, 분모 재확인** | CREPE의 probe 라우팅 효과. 47%/61%는 challenge 출력에서 전체 FP 문항 중 NLI 검증 교정 비율이며 gated 조건부 성공률이 아님. 탐지율과 곱한 가중 비교는 철회. 의료 전제·activation 개입의 추가 효과는 직접 평가 ([12 §11](12_discussion_decisions.md), [17 §3](17_manuscript_storyline.md)) |
 | Lavi et al. (EACL 2026) | **PDF 전문** | 추출형 QA 답변 불가능성. 방향 선택을 steering score로. CREPE는 분류 전이만(F1 59–62). 인과 개입은 기권 제어 ([07 B3-1](07_related_work_2026.md)) |
 | Tripathi | 원문 + HF runtime (codex 세션) | 내부 probe gate + head steering, EHR 멀티턴 압력 ([11](11_tripathi_review.md)) |
 | CAST | 원문 (codex 세션) | 조건 벡터·행동 벡터 분리 |
@@ -43,7 +43,7 @@
 | A는 읽히지만 약하다 | 전제 구간 probe 0.80–0.82, 질문 끝·마지막 토큰 0.70–0.74 | Two Axes CREPE 대역과 같음 |
 | **텍스트만으로도 갈린다** | 질문 전체 TF-IDF 0.77 > B/D probe; 전제 구간 TF-IDF 0.73 < A probe 0.80 (CI 겹침) | RH1 위험 현실화. fpq/NFP는 출처가 달라 문체가 다름. **최소 짝(전제 구간만 참으로 바꾼 쌍둥이) 통제가 필수** (stage 9). Table 1의 BoW 행은 이미 그 자리 |
 | 생성 전 D에서 "고칠지"가 읽힌다 | 0.82–0.88 | C의 신호는 있음. 양성 적어 폭 큼 |
-| cos(A, C) | 0.5–0.6 (27B L22–35) | "부분 분해". A 성분 뺀 C(C − proj_A C)를 E2 조건에 추가 |
+| cos(A, C) | 0.5–0.6 (27B L22–35) | 기하적 유사도 진단. 인과적 분해의 증명은 아님. A 성분을 뺀 C는 별도 개발·개입 검증 후보 |
 | 응답 첫 5토큰은 상투구 | E 위치 0.62–0.68 | 32토큰 평균 병행 |
 | 27B가 E2 1순위 | +1 55개, D 0.86–0.88, L26–30 정점 | E2 층 L28 |
 
@@ -73,6 +73,7 @@
 | 14 | 교수님 보고 2 (발송본) | |
 | 15 | 이 문서 | |
 | 16 | 코드 지도 | |
+| **17** | 논문 절별 스토리라인·문단 초안·표 해석·결론의 범위 | 현재 원고 작성 기준. 결과는 미확정 |
 | experiments/01 | E1 설계·중간 결과 | 실험 세션이 갱신 |
 | reviews/ | 리뷰 1 (코드+연구), 리뷰 2 (표·프로토콜) | 대응 상태는 16 §6 |
 
@@ -85,5 +86,5 @@
 1. 목요일 미팅 → §5 미결 채우기 → 12 §9 갱신.
 2. 실험 세션: E0 재정렬 → stage 9 쌍둥이 → A probe 대 텍스트 재측정 (RH1의 첫 답).
 3. 코드 리뷰 잔여 항목(16 §6)과 13 대비 빠진 부품(16 §7) 구현.
-4. Gemma-2-27B L28에서 E2 3×3 (항상·무작위·probe × 없음·프롬프트·C).
+4. E2 탐색 설정과 최종 평가를 구분하고, 13의 Table 3 세 통제 비교(선택 여부·신호·개입 방식)를 실행.
 5. 결과에 따라 Table 1·2·3 채우기, GPT-4o 재채점.

@@ -1,6 +1,6 @@
 # Cancer-Myth Internals
 
-> **2026-09-08 현재 연구계획:** [09 — 주장·가설·Task·표·예상 기여](docs/09_research_proposal.md)를 먼저 읽는다. [10 — 근거와 baseline](docs/10_evidence_and_baselines.md), [11 — Tripathi 원문 검토](docs/11_tripathi_review.md), [12 — 논의 결정 기록](docs/12_discussion_decisions.md)이 후속 논의를 통합한다. [13 — Task 명세와 표 뼈대](docs/13_task_spec.md)가 실행 수준의 행·열·출처다. [15 — 진행 현황](docs/15_progress_summary.md)이 결정·근거·미결의 요약, [16 — 코드 지도](docs/16_code_overview.md)가 파이프라인과 리뷰 대응 상태다. 일반 의료 QA 보존을 Task 3에 포함하며, 기존 06의 실험 번호와 구분한다. 아래 초기 요약 중 범위·독창성·분할 관련 표현은 이 문서들이 우선한다.
+> **2026-09-09 현재 연구계획:** 논문 전체의 이야기는 [17 — Introduction부터 Conclusion까지](docs/17_manuscript_storyline.md), 주장·가설은 [09](docs/09_research_proposal.md), 실행 명세는 [13](docs/13_task_spec.md)을 읽는다. Table 1은 판별 신호, Table 2는 최종 교정·보존 성능, Table 3은 부품을 하나씩 바꾸는 통제 비교다. [10 — 근거](docs/10_evidence_and_baselines.md), [11 — Tripathi 검토](docs/11_tripathi_review.md), [12 — 결정 기록](docs/12_discussion_decisions.md), [15 — 진행 현황](docs/15_progress_summary.md), [16 — 코드 지도](docs/16_code_overview.md)가 이를 뒷받침한다. 일반 의료 QA 보존은 Task 3이며 독립적인 새 방법 기여가 아니다. 아래 초기 요약과 충돌하면 이 문서들이 우선한다. 계획 갱신은 실험 성공을 뜻하지 않는다.
 
 의료 LLM이 환자 질문 속 **잘못된 전제(false presupposition)** 를 왜 못 고치는지를 **내부 표상**에서 읽고, 그 신호로 **조건부로** 고치는 연구.
 
@@ -40,6 +40,11 @@
 | [docs/10_evidence_and_baselines.md](docs/10_evidence_and_baselines.md) | Cancer-Myth·Well·GEPA·CoT 근거, CAST·라우팅·AO/NLA의 역할 |
 | [docs/11_tripathi_review.md](docs/11_tripathi_review.md) | 2608.23666 원문과 공개 산출물 검토, 직접 중복 및 적용 가능성 |
 | [docs/12_discussion_decisions.md](docs/12_discussion_decisions.md) | 대화 결정 기록, split·통계·faithfulness, 철회한 주장과 미결정 사항 |
+| [docs/13_task_spec.md](docs/13_task_spec.md) | Task 1–3 실행 명세, 최종 방법 비교와 구성 요소 통제 비교 |
+| [docs/14_advisor_report_2.md](docs/14_advisor_report_2.md) | 교수님 보고 2의 당시 발송 기록 |
+| [docs/15_progress_summary.md](docs/15_progress_summary.md) | 결정·탐색 결과·미결 사항의 현재 요약 |
+| [docs/16_code_overview.md](docs/16_code_overview.md) | 실험 코드와 구현·리뷰 대응 상태 |
+| [docs/17_manuscript_storyline.md](docs/17_manuscript_storyline.md) | 논문 절별 스토리라인·문단 초안·표 읽는 법·결과별 결론 범위 |
 | [docs/experiments/01-e1-prediagnostic.md](docs/experiments/01-e1-prediagnostic.md) | E1 사전 진단 — 모델·GPU 배치, 위치 정의, 라벨, 산출물, 갈림길, 상태 |
 | [EXPERIMENTS.md](EXPERIMENTS.md) | 서버 세팅(125번, medical_nla 관례)과 실행 명령 전부 |
 | [docs/references.md](docs/references.md) | 링크 전부 |
@@ -55,7 +60,7 @@
 - [~] **실험 1** — 표상이 배경화된 전제에서 읽히는가 (A·B·C, 4 모델). llama·qwen 완료: A 0.81, Plain PCR 3–6 %라 자연 C 재료 부족 → stage 8 짝지은 C ([experiments/01 중간 결과](docs/experiments/01-e1-prediagnostic.md))
 - [ ] 개입 설계 (A 게이트 × C 방향)
 - [ ] baseline 재실행 (Well-Actually의 코드, Cancer-Myth 판정기로 채점)
-- [ ] Table 1 블록 완성
+- [ ] Table 1 판별 / Table 2 최종 효용·QA / Table 3 구성 요소 비교 완성
 
 ## 코드
 
