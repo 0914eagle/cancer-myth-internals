@@ -45,7 +45,7 @@ probe·C 방향·CAST 벡터·GEPA 프롬프트를 Cancer-Myth 문항으로 학�
 
 **질문.** 같은 held-out 문항에서, 내부 표상을 읽는 점수가 질문 텍스트나 CoT를 읽는 점수보다 "거짓 전제가 있는 질문"을 더 잘 가르는가. 합치면 더 나은가. (RH1)
 
-**왜 하나.** 논문의 논리는 "고를 수 있으면 고른 것에만 개입한다"이다. 무엇으로 고를지가 먼저 정해져야 Task 2가 성립한다. Task 1의 1등이 Task 2의 개입 조건이 된다.
+**왜 하나.** 논문의 논리는 "고를 수 있으면 고른 것에만 개입한다"이다. Task 1은 각 판별 신호의 성능을 비교한다. **Task 1의 1등을 Task 2의 개입 조건으로 뽑지 않는다.** Task 2에서는 텍스트·CoT·내부 게이트를 모두 유지한 채 동일한 개입을 적용해, 판별 성능 차이가 실제 교정 성능과 정상 질문 보존으로 이어지는지 본다(Table 3). AUROC 1등이 개입에서 최선이라는 보장이 없고(놓친 문항이 개입으로 고칠 수 없는 문항일 수 있음), 내부 게이트만 남기면 "텍스트나 CoT로 골라도 되지 않나"에 답할 수 없기 때문이다. 게이트 종류의 선택도 층·문턱과 마찬가지로 내부 개발 분할에서만 한다 (리뷰 3).
 
 **readout.** 전부 같은 out-of-fold 문항에.
 
@@ -75,7 +75,7 @@ FPR 5%의 문턱은 내부 dev에서 정하고, 평가 fold에서 실제 FPR을 
 
 **같이 내는 것 (부록).** 층×위치 AUROC 히트맵. shortcut 통제: 암종별 holdout, 텍스트 분류기 대비 이득. "Plain이 못 고칠 문항인가"(PCR −1 vs +1) 라벨의 AUROC는 별도 소표 — Task 2의 A∧C 조건용.
 
-**해석.** hidden > 텍스트·CoT이고 결합이 더 높으면 RH1 지지. hidden ≈ 텍스트면 "이 readout으로는 추가 정보 검출 실패"이고, Task 2의 조건은 텍스트 분류기로도 되므로 기여가 "내부 신호"에서 "선택적 개입 자체"로 옮겨간다. 지식 유무의 증명은 아니다.
+**해석.** 같은 입력 범위와 같은 평가 분할에서 텍스트 기준선 대비 추가 판별 정보가 있는지를 본다. hidden > 텍스트·CoT이고 결합이 더 높으면 RH1 지지. hidden ≈ 텍스트면 "이 readout으로는 추가 정보 검출 실패". 어느 쪽이든 Task 2는 세 게이트를 다 돌리고, 기여가 "내부 신호"인지 "선택적 개입 자체"인지는 Table 3이 정한다. 지식 유무의 증명은 아니고 "전제 진위를 읽는다"의 증명도 아니다.
 
 ## 2. Task 2 — 선택적 교정 → Table 2 (본 표) + Table 3 (요인 격자), Figure 1
 
@@ -103,14 +103,14 @@ FPR 5%의 문턱은 내부 dev에서 정하고, 평가 fold에서 실제 FPR을 
 
 | 조건 \ 개입 | 없음 | FP 프롬프트 | C steering |
 |---|---|---|---|
-| 항상 | Plain | = FP Identification | = CAA |
+| 항상 | Plain | = FP Identification | = Unconditional C steering |
 | 무작위 (5 seed 평균±sd) | | | |
 | 텍스트 분류기 | | | |
 | CoT monitor | | | |
-| **hidden probe (A)** | | = Two Axes 라우팅 | **= 우리** |
+| **hidden probe (A)** | | = Hidden gate + FP prompt (Two Axes 착안) | **= 우리** |
 | oracle (진단) | | | |
 
-세로로 읽으면 같은 개입에서 조건의 가치(RH2). 가로로 읽으면 같은 조건에서 개입의 가치(RH2b). 격자의 칸이 곧 선행 방법이다: 항상+프롬프트가 Well의 FP Identification, 항상+C가 CAA, hidden+프롬프트가 Two Axes 라우팅.
+같은 C를 두고 게이트만 바꾸면(세로) 선택의 효과(RH2). **같은 문항별 게이트 결정을 두고** 개입만 바꾸면(가로) 개입 방식의 효과(RH2b). 무작위는 개입 예산을 맞춘다. 칸이 곧 Table 2의 행이다: 항상+프롬프트 = FP Identification, 항상+C = Unconditional C steering, hidden+프롬프트 = Hidden gate + FP prompt.
 
 **Table 3 보조** (셀 = 발화율 FPQ / TPQ, harm / rescue)
 
@@ -122,7 +122,7 @@ FPR 5%의 문턱은 내부 dev에서 정하고, 평가 fold에서 실제 FPR을 
 
 harm = Plain에서 맞았는데 개입 후 틀림. rescue = 그 반대. 순손실만 보고하지 않는다.
 
-**Figure 1.** x = TPQ 보존(오교정 안 한 비율), y = FPQ PCR. Table 3의 모든 셀과 Table 1의 모든 행이 점 하나씩. Well-Actually Figure 1과 같은 모양. ε_normal을 수직선으로.
+**Figure 1.** x = TPQ 보존(오교정 안 한 비율), y = FPQ PCR. **게이트와 개입이 결합된 완성 시스템만** 점으로 찍는다(Table 2의 행, Table 3의 셀). Table 1의 판별기 행은 좌표가 없으므로 안 찍는다. 허용 경계는 `Plain의 TPQ 보존율 − ε_TPQ`를 수직선으로. Well-Actually Figure 1과 같은 모양.
 
 **절차.** fold마다 (1) 학습 fold에서 C 방향, A probe, 텍스트 분류기, CAST 벡터, GEPA 학습. (2) 내부 dev에서 층·α·문턱을 ε_normal 제약 아래 PCR 최대로. 무작위의 비율은 A의 dev 발화율. (3) 평가 fold에 적용. (4) 5 fold 합쳐 585/150 전체 집계, bootstrap CI.
 
@@ -136,18 +136,26 @@ harm = Plain에서 맞았는데 개입 후 틀림. rescue = 그 반대. 순손�
 
 **절차.** 시스템을 그대로 적용한다. 평가셋 이름을 보고 조건을 끄지 않는다. 각 벤치마크의 원래 채점 규칙. Plain 대비 문항별 paired 차이와 CI. 조건 발화율 (선다형에서 얼마나 켜지는가 자체가 결과). ε_QA는 사전 등록. 밖이면 RH3 기각이고, 재조정하려면 QA dev를 따로 두고 밝힌다.
 
-**Table 2 뼈대** (본 표. 모델당 블록. 행 8 = 선행 6 + ablation 1 + 우리 1. Task 2의 행 + Task 3의 열)
+### 판정 규칙 (표를 채우기 전에 고정, 리뷰 3)
+
+- NFP 점수와 TPQ 오교정률은 별도 지표. 허용폭 ε_NFP, ε_TPQ를 각각 정하고 판정 규칙도 각각.
+- 보존 판정은 "차이가 유의하지 않다"가 아니라 **Plain 대비 차이의 신뢰구간이 허용폭 안에 들어오는가**(비열등성).
+- Table 2의 각 방법(GEPA, CAST, 게이트 문턱·α 등)은 같은 개발 데이터·같은 허용폭 아래에서 조정한다. 손잡이가 없는 방법(FP Identification)은 그대로.
+- QA에 적용할 최종 시스템: cross-fitting은 fold별 시스템을 만들므로, **fold들이 고른 하이퍼파라미터(층·문턱·α)의 다수결/중앙값으로 전체 개발 데이터에 다시 맞춘 시스템 하나**를 사전에 지정한다. QA test로 다시 조정하지 않는다.
+- 코드 선행 조건: 분할 누수, TPQ 루브릭, 파싱 실패, 판정 캐시([16 §6](16_code_overview.md))를 먼저 해결한다.
+
+**Table 2 뼈대** (본 표. 모델당 블록. 행 8 = 기준 1 + 프롬프트 방법 3 + 무조건 1 + 조건부 선행 2 + 우리 1. 무작위 조건은 Table 3에만. Task 2의 행 + Task 3의 열)
 
 | Method | 출처 | PCR ↑ | PCS | NFP ↑ | TPQ 오교정 ↓ | MedQA | PubMedQA | Medbullets | 발화율 |
 |---|---|---|---|---|---|---|---|---|---|
 | Plain | Cancer-Myth | | | | | | | | 0 |
 | FP Identification | Well-Actually | | | | | | | | 100 |
 | GEPA (FPQ+TPQ) | Cancer-Myth / Well 구현. **Well은 Gemini·Gemma-4에만 돌렸으므로 Qwen·Llama용은 우리가 실행** (예산 500, 검증 50) | | | | | | | | 100 |
-| CAA (무조건 C) | Rimsky 2023 | | | | | | | | 100 |
+| 균형 전제 검토 CoT prompting | 우리 (직접적 CoT 대조군: "틀린 가정은 바로잡고 옳은 가정은 부정하지 마라, step by step") | | | | | | | | 100 |
+| Unconditional C steering | 우리 C를 게이트 없이. CAA 원 방법 재현이 아니므로 CAA라 부르지 않음 | | | | | | | | 100 |
 | CAST (같은 train) | Lee, ICLR 2025 | | | | | | | | |
-| Two Axes 라우팅 (hidden + FP 프롬프트) | Wagner 2026 | | | | | | | | |
-| 무작위 조건 + C | ablation | | | | | | | | |
-| **hidden 조건 + C** | 우리 | | | | | | | | |
+| Hidden gate + FP prompt | Two Axes §6에서 착안한 의료 적용 | | | | | | | | |
+| **Hidden gate + C steering** | 우리 | | | | | | | | |
 | *참고: GPT-4o Plain (원 논문)* | Cancer-Myth Table 1 | 12 | | 88 | | 70 | 67 | 68 | |
 | *참고: GPT-4o GEPA (원 논문)* | Cancer-Myth Table 1 | 68 | | 59 | | 63 | 59 | 62 | |
 | *참고: Qwen2.5-7B Plain (원 논문)* | Cancer-Myth Table 3 | 6.3 | −0.50 | | | | | | |

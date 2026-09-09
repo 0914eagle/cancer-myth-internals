@@ -143,8 +143,8 @@ Well-Actually는 Two Axes를 한 문장으로만 인용한다: *"LLM-based fact 
 
 추가로 확인된 것: Well의 "TPQ 0"은 S1(참 전제를 잘못 고치려 함)이 93–100%라는 뜻이라 실질적으로 "거의 전부 거짓이라 했다"가 맞다(앞선 답변 정정). Two Axes 라우팅 파일럿은 48토큰 greedy 생성이라 교정 품질 47–61%를 긴 답변과 직접 비교할 수 없다. Two Axes가 든 nearest prior **Lavi et al. (2026)**(CREPE에서 abstention 방향 steering)은 아직 미확인.
 
-### Two Axes 라우팅은 TPQ를 지켰는가 (계산)
-측정했다: "sound contested" = TPQ 오교정률이고 probe-gated에서 14% (Llama) / 16% (Qwen). Well 척도로 TPQ 약 85. 무작위 선택(같은 예산 35%) 26/20 대 probe 42/14이므로 **고르는 것의 가치는 확인**(두 수치가 다 개선 = 곡선 이동). 그러나 그 지점은 쓸 만하지 않다: Well 가중(0.13/0.87)으로 거칠게 계산하면 이득 0.13 × (0.42 × 0.55 ≈ 0.23) ≈ 0.03, 손실 0.87 × 0.14 ≈ 0.12 → **여전히 Direct QA에 진다.** 통제군도 무작위 정상 질문이라 NFP보다 쉽다. 함의: NFP 허용폭을 3점 수준으로 두면 Two Axes보다 다섯 배 엄격하고, 그 안에서 문턱을 올리면 잡는 비율이 더 떨어진다. 따라서 (a) 고르는 신호 개선(같은 오탐에서 더 많이 잡기)과 (b) 고치는 방법 개선(잡은 것 중 맞게 고치는 비율 55% → 이상, steering의 자리) 둘 다 필요. Table 3에서 Two Axes 라우팅 행이 허용폭 밖, 우리 행이 안이면 그것이 논문.
+### Two Axes 라우팅은 TPQ를 지켰는가
+측정했다: "sound contested" = TPQ 오교정률이고 probe-gated에서 14% (Llama) / 16% (Qwen). 무작위 선택(같은 예산 35%) 26/20 대 probe 42/14이므로 **고르는 것의 가치는 확인**(두 수치가 다 개선). 통제군은 무작위 정상 질문이라 NFP보다 쉽다. **(2026-09-09 삭제)** 이전 판의 "42% × 교정 정확도 55%를 Well 가중식에 넣으면 Direct QA에 진다"는 계산은 뺐다. Two Axes의 47%/61%는 거짓 전제 문항 전체가 분모라 게이트 탐지율에 곱할 조건부 성공률이 아니다(리뷰 3). probe 라우팅만으로 엄격한 허용폭을 맞출 수 있는지는 우리 데이터와 루브릭으로 직접 잰다.
 
 ### 2026-09-08 발송 이메일의 질문
 "내부 신호로 골라 개입하는 방식은 이미 여러 논문에 있다. 이걸 Cancer-Myth에 적용해 아직 아무도 못 낸 'FPQ를 올리면서 TPQ를 지키는' 결과를 내는 것으로 논문이 되는지, 아니면 방법론 자체가 새로워야 하는지." 전문은 [14](14_advisor_report_2.md).
@@ -167,11 +167,20 @@ Well-Actually는 Two Axes를 한 문장으로만 인용한다: *"LLM-based fact 
 
 **Table 1.** Detecting false-premise questions (Cancer-Myth FPQ vs. NFP/TPQ, AUROC, out-of-fold). 행: Bag-of-words / Premise-check elicitation / Extract-and-verify / CoT monitor / Hidden readout (logistic) / Difference-of-means / Text + hidden. 열: Qwen2.5-7B, Llama-3.1-8B.
 
-**Table 2.** Main results on Cancer-Myth (585 FPQ, 150 NFP/TPQ) and general medical QA. Judge GPT-4o. 행: Plain / FP Identification / GEPA (FPQ+TPQ) / CAA (always steer) / CAST / Probe-routed prompt (Two Axes) / Random-routed steer / **Probe-routed steer (ours)**; 선 아래 *GPT-4o Plain, GEPA (reported)*. 열: PCR, PCS, NFP, TPQ (Well 루브릭 5점 비율), MedQA, PubMedQA, Medbullets. 모델당 블록.
+**Table 2.** Main results on Cancer-Myth (585 FPQ, 150 NFP/TPQ) and general medical QA. Judge GPT-4o. 행: Plain / FP Identification / GEPA (FPQ+TPQ) / Balanced premise-check CoT prompting / Unconditional C steering / CAST / Hidden gate + FP prompt (Two Axes-inspired) / **Hidden gate + C steering (ours)**; 선 아래 *GPT-4o Plain, GEPA (reported)*. 열: PCR, PCS, NFP, TPQ (Well 루브릭 5점 비율), MedQA, PubMedQA, Medbullets. 모델당 블록. (리뷰 3: CoT 행 추가, CAA → Unconditional, 무작위는 Table 3으로)
 
-**Table 3.** Routing × intervention on Cancer-Myth (한 모델). 행: Never / Always / Random (35%, 5 seeds) / Hidden probe / Oracle. 열: None / Correction prompt / Steering. 셀: PCR / NFP.
+**Table 3.** Gate × intervention on Cancer-Myth (한 모델). 행: Always / Random (예산 맞춤, 5 seeds) / Text classifier / CoT monitor / Hidden probe / Oracle (진단). 열: FP prompt / fixed C steering. 셀: PCR / NFP / TPQ. Plain은 기준선으로 별도 표기. 같은 C에 게이트만 바꾸면 선택의 효과, 같은 문항별 게이트 결정에 개입만 바꾸면 개입의 효과.
 
-**Figure 1.** TPQ (x) vs. PCR (y), Table 2의 모든 행과 Table 3의 모든 셀, 두 모델. 점선 = 사전 등록 NFP 허용폭. Well-Actually Figure 1 형식.
+**Figure 1.** TPQ (x) vs. PCR (y). 게이트+개입이 결합된 완성 시스템만(Table 2의 행, Table 3의 셀), 두 모델. Table 1의 판별기 행은 좌표가 없어 안 찍음. 점선 = Plain의 TPQ 보존율 − ε_TPQ. Well-Actually Figure 1 형식.
 
 부록: TPR@FPR, 발화율, harm/rescue, CI, Well 판정기 재채점, CREPE·QA²·Syn-QA², A×C 2×2, cos(A,C).
+
+### 리뷰 3 반영 (2026-09-09, [reviews/2026-09-09-review-3.md](reviews/2026-09-09-review-3.md))
+- Task 3는 보존 평가. Task와 contribution을 일대일로 맞추지 않는다. 표 번호 유지, 서론에서 Table 2를 먼저 소개.
+- "Task 1의 1등이 Task 2의 게이트"를 철회. 텍스트·CoT·내부 게이트를 Task 2에 모두 유지(Table 3). 게이트 종류 선택도 내부 개발 분할에서만.
+- Table 2에 균형 전제 검토 CoT prompting 행 추가. "CAA" → "Unconditional C steering". "Hidden gate + FP prompt"는 Two Axes 착안 표기. 무작위는 Table 3에만.
+- 과한 해석 교체: 짝 응답 대조는 "질문 차이 교란을 줄인다"까지, 교정 효과는 개입으로 검증. 텍스트 기준선은 "같은 입력 범위·분할에서 추가 판별 정보 평가". Two Axes 곱셈 계산 삭제. "내부 모니터가 필요하다" → "이점을 검증한다".
+- 판정 규칙: ε_NFP·ε_TPQ 분리, 비열등성은 CI가 허용폭 안, QA 최종 시스템은 fold 하이퍼파라미터 다수결로 전체 개발 데이터 재적합 하나를 사전 지정, 코드 수정 선행.
+- Figure 1은 완성 시스템만, 경계는 Plain TPQ − ε_TPQ.
+- 한 문장 주장: **의료 질문의 교정 필요성을 판별해 선택적으로 개입함으로써, 정상 질문과 일반 의료 QA의 성능 손실을 제한하면서 거짓 전제 교정 성능을 개선한다.** 내부 신호가 필요한지, 활성값 개입이 프롬프트보다 유리한지는 하위 가설.
 
