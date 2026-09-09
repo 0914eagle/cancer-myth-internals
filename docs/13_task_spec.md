@@ -96,7 +96,7 @@ FPR 5%의 문턱은 내부 dev에서 정하고, 평가 fold에서 실제 FPR을 
 | 개입 | 정의 | 출처 |
 |---|---|---|
 | FP Identification 프롬프트 | Well 원문 프롬프트 | Well |
-| **C residual steering** | 교정(PCR +1)/비교정(−1) Plain 응답의 응답 시작 활성값 평균 차. **후보(층 × 위치) 선택은 AUROC가 아니라 Lavi et al.식 steering score(내부 dev에서 교정 행동을 얼마나 유발하는가)로** — 탐지≠제어 경고 대응. α도 내부 dev | 우리 (선택 절차는 Lavi et al. 2026) |
+| **C residual steering** | 후보 둘. (i) 짝 없는 대조: 교정(PCR +1)/비교정(−1) Plain 응답의 응답 시작 활성값 평균 차 — 주제·난도가 섞일 수 있음(리뷰 1의 8). (ii) 짝 맞춘 대조: 같은 질문에 시스템 프롬프트만 바꿔("전제가 틀렸으면 바로잡고 답하라" vs "그냥 답하라") 응답 시작 활성값 차를 질문마다 구해 평균 — 짝 대조 원칙은 CAA(Rimsky et al. 2023), 시스템 프롬프트 대조 구성은 Persona Vectors(Anthropic 2025)·RepE(Zou et al. 2023). **후보(방식 × 층 × 위치) 선택은 AUROC가 아니라 Lavi et al.식 steering score(내부 dev에서 교정 행동을 얼마나 유발하는가)로** — 탐지≠제어 경고 대응. α도 내부 dev. 층별 cos(A, C) 보고, 높으면 A 성분 직교화 변형 | 우리 (선택 절차는 Lavi et al. 2026) |
 | head steering | Tripathi식 head별 방향 | 확장 |
 
 **Table 3 뼈대** (한 모델. 셀 = PCR / NFP / TPQ 오교정률). 행 구조는 Two Axes Table 3(Never / Always / Random / Probe-gated)을 따르고, 파일럿 규율도 따른다: 가설과 kill-criteria를 스크립트에 먼저 고정, 무작위 조건은 같은 예산, 지적 여부는 판정기(Two Axes는 strict 템플릿 detector, 48토큰 greedy였음 — 우리는 전체 답변에 GPT-4o).

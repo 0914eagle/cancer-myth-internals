@@ -79,6 +79,8 @@
 - A Few Bad Neurons: Isolating and Surgically Correcting Sycophancy — [2601.18939](https://arxiv.org/html/2601.18939v1)
 - Refusal in LLMs is mediated by a single direction — Arditi et al. 2024
 - Persona Vectors — Anthropic 2025
+- Representation Engineering: A Top-Down Approach to AI Transparency — Zou et al. 2023, [2310.01405](https://arxiv.org/abs/2310.01405) · 지시 쌍 대조
+- Activation Addition (ActAdd) — Turner et al. 2023, [2308.10248](https://arxiv.org/abs/2308.10248)
 - No Answer Needed: question-only probes — [2509.10625](https://arxiv.org/html/2509.10625v3)
 - Geometry of Truth — [2310.06824](https://arxiv.org/pdf/2310.06824)
 
