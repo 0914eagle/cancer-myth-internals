@@ -1,6 +1,6 @@
 # Cancer-Myth Internals
 
-> **2026-09-08 현재 연구계획:** [09 — 주장·가설·Task·표·예상 기여](docs/09_research_proposal.md)를 먼저 읽는다. [10 — 근거와 baseline](docs/10_evidence_and_baselines.md), [11 — Tripathi 원문 검토](docs/11_tripathi_review.md), [12 — 논의 결정 기록](docs/12_discussion_decisions.md)이 후속 논의를 통합한다. [13 — Task 명세와 표 뼈대](docs/13_task_spec.md)가 실행 수준의 행·열·출처다. 일반 의료 QA 보존을 Task 3에 포함하며, 기존 06의 실험 번호와 구분한다. 아래 초기 요약 중 범위·독창성·분할 관련 표현은 이 문서들이 우선한다.
+> **2026-09-08 현재 연구계획:** [09 — 주장·가설·Task·표·예상 기여](docs/09_research_proposal.md)를 먼저 읽는다. [10 — 근거와 baseline](docs/10_evidence_and_baselines.md), [11 — Tripathi 원문 검토](docs/11_tripathi_review.md), [12 — 논의 결정 기록](docs/12_discussion_decisions.md)이 후속 논의를 통합한다. [13 — Task 명세와 표 뼈대](docs/13_task_spec.md)가 실행 수준의 행·열·출처다. [15 — 진행 현황](docs/15_progress_summary.md)이 결정·근거·미결의 요약, [16 — 코드 지도](docs/16_code_overview.md)가 파이프라인과 리뷰 대응 상태다. 일반 의료 QA 보존을 Task 3에 포함하며, 기존 06의 실험 번호와 구분한다. 아래 초기 요약 중 범위·독창성·분할 관련 표현은 이 문서들이 우선한다.
 
 의료 LLM이 환자 질문 속 **잘못된 전제(false presupposition)** 를 왜 못 고치는지를 **내부 표상**에서 읽고, 그 신호로 **조건부로** 고치는 연구.
 

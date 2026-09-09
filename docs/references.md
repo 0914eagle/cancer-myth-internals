@@ -111,3 +111,5 @@
 - [Tripathi 원문·공개 산출물 검토](11_tripathi_review.md)
 - [논의 결정 기록](12_discussion_decisions.md) — CoT, AO/NLA, split, 통계와 정의
 - [Task 명세와 표 뼈대](13_task_spec.md) — Table 1·2·3, Figure 1, 출처, cross-fitting
+- [진행 현황 정리](15_progress_summary.md) — 결정·근거 확인·E1 영향·미결·브랜치
+- [코드 지도](16_code_overview.md) — 파이프라인 stage 1–9, src, 판정기, 리뷰 대응, 13 대비 빈 부품
