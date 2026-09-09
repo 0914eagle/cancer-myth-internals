@@ -7,9 +7,9 @@ set -euo pipefail
 # / sweep / direction stages (3-7) can start now on the idle card instead of
 # waiting for run_e1_4gpu_125.sh to reach its phase 3.
 #
-#   bash scripts/run_e1_stages_125.sh                                  # llama, qwen, gemma9b; stages 3-7; GPU 0
+#   bash scripts/run_e1_stages_125.sh                                  # llama, qwen, gemma9b; stages 3-8; GPU 0
 #   MODELS="gemma2_27b" GPUS=1,2,3 bash scripts/run_e1_stages_125.sh   # one model, three cards
-#   STAGES="6 7" bash scripts/run_e1_stages_125.sh                     # only the CPU stages
+#   STAGES="8" bash scripts/run_e1_stages_125.sh                       # paired C only (needs stages 3-5 done)
 #
 # Every stage is resumable, so if run_e1_4gpu_125.sh later reaches the same
 # model its judge finds nothing left to score and the rest recomputes from
@@ -20,7 +20,7 @@ set -euo pipefail
 DATA_ROOT="${DATA_ROOT:-/data1/heejae}"
 MODELS="${MODELS:-llama31_8b qwen25_7b gemma2_9b}"
 GPUS="${GPUS:-0}"
-STAGES="${STAGES:-3 4 5 6 7}"
+STAGES="${STAGES:-3 4 5 6 7 8}"
 RUN_NAME="${RUN_NAME:-e1}"
 ROWS_NAME="${ROWS_NAME:-e1_rows_v1}"
 JUDGE_BACKEND="${JUDGE_BACKEND:-codex}"

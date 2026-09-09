@@ -27,17 +27,35 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.config import ensure_dir, load_config
-from src.jsonl import read_jsonl, write_jsonl
+from src.jsonl import append_jsonl, read_jsonl, write_jsonl
 from src.rows import activation_rows, align_premise, load_fpq, load_nfp, load_tpq
 
 
-def make_llm(backend: str, model: str, codex_cmd: str):
+def make_llm(backend: str, model: str, codex_cmd: str, timeout: int = 180):
+    """One alignment call. A timeout or backend error is retried once and then
+    treated as "no answer" (the row keeps B and D, loses A) instead of killing
+    the run; the count of such rows is printed at the end."""
+    import time
+
     from src.llm_backend import backend_available, make_caller
 
     if not backend_available(backend, codex_cmd):
         return None
-    call = make_caller(backend, model, timeout=120, codex_cmd=codex_cmd, temperature=0.0, max_tokens=120)
-    return lambda prompt: call(prompt)[0]
+    call = make_caller(backend, model, timeout=timeout, codex_cmd=codex_cmd, temperature=0.0, max_tokens=120)
+    failures = {"n": 0}
+
+    def llm(prompt: str) -> str | None:
+        for attempt in range(2):
+            try:
+                return call(prompt)[0]
+            except Exception as exc:  # noqa: BLE001 - timeout, transient backend error
+                print(f"[align] backend error ({exc.__class__.__name__}); retry {attempt + 1}/2", flush=True)
+                time.sleep(3)
+        failures["n"] += 1
+        return None
+
+    llm.failures = failures  # type: ignore[attr-defined]
+    return llm
 
 
 def main() -> None:
@@ -45,6 +63,8 @@ def main() -> None:
     parser.add_argument("--config", default="configs/default.yaml")
     parser.add_argument("--out-name", default="e1_rows_v1")
     parser.add_argument("--align", choices=["llm", "heuristic", "none"], default="llm")
+    parser.add_argument("--heuristic-fallback", action="store_true",
+                        help="when the LLM finds no verbatim span, fall back to content-word overlap (off: A dropped for that row)")
     parser.add_argument("--align-backend", choices=["codex", "openai"], default=None, help="default: config judge.backend")
     parser.add_argument("--align-model", default=None, help="default: config judge model for the backend")
     parser.add_argument("--codex-cmd", default="codex")
@@ -62,11 +82,20 @@ def main() -> None:
     missing_premise = sum(1 for r in fpq if not r.get("premise_text"))
     print(f"[rows] fpq rows without premise text: {missing_premise}", flush=True)
 
-    existing = out_dir / "questions.jsonl"
+    # Verified LLM spans are reused from two places: the previous questions.jsonl
+    # and alignments.jsonl, which this run appends to after every LLM answer, so
+    # a crash mid-way costs nothing on the next run.
     cache: dict[str, dict] = {}
+    existing = out_dir / "questions.jsonl"
     if existing.exists():
         cache = {r["id"]: r for r in read_jsonl(existing)}
-        print(f"[rows] reusing {len(cache)} alignments from {existing}", flush=True)
+    progress = out_dir / "alignments.jsonl"
+    if progress.exists():
+        for r in read_jsonl(progress):
+            cache[r["id"]] = r
+    if cache:
+        n_llm = sum(1 for r in cache.values() if r.get("align_method") == "llm" and r.get("premise_span") is not None)
+        print(f"[rows] reusing {n_llm} verified LLM spans (cache of {len(cache)} rows)", flush=True)
 
     judge_cfg = cfg["judge"]
     backend = args.align_backend or judge_cfg.get("backend", "codex")
@@ -80,6 +109,7 @@ def main() -> None:
         print(f"[align] via {backend} model={model or 'backend default'}", flush=True)
 
     questions = []
+    n_new = 0
     for row in fpq + nfp + tpq:
         prev = cache.get(row["id"])
         if prev and prev.get("premise_span") is not None and prev.get("align_method") == "llm":
@@ -91,9 +121,19 @@ def main() -> None:
         elif args.align == "none" or not row.get("premise_text"):
             row.update(premise_span=None, align_score=None, align_method="none")
         else:
-            span, score, method = align_premise(row["question"], row["premise_text"], llm=llm)
+            span, score, method = align_premise(
+                row["question"], row["premise_text"], llm=llm,
+                heuristic_fallback=args.heuristic_fallback or args.align == "heuristic",
+            )
             row.update(premise_span=span, align_score=score, align_method=method)
+            if llm is not None:
+                append_jsonl(progress, {"id": row["id"], "premise_span": span, "align_score": score, "align_method": method})
+                n_new += 1
+                if n_new % 25 == 0:
+                    print(f"[align] {n_new} rows aligned this run", flush=True)
         questions.append(row)
+    if llm is not None and getattr(llm, "failures", {"n": 0})["n"]:
+        print(f"[align] {llm.failures['n']} rows got no answer from the backend (timeouts); rerun to retry them", flush=True)
 
     write_jsonl(out_dir / "questions.jsonl", questions)
     act_rows = activation_rows(questions)

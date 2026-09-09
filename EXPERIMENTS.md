@@ -121,6 +121,13 @@ readout. The TPQ loader prints the HF columns it found; if
 `shenranw/CancerMyth-TPQ` names its presupposition field differently from
 `presuppositions`, fix `src/rows.py::_first_presupposition` and rerun.
 
+Re-alignment (after changing the prompt, or to retry rows that got no span):
+`run_e0_rows.sh` reuses every verified LLM span and asks the LLM again only
+for the rest; A rows carry the span in their id, so `STAGES="2"` then
+extracts only the new A rows and `prune_manifests.py` drops the old ones from
+the manifests. Rerun stages 4-8 afterwards (CPU except 5 and 8, which find
+nothing new to extract).
+
 ## E1 — pre-diagnostic on four cards (약 2 days)
 
 ```bash
@@ -163,10 +170,49 @@ Outputs per model under `$ART/results/e1/<model>/`:
 | `plain_responses.jsonl`, `plain_judge.jsonl`, `plain_summary.json` | Plain PCR / PCS / NFP / TPQ (Table 3 reproduction) |
 | `probe_sweep/heatmap.png`, `summary.md` | A readout AUROC, layer x position, logistic and diff-of-means |
 | `direction_c/table.md`, `directions.npz` | PCR predictability at D, cos(A, C) per layer, gate probe |
+| `direction_c/table_pair.md` | stage 8: paired C (reference +1 minus -1 answers behind the same prompt), its transfer to the model's own PCR, cos with A and c_e |
 
 Activations: `$ART/activations/e1_<model>_ad/layerNN/{last_token,last_subtoken,span_mean}/manifest.jsonl`
 and `e1_<model>_e/…` — the medical_nla manifest layout, readable by its
 `src.run_nla` for the NLA test on Gemma-3-12B (`configs/gemma3_12b.yaml`, GPUs 2,3).
+
+### Stage 8: the paired C direction
+
+With PCR at 3-6 % under the codex judge, an 8B backbone corrects 20-35 of
+585 questions, too few for a diff-of-means C from its own responses. Stage 8
+builds C from Cancer-Myth's all_data.json instead: for 232 questions there is
+a reference answer GPT-4o scored +1 and one scored -1; both are teacher-forced
+behind the same Plain prompt and the response opening (first 5 and first 32
+tokens, span mean) is read. corr minus follow per question cancels the
+question, and the mean over questions is `c_pair`. Reference authors are
+balanced across the two sides so the difference is not "Gemini style minus
+MDAgents style". `table_pair.md` reports whether `c_pair` separates the
+model's own +1 from its own -1 (leave-question-out), whether it reads the
+model's own PCR before generation at D, and its cosine with A and with the
+natural `c_e`. `directions.npz` gains `L{layer}_c_pair5` / `_c_pair32`, which
+`run_steer.py --direction-key c_pair32` consumes.
+
+```bash
+MODELS="llama31_8b qwen25_7b gemma2_9b" STAGES="8" bash scripts/run_e1_stages_125.sh
+MODELS="gemma2_27b" GPUS=1,2,3 STAGES="8" bash scripts/run_e1_stages_125.sh
+```
+
+### Stage 9: minimal pairs for the A readout
+
+Text alone (TF-IDF on the question) separates fpq from NFP at 0.77, above
+the B/D probes and close to the A probe, so the fpq-vs-NFP contrast carries
+benchmark style. Stage 9 reads A on minimal pairs instead: every fpq with a
+verified span gets a twin in which only that span is replaced by the correct
+belief (spliced, so the rest is byte-identical; a second LLM call confirms the
+false belief is gone). Build the twins once (codex, CPU), then per model:
+
+```bash
+DATA_ROOT=/data1/heejae bash scripts/run_e0_twins.sh                  # after run_e0_rows.sh
+MODELS="gemma2_27b" GPUS=1,2,3 STAGES="9" bash scripts/run_e1_stages_125.sh
+```
+
+`probe_sweep_twins/summary.md` and `text_baseline.md` there are the numbers to
+compare: the probe must clearly exceed the text row on the pairs.
 
 ## Reading E1 (the fork)
 
@@ -196,6 +242,9 @@ table: PCR, PCS, NFP, TPQ per condition. The row that matters is
 | `scripts/run_generate.py` | Plain responses (HF generate, greedy; `--paper-protocol` for T=0.7) |
 | `src/extract_activations.py` | hidden states at A/B/D/E, every layer, medical_nla layout |
 | `scripts/run_judge.py` | validate.py / validate_nfp.py prompts through codex exec or OpenAI; resumable; lock; `--dry-run` |
+| `scripts/make_paired_rows.py`, `scripts/run_direction_pair.py` | stage 8: paired C rows from all_data.json reference answers; the direction, its checks, npz update |
+| `scripts/run_text_baseline.py` | stage 6/9: TF-IDF text-only AUROC, the surface-form ceiling for the A readout |
+| `scripts/make_true_twins.py`, `scripts/prune_manifests.py` | stage 9: true-premise twins (minimal pairs); manifest cleanup after re-alignment |
 | `scripts/calibrate_judge.py` | agreement of the chosen judge with GPT-4o on the answers shipped in all_data.json |
 | `scripts/summarize_judge.py` | PCR / PCS / NFP / TPQ, by category |
 | `scripts/make_response_rows.py`, `merge_labels_into_manifests.py` | E rows and labels |

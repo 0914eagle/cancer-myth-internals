@@ -11,7 +11,7 @@ set -euo pipefail
 #   GPU 1,2,3  Gemma-2-27B-it
 #
 # GPU stages (1 generate, 2 extract) run per worker; the API stage (3 judge)
-# and the CPU stages (4, 6, 7) run after, in this script, so the OpenAI
+# and the CPU stages (4, 6, 7, 8) run after, in this script, so the OpenAI
 # calls are not four-way parallel. Stage 5 (extract E) needs the card again
 # and is run per model at the end.
 #
@@ -65,7 +65,7 @@ MODELS=(llama31_8b:0 qwen25_7b:1 gemma2_9b:2)
 [[ "${RUN_27B}" == "1" ]] && MODELS+=(gemma2_27b:1,2,3)
 for entry in "${MODELS[@]}"; do
   model="${entry%%:*}"; gpus="${entry##*:}"
-  worker "configs/${model}.yaml" "${gpus}" "3 4 5 6 7" "${model}_p3" || { echo "[error] ${model} phase 3 failed" >&2; exit 1; }
+  worker "configs/${model}.yaml" "${gpus}" "3 4 5 6 7 8" "${model}_p3" || { echo "[error] ${model} phase 3 failed" >&2; exit 1; }
   echo "[phase 3] ${model} done"
 done
 echo "[done] E1 on server 125: ${DATA_ROOT}/cancer_myth_internals/results/${RUN_NAME}"

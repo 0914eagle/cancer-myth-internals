@@ -51,8 +51,8 @@
 - [x] 후속 연구 전수 확인 (Semantic Scholar 인용 14편, 핵심 4편 본문 검토)
 - [x] 가설 지도, 읽을 층, 도구 선정
 - [x] 인용 그래프 바깥 관련 연구 (2025–2026), 직접 경쟁자 3편 원문 검토 → baseline·산출물 갱신
-- [x] 코드 세팅 — medical_nla와 같은 레이아웃(`/home/eagle0914`, `/data1/heejae`, uv, env.sh), 4090 4장 E1 파이프라인, 23 tests
-- [ ] **실험 1** — 표상이 배경화된 전제에서 읽히는가 (A·B·C, 4 모델) → `bash scripts/run_e1_4gpu_125.sh`
+- [x] 코드 세팅 — medical_nla와 같은 레이아웃(`/home/eagle0914`, `/data1/heejae`, uv, env.sh), 4090 4장 E1 파이프라인, nohup 자체 분리, 27 tests
+- [~] **실험 1** — 표상이 배경화된 전제에서 읽히는가 (A·B·C, 4 모델). llama·qwen 완료: A 0.81, Plain PCR 3–6 %라 자연 C 재료 부족 → stage 8 짝지은 C ([experiments/01 중간 결과](docs/experiments/01-e1-prediagnostic.md))
 - [ ] 개입 설계 (A 게이트 × C 방향)
 - [ ] baseline 재실행 (Well-Actually의 코드, Cancer-Myth 판정기로 채점)
 - [ ] Table 1 블록 완성
@@ -62,7 +62,7 @@
 ```
 configs/     모델별 yaml (${CANCER_MYTH_DATA_ROOT} 치환, _base 상속)
 src/         config · rows(전제 정렬) · extract_activations · probes · steering · judge_prompts
-scripts/     env.sh · bootstrap_server.sh · make_rows · run_generate · run_judge · run_probe_sweep · run_direction_c · run_steer · run_e1_4gpu_125.sh
+scripts/     env.sh · bootstrap_server.sh · make_rows · run_generate · run_judge · run_probe_sweep · run_direction_c · make_paired_rows · run_direction_pair · run_steer · run_e1_4gpu_125.sh · run_e1_stages_125.sh · jobs.sh
 tests/       pytest -q (GPU 불필요)
 ```
 

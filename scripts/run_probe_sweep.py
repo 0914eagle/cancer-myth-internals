@@ -42,8 +42,12 @@ def manifests(run_dir: Path):
         yield layer, manifest.parent.name, manifest
 
 
-def load_cell(manifest: Path, positive: set[str], negative: set[str]):
-    """Returns {family: (X, y, groups)} for the rows in one manifest."""
+def load_cell(manifest: Path, positive: set[str], negative: set[str], paired_only: bool = False):
+    """Returns {family: (X, y, groups)} for the rows in one manifest.
+
+    paired_only keeps only rows whose pair_id occurs on both sides (fpq and
+    its true-premise twin), so the comparison is a set of minimal pairs.
+    """
     import torch
 
     per_family: dict[str, list] = defaultdict(list)
@@ -63,13 +67,19 @@ def load_cell(manifest: Path, positive: set[str], negative: set[str]):
         per_family[str(row.get("position_family"))].append((row, y))
     out = {}
     for family, items in per_family.items():
+        if paired_only:
+            pos_ids = {str(r.get("pair_id")) for r, y in items if y == 1}
+            neg_ids = {str(r.get("pair_id")) for r, y in items if y == 0}
+            both = pos_ids & neg_ids
+            items = [(r, y) for r, y in items if str(r.get("pair_id")) in both]
         xs, ys, groups = [], [], []
         for row, y in items:
             t = torch.load(row["activation_path"], map_location="cpu", weights_only=True)
             xs.append(t.reshape(-1).to(torch.float32).numpy())
             ys.append(y)
-            # Group by question text so nfp/tpq twins never straddle a fold.
-            groups.append(str(row.get("prompt") or row.get("chat_text")))
+            # Group by pair (fpq and its twin) when present, else by question
+            # text so nfp/tpq twins never straddle a fold.
+            groups.append(str(row.get("pair_id") or row.get("prompt") or row.get("chat_text")))
         y_arr = np.asarray(ys)
         if len(set(ys)) < 2 or min((y_arr == 1).sum(), (y_arr == 0).sum()) < 10:
             continue
@@ -86,6 +96,7 @@ def main() -> None:
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--seed", type=int, default=17)
     parser.add_argument("--layers", nargs="+", type=int, default=None, help="subset of hidden-state indices")
+    parser.add_argument("--paired-only", action="store_true", help="keep only pair_ids present on both sides (minimal pairs)")
     args = parser.parse_args()
 
     run_dir, out_dir = Path(args.run_dir), Path(args.out_dir)
@@ -96,7 +107,7 @@ def main() -> None:
     for layer, selection, manifest in manifests(run_dir):
         if args.layers and layer not in set(args.layers):
             continue
-        for family, (X, y, groups) in load_cell(manifest, positive, negative).items():
+        for family, (X, y, groups) in load_cell(manifest, positive, negative, args.paired_only).items():
             auc_lr, oof_lr = cv_auroc_logistic(X, y, groups, n_splits=args.folds, seed=args.seed)
             auc_dm, oof_dm = cv_auroc_diffmeans(X, y, groups, n_splits=args.folds, seed=args.seed)
             results.append(

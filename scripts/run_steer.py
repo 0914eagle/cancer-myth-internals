@@ -51,7 +51,7 @@ def main() -> None:
     parser.add_argument("--config", required=True)
     parser.add_argument("--questions", required=True)
     parser.add_argument("--directions", required=True)
-    parser.add_argument("--direction-key", default="c_e", choices=["c_e", "c_d"])
+    parser.add_argument("--direction-key", default="c_e", help="c_e, c_d, or c_pair5 / c_pair32 (stage 8)")
     parser.add_argument("--layer", type=int, required=True, help="hidden-state index to steer at")
     parser.add_argument("--alpha", type=float, required=True)
     parser.add_argument("--alpha-mode", choices=["norm", "abs"], default="norm")
