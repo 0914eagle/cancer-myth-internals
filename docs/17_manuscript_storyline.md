@@ -76,7 +76,7 @@
 
 **접근 요약:** 질문의 prefill에서 probe 점수를 계산하고, 개발 데이터로 정한 문턱을 넘는 질문에 교정 개입을 적용한다. 방향과 문턱은 학습·개발 데이터에서 정하며 최종 평가에서는 고정한다.
 
-**결과 예고 슬롯:** "[모델·평가 범위]에서 Plain 대비 PCR이 [Δ와 CI] 변했고, NFP·TPQ 및 [QA 평가]의 손실은 [허용폭·CI]였다." 아직 이 슬롯에 탐색 결과나 가상 숫자를 넣지 않는다. Table 2의 주 결과를 여기서 먼저 소개한다.
+**결과 예고 슬롯:** "[모델·평가 범위]에서 Plain 대비 PCR이 [Δ와 CI] 변했고, NFP 및 [QA 평가]의 손실은 [허용폭·CI]였다." 아직 이 슬롯에 탐색 결과나 가상 숫자를 넣지 않는다. Table 2의 주 결과를 여기서 먼저 소개한다.
 
 **가설이 지지될 때 사용할 contribution 초안:**
 
@@ -101,9 +101,9 @@
 
 **CAST:** 조건 벡터와 행동 벡터를 구분한 선행 방법이다. FPQ/TPQ로 적용한 CAST를 baseline으로 두고, 원 레시피에서 변경한 부분을 명시한다. CAST의 의료 전제 실패는 사전 사실이 아니다. [원문](https://arxiv.org/abs/2409.05907) · [구현](https://github.com/IBM/activation-steering)
 
-**Two Axes:** answerability와 false-presupposition 구분 중 후자의 readout·라우팅 실험을 참고한다. 우리의 목표 라벨은 거짓 전제 유무이며 answerability 자체가 아니다. 논문의 일반 도메인 결과를 의료에서 재현했다고 미리 가정하지 않는다. 47%·61%는 전체 FPQ에서 NLI가 검증한 교정 비율이므로 gate 성능에 곱할 조건부 성공률로 쓰지 않는다. [원문 §6](https://arxiv.org/html/2607.08456v1#S6)
+**Two Axes:** 전체 논문은 정답 여부와 답변 가능성의 같은 문항 분석·위험별 정책을 제안한다. 선형 probe 자체의 최초 제안은 아니다. CREPE의 거짓 전제 readout·라우팅은 우리의 탐지 목표와 직접 겹치므로, answerability라는 제목만으로 다른 문제라고 구분하지 않는다. 논문의 일반 도메인 결과를 의료에서 재현했다고 미리 가정하지 않는다. 47%·61%는 전체 FPQ에서 NLI가 검증한 교정 비율이므로 gate 성능에 곱할 조건부 성공률로 쓰지 않는다. [원문 §6](https://arxiv.org/html/2607.08456v1#S6)
 
-**Tripathi:** 의료 EHR·다중 턴 압력에서 내부 probe gate와 head steering, 정상 응답 평가를 이미 다룬다. 우리의 가장 직접적인 중복 후보 중 하나다. 공개 artifacts의 호환 모델 전이와 FPQ/TPQ로 재학습한 adaptation을 구분한다. 비교를 실행하지 않았다면 경험적 우위를 주장하지 않는다. [원문](https://arxiv.org/abs/2608.23666) · [공개 runtime 검토](11_tripathi_review.md)
+**Tripathi:** ITI·probe·평균 차를 행동별 gate 및 head ablation과 결합하고 정상 응답 보존을 평가한다. EHR 비지지 주장과 사용자 압력은 의학적 전제 진위와 다르지만 의료 adaptation이 가능하다. MedQuAD 20문항의 강도 선택 중 참조 유사도도 확인했으므로 QA 보존을 전혀 고려하지 않았다고 쓰지 않는다. 우리의 가장 직접적인 중복 후보 중 하나다. 공개 artifacts의 호환 모델 전이와 FPQ/TPQ로 재학습한 adaptation을 구분한다. 비교를 실행하지 않았다면 경험적 우위를 주장하지 않는다. [원문](https://arxiv.org/abs/2608.23666) · [공개 runtime 검토](11_tripathi_review.md)
 
 **CoT 논의의 범위:** 충실성의 한계와 모니터링의 유용성을 함께 소개한다. CoT 연구 전체에 대한 반박을 논문의 동기로 삼지 않는다. [Turpin et al.](https://arxiv.org/abs/2305.04388) · [Monitoring Reasoning Models for Misbehavior](https://arxiv.org/abs/2503.11926)
 
@@ -113,7 +113,7 @@
 
 ### 4.1 문제와 목표
 
-입력 q는 환자 질문이다. y_FP는 전문가 검증 거짓 전제 유무이며, 평가·학습용으로만 제공된다. 최종 답변 r의 전제 교정(PCR/PCS), 정상 전제 오교정(TPQ), 공식 NFP 지표, 별도 의료 QA 정확도를 구분한다. NFP/TPQ가 같은 원 질문에서 나오면 두 배의 독립 표본으로 세지 않는다.
+입력 q는 환자 질문이다. y_FP는 전문가 검증 거짓 전제 유무이며, 평가·학습용으로만 제공된다. 최종 답변 r의 전제 교정(PCR/PCS), 공식 NFP 지표와 부록의 Well FPQ/TPQ 원 점수, 별도 의료 QA 정확도를 구분한다. NFP/TPQ가 같은 원 질문에서 나오면 두 배의 독립 표본으로 세지 않는다.
 
 **전제 진위는 개입 이득의 대리 지표다.** FPQ라도 Plain이 이미 잘 고치면 추가 개입이 불필요할 수 있고, 개입이 답을 악화시킬 수도 있다. gate가 FPQ를 맞혔다고 교정 성공이나 인과적 이득이 보장되지는 않는다.
 
@@ -146,17 +146,16 @@ C는 fit FPQ의 +1/−1 참조 응답을 같은 타깃 모델에 teacher-forcing
 
 방향의 AUROC나 cos(A,C)만으로 교정 능력을 선택하지 않는다. 교정 층은 깊이의 1/4·1/2·3/4, α는 {0, 0.02, 0.05, 0.1, 0.2, 0.5}를 후보로 **내부 개발 문항에서 실제 응답을 생성하고**, 정상 질문 손실 제약 아래 교정 효과로 선택한다. cos(A,C)는 진단이며, 작다고 독립 회로가 증명되거나 크다고 분리가 실패하는 것은 아니다.
 
-ρ_fit은 fit 질문의 residual norm 중앙값으로 고정하며 test나 resume batch에서 재추정하지 않는다. 주 생성은 greedy·최대 새 토큰 512·감쇠 없는 steering이다. 프롬프트 개입은 같은 gate가 선택한 질문에 교정 지시만 추가하며 탐지를 다시 하지 않는 비교 조건이다. head steering·A∧C·직교화 C는 사전 명세한 확장/ablation이며 필수 성공 조건으로 추가하지 않는다.
+ρ_fit은 fit 질문의 residual norm 중앙값으로 고정하며 test나 resume batch에서 재추정하지 않는다. 주 생성은 greedy·최대 새 토큰 512·감쇠 없는 steering이다. 프롬프트 개입은 같은 gate가 선택한 질문에 교정 지시만 추가하며 탐지를 다시 하지 않는 비교 조건이다. Gated 의료 head 재학습은 본 Table 2의 직접 baseline이다. 추가 head 변형·A∧C·직교화 C는 사전 명세한 부록 ablation이다.
 
 ### 4.4 개발 목표와 최종 정책 고정
 
 ```text
 개발에서 최대화: FPQ 교정 성능
 제약: NFP 점수 손실 ≤ ε_NFP
-      TPQ 오교정률 증가 ≤ ε_TPQ
 ```
 
-일차 지표, 동률 처리, 후보 예산, ε_NFP·ε_TPQ를 명시한다. QA는 [13](13_task_spec.md)의 규칙으로 정한 최종 시스템을 재조정 없이 적용하는 보존 평가다. 허용폭은 허용 가능한 손실에 근거해 정하며 표본 수만으로 정당화하지 않는다. 표본이 부족하면 CI가 결론을 내리지 못할 수 있다.
+일차 지표, 동률 처리, 후보 예산, ε_NFP를 명시한다. QA는 [13](13_task_spec.md)의 규칙으로 정한 최종 시스템을 재조정 없이 적용하는 보존 평가다. 허용폭은 허용 가능한 손실에 근거해 정하며 표본 수만으로 정당화하지 않는다. 표본이 부족하면 CI가 결론을 내리지 못할 수 있다.
 
 **보존은 경험적·통계적 평가다.** gate 오탐률만으로 보장되지 않는다. test 성능 차이의 신뢰구간과 사전 비열등성 기준으로 판정한다. 평균 차이가 작거나 유의하지 않다는 것만으로 보존을 선언하지 않는다.
 
@@ -165,7 +164,7 @@ C는 fit FPQ의 +1/−1 참조 응답을 같은 타깃 모델에 teacher-forcing
 1. **데이터·중복:** Cancer-Myth 585 FPQ와 150 NFP/TPQ의 유효 ID·라벨 대응을 확인한다. 같은 myth, 의역, NFP–TPQ, 합성 참·거짓 쌍을 같은 그룹으로 묶는다. 합성 쌍은 원래 정상 질문 평가를 대체하지 않는다.
 2. **평가 분할:** nested grouped 5-fold cross-fitting을 사용한다. probe·C·GEPA·CAST 등 모든 학습 부품은 outer train에서, 종류·층·문턱·강도 선택은 inner dev에서만 정한다. outer 평가 결과로 gate 우승자를 고른 뒤 같은 결과를 다시 확증 자료로 쓰지 않는다.
 3. **모델·baseline:** 모델 revision·chat template·생성 설정·추가 데이터·탐색 예산을 보고한다. Table 2는 완성 방법을 공통 규칙 아래 조정한다. Table 3은 선택된 부품을 고정하고 하나만 바꾼다.
-4. **판정:** PCR/PCS·공식 NFP는 Cancer-Myth 판정 절차, TPQ는 Well의 루브릭을 사용하되 judge가 다르면 adaptation으로 표시한다. TPQ 오교정률로 변환할 점수 경계는 결과를 보기 전에 고정한다. parse 실패를 정답으로 세지 않고, 미판정률·재시도 및 분모 처리 규칙을 공개한다.
+4. **판정:** 본 표의 PCR/PCS·공식 NFP는 Cancer-Myth 판정 절차다. Well 원 FPQ/TPQ 점수는 부록에 두고 judge 등이 다르면 adaptation으로 표시한다. 미확정 TPQ 이산화 지표는 주 제약에 쓰지 않는다. parse 실패를 정답으로 세지 않고, 미판정률·재시도 및 분모 처리 규칙을 공개한다.
 5. **통계:** 주 지표·비열등성 허용폭·신뢰수준·다중 비교 처리를 고정한다. 같은 문항의 방법 간 차이를 짝지어 추정하고, myth·짝 문항의 의존성을 반영한다. 고정된 OOF 예측을 재표집한 CI는 학습/모델 선택의 전체 불확실성을 포함하지 않음을 명시한다. 방법별 CI의 겹침만으로 우열을 판정하지 않는다.
 6. **QA:** MedQA·PubMedQA·Medbullets에 사전에 지정한 최종 정책을 적용한다. benchmark 이름으로 gate를 끄지 않는다. fold별 정책으로 낸 FPQ OOF 성능과 사전 지정한 최종 train/calibration 규칙으로 재적합한 QA 정책의 관계를 설명한다. 개별 QA의 CI와 발화율을 보고한다.
 7. **원 표 재사용:** 데이터 수와 열이 같아도 cross-fitting·판정기·모델이 다르면 원본과 동일 실험이 아니다. Well의 실제 split ID를 확보하기 전에는 Table 8–10에 직접 비교 가능한 행을 붙였다고 쓰지 않는다. 출판 수치는 참고 행으로 분리하고 재실행 수치로 비교한다.
@@ -176,63 +175,76 @@ C는 fit FPQ의 +1/−1 참조 응답을 같은 타깃 모델에 teacher-forcing
 
 ### 6.1 Table 1: 무엇으로 교정 대상을 구분할 수 있는가? (Task 1, RH1)
 
-**행:** 텍스트 기준선, 직접 전제 검사, extract-and-verify, CoT monitor, 내부 probe, 텍스트+내부 결합. **열:** AUROC와 CI, 개발에서 정한 낮은 FPR 운영점의 TPR/실제 FPR. 비용·지연은 별도 작은 표나 본문에 측정치로 보고한다.
+**행:** BoW, 직접 전제 검사, 학습된 출력 readout, 내부 DiM, 내부 logistic probe, extract-and-verify, CoT monitor. 텍스트+내부 결합은 부록이다. Two Axes Table 2의 핵심 비교를 의료에서 재평가하는 표로 설명하고 새 Ours 탐지 행을 중복 추가하지 않는다. **열:** AUROC와 CI, 개발에서 정한 낮은 FPR 운영점의 TPR/실제 FPR. 비용·지연은 별도 작은 표나 본문에 측정치로 보고한다.
 
-**결과 문단에 쓸 순서:** 가장 중요한 짝 비교의 차이와 CI → 낮은 오탐 운영점 → 텍스트 결합의 이득 → 구간·문체·합성 쌍 통제 → 비용. TF-IDF는 텍스트 방법의 상한이 아니다. 같은 입력 범위와 정보 시점을 비교하고, 다르면 비용·가용 정보 차이를 명시한다.
+| 판별 신호 | AUROC ↑ | TPR (%) ↑ | FPR (%) ↓ |
+|---|---|---|---|
+| 질문 텍스트 분류기 (BoW) | — | — | — |
+| 직접 전제 질문 | — | — | — |
+| 학습된 출력 readout | — | — | — |
+| 내부 평균 차 방향 (DiM) | — | — | — |
+| 내부 logistic probe (채택한 게이트) | — | — | — |
+| 전제 추출 + 사실 확인 | — | — | — |
+| 전제 검토 CoT + 별도 모니터 | — | — | — |
 
-**이 표만으로 못 하는 말:** 모델이 거짓임을 알고도 동조했다, 내부 probe가 실제 개입에서도 가장 좋다, C steering이 작동한다. 그중 실제 선택·개입 결과는 Table 3에서 확인한다. 모든 gate를 Task 2에 유지한다.
+**결과 문단에 쓸 순서:** 가장 중요한 짝 비교의 차이와 CI → 낮은 오탐 운영점 → 부록의 텍스트 결합 분석 → 구간·문체·합성 쌍 통제 → 비용. TF-IDF는 텍스트 방법의 상한이 아니다. 같은 입력 범위와 정보 시점을 비교하고, 다르면 비용·가용 정보 차이를 명시한다.
+
+**이 표만으로 못 하는 말:** 모델이 거짓임을 알고도 동조했다, 내부 probe가 실제 개입에서도 가장 좋다, C steering이 작동한다. 그중 실제 선택·개입 결과는 Table 3에서 확인한다. 텍스트·CoT·내부 gate를 Table 3의 실제 개입 비교에 유지한다.
 
 ### 6.2 Table 2: 완성된 방법이 실제로 유용한가? (Task 2+3, RH2/RH3)
 
-**행:** Plain, FP Identification, GEPA, 균형 전제 검토 CoT prompting, Unconditional C steering, CAST, Hidden gate + FP prompt, Hidden gate + C steering. Tripathi adaptation/전이는 구현·호환 범위에 맞춰 본 표 또는 부록에서 직접 비교한다. 실행하지 못한 범위는 제한으로 남긴다.
+**행:** Plain, FP Identification, Extract+FactCheck, GEPA, 균형 CoT, CAST 의료 adaptation, Gated head 의료 adaptation, Hidden+prompt, Hidden+C. 가까운 재학습 방법을 본 표에 포함하고 Unconditional C는 Table 3 U행에 둔다. Gated 원 artifacts 전이는 호환 모델의 별도 부록이며 재학습 비교를 대체하지 않는다.
 
 **논문용 Table 2.** Task 2와 Task 3의 결과를 같은 행에서 읽도록 일반 의료 QA 세 열을 오른쪽에 붙인다.
 
-| Method | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | TPQ 오교정률 (%) ↓ | MedQA ACC (%) ↑ | PubMedQA ACC (%) ↑ | Medbullets ACC (%) ↑ |
-|---|---|---|---|---|---|---|---|
-| Plain | — | — | — | — | — | — | — |
-| FP Identification | — | — | — | — | — | — | — |
-| GEPA (FPQ+TPQ) | — | — | — | — | — | — | — |
-| 균형 전제 검토 CoT prompting | — | — | — | — | — | — | — |
-| Unconditional C steering | — | — | — | — | — | — | — |
-| CAST (같은 의료 train) | — | — | — | — | — | — | — |
-| Hidden gate + FP prompt | — | — | — | — | — | — | — |
-| Hidden gate + C steering | — | — | — | — | — | — | — |
+| Method | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | MedQA ACC (%) ↑ | PubMedQA ACC (%) ↑ | Medbullets ACC (%) ↑ |
+|---|---|---|---|---|---|---|
+| Plain | — | — | — | — | — | — |
+| FP Identification | — | — | — | — | — | — |
+| Extract + FactCheck | — | — | — | — | — | — |
+| GEPA (FPQ+TPQ) | — | — | — | — | — | — |
+| 균형 전제 검토 CoT prompting | — | — | — | — | — | — |
+| CAST (의료 adaptation) | — | — | — | — | — | — |
+| Gated head steering (의료 adaptation) | — | — | — | — | — | — |
+| Hidden gate + FP prompt | — | — | — | — | — | — |
+| Hidden gate + C steering | — | — | — | — | — | — |
 
-**Table 2 캡션 초안.** *End-to-end premise correction and medical QA performance.* 동일 모델의 방법별 결과를 비교한다. Cancer-Myth의 PCR·PCS는 거짓 전제 교정, NFP와 TPQ 오교정률은 정상 질문의 부당한 전제 교정을 평가한다. MedQA·PubMedQA·Medbullets는 정답 정확도(ACC)다. PCS를 제외한 성능은 백분율이며, 각 성능 셀은 `추정값 [95% CI]`로 채운다. Cancer-Myth 열은 grouped cross-fitting의 out-of-fold 결과, 의료 QA 열은 QA test를 보지 않고 별도 최종 train/calibration 규칙으로 고정한 시스템의 결과다. `—`는 미측정이며 0을 뜻하지 않는다.
+**Table 2 캡션 초안.** *End-to-end premise correction and medical QA performance.* 동일 모델의 방법별 결과를 비교한다. Cancer-Myth의 PCR·PCS는 거짓 전제 교정, NFP는 정상 질문에 없는 거짓 전제를 지어내 지적하지 않은 비율이다. NFP는 답변 전체의 의학적 정확도를 뜻하지 않으며, 별도 QA 열은 일반 의료 문제의 정답 정확도를 평가한다. MedQA·PubMedQA·Medbullets는 정답 정확도(ACC)다. PCS를 제외한 성능은 백분율이며, 각 성능 셀은 `추정값 [95% CI]`로 채운다. Cancer-Myth 열은 grouped cross-fitting의 out-of-fold 결과, 의료 QA 열은 QA test를 보지 않고 별도 최종 train/calibration 규칙으로 고정한 시스템의 결과다. `—`는 미측정이며 0을 뜻하지 않는다.
 
-**보고 규칙.** 모델마다 동일한 행 블록을 반복하고, 세 QA 열을 모든 주 비교 방법에 채운다. 정상 지표·QA의 보존 여부는 Plain 대비 paired 차이의 CI와 사전 허용폭으로 판정하며, 해당 차이와 판정은 표 주석 또는 동반 부록 표에 제시한다. NFP와 TPQ는 같은 정상 문항에 적용하는 서로 다른 루브릭이고, TPQ 오교정률의 이산화 규칙은 평가 전에 고정한다. 정확한 답 추출·무효 출력 처리 규칙도 QA별로 잠근다. 데이터셋별 개입률·harm/rescue·비용은 부록에 보고하여 QA를 하나의 불명확한 발화율로 합치지 않는다.
+**보고 규칙.** 모델마다 동일한 행 블록을 반복하고, 세 QA 열을 모든 주 비교 방법에 채운다. 정상 지표·QA의 보존 여부는 Plain 대비 paired 차이의 CI와 사전 허용폭으로 판정하며, 해당 차이와 판정은 표 주석 또는 동반 부록 표에 제시한다. NFP와 Well TPQ는 같은 정상 질문이다. 본 표는 공식 NFP 하나를 주 지표로 쓰고, Well의 원래 FPQ/TPQ 점수·S5 분포는 부록에서 별도로 보고한다. 미확정 TPQ 이산화 지표는 주 평가에서 제외한다. 정확한 답 추출·무효 출력 처리 규칙도 QA별로 잠근다. 데이터셋별 개입률·harm/rescue·비용은 부록에 보고하여 QA를 하나의 불명확한 발화율로 합치지 않는다.
 
-**결과 문단에 쓸 순서:** Plain 대비 FPQ 변화 → NFP/TPQ 비열등성 → 기존 방법 대비 같은 허용폭에서의 차이 → QA 보존 → 비용·실패 사례. 먼저 주 결과를 답하고 모델별 경향은 뒤에 설명한다. 다른 baseline이 같은 목표를 달성하면 그것도 보고한다.
+**결과 문단에 쓸 순서:** Plain 대비 FPQ 변화 → NFP 비열등성 → 기존 방법 대비 같은 허용폭에서의 차이 → QA 보존 → 비용·실패 사례. 먼저 주 결과를 답하고 모델별 경향은 뒤에 설명한다. 다른 baseline이 같은 목표를 달성하면 그것도 보고한다.
 
-**Figure 1:** 완성 시스템의 TPQ 보존(x)–PCR(y)을 그린다. 경계는 Plain TPQ 보존율 − ε_TPQ이다. 판별기만 있는 Table 1의 행은 좌표가 없으므로 찍지 않는다. Well Figure 1의 표현을 참고하되 PCR/오교정 비율을 쓰면 원문의 평균 점수 축과 다름을 표시한다.
+**Figure 1:** 완성 시스템의 NFP(x)–PCR(y)을 그린다. 경계는 Plain NFP − ε_NFP이다. 판별기만 있는 Table 1의 행은 좌표가 없으므로 찍지 않는다. Well Figure 1의 표현을 참고하되 PCR/오교정 비율을 쓰면 원문의 평균 점수 축과 다름을 표시한다.
 
 ### 6.3 Table 3: 어느 부품이 개선에 기여했는가? (Task 2, RH2/RH2b)
 
 Table 2는 각각 개발한 완성 방법을 비교하고, Table 3은 고정한 부품에서 선택 방식과 개입 방식을 바꾼다. 아래 두 패널이 실제 논문 결과표 형식이다. 기존의 ‘고정하는 것 / 바꾸는 것 / 질문’ 설계표를 대체하며, 모든 결과 칸은 미측정이다.
 
+**개입률의 뜻.** `100 × 교정 분기를 실행한 질문 수 / 전체 평가 질문 수`다. 답이 바뀐 비율이나 교정 성공률이 아니며 높을수록 좋은 지표도 아니다. 설명용으로 FPQ 20·정상 80 중 FPQ 16·정상 4에 개입하면 개입률 20%, TPR 80%, FPR 5%다. R/T/Q/H의 같은 K는 개입량을 맞추기 위한 통제이고 U는 100%다. Table 3(b)는 H와 개수뿐 아니라 문항 목록도 같다. 검사 비용·교정 분기율·실제 출력 변화율은 구분한다.
+
 **Table 3(a). 선택 방식 비교 — 교정 연산 C 고정**
 
-| ID | 교정 대상 선택 | 교정 방식 | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | TPQ 오교정률 (%) ↓ | 개입률 (%) |
-|---|---|---|---|---|---|---|---|
-| U | 모든 질문 | 고정 C steering | — | — | — | — | 100 |
-| R | 무작위 K개, 5 seeds | 고정 C steering | — | — | — | — | 100K/N |
-| T | 질문 텍스트 점수 상위 K개 | 고정 C steering | — | — | — | — | 100K/N |
-| Q | CoT monitor 점수 상위 K개 | 고정 C steering | — | — | — | — | 100K/N |
-| H | 내부 probe 점수 상위 K개 | 고정 C steering | — | — | — | — | 100K/N |
+| ID | 교정 대상 선택 | 교정 방식 | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | 개입률 (%) |
+| --- | --- | --- | --- | --- | --- | --- |
+| U | 모든 질문 | 고정 C steering | — | — | — | 100 |
+| R | 무작위 K개, 5 seeds | 고정 C steering | — | — | — | 100K/N |
+| T | 질문 텍스트 점수 상위 K개 | 고정 C steering | — | — | — | 100K/N |
+| Q | CoT monitor 점수 상위 K개 | 고정 C steering | — | — | — | 100K/N |
+| H | 내부 probe 점수 상위 K개 | 고정 C steering | — | — | — | 100K/N |
 
 **Table 3(b). 개입 방식 비교 — H가 선택한 질문 목록 고정**
 
-| ID | 교정 대상 선택 | 교정 방식 | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | TPQ 오교정률 (%) ↓ | 개입률 (%) |
-|---|---|---|---|---|---|---|---|
-| H-P | H와 동일한 문항 목록 | FP correction prompt | — | — | — | — | H와 동일 |
-| H | H와 동일한 문항 목록 | 고정 C steering | — | — | — | — | H와 동일 |
+| ID | 교정 대상 선택 | 교정 방식 | PCR (%) ↑ | PCS ↑ | NFP (%) ↑ | 개입률 (%) |
+| --- | --- | --- | --- | --- | --- | --- |
+| H-P | H와 동일한 문항 목록 | FP correction prompt | — | — | — | H와 동일 |
+| H | H와 동일한 문항 목록 | 고정 C steering | — | — | — | H와 동일 |
 
 **Table 3 캡션 초안.** *Controlled comparisons of question selection and correction interventions.* (a) C의 방향·층·강도·적용 토큰 구간을 고정하여 대상 선택을 비교한다. R/T/Q/H는 fold별 동일한 K개를 선택하며, U는 모든 질문에 개입한다. (b) H의 개입 전 선택 목록을 그대로 재사용하여 교정 프롬프트와 C steering을 비교한다. H는 (a)와 동일한 응답·측정값을 재사용하며 독립 실험이 아니다. 지표는 선택된 문항에 한정하지 않고 전체 평가 FPQ 또는 정상 문항을 해당 분모로 계산한다. 각 성능 셀은 절대값과 95% CI를 보고하고, `—`는 미측정이다. PCS 외 성능은 백분율이다. N은 전체 평가 문항 수, K는 fold별 선택 수를 합한 값이며 개입률은 그 비율이다. 이 표의 상위 K 선택은 예산 통제용 배치 진단으로, Table 2의 고정 문턱 정책과 구분한다.
 
-**핵심 비교.** H−U는 선택에 따른 개입 빈도 변화를 포함한 효과, H−R은 같은 개입 수에서 정보에 따라 고르는 효과, H−T와 H−Q는 선택 신호의 효과, H − (H-P)는 동일 대상에서 개입 방식의 효과다. 본문에 각 비교의 ΔPCR·ΔPCS·ΔNFP·ΔTPQ 오교정률과 paired 95% CI를 보고한다. 비율 차이는 %p, PCS 차이는 점수 단위다. PCR·PCS·NFP는 양수, 오교정률은 음수가 유리하다. 차이만 제시하지 않고 위 표에서 절대 성능도 보여준다.
+**핵심 비교.** H−U는 선택에 따른 개입 빈도 변화를 포함한 효과, H−R은 같은 개입 수에서 정보에 따라 고르는 효과, H−T와 H−Q는 선택 신호의 효과, H − (H-P)는 동일 대상에서 개입 방식의 효과다. 본문에 각 비교의 ΔPCR·ΔPCS·ΔNFP와 paired 95% CI를 보고한다. 비율 차이는 %p, PCS 차이는 점수 단위다. 세 차이 모두 양수가 유리하다. 차이만 제시하지 않고 위 표에서 절대 성능도 보여준다.
 
-**통제 규칙.** C와 개입 비율 q는 각 outer fold의 내부 dev에서 고정하고, K = round(q × 평가 fold 문항 수)로 정한다. R/T/Q/H의 선택 수는 같고, 상위 K 선택과 동점 처리는 평가 라벨을 쓰지 않는다. (b)는 원 질문에서 저장한 H의 문항 목록을 사용하며 프롬프트 추가 후 다시 판정하지 않는다. 선택되지 않은 질문은 동일한 Plain 응답을 사용한다. 교정 프롬프트는 선택 후 개입 부분이며 전체 FP Identification 절차를 재실행하지 않는다. 이진 TPQ 오교정 규칙·무작위 5 seeds의 집계·CI는 [13 §2](13_task_spec.md)에 따라 고정한다.
+**통제 규칙.** C와 개입 비율 q는 각 outer fold의 내부 dev에서 고정하고, K = round(q × 평가 fold 문항 수)로 정한다. R/T/Q/H의 선택 수는 같고, 상위 K 선택과 동점 처리는 평가 라벨을 쓰지 않는다. (b)는 원 질문에서 저장한 H의 문항 목록을 사용하며 프롬프트 추가 후 다시 판정하지 않는다. 선택되지 않은 질문은 동일한 Plain 응답을 사용한다. 교정 프롬프트는 선택 후 개입 부분이며 전체 FP Identification 절차를 재실행하지 않는다. 공식 NFP 판정·무작위 5 seeds의 집계·CI는 [13 §2](13_task_spec.md)에 따라 고정한다.
 
 **Table 1과의 차이:** Table 1은 실제 거짓 전제 유무를 잘 구분하는지, Table 3(a)는 그 선택을 이용했을 때 실제 교정과 정상 질문 보존이 좋아지는지를 평가한다. 탐지한 FPQ가 C로 고칠 수 없는 질문이라면 판별 성능과 교정 성능의 순위는 다를 수 있다.
 
@@ -254,7 +266,7 @@ CI가 넓어 비열등성을 확인하지 못한 경우와 허용폭을 넘는 �
 ## 7. Discussion and Limitations — 해석의 범위
 
 - **표상 해석:** probe의 예측 성공은 정의한 라벨이 읽힌다는 증거다. 모델의 지식·믿음·실제 사고 과정 전체를 증명하지 않는다. A×C 분포에 "알고도 동조" 같은 확정 원인 라벨을 붙이지 않는다.
-- **설명 정확성:** PCR/PCS와 TPQ 보존은 모든 의학적 설명 단계의 정확성 또는 CoT faithfulness와 다르다. 설명 전체의 정확성을 주장하려면 별도의 내용 평가가 필요하다.
+- **설명 정확성:** PCR/PCS와 NFP는 모든 의학적 설명 단계의 정확성 또는 CoT faithfulness와 다르다. 설명 전체의 정확성을 주장하려면 별도의 내용 평가가 필요하다.
 - **데이터와 통계:** 어려운 NFP의 작은 표본, 같은 원 질문의 중복, 문체·주제 shortcut, 합성 쌍의 생성 흔적, 탐색 후 설계 변경을 공개한다. NFP가 어려운 데이터라는 이유로 다른 논문의 정상 질문보다 반드시 어렵다고 정량 단정하지 않는다.
 - **judge와 비용:** 자동 판정기의 오류·미판정, 모델과 judge 버전, readout 정보 시점, CoT 생성 및 hidden-state 접근 비용을 보고한다.
 - **전이와 임상 적용:** 단일 턴 암 질문에서 나온 결과를 다른 진료 분야·EHR 다중 턴·실제 환자 안전으로 확장하지 않는다. QA 정확도 보존도 임상적 유효성 인증은 아니다.
@@ -271,7 +283,7 @@ CI가 넓어 비열등성을 확인하지 못한 경우와 허용폭을 넘는 �
 ## 9. 원고를 채우기 전에 남은 실제 작업
 
 1. [16 §6–7](16_code_overview.md)의 분할·judge·TPQ 루브릭·캐시·resume scale 문제를 해결한다. 문서 갱신은 구현 완료가 아니다.
-2. 일차 지표와 ε_NFP·ε_TPQ·QA별 허용폭, CI·다중 비교·미판정 처리, 최종 QA 정책 선택 규칙을 고정한다.
+2. 일차 지표와 ε_NFP·QA별 허용폭, CI·다중 비교·미판정 처리, 최종 QA 정책 선택 규칙을 고정한다.
 3. Table 1의 동일 입력 비교와 Table 3(a)/(b)의 통제 비교를 config·mask ID 수준으로 명세한다. Table 2의 별도 최적화와 구분한다.
 4. Table 1–3을 채운 뒤, Intro의 결과 예고·contribution과 Conclusion을 실제 지지 범위에 맞춰 작성한다. 추가 문헌 비교가 미실행이면 그대로 한계로 표시한다.
 

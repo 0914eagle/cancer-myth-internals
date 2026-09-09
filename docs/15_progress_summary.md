@@ -15,11 +15,11 @@
 | 중심 문장 | 고정 held-out 평가에서 정상 질문의 추가 오교정을 사전 허용폭 안으로 제한하면서 거짓 전제 교정률을 높일 수 있는지 검증. 내부 신호의 라우팅 가치와 활성값 개입의 추가 효과를 분리해 측정 | 09 §1, README |
 | 가설 | RH1 내부 신호의 추가 가치 / RH2 선택적 개입의 효과 (+RH2b steering vs prompt) / RH3 일반 의료 QA 보존 | 09 §3 |
 | Task ↔ 표 | Task 1 → Table 1 (판별) / Task 2 → Table 2 (최종 효용) + Table 3 (선택·신호·개입의 통제 비교) / Task 3 → Table 2의 QA 열. 같은 결과의 반복을 독립 증거로 세지 않음 | 13, 17 §6 |
-| 본 표 행 | Plain, FP Identification, GEPA, 균형 전제 검토 CoT, Unconditional C steering, CAST, Hidden gate + FP prompt, Hidden gate + C. 무작위는 Table 3, 출판 수치는 참고 행 | 13 §3 |
+| 본 표 행 | Plain, FP Identification, Extract+FactCheck, GEPA, 균형 CoT, CAST, Gated head 의료 adaptation, Hidden+prompt, Hidden+C. Unconditional C·무작위는 Table 3, 출판 수치는 별도 참고 | 13 §3 |
 | 평가 단위 | 585 + 150 전체, nested grouped 5-fold cross-fitting. Well 잠근 분할은 ID 확보 시 부록 | 13 §0, 12 §5 |
-| 판정기 | 본 표 GPT-4o API (`validate.py`, `validate_nfp.py`). TPQ 오교정은 Well의 TPQ 루브릭(App. E). 부록에 gemini-3-flash 재채점 | 13 §0, 10 §2 |
+| 판정기 | 본 표 GPT-4o의 PCR/PCS·공식 NFP. 같은 정상 질문의 중복 열 제거. Well 원 FPQ/TPQ 점수는 원 판정 조건의 부록 | 13 §0, 10 §2 |
 | 모델 | Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct 먼저. Gemma-2-27B는 E2 1순위(E1 결과) | 13 §0, experiments/01 |
-| C 방향 | 후보 셋: (i) 자연 응답 +1/−1 짝 없는 대조, (ii) 시스템 프롬프트 짝 대조(Persona Vectors/RepE식), (iii) Cancer-Myth 참조 답변 teacher-forcing 짝 대조(`c_pair`, 실험 세션 stage 8). 선택은 AUROC가 아니라 Lavi식 steering score. cos(A,C) 보고, 높으면 A 직교화 | 13 §2, 07 B3-1, experiments/01 |
+| C 방향 | 주 실행안은 fit FPQ의 교정/비교정 참조 응답 첫 32토큰 평균 차. 후보·층·강도는 dev, 최종 test 고정. 다른 방향은 부록이며 과거 E1 관찰과 구분 | 19, 20 |
 | 용어 | gate → 개입 조건 / 선택적 개입. 분류기 = linear probe(hidden), text classifier(BoW) | 12 §11 |
 | 주장하지 않는 것 | 모델은 안다, CoT는 안 된다, 조건·행동 분리 최초, 의료 gated steering 최초, 설계상 NFP 보존, TPQ 1점 손실이면 진다, probe 안 읽히면 지식 없음, oracle이 상한 | 12 §8, 09 |
 
@@ -28,7 +28,7 @@
 | 논문 | 확인 수준 | 핵심 사실 |
 |---|---|---|
 | Cancer-Myth | 저장소 코드 + 논문 | Table 1은 닫힌 모델. GPT-4o 판정기. NFP 150 |
-| Well-Actually | **PDF 전문 + 저장소 코드** | 8개 방법 전부 시소. TPQ 0 = S1 93–100%. 파인튜닝은 Cancer-Myth FPQ + ARC-DA TPQ. FAITH는 Yuan et al.이 보고한 영화 head. 가중식 0.13/0.87. Two Axes를 한 문장으로만 인용, probe·라우팅 없음. 한계 절에 "의료는 FPQ 비율이 더 높을 수 있다" ([10 §2](10_evidence_and_baselines.md)) |
+| Well-Actually | **PDF 전문 + 저장소 코드** | 여러 전제 교정 방법에서 FPQ–TPQ 상충을 관찰. TPQ 루브릭은 정답 정확도와 다름. 파인튜닝은 Cancer-Myth FPQ + ARC-DA TPQ. FAITH는 Yuan et al.이 보고한 영화 head. 가중식 0.13/0.87. Two Axes를 한 문장으로만 인용, probe·라우팅 없음. 한계 절에 "의료는 FPQ 비율이 더 높을 수 있다" ([10 §2](10_evidence_and_baselines.md)) |
 | Two Axes | **PDF 전문, 분모 재확인** | CREPE의 probe 라우팅 효과. 47%/61%는 challenge 출력에서 전체 FP 문항 중 NLI 검증 교정 비율이며 gated 조건부 성공률이 아님. 탐지율과 곱한 가중 비교는 철회. 의료 전제·activation 개입의 추가 효과는 직접 평가 ([12 §11](12_discussion_decisions.md), [17 §3](17_manuscript_storyline.md)) |
 | Lavi et al. (EACL 2026) | **PDF 전문** | 추출형 QA 답변 불가능성. 방향 선택을 steering score로. CREPE는 분류 전이만(F1 59–62). 인과 개입은 기권 제어 ([07 B3-1](07_related_work_2026.md)) |
 | Tripathi | 원문 + HF runtime (codex 세션) | 내부 probe gate + head steering, EHR 멀티턴 압력 ([11](11_tripathi_review.md)) |

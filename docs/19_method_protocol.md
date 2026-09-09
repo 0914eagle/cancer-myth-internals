@@ -14,6 +14,12 @@
 
 A의 양성은 ‘거짓 전제 질문’이지 ‘Plain이 틀린 질문’이 아니다. C의 +/−는 참/거짓 **질문**이 아니라 교정/비교정 **응답**이다. 정상 질문을 거짓 질문에서 뺀 벡터를 곧바로 C로 쓰지 않는다. 이름 A와 코드의 위치 A_premise도 다른 개념이며, 주 probe의 코드 위치 이름은 D_last_prompt_token이다.
 
+### 1.1 기존 부품과 초기 설정을 구분한다
+
+선형 logistic probe, 조건/행동 분리, 대조 응답 평균 차, 같은 질문의 응답 쌍은 기존 기법이다. Two Axes의 기여는 새 probe 공식보다 두 오류 축의 분석·정책이고, Gated의 기여는 기존 ITI·probe·평균 차를 행동별 gate·head 선택·보존 조정으로 결합한 구성이다. 현재의 residual 선택은 새로운 알고리즘으로 확정하지 않는다. [20의 출처·기여 비교](20_baseline_transfer_and_novelty.md)
+
+마지막 프롬프트는 생성 전 판정 가능성, logistic은 단순한 출발점, paired C는 질문 차이의 교란 감소와 현 pipeline 사용 가능성을 이유로 선택했다. 첫 32토큰·층 후보·α grid·5% 운영점·split seed는 제안한 초기 실행 설정이다. 문헌에서 최적이라고 입증한 값이 아니며 dev에서 정해 test에 잠근다. 핵심 비교 없이 ‘내부/steering이 필요하다’는 결론을 내리지 않는다.
+
 ## 2. 분할과 입력 고정
 
 - 모델: `Qwen/Qwen2.5-7B-Instruct`(현재 config d=3584, L=28), `meta-llama/Llama-3.1-8B-Instruct`(d=4096, L=32). 모델별로 probe·방향을 각각 만든다. revision과 실제 config를 저장한다.
@@ -84,9 +90,9 @@ C는 raw residual 공간에서 계산하고 probe의 feature별 표준화를 적
 
 이는 검증할 유한 탐색 범위다. α=0은 개입 없는 기준이다. test 첫 batch나 resume 후 남은 질문에서 ρ_k를 다시 추정하지 않는다. C의 평균 차 norm이 0이면 해당 후보는 무효다.
 
-**Table 1과 Table 2의 문턱 구분:** Table 1은 앞의 탐지 전용 τ_det를 보고한다. Table 2의 최종 정책은 같은 probe를 고정한 상태에서 dev FPR≤5%를 만족하는 문턱 후보와 k_C·α를 함께 비교한다. dev 실제 응답의 NFP/TPQ 손실 제약을 만족하는 후보 중 PCR, PCS 순으로 선택하고, 동률이면 α가 작고 개입률이 낮은 쪽을 선택한다. 남은 동률 규칙도 config에 저장한다. 두 문턱이 다르면 `τ_det`, `τ_policy`로 구분하여 보고한다. dev 기준의 선별은 test 비열등성 입증과 다르다.
+**Table 1과 Table 2의 문턱 구분:** Table 1은 앞의 탐지 전용 τ_det를 보고한다. Table 2의 최종 정책은 같은 probe를 고정한 상태에서 dev FPR≤5%를 만족하는 문턱 후보와 k_C·α를 함께 비교한다. dev 실제 응답의 NFP 손실 제약을 만족하는 후보 중 PCR, PCS 순으로 선택하고, 동률이면 α가 작고 개입률이 낮은 쪽을 선택한다. 남은 동률 규칙도 config에 저장한다. 두 문턱이 다르면 `τ_det`, `τ_policy`로 구분하여 보고한다. dev 기준의 선별은 test 비열등성 입증과 다르다.
 
-ε_NFP·ε_TPQ·QA별 허용폭은 기존 실행 명세처럼 **실험 전 확정해야 할 남은 연구 판단**이다. 표본 수가 적다는 이유로 허용폭을 넓혀 성공을 만들지 않는다. 허용폭을 만족하는 설정이 없거나 C 쌍이 부족해 추정이 불안정하면 그 사실을 보고한다. α=0만 남으면 교정 개선 가설을 지지한 결과가 아니다. QA test는 어떤 선택에도 쓰지 않는다.
+ε_NFP·QA별 허용폭은 기존 실행 명세처럼 **실험 전 확정해야 할 남은 연구 판단**이다. 표본 수가 적다는 이유로 허용폭을 넓혀 성공을 만들지 않는다. 허용폭을 만족하는 설정이 없거나 C 쌍이 부족해 추정이 불안정하면 그 사실을 보고한다. α=0만 남으면 교정 개선 가설을 지지한 결과가 아니다. QA test는 어떤 선택에도 쓰지 않는다.
 
 ## 6. 새 질문에서 실제로 steering하는 순서
 
@@ -120,6 +126,14 @@ fold/model별 저장할 것은 split manifest, chat template/revision, probe(μ�
 | 참조 응답 쌍·C | [make_paired_rows.py](../scripts/make_paired_rows.py), [run_direction_pair.py](../scripts/run_direction_pair.py) | 참조 선택 전 fit 필터, fold별 방향, span·출처 기록 |
 | gate와 residual hook | [steering.py](../src/steering.py) | ≥ 판정 규약 통일, score 기록, 고정 scale 로드 |
 | 실행기 | [run_steer.py](../scripts/run_steer.py) | 전체 fold orchestration, dev 정책 선택, random/top-K·프롬프트 경로 |
-| 보존 판정 | [13](13_task_spec.md), [16](16_code_overview.md) | ε·CI·TPQ 이산화 규칙 확정, judge 파싱/캐시와 QA 평가 구현 |
+| 보존 판정 | [13](13_task_spec.md), [16](16_code_overview.md) | NFP·QA의 ε·CI 확정, judge 파싱/캐시와 QA 평가 구현, Well 원 점수 부록 경로 |
 
 현재 코드 주석의 ‘같은 질문이라 내용이 정확히 상쇄된다’는 표현은 이 명세의 인과적 주장으로 채택하지 않는다. `steering.py` 상단의 ‘generated positions only’ 요약보다 실제 마지막 프롬프트 토큰부터 시작하는 hook 동작이 정확한 실행 기준이다. 현재 `run_steer.py`의 첫 batch norm 계산도 본 실험에는 그대로 사용하지 않는다.
+
+## 9. 직접 baseline의 구현 경계
+
+Table 1은 [13 §1](13_task_spec.md#1-task-1--판별-신호-비교--table-1)의 일곱 readout이다. 새 detector Ours 행은 없다. 출력 readout은 생성 이후 정보이며 CoT monitor의 모델·템플릿·점수 추출 규칙은 실행 전에 추가로 확정한다. 최종 응답이나 judge 라벨을 입력에 유출하지 않는다.
+
+Table 2의 Gated head steering은 원 artifacts를 다른 모델에 꽂는 조건이 아니다. 동일 의료 fit 질문과 교정/비교정 쌍으로 head를 탐색하고, FPQ/정상 gate를 학습하여 의료 전제 목표의 head 개입을 평가한다. 원 H/S 이중 제어에서 사용자 압력 축은 주 Cancer-Myth 라벨에 없으므로 FP 교정 adaptation으로 명명한다. 사용한 원 head ranking·ablation·방향·강도 규칙과 변경한 입력·라벨을 기록한다. head 선택의 ablation 점수·토큰 pooling·연속 gate 강도 매핑 및 원 학습 코드와의 대응은 아직 구현 명세를 보완해야 한다. 현재 residual C 실행안과 동일한 구현이라고 간주하지 않는다.
+
+CAST도 원 PCA 조건/행동 벡터와 유사도 문턱의 의료 adaptation을 별도로 명세한다. logistic gate를 넣고 CAST 원 방법이라고 부르지 않는다. 이러한 재학습 baseline의 성능이 없으면 비교 우위를 주장할 수 없다. 미구현 행은 미측정 상태로 남긴다.

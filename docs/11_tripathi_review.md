@@ -1,5 +1,7 @@
 # 11. Tripathi 원문·공개 구현 확인 — 2608.23666
 
+> 2026-09-09 후속 검토: [20](20_baseline_transfer_and_novelty.md)에 기존 부품과 결합 기여, Cancer-Myth adaptation, 두 표의 역할을 정리했다. 원 논문의 §IV-C는 MedQuAD 20문항을 강도 선택 중 참조 유사도로 확인한다. 정상 625문항 평가와 함께 보아야 하며 ‘QA 보존을 안 봤다’는 차별화는 사용하지 않는다. 의료 전제로 재학습한 Gated는 본 Table 2의 직접 baseline이고 원 artifacts 전이만 부록이다.
+
 2026-09-08. 기존 문서의 Tripathi와 같은 논문이며, PDF 10쪽과 저자 공개 runtime을 확인했다. 모델 추론·결과 재현은 수행하지 않았다.
 
 ## 원문에서 확인한 것

@@ -192,3 +192,14 @@ Well-Actually는 Two Axes를 한 문장으로만 인용한다: *"LLM-based fact 
 - QA용 최종 train/calibration 그룹 분할·inner-dev 결과 집계 규칙을 사전에 정한다. 새 모델의 문턱·강도는 최종 calibration에서 고정하며 QA test와 outer 평가 성능으로 선택하지 않는다. Cancer-Myth OOF 수치를 재학습한 문항의 점수로 대체하지 않는다.
 - [17](17_manuscript_storyline.md)에 Introduction 다섯 문단, Related Work 네 묶음, Methodology·Setup, 표별 결과 해석, Discussion·Conclusion을 작성했다. [09](09_research_proposal.md)와 [13](13_task_spec.md)을 함께 갱신했다.
 - E1 탐색 결과 이후 정교화된 계획이라는 점을 공개한다. 모든 설계가 데이터 관찰 전에 사전 등록됐다는 표현은 사용하지 않는다. 방향의 판별력과 실제 제어 효과, TPQ 오교정과 설명 전체의 정확성도 구분한다.
+
+## 2026-09-09 후속 결정 — 지표·baseline·기여 구분
+
+- NFP/TPQ는 같은 150개 정상 질문이다. 본 Table 2·3은 공식 NFP만 유지하고 Well 원 FPQ/TPQ 점수는 부록으로 이동한다. 미확정 TPQ 오교정률과 ε_TPQ는 주 정책에서 제외한다.
+- Table 1은 Two Axes의 BoW·직접 질문·학습된 출력·내부 DiM·내부 logistic을 계승하고 전제 추출/검증·CoT monitor를 추가한 일곱 행이다. 텍스트+hidden은 부록. 기존 logistic과 별도의 Ours 탐지 행을 만들지 않는다.
+- Table 2는 아홉 방법. Extract+FactCheck와 의료 재학습 Gated head를 본 비교에 포함하고 Unconditional C를 Table 3 U행으로 이동한다. 동일 의료 train/dev와 판정 조건의 adaptation이며 재현 완료는 아니다.
+- 개입률은 전체 중 교정 분기를 실행한 비율이다. TPR·FPR·교정 성공률과 다르며 Table 3의 K는 개입량 통제다.
+- Two Axes는 새 probe 공식보다 두 축 분석·위험별 정책, Gated는 기존 ITI·probe·평균 차를 행동별 제어·head ablation·보존 확인과 결합한 구성이 중심이다. Gated의 MedQuAD 강도 선택 중 확인과 정상 보존 평가도 인정한다.
+- 두 방법 모두 의료 데이터에 적용할 수 있다. 입력·목표·모델별 재학습 필요성과 방법의 실패를 구분한다. 현재 우리 계획은 기존 조건부 기법의 적용·분석이며, 세 표 자체가 세 독립 기여를 보장하지 않는다.
+
+상세 근거와 교수님 설명은 [20](20_baseline_transfer_and_novelty.md). 과거 결정과 충돌하면 이 기록 및 13/19의 현재 명세를 우선한다. 이번 변경은 문서만 수정했고 학습·본 실험·코드 구현을 완료한 것은 아니다.
