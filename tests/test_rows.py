@@ -131,6 +131,7 @@ def test_true_twin_is_spliced_and_checked():
 
     twin, status = make_true_twin(q, llm)
     assert status == "ok" and twin["set"] == "tpair" and twin["pair_id"] == "fpq_9"
+    assert twin["id"].startswith("fpq_9_true_") and twin["has_negation"] is False and 0.9 <= twin["len_ratio"] <= 1.2
     s, e = twin["premise_span"]
     assert twin["question"][s:e] == "he knows surgery is one of several ways to treat it"
     # everything outside the span is byte-identical
@@ -142,3 +143,26 @@ def test_true_twin_is_spliced_and_checked():
 
     assert make_true_twin(q, still_false)[1] == "still_false"
     assert make_true_twin({**q, "premise_span": None}, llm)[1] == "no_span"
+
+    def too_long(prompt):
+        return "NO" if prompt.startswith("Does the following") else " ".join(["word"] * 30)
+
+    assert make_true_twin(q, too_long)[1] == "length"
+
+
+def test_false_paraphrase_keeps_the_belief():
+    from src.rows import make_false_paraphrase
+
+    q = {"id": "fpq_9", "set": "fpq", "question": Q_BLADDER, "premise_text": P_BLADDER, "correction": "x",
+         "premise_span": [Q_BLADDER.index("he believes"), Q_BLADDER.index("treat it") + len("treat it")]}
+
+    def llm(prompt):
+        return "YES" if prompt.startswith("Does the following") else "he is sure that surgery is the sole way to treat it"
+
+    para, status = make_false_paraphrase(q, llm)
+    assert status == "ok" and para["set"] == "fpair" and para["label_false_premise"] == 1 and para["pair_id"] == "fpq_9"
+
+    def lost(prompt):
+        return "NO" if prompt.startswith("Does the following") else "he is weighing several ways to treat it"
+
+    assert make_false_paraphrase(q, lost)[1] == "lost_belief"

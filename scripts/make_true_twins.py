@@ -10,10 +10,14 @@ a second LLM call confirms the false belief is gone.
 
     python scripts/make_true_twins.py --questions $ROWS/questions.jsonl --out-dir $ROWS
 
-Writes questions_twins.jsonl (set=tpair, pair_id=<fpq id>),
-activation_rows_twins.jsonl, twins.jsonl (checkpoint, one line per fpq),
+Two rows per fpq: the true twin (set=tpair, label 0) and a false paraphrase
+of the same span (set=fpair, label 1), both LLM-written under the same
+length / no-negation constraints, so fpair-vs-tpair holds writer and style
+constant and only the belief differs. Writes questions_twins.jsonl
+(pair_id=<fpq id>), activation_rows_twins.jsonl, twins.jsonl (checkpoint),
 twins_audit.md and twins_sample.md. Only fpq rows with an LLM-verified span
-get a twin.
+are used. A v1 twins.jsonl (true twins only, older prompt) is not reused:
+delete it first.
 """
 
 from __future__ import annotations
@@ -31,7 +35,7 @@ if str(REPO_ROOT) not in sys.path:
 from scripts.make_rows import make_llm
 from src.config import load_config
 from src.jsonl import append_jsonl, read_jsonl, write_jsonl
-from src.rows import activation_rows, make_true_twin
+from src.rows import activation_rows, make_false_paraphrase, make_true_twin
 
 
 def main() -> None:
@@ -68,34 +72,55 @@ def main() -> None:
 
     n_new = 0
     for q in fpq:
-        if q["id"] in done:
-            continue
-        twin, status = make_true_twin(q, llm)
-        append_jsonl(progress, {"id": q["id"], "status": status, "twin": twin})
-        done[q["id"]] = {"id": q["id"], "status": status, "twin": twin}
-        n_new += 1
-        if n_new % 25 == 0:
-            print(f"[twins] {n_new} attempted this run", flush=True)
+        rec = done.get(q["id"], {"id": q["id"]})
+        changed = False
+        if "status" not in rec:
+            twin, status = make_true_twin(q, llm)
+            rec.update(status=status, twin=twin)
+            changed = True
+        if "para_status" not in rec:
+            para, pstatus = make_false_paraphrase(q, llm)
+            rec.update(para_status=pstatus, para=para)
+            changed = True
+        if changed:
+            append_jsonl(progress, rec)
+            done[q["id"]] = rec
+            n_new += 1
+            if n_new % 25 == 0:
+                print(f"[twins] {n_new} attempted this run", flush=True)
 
     twins = [d["twin"] for d in done.values() if d.get("twin")]
-    write_jsonl(out_dir / "questions_twins.jsonl", twins)
-    write_jsonl(out_dir / "activation_rows_twins.jsonl", activation_rows(twins))
-    status = Counter(d["status"] for d in done.values())
-    lines = ["# True-premise twins audit", "", "| status | n |", "|---|---:|"]
-    lines += [f"| {k} | {v} |" for k, v in sorted(status.items())]
-    lines += ["", f"twins: {len(twins)} of {len(fpq)} eligible fpq rows"]
+    paras = [d["para"] for d in done.values() if d.get("para")]
+    rows = twins + paras
+    write_jsonl(out_dir / "questions_twins.jsonl", rows)
+    write_jsonl(out_dir / "activation_rows_twins.jsonl", activation_rows(rows))
+    status = Counter(d.get("status") for d in done.values())
+    pstatus = Counter(d.get("para_status") for d in done.values())
+    both = sum(1 for d in done.values() if d.get("twin") and d.get("para"))
+    lines = ["# Twins audit", "", "| kind | status | n |", "|---|---|---:|"]
+    lines += [f"| true twin | {k} | {v} |" for k, v in sorted(status.items(), key=str)]
+    lines += [f"| false paraphrase | {k} | {v} |" for k, v in sorted(pstatus.items(), key=str)]
+    neg_t = sum(1 for t in twins if t.get("has_negation"))
+    neg_p = sum(1 for t in paras if t.get("has_negation"))
+    mean_ratio = lambda xs: (sum(x.get("len_ratio", 1.0) for x in xs) / len(xs)) if xs else float("nan")  # noqa: E731
+    lines += ["", f"true twins: {len(twins)} / false paraphrases: {len(paras)} / both: {both} of {len(fpq)} eligible fpq rows",
+              f"negation words: true twins {neg_t}/{len(twins)}, false paraphrases {neg_p}/{len(paras)}",
+              f"mean length ratio (new/original words): true {mean_ratio(twins):.2f}, false {mean_ratio(paras):.2f}"]
     (out_dir / "twins_audit.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     by_id = {q["id"]: q for q in read_jsonl(args.questions)}
     rng = random.Random(args.seed)
     sample = rng.sample(twins, min(30, len(twins)))
     md = ["# True-premise twins (check by eye)", ""]
+    para_by_id = {t["pair_id"]: t for t in paras}
     for t in sample:
+        para = para_by_id.get(t["pair_id"])
         md += [
             f"## {t['pair_id']}",
             f"- false belief: {by_id[t['pair_id']].get('premise_text')}",
-            f"- original span: **{t['replaced']}**",
-            f"- twin span:     **{t['replaced_with']}**",
+            f"- original span:       **{t['replaced']}**",
+            f"- true twin span:      **{t['replaced_with']}**  (len x{t.get('len_ratio')}, negation={t.get('has_negation')})",
+            f"- false paraphrase:    **{para['replaced_with'] if para else '-'}**" + (f"  (len x{para.get('len_ratio')}, negation={para.get('has_negation')})" if para else ""),
             f"- twin question: {t['question']}",
             "",
         ]

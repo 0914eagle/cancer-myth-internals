@@ -497,17 +497,34 @@ def paired_rows(
 
 # --- minimal pairs: the same question with the premise made true -----------
 
+TWIN_CONSTRAINTS = (
+    "Rules for the replacement: (1) about the same length as the bracketed "
+    "stretch, never more than a few words longer; (2) same voice, same "
+    "situation, same tense; (3) no negation words such as not, no, never, "
+    "isn't, doesn't, can't, without -- express the belief positively (say "
+    "\"can affect people of any age\" rather than \"is not only for older "
+    "people\"); (4) everything outside the brackets stays exactly as it is, so "
+    "return only the replacement text, nothing else, no quotes, no brackets."
+)
+
 TWIN_PROMPT = (
     "A patient's question rests on a false belief. The stretch of the question "
     "that carries the belief is marked between [[ and ]]. Rewrite ONLY that "
-    "stretch so that the patient now holds the correct belief given below, in "
-    "the same voice and about the same situation, keeping length and tone as "
-    "close as possible. Everything outside the brackets must stay exactly as "
-    "it is, so return only the replacement text for the bracketed stretch, "
-    "nothing else, no quotes, no brackets.\n\n"
+    "stretch so that the patient now holds the correct belief given below. "
+    + TWIN_CONSTRAINTS + "\n\n"
     "QUESTION: {marked}\n"
     "FALSE BELIEF: {premise}\n"
     "CORRECT BELIEF: {correction}\n\n"
+    "REPLACEMENT:"
+)
+
+PARAPHRASE_PROMPT = (
+    "A patient's question rests on a false belief. The stretch of the question "
+    "that carries the belief is marked between [[ and ]]. Rewrite ONLY that "
+    "stretch in different words so that the patient still holds the same false "
+    "belief given below. " + TWIN_CONSTRAINTS + "\n\n"
+    "QUESTION: {marked}\n"
+    "FALSE BELIEF: {premise}\n\n"
     "REPLACEMENT:"
 )
 
@@ -519,48 +536,65 @@ TWIN_CHECK_PROMPT = (
     "ANSWER:"
 )
 
+NEGATION_RE = re.compile(r"\b(not|no|never|none|nothing|neither|nor|without)\b|n't\b", re.IGNORECASE)
 
-def make_true_twin(q: dict[str, Any], llm) -> tuple[dict[str, Any] | None, str]:
-    """Build the true-premise twin of one fpq row.
 
-    The replacement is spliced into the original question at the aligned span,
-    so the twin differs from the original only inside that span (a minimal
-    pair). A second call checks that the false belief is gone. Returns
-    (twin_row, status) with status in {ok, no_span, empty, unchanged,
-    still_false, too_long}.
-    """
+def _splice(q: dict[str, Any], llm, prompt: str, want_false: bool) -> tuple[dict[str, Any] | None, str]:
     span = q.get("premise_span")
     if not span or not q.get("premise_text") or not q.get("correction"):
         return None, "no_span"
     s, e = int(span[0]), int(span[1])
-    question = q["question"]
-    marked = question[:s] + "[[" + question[s:e] + "]]" + question[e:]
-    reply = llm(TWIN_PROMPT.format(marked=marked, premise=q["premise_text"], correction=q["correction"]))
+    question, original = q["question"], q["question"][int(span[0]):int(span[1])]
+    marked = question[:s] + "[[" + original + "]]" + question[e:]
+    reply = llm(prompt.format(marked=marked, premise=q["premise_text"], correction=q.get("correction")))
     new = (reply or "").strip().strip("\"'“”‘’[] ")
     if not new:
         return None, "empty"
-    if new.lower() == question[s:e].lower():
+    if new.lower() == original.lower():
         return None, "unchanged"
-    if len(new) > 3 * max(len(question[s:e]), 40):
-        return None, "too_long"
+    ratio = len(new.split()) / max(1, len(original.split()))
+    if ratio > 1.5 or ratio < 0.5:
+        return None, "length"
     twin = question[:s] + new + question[e:]
     verdict = (llm(TWIN_CHECK_PROMPT.format(question=twin, premise=q["premise_text"])) or "").strip().upper()
-    if not verdict.startswith("NO"):
+    still_false = verdict.startswith("YES")
+    if want_false and not still_false:
+        return None, "lost_belief"
+    if not want_false and still_false:
         return None, "still_false"
+    # the twin text is part of the id so a regenerated twin is a new row for
+    # the resumable extractor and the old one is pruned from the manifests
     row = {
-        "id": f"{q['id']}_true",
-        "set": "tpair",
-        "label_false_premise": 0,
+        "id": f"{q['id']}_{'para' if want_false else 'true'}_{hashlib.sha1(twin.encode('utf-8')).hexdigest()[:6]}",
+        "set": "fpair" if want_false else "tpair",
+        "label_false_premise": 1 if want_false else 0,
         "pair_id": q["id"],
         "question": twin,
-        "premise_text": q["correction"],
+        "premise_text": q["premise_text"] if want_false else q["correction"],
         "premise_span": [s, s + len(new)],
         "align_score": 1.0,
         "align_method": "twin",
-        "replaced": question[s:e],
+        "replaced": original,
         "replaced_with": new,
+        "len_ratio": round(ratio, 2),
+        "has_negation": bool(NEGATION_RE.search(new)),
         "category": q.get("category"),
         "cancer": q.get("cancer"),
         "from_model": q.get("from_model"),
     }
     return row, "ok"
+
+
+def make_true_twin(q: dict[str, Any], llm) -> tuple[dict[str, Any] | None, str]:
+    """The fpq question with only the aligned span rewritten so the belief is
+    true (set=tpair, label 0). Spliced, so the rest is byte-identical; a
+    second call checks the false belief is gone. Status in {ok, no_span,
+    empty, unchanged, length, still_false}."""
+    return _splice(q, llm, TWIN_PROMPT, want_false=False)
+
+
+def make_false_paraphrase(q: dict[str, Any], llm) -> tuple[dict[str, Any] | None, str]:
+    """The same span paraphrased by the LLM with the false belief kept
+    (set=fpair, label 1). Against tpair this holds writer, length and style
+    constant on both sides, so only the belief differs."""
+    return _splice(q, llm, PARAPHRASE_PROMPT, want_false=True)

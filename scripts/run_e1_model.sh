@@ -130,9 +130,15 @@ if has 9; then
   python -m src.extract_activations --config "${CONFIG}" --input "${ROWS}/activation_rows_twins.jsonl" \
     --output-dir "${ACT_AD}" --layers all --strategies last_subtoken span_mean
   python scripts/prune_manifests.py --run-dir "${ACT_AD}" --rows "${ROWS}/activation_rows.jsonl" "${ROWS}/activation_rows_twins.jsonl"
+  # (a) original fpq vs its true twin; (b) LLM-written false paraphrase vs
+  # LLM-written true twin, the cleaner pair (same writer, length, style).
   python scripts/run_probe_sweep.py --run-dir "${ACT_AD}" --out-dir "${RES}/probe_sweep_twins" \
     --positive fpq --negative tpair --paired-only
   python scripts/run_text_baseline.py --questions "${ROWS}/questions.jsonl" "${ROWS}/questions_twins.jsonl" \
     --out-dir "${RES}/probe_sweep_twins" --positive fpq --negative tpair --paired-only
+  python scripts/run_probe_sweep.py --run-dir "${ACT_AD}" --out-dir "${RES}/probe_sweep_pairs" \
+    --positive fpair --negative tpair --paired-only
+  python scripts/run_text_baseline.py --questions "${ROWS}/questions_twins.jsonl" \
+    --out-dir "${RES}/probe_sweep_pairs" --positive fpair --negative tpair --paired-only
 fi
 echo "[done] ${MODEL}: ${RES}"
