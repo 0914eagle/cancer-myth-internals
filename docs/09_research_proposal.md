@@ -108,11 +108,13 @@ Task 2에서 선택한 gate·개입·문턱·강도를 고정한 **전체 시스
 
 | 산출물 | 열 | 행 / 역할 | 연결 |
 |---|---|---|---|
-| **Table 1: 본 결과** | PCR, PCS, NFP, TPQ 오교정, MedQA, PubMedQA, Medbullets, 발화율 | 8행 = 선행 6 (Plain, FP Identification, GEPA, CAA, CAST, Two Axes 라우팅) + 무작위 ablation + 우리. 원 논문 수치는 참고 행으로 분리 | **Task 2+3**. Cancer-Myth Table 1의 열 구성을 계승한 공개 모델 블록. 585/150 전체, cross-fitting |
-| **Table 2: 개입 조건 비교** | AUROC, TPR@FPR 5% | 텍스트 분류기·직접 질문·extract-and-verify·CoT monitor·hidden probe·결합 | **Task 1**. 라벨은 "거짓 전제가 있는가" 하나. Two Axes Table 2의 틀 |
-| **Table 3: 요인 분해** | PCR / NFP / TPQ 오교정 | 조건 {항상, 무작위, 텍스트, CoT, hidden, oracle} × 개입 {없음, FP 프롬프트, C steering} | **Task 2**. 칸이 곧 선행 방법 (항상+프롬프트 = Well, 항상+C = CAA, hidden+프롬프트 = Two Axes) |
-| **Figure 1: FPQ–TPQ** | x = TPQ 보존, y = PCR | Table 1·3의 모든 행이 점 | Well-Actually Figure 1의 표현 재사용 |
-| 부록 | 카테고리, A×C 분포, 층별 cosine, AO/NLA 통제, Well 판정기 재채점 | 진단 및 해석 한계 | 주장을 보조 |
+| **Table 1: 개입 조건 비교** | AUROC (부록에 TPR@FPR 5%) | 텍스트 분류기·직접 질문·extract-and-verify·CoT monitor·hidden probe·결합 | **Task 1**. 라벨은 "거짓 전제가 있는가" 하나. Two Axes Table 2의 틀 |
+| **Table 2: 본 결과** | PCR, PCS, NFP, TPQ, MedQA, PubMedQA, Medbullets | 8행 = 선행 6 (Plain, FP Identification, GEPA, CAA, CAST, Two Axes 라우팅) + 무작위 ablation + 우리. 원 논문 수치는 참고 행으로 분리 | **Task 2 + Task 3**. Cancer-Myth Table 1의 열 구성을 계승한 공개 모델 블록. 585/150 전체, cross-fitting |
+| **Table 3: 요인 분해** | PCR / NFP | 조건 {Never, Always, Random, hidden probe, Oracle} × 개입 {없음, 교정 프롬프트, steering} | **Task 2**. 칸이 곧 선행 방법 (Always+프롬프트 = Well, Always+steering = CAA, probe+프롬프트 = Two Axes). Two Axes Table 3의 틀 |
+| **Figure 1: FPQ–TPQ** | x = TPQ, y = PCR | Table 2·3의 모든 행이 점 | Well-Actually Figure 1의 표현 재사용 |
+| 부록 | 카테고리, A×C 분포, 층별 cosine, AO/NLA 통제, Well 판정기 재채점, 일반 도메인 3종 | 진단 및 해석 한계 | 주장을 보조 |
+
+Task와 Table은 일대일이다 (Task 1 → Table 1, Task 2 → Table 2·3, Task 3 → Table 2의 QA 열). 논문용 최종 형태는 [12 §11](12_discussion_decisions.md) 끝.
 
 평가 단위는 585 전체와 150 전체다. 학습형 부품(probe, C 방향, CAST, GEPA, 분류기)은 nested grouped 5-fold cross-fitting으로 전 문항에 out-of-fold 결과를 낸다. 그래야 Cancer-Myth Table 1·3과 분모가 같다. Well의 잠근 분할은 저자 ID를 얻으면 부록에서 Well 판정기로 한 번 더 한다 ([12 §5](12_discussion_decisions.md)).
 

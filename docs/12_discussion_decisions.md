@@ -163,3 +163,15 @@ Well-Actually는 Two Axes를 한 문장으로만 인용한다: *"LLM-based fact 
 - Pandey: "'사용자 주장이 틀렸다' 신호를 나르는 head들의 출력을 0으로 만들면 동조가 28→81%인데 사실 판정 정확도는 그대로. 지식은 남고, 그 지식을 앞세울지 정하는 회로만 꺼진 것."
 - MedMisBench: "잘못된 단서가 사고 과정에는 81–98% 등장하지만 최종 답을 바꾸는 비율은 설정에 따라 7–90%. 보는 것과 반영하는 것이 다르다."
 
+### 논문용 표 (2026-09-09, 비용·발화율·CI 제외)
+
+**Table 1.** Detecting false-premise questions (Cancer-Myth FPQ vs. NFP/TPQ, AUROC, out-of-fold). 행: Bag-of-words / Premise-check elicitation / Extract-and-verify / CoT monitor / Hidden readout (logistic) / Difference-of-means / Text + hidden. 열: Qwen2.5-7B, Llama-3.1-8B.
+
+**Table 2.** Main results on Cancer-Myth (585 FPQ, 150 NFP/TPQ) and general medical QA. Judge GPT-4o. 행: Plain / FP Identification / GEPA (FPQ+TPQ) / CAA (always steer) / CAST / Probe-routed prompt (Two Axes) / Random-routed steer / **Probe-routed steer (ours)**; 선 아래 *GPT-4o Plain, GEPA (reported)*. 열: PCR, PCS, NFP, TPQ (Well 루브릭 5점 비율), MedQA, PubMedQA, Medbullets. 모델당 블록.
+
+**Table 3.** Routing × intervention on Cancer-Myth (한 모델). 행: Never / Always / Random (35%, 5 seeds) / Hidden probe / Oracle. 열: None / Correction prompt / Steering. 셀: PCR / NFP.
+
+**Figure 1.** TPQ (x) vs. PCR (y), Table 2의 모든 행과 Table 3의 모든 셀, 두 모델. 점선 = 사전 등록 NFP 허용폭. Well-Actually Figure 1 형식.
+
+부록: TPR@FPR, 발화율, harm/rescue, CI, Well 판정기 재채점, CREPE·QA²·Syn-QA², A×C 2×2, cos(A,C).
+
