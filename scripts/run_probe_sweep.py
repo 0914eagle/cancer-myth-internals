@@ -42,6 +42,12 @@ def manifests(run_dir: Path):
         yield layer, manifest.parent.name, manifest
 
 
+def pair_key(row: dict) -> str:
+    """fpq rows are their own pair; a twin carries pair_id = its fpq id.
+    Falls back to base_id for fpq rows extracted before pair_id existed."""
+    return str(row.get("pair_id") or (row.get("base_id") if str(row.get("set")) == "fpq" else None) or row.get("id"))
+
+
 def load_cell(manifest: Path, positive: set[str], negative: set[str], paired_only: bool = False):
     """Returns {family: (X, y, groups)} for the rows in one manifest.
 
@@ -68,10 +74,10 @@ def load_cell(manifest: Path, positive: set[str], negative: set[str], paired_onl
     out = {}
     for family, items in per_family.items():
         if paired_only:
-            pos_ids = {str(r.get("pair_id")) for r, y in items if y == 1}
-            neg_ids = {str(r.get("pair_id")) for r, y in items if y == 0}
+            pos_ids = {pair_key(r) for r, y in items if y == 1}
+            neg_ids = {pair_key(r) for r, y in items if y == 0}
             both = pos_ids & neg_ids
-            items = [(r, y) for r, y in items if str(r.get("pair_id")) in both]
+            items = [(r, y) for r, y in items if pair_key(r) in both]
         xs, ys, groups = [], [], []
         for row, y in items:
             t = torch.load(row["activation_path"], map_location="cpu", weights_only=True)
@@ -79,7 +85,7 @@ def load_cell(manifest: Path, positive: set[str], negative: set[str], paired_onl
             ys.append(y)
             # Group by pair (fpq and its twin) when present, else by question
             # text so nfp/tpq twins never straddle a fold.
-            groups.append(str(row.get("pair_id") or row.get("prompt") or row.get("chat_text")))
+            groups.append(pair_key(row) if row.get("pair_id") or str(row.get("set")) == "fpq" else str(row.get("prompt") or row.get("chat_text")))
         y_arr = np.asarray(ys)
         if len(set(ys)) < 2 or min((y_arr == 1).sum(), (y_arr == 0).sum()) < 10:
             continue

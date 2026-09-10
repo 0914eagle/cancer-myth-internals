@@ -1,6 +1,16 @@
 # Cancer-Myth Internals
 
-> **2026-09-08 현재 연구계획:** [09 — 주장·가설·Task·표·예상 기여](docs/09_research_proposal.md)를 먼저 읽는다. [10 — 근거와 baseline](docs/10_evidence_and_baselines.md), [11 — Tripathi 원문 검토](docs/11_tripathi_review.md), [12 — 논의 결정 기록](docs/12_discussion_decisions.md)이 후속 논의를 통합한다. [13 — Task 명세와 표 뼈대](docs/13_task_spec.md)가 실행 수준의 행·열·출처다. [15 — 진행 현황](docs/15_progress_summary.md)이 결정·근거·미결의 요약, [16 — 코드 지도](docs/16_code_overview.md)가 파이프라인과 리뷰 대응 상태다. [17 — 방법 변형 후보·10월 ARR 계획](docs/17_method_variants_and_arr_plan.md)이 기여의 성격에 대한 2026-09-10 답과 일정·GPU 계획이다. 일반 의료 QA 보존을 Task 3에 포함하며, 기존 06의 실험 번호와 구분한다. 아래 초기 요약 중 범위·독창성·분할 관련 표현은 이 문서들이 우선한다.
+> **2026-09-10 교수님 발표 준비:** [18 — 슬라이드별 상세 발표 원고](docs/18_professor_presentation_script.md). Introduction의 단계별 근거와 마지막 contribution 세 개, Related Work, Method, 결과표 개요를 23장으로 구성했다. Two Axes·Gated Activation Steering은 각각 2장, Method는 4장이다. 정상 질문은 NFP와 Well TPQ를 합친 300개가 아니라 **동일한 150개**이며, FPQ를 포함한 명목상 전체 질문 수는 **735개**다.
+
+> **질문했던 설명도 같은 원고 안에서 읽기:** 18의 각 장에 환자 질문부터 판정·개입까지의 상세 노트를 넣었다. [출력 readout](docs/18_professor_presentation_script.md#learned-output-readout), [CoT와 별도 모니터](docs/18_professor_presentation_script.md#cot-monitor-details), [TPR·FPR·AUROC·문턱](docs/18_professor_presentation_script.md#threshold-details), [아홉 교정 방법](docs/18_professor_presentation_script.md#table2-method-details), [RAG Table 3](docs/18_professor_presentation_script.md#table3-details), [같은 선택·개입률](docs/18_professor_presentation_script.md#selection-control-details)을 예시와 함께 설명한다. 문서 앞부분의 질문별 바로가기를 이용할 수 있다.
+
+> **Method 14–17장 상세화:** [질문 벡터와 학습 자료](docs/18_professor_presentation_script.md#method-input) → [probe 목적식·층·문턱](docs/18_professor_presentation_script.md#method-probe) → [응답 쌍의 교정 방향](docs/18_professor_presentation_script.md#method-direction) → [새 질문의 steering](docs/18_professor_presentation_script.md#method-inference). 각 장에 화면 구성, 단계별 발표 원고, 계산 예시, 저장 값, 설정 근거와 구현 상태를 넣었다. 예시 수치는 실제 결과가 아니다.
+
+> **현재 표 정정:** **현재 위치와 확정 범위.** 가져올 선행표는 Well-Actually Table 1로 확정한다. 이 표는 교수님 발표의 기존 연구 근거로 사용할 수 있다. 아래의 우리 Table 3 및 추가 probe 행은 사실 확인 진단을 독립 연구 질문으로 채택할 경우의 후보이며 본 실험으로 확정한 것은 아니다. 기존 결과를 인용하는 것만으로 우리 실험 결과표가 되지 않는다. 현재 질문 gate의 검증이 목적이면 Table 1의 질문 단위 탐지 비교에 RAG 기반 전제 추출·검증을 추가하는 방안도 가능하며, gold 전제를 받는 원 Table 1의 숫자와 직접 섞지 않는다.
+
+> **2026-09-10 현재 연구계획:** 논문 전체의 이야기는 [17 — Introduction부터 Conclusion까지](docs/17_manuscript_storyline.md), 주장·가설은 [09](docs/09_research_proposal.md), 실행 명세는 [13](docs/13_task_spec.md)을 읽는다. Table 1은 판별 신호, Table 2는 최종 교정·보존 성능과 일반 의료 QA ACC 세 열을 합친 본 결과표, Table 3는 Well 본문 Table 1을 계승한 주석 전제의 사실 확인 정확도 비교다. 같은 gate의 prompt/C 비교는 Table 2에 통합하고 같은 C·K의 선택 통제는 부록 A1에 둔다. [10 — 근거](docs/10_evidence_and_baselines.md), [11 — Tripathi 검토](docs/11_tripathi_review.md), [12 — 결정 기록](docs/12_discussion_decisions.md), [15 — 진행 현황](docs/15_progress_summary.md), [16 — 코드 지도](docs/16_code_overview.md)가 이를 뒷받침한다. 일반 의료 QA 보존은 Task 3이며 독립적인 새 방법 기여가 아니다. 아래 초기 요약과 충돌하면 이 문서들이 우선한다. 계획 갱신은 실험 성공을 뜻하지 않는다.
+
+> **2026-09-10 기여의 성격·일정:** [22 — 방법 변형 후보 검증, selective steering의 빈 자리, 10월 ARR 계획, GPU](docs/22_method_variants_and_arr_plan.md). 방법 변형은 과교정 방향 직교화 C 하나를 사전 등록해 시험하고, 2주차 27B 격자 결과로 main / Findings / 12월 연기를 정한다.
 
 의료 LLM이 환자 질문 속 **잘못된 전제(false presupposition)** 를 왜 못 고치는지를 **내부 표상**에서 읽고, 그 신호로 **조건부로** 고치는 연구.
 
@@ -9,14 +19,18 @@
 
 > **중심 문장.** 고정된 held-out 평가에서, 정상 질문의 추가 오교정 위험을 사전에 정한 범위로 제한하면서 거짓 전제 교정률을 높일 수 있는지 검증한다. 그 과정에서 내부 신호의 라우팅 가치와 활성값 개입의 추가 효과를 분리해 측정한다.
 
+> **표·기여 후속 정리:** [20 — 기존 방법의 기여와 의료 적용](docs/20_baseline_transfer_and_novelty.md). Table 1은 Two Axes의 핵심 readout 비교를 의료에서 재평가하고 검증 모니터를 추가한 10행이며 별도 새 Ours 탐지 행은 없다. Table 2는 NFP 주 지표 하나와 QA ACC 세 열, 의료 재학습 Gated·Extract+FactCheck를 포함한 아홉 방법이다. Well 최종 응답 S5는 부록이며 Table 3는 전제 참·거짓 정확도다. Unconditional C 선택 통제도 부록에 둔다. 두 선행 방법 모두 적용 가능하며 재학습 필요성을 실패 증거로 부르지 않는다.
+
+> **RAG를 가져올 수 있는 범위 확인:** [21 — Well GitHub·공개 데이터 감사](docs/21_well_rag_reproducibility.md). 검색·생성·판정 코드와 TPQ 148문항의 파일을 확인했고 147문항에 근거 문서가 있다. 당시 split·Top-4·모델 응답은 확인되지 않아 원 수치 인용과 새 재실행을 구분한다. [버전·SHA256·개수 manifest](docs/audits/well_rag_inventory_2026-09-10.json). 모델 실험은 아직 실행하지 않았다.
+
 ## 한 줄 요약
 
 | | |
 |---|---|
 | 현상 | 환자가 틀린 믿음을 깔고 질문하면 모델은 겉 질문에만 답한다 (프런티어 ≤43%, 공개 모델 ≤17.3% PCR) |
 | 기존 완화책의 실패 | GEPA·Monitor는 Cancer-Myth를 올리는 대신 **전제 없는 질문에서 없는 전제를 지어낸다** (NFP −29, −55) |
-| 왜 실패하나 | 전제의 진위를 모델에게 말로 판정시키면 framing에 따라 쏠린다. 전제 문장을 뽑아 물으면 참 전제의 58–93%를 거짓이라 하고(Well-Actually), 질문째 물으면 거의 다 멀쩡하다고 한다(Two Axes). 같은 문항에서 출력 readout의 판별력은 내부 readout보다 낮았다(Two Axes, CREPE: 직접 질문 대부분 0.64–0.67 vs probe 0.69–0.78). 지식 유무는 언어 판정으로 못 가른다 |
-| 우리 방법 | "전제가 거짓인가"를 prefill 표상에서 읽어(A) 게이트로 쓰고, 열렸을 때만 교정/비교정 응답에서 뽑은 대조 방향(C)을 민다. 분리해서 재는 것 둘: (1) A 게이트가 같은 개입 강도·비슷한 개입 비율의 무작위·무조건 개입보다 나은 교정/부작용 균형을 만드는가, (2) 같은 게이트 뒤에서 활성값 개입이 프롬프트 개입보다 나은가. NFP 보존은 설계가 보장하는 게 아니라 게이트 오탐률이 결정하는 **제약**이다 |
+| 왜 실패하나 | 전제의 진위를 모델에게 말로 판정시키면 framing에 따라 쏠린다. 전제 문장을 뽑아 물으면 참 전제의 58–93%를 거짓이라 하고(Well-Actually), 질문째 물으면 거의 다 멀쩡하다고 한다(Two Axes). 같은 문항에서 출력 readout의 판별력은 내부 readout보다 낮았다(Two Axes, CREPE: 직접 질문 대부분 0.64–0.67 vs probe 0.69–0.78). 이 결과를 의료에서 재평가하고 전제 검증·CoT monitor와 비교한다. 언어 판정의 한계를 모델 지식 부재나 모든 CoT의 실패로 일반화하지 않는다 |
+| 우리 방법 | "전제가 거짓인가"를 prefill 표상에서 읽어(A) 게이트로 쓰고, 열렸을 때만 교정/비교정 응답에서 뽑은 대조 방향(C)을 민다. 분리해서 재는 것 둘: (1) A 게이트가 같은 개입 강도·비슷한 개입 비율의 무작위·무조건 개입보다 나은 교정/부작용 균형을 만드는가, (2) 같은 게이트 뒤에서 활성값 개입이 프롬프트 개입보다 나은가. NFP 보존은 게이트 오탐과 개입의 실제 효과를 함께 평가할 **경험적 제약**이다 |
 | 선행연구와의 거리 | 사용자 태도(Verbalizing-Assumptions), 전역 동조 벡터(CAA), 단언문 진위(Contextual-Truth), 강제 판정(Well-Actually), CoT 언급(MedMisBench)은 있었다. 일반 도메인에선 probe 게이트 **프롬프트**(Two Axes), 의료에선 내부 probe 게이트 ITI(Tripathi, 공개 코드 확인은 11), 조건 벡터와 행동 벡터를 따로 뽑는 조건부 steering(CAST·GAPS)까지 있다. 우리는 조건부 steering의 **확장**이고, 다른 점은 게이트 신호가 **배경화된 의료 전제의 진위**, 개입 대상이 **교정/비교정 대조 방향**, 통제군이 **어려운 정상 질문 NFP**, 그리고 같은 게이트 아래 **프롬프트 대 활성값** 비교 ([07](docs/07_related_work_2026.md)) |
 
 ## 논문 약칭
@@ -40,10 +54,21 @@
 | [docs/10_evidence_and_baselines.md](docs/10_evidence_and_baselines.md) | Cancer-Myth·Well·GEPA·CoT 근거, CAST·라우팅·AO/NLA의 역할 |
 | [docs/11_tripathi_review.md](docs/11_tripathi_review.md) | 2608.23666 원문과 공개 산출물 검토, 직접 중복 및 적용 가능성 |
 | [docs/12_discussion_decisions.md](docs/12_discussion_decisions.md) | 대화 결정 기록, split·통계·faithfulness, 철회한 주장과 미결정 사항 |
+| [docs/13_task_spec.md](docs/13_task_spec.md) | Task 1–3 실행 명세, 최종 방법 비교와 구성 요소 통제 비교 |
+| [docs/14_advisor_report_2.md](docs/14_advisor_report_2.md) | 교수님 보고 2의 당시 발송 기록 |
+| [docs/15_progress_summary.md](docs/15_progress_summary.md) | 결정·탐색 결과·미결 사항의 현재 요약 |
+| [docs/16_code_overview.md](docs/16_code_overview.md) | 실험 코드와 구현·리뷰 대응 상태 |
+| [docs/17_manuscript_storyline.md](docs/17_manuscript_storyline.md) | 논문 절별 스토리라인·문단 초안·표 읽는 법·결과별 결론 범위 |
+| [docs/18_professor_presentation_script.md](docs/18_professor_presentation_script.md) | 교수님 발표 23장 상세 원고 — 단계별 Intro·예상 기여 세 개·선행연구·방법·빈 결과표·질문 대비 |
+| [docs/21_well_rag_reproducibility.md](docs/21_well_rag_reproducibility.md) | Well RAG 코드·공개 근거 문서 감사, 재현 가능 범위, 새 Table 3의 출판값과 재실행 계획 |
 | [docs/experiments/01-e1-prediagnostic.md](docs/experiments/01-e1-prediagnostic.md) | E1 사전 진단 — 모델·GPU 배치, 위치 정의, 라벨, 산출물, 갈림길, 상태 |
 | [EXPERIMENTS.md](EXPERIMENTS.md) | 서버 세팅(125번, medical_nla 관례)과 실행 명령 전부 |
 | [docs/references.md](docs/references.md) | 링크 전부 |
 | [docs/appendix/candidates_screening.md](docs/appendix/candidates_screening.md) | 후보 논문 22편 스크리닝 결과 |
+
+[19 — Method 실행 명세](docs/19_method_protocol.md): 마지막 프롬프트 표상, probe 목적식·문턱, paired C 추출, 생성 hook·강도 및 구현 과제.
+
+[20 — 기존 방법의 기여·의료 적용·표 구성](docs/20_baseline_transfer_and_novelty.md): NFP/TPQ 정리, 10종 탐지 신호, baseline 선정과 개입률, 현재 기여 범위.
 
 ## 상태
 
@@ -55,7 +80,7 @@
 - [~] **실험 1** — 표상이 배경화된 전제에서 읽히는가 (A·B·C, 4 모델). llama·qwen 완료: A 0.81, Plain PCR 3–6 %라 자연 C 재료 부족 → stage 8 짝지은 C ([experiments/01 중간 결과](docs/experiments/01-e1-prediagnostic.md))
 - [ ] 개입 설계 (A 게이트 × C 방향)
 - [ ] baseline 재실행 (Well-Actually의 코드, Cancer-Myth 판정기로 채점)
-- [ ] Table 1 블록 완성
+- [ ] Table 1 판별 / Table 2 최종 효용·QA / 부록 A1 선택 통제 완성; 전제 사실 확인 Table 3 후보의 독립적 필요성 검토
 
 ## 코드
 

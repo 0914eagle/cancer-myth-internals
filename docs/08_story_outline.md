@@ -1,6 +1,6 @@
 # 08. 논문 서사 — 양식에 맞춰
 
-> **2026-09-08 후속 정리.** 아래는 초기 서사 기록이다. 현재 교수님 설명용 주장·가설·예상 기여는 [09](09_research_proposal.md), 근거는 [10](10_evidence_and_baselines.md)을 따른다. “모델은 안다 → CoT는 안 된다 → NLA가 필수”라는 논리를 사용하지 않는다.
+> **2026-09-09 대체 문서.** 아래는 초기 서사를 보존한 역사 기록이며 현재 원고 초안으로 사용하지 않는다. Introduction부터 Conclusion까지의 현재 구성은 [17](17_manuscript_storyline.md), 주장·가설은 [09](09_research_proposal.md), 실험은 [13](13_task_spec.md), 근거는 [10](10_evidence_and_baselines.md)·[11](11_tripathi_review.md)을 따른다. 아래에 남은 내부 readout의 무편향성, A/C로 확정 원인을 분류한다는 설명, Two Axes의 47–61%를 gated 조건부 품질로 해석한 문장, Well test 확보 및 네 contribution 초안은 현재 주장으로 채택하지 않는다.
 
 양식(빌린 것): 도메인 요구 → 모델은 능력이 있다 → 그런데 기존 검증 방식은 문제 → 그러니 내부에서 → 내부 방법 중 왜 이것 → 기존 것을 그대로 못 쓰는 이유(데이터·구조·목적식) → 방법론 TL;DR·contribution → 정의.
 
@@ -65,7 +65,7 @@
 
 ## 4. 그러니 내부 표상에서 읽어야 한다
 
-**먼저 용어.** 모델이 답을 만드는 과정은 두 단계다. *prefill*은 질문을 읽어 들이는 단계, *생성*은 답을 한 토큰씩 쓰는 단계다. prefill이 끝나면 각 토큰 위치마다 수천 차원 벡터(hidden state)가 있고, 이 벡터가 "모델이 읽은 것을 어떻게 이해했나"의 전부다. *읽는다*는 것은 이 벡터에 선형 분류기(probe)를 붙여 "거짓 전제 질문의 벡터인가"를 맞히게 하는 것이다. 거짓 전제 585개와 참 전제 300개의 벡터로 학습해 안 본 질문에서 맞히면, 그 정보가 벡터 안에 있는 것이다. 우리는 이것을 두 가지에 대해 한다. **A** = "전제가 거짓인가"를 읽는 probe, **C** = "고치려 하는가, 따라가려 하는가"를 읽는 방향.
+**먼저 용어.** 모델이 답을 만드는 과정은 두 단계다. *prefill*은 질문을 읽어 들이는 단계, *생성*은 답을 한 토큰씩 쓰는 단계다. prefill이 끝나면 각 토큰 위치마다 수천 차원 벡터(hidden state)가 있고, 이 벡터가 "모델이 읽은 것을 어떻게 이해했나"의 전부다. *읽는다*는 것은 이 벡터에 선형 분류기(probe)를 붙여 "거짓 전제 질문의 벡터인가"를 맞히게 하는 것이다. 질문 풀은 **거짓 전제 질문(FPQ) 585개와 거짓 전제가 없다고 검증한 질문(NFP) 150개, 총 735개**다. Well-Actually의 TPQ는 같은 NFP 질문에 참 전제 주석을 더한 것이므로 정상 질문을 300개로 합산하지 않는다. 이 질문 풀을 학습·평가로 분리해, 학습에 쓰지 않은 질문의 표상에서도 라벨을 예측할 수 있는지 확인한다. 우리는 이것을 두 가지에 대해 한다. **A** = "전제가 거짓인가"를 읽는 probe, **C** = "고치려 하는가, 따라가려 하는가"를 읽는 방향. [Well-Actually §3.2](https://arxiv.org/html/2608.06539v1#S3.SS2)
 
 **주장.** 3절의 세 가지 실패(판정 편향, 되뇌기 오염, 전역 의심)는 전부 *출력 채널*에서 생긴다. prefill의 벡터는 그 셋이 일어나기 **전**의 상태다. 거기서 읽으면 (a) 모델에게 판정을 시키지 않으므로 편향이 없고, (b) 아직 아무 말도 안 했으므로 되뇌기 오염이 없고, (c) 어느 토큰 위치에서 신호가 켜지는지(전제 구간인지 질문 끝인지) 볼 수 있고, (d) 출력이 같은 두 원인을 가를 수 있다.
 
@@ -126,7 +126,7 @@
 ### 6.1 데이터
 
 - **통제군.** 기존 게이트 방법의 양성 통제는 두 종류다. Tripathi는 압력·거짓 주장이 없는 정상 질문 600개에서 게이트가 2–4%만 켜진다고 보고했는데, 그 정상 질문은 표면부터 압력 턴과 다르다("틀렸어, 동의해"가 없다). Two Axes의 CREPE는 같은 분포의 일반 질문이지만 무작위 표본이다. 우리 통제군 NFP는 **LLM이 이미 거짓 전제라고 헛짚은 질문만** 150개를 의사가 "거짓 전제 없음"으로 확인한 것이다. 표면상 거짓 전제 질문과 구분이 안 되도록 만들어진 통제군이고, 게이트가 여기서 안 켜져야 한다.
-- **라벨.** 기존 대조쌍은 합성 템플릿이다. Pandey는 TriviaQA에 "I believe … Am I correct?"를 씌웠고, Tripathi는 EHR 압력 턴을 만들었다. 우리 A 라벨은 의사 검증 전제(585 + TPQ 148)이고, C 라벨은 실제 Plain 응답의 PCR 판정이다. 배경화된 자연 질문에서 뽑은 방향이 필요하고, 그것은 이 데이터에서만 나온다.
+- **라벨.** 기존 대조쌍은 합성 템플릿이다. Pandey는 TriviaQA에 "I believe … Am I correct?"를 씌웠고, Tripathi는 EHR 압력 턴을 만들었다. 우리 A 라벨은 Cancer-Myth의 거짓 전제 유무 검증(FPQ 585개, NFP 150개)에 근거하며, Well의 TPQ 주석은 이 NFP 질문에 연결한다. 로딩된 TPQ 148행이나 질문별 전제 주석 수를 독립 질문 수에 더하지 않는다. C 라벨은 실제 Plain 응답의 PCR 판정이다. 배경화된 자연 질문에서 뽑은 방향이 필요하고, 그것은 이 데이터에서만 나온다.
 - **정렬.** A 위치는 전제가 질문 안 어디에 있는지를 알아야 읽는다. 전제 텍스트는 일반 문장이고 질문에는 바꿔 써 있으므로 정렬이 필요하다(E0의 LLM verbatim-substring 정렬). 기존 방법은 전부 마지막 토큰만 읽으므로 이 단계가 없다.
 
 ### 6.2 구조
@@ -176,4 +176,4 @@
 
 **1. False-premise questions and the correction–over-correction trade-off.** (a) 문제와 벤치마크: FalseQA, CREPE, QA², Syn-QA² → Cancer-Myth(의료, 배경화된 전제, PCR/NFP). Cancer-Myth와 Two Axes가 공유하는 관찰: 모델은 전제를 내부적으로 알면서도 순응한다. (b) 교정 시도와 시소: Well-Actually 8개 방법(프롬프트, GEPA, fine-tuning, FAITH head 차단)에서 FPQ가 오르면 TPQ가 떨어짐. Two Axes의 "지시는 임계값을 옮길 뿐 지식을 바꾸지 않는다"(neutral 프롬프트 순응 0.93, challenge 프롬프트에서 참 전제 57–78% 반박)를 같은 현상의 다른 관찰로 배치. (c) 다른 계열: 검색 기반 검증(RARR 류), 가정 verbalization(AO/NLA, Verbalizing-Assumptions)은 한 문단. 응답 전체를 바꾸는 무조건 개입이라 시소를 못 피한다는 게 연결 고리. (d) 마무리 문장: 기존 해법은 개입 여부를 입력에 따라 선택하지 않는다. 우리는 교정 필요성을 먼저 판별하고 선택적으로 개입한다.
 
-**2. Internal signals and conditional activation steering.** (a) 내부 신호 읽기: Contextual-Truth(performative vs representational), Slobodkin·Lavi의 unanswerability 방향, Two Axes Table 2(probe·diff-of-means가 출력 readout을 이김), Pandey의 sycophancy head, MedMisBench trace monitor. 요지: 전제 관련 신호가 선형으로 읽힌다. (b) 활성값 개입: CAA, RepE/Persona Vectors, ITI, ActAdd. 요지: 방향 하나로 행동을 바꾸지만 무조건 적용하면 부작용. Dual-Stance Evaluation이 그 부작용의 일반 도메인 증거. (c) 조건부 개입: CAST(condition + behavior vector), DSAS, GAPS, Tripathi의 Gated Activation Steering(probe gate + head steering), Two Axes §6 라우팅 파일럿. 우리 방법의 직접 선행임을 숨기지 않는다. (d) 마지막 문단: 같은 뼈대를 쓰되 (i) 표면 단서 없는 배경화된 의료 전제, (ii) NFP와 참 전제 쌍둥이라는 통제, (iii) 강한 프롬프트 baseline이 있는 시소 벤치마크, (iv) 게이트 × 개입 요인 분해와 harm 귀속. Two Axes의 "감지≠제어" 경고와 Tripathi의 "정당한 교정도 잡는다"를 우리가 직접 측정한다. 분야의 빈 자리 목록은 [17](17_method_variants_and_arr_plan.md) §5.
+**2. Internal signals and conditional activation steering.** (a) 내부 신호 읽기: Contextual-Truth(performative vs representational), Slobodkin·Lavi의 unanswerability 방향, Two Axes Table 2(probe·diff-of-means가 출력 readout을 이김), Pandey의 sycophancy head, MedMisBench trace monitor. 요지: 전제 관련 신호가 선형으로 읽힌다. (b) 활성값 개입: CAA, RepE/Persona Vectors, ITI, ActAdd. 요지: 방향 하나로 행동을 바꾸지만 무조건 적용하면 부작용. Dual-Stance Evaluation이 그 부작용의 일반 도메인 증거. (c) 조건부 개입: CAST(condition + behavior vector), DSAS, GAPS, Tripathi의 Gated Activation Steering(probe gate + head steering), Two Axes §6 라우팅 파일럿. 우리 방법의 직접 선행임을 숨기지 않는다. (d) 마지막 문단: 같은 뼈대를 쓰되 (i) 표면 단서 없는 배경화된 의료 전제, (ii) NFP와 참 전제 쌍둥이라는 통제, (iii) 강한 프롬프트 baseline이 있는 시소 벤치마크, (iv) 게이트 × 개입 요인 분해와 harm 귀속. Two Axes의 "감지≠제어" 경고와 Tripathi의 "정당한 교정도 잡는다"를 우리가 직접 측정한다. 분야의 빈 자리 목록은 [22](22_method_variants_and_arr_plan.md) §5.

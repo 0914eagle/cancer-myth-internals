@@ -63,14 +63,17 @@ def main() -> None:
 
     rows = [r for path in args.questions for r in read_jsonl(path)]
     pos, neg = set(args.positive), set(args.negative)
+    def pair_key(r: dict) -> str:
+        return str(r.get("pair_id") or (r["id"] if r.get("set") == "fpq" else None) or r["question"])
+
     if args.paired_only:
-        pos_ids = {r.get("pair_id") for r in rows if r.get("set") in pos}
-        neg_ids = {r.get("pair_id") for r in rows if r.get("set") in neg}
+        pos_ids = {pair_key(r) for r in rows if r.get("set") in pos}
+        neg_ids = {pair_key(r) for r in rows if r.get("set") in neg}
         both = pos_ids & neg_ids
-        rows = [r for r in rows if r.get("pair_id") in both]
+        rows = [r for r in rows if pair_key(r) in both]
 
     def group_of(r: dict) -> str:
-        return str(r.get("pair_id") or r["question"])
+        return pair_key(r) if r.get("pair_id") or r.get("set") == "fpq" else r["question"]
 
     # B/D-equivalent: whole question, nfp/tpq twins collapsed to one text.
     seen, q_texts, q_y, q_groups = set(), [], [], []
