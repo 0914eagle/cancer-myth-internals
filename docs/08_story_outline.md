@@ -169,3 +169,11 @@
   2. *Explanation faithfulness*: 최종 응답이 내부 판정 A와 일치하는 정도. A=거짓인데 응답이 P를 승인하면 unfaithful. **Cancer-Myth 실패의 정의이자 2×2의 H3 칸.**
   3. *Verbalizer faithfulness*: verbalizer의 묘사가 활성값을 반영하고 입력 텍스트·자기 지식에서 온 것이 아닌 정도. 조작화: AR 왕복 mse_nrm < 0.5 (NLA, 샘플별), 활성값 없이/무작위/모르는 모델 통제와의 차이 (집단별).
 - **Detection ≠ control.** 어떤 방향이 행동을 예측한다는 것과 그 방향을 밀면 행동이 바뀐다는 것은 별개. 우리는 A로 읽고 C로 민다.
+
+## Related Work 구조 (2026-09-10)
+
+두 절로 나누되, 논문의 두 축(무엇을 푸는가 / 어떻게 푸는가)과 맞춘다. Two Axes는 두 절에 모두 나오므로 1절에서는 현상만, 2절에서는 기법만 인용해 역할을 분리한다.
+
+**1. False-premise questions and the correction–over-correction trade-off.** (a) 문제와 벤치마크: FalseQA, CREPE, QA², Syn-QA² → Cancer-Myth(의료, 배경화된 전제, PCR/NFP). Cancer-Myth와 Two Axes가 공유하는 관찰: 모델은 전제를 내부적으로 알면서도 순응한다. (b) 교정 시도와 시소: Well-Actually 8개 방법(프롬프트, GEPA, fine-tuning, FAITH head 차단)에서 FPQ가 오르면 TPQ가 떨어짐. Two Axes의 "지시는 임계값을 옮길 뿐 지식을 바꾸지 않는다"(neutral 프롬프트 순응 0.93, challenge 프롬프트에서 참 전제 57–78% 반박)를 같은 현상의 다른 관찰로 배치. (c) 다른 계열: 검색 기반 검증(RARR 류), 가정 verbalization(AO/NLA, Verbalizing-Assumptions)은 한 문단. 응답 전체를 바꾸는 무조건 개입이라 시소를 못 피한다는 게 연결 고리. (d) 마무리 문장: 기존 해법은 개입 여부를 입력에 따라 선택하지 않는다. 우리는 교정 필요성을 먼저 판별하고 선택적으로 개입한다.
+
+**2. Internal signals and conditional activation steering.** (a) 내부 신호 읽기: Contextual-Truth(performative vs representational), Slobodkin·Lavi의 unanswerability 방향, Two Axes Table 2(probe·diff-of-means가 출력 readout을 이김), Pandey의 sycophancy head, MedMisBench trace monitor. 요지: 전제 관련 신호가 선형으로 읽힌다. (b) 활성값 개입: CAA, RepE/Persona Vectors, ITI, ActAdd. 요지: 방향 하나로 행동을 바꾸지만 무조건 적용하면 부작용. Dual-Stance Evaluation이 그 부작용의 일반 도메인 증거. (c) 조건부 개입: CAST(condition + behavior vector), DSAS, GAPS, Tripathi의 Gated Activation Steering(probe gate + head steering), Two Axes §6 라우팅 파일럿. 우리 방법의 직접 선행임을 숨기지 않는다. (d) 마지막 문단: 같은 뼈대를 쓰되 (i) 표면 단서 없는 배경화된 의료 전제, (ii) NFP와 참 전제 쌍둥이라는 통제, (iii) 강한 프롬프트 baseline이 있는 시소 벤치마크, (iv) 게이트 × 개입 요인 분해와 harm 귀속. Two Axes의 "감지≠제어" 경고와 Tripathi의 "정당한 교정도 잡는다"를 우리가 직접 측정한다. 분야의 빈 자리 목록은 [17](17_method_variants_and_arr_plan.md) §5.

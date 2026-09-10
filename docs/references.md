@@ -113,3 +113,8 @@
 - [Task 명세와 표 뼈대](13_task_spec.md) — Table 1·2·3, Figure 1, 출처, cross-fitting
 - [진행 현황 정리](15_progress_summary.md) — 결정·근거 확인·E1 영향·미결·브랜치
 - [코드 지도](16_code_overview.md) — 파이프라인 stage 1–9, src, 판정기, 리뷰 대응, 13 대비 빈 부품
+- [방법 변형 후보·분야의 빈 자리·10월 ARR·GPU](17_method_variants_and_arr_plan.md) — 2026-09-10
+
+## 2026-09-10 언급, 원문 미확인 (기억 기반)
+- Tan et al. 2024 — Analyzing the Generalization and Reliability of Steering Vectors — [2407.12404](https://arxiv.org/abs/2407.12404)
+- 거짓 거부 벡터 직교화 (Surgical, Cheap, and Flexible: Mitigating False Refusal via Single Vector Ablation; SCANS) — 17 §4 1순위의 선행 레시피. 원문 확인 필요
