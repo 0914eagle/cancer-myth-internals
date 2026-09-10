@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source scripts/env.sh "${DATA_ROOT:-}"
 
-stage="${1:?usage: run_gemma_pilot.sh prepare|baselines|fit|sweep|select|test|report}"
+stage="${1:?usage: run_gemma_pilot.sh prepare|baselines|report-baselines|fit|sweep|select|test|report}"
 config="${CONFIG:-configs/gemma2_9b.yaml}"
 pilot="${PILOT_DIR:-$ART/results/pilot/gemma2_9b_v1}"
 manifest="$pilot/split/manifest.json"
@@ -78,15 +78,23 @@ case "$stage" in
             judge test "$method"
         done
         ;;
-    report)
+    report|report-baselines)
         partition="${PARTITION:-dev}"
+        if [[ "$stage" == report-baselines && "$partition" != dev ]]; then
+            echo 'report-baselines reports dev only; use report for the locked test comparison' >&2
+            exit 1
+        fi
         files=()
         for method in plain fp_identification premise_cot; do
             files+=("$pilot/$partition/${method}_${scores_suffix}")
         done
-        if [[ "$partition" == test ]]; then
+        if [[ "$stage" == report-baselines ]]; then
+            report_tag="baselines_dev"
+        elif [[ "$partition" == test ]]; then
+            report_tag="test"
             files+=("$pilot/test/steering_${scores_suffix}")
         else
+            report_tag="$partition"
             for layer in "${layers[@]}"; do
                 for alpha in "${alphas[@]}"; do
                     files+=("$pilot/dev/steering_L${layer}_a${alpha}_${scores_suffix}")
@@ -94,7 +102,7 @@ case "$stage" in
             done
         fi
         python scripts/run_pilot.py report --manifest "$manifest" --partition "$partition" \
-            --scores "${files[@]}" --output "$pilot/report_${partition}_${backend}_${judge_model}.json"
+            --scores "${files[@]}" --output "$pilot/report_${report_tag}_${backend}_${judge_model}.json"
         ;;
     *) echo "Unknown stage: $stage" >&2; exit 1 ;;
 esac

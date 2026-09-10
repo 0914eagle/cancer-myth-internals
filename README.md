@@ -1,5 +1,9 @@
 # Cancer-Myth Internals
 
+**바로 실행:** [23 §0 서버 명령](docs/23_gemma_steering_pilot.md#0-바로-실행하기--우선-baseline-세-행).
+`prepare → baselines → report-baselines`로 첫 dev 표를 만든 뒤 `fit → sweep → report`로 steering을 비교한다.
+[24 — MISP-Bench와의 관계](docs/24_misp_relation.md): CoT/검증 지시 근거, 입력 요소별 외부 평가 후보, 현재 파일럿과의 구분.
+
 > **현재 코드 실행 순서 (2026-09-10): [23 — Gemma baseline·기본 steering 파일럿](docs/23_gemma_steering_pilot.md).** 교수님 지시에 따라 Gemma-2-9B-it 한 모델에서 Plain → FP Identification 적용 → 전제 검토 CoT → 기본 paired-C steering을 비교한다. `scripts/run_gemma_pilot.sh`로 prepare/baselines/fit/sweep/select/test/report를 실행한다. fit/dev/test와 fit 전용 방향·강도 기준값을 고정했다. 방법론은 미정이며 SAE·직교화·27B 격자는 확정하지 않는다. 아래 이전 계획과 충돌하면 23의 파일럿 범위가 우선한다. 장기 Table 3의 최신 방향은 **Cancer-Myth→CREPE 전이 평가**이고, 아래 Well 사실 확인 표는 선행연구 참고 자료다. 구현 검증과 실제 9B 성능 측정은 구분한다.
 
 > **2026-09-10 교수님 발표 준비:** [18 — 슬라이드별 상세 발표 원고](docs/18_professor_presentation_script.md). Introduction의 단계별 근거와 마지막 contribution 세 개, Related Work, Method, 결과표 개요를 23장으로 구성했다. Two Axes·Gated Activation Steering은 각각 2장, Method는 4장이다. 정상 질문은 NFP와 Well TPQ를 합친 300개가 아니라 **동일한 150개**이며, FPQ를 포함한 명목상 전체 질문 수는 **735개**다.

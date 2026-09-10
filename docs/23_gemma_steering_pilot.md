@@ -5,6 +5,53 @@
 22의 27B·직교화 확정안과 이전 E2 격자를 이 파일럿의 실행 지시로 사용하지 않는다.
 방법론은 구상 중이며 SAE·새 gate·직교화는 이번 구현에 포함하지 않는다.
 
+## 0. 바로 실행하기 — 우선 baseline 세 행
+
+서버 125의 기존 clone·가상환경을 사용하는 명령이다. 처음 설치하는 서버는
+[EXPERIMENTS.md의 설치 절](../EXPERIMENTS.md#first-time-on-a-machine)을 먼저 따른다.
+Gemma 접근 승인을 받은 HF 계정과 OpenAI API 키가 환경에 설정되어 있어야 한다.
+`baselines`는 실제 GPU 생성과 **유료 GPT-4o 판정**을 실행한다. `prepare`는 CPU 준비다.
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+git fetch origin
+git switch main
+git pull --ff-only origin main
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+export DATA_ROOT=/data1/heejae
+export CUDA_VISIBLE_DEVICES=0
+export JUDGE_BACKEND=openai
+export JUDGE_MODEL=gpt-4o
+export BATCH_SIZE=1
+source scripts/env.sh "$DATA_ROOT"
+
+# 연결이 끊겨도 계속 실행하도록 tmux 세션 안에서 실행한다.
+bash scripts/run_gemma_pilot.sh prepare
+bash scripts/run_gemma_pilot.sh baselines
+bash scripts/run_gemma_pilot.sh report-baselines
+cat "$ART/results/pilot/gemma2_9b_v1/report_baselines_dev_openai_gpt-4o.md"
+```
+
+서버 62는 `/data1/heejae`를 `/data/heejae`로 바꾸고 사용 가능한 GPU를 지정한다.
+처음에는 24GB GPU의 여유 메모리를 고려해 batch 1로 시작한다. VRAM 사용량은 실측 전이다.
+wrapper 기본 batch는 4이므로 위 환경변수를 빠뜨리지 않는다. fit 단계의 활성값 추출은 문항별이다.
+resume 설정을 고정하므로 batch나 모델 설정을 바꿀 때는 새 `PILOT_DIR`을 사용한다.
+
+첫 표는 dev FPQ 117/NFP 30문항에 대한 Plain·FP Identification·전제 검토 CoT다
+(현재 감사 snapshot 기준). 실제 분모는 manifest를 확인한다. 각 행의 PCR/PCS/NFP,
+95% CI와 Plain 대비 rescue/harm을 먼저 읽는다. steering까지 비교하려면 이어서 실행한다.
+
+```bash
+bash scripts/run_gemma_pilot.sh fit
+bash scripts/run_gemma_pilot.sh sweep
+bash scripts/run_gemma_pilot.sh report
+cat "$ART/results/pilot/gemma2_9b_v1/report_dev_openai_gpt-4o.md"
+```
+
+이 단계까지는 dev 탐색이다. `select`와 잠긴 test의 실행 조건은 §4에 있다.
+일반 의료 QA·CREPE·MISP·내부 gate/SAE는 이번 runner에 포함되지 않는다.
+[24 — MISP와의 관계](24_misp_relation.md)는 후속 평가 후보를 설명하며 실행 범위를 늘리지 않는다.
+
 ## 1. 지금 확인하는 것
 
 `google/gemma-2-9b-it` 한 모델에서 다음 네 조건을 같은 문항·판정기로 비교한다.
@@ -114,7 +161,7 @@ bash scripts/run_gemma_pilot.sh report
 
 산출물 기본 위치: `$DATA_ROOT/cancer_myth_internals/results/pilot/gemma2_9b_v1/`.
 각 명령은 실패한 단계부터 같은 설정으로 재실행할 수 있다. `PILOT_DIR`로 새 실험을 분리한다.
-baseline만 먼저 표로 보고 싶으면 `run_pilot.py report --scores`에 세 baseline의 score 파일만 넘긴다.
+baseline만 먼저 표로 보고 싶으면 `bash scripts/run_gemma_pilot.sh report-baselines`를 실행한다.
 개별 judge dry-run은 `scripts/run_judge.py --dry-run`을 사용한다.
 
 dev 결과의 목적은 교정 이득·과교정·실패 유형을 확인하는 것이다. test를 열기 전, pilot용

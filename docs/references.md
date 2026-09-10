@@ -118,3 +118,9 @@
 ## 2026-09-10 언급, 원문 미확인 (기억 기반)
 - Tan et al. 2024 — Analyzing the Generalization and Reliability of Steering Vectors — [2407.12404](https://arxiv.org/abs/2407.12404)
 - 거짓 거부 벡터 직교화 (Surgical, Cheap, and Flexible: Mitigating False Refusal via Single Vector Ablation; SCANS) — 22 §4 1순위의 선행 레시피. 원문 확인 필요
+
+## 2026-09-10 MISP-Bench 확인
+
+- [MISP-Bench v2](https://www.medrxiv.org/content/10.64898/2026.05.07.26352627v2.full) — 2026-08-23 preprint; 사용자 답·근거·방어 지시의 효과 분해.
+- [공식 데이터](https://huggingface.co/datasets/yh0502/misp-bench), [코드](https://github.com/anon-misp-2026/misp-bench).
+- [우리 연구와의 관계·도입 범위](24_misp_relation.md). 현재 runner는 MISP를 실행하지 않는다.
