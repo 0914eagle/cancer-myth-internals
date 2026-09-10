@@ -9,8 +9,11 @@
 
 서버 125의 기존 clone·가상환경을 사용하는 명령이다. 처음 설치하는 서버는
 [EXPERIMENTS.md의 설치 절](../EXPERIMENTS.md#first-time-on-a-machine)을 먼저 따른다.
-Gemma 접근 승인을 받은 HF 계정과 OpenAI API 키가 환경에 설정되어 있어야 한다.
-`baselines`는 실제 GPU 생성과 **유료 GPT-4o 판정**을 실행한다. `prepare`는 CPU 준비다.
+Gemma 접근 승인을 받은 HF 계정과 서버의 Codex CLI 로그인이 필요하다.
+현재 사용자 선택은 **`codex exec` + `gpt-5` 판정**이며 OpenAI API 키는 필요하지 않다.
+`codex login status`로 확인하고 미로그인 상태면 `codex login`을 실행한다.
+`baselines`는 실제 GPU 생성과 Codex 판정을 실행한다. `prepare`는 CPU 준비다.
+GPT-4o로 판정한 선행논문 수치와는 판정기가 다르므로 직접 재현값으로 취급하지 않는다.
 
 ```bash
 cd /home/eagle0914/cancer-myth-internals
@@ -20,8 +23,8 @@ git pull --ff-only origin main
 source /data1/heejae/uv/cancer_myth_internals/bin/activate
 export DATA_ROOT=/data1/heejae
 export CUDA_VISIBLE_DEVICES=0
-export JUDGE_BACKEND=openai
-export JUDGE_MODEL=gpt-4o
+export JUDGE_BACKEND=codex
+export JUDGE_MODEL=gpt-5
 export BATCH_SIZE=1
 source scripts/env.sh "$DATA_ROOT"
 
@@ -29,7 +32,7 @@ source scripts/env.sh "$DATA_ROOT"
 bash scripts/run_gemma_pilot.sh prepare
 bash scripts/run_gemma_pilot.sh baselines
 bash scripts/run_gemma_pilot.sh report-baselines
-cat "$ART/results/pilot/gemma2_9b_v1/report_baselines_dev_openai_gpt-4o.md"
+cat "$ART/results/pilot/gemma2_9b_v1/report_baselines_dev_codex_gpt-5.md"
 ```
 
 서버 62는 `/data1/heejae`를 `/data/heejae`로 바꾸고 사용 가능한 GPU를 지정한다.
@@ -45,7 +48,7 @@ resume 설정을 고정하므로 batch나 모델 설정을 바꿀 때는 새 `PI
 bash scripts/run_gemma_pilot.sh fit
 bash scripts/run_gemma_pilot.sh sweep
 bash scripts/run_gemma_pilot.sh report
-cat "$ART/results/pilot/gemma2_9b_v1/report_dev_openai_gpt-4o.md"
+cat "$ART/results/pilot/gemma2_9b_v1/report_dev_codex_gpt-5.md"
 ```
 
 이 단계까지는 dev 탐색이다. `select`와 잠긴 test의 실행 조건은 §4에 있다.
@@ -148,9 +151,9 @@ cd /home/eagle0914/cancer-myth-internals
 source /data1/heejae/uv/cancer_myth_internals/bin/activate
 export DATA_ROOT=/data1/heejae
 export CUDA_VISIBLE_DEVICES=0
-export JUDGE_BACKEND=openai
-export JUDGE_MODEL=gpt-4o
-# OPENAI_API_KEY는 기존 환경에서 설정; 명령/로그에 값을 쓰지 않는다.
+export JUDGE_BACKEND=codex
+export JUDGE_MODEL=gpt-5
+# 서버의 Codex CLI 로그인 사용. OPENAI_API_KEY는 필요하지 않다.
 
 bash scripts/run_gemma_pilot.sh prepare
 bash scripts/run_gemma_pilot.sh baselines

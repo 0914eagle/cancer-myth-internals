@@ -3,6 +3,9 @@
 > **Current first experiment:** follow [the single-Gemma pilot](docs/23_gemma_steering_pilot.md)
 > and `scripts/run_gemma_pilot.sh`. It provides fit-only C/scale, grouped
 > fit/dev/test, prompting baselines, dev selection and a locked test setting.
+> Pilot judge: `JUDGE_BACKEND=codex JUDGE_MODEL=gpt-5` (user choice, 2026-09-10).
+> Uses the server's Codex CLI login; no OpenAI API key is required. The historical
+> GPT-4o calibration/protocol discussion below does not override this pilot setting.
 > The E1/E2 commands below describe historical diagnostics; the legacy E2
 > direction is trained on all questions and is not a held-out result.
 > Judge v2 refuses unsigned legacy caches and no longer scores TPQ with NFP's rubric.
