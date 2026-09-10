@@ -10,7 +10,10 @@
 서버 125의 기존 clone·가상환경을 사용하는 명령이다. 처음 설치하는 서버는
 [EXPERIMENTS.md의 설치 절](../EXPERIMENTS.md#first-time-on-a-machine)을 먼저 따른다.
 Gemma 접근 승인을 받은 HF 계정과 서버의 Codex CLI 로그인이 필요하다.
-현재 사용자 선택은 **`codex exec` + `gpt-5` 판정**이며 OpenAI API 키는 필요하지 않다.
+현재 기본 판정기는 **`codex exec` + `gpt-5.6-sol`**이며 OpenAI API 키는 필요하지 않다.
+처음 지정한 `gpt-5`는 서버의 ChatGPT 로그인에서 지원되지 않아 중단됐으므로 변경했다.
+`gpt-5.6-sol`은 GPT-5와 다른 모델이다. [공식 Codex 모델 안내](https://learn.chatgpt.com/docs/models)에
+기재되어 있고 이 저장소에도 이전 실행 기록이 있지만, 서버 계정의 현재 접근은 `check-judge`로 확인한다.
 `codex login status`로 확인하고 미로그인 상태면 `codex login`을 실행한다.
 `baselines`는 실제 GPU 생성과 Codex 판정을 실행한다. `prepare`는 CPU 준비다.
 GPT-4o로 판정한 선행논문 수치와는 판정기가 다르므로 직접 재현값으로 취급하지 않는다.
@@ -24,15 +27,16 @@ source /data1/heejae/uv/cancer_myth_internals/bin/activate
 export DATA_ROOT=/data1/heejae
 export CUDA_VISIBLE_DEVICES=0
 export JUDGE_BACKEND=codex
-export JUDGE_MODEL=gpt-5
+export JUDGE_MODEL=gpt-5.6-sol
 export BATCH_SIZE=1
 source scripts/env.sh "$DATA_ROOT"
 
 # 연결이 끊겨도 계속 실행하도록 tmux 세션 안에서 실행한다.
 bash scripts/run_gemma_pilot.sh prepare
+bash scripts/run_gemma_pilot.sh check-judge
 bash scripts/run_gemma_pilot.sh baselines
 bash scripts/run_gemma_pilot.sh report-baselines
-cat "$ART/results/pilot/gemma2_9b_v1/report_baselines_dev_codex_gpt-5.md"
+cat "$ART/results/pilot/gemma2_9b_v1/report_baselines_dev_codex_gpt-5.6-sol.md"
 ```
 
 서버 62는 `/data1/heejae`를 `/data/heejae`로 바꾸고 사용 가능한 GPU를 지정한다.
@@ -48,7 +52,7 @@ resume 설정을 고정하므로 batch나 모델 설정을 바꿀 때는 새 `PI
 bash scripts/run_gemma_pilot.sh fit
 bash scripts/run_gemma_pilot.sh sweep
 bash scripts/run_gemma_pilot.sh report
-cat "$ART/results/pilot/gemma2_9b_v1/report_dev_codex_gpt-5.md"
+cat "$ART/results/pilot/gemma2_9b_v1/report_dev_codex_gpt-5.6-sol.md"
 ```
 
 이 단계까지는 dev 탐색이다. `select`와 잠긴 test의 실행 조건은 §4에 있다.
@@ -152,10 +156,11 @@ source /data1/heejae/uv/cancer_myth_internals/bin/activate
 export DATA_ROOT=/data1/heejae
 export CUDA_VISIBLE_DEVICES=0
 export JUDGE_BACKEND=codex
-export JUDGE_MODEL=gpt-5
+export JUDGE_MODEL=gpt-5.6-sol
 # 서버의 Codex CLI 로그인 사용. OPENAI_API_KEY는 필요하지 않다.
 
 bash scripts/run_gemma_pilot.sh prepare
+bash scripts/run_gemma_pilot.sh check-judge
 bash scripts/run_gemma_pilot.sh baselines
 bash scripts/run_gemma_pilot.sh fit
 bash scripts/run_gemma_pilot.sh sweep
@@ -202,3 +207,27 @@ GPU 없이 실행되는 회귀 테스트에 grouped split, NFP/TPQ 중복, fit �
 다운로드 없이 작은 무작위 Gemma2를 생성해 실제 decoder hook, 첫 토큰 개입,
 α=0 Plain 일치, 짝 답변의 내용 토큰 pooling을 검사한다.
 실제 9B의 VRAM·처리 시간·의학적 성능은 서버에서 첫 실행으로 확인해야 한다.
+
+## 7. GPT-5 unsupported 오류 후 재개
+
+`gpt-5 is not supported when using Codex with a ChatGPT account`는 판정기 접근 오류다.
+생성된 Gemma 답변이나 데이터 분할의 오류가 아니다. 기존 출력과 manifest는 삭제하지 않는다.
+서버에서 코드를 갱신하고 이전에 export한 모델명도 덮어쓴다. 기존 `DATA_ROOT`, `PILOT_DIR`,
+`BATCH_SIZE=1`, 생성 예산과 모델 설정을 유지한다.
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+git pull --ff-only origin main
+export JUDGE_BACKEND=codex
+export JUDGE_MODEL=gpt-5.6-sol
+bash scripts/run_gemma_pilot.sh check-judge &&
+  bash scripts/run_gemma_pilot.sh baselines &&
+  bash scripts/run_gemma_pilot.sh report-baselines
+```
+
+`baselines`, `sweep`, `test`는 GPU 생성 전에 짧은 실제 판정기 호출을 수행한다.
+검사 실패 시 즉시 중단하므로 지원되지 않는 모델로 여러 문항을 재시도하지 않는다.
+이 검사도 Codex 사용량을 소모한다.
+이미 완료된 생성 문항은 설정 일치 검증 후 건너뛴다(검증을 위해 Gemma 로드는 발생한다).
+새 판정 결과는 `*_judge_codex_gpt-5.6-sol.jsonl`에 저장되어 실패한 GPT-5 경로와 섞이지 않는다.
+`report-baselines`는 세 baseline의 판정이 모두 완료된 뒤에만 실행한다.

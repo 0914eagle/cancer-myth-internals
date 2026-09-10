@@ -4,12 +4,16 @@ set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source scripts/env.sh "${DATA_ROOT:-}"
 
-stage="${1:?usage: run_gemma_pilot.sh prepare|baselines|report-baselines|fit|sweep|select|test|report}"
+stage="${1:?usage: run_gemma_pilot.sh prepare|check-judge|baselines|report-baselines|fit|sweep|select|test|report}"
 config="${CONFIG:-configs/gemma2_9b.yaml}"
 pilot="${PILOT_DIR:-$ART/results/pilot/gemma2_9b_v1}"
 manifest="$pilot/split/manifest.json"
 backend="${JUDGE_BACKEND:-codex}"
-judge_model="${JUDGE_MODEL:-gpt-5}"
+case "$backend" in
+    codex) judge_model="${JUDGE_MODEL:-gpt-5.6-sol}" ;;
+    openai) judge_model="${JUDGE_MODEL:-gpt-4o}" ;;
+    *) echo "Unknown JUDGE_BACKEND: $backend" >&2; exit 1 ;;
+esac
 batch="${BATCH_SIZE:-4}"
 max_new="${MAX_NEW_TOKENS:-512}"
 review="${REVIEW_TOKENS:-128}"
@@ -20,6 +24,25 @@ if [[ ! "$judge_model" =~ ^[A-Za-z0-9._-]+$ ]]; then
     exit 1
 fi
 scores_suffix="judge_${backend}_${judge_model}.jsonl"
+
+check_judge() {
+    python - "$backend" "$judge_model" <<'PY'
+import sys
+from src.llm_backend import make_caller
+
+backend, model = sys.argv[1:]
+print(f"[judge check] {backend} model={model}", flush=True)
+try:
+    answer, used = make_caller(backend, model, timeout=180)(
+        "This is a connectivity check. Do not use tools or inspect files. Reply only OK."
+    )
+    if answer.strip() != "OK":
+        raise RuntimeError("Judge connectivity check did not return OK")
+except Exception as exc:
+    raise SystemExit(f"[judge check] FAILED: {exc}. Fix JUDGE_MODEL/login before generation.")
+print(f"[judge check] OK model={used}", flush=True)
+PY
+}
 
 generate() {
     local partition="$1" method="$2" tag="$3"
@@ -38,10 +61,14 @@ judge() {
 }
 
 case "$stage" in
+    check-judge)
+        check_judge
+        ;;
     prepare)
         python scripts/run_pilot.py prepare --config "$config" --out-dir "$pilot/split"
         ;;
     baselines)
+        check_judge
         for method in plain fp_identification premise_cot; do
             generate dev "$method" "$method"
             judge dev "$method"
@@ -52,6 +79,7 @@ case "$stage" in
             --layers "${layers[@]}" --prefix-tokens "${PREFIX_TOKENS:-32}" --out-dir "$pilot/fit"
         ;;
     sweep)
+        check_judge
         for layer in "${layers[@]}"; do
             for alpha in "${alphas[@]}"; do
                 tag="steering_L${layer}_a${alpha}"
@@ -73,6 +101,7 @@ case "$stage" in
             --nfp-margin-pp "$NFP_MARGIN_PP" --output "$pilot/selection.json"
         ;;
     test)
+        check_judge
         for method in plain fp_identification premise_cot steering; do
             generate test "$method" "$method" --fit-dir "$pilot/fit" --selection "$pilot/selection.json"
             judge test "$method"
