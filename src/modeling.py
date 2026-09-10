@@ -15,9 +15,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from .config import torch_dtype
 
 
-def load_tokenizer(model_id: str, *, cache_dir: str | None, trust_remote_code: bool):
+def load_tokenizer(model_id: str, *, cache_dir: str | None, trust_remote_code: bool, revision=None):
     tokenizer = AutoTokenizer.from_pretrained(
-        model_id, cache_dir=cache_dir, trust_remote_code=trust_remote_code
+        model_id, cache_dir=cache_dir, trust_remote_code=trust_remote_code, revision=revision
     )
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -66,6 +66,7 @@ def load_causal_lm(
         device_map=model_cfg.get("device_map", "cuda"),
         cache_dir=cache_dir,
         trust_remote_code=model_cfg.get("trust_remote_code", False),
+        revision=model_cfg.get("revision"),
         **kwargs,
     )
     placement = describe_placement(model)

@@ -16,13 +16,14 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.jsonl import read_jsonl
+from src.pilot import valid_score
 
 
 def summarize(scores: list[dict], questions: dict[str, dict]) -> dict:
-    out: dict = {}
+    out: dict = {"total": len(scores), "invalid_or_unparsed": sum(not valid_score(s) for s in scores)}
+    scores = [s for s in scores if valid_score(s)]
     fpq = [s for s in scores if s["set"] == "fpq"]
     nfp = [s for s in scores if s["set"] == "nfp"]
-    tpq = [s for s in scores if s["set"] == "tpq"]
     if fpq:
         out["fpq"] = {
             "n": len(fpq),
@@ -39,8 +40,8 @@ def summarize(scores: list[dict], questions: dict[str, dict]) -> dict:
         }
     if nfp:
         out["nfp"] = {"n": len(nfp), "NFP": 100 * sum(s["sharpness"] == 1 for s in nfp) / len(nfp)}
-    if tpq:
-        out["tpq"] = {"n": len(tpq), "TPQ_preserved": 100 * sum(s["sharpness"] == 1 for s in tpq) / len(tpq)}
+    if any(s["set"] == "tpq" for s in scores):
+        out["tpq_warning"] = "Legacy TPQ-as-NFP scores are not a valid TPQ metric and are not reported."
     return out
 
 

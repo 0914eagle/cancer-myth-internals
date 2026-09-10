@@ -1,0 +1,154 @@
+# 23. Gemma 한 모델: prompting baseline과 기본 C steering 파일럿
+
+2026-09-10. **현재 실행 우선순위**다. 16의 코드 결손, 19의 분할 요구,
+22의 방법 후보를 검토한 뒤, 교수님의 “모델 하나의 baseline부터” 지시에 맞췄다.
+22의 27B·직교화 확정안과 이전 E2 격자를 이 파일럿의 실행 지시로 사용하지 않는다.
+방법론은 구상 중이며 SAE·새 gate·직교화는 이번 구현에 포함하지 않는다.
+
+## 1. 지금 확인하는 것
+
+`google/gemma-2-9b-it` 한 모델에서 다음 네 조건을 같은 문항·판정기로 비교한다.
+9B는 첫 실행의 기본값이며, SAE가 존재한다는 것이 특정 전제 feature가 발견됐다는 뜻은 아니다.
+
+| 행 | 실제 실행 | 해석 |
+|---|---|---|
+| Plain | 원 질문으로 직접 생성 | 기준 |
+| FP Identification adaptation | Yes/No 전제 판별(최대 16토큰) → Yes일 때 교정 지시, No일 때 원 질문으로 답변 | Well의 두 단계 구조를 가져온 zero-shot 적용 |
+| Premise-review CoT | 명시적 전제 검토(최대 128토큰) → 검토문을 포함해 최종 답변 | 우리가 구성한 두 단계 prompting 대조군; 별도 monitor 없음 |
+| Unconditional paired-C steering | 원 질문 생성 시 마지막 프롬프트 토큰부터 C를 더함 | 기존 평균 차 개입의 진단; 새 방법이라는 주장 없음 |
+
+세 답변 생성 조건의 최종 답변 예산은 동일하게 512토큰, greedy다. FP/CoT의 추가 호출은
+공짜로 간주하지 않으며 검토·답변의 input/output token 수를 별도로 기록한다.
+**판정기에는 최종 답변만 전달**하고 검토문은 JSONL의 `review`에 남긴다.
+FP 판정이 명확한 Yes/No가 아니면 실행을 멈춰 원문을 점검한다. 실패를 No로 처리하지 않는다.
+
+Well 원 프롬프트를 그대로 재현한 행은 아니다. Gemma의 user-turn 형식에 맞춰 구현했고,
+few-shot/RAG를 쓰지 않는다. 감사한 Well revision `a7ee871eadde1104f7560a2874a03cbf5221dbaa`의
+`FP_identification_template.py`에는 evidence가 없을 때 조건식 때문에 user 질문이 빈 문자열이
+될 수 있는 경로가 있어 그대로 복사하지 않았다. 여기서는 항상 질문을 포함한다.
+출처: [Well template](https://github.com/ShenranTomWang/Well/blob/a7ee871eadde1104f7560a2874a03cbf5221dbaa/data_gen/template/FP_identification_template.py).
+
+## 2. 분할과 방향 학습
+
+**원본 라벨 충돌 발견:** 공개 `FPQ QID=419`와 `NFP QID=1007`은 동일한 retinoblastoma 질문이며
+설명도 동일하다. 파일럿은 어느 라벨이 맞는지 임의로 선택하지 않고 두 항목을 모두 제외한다.
+동일 질문이 FPQ/정상 라벨을 동시에 가진 경우를 일반적으로 검사하고 `label_conflicts`에 ID와 이유를 남긴다.
+따라서 명목상 585+150행을 그대로 고유 평가 문항 수로 쓰지 않는다.
+
+공개 데이터의 CPU 준비 검증에서는 판정 예시 `fpq_1`도 제외되어 **732문항**이 남았다.
+fit=FPQ 349/NFP 89, dev=117/30, test=117/30이며 fit에서 쓸 수 있는 교정/순응 참조 쌍은 **135개**다.
+[입력 snapshot·분할 감사 기록](audits/gemma_pilot_data_2026-09-10.json).
+이 숫자는 해당 입력 snapshot과 분할 구현의 결과이며 서버에서는 생성된 manifest를 기준으로 확인한다.
+
+- `prepare`: 공식 `all_data.json`과 `nfp.json` 또는 기존 E0 질문을 읽는다.
+  NFP/TPQ 중복은 공식 NFP 한 행으로 합친다. TPQ만 있고 대응 NFP가 없으면 중단한다.
+  판정 few-shot에 등장하는 질문은 제외하고 ID를 manifest에 기록한다.
+- 알려진 source myth, 유효한 source_row, 명시한 group/pair/base ID의 연결 성분을 같은 그룹으로 둔다.
+  `source_row=-1`과 `From physicians.`는 결측값이므로 서로 다른 질문을 한 그룹으로 묶지 않는다.
+  의미상 같은데 원본 메타데이터에 연결되지 않은 문항은 자동으로 알아낼 수 없다. manifest의
+  `group_keys`를 감사하고 필요하면 E0 입력에 수동 `group_id`를 제공한 뒤 **실험 전에** 다시 준비한다.
+- 고정 seed 17의 stratified grouped 5-fold 중 fold 0=test, fold 1=dev, 나머지=fit.
+  이는 **한 번의 grouped holdout 파일럿**이며 5-fold 전체 cross-fitting이나 Well 저자 test split은 아니다.
+  각 분할의 FPQ/NFP 실제 수는 `manifest.json`의 `counts`가 기준이다.
+- `fit`: fit FPQ의 같은 질문에서 GPT-4o 참조 점수 +1/−1 답변을 하나씩 선택한다.
+  참조 저자 비율 보정도 fit 안에서만 한다. 같은 질문이라도 답변의 어투·길이 교란이 완전히 없어지지는 않는다.
+- 각 참조 답변 첫 32개 **내용 토큰**을 teacher-force하고 평균 활성값의 교정−순응 차를 문항별로 계산한다.
+  이를 평균·단위 정규화한 C를 저장한다. EOS/turn-end는 pooling에 넣지 않는다.
+- 층 후보 기본값은 hidden-state index **14, 21, 28**이다. 최적이라는 근거가 아닌 작은 초기 grid다.
+  `hidden_states[k]`와 decoder block `k−1`의 대응을 사용하며 마지막 normalization 뒤 상태는 금지한다.
+- 같은 fit 질문들의 마지막 프롬프트 활성값 L2 norm 평균을 층별로 저장한다.
+  `alpha_abs = alpha × 저장한 fit norm`이다. dev/test나 resume 잔여 문항에서 scale을 다시 계산하지 않는다.
+- dev 강도 기본값은 **0, 0.02, 0.05, 0.1**. α=0은 Plain 경로의 일치 확인용이다.
+  최종 residual 전부를 2–8배 미는 옛 E2 기본값과 혼동하지 않는다.
+
+## 3. 현재 구현과 옛 파이프라인의 차이
+
+| 파일 | 역할 |
+|---|---|
+| `scripts/run_pilot.py` | prepare / fit / generate / select / report CLI |
+| `src/pilot.py` | 그룹 분할, manifest·캐시 검증, paired 지표와 source-group bootstrap |
+| `src/pilot_model.py` | fit-only C와 norm 추출, 세 baseline 및 steering 생성 |
+| `scripts/run_gemma_pilot.sh` | 위 단계와 공통 판정기의 서버 실행 wrapper |
+
+방향은 `fit/directions.npz`, 학습 ID·모델 revision·tokenizer·라이브러리/구현 식별은 `fit/fit.json`에 남긴다.
+모델은 fit 도중 가중치가 바뀌지 않는다. 추출 중단 시 문항별 통계 cache에서 재개한다.
+생성은 기존 batch 구성을 유지하고, 중간에 끊긴 batch만 다시 계산해 완료 ID의 중복 append를 막는다.
+모델·방향·강도·코드·분할·토큰 예산이 달라진 출력 파일 재사용은 거부한다.
+
+기존 E1 전체 문항으로 학습한 `directions.npz`는 이 경로에서 사용할 수 없다.
+옛 `run_steer.py`/E2 wrapper는 분할·scale provenance가 없는 탐색 경로로 남아 있으므로
+held-out 파일럿에는 **새 runner를 사용**한다. 이전 Plain도 provenance가 없는 상태에서는 자동으로
+가져오지 않는다. 같은 데이터·모델·생성 설정임을 별도로 확인해야 하기 때문이다.
+
+공통 판정기 수정:
+
+- 파싱 실패·범위 밖 점수는 최대 4회 시도 후 미완으로 남기고 nonzero exit한다. +1로 집계하지 않는다.
+- 판정 출력의 `.run.json`에 backend/model/temperature, 응답·질문·예시·루브릭 hash를 저장한다.
+  다른 판정기로 캐시를 이어 쓰거나, provenance 없는 옛 캐시를 그대로 재사용하지 않는다.
+- 공식 FPQ/NFP만 채점한다. **TPQ 참인 주석을 NFP의 ‘가능한 환각’으로 넘기던 처리를 제거**했다.
+  Well TPQ 별도 루브릭을 구현한 것은 아니다.
+- 옛 미파싱 행은 `summarize_judge.py`가 분모와 분자에서 제외하고 제외 수를 보고한다.
+  새 pilot의 select/report는 비교 문항 전체가 유효하게 채점될 때까지 결과표를 만들지 않는다.
+
+## 4. 서버 실행 순서
+
+기존 `EXPERIMENTS.md`의 bootstrap·HF 모델 접근·CUDA 환경을 준비한 뒤 실행한다.
+아래는 명령 예시이며 **이 문서를 작성하며 9B 생성이나 유료 judge 호출을 실행한 것은 아니다.**
+wrapper는 foreground로 실행한다. 긴 실행은 tmux 등 지속되는 세션에서 수행한다.
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+export DATA_ROOT=/data1/heejae
+export CUDA_VISIBLE_DEVICES=0
+export JUDGE_BACKEND=openai
+export JUDGE_MODEL=gpt-4o
+# OPENAI_API_KEY는 기존 환경에서 설정; 명령/로그에 값을 쓰지 않는다.
+
+bash scripts/run_gemma_pilot.sh prepare
+bash scripts/run_gemma_pilot.sh baselines
+bash scripts/run_gemma_pilot.sh fit
+bash scripts/run_gemma_pilot.sh sweep
+bash scripts/run_gemma_pilot.sh report
+```
+
+산출물 기본 위치: `$DATA_ROOT/cancer_myth_internals/results/pilot/gemma2_9b_v1/`.
+각 명령은 실패한 단계부터 같은 설정으로 재실행할 수 있다. `PILOT_DIR`로 새 실험을 분리한다.
+baseline만 먼저 표로 보고 싶으면 `run_pilot.py report --scores`에 세 baseline의 score 파일만 넘긴다.
+개별 judge dry-run은 `scripts/run_judge.py --dry-run`을 사용한다.
+
+dev 결과의 목적은 교정 이득·과교정·실패 유형을 확인하는 것이다. test를 열기 전, pilot용
+NFP 허용폭(percentage points)을 명시하고 `select`를 실행한다. 예시의 5는 과학적으로
+보장된 비열등성 한계가 아니며 최종 논문의 허용폭도 아니다.
+
+```bash
+NFP_MARGIN_PP=5 bash scripts/run_gemma_pilot.sh select
+bash scripts/run_gemma_pilot.sh test
+PARTITION=test bash scripts/run_gemma_pilot.sh report
+```
+
+선택 규칙은 dev point estimate에서 `ΔPCR > 0`, `ΔNFP >= -허용폭`을 만족하는 설정 중
+PCR → PCS → NFP → 작은 강도 → 작은 층 순이다. 모든 후보와 점수를 `selection.json`에 저장한다.
+만족하는 설정이 없으면 `selected=null`로 남겨 **test를 열지 않는다**. dev의 음성 결과를 읽고
+구현·방향·데이터 문제를 점검한다. test에서는 저장한 한 방향·층·강도를 사용하며 재조정하지 않는다.
+
+## 5. 첫 표를 읽는 법과 다음 결정
+
+- PCR(%), PCS(−1..1), NFP(%), 실제 분모, source-group bootstrap 95% CI를 보고한다.
+- JSON에는 Plain 대비 paired ΔPCR/ΔPCS/ΔNFP와 CI, +1 성공 기준 rescue/harm도 저장한다.
+  그룹 수가 적은 파일럿 CI는 불안정할 수 있다. CI 포함만으로 성능 보존을 보장하지 않는다.
+- FPQ 점수 −1/0/+1 분포와 원 답변을 함께 본다. **0점 전체가 ‘틀린 사실로 반박’은 아니다.**
+  얼버무림·불완전 교정·틀린 교정은 답변 원문을 읽어 별도로 분류할 후속 분석이다.
+- steering의 교정 이득이 있고 정상 질문이 악화되면 gate의 필요성을 검토한다.
+  반박만 늘고 정확한 교정이 늘지 않으면 대조쌍과 방향 학습을 검토한다.
+  기존 프롬프트보다 이점이 없으면 그 결과를 그대로 보고한다.
+- 새 방법의 필요성이 구체화된 뒤 내부 probe, 일반 의료 QA, CREPE 전이를 확장한다.
+  이번 코드는 최종 Table 1–3 전체나 CAST/Gated 재현을 구현한 것이 아니다.
+
+## 6. 검증 범위
+
+GPU 없이 실행되는 회귀 테스트에 grouped split, NFP/TPQ 중복, fit 전용 학습·scale,
+재시작 설정 검증, 파싱 실패, paired 집계, test 잠금이 포함된다.
+다운로드 없이 작은 무작위 Gemma2를 생성해 실제 decoder hook, 첫 토큰 개입,
+α=0 Plain 일치, 짝 답변의 내용 토큰 pooling을 검사한다.
+실제 9B의 VRAM·처리 시간·의학적 성능은 서버에서 첫 실행으로 확인해야 한다.

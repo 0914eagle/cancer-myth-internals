@@ -1,5 +1,11 @@
 # 16. 코드 지도 (2026-09-09, 실험 브랜치 `fbf746d` 기준)
 
+> **2026-09-10 코드 갱신:** 첫 실행은 [23의 Gemma 파일럿](23_gemma_steering_pilot.md)을 따른다.
+> `run_pilot.py`, `src/pilot.py`, `src/pilot_model.py`, `run_gemma_pilot.sh`가 추가됐다.
+> 분할 누수와 resume 강도 문제는 새 경로에서 fit-only artifact로 차단했다.
+> 공통 judge의 파싱 실패 성공 처리와 판정 캐시 혼용을 수정하고 TPQ-as-NFP 채점을 제거했다.
+> 아래 표는 수정 전 코드 감사 기록이다. Well TPQ 별도 루브릭·최종 cross-fitting·gate는 아직 미구현이다.
+
 실험 세션이 만든 파이프라인을 문서 세션 관점에서 정리한 것. 실행 방법은 [EXPERIMENTS.md](../EXPERIMENTS.md), 결과는 [experiments/01](experiments/01-e1-prediagnostic.md). 여기서는 **무엇이 어디 있고, 데이터가 어떻게 흐르고, 리뷰 지적과 13의 설계 대비 무엇이 남았나**만 다룬다.
 
 ## 1. 배치

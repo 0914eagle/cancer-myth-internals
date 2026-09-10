@@ -1,5 +1,12 @@
 # Experiments — server setup and run commands
 
+> **Current first experiment:** follow [the single-Gemma pilot](docs/23_gemma_steering_pilot.md)
+> and `scripts/run_gemma_pilot.sh`. It provides fit-only C/scale, grouped
+> fit/dev/test, prompting baselines, dev selection and a locked test setting.
+> The E1/E2 commands below describe historical diagnostics; the legacy E2
+> direction is trained on all questions and is not a held-out result.
+> Judge v2 refuses unsigned legacy caches and no longer scores TPQ with NFP's rubric.
+
 Layout follows `medical_nla` exactly, with the `CANCER_MYTH_` prefix:
 
 | | server 125 | server 62 |

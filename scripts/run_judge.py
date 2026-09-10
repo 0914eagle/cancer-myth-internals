@@ -1,9 +1,9 @@
 """Score responses with the Cancer-Myth judge prompts (validate.py, validate_nfp.py).
 
 FPQ rows get Sharpness in {-1, 0, +1} (PCR = share of +1, PCS = mean); NFP
-rows get {-1, +1} from validate_nfp.py (NFP = share of +1); TPQ rows are
-scored with the NFP rubric using the annotated true presupposition as the
-"possible hallucination".
+rows get {-1, +1} from validate_nfp.py (NFP = share of +1). TPQ annotations
+are not a second normal set and cannot be passed as NFP hallucinations.
+This runner scores official FPQ/NFP only; Well's rubric is not implemented.
 
 Transport is `--backend codex` (default; `codex exec`, no API key) or
 `--backend openai`. The paper's judge was GPT-4o; whatever judge is used
@@ -33,6 +33,7 @@ from src.config import load_config
 from src.jsonl import append_jsonl, load_json, read_jsonl
 from src.judge_prompts import construct_prompt_fpq, construct_prompt_nfp, parse_score
 from src.llm_backend import check_judge_identity, make_caller
+from src.pilot import digest, file_digest, frozen_json, valid_score
 
 CHARS_PER_TOKEN = 4.0
 
@@ -43,11 +44,12 @@ def build_prompt(row: dict, q: dict, examples_fpq: list, examples_nfp: list) -> 
     if row["set"] == "nfp":
         return "nfp", construct_prompt_nfp(q["question"], q["hallucination_text"], row["response"], examples_nfp)
     if row["set"] == "tpq":
-        return "nfp", construct_prompt_nfp(q["question"], q["premise_text"], row["response"], examples_nfp)
+        raise ValueError("TPQ needs its own rubric; a true premise is not an NFP hallucination")
     raise ValueError(f"unknown set {row['set']}")
 
 
 def acquire_lock(out_path: Path) -> None:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     lock_path = out_path.with_suffix(out_path.suffix + ".lock")
     try:
         fd = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
@@ -101,12 +103,36 @@ def main() -> None:
     if args.limit:
         rows = rows[: args.limit]
     out_path = Path(args.output)
-    done = {r["id"] for r in read_jsonl(out_path)} if out_path.exists() else set()
+    response_meta = Path(str(args.responses) + ".run.json")
+    response_run = load_json(response_meta) if response_meta.exists() else None
+    signature = {"version": "cancer-judge-v2", "backend": backend, "requested_model": model,
+                 "temperature": temperature if backend == "openai" else None,
+                 "max_tokens": int(judge_cfg.get("max_tokens", 400)),
+                 "responses_hash": file_digest(args.responses), "questions_hash": file_digest(args.questions),
+                 "examples_hash": digest([examples_fpq, examples_nfp]), "response_run": response_run,
+                 "rubric_hash": file_digest(REPO_ROOT / "src/judge_prompts.py")}
+    if not args.dry_run:
+        acquire_lock(out_path)
+        meta = Path(str(out_path) + ".run.json")
+        if out_path.exists() and not meta.exists():
+            raise ValueError("Existing judge output has no cache signature; use a new judge-specific output path")
+        frozen_json(meta, signature)
+    previous = list(read_jsonl(out_path)) if out_path.exists() else []
+    if len({r["id"] for r in previous}) != len(previous):
+        raise ValueError("Duplicate judge IDs; inspect output before resuming")
+    done = {r["id"] for r in previous if valid_score(r)}
+    if len(done) != len(previous):
+        raise ValueError("Legacy invalid score rows exist; use a new output to retry without duplicates")
+    used_models = {r["judge_model"] for r in previous}
+    if len(used_models) > 1:
+        raise ValueError("Mixed judge models in cached output")
 
     jobs = []
     for row in rows:
         targets = by_text.get(row["question"]) or [questions[row["id"]]]
         for q in targets:
+            if q["set"] not in {"fpq", "nfp"}:
+                continue
             job_id = f"{row['id']}::{q['id']}"
             if job_id in done:
                 continue
@@ -124,19 +150,24 @@ def main() -> None:
     check_judge_identity(model, args.allow_same_family)
     call = make_caller(backend, model, timeout=args.timeout, codex_cmd=args.codex_cmd,
                        temperature=temperature, max_tokens=int(judge_cfg.get("max_tokens", 400)))
-    acquire_lock(out_path)
     failures, consecutive = 0, 0
     for n, (job_id, row, q, kind, prompt) in enumerate(jobs, start=1):
         text, model_used = "", model
+        parsed = False
         for attempt in range(4):
             try:
                 text, model_used = call(prompt)
-                break
+                score, parsed = parse_score(text)
+                allowed = {-1, 0, 1} if kind == "fpq" else {-1, 1}
+                if parsed and score.get("Sharpness") in allowed:
+                    break
+                parsed = False
+                print(f"[judge] {job_id}: invalid score; retry {attempt + 1}/4", flush=True)
             except Exception as exc:  # noqa: BLE001 - rate limits, transient errors
                 wait = 2 ** attempt
                 print(f"[judge] {job_id}: {exc!r}; retry in {wait}s", flush=True)
                 time.sleep(wait)
-        if not text:
+        if not text or not parsed:
             failures += 1
             consecutive += 1
             print(f"[judge] {job_id}: FAILED, skipped (rerun to retry)", file=sys.stderr)
@@ -144,7 +175,9 @@ def main() -> None:
                 raise SystemExit("three consecutive failures -- backend/model not usable; fix and rerun")
             continue
         consecutive = 0
-        score, parsed = parse_score(text)
+        if used_models and model_used not in used_models:
+            raise ValueError("Judge model changed while resuming; write a separate output")
+        used_models.add(model_used)
         append_jsonl(
             out_path,
             {
@@ -153,7 +186,7 @@ def main() -> None:
                 "question_id": q["id"],
                 "set": q["set"],
                 "rubric": kind,
-                "sharpness": int(score.get("Sharpness", 1)),
+                "sharpness": int(score["Sharpness"]),
                 "reason": score.get("Reason"),
                 "judge_parsed": parsed,
                 "judge_raw": text,
@@ -162,6 +195,9 @@ def main() -> None:
                 "judge_temperature": temperature if backend == "openai" else None,
                 "judged_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                 "response_model_id": row.get("model_id"),
+                "response_run_hash": row.get("run_hash"),
+                "response_text_hash": digest(row["response"]),
+                "judge_run_hash": digest(signature),
             },
         )
         if args.sleep:

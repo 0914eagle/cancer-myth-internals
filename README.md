@@ -1,5 +1,7 @@
 # Cancer-Myth Internals
 
+> **현재 코드 실행 순서 (2026-09-10): [23 — Gemma baseline·기본 steering 파일럿](docs/23_gemma_steering_pilot.md).** 교수님 지시에 따라 Gemma-2-9B-it 한 모델에서 Plain → FP Identification 적용 → 전제 검토 CoT → 기본 paired-C steering을 비교한다. `scripts/run_gemma_pilot.sh`로 prepare/baselines/fit/sweep/select/test/report를 실행한다. fit/dev/test와 fit 전용 방향·강도 기준값을 고정했다. 방법론은 미정이며 SAE·직교화·27B 격자는 확정하지 않는다. 아래 이전 계획과 충돌하면 23의 파일럿 범위가 우선한다. 장기 Table 3의 최신 방향은 **Cancer-Myth→CREPE 전이 평가**이고, 아래 Well 사실 확인 표는 선행연구 참고 자료다. 구현 검증과 실제 9B 성능 측정은 구분한다.
+
 > **2026-09-10 교수님 발표 준비:** [18 — 슬라이드별 상세 발표 원고](docs/18_professor_presentation_script.md). Introduction의 단계별 근거와 마지막 contribution 세 개, Related Work, Method, 결과표 개요를 23장으로 구성했다. Two Axes·Gated Activation Steering은 각각 2장, Method는 4장이다. 정상 질문은 NFP와 Well TPQ를 합친 300개가 아니라 **동일한 150개**이며, FPQ를 포함한 명목상 전체 질문 수는 **735개**다.
 
 > **질문했던 설명도 같은 원고 안에서 읽기:** 18의 각 장에 환자 질문부터 판정·개입까지의 상세 노트를 넣었다. [출력 readout](docs/18_professor_presentation_script.md#learned-output-readout), [CoT와 별도 모니터](docs/18_professor_presentation_script.md#cot-monitor-details), [TPR·FPR·AUROC·문턱](docs/18_professor_presentation_script.md#threshold-details), [아홉 교정 방법](docs/18_professor_presentation_script.md#table2-method-details), [RAG Table 3](docs/18_professor_presentation_script.md#table3-details), [같은 선택·개입률](docs/18_professor_presentation_script.md#selection-control-details)을 예시와 함께 설명한다. 문서 앞부분의 질문별 바로가기를 이용할 수 있다.
@@ -10,7 +12,7 @@
 
 > **2026-09-10 현재 연구계획:** 논문 전체의 이야기는 [17 — Introduction부터 Conclusion까지](docs/17_manuscript_storyline.md), 주장·가설은 [09](docs/09_research_proposal.md), 실행 명세는 [13](docs/13_task_spec.md)을 읽는다. Table 1은 판별 신호, Table 2는 최종 교정·보존 성능과 일반 의료 QA ACC 세 열을 합친 본 결과표, Table 3는 Well 본문 Table 1을 계승한 주석 전제의 사실 확인 정확도 비교다. 같은 gate의 prompt/C 비교는 Table 2에 통합하고 같은 C·K의 선택 통제는 부록 A1에 둔다. [10 — 근거](docs/10_evidence_and_baselines.md), [11 — Tripathi 검토](docs/11_tripathi_review.md), [12 — 결정 기록](docs/12_discussion_decisions.md), [15 — 진행 현황](docs/15_progress_summary.md), [16 — 코드 지도](docs/16_code_overview.md)가 이를 뒷받침한다. 일반 의료 QA 보존은 Task 3이며 독립적인 새 방법 기여가 아니다. 아래 초기 요약과 충돌하면 이 문서들이 우선한다. 계획 갱신은 실험 성공을 뜻하지 않는다.
 
-> **2026-09-10 기여의 성격·일정:** [22 — 방법 변형 후보 검증, selective steering의 빈 자리, 10월 ARR 계획, GPU](docs/22_method_variants_and_arr_plan.md). 방법 변형은 과교정 방향 직교화 C 하나를 사전 등록해 시험하고, 2주차 27B 격자 결과로 main / Findings / 12월 연기를 정한다.
+> **방법 후보 검토 기록:** [22](docs/22_method_variants_and_arr_plan.md)는 과거 후보·일정 초안이다. 직교화, 27B 실행 순서, 코사인 기각 기준은 현재 확정안으로 사용하지 않는다. 당장 실행할 코드는 [23](docs/23_gemma_steering_pilot.md)을 따른다.
 
 의료 LLM이 환자 질문 속 **잘못된 전제(false presupposition)** 를 왜 못 고치는지를 **내부 표상**에서 읽고, 그 신호로 **조건부로** 고치는 연구.
 

@@ -11,9 +11,10 @@ Two policies:
                     position, and add alpha * v only when the probe says
                     "false premise" (score > threshold)
 
-Steering is applied to generated positions only. The prefill is always
-unsteered so the gate reads the model's own state, and so the two policies
-differ in exactly one thing: whether the gate is consulted.
+The gate has a separate unsteered prefill. The generation pass is steered
+from the last prompt token onward, including the first answer token's logits.
+Interior hidden-state indices are required: the final hidden state includes
+the final normalization and is not the raw final decoder block output.
 """
 
 from __future__ import annotations
@@ -67,10 +68,10 @@ class Steerer:
     def __init__(self, model, spec: SteerSpec, from_position: int):
         layers = decoder_layers(model)
         block_index = spec.hidden_state_index - 1
-        if not 0 <= block_index < len(layers):
+        if not 0 <= block_index < len(layers) - 1:
             raise IndexError(
                 f"hidden_state_index {spec.hidden_state_index} has no block "
-                f"(model has {len(layers)} blocks; index 0 is the embedding)"
+                f"(use 1..{len(layers) - 1}; 0 is embeddings, final index is post-final-norm)"
             )
         self.block = layers[block_index]
         self.adder = _Adder(spec.direction, spec.alpha, from_position)
@@ -154,6 +155,7 @@ def generate_steered(
         gen_kwargs = dict(
             max_new_tokens=max_new_tokens,
             do_sample=False,
+            use_cache=True,
             pad_token_id=tokenizer.pad_token_id,
         )
         if steer_on and spec is not None and spec.alpha != 0.0:

@@ -1,5 +1,11 @@
 # 15. 진행 현황 정리 (2026-09-10)
 
+> **최신 실행 상태:** [23](23_gemma_steering_pilot.md)의 Gemma-2-9B-it 파일럿 코드를 구현했다.
+> Plain/FP Identification 적용/CoT/기본 C를 먼저 비교한다. 모델별 새 방법은 아직 미정이다.
+> fit 전용 C·scale, grouped holdout, 판정 파싱/캐시 검증을 새 실행 경로에 반영했다.
+> 실제 9B GPU 생성·GPT-4o 채점은 아직 실행하지 않았다. 장기 Table 3는 CREPE 전이 방향이다.
+> 아래 이전 계획의 모델 순서·표 번호·미결 상태보다 이 갱신과 23을 우선한다.
+
 문서 세션(2026-09-07–10)과 실험 세션의 작업을 한 곳에 모은 것. 세부는 각 문서 링크. 이 문서는 "지금 어디까지 왔고 무엇이 열려 있나"만 답한다.
 
 **2026-09-10 공개 RAG 감사 완료.** Well 코드 revision과 TPQ 파일을 내려받아 확인했다. TPQ 148문항·전제 주석 178개, 147문항에 passages가 있다. 당시 Top-4·명시적 split·최종 응답은 공개 파일에서 확인되지 않았다. 원 수치 복원은 미완료이며 embedding·생성·judge 실행은 하지 않았다. [재사용 범위·새 Table 3](21_well_rag_reproducibility.md). Table 1은 Raw·P(IK)·P(True)를 복원한 10행, Table 2는 두 Hidden 행의 gate를 공유한다.

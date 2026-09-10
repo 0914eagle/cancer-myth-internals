@@ -93,8 +93,7 @@ def parse_score(response: str | None) -> tuple[dict[str, Any], bool]:
         if matches:
             try:
                 score = json.loads(matches[0])
-                if "Sharpness" in score:
-                    score["Sharpness"] = int(score["Sharpness"])
+                if type(score.get("Sharpness")) is int and score["Sharpness"] in {-1, 0, 1}:
                     return score, True
             except (json.JSONDecodeError, ValueError, TypeError):
                 pass

@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-10",
+  "reference_sha256": "43922a8224fe1de0324680309e5040d196b643ffc5fa822cdb92a4bc23b94751",
+  "manifest_hash": "d66832f469ddc9038d298293e4da3afe303b0f6c25bd7b450ed1206b387cbd8d",
+  "counts": {
+    "dev": {
+      "fpq": 117,
+      "nfp": 30
+    },
+    "fit": {
+      "fpq": 349,
+      "nfp": 89
+    },
+    "test": {
+      "fpq": 117,
+      "nfp": 30
+    }
+  },
+  "n_unique": 732,
+  "groups": 516,
+  "fit_reference_pairs": 135,
+  "excluded_judge_example_ids": [
+    "fpq_1"
+  ],
+  "conflicting_ids": [
+    [
+      "fpq_419",
+      "nfp_1007"
+    ]
+  ],
+  "note": "CPU data preparation only. No 9B inference or API judging.",
+  "input_hashes": {
+    "nfp.json": "092417899c903b95bfde5529c949c03a870602424e58efebb371e8b7ffc8747a",
+    "all_data.json": "43922a8224fe1de0324680309e5040d196b643ffc5fa822cdb92a4bc23b94751",
+    "examples_validate_nfp.json": "828a7f30eb84c91d3c5906749a794c519b66fc3e57e841621ed91ada2132cb68",
+    "examples_validate.json": "5964ccb8cb6898f3d44e52b654c301d703de5e78808687757f43819457e2c919"
+  },
+  "sklearn_version": "1.9.0",
+  "hash_scope": "Local JSON serialization snapshots used by the CPU prepare smoke test, not the upstream file byte representation.",
+  "source": "https://github.com/bill1235813/cancer-myth/tree/main/data"
+}
