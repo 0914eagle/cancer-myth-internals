@@ -15,6 +15,8 @@ Gemma 접근 승인을 받은 HF 계정과 서버의 Codex CLI 로그인이 필�
 `gpt-5.6-sol`은 GPT-5와 다른 모델이다. [공식 Codex 모델 안내](https://learn.chatgpt.com/docs/models)에
 기재되어 있고 이 저장소에도 이전 실행 기록이 있지만, 서버 계정의 현재 접근은 `check-judge`로 확인한다.
 `codex login status`로 확인하고 미로그인 상태면 `codex login`을 실행한다.
+구버전 CLI는 `gpt-5.6-sol` 호출에 최신 버전이 필요하다는 오류를 낼 수 있다.
+npm 설치 환경은 `npm install -g @openai/codex@latest` 후 `hash -r`, `codex --version`으로 확인한다.
 `baselines`는 실제 GPU 생성과 Codex 판정을 실행한다. `prepare`는 CPU 준비다.
 GPT-4o로 판정한 선행논문 수치와는 판정기가 다르므로 직접 재현값으로 취급하지 않는다.
 
@@ -220,6 +222,10 @@ cd /home/eagle0914/cancer-myth-internals
 git pull --ff-only origin main
 export JUDGE_BACKEND=codex
 export JUDGE_MODEL=gpt-5.6-sol
+npm install -g @openai/codex@latest
+hash -r
+codex --version
+codex login status
 bash scripts/run_gemma_pilot.sh check-judge &&
   bash scripts/run_gemma_pilot.sh baselines &&
   bash scripts/run_gemma_pilot.sh report-baselines
@@ -231,3 +237,8 @@ bash scripts/run_gemma_pilot.sh check-judge &&
 이미 완료된 생성 문항은 설정 일치 검증 후 건너뛴다(검증을 위해 Gemma 로드는 발생한다).
 새 판정 결과는 `*_judge_codex_gpt-5.6-sol.jsonl`에 저장되어 실패한 GPT-5 경로와 섞이지 않는다.
 `report-baselines`는 세 baseline의 판정이 모두 완료된 뒤에만 실행한다.
+
+수정 시 로컬 CLI 0.140.0으로 실제 짧은 호출을 시도했으며 모델 응답 대신 CLI 업데이트
+요구 오류를 받았다. 따라서 이 수정은 서버 호출 성공을 확인한 결과가 아니며,
+업데이트 후 서버에서 `[judge check] OK`를 확인해야 한다. wrapper의 기본 모델 전달과
+접근 검사 실패 시 생성·판정을 시작하지 않는 동작은 모의 호출로 검증했다.
