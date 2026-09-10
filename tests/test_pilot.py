@@ -197,27 +197,64 @@ def test_parser_migration_preserves_answers_scores_and_rejects_other_code(tmp_pa
         write_jsonl(source / "split" / f"{part}.jsonl", [q for q in rows if q["partition"] == part])
     dev = [q for q in rows if q["partition"] == "dev"]
     path = source / "dev/fp_identification.jsonl"
-    spec = {"identity": {"implementation_hash": OLD_IMPLEMENTATION}, "method": "fp_identification",
+    spec = {"identity": {"implementation_hash": OLD_IMPLEMENTATION}, "method": "fp_identification", "max_new_tokens": 512,
             "partition": "dev", "manifest_hash": manifest["manifest_hash"], "question_ids": [q["id"] for q in dev]}
     frozen_json(Path(str(path) + ".run.json"), spec)
-    record = {"id": dev[0]["id"], "response": "original answer", "run_hash": digest(spec),
-              "review": "Yes.", "identified_false_premise": True}
-    write_jsonl(path, [record])
+    records = [{"id": q["id"], "response": f"original answer {q['id']}", "run_hash": digest(spec),
+                "review": "Yes.", "identified_false_premise": True} for q in dev]
+    write_jsonl(path, records)
     scores = source / "dev/fp_identification_judge_codex_test.jsonl"
-    judged = {"id": "j", "response_id": dev[0]["id"], "set": dev[0]["set"],
-              "sharpness": 1, "judge_parsed": True}
-    write_jsonl(scores, [judged])
-    frozen_json(Path(str(scores) + ".run.json"), {"response_run": spec,
-                "responses_hash": file_digest(path), "questions_hash": file_digest(source / "split/dev.jsonl")})
+    signature = {"response_run": spec, "responses_hash": file_digest(path),
+                 "questions_hash": file_digest(source / "split/dev.jsonl")}
+    judged = [{**score(q["id"], q["set"], 1), "response_id": q["id"],
+               "response_run_hash": digest(spec), "judge_run_hash": digest(signature),
+               "response_text_hash": digest(r["response"])} for q, r in zip(dev, records)]
+    write_jsonl(scores, judged)
+    frozen_json(Path(str(scores) + ".run.json"), signature)
     original = path.read_bytes()
     migrate(source, destination)
     assert path.read_bytes() == original
     updated = json.loads((destination / "dev/fp_identification.jsonl.run.json").read_text())
     assert updated["identity"]["implementation_hash"] == NEW_IMPLEMENTATION
-    assert check_resume(destination / "dev/fp_identification.jsonl", updated, {q["id"] for q in dev}) == {dev[0]["id"]}
-    copied = next(read_jsonl(destination / "dev/fp_identification.jsonl"))
-    assert copied["response"] == record["response"]
-    assert next(read_jsonl(destination / "dev" / scores.name)) == judged
+    assert check_resume(destination / "dev/fp_identification.jsonl", updated, {q["id"] for q in dev}) == {q["id"] for q in dev}
+    copied = list(read_jsonl(destination / "dev/fp_identification.jsonl"))
+    assert [r["response"] for r in copied] == [r["response"] for r in records]
+    from scripts.run_pilot import load_scored
+    from scripts.migrate_pilot_identification import repair
+    migrated_scores = destination / "dev" / scores.name
+    loaded, _, _ = load_scored(migrated_scores, manifest, "dev")
+    assert len(loaded) == len(dev)
+    new_rows = list(read_jsonl(migrated_scores))
+    for new, old in zip(new_rows, judged):
+        assert {k:v for k,v in new.items() if k not in {"response_run_hash", "judge_run_hash"}} == {
+            k:v for k,v in old.items() if k not in {"response_run_hash", "judge_run_hash"}}
+    # Recreate the exact old migration bug, with some scores newly judged after resume.
+    write_jsonl(migrated_scores, judged[:2] + new_rows[2:])
+    with pytest.raises(ValueError, match="Score provenance differs"):
+        load_scored(migrated_scores, manifest, "dev")
+    repair(destination)
+    assert list(read_jsonl(migrated_scores)) == new_rows
+    assert len(load_scored(migrated_scores, manifest, "dev")[0]) == len(dev)
+    repaired_bytes = migrated_scores.read_bytes()
+    repair(destination)
+    assert migrated_scores.read_bytes() == repaired_bytes
+    assert list(destination.glob("dev/*.bak"))
+    # Exercise the actual report path, not just migration's own metadata checks.
+    from scripts.run_pilot import report
+    plain_run = {**updated, "method": "plain"}
+    plain_path = destination / "dev/plain_judge_test.jsonl"
+    write_jsonl(plain_path, [{**r, "response_run_hash": digest(plain_run)} for r in new_rows])
+    frozen_json(Path(str(plain_path) + ".run.json"), {"response_run": plain_run})
+    report(SimpleNamespace(manifest=destination / "split/manifest.json", partition="dev",
+                           scores=[plain_path, migrated_scores], output=destination / "report.json"))
+    assert (destination / "report.md").exists()
+    # Reject edits to actual judge decisions; repair must not bless arbitrary rows.
+    corrupted = [dict(r) for r in judged]
+    corrupted[0]["sharpness"] = -1
+    write_jsonl(migrated_scores, corrupted)
+    with pytest.raises(ValueError, match="not an unchanged audited original"):
+        repair(destination)
+    assert list(read_jsonl(migrated_scores)) == corrupted
     assert (destination / "parser_migration.json").exists()
     with pytest.raises(ValueError, match="Destination already"):
         migrate(source, destination)

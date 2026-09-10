@@ -26,6 +26,95 @@ OLD_IMPLEMENTATION = "6b2e2eb6c0508722da8c015526528f33bd33e0c5c418544c3ec7ef2798
 NEW_IMPLEMENTATION = "a26b7a6e09d7826bec9de195a58817527e2eb51f0425b782d5bab3c9eae95840"
 
 
+def rebind_score(row, old_sig, new_sig, response):
+    if (not valid_score(row) or row.get("response_run_hash") != digest(old_sig["response_run"])
+            or row.get("judge_run_hash") != digest(old_sig)
+            or row.get("response_text_hash") != digest(response["response"])):
+        raise ValueError("Score row does not match its original response and judge signature")
+    return {**row, "response_run_hash": digest(new_sig["response_run"]),
+            "judge_run_hash": digest(new_sig)}
+
+
+def repair(pilot: Path):
+    """Repair only audited rows copied by the original migration; no rejudging."""
+    pilot = pilot.resolve()
+    audit = json.loads((pilot / "parser_migration.json").read_text())
+    if (audit["original_implementation"] != OLD_IMPLEMENTATION
+            or audit["compatible_implementation"] != NEW_IMPLEMENTATION):
+        raise ValueError("Not a supported parser migration")
+    if list(pilot.rglob("*.lock")):
+        raise ValueError("Stop active workers and inspect locks before repair")
+    source = Path(audit["source"])
+    entries = {e["path"]: e for e in audit["files"]}
+    changes = []
+    for relative, entry in entries.items():
+        if not (relative.startswith("dev/") and "_judge_" in relative and relative.endswith(".jsonl")):
+            continue
+        original, target = source / relative, pilot / relative
+        if file_digest(original) != entry["original_sha256"]:
+            raise ValueError(f"Original score file changed: {original}")
+        meta_relative = relative + ".run.json"
+        if (file_digest(source / meta_relative) != entries[meta_relative]["original_sha256"]
+                or file_digest(pilot / meta_relative) != entries[meta_relative]["copied_sha256"]):
+            raise ValueError(f"Judge metadata differs from migration audit: {relative}")
+        old_sig = json.loads((source / meta_relative).read_text())
+        new_sig = json.loads((pilot / meta_relative).read_text())
+        method = new_sig["response_run"]["method"]
+        response_path = pilot / "dev" / f"{method}.jsonl"
+        generation = json.loads(Path(str(response_path) + ".run.json").read_text())
+        if (generation != new_sig["response_run"] or file_digest(response_path) != new_sig["responses_hash"]
+                or file_digest(pilot / "split/dev.jsonl") != new_sig["questions_hash"]):
+            raise ValueError(f"Current responses differ from judged responses: {relative}")
+        responses = {r["id"]: r for r in read_jsonl(response_path)}
+        originals = {r["id"]: r for r in read_jsonl(original)}
+        rows = list(read_jsonl(target))
+        if len({r["id"] for r in rows}) != len(rows):
+            raise ValueError(f"Duplicate score rows: {target}")
+        replacement, count = [], 0
+        for row in rows:
+            response = responses[row["response_id"]]
+            if response["run_hash"] != digest(generation):
+                raise ValueError("Response has invalid generation hash")
+            if (row.get("response_run_hash") == digest(generation)
+                    and row.get("judge_run_hash") == digest(new_sig)):
+                rebind_score(row, new_sig, new_sig, response)  # also validate text and score
+                replacement.append(row)
+                continue
+            if row != originals.get(row["id"]):
+                raise ValueError(f"Mismatched row is not an unchanged audited original: {row['id']}")
+            replacement.append(rebind_score(row, old_sig, new_sig, response))
+            count += 1
+        if count:
+            changes.append((target, file_digest(target), replacement, count))
+    # Validate every affected file before editing any. Backups allow safe reruns after interruption.
+    for target, before, rows, count in changes:
+        if file_digest(target) != before:
+            raise ValueError("Score file changed during repair")
+        backup = Path(str(target) + f".before-provenance-fix-{before}.bak")
+        if backup.exists():
+            if file_digest(backup) != before:
+                raise ValueError("Repair backup mismatch")
+        else:
+            shutil.copy2(target, backup)
+        handle, tmp = tempfile.mkstemp(prefix=".score-repair-", dir=target.parent)
+        import os
+        os.close(handle)
+        try:
+            write_jsonl(tmp, rows)
+            after = file_digest(tmp)
+            frozen_json(Path(str(backup) + ".audit.json"), {
+                "reason": "repair per-row hashes omitted by parser migration",
+                "before_sha256": before, "after_sha256": after, "rows_rebound": count,
+                "source_migration": str(pilot / "parser_migration.json"),
+            })
+            Path(tmp).replace(target)
+        finally:
+            Path(tmp).unlink(missing_ok=True)
+        print(f"[repaired] {target.name}: {count} rows; answers/scores unchanged")
+    if not changes:
+        print("[repair] No stale migrated row hashes found")
+
+
 def migrate(source: Path, destination: Path):
     source, destination = source.resolve(), destination.resolve()
     if destination.exists():
@@ -98,9 +187,12 @@ def migrate(source: Path, destination: Path):
                         or len({r["id"] for r in judged}) != len(judged)):
                     raise ValueError(f"Invalid judge rows: {scores}")
                 target = staging / "dev" / scores.name
-                shutil.copy2(scores, target)
+                old_sig = copy.deepcopy(sig)
                 sig["response_run"] = new_spec
                 sig["responses_hash"] = file_digest(new)
+                by_id = {r["id"]: r for r in rows}
+                judged = [rebind_score(r, old_sig, sig, by_id[r["response_id"]]) for r in judged]
+                write_jsonl(target, judged)
                 frozen_json(Path(str(target) + ".run.json"), sig)
                 track(scores, target)
                 track(score_meta, Path(str(target) + ".run.json"))
@@ -118,7 +210,15 @@ def migrate(source: Path, destination: Path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", required=True, type=Path)
-    parser.add_argument("--destination", required=True, type=Path)
+    parser.add_argument("--source", type=Path)
+    parser.add_argument("--destination", type=Path)
+    parser.add_argument("--repair", type=Path, help="Repair an existing audited parser-migration directory")
     args = parser.parse_args()
-    migrate(args.source, args.destination)
+    if args.repair:
+        if args.source or args.destination:
+            parser.error("Use --repair alone")
+        repair(args.repair)
+    elif args.source and args.destination:
+        migrate(args.source, args.destination)
+    else:
+        parser.error("Use --source and --destination, or --repair")

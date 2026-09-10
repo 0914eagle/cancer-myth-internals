@@ -282,3 +282,32 @@ bash scripts/run_gemma_pilot.sh baselines &&
 
 완료 문항은 재사용하고 실패한 batch부터 재개한다. 부분 FP 생성의 중간 review는 예외 시
 저장되지 않았으므로 그 batch의 review는 다시 생성된다. split과 test 구분은 변경하지 않는다.
+
+## 9. 판정 완료 후 `Score provenance differs from generation run` 복구
+
+2026-09-11 수정. 이전 parser migration이 판정 파일의 `.run.json`만 갱신하고 각 점수 행의
+`response_run_hash`·`judge_run_hash`를 갱신하지 않았다. 이로 인해 기존에 복사된 판정(주로 Plain)을
+report가 거부했다. SSH 단절 여부와 별개인 복구 스크립트의 누락이다.
+
+현재 migration은 행별 hash도 일관되게 갱신한다. 이미 복구한 폴더에는 아래 명령을 사용한다.
+`parser_migration.json`에 기록된 원본이 그대로 있고, 문제 행이 원본과 동일하며, 현재 답변과
+판정 메타데이터가 일치할 때만 두 hash를 고친다. 점수·설명·응답 본문·판정 시각은 바꾸지 않는다.
+수정 전 파일과 수정 내역은 `.before-provenance-fix-*.bak` 및 `.audit.json`으로 보존한다.
+수정 후 새로 판정된 정상 행은 그대로 둔다. 원본 폴더를 삭제하지 않는다.
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+git pull --ff-only origin main
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+export DATA_ROOT=/data1/heejae
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fpfix
+export JUDGE_BACKEND=codex
+export JUDGE_MODEL=gpt-5.6-sol
+python scripts/migrate_pilot_identification.py --repair "$PILOT_DIR" &&
+  bash scripts/run_gemma_pilot.sh report-baselines
+```
+
+이 명령은 CPU 파일 검증·복구·집계만 수행한다. Gemma 생성이나 Codex 판정을 재실행하지 않는다.
+서버 원본 데이터 자체는 로컬에서 확인하지 못했으므로 검증 조건에 맞지 않으면 중단하며,
+검사를 우회해 집계하지 않는다. 수정 테스트는 원래 오류, 새/옛 판정 행 혼재, 반복 복구,
+실제 report 생성과 점수가 변조된 행 거부를 포함한다.

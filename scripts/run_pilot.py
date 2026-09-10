@@ -253,7 +253,7 @@ def load_scored(path, manifest, partition):
     expected = {q["id"]: q for q in manifest["questions"] if q["partition"] == partition}
     scores, judge = score_map(path, expected)
     if any(r.get("response_run_hash") != digest(run) for r in scores.values()):
-        raise ValueError("Score provenance differs from generation run")
+        raise ValueError(f"Score provenance differs from generation run: {path}")
     return scores, judge, run
 
 
