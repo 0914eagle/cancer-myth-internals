@@ -237,9 +237,19 @@ COT_ANSWER = "Answer the patient's question using the premise review below. Corr
 
 
 def parse_identification(text):
-    match = re.fullmatch(r"\s*(yes|no)[.!]?\s*", text, re.IGNORECASE)
+    # Read a leading verdict, not a Yes/No mentioned somewhere in the rationale.
+    # Explanation can be truncated by the 16-token budget after a valid verdict.
+    cleaned = re.sub(r"[*_`]+", "", text.strip())
+    match = re.match(r"(yes|no)(?=$|[\s.!,:;])", cleaned, re.IGNORECASE)
     if not match:
         raise ValueError(f"Invalid Yes/No identification: {text!r}")
+    tail = cleaned[match.end():]
+    opposite = "no" if match.group(1).lower() == "yes" else "yes"
+    if re.match(r"\s*(?:[/|]|or\b)", tail, re.IGNORECASE) or re.search(
+        rf"\b(?:but|however|actually|rather|or)\s*[:,]?\s*{opposite}\b"
+        rf"|(?:^|[\n.!?])\s*{opposite}(?=$|[\s.!,:;])", tail, re.IGNORECASE
+    ):
+        raise ValueError(f"Ambiguous Yes/No identification: {text!r}")
     return match.group(1).lower() == "yes"
 
 

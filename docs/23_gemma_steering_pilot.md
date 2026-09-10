@@ -76,7 +76,9 @@ cat "$ART/results/pilot/gemma2_9b_v1/report_dev_codex_gpt-5.6-sol.md"
 세 답변 생성 조건의 최종 답변 예산은 동일하게 512토큰, greedy다. FP/CoT의 추가 호출은
 공짜로 간주하지 않으며 검토·답변의 input/output token 수를 별도로 기록한다.
 **판정기에는 최종 답변만 전달**하고 검토문은 JSONL의 `review`에 남긴다.
-FP 판정이 명확한 Yes/No가 아니면 실행을 멈춰 원문을 점검한다. 실패를 No로 처리하지 않는다.
+FP 판정은 응답 첫머리의 명확한 Yes/No를 읽는다. 뒤에 붙은 설명과 기본 Markdown 강조는
+허용하고 원문을 저장한다. 첫 판정이 없거나 명시적으로 서로 충돌하는 Yes/No 응답은 중단한다.
+실패를 No로 처리하지 않는다. 긴 설명은 16토큰에서 잘려도 첫 판정이 명확하면 사용할 수 있다.
 
 Well 원 프롬프트를 그대로 재현한 행은 아니다. Gemma의 user-turn 형식에 맞춰 구현했고,
 few-shot/RAG를 쓰지 않는다. 감사한 Well revision `a7ee871eadde1104f7560a2874a03cbf5221dbaa`의
@@ -242,3 +244,41 @@ bash scripts/run_gemma_pilot.sh check-judge &&
 요구 오류를 받았다. 따라서 이 수정은 서버 호출 성공을 확인한 결과가 아니며,
 업데이트 후 서버에서 `[judge check] OK`를 확인해야 한다. wrapper의 기본 모델 전달과
 접근 검사 실패 시 생성·판정을 시작하지 않는 동작은 모의 호출로 검증했다.
+
+## 8. `Invalid Yes/No identification: 'Yes ...'` 복구
+
+서버에서 `Yes` 뒤에 설명이 붙어 strict fullmatch가 실패했다. 입력 프롬프트나 생성 설정을
+바꾸지 않고 첫 판정과 설명을 분리해 읽도록 수정했다. `No treatment` 같은 설명 속 단어를
+그 자체로 반대 판정으로 처리하지 않는다. 실제 오류 문자열과 정상·모호 응답 회귀 검사를 추가했다.
+
+코드 hash가 바뀌므로 기존 폴더에서 바로 재시작하면 provenance mismatch가 발생한다.
+아래 **일회성 복구**는 원본을 보존하고 새 폴더로 split·완료된 dev baseline 답변·기존 판정을 복사한다.
+FP Identification 완료 행은 이전 strict 규칙에서도 유효하고 새 규칙과 판정이 같은지 확인한다.
+정확히 검토한 수정 전·후 코드 hash만 허용한다. 원/새 파일 hash와 호환성 이유는
+`parser_migration.json`에 남긴다. 복사한 답변은 옛 코드가 생성한 것으로 기록되며 재생성했다고
+주장하지 않는다. fit·selection·test 결과는 옮기지 않는다.
+
+기존 worker가 종료된 상태에서, 기존 가상환경과 환경변수를 유지한 채 실행한다.
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+git pull --ff-only origin main
+python scripts/migrate_pilot_identification.py \
+  --source /data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1 \
+  --destination /data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fpfix
+```
+
+`[migrated]`가 출력되면 이어서 실행한다. 새 폴더가 이미 있으면 복구 명령은 덮어쓰지 않는다.
+복구 완료 후 재접속했을 때는 아래 `PILOT_DIR`을 계속 사용한다.
+
+```bash
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fpfix
+export BATCH_SIZE=1
+export JUDGE_BACKEND=codex
+export JUDGE_MODEL=gpt-5.6-sol
+bash scripts/run_gemma_pilot.sh baselines &&
+  bash scripts/run_gemma_pilot.sh report-baselines
+```
+
+완료 문항은 재사용하고 실패한 batch부터 재개한다. 부분 FP 생성의 중간 review는 예외 시
+저장되지 않았으므로 그 batch의 review는 다시 생성된다. split과 test 구분은 변경하지 않는다.

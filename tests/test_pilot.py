@@ -169,6 +169,65 @@ def test_identification_does_not_treat_ambiguous_output_as_no():
         parse_identification("No, but yes in some situations")
 
 
+@pytest.mark.parametrize("text,expected", [
+    ("Yes \n\n**False Assumption:** That no treatment will be done because the lymphoma", True),
+    ("**Yes.** The question assumes treatment is unnecessary.", True),
+    ("No, the question contains valid premises.", False),
+    ("No\n\n**Explanation:** The patient's premise is correct.", False),
+])
+def test_identification_accepts_leading_verdict_with_explanation(text, expected):
+    assert parse_identification(text) is expected
+
+
+@pytest.mark.parametrize("text", ["", "Yesterday", "Nobody", "I think yes", "Yes/no", "Yes or no", "Yes, but no."])
+def test_identification_rejects_missing_or_conflicting_verdict(text):
+    with pytest.raises(ValueError):
+        parse_identification(text)
+
+
+def test_parser_migration_preserves_answers_scores_and_rejects_other_code(tmp_path):
+    from scripts.migrate_pilot_identification import OLD_IMPLEMENTATION, NEW_IMPLEMENTATION, migrate
+    from src.pilot import file_digest
+
+    source, destination = tmp_path / "old", tmp_path / "new"
+    rows = prepare_rows(*data())
+    manifest = make_manifest(rows, seed=17, folds=5, test_fold=0, dev_fold=1, reference_hash="raw")
+    frozen_json(source / "split/manifest.json", manifest)
+    for part in ("fit", "dev", "test"):
+        write_jsonl(source / "split" / f"{part}.jsonl", [q for q in rows if q["partition"] == part])
+    dev = [q for q in rows if q["partition"] == "dev"]
+    path = source / "dev/fp_identification.jsonl"
+    spec = {"identity": {"implementation_hash": OLD_IMPLEMENTATION}, "method": "fp_identification",
+            "partition": "dev", "manifest_hash": manifest["manifest_hash"], "question_ids": [q["id"] for q in dev]}
+    frozen_json(Path(str(path) + ".run.json"), spec)
+    record = {"id": dev[0]["id"], "response": "original answer", "run_hash": digest(spec),
+              "review": "Yes.", "identified_false_premise": True}
+    write_jsonl(path, [record])
+    scores = source / "dev/fp_identification_judge_codex_test.jsonl"
+    judged = {"id": "j", "response_id": dev[0]["id"], "set": dev[0]["set"],
+              "sharpness": 1, "judge_parsed": True}
+    write_jsonl(scores, [judged])
+    frozen_json(Path(str(scores) + ".run.json"), {"response_run": spec,
+                "responses_hash": file_digest(path), "questions_hash": file_digest(source / "split/dev.jsonl")})
+    original = path.read_bytes()
+    migrate(source, destination)
+    assert path.read_bytes() == original
+    updated = json.loads((destination / "dev/fp_identification.jsonl.run.json").read_text())
+    assert updated["identity"]["implementation_hash"] == NEW_IMPLEMENTATION
+    assert check_resume(destination / "dev/fp_identification.jsonl", updated, {q["id"] for q in dev}) == {dev[0]["id"]}
+    copied = next(read_jsonl(destination / "dev/fp_identification.jsonl"))
+    assert copied["response"] == record["response"]
+    assert next(read_jsonl(destination / "dev" / scores.name)) == judged
+    assert (destination / "parser_migration.json").exists()
+    with pytest.raises(ValueError, match="Destination already"):
+        migrate(source, destination)
+    spec["identity"]["implementation_hash"] = "other"
+    Path(str(path) + ".run.json").write_text(json.dumps(spec))
+    with pytest.raises(ValueError, match="Unsupported generation"):
+        migrate(source, tmp_path / "rejected")
+    assert not (tmp_path / "rejected").exists()
+
+
 @pytest.fixture
 def tiny_gemma():
     """Real randomly initialized Gemma2 + fast tokenizer, no downloads/GPU."""
