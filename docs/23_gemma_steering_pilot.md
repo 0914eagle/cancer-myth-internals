@@ -646,3 +646,53 @@ cat "$BALANCED_DIR/report.md"
 같은 답변의 두 판정은 독립 표본 20개가 아니다. 선택된 명확한 10답변의 진단 결과이며,
 전체 NFP 정확도나 보류 문항까지 포함한 성능을 추정하지 않는다. −1 판정의 인용과
 실제 전제 지적 내용도 확인한 뒤 더 큰 평가를 진행할지 결정한다.
+
+### 12.8 세 baseline의 NFP 전체를 고정 v2로 재평가
+
+5+5 진단에서 사용자 제공 로그의 20회 판정은 초안 라벨과 모두 일치했고,
+문항별 반복도 10/10 일치했다. 다만 명확한 사례를 선택한 AI 보조 라벨 비교이며,
+전체 NFP 판정 정확도 100%나 독립 전문가 검증으로 해석하지 않는다. 공유된 근거
+일부는 잘려 있어 모든 근거의 의미 검토까지 완료했다고 주장하지 않는다.
+
+다음 단계는 `reevaluate_pilot_nfp.py`로 기존 Plain / FP Identification / Premise CoT의
+NFP dev 30문항씩을 재평가하는 것이다. FPQ, 학습, 생성, steering sweep은 실행하지 않는다.
+앞선 진단에서 보류한 문항도 포함한 전체 30문항을 평가하며 모호한 문항의 점수를
+사람이 확정했다고 가정하지 않는다. 기존 Sol 평가 파일은 보존된다.
+
+- 준비: manifest, dev 분할, 각 생성 run/row provenance와 전체 문항 커버리지를 확인한다.
+  완료된 v2 진단의 prompt template과 transport hash를 확인하고 그대로 고정한다.
+- 중복 제거: 같은 질문 ID이고 질문·참조·답변을 포함한 전체 채점 프롬프트가 같을 때만
+  방법 간 판정을 공유한다. 질문이 다른데 답변 문자열만 같은 경우는 공유하지 않는다.
+- 호출: 고유 입력마다 새 Terra 판정 1회, 최대 90회. 준비 시 실제 호출 수를 출력한다.
+  과거 진단의 두 번 판정을 평균/다수결하거나 유리한 반복을 골라 재사용하지 않는다.
+  실패·중단도 예산을 소비하며 자동 재시도/사전 호출은 없다. 재실행하면 미시작 항목만 진행한다.
+- 보고: 각 방법의 +1 비율, Plain 대비 rescue/harm 및 짝지은 차이(pp)를 출력한다.
+  누락이 있으면 전체 비율을 `incomplete`로 표시하고 비교에 사용한 완전한 쌍 수를 명시한다.
+  −1·근거 형식 이상·누락 항목은 질문·참조·답변·채점 근거를 모두 보고서에 남긴다.
+  근거 형식 이상은 점수를 삭제하거나 +1로 바꾸지 않고 검토 대상으로 표시한다.
+
+```bash
+git pull --ff-only origin main
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+export NFP_EVAL_DIR="$PILOT_DIR/nfp_baselines_terra_v2_once"
+python scripts/reevaluate_pilot_nfp.py prepare \
+  --pilot-dir "$PILOT_DIR" \
+  --source-dir "$PILOT_DIR/terra_nfp_check_v2" \
+  --out-dir "$NFP_EVAL_DIR" &&
+python scripts/reevaluate_pilot_nfp.py score --out-dir "$NFP_EVAL_DIR" &&
+python scripts/reevaluate_pilot_nfp.py report --out-dir "$NFP_EVAL_DIR"
+```
+
+`report`는 호출 없이 보고서를 출력하고 `$NFP_EVAL_DIR/report.md`에 저장한다.
+호출 중 실패/중단했다면 report만 따로 실행해 현재 누락을 볼 수 있다. 반복 score는
+실패 슬롯을 재시도하지 않는다. 실패가 있으면 새 디렉터리로 전체를 재호출하지 말고 원인을 확인한다.
+
+이 수치는 **참조가 정의한 불필요한 전제 지적이 없는 비율**이다. 전체 의료 답변의 정확도는
+아니며, 기존 논문/원래 Sol rubric과 동일 평가라고 부르지 않는다. 지침 개발에 사용한
+질문도 포함한 dev 기술 통계이므로 독립 test나 성능 보존 보장이 아니다. 표본은 30개로 작고
+한 문항은 3.3pp에 해당한다. FPQ는 기존 Sol 평가이므로 새 NFP와 함께 제시한다면
+judge와 protocol이 다르다는 점을 명시한다. 새 판정기의 FPQ 적합성은 아직 확인하지 않았다.
+
+이미 생성 답변의 완전 일치를 확인한 alpha=0은 재채점하지 않는다. 향후 steering 비교표를
+만들 때도 실제 질문·참조·답변 일치를 확인한 경우에만 Plain 판정을 공유한다. 이번 표는
+세 baseline만 포함하며 alpha=0 행을 별도로 생성하지 않는다.
