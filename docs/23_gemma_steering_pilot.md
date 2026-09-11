@@ -559,3 +559,40 @@ cat "$TERRA_CHECK_V2/report.md"
 현 10문항은 모두 +1이며 이미 지침 개발에 사용했다. 이 실행은 오감점 및 반복 일관성의
 개발용 재점검이다. 실제 과잉 교정(-1)을 감지하는 능력이나 독립 검증 성능을 입증하지 않는다.
 본 평가에 적용하기 전 별도 +1/−1 답변 표본 검토가 필요하다.
+
+### 12.5 v2의 +1 사례 점검 완료, 실제 과잉 교정 검토 준비
+
+사용자가 보고한 v2 결과는 유효 20/20, 기준 일치 20/20, 반복 일치 10/10이다.
+같은 10문항의 v1은 기준 일치 16/20, 반복 일치 6/10이었다. 이들은 지침 개발에 사용한
+모두 +1인 표본이므로 실제 과잉 교정(-1)을 탐지하는 능력을 검증하지 못한다.
+
+`scripts/review_pilot_nfp.py`는 기존 FP Identification의 dev NFP 답변을 검토표로 추출한다.
+이전 점검의 문항 ID뿐 아니라 같은 출처 그룹도 제외하고, 나머지는 전부 포함한다.
+대개 NFP 30개 중 기존 10개를 뺀 20개이며 같은 그룹이 더 있으면 줄어든다.
+이 검토표 작성은 판정 프롬프트를 수정하거나 모델을 호출하지 않는다.
+현재 v2 프롬프트를 고정한 채 별도 사례를 검토하고, 실제 +1/−1 확인 후 채점 구성을 정한다.
+
+```bash
+git pull --ff-only origin main
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+export NFP_REVIEW_DIR="$PILOT_DIR/nfp_overcorrection_review_v1"
+python scripts/review_pilot_nfp.py --pilot-dir "$PILOT_DIR" --exclude-check-dir "$PILOT_DIR/terra_nfp_check_v1" --out-dir "$NFP_REVIEW_DIR"
+```
+
+산출물:
+- `review.md`: 질문·가능한 환각 참조·실제 생성 답변. 채점 근거 및 내부 identification 검토문은 표시하지 않는다.
+- `human_review.tsv`: 점수·근거·검토자 칸이 비어 있는 검토표. −1에는 실제 전제 지적 구절을 인용한다.
+- `review_cases.json`: 생성 파일/실행/분할 해시, 제외 문항·그룹, 선택된 답변과 해시.
+
+이미 생성된 FP Identification 답변이라고 자동으로 −1을 부여하지 않는다.
+일반적인 주의사항이나 치료 선택의 개인차 설명만으로도 −1을 부여하지 않는다.
+실제 답변이 질문에 없는 믿음을 환자에게 부여해 지적하는지 문맥을 읽는다.
+균형을 맞추려고 모호한 라벨을 강제로 확정하지 않는다. +1 또는 -1 사례가 부족하면
+그 사실을 보고한 뒤 추가 표본 출처를 정한다. 같은 모델/도메인의 추가 dev 표본이라는
+한계를 유지하며 외부 검증이라고 부르지 않는다.
+
+로컬로 가져올 때는 파일명을 명확히 지정해 앞선 review.md와 구분한다.
+
+```bash
+scp eagle0914@165.132.76.125:/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix/nfp_overcorrection_review_v1/review.md ~/Downloads/nfp_overcorrection_review.md
+```
