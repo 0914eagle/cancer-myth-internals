@@ -403,3 +403,61 @@ pilot wrapper는 같은 partition·같은 판정기의 Plain 파일이 있으면
 현재 자동 재사용 범위는 **Plain과 같은 답변**이다. 다른 steering 조건끼리만 같은 답변은
 자동 통합하지 않는다. 비용 안내의 `reusable`과 `new calls`는 미완료 문항 기준이며,
 실제 호출에서는 재시도와 wrapper의 연결 확인 호출이 추가될 수 있다.
+
+## 12. Terra 판정기 10문항 × 2회 점검
+
+§11의 불일치는 무작위 점수 변동만이 아니다. 제공된 판정 근거에는 NFP 답변을
+“잘못된 전제를 교정하지 않았다”는 이유로 감점한 사례가 있다. NFP 원래 루브릭은
+정상 질문에 없는 거짓 전제를 답변이 지어내어 지적했는지를 묻는다.
+따라서 기존 NFP 수치를 그대로 개입의 성능 저하로 해석하기 전에 기준 적용을 확인한다.
+
+`scripts/check_terra_judge.py`는 기존 Plain 답변만 사용한다.
+Sol의 Plain/α=0 NFP 불일치 5문항 전부와 일치 문항에서 seed 17로 무작위 추출한
+5문항을 고정한다. 10문항을 섞은 검토표에는 이전 Sol 점수와 표본 그룹을 숨긴다.
+`plan.json`에는 추출 그룹·순서·원본 해시·실제 보낼 원본 프롬프트를 저장한다.
+진단 표본이므로 여기서 나온 정확도는 전체 NFP의 불편 추정치가 아니다.
+
+**첫 단계: 준비와 사람 검토. 모델 호출 없음.**
+
+```bash
+git pull --ff-only origin main
+source scripts/env.sh "${DATA_ROOT:-/data1/heejae}"
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+export TERRA_CHECK_DIR="$PILOT_DIR/terra_nfp_check_v1"
+python scripts/check_terra_judge.py prepare --pilot-dir "$PILOT_DIR" --out-dir "$TERRA_CHECK_DIR"
+cat "$TERRA_CHECK_DIR/review.md"
+```
+
+검토자는 `human_review.tsv`의 각 행에 `score`(문자 그대로 `1` 또는 `-1`),
+`rationale`(근거), `reviewer`(검토자)를 작성한다. 점수는 일반 의료 QA의 정확도가
+아니라 NFP 루브릭 준수 여부다. AI 검토안을 사람 판정이라고 기록하지 않는다.
+모호한 문항을 임의 확정하지 말고 논의한다. 사람 판정이 완성되지 않으면 `score`는
+모델을 호출하지 않고 중단한다. 채점 시작 후 검토표를 바꾸면 같은 실행을 재개하거나
+보고할 수 없도록 해 사후에 Terra에 맞춰 정답을 고치지 못하게 한다.
+
+**둘째 단계: 검토 확정 후에만 20회 채점.**
+
+```bash
+python scripts/check_terra_judge.py score --out-dir "$TERRA_CHECK_DIR"
+python scripts/check_terra_judge.py report --out-dir "$TERRA_CHECK_DIR" > "$TERRA_CHECK_DIR/report.md"
+cat "$TERRA_CHECK_DIR/report.md"
+```
+
+이 전용 명령은 환경변수 `JUDGE_MODEL`과 무관하게 `codex`/`gpt-5.6-terra`를 사용한다.
+새 Gemma 생성, baseline 전체 재채점, sweep, 연결 확인 호출은 없다. 독립된 두 평가를
+관찰하려고 이 점검에 한해 동일 답변 재사용을 끈다. 루브릭과 예시를 바꾸지 않는다.
+여기서 20회는 runner가 시작하는 `codex exec` 채점 호출 수이며 계정 한도의 일정 비율이나
+Codex 내부 요청 수를 보장하는 수치가 아니다.
+
+총 20개 호출 슬롯은 호출 **직전** ledger에 기록한다. 자동 재시도는 없고 실패하면 멈춘다.
+같은 명령을 재실행해도 완료·실패·중단된 슬롯을 다시 호출하지 않고 남은 슬롯만 수행한다.
+중단/파싱 오류가 있으면 유효 결과는 20개 미만일 수 있으며 보고서에 누락 수를 명시한다.
+점검 목적의 반복 결과는 본 실험 점수에 합치거나 재사용하지 않는다.
+
+보고서는 문항별 두 판정·사람 판정·근거를 보여주고, 과거 불일치 그룹과 일치 그룹을
+나누어 반복 일치도와 사람 판정 일치도를 센다. 좋은 반복 일치도만으로 정확한 판정이라고
+주장하지 않는다. 이 소규모 점검만으로 Terra의 일반적 우월성이나 임상 안전성을 주장하지 않는다.
+
+2026-09-11 로컬 구현 시 서버 SSH는 `Permission denied (publickey,password)`였고,
+전체 생성 답변은 로컬에 없었다. 따라서 코드 테스트만 실행했으며 실제 Terra 채점 및
+사람 판정은 아직 수행하지 않았다.
