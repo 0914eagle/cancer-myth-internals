@@ -466,3 +466,25 @@ Codex 내부 요청 수를 보장하는 수치가 아니다.
 [TSV](reviews/terra_nfp_10_ai_draft.tsv)를 작성했다. 초안은 모두 +1이며 사람 검토는 아직 없다.
 이 표본은 불필요한 감점과 반복 일관성의 점검용이고, 실제 과잉 교정(−1) 탐지 능력의
 검증용은 아니다. 기존 Sol 사례를 읽은 AI의 초안을 독립 맹검 사람 판정으로 보고하지 않는다.
+
+
+### 12.1 사용자 확인 완료 — 실행 단계
+
+사용자가 10개 +1 판정 및 근거를 확인했다(2026-09-11).
+`docs/reviews/terra_nfp_10_confirmed.tsv`의 reviewer는 사용자 확인을 거친 AI 보조 검토임을
+명시한다. 독립 맹검 사람 평가나 임상의 확정 라벨로 주장하지 않는다.
+채점 결과를 보기 전에 이 파일을 적용한다. 기존 AI 초안은 출처 기록으로 보존한다.
+
+서버에서 아래를 실행한다. 신규 생성이나 sweep 없이 준비된 10문항을 두 번씩
+Terra로 평가한다. 확인용 추가 호출이나 자동 재시도 없이 최대 20회다.
+
+```bash
+git pull --ff-only origin main
+export TERRA_CHECK_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix/terra_nfp_check_v1
+cp docs/reviews/terra_nfp_10_confirmed.tsv "$TERRA_CHECK_DIR/human_review.tsv"
+python scripts/check_terra_judge.py score --out-dir "$TERRA_CHECK_DIR"
+python scripts/check_terra_judge.py report --out-dir "$TERRA_CHECK_DIR" > "$TERRA_CHECK_DIR/report.md"
+cat "$TERRA_CHECK_DIR/report.md"
+```
+
+이 문서 업데이트 시점에 실제 서버 Terra 호출은 아직 실행하지 않았다.
