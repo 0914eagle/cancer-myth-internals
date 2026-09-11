@@ -10,7 +10,7 @@ pilot="${PILOT_DIR:-$ART/results/pilot/gemma2_9b_v1}"
 manifest="$pilot/split/manifest.json"
 backend="${JUDGE_BACKEND:-codex}"
 case "$backend" in
-    codex) judge_model="${JUDGE_MODEL:-gpt-5.6-sol}" ;;
+    codex) judge_model="${JUDGE_MODEL:-gpt-5.6-terra}" ;;
     openai) judge_model="${JUDGE_MODEL:-gpt-4o}" ;;
     *) echo "Unknown JUDGE_BACKEND: $backend" >&2; exit 1 ;;
 esac

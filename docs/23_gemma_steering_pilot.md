@@ -10,7 +10,14 @@
 서버 125의 기존 clone·가상환경을 사용하는 명령이다. 처음 설치하는 서버는
 [EXPERIMENTS.md의 설치 절](../EXPERIMENTS.md#first-time-on-a-machine)을 먼저 따른다.
 Gemma 접근 승인을 받은 HF 계정과 서버의 Codex CLI 로그인이 필요하다.
-현재 기본 판정기는 **`codex exec` + `gpt-5.6-sol`**이며 OpenAI API 키는 필요하지 않다.
+2026-09-11부터 **새 실행의 기본 판정기는 `codex exec` + `gpt-5.6-terra`**이며 OpenAI API 키는 필요하지 않다.
+현재 진행 중인 Sol sweep과 그 결과 보고는 끝까지 `JUDGE_MODEL=gpt-5.6-sol`로 유지한다.
+다음 실험부터 아래 Terra 설정을 사용한다. 기존 셸에 Sol이 export되어 있으면 기본값보다 우선하므로
+`export JUDGE_MODEL=gpt-5.6-terra`로 명시적으로 변경한다.
+Terra 점수·보고서는 모델명이 들어간 별도 파일로 저장되며 Sol 점수를 덮어쓰지 않는다.
+한 비교표에서는 판정기를 통일해야 하므로 Terra로 전환한 실험의 baseline도 Terra로 채점한다.
+기존 Sol 점수를 Terra 점수로 이름만 바꿔 재사용하지 않는다.
+
 처음 지정한 `gpt-5`는 서버의 ChatGPT 로그인에서 지원되지 않아 중단됐으므로 변경했다.
 `gpt-5.6-sol`은 GPT-5와 다른 모델이다. [공식 Codex 모델 안내](https://learn.chatgpt.com/docs/models)에
 기재되어 있고 이 저장소에도 이전 실행 기록이 있지만, 서버 계정의 현재 접근은 `check-judge`로 확인한다.
@@ -29,7 +36,7 @@ source /data1/heejae/uv/cancer_myth_internals/bin/activate
 export DATA_ROOT=/data1/heejae
 export CUDA_VISIBLE_DEVICES=0
 export JUDGE_BACKEND=codex
-export JUDGE_MODEL=gpt-5.6-sol
+export JUDGE_MODEL=gpt-5.6-terra
 export BATCH_SIZE=1
 source scripts/env.sh "$DATA_ROOT"
 
@@ -38,7 +45,7 @@ bash scripts/run_gemma_pilot.sh prepare
 bash scripts/run_gemma_pilot.sh check-judge
 bash scripts/run_gemma_pilot.sh baselines
 bash scripts/run_gemma_pilot.sh report-baselines
-cat "$ART/results/pilot/gemma2_9b_v1/report_baselines_dev_codex_gpt-5.6-sol.md"
+cat "$ART/results/pilot/gemma2_9b_v1/report_baselines_dev_codex_gpt-5.6-terra.md"
 ```
 
 서버 62는 `/data1/heejae`를 `/data/heejae`로 바꾸고 사용 가능한 GPU를 지정한다.
@@ -54,7 +61,7 @@ resume 설정을 고정하므로 batch나 모델 설정을 바꿀 때는 새 `PI
 bash scripts/run_gemma_pilot.sh fit
 bash scripts/run_gemma_pilot.sh sweep
 bash scripts/run_gemma_pilot.sh report
-cat "$ART/results/pilot/gemma2_9b_v1/report_dev_codex_gpt-5.6-sol.md"
+cat "$ART/results/pilot/gemma2_9b_v1/report_dev_codex_gpt-5.6-terra.md"
 ```
 
 이 단계까지는 dev 탐색이다. `select`와 잠긴 test의 실행 조건은 §4에 있다.
@@ -160,7 +167,7 @@ source /data1/heejae/uv/cancer_myth_internals/bin/activate
 export DATA_ROOT=/data1/heejae
 export CUDA_VISIBLE_DEVICES=0
 export JUDGE_BACKEND=codex
-export JUDGE_MODEL=gpt-5.6-sol
+export JUDGE_MODEL=gpt-5.6-terra
 # 서버의 Codex CLI 로그인 사용. OPENAI_API_KEY는 필요하지 않다.
 
 bash scripts/run_gemma_pilot.sh prepare
