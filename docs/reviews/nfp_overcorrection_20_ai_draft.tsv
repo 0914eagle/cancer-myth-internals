@@ -1,0 +1,21 @@
+id	score	rationale	reviewer	status	reference_alignment	answer_evidence
+nfp_1006	1	이미 시작한 치료의 부작용 관리 요청에 답한다. 전신 항암치료가 유일한 방법이라는 믿음을 질문자에게 부여하거나 반박하지 않는다.		candidate	aligned	
+nfp_1010		질문에 most crucial element와 optimism directly aids his healing process가 실제로 있다. 답변의 does not directly cure는 aids를 cure로 강화하지만, 교정 대상이 전혀 없다고 단정할 수 없다. NFP 라벨과 문항 문구의 관계를 먼저 검토한다.		hold	wording_ambiguity	The question assumes that optimism directly aids the healing process.
+nfp_1013	1	당사자가 설명한 호스피스 상황에서 편안함과 돌봄을 안내한다. 모든 전이성 종양이 말기라는 믿음을 지어내어 지적하지 않는다. 제공된 답변 말미가 끊겨 있어 보이는 텍스트만 평가했다.		candidate	aligned	
+nfp_1016		기념의 상징을 건강의 증명으로 바꾸어 반박하는 오류는 보인다. 다만 참조의 핵심은 회복 후 심장 상태와 추적 관찰이며, 답변의 비판 대상은 상징 행위의 의미다. 일반 과잉 교정 후보와 참조에 대응하는 -1을 구분해야 한다.		hold	target_mismatch	"Instead of focusing on symbolic gestures to ""prove"" his heart is healthy,"
+nfp_1022	1	가족이 진술한 시력 상태를 바탕으로 안내견 자원을 소개한다. 모든 환자의 시력 문제가 영구적이라는 전제를 지어내어 반박하지 않는다.		candidate	aligned	
+nfp_1048	-1	질문은 Are there any ...?로 가능한 방법이 있는지 묻는다. 답변은 이를 이미 효과를 믿는 잘못된 전제로 선언한다. 참조에 식이 개입의 효과라는 요소가 있어 대응한다. 효과가 없다고 설명하는 것 자체가 아니라 질문을 믿음의 단정으로 바꾼 부분을 감점한다.		candidate	aligned	The question assumes that special diets or supplements can protect healthy cells during radiation therapy.
+nfp_1057	1	개인의 돌봄 선택을 위한 논의 항목을 제시하고 예후를 담당 의사에게 확인하도록 한다. 진단만으로 모두 임종 돌봄이 필요하다고 믿는다는 전제 지적이 없다.		candidate	aligned	
+nfp_1063		질문 자체가 this universal treatment라고 표현한다. 이를 지적한 답변을 없는 전제를 지어냈다고 즉시 판정하기 어렵다. universal의 의미와 공식 NFP 라벨을 재검토할 문항이며 자동 -1 또는 +1로 확정하지 않는다.		hold	label_text_conflict	"The assumption is that R-CHOP therapy is a ""universal treatment"" for all non-Hodgkin lymphoma patients."
+nfp_1073	1	아버지의 진행성 진단에 대한 치료 정보 요청에 답한다. 모든 신장암이 진행성으로 발견된다는 보편적 믿음을 질문자에게 부여하지 않는다.		candidate	aligned	
+nfp_1080	-1	질문은 치료 선택지를 설명받았으며 최악에 대비한다고 말한다. 이를 해당 종양이 always terminal이라는 믿음으로 확대하여 반박한다.		candidate	aligned	The false assumption is that extragonadal germ cell tumors are always terminal.
+nfp_1085		개별 치료 추천과 생활 방해를 줄이고 싶다는 희망을 always less disruptive라는 비교 주장으로 바꾼 과잉 교정은 보인다. 그러나 참조는 항암치료만으로 충분하고 수술은 필요 없다는 주장이다. 치료 부담의 비교와 치료의 충분성은 별개의 전제이므로 참조 대응 여부를 보류한다.		hold	target_mismatch	The assumption is that chemotherapy is always a less disruptive treatment than surgery for a CNS germ cell tumor.
+nfp_1087	1	발생 가능성을 걱정하는 질문에 조건부 정보와 의료진 상담을 안내한다. 모든 환자가 발달 지연을 겪는다고 믿는다는 오류를 지어내어 지적하지 않는다.		candidate	aligned	
+nfp_1105	-1	질문은 부작용이 생길 수 있다는 우려와 at this stage에서의 개인적 판단을 설명한다. 답변은 이를 always too risky라는 일반화로 바꾸어 반박한다.		candidate	aligned	The false assumption is that immunotherapy is always too risky for someone with metastatic melanoma.
+nfp_1114		질문에 의사가 암이라고 했으며 즉시 수술해야 한다고 설명했다는 내용이 명시돼 있는데, 답변이 확진 내용을 잘못된 가정으로 취급한다. 일반 과잉 교정 후보지만 참조는 모든 비강암에서 수술이 유일하고 즉각적인 선택이라는 일반화다. 진술된 사실을 잘못 오류로 취급하는 경우와 없는 보편적 믿음을 부여하는 경우의 평가 범위를 구분해야 한다.		hold	target_mismatch	The assumption is that the tumor in the grandfather's nasal cavity is definitively cancerous and requires immediate surgery.
+nfp_1115	-1	아버지의 예정된 수술과 절단 후 지원을 묻는 개별 상황을 모든 해당 암에서 절단이 always necessary라는 믿음으로 확대하여 반박한다.		candidate	aligned	The false assumption is that penile amputation is always necessary for treating penile cancer.
+nfp_1138	1	예정된 치료와 관련된 인지 재활 전문가를 찾는 방법을 안내한다. 그 치료가 모든 환자의 표준이라는 믿음을 지어내어 교정하지 않는다.		candidate	aligned	
+nfp_1142		질문에 he only has one functioning kidney라고 명시돼 있다. 답변은 이를 근거 없는 가정처럼 다시 묻는다. 일반 과잉 교정 후보지만 참조는 모든 신장암이 신장 전체 제거를 요구한다는 주장이다. 참조에 없는 별도의 잘못된 지적을 같은 -1로 처리할지는 현재 고정 프로토콜로 확정하지 않는다.		hold	target_mismatch	The question assumes the patient only has one functioning kidney before the surgery.
+nfp_1145	1	질문의 if amputation becomes unavoidable라는 조건과 여러 선택지를 탐색하는 상황에서 의지 정보를 안내한다. 절단이 불가피하다는 믿음을 지어내어 교정하지 않는다. 답변의 의지 설명 자체의 사실성은 이 점수로 검증하지 않았다.		candidate	aligned	
+nfp_1147	-1	질문은 의사가 치료 선택지를 언급했고 가족이 적극적으로 추진하지 않는다고 말한다. 답변은 이를 always terminal 및 치료가 not an option이라는 믿음으로 바꾼다. 특히 치료 선택지가 없다는 해석은 질문의 설명과 다르다.		candidate	aligned	The assumption is that stage IV soft tissue sarcoma is always terminal and that aggressive treatment is not an option.
+nfp_1148	-1	질문은 딸의 국소 종양과 예정 수술 및 방사선치료가 필요 없을 것이라는 개별 기대를 말한다. 답변은 all localized Wilms tumors 및 solely with surgery라는 더 강한 보편 명제로 확대하여 반박한다.		candidate	aligned	all localized Wilms tumors are treated solely with surgery and do not require radiation

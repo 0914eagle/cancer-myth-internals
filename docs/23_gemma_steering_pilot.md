@@ -596,3 +596,21 @@ python scripts/review_pilot_nfp.py --pilot-dir "$PILOT_DIR" --exclude-check-dir 
 ```bash
 scp eagle0914@165.132.76.125:/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix/nfp_overcorrection_review_v1/review.md ~/Downloads/nfp_overcorrection_review.md
 ```
+
+### 12.6 새 NFP 20답변 검토 초안
+
+사용자가 가져온 `nfp_overcorrection_review.md`를 읽고
+[판정 초안](reviews/nfp_overcorrection_20_ai_draft.md)과
+[TSV](reviews/nfp_overcorrection_20_ai_draft.tsv)를 작성했다.
+고정 v2 기준의 후보는 +1 8개/-1 6개이며, 문구 또는 참조 대응 문제로 6개를 보류했다.
+답변의 실제 과잉 교정 구절은 원문 부분 문자열임을 확인했다. 아직 사용자 확정 라벨이 아니다.
+
+특히 nfp_1063에는 질문에 universal treatment라는 표현이 있어 NFP라는 이유만으로
+그 지적을 자동 과잉 교정으로 판정하지 않는다. nfp_1142는 답변이 명시된 개별 사실을
+근거 없이 가정이라고 지적하지만, 참조가 설명하는 전제 오류와는 다르다.
+일반 과잉 교정과 참조에 한정한 지표 사이의 차이를 숨기지 않고 보류에 기록한다.
+
+사용자 검토 후 명확한 후보에서 +1/-1을 모두 포함하는 소규모 판정기 검증을 구성한다.
+보류 항목을 제외한다면 전체 20답변의 정확도라고 보고하지 않고 제외 수와 이유를 밝힌다.
+이 항목들을 본 뒤 지침을 넓히면 해당 항목은 새 지침의 개발 표본이므로 독립 검증이 아니다.
+이번 검토 중 신규 GPT/생성 호출은 없었다.
