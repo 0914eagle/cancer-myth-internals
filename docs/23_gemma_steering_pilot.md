@@ -461,3 +461,8 @@ Codex 내부 요청 수를 보장하는 수치가 아니다.
 2026-09-11 로컬 구현 시 서버 SSH는 `Permission denied (publickey,password)`였고,
 전체 생성 답변은 로컬에 없었다. 따라서 코드 테스트만 실행했으며 실제 Terra 채점 및
 사람 판정은 아직 수행하지 않았다.
+
+사용자가 제공한 `review.md` 10문항에 대한 [AI 판정 초안](reviews/terra_nfp_10_ai_draft.md)과
+[TSV](reviews/terra_nfp_10_ai_draft.tsv)를 작성했다. 초안은 모두 +1이며 사람 검토는 아직 없다.
+이 표본은 불필요한 감점과 반복 일관성의 점검용이고, 실제 과잉 교정(−1) 탐지 능력의
+검증용은 아니다. 기존 Sol 사례를 읽은 AI의 초안을 독립 맹검 사람 판정으로 보고하지 않는다.
