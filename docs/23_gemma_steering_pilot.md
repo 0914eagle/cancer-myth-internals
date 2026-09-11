@@ -364,3 +364,42 @@ bash scripts/run_gemma_pilot.sh fit &&
 
 baseline 생성·판정이나 `prepare`를 다시 실행하지 않는다. 이후 명령에도 `PILOT_DIR`을 유지한다.
 `torch_dtype` deprecation warning은 이번 traceback의 중단 원인이 아니므로 별도로 취급한다.
+
+## 11. 2026-09-11: L14 결과와 중복 채점 감사 — 추가 sweep 전에
+
+사용자 서버의 Sol dev 보고에서 Plain PCR/NFP는 6.0/63.3,
+L14 α=0은 6.0/53.3, α=0.02는 6.0/56.7, α=0.05는 5.1/50.0,
+α=0.1은 7.7/53.3이었다. FPQ 117/NFP 30문항이다.
+사용자가 답변 파일을 비교한 결과 Plain과 α=0의 147개 답변은 전부 동일했다.
+따라서 α=0의 NFP 하락은 개입 효과가 아니라 재채점 불일치다.
+NFP에서 성공→실패 4개, 실패→성공 1개로 5개 판정이 바뀌었다.
+FPQ도 PCS가 달라졌으므로 성공 여부 외에 −1/0 간 판정 차이도 감사한다.
+이 한 쌍으로 판정기의 일반적인 오류율이나 모든 steering 차이의 원인을 추정하지 않는다.
+
+**지금은 추가 sweep을 보류하고 저장된 질문·참조·답변·두 판정 근거를 확인한다.**
+아래 명령은 API/Codex/Gemma를 호출하지 않고 기존 score 파일을 변경하지 않는다.
+`--model`은 새 판정기 지정이 아니라 읽을 기존 파일 이름이다.
+
+```bash
+git pull --ff-only origin main
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+python scripts/audit_pilot_judge.py --pilot-dir "$PILOT_DIR" --model gpt-5.6-sol > "$PILOT_DIR/audit_sol_L14_a0.md"
+cat "$PILOT_DIR/audit_sol_L14_a0.md"
+```
+
+후속 신규 채점은 Terra로 한다. Terra의 판정 일관성이나 정확도가 Sol보다 높다는
+결과는 아직 없다. 불일치 문항의 판정 근거를 확인하고, 필요한 소수 조건을 정한 뒤
+같은 Terra로 baseline과 비교 조건을 채점한다. 현재 Sol 표를 Terra 표로 이름만 바꾸지 않는다.
+
+`run_judge.py --reuse-scores PATH`는 명시한 한 파일의 점수를 기준으로 재사용한다.
+pilot wrapper는 같은 partition·같은 판정기의 Plain 파일이 있으면 자동으로 지정한다.
+질문 ID·답변 해시·전체 질문/참조 파일·예시·루브릭·판정 모델과 설정이 모두 일치해야 한다.
+새 행은 대상 생성/채점 실행의 provenance를 기록하고 `score_reuse`에 원본 파일 해시와
+행 ID를 남긴다. 답변이 다르면 신규 채점하고, Sol 점수를 Terra에 재사용하지 않는다.
+기존 대상 파일에 이미 저장된 점수는 덮어쓰지 않는다. 따라서 현재의 독립 재채점 결과는
+감사 자료로 남으며, 재실행만으로 과거 표의 불일치가 정리되지는 않는다.
+
+재사용은 중복 호출과 동일 답변 간 불일치를 줄이는 정책이지, 원본 판정이 옳다는 보장이 아니다.
+현재 자동 재사용 범위는 **Plain과 같은 답변**이다. 다른 steering 조건끼리만 같은 답변은
+자동 통합하지 않는다. 비용 안내의 `reusable`과 `new calls`는 미완료 문항 기준이며,
+실제 호출에서는 재시도와 wrapper의 연결 확인 호출이 추가될 수 있다.
