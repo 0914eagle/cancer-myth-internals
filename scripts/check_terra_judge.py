@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
+import json
 import random
 import sys
 from pathlib import Path
@@ -20,11 +21,50 @@ from scripts.audit_pilot_judge import audit
 from scripts.run_judge import build_prompt
 from src.config import load_config
 from src.jsonl import append_jsonl, load_json, read_jsonl
-from src.judge_prompts import SHARPNESS_RUBRIC_NFP, parse_score
+from src.judge_prompts import SHARPNESS_RUBRIC_NFP
 from src.llm_backend import make_caller
 from src.pilot import digest, file_digest, frozen_json, output_lock
 
 MODEL = 'gpt-5.6-terra'
+
+
+PARSER_VERSION = 'nfp-json-v2'
+
+
+def parse_nfp_json(raw):
+    """Read one unambiguous JSON object, independent of whitespace/fences.
+
+    No coercion, default score, regex extraction of numbers, or choice among
+    multiple JSON objects. Conservative failures remain available for audit.
+    """
+    if not isinstance(raw, str) or not raw.strip():
+        return {}, False
+    text = raw.strip()
+    if text.startswith(('[', '"')):
+        return {}, False
+
+    def unique_keys(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError('Duplicate JSON key')
+            result[key] = value
+        return result
+
+    start = text.find('{')
+    if start < 0:
+        return {}, False
+    try:
+        value, end = json.JSONDecoder(object_pairs_hook=unique_keys).raw_decode(text, start)
+    except (ValueError, RecursionError):
+        return {}, False
+    if '{' in text[end:] or '}' in text[end:]:
+        return {}, False
+    if (not isinstance(value, dict) or type(value.get('Sharpness')) is not int
+        or value['Sharpness'] not in (-1, 1)
+        or not isinstance(value.get('Reason'), str) or not value['Reason'].strip()):
+        return {}, False
+    return value, True
 
 
 def fixed_text(path, text):
@@ -153,11 +193,12 @@ def score(out, timeout=180):
                 **common, 'status': 'started', 'at': dt.datetime.now(dt.timezone.utc).isoformat()})
             try:
                 raw, used = call(cases[job['case_id']]['prompt'])
-                parsed, ok = parse_score(raw)
+                parsed, ok = parse_nfp_json(raw)
                 valid = ok and parsed.get('Sharpness') in (-1, 1) and used == MODEL
                 append_jsonl(out / 'attempts.jsonl', {
                     **common, 'status': 'finished', 'model': used, 'raw': raw,
-                    'valid': valid, 'score': parsed.get('Sharpness') if valid else None,
+                    'valid': valid, 'parser_version': PARSER_VERSION,
+                    'score': parsed.get('Sharpness') if valid else None,
                     'reason': parsed.get('Reason') if ok else None})
                 print(f"{job['id']}: {parsed.get('Sharpness') if valid else 'invalid'}", flush=True)
                 if used != MODEL:
@@ -169,7 +210,7 @@ def score(out, timeout=180):
         print('Finished fixed call budget. Run report; failed/interrupted calls remain missing.')
 
 
-def report(out):
+def report(out, reparse=False):
     out = Path(out)
     plan, run = load_json(out / 'plan.json'), load_json(out / 'run.json')
     if run != {'plan_hash': digest(plan), 'human_hash': file_digest(out / 'human_review.tsv')}:
@@ -178,7 +219,27 @@ def report(out):
     events = events_by_id(out, plan, digest(run))
     valid = {key: rows[-1] for key, rows in events.items()
              if rows[-1]['status'] == 'finished' and rows[-1].get('valid')}
+    original_valid = len(valid)
+    recovered, rejected, changed = [], [], []
+    if reparse:
+        valid = {}
+        for key, rows in events.items():
+            event = rows[-1]
+            parsed, ok = parse_nfp_json(event.get('raw'))
+            if event['status'] == 'finished' and event.get('model') == MODEL and ok:
+                valid[key] = {**event, 'valid': True, 'score': parsed['Sharpness'],
+                              'reason': parsed['Reason']}
+                if not event.get('valid'):
+                    recovered.append(key)
+                elif event.get('score') != parsed['Sharpness']:
+                    changed.append(key)
+            elif event.get('valid'):
+                rejected.append(key)
     lines = ['# Terra NFP judge check', '',
+             f'Readout: {PARSER_VERSION if reparse else "stored results"}. No model calls.',
+             f'Attempt ledger SHA-256: `{file_digest(out / "attempts.jsonl")}`.',
+             f'Stored valid={original_valid}; recovered={len(recovered)}; '
+             f'rejected={len(rejected)}; changed scores={len(changed)}.', '' ,
              f'Attempted {len(events)}/20; valid {len(valid)}/20; missing/invalid {20-len(valid)}.',
              'Selected diagnostic sample, not an unbiased NFP accuracy estimate.', '',
              '| ID | Cohort | Human | Repeat 1 | Repeat 2 |', '|---|---|---:|---:|---:|']
@@ -196,6 +257,18 @@ def report(out):
                      f'human agreement {correct}/{len(available)} judgments.')
     for key, value in valid.items():
         lines.extend(['', f'## {key}', '', str(value.get('reason') or value['raw'])])
+    if reparse:
+        lines.extend(['', '## Reparse audit', '',
+                      f'Recovered IDs: {recovered}', f'Rejected IDs: {rejected}',
+                      f'Changed score IDs: {changed}'])
+        for job in plan['order']:
+            if job['id'] in valid:
+                continue
+            event = events.get(job['id'], [{}])[-1]
+            lines.extend(['', f"### Unresolved: {job['id']}", '',
+                          f"Status: {event.get('status', 'not attempted')}; model: {event.get('model', 'unknown')}",
+                          '', 'Raw saved response (or error):', '',
+                          str(event.get('raw') or event.get('error') or 'No saved response')])
     print('\n'.join(lines))
 
 
@@ -210,13 +283,15 @@ def main():
     for name in ('score', 'report'):
         p = sub.add_parser(name)
         p.add_argument('--out-dir', required=True)
+        if name == 'report':
+            p.add_argument('--reparse', action='store_true', help='Reparse saved raw responses offline; ledger unchanged')
     args = parser.parse_args()
     if args.stage == 'prepare':
         prepare(args.pilot_dir, args.out_dir, args.config, args.seed)
     elif args.stage == 'score':
         score(args.out_dir)
     else:
-        report(args.out_dir)
+        report(args.out_dir, reparse=args.reparse)
 
 
 if __name__ == '__main__':

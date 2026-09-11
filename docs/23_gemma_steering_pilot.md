@@ -488,3 +488,32 @@ cat "$TERRA_CHECK_DIR/report.md"
 ```
 
 이 문서 업데이트 시점에 실제 서버 Terra 호출은 아직 실행하지 않았다.
+
+### 12.2 Terra 20회 완료 후 17건 invalid — 오프라인 파싱 점검
+
+사용자 실행에서 20회 호출은 완료됐으나 기존 파서가 3개만 유효하게 읽었다.
+`src/judge_prompts.py`의 원본 정규식은 `{` 바로 뒤에 줄바꿈이 있어야 JSON으로 인식한다.
+따라서 한 줄 JSON을 반환했을 가능성이 있지만, 실제 17개 raw 응답을 아직 읽지 않았으므로
+모두 형식 문제라고 확정하지 않는다. 점검 runner에 이 형식 제약을 그대로 사용한 것은
+구현 문제다. 20회를 새로 호출하지 않고 저장된 raw를 재파싱한다.
+
+```bash
+git pull --ff-only origin main
+export TERRA_CHECK_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix/terra_nfp_check_v1
+python scripts/check_terra_judge.py report --out-dir "$TERRA_CHECK_DIR" --reparse > "$TERRA_CHECK_DIR/report_reparsed.md"
+cat "$TERRA_CHECK_DIR/report_reparsed.md"
+```
+
+`--reparse`는 모델을 호출하지 않고 `attempts.jsonl`, plan, 사용자 확인 라벨을 수정하지 않는다.
+새 보고서에 파서 버전·원본 ledger 해시·기존 유효 수·복구 수·거부 수·점수 변경 수를 표시한다.
+새 파서는 한 개의 JSON 객체에서 정수 Sharpness(-1/+1)와 비어 있지 않은 Reason을 읽는다.
+줄바꿈·코드 블록은 허용하지만, 0·문자열 점수·불리언·중복 키·여러 JSON 객체는 임의 해석하지 않는다.
+다른 모델의 응답이나 미완료 호출도 복구하지 않는다. 해결되지 않은 항목은 raw/error를 보고서에
+포함해 원인을 확인한다. 기존 pilot의 공유 루브릭과 파서는 이 변경에서 손대지 않았다.
+
+읽힌 3개 판정에서도 `nfp_1103`의 두 평가가 −1/+1로 달랐으며,
+−1 근거에는 재발 가능성의 의학적 평가를 언급하지 않았다는 내용이 있었다.
+`nfp_1069`도 재활 가능성을 언급하지 않았다고 감점했다.
+이는 NFP의 전제 지어내기 여부와 다른 기준을 적용한 사례이므로,
+파싱 복구와 별개로 루브릭 적용의 불일치는 남아 있다.
+전체 20개 재파싱 결과를 확인한 뒤 판정기/프롬프트의 다음 변경을 정한다.

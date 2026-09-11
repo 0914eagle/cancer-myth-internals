@@ -108,3 +108,73 @@ def test_human_labels_cannot_change_after_scoring(prepared, monkeypatch):
     assert len(calls) == 20
     with pytest.raises(ValueError, match='changed'):
         check.report(out)
+
+
+@pytest.mark.parametrize('raw', [
+    '{"Reason":"ok","Sharpness":1}',
+    '{\n"Sharpness":-1,"Reason":"reason with {braces}"\n}',
+    '```json\n{"Reason":"ok","Sharpness":1}\n```',
+    'Result:\n{"Sharpness":1,"Reason":"ok"}\nDone.',
+    '{\r\n"Reason":"ok","Sharpness":1\r\n}',
+])
+def test_json_parser_accepts_formatting_variations(raw):
+    parsed, ok = check.parse_nfp_json(raw)
+    assert ok and type(parsed['Sharpness']) is int
+
+
+@pytest.mark.parametrize('raw', [
+    '', 'Sharpness: 1', '{"Reason":"ok","Sharpness":0}',
+    '{"Reason":"ok","Sharpness":true}', '{"Reason":"ok","Sharpness":"1"}',
+    '{"Reason":"ok","Sharpness":1.0}', '{"Sharpness":1}',
+    '{"Reason":"ok","Sharpness":1,"Sharpness":-1}',
+    '{"Reason":"ok","Sharpness":1} {"Reason":"no","Sharpness":-1}',
+    '{"Reason":"ok","Sharpness":1} {"Reason":"ok","Sharpness":1}',
+    '[{"Reason":"ok","Sharpness":1}]',
+    '{broken: {"Reason":"ok","Sharpness":1}}',
+    '{"nested":{"Reason":"ok","Sharpness":1}}',
+])
+def test_json_parser_rejects_invalid_or_ambiguous_scores(raw):
+    assert check.parse_nfp_json(raw) == ({}, False)
+
+
+def test_offline_reparse_recovers_17_without_calls_or_ledger_edits(prepared, monkeypatch, capsys):
+    from src.judge_prompts import parse_score
+
+    _, out = prepared
+    fill_review(out)
+    parser_v2 = check.parse_nfp_json
+    monkeypatch.setattr(check, 'parse_nfp_json', parse_score)
+    calls = []
+    def make(*args, **kwargs):
+        def call(prompt):
+            calls.append(prompt)
+            raw = json.dumps({'Reason': 'ok', 'Sharpness': 1}, indent=2 if len(calls) <= 3 else None)
+            return raw, check.MODEL
+        return call
+    monkeypatch.setattr(check, 'make_caller', make)
+    check.score(out)
+    ledger = out / 'attempts.jsonl'
+    before = ledger.read_bytes()
+    check.report(out)
+    assert 'valid 3/20' in capsys.readouterr().out
+    monkeypatch.setattr(check, 'parse_nfp_json', parser_v2)
+    def no_call(*args, **kwargs):
+        raise AssertionError('Offline report must not initialize any model')
+    monkeypatch.setattr(check, 'make_caller', no_call)
+    check.report(out, reparse=True)
+    text = capsys.readouterr().out
+    assert 'valid 20/20' in text and 'recovered=17' in text
+    assert 'changed scores=0' in text
+    assert ledger.read_bytes() == before and len(calls) == 20
+
+
+def test_reparse_keeps_invalid_score_unresolved(prepared, monkeypatch, capsys):
+    _, out = prepared
+    fill_review(out)
+    monkeypatch.setattr(check, 'make_caller', lambda *a, **kw: lambda p: (
+        '{"Reason":"not an NFP score","Sharpness":0}', check.MODEL))
+    check.score(out)
+    check.report(out, reparse=True)
+    text = capsys.readouterr().out
+    assert 'valid 0/20' in text and 'Unresolved:' in text
+    assert 'not an NFP score' in text
