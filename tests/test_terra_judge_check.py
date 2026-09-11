@@ -178,3 +178,79 @@ def test_reparse_keeps_invalid_score_unresolved(prepared, monkeypatch, capsys):
     text = capsys.readouterr().out
     assert 'valid 0/20' in text and 'Unresolved:' in text
     assert 'not an NFP score' in text
+
+
+def test_revise_preserves_source_and_approved_sample(prepared):
+    _, source = prepared
+    fill_review(source)
+    before = {p.name: p.read_bytes() for p in source.iterdir() if p.is_file()}
+    target = source.parent / 'check_v2'
+    check.revise(source, target)
+    original, revised = load_json(source / 'plan.json'), load_json(target / 'plan.json')
+    assert revised['protocol'] == check.PROTOCOL_V2
+    assert revised['order'] == original['order']
+    assert [(c['id'], c['answer']) for c in revised['cases']] == [(c['id'], c['answer']) for c in original['cases']]
+    assert revised['cases'][0]['prompt'] != original['cases'][0]['prompt']
+    assert check.human_labels(target, revised) == check.human_labels(source, original)
+    assert before == {p.name: p.read_bytes() for p in source.iterdir() if p.is_file()}
+    check.revise(source, target)  # deterministic offline resume
+    assert not (target / 'attempts.jsonl').exists()
+    with pytest.raises(ValueError, match='separate'):
+        check.revise(source, source)
+
+
+def test_template_substitution_does_not_reinterpret_input():
+    template = '{{question}}|{{possible_hallucination}}|{{answer}}'
+    case = {'question': '{{answer}}', 'reference': '{}', 'answer': '{{question}}'}
+    assert check.render_v2(template, case) == '{{answer}}|{}|{{question}}'
+
+
+@pytest.mark.parametrize('parsed,answer,expected', [
+    ({'Sharpness': 1, 'AnswerEvidence': '', 'InventedPremise': ''}, 'help', None),
+    ({'Sharpness': -1, 'AnswerEvidence': 'You assume all', 'InventedPremise': 'all need X'},
+     'You assume all need X.', None),
+    ({'Sharpness': -1, 'AnswerEvidence': 'missing', 'InventedPremise': 'all need X'},
+     'Helpful answer', 'exact substring'),
+    ({'Sharpness': -1}, 'Helpful answer', 'Missing'),
+])
+def test_evidence_contract(parsed, answer, expected):
+    issue = check.evidence_issue(parsed, answer)
+    assert issue is None if expected is None else expected in issue
+
+
+def test_v2_twenty_calls_and_flagged_evidence_does_not_change_score(prepared, monkeypatch, capsys):
+    _, source = prepared
+    fill_review(source)
+    target = source.parent / 'check_v2'
+    check.revise(source, target)
+    calls = []
+    def make(*a, **kw):
+        def call(prompt):
+            calls.append(prompt)
+            assert 'Protocol: nfp-role-clarified-v2' in prompt
+            return json.dumps({'Sharpness': -1, 'Reason': 'test',
+                               'AnswerEvidence': 'fabricated quote', 'InventedPremise': 'test'}), check.MODEL
+        return call
+    monkeypatch.setattr(check, 'make_caller', make)
+    check.score(target)
+    check.score(target)
+    assert len(calls) == 20
+    check.report(target, reparse=True)
+    text = capsys.readouterr().out
+    assert 'Evidence-format issues: 20' in text
+    assert 'valid 20/20' in text and 'human agreement 0/10' in text
+    assert 'fabricated quote' in text
+
+
+def test_v2_modified_prompt_rejected_before_calls(prepared, monkeypatch):
+    _, source = prepared
+    fill_review(source)
+    target = source.parent / 'check_v2'
+    check.revise(source, target)
+    plan = load_json(target / 'plan.json')
+    plan['cases'][0]['prompt'] = 'changed'
+    (target / 'plan.json').write_text(json.dumps(plan))
+    calls = mock_caller(monkeypatch)
+    with pytest.raises(ValueError, match='Rendered prompt'):
+        check.score(target)
+    assert calls == []

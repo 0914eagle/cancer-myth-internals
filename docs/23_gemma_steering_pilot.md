@@ -528,3 +528,34 @@ cat "$TERRA_CHECK_DIR/report_reparsed.md"
 [해석·NFP 역할 명확화 지침 초안](reviews/terra_nfp_check_v1_interpretation.md)을 기록했다.
 이 초안은 아직 판정 코드에 적용하지 않았으며 추가 채점도 실행하지 않았다.
 현재 10문항을 프롬프트 개발용으로 쓰면 독립 검증은 별도의 +1/−1 답변 표본에서 해야 한다.
+
+### 12.4 상세 지침 v2 연결 완료
+
+`scripts/check_terra_judge.py revise`가 상세 지침을 실행 코드에 연결한다.
+원본 디렉터리의 문항·답변·순서·확정 라벨을 유지하고 v2 프롬프트만 적용한 새 plan을 만든다.
+새 plan에는 protocol, 전체 template 및 해시, 원본 plan/검토표 해시를 기록한다.
+라벨을 새로 생성하거나 기존 결과를 새 점수로 복사하지 않는다. 같은 경로에 덮어쓰기는 거부한다.
+
+서버에서 다음 명령을 실행한다. `revise`는 오프라인이며 `score`만 **새로운 최대 20회**를 호출한다.
+원본 v1의 20회에 추가되는 별도 지침 실험이다. 자동 재시도·preflight·Gemma 생성은 없다.
+
+```bash
+git pull --ff-only origin main
+export TERRA_CHECK_V1=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix/terra_nfp_check_v1
+export TERRA_CHECK_V2=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix/terra_nfp_check_v2
+
+python scripts/check_terra_judge.py revise --source-dir "$TERRA_CHECK_V1" --out-dir "$TERRA_CHECK_V2"
+python scripts/check_terra_judge.py score --out-dir "$TERRA_CHECK_V2"
+python scripts/check_terra_judge.py report --out-dir "$TERRA_CHECK_V2" --reparse > "$TERRA_CHECK_V2/report.md"
+cat "$TERRA_CHECK_V2/report.md"
+```
+
+새 프롬프트의 −1은 AnswerEvidence/InventedPremise를 요구하며 인용문이 실제 답변에 있는지
+검사한다. +1은 두 필드가 빈 문자열이어야 한다. 이 형식 검사는 의미적 정확성 검증과 다르다.
+필드 누락·틀린 인용이 있어도 모델이 낸 점수를 +1로 바꾸거나 통계에서 몰래 제외하지 않는다.
+점수는 보존하고 `Evidence-format issues` 및 문항별 사유로 표시해 검토하도록 한다.
+보고서의 일치도는 출력된 점수 기준이며, 표시된 증거 문제는 별도 확인해야 한다.
+
+현 10문항은 모두 +1이며 이미 지침 개발에 사용했다. 이 실행은 오감점 및 반복 일관성의
+개발용 재점검이다. 실제 과잉 교정(-1)을 감지하는 능력이나 독립 검증 성능을 입증하지 않는다.
+본 평가에 적용하기 전 별도 +1/−1 답변 표본 검토가 필요하다.

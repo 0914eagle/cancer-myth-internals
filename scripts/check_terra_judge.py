@@ -10,6 +10,7 @@ import csv
 import datetime as dt
 import json
 import random
+import re
 import sys
 from pathlib import Path
 
@@ -139,6 +140,76 @@ def prepare(pilot, out, config, seed=17):
     print(f'Prepared 10 answers, 20 planned calls. No model called. Review: {out / "review.md"}')
 
 
+PROTOCOL_V2 = 'nfp-role-clarified-v2'
+
+
+def render_v2(template, case):
+    values = {'question': case['question'], 'possible_hallucination': case['reference'],
+              'answer': case['answer']}
+    for name in values:
+        if template.count('{{' + name + '}}') != 1:
+            raise ValueError(f'Expected exactly one template placeholder: {name}')
+    # One pass: placeholder-like text inside an answer is never substituted.
+    return re.sub(r'\{\{(question|possible_hallucination|answer)\}\}',
+                  lambda match: values[match[1]], template)
+
+
+def revise(source, out):
+    """Freeze the same cases, order and approved labels under the new protocol."""
+    source, out = Path(source), Path(out)
+    if source.resolve() == out.resolve():
+        raise ValueError('Use a separate v2 directory; the original run is immutable')
+    original = load_json(source / 'plan.json')
+    human_labels(source, original)
+    if (source / 'run.json').exists() and load_json(source / 'run.json') != {
+        'plan_hash': digest(original), 'human_hash': file_digest(source / 'human_review.tsv')
+    }:
+        raise ValueError('Source plan or labels changed after scoring')
+    template_path = ROOT / 'prompts/nfp_role_clarified_v2.txt'
+    template = template_path.read_text(encoding='utf-8')
+    plan = {**original, 'version': 'terra-nfp-check-v2', 'protocol': PROTOCOL_V2,
+            'source_plan_hash': digest(original),
+            'source_human_hash': file_digest(source / 'human_review.tsv'),
+            'source_dir': str(source.resolve()),
+            'prompt_template': template, 'prompt_template_hash': digest(template),
+            'rubric_hash': file_digest(template_path),
+            'examples_hash': digest(template),
+            'cases': [{**case, 'prompt': render_v2(template, case)} for case in original['cases']]}
+    out.mkdir(parents=True, exist_ok=True)
+    with output_lock(out / 'prepare'):
+        frozen_json(out / 'plan.json', plan)
+        fixed_text(out / 'human_review.tsv', (source / 'human_review.tsv').read_text())
+        # Text-mode copies normalize CRLF. Pin the destination bytes used by score.
+        fixed_text(out / 'protocol.txt', template)
+    print(f'Prepared {PROTOCOL_V2}: same 10 answers and labels, 20 NEW planned calls. No model called. {out}')
+
+
+def evidence_issue(parsed, answer):
+    quote, premise = parsed.get('AnswerEvidence'), parsed.get('InventedPremise')
+    if not isinstance(quote, str) or not isinstance(premise, str):
+        return 'Missing/non-string AnswerEvidence or InventedPremise'
+    if parsed['Sharpness'] == 1:
+        return None if quote == premise == '' else '+1 requires empty evidence and premise fields'
+    if not quote.strip() or not premise.strip():
+        return '-1 requires an answer quote and an invented premise'
+    if quote not in answer:
+        return 'Quoted evidence is not an exact substring of the saved answer'
+    return None
+
+
+def validate_protocol(plan):
+    protocol = plan.get('protocol', 'original')
+    if protocol == 'original':
+        return
+    if protocol != PROTOCOL_V2:
+        raise ValueError('Unknown judge protocol')
+    template = plan['prompt_template']
+    if digest(template) != plan['prompt_template_hash']:
+        raise ValueError('Frozen prompt template changed')
+    if any(case['prompt'] != render_v2(template, case) for case in plan['cases']):
+        raise ValueError('Rendered prompt differs from frozen template/case')
+
+
 def human_labels(out, plan):
     with (out / 'human_review.tsv').open(newline='') as f:
         rows = list(csv.DictReader(f, delimiter='\t'))
@@ -175,6 +246,7 @@ def score(out, timeout=180):
         if (plan['model'] != MODEL or plan['backend'] != 'codex' or plan['budget'] != 20
             or len(plan['order']) != 20 or len({j['id'] for j in plan['order']}) != 20):
             raise ValueError('Invalid fixed-budget plan')
+        validate_protocol(plan)
         if plan['transport_hash'] != file_digest(ROOT / 'src/llm_backend.py'):
             raise ValueError('Transport changed after preparation')
         human_labels(out, plan)
@@ -183,6 +255,7 @@ def score(out, timeout=180):
         run_hash = digest(run)
         previous = events_by_id(out, plan, run_hash)
         cases = {c['id']: c for c in plan['cases']}
+        print(f'Protocol: {plan.get("protocol", "original")} | model: {MODEL}', flush=True)
         print(f'Remaining calls: {20 - len(previous)}; no retries or preflight calls', flush=True)
         call = make_caller('codex', MODEL, timeout=timeout)
         for job in plan['order']:
@@ -195,8 +268,14 @@ def score(out, timeout=180):
                 raw, used = call(cases[job['case_id']]['prompt'])
                 parsed, ok = parse_nfp_json(raw)
                 valid = ok and parsed.get('Sharpness') in (-1, 1) and used == MODEL
+                evidence = {}
+                if ok and plan.get('protocol') == PROTOCOL_V2:
+                    evidence = {
+                        'answer_evidence': parsed.get('AnswerEvidence'),
+                        'invented_premise': parsed.get('InventedPremise'),
+                        'evidence_issue': evidence_issue(parsed, cases[job['case_id']]['answer'])}
                 append_jsonl(out / 'attempts.jsonl', {
-                    **common, 'status': 'finished', 'model': used, 'raw': raw,
+                    **common, **evidence, 'status': 'finished', 'model': used, 'raw': raw,
                     'valid': valid, 'parser_version': PARSER_VERSION,
                     'score': parsed.get('Sharpness') if valid else None,
                     'reason': parsed.get('Reason') if ok else None})
@@ -215,6 +294,7 @@ def report(out, reparse=False):
     plan, run = load_json(out / 'plan.json'), load_json(out / 'run.json')
     if run != {'plan_hash': digest(plan), 'human_hash': file_digest(out / 'human_review.tsv')}:
         raise ValueError('Plan or human review changed after scoring')
+    validate_protocol(plan)
     labels = human_labels(out, plan)
     events = events_by_id(out, plan, digest(run))
     valid = {key: rows[-1] for key, rows in events.items()
@@ -235,7 +315,21 @@ def report(out, reparse=False):
                     changed.append(key)
             elif event.get('valid'):
                 rejected.append(key)
+    evidence_flags = {}
+    if plan.get('protocol') == PROTOCOL_V2:
+        cases = {c['id']: c for c in plan['cases']}
+        for key, value in valid.items():
+            parsed, ok = parse_nfp_json(value.get('raw'))
+            issue = evidence_issue(parsed, cases[value['case_id']]['answer']) if ok else 'Cannot parse evidence'
+            value['answer_evidence'] = parsed.get('AnswerEvidence')
+            value['invented_premise'] = parsed.get('InventedPremise')
+            if issue:
+                evidence_flags[key] = issue
     lines = ['# Terra NFP judge check', '',
+             f'Protocol: {plan.get("protocol", "original")}.',
+             'Current +1-only cases are development diagnostics; they do not test detection of actual overcorrection.',
+             f'Evidence-format issues: {len(evidence_flags)}. Scores are retained, never flipped or silently dropped.',
+             'Agreement below uses emitted scores; flagged judgments require manual evidence review.', '' ,
              f'Readout: {PARSER_VERSION if reparse else "stored results"}. No model calls.',
              f'Attempt ledger SHA-256: `{file_digest(out / "attempts.jsonl")}`.',
              f'Stored valid={original_valid}; recovered={len(recovered)}; '
@@ -257,6 +351,10 @@ def report(out, reparse=False):
                      f'human agreement {correct}/{len(available)} judgments.')
     for key, value in valid.items():
         lines.extend(['', f'## {key}', '', str(value.get('reason') or value['raw'])])
+        if plan.get('protocol') == PROTOCOL_V2:
+            lines.extend(['', f"Answer evidence: {value.get('answer_evidence')}",
+                          f"Attributed premise: {value.get('invented_premise')}",
+                          f"Evidence check: {evidence_flags.get(key, 'format OK; semantic validity still requires review')}"])
     if reparse:
         lines.extend(['', '## Reparse audit', '',
                       f'Recovered IDs: {recovered}', f'Rejected IDs: {rejected}',
@@ -280,6 +378,9 @@ def main():
     p.add_argument('--out-dir', required=True)
     p.add_argument('--config', default='configs/gemma2_9b.yaml')
     p.add_argument('--seed', type=int, default=17)
+    p = sub.add_parser('revise', help='Same fixed sample with detailed v2 prompt in a new directory; no calls')
+    p.add_argument('--source-dir', required=True)
+    p.add_argument('--out-dir', required=True)
     for name in ('score', 'report'):
         p = sub.add_parser(name)
         p.add_argument('--out-dir', required=True)
@@ -288,6 +389,8 @@ def main():
     args = parser.parse_args()
     if args.stage == 'prepare':
         prepare(args.pilot_dir, args.out_dir, args.config, args.seed)
+    elif args.stage == 'revise':
+        revise(args.source_dir, args.out_dir)
     elif args.stage == 'score':
         score(args.out_dir)
     else:
