@@ -96,9 +96,45 @@ def prepare(args):
     print(f"[prepared] {out / 'manifest.json'} ({manifest['manifest_hash'][:12]})")
 
 
+def check_fit(args):
+    """Validate every selected reference span with the server tokenizer, before GPU load."""
+    from scripts.make_paired_rows import pick_references
+    from src.modeling import load_tokenizer
+    from src.pilot_model import answer_prefix
+
+    cfg = load_config(args.config)
+    manifest = load_manifest(args.manifest)
+    raw_path = Path(args.references or Path(cfg["data"]["cancer_myth_repo"]) / "data/all_data.json")
+    if file_digest(raw_path) != manifest["reference_hash"]:
+        raise ValueError("Reference file changed since preparing the split")
+    fit_questions = [q for q in manifest["questions"] if q["partition"] == "fit" and q["set"] == "fpq"]
+    fit_text = {q["question"].strip() for q in fit_questions}
+    chosen, _ = pick_references([r for r in load_json(raw_path) if r["example_question"].strip() in fit_text])
+    m = cfg["source_model"]
+    tok = load_tokenizer(m["model_id"], cache_dir=cfg["paths"].get("cache_dir"),
+                         trust_remote_code=m.get("trust_remote_code", False), revision=m.get("revision"))
+    count, failures = 0, []
+    for q in fit_questions:
+        pair = chosen.get(q["question"].strip(), {})
+        if len(pair) != 2:
+            continue
+        for role in ("corr", "follow"):
+            try:
+                answer_prefix(tok, q["question"], pair[role][1], args.prefix_tokens)
+                count += 1
+            except ValueError as exc:
+                failures.append(f"{q['id']} {role}: {exc}")
+    if failures:
+        raise ValueError(f"[fit check] {len(failures)} invalid reference spans: " + "; ".join(failures[:5]))
+    if count < 4:
+        raise ValueError("Fewer than two fit-only reference pairs")
+    print(f"[fit check] OK: {count // 2} pairs / {count} answer spans; tokenizer only", flush=True)
+
+
 def fit(args):
     from src.pilot_model import learn_direction, load_model
 
+    check_fit(args)
     cfg = load_config(args.config)
     manifest = load_manifest(args.manifest)
     raw_path = Path(args.references or Path(cfg["data"]["cancer_myth_repo"]) / "data/all_data.json")
@@ -393,6 +429,12 @@ def main():
     p.add_argument("--test-fold", type=int, default=0)
     p.add_argument("--dev-fold", type=int, default=1)
     p.set_defaults(func=prepare)
+    p = subs.add_parser("check-fit")
+    p.add_argument("--config", default="configs/gemma2_9b.yaml")
+    p.add_argument("--manifest", required=True)
+    p.add_argument("--references")
+    p.add_argument("--prefix-tokens", type=int, default=32)
+    p.set_defaults(func=check_fit)
     p = subs.add_parser("fit")
     p.add_argument("--config", default="configs/gemma2_9b.yaml")
     p.add_argument("--manifest", required=True)

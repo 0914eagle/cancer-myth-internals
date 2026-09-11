@@ -23,7 +23,8 @@ from src.pilot import digest, file_digest, frozen_json, load_manifest, parse_ide
 
 OLD_IMPLEMENTATION = "6b2e2eb6c0508722da8c015526528f33bd33e0c5c418544c3ec7ef279810e1a8"
 # Filled with the exact reviewed post-fix implementation hash, not any future code.
-NEW_IMPLEMENTATION = "a26b7a6e09d7826bec9de195a58817527e2eb51f0425b782d5bab3c9eae95840"
+PARSER_IMPLEMENTATION = "a26b7a6e09d7826bec9de195a58817527e2eb51f0425b782d5bab3c9eae95840"
+NEW_IMPLEMENTATION = "2929f57de5bbe915a9cfdea9070cbebcbc6c797abcee297b9f3fc25d0974d652"
 
 
 def rebind_score(row, old_sig, new_sig, response):
@@ -39,8 +40,8 @@ def repair(pilot: Path):
     """Repair only audited rows copied by the original migration; no rejudging."""
     pilot = pilot.resolve()
     audit = json.loads((pilot / "parser_migration.json").read_text())
-    if (audit["original_implementation"] != OLD_IMPLEMENTATION
-            or audit["compatible_implementation"] != NEW_IMPLEMENTATION):
+    if (audit["original_implementation"] not in {OLD_IMPLEMENTATION, PARSER_IMPLEMENTATION}
+            or audit["compatible_implementation"] not in {PARSER_IMPLEMENTATION, NEW_IMPLEMENTATION}):
         raise ValueError("Not a supported parser migration")
     if list(pilot.rglob("*.lock")):
         raise ValueError("Stop active workers and inspect locks before repair")
@@ -131,9 +132,11 @@ def migrate(source: Path, destination: Path):
     dev_ids = {q["id"] for q in manifest["questions"] if q["partition"] == "dev"}
     destination.parent.mkdir(parents=True, exist_ok=True)
     staging = Path(tempfile.mkdtemp(prefix=".parser-migration-", dir=destination.parent))
-    audit = {"reason": "leading-verdict parser accepts additional outputs; old valid decisions unchanged",
-             "source": str(source), "original_implementation": OLD_IMPLEMENTATION,
+    audit = {"reason": "baseline-compatible parser/alignment fixes; generation prompts and accepted decisions unchanged; fit must be recomputed",
+             "source": str(source), "original_implementation": None,
              "compatible_implementation": current, "files": []}
+    if (source / "parser_migration.json").exists():
+        audit["previous_migration_sha256"] = file_digest(source / "parser_migration.json")
 
     def track(old, new):
         audit["files"].append({"path": str(old.relative_to(source)),
@@ -151,11 +154,15 @@ def migrate(source: Path, destination: Path):
             if not old.exists() and not meta.exists():
                 continue
             spec = json.loads(meta.read_text())
-            if (spec["identity"]["implementation_hash"] != OLD_IMPLEMENTATION
+            original_impl = spec["identity"]["implementation_hash"]
+            if (original_impl not in {OLD_IMPLEMENTATION, PARSER_IMPLEMENTATION}
                     or spec["method"] != method or spec["partition"] != "dev"
                     or spec["manifest_hash"] != manifest["manifest_hash"]
                     or set(spec["question_ids"]) != dev_ids):
                 raise ValueError(f"Unsupported generation signature: {meta}")
+            if audit["original_implementation"] not in {None, original_impl}:
+                raise ValueError("Mixed source baseline implementations")
+            audit["original_implementation"] = original_impl
             new_spec = copy.deepcopy(spec)
             new_spec["identity"]["implementation_hash"] = current
             rows = list(read_jsonl(old)) if old.exists() else []
@@ -166,7 +173,8 @@ def migrate(source: Path, destination: Path):
                 seen.add(row["id"])
                 if method == "fp_identification":
                     previous = re.fullmatch(r"\s*(yes|no)[.!]?\s*", row["review"], re.IGNORECASE)
-                    if not previous or parse_identification(row["review"]) != row["identified_false_premise"]:
+                    if ((original_impl == OLD_IMPLEMENTATION and not previous)
+                            or parse_identification(row["review"]) != row["identified_false_premise"]):
                         raise ValueError("Cached FP decision is not compatible with the parser fix")
                 row["run_hash"] = digest(new_spec)
             new = staging / "dev" / old.name

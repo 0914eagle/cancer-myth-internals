@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source scripts/env.sh "${DATA_ROOT:-}"
 
-stage="${1:?usage: run_gemma_pilot.sh prepare|check-judge|baselines|report-baselines|fit|sweep|select|test|report}"
+stage="${1:?usage: run_gemma_pilot.sh prepare|check-judge|baselines|report-baselines|check-fit|fit|sweep|select|test|report}"
 config="${CONFIG:-configs/gemma2_9b.yaml}"
 pilot="${PILOT_DIR:-$ART/results/pilot/gemma2_9b_v1}"
 manifest="$pilot/split/manifest.json"
@@ -61,6 +61,10 @@ judge() {
 }
 
 case "$stage" in
+    check-fit)
+        python scripts/run_pilot.py check-fit --config "$config" --manifest "$manifest" \
+            --prefix-tokens "${PREFIX_TOKENS:-32}"
+        ;;
     check-judge)
         check_judge
         ;;

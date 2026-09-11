@@ -311,3 +311,49 @@ python scripts/migrate_pilot_identification.py --repair "$PILOT_DIR" &&
 서버 원본 데이터 자체는 로컬에서 확인하지 못했으므로 검증 조건에 맞지 않으면 중단하며,
 검사를 우회해 집계하지 않는다. 수정 테스트는 원래 오류, 새/옛 판정 행 혼재, 반복 복구,
 실제 report 생성과 점수가 변조된 행 거부를 포함한다.
+
+## 10. fit의 `Assistant template is not prefix-compatible` 복구
+
+2026-09-11. 참조 답변에 앞뒤 공백이 있고 채팅 템플릿이 이를 trim하는 경우,
+원래 `answer_prefix`는 원본 문자열과 렌더링된 문자열이 다르다는 이유로 중단했다.
+렌더링 결과를 유지하면서 원본 또는 앞뒤 공백만 제거한 답변과 정확히 일치하는 구간을 찾도록
+수정했다. 질문 prefix 변경이나 본문 변환은 여전히 거부한다. 처음 n개 내용 토큰만 pooling하고
+EOS/turn-end를 제외하는 설정은 같다. 프롬프트와 baseline 생성 동작은 바꾸지 않았다.
+
+`check-fit`은 서버의 실제 tokenizer로 선택된 **fit 참조쌍 전체**의 정렬을 CPU에서 검사한다.
+`fit`도 이 검사를 GPU 모델 로드 전에 실행한다. 현재 snapshot은 135쌍/270답변이 예상된다.
+로컬 공식 Gemma checkpoint의 tokenizer는 접근 권한이 없어 401을 받았으므로, 서버의 실제
+입력에서 오류 원인이 공백인지 및 수정으로 해결되는지는 이 검사로 확인한다. 로컬에서는
+trim 유무·앞뒤 공백·토큰 예산·EOS 제외·본문 변환 거부와 모델 로드 없는 전체 검사를 테스트했다.
+
+구현 hash가 바뀌므로 baseline은 검증 후 새 폴더로 복사하고 fit은 새로 시작한다.
+기존 `gemma2_9b_v1_fpfix`와 그 원본을 삭제하지 않는다. migration은 이제 이전 strict 파서 버전과
+parser-fix 버전 모두에서 baseline을 가져올 수 있고, 참조 정렬 수정 전 fit cache는 가져오지 않는다.
+점수의 본문과 값은 그대로 유지하며 행·파일 단위 hash를 함께 갱신하고 감사 기록을 남긴다.
+
+현재 가상환경과 DATA_ROOT를 유지한 서버 125의 일회성 복구:
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+git pull --ff-only origin main
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fpfix
+bash scripts/run_gemma_pilot.sh check-fit &&
+python scripts/migrate_pilot_identification.py \
+  --source "$PILOT_DIR" \
+  --destination /data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+```
+
+`[fit check] OK`와 `[migrated]`를 확인한 뒤:
+
+```bash
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+export BATCH_SIZE=1
+export JUDGE_BACKEND=codex
+export JUDGE_MODEL=gpt-5.6-sol
+bash scripts/run_gemma_pilot.sh fit &&
+  bash scripts/run_gemma_pilot.sh sweep &&
+  bash scripts/run_gemma_pilot.sh report
+```
+
+baseline 생성·판정이나 `prepare`를 다시 실행하지 않는다. 이후 명령에도 `PILOT_DIR`을 유지한다.
+`torch_dtype` deprecation warning은 이번 traceback의 중단 원인이 아니므로 별도로 취급한다.

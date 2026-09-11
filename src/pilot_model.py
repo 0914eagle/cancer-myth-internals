@@ -68,16 +68,23 @@ def answer_prefix(tokenizer, question, answer, n):
     """Tokenize a true assistant turn; exclude end-of-turn tokens from pooling."""
     from .extract_activations import token_span_for_char_span
 
+    if not isinstance(answer, str) or not answer.strip() or n < 1:
+        raise ValueError("Reference answer must contain text and prefix length must be positive")
     messages = [{"role": "user", "content": question}, {"role": "assistant", "content": answer}]
     text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=False)
     prefix = render(tokenizer, question)
-    if not text.startswith(prefix) or not text[len(prefix) :].startswith(answer):
+    if not text.startswith(prefix):
         raise ValueError(
-            "Assistant template is not prefix-compatible; cannot align response safely"
+            "Assistant template changes the prompt prefix; cannot align response safely"
         )
+    # Gemma's template applies `content | trim`. Preserve the template output;
+    # align either the untouched answer or its whitespace-trimmed equivalent.
+    content = next((a for a in (answer, answer.strip()) if text[len(prefix):].startswith(a)), None)
+    if content is None:
+        raise ValueError("Assistant template changes answer content beyond whitespace trimming")
     enc = tokenizer(text, add_special_tokens=False, return_offsets_mapping=True)
     start, end = token_span_for_char_span(
-        enc["offset_mapping"], len(prefix), len(prefix) + len(answer)
+        enc["offset_mapping"], len(prefix), len(prefix) + len(content)
     )
     end = min(end, start + n)
     return enc["input_ids"][:end], (start, end)

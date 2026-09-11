@@ -185,8 +185,9 @@ def test_identification_rejects_missing_or_conflicting_verdict(text):
         parse_identification(text)
 
 
-def test_parser_migration_preserves_answers_scores_and_rejects_other_code(tmp_path):
-    from scripts.migrate_pilot_identification import OLD_IMPLEMENTATION, NEW_IMPLEMENTATION, migrate
+@pytest.mark.parametrize("source_version", ["strict", "parser"])
+def test_parser_migration_preserves_answers_scores_and_rejects_other_code(tmp_path, source_version):
+    from scripts.migrate_pilot_identification import OLD_IMPLEMENTATION, PARSER_IMPLEMENTATION, NEW_IMPLEMENTATION, migrate
     from src.pilot import file_digest
 
     source, destination = tmp_path / "old", tmp_path / "new"
@@ -197,11 +198,13 @@ def test_parser_migration_preserves_answers_scores_and_rejects_other_code(tmp_pa
         write_jsonl(source / "split" / f"{part}.jsonl", [q for q in rows if q["partition"] == part])
     dev = [q for q in rows if q["partition"] == "dev"]
     path = source / "dev/fp_identification.jsonl"
-    spec = {"identity": {"implementation_hash": OLD_IMPLEMENTATION}, "method": "fp_identification", "max_new_tokens": 512,
+    previous_impl = OLD_IMPLEMENTATION if source_version == "strict" else PARSER_IMPLEMENTATION
+    spec = {"identity": {"implementation_hash": previous_impl}, "method": "fp_identification", "max_new_tokens": 512,
             "partition": "dev", "manifest_hash": manifest["manifest_hash"], "question_ids": [q["id"] for q in dev]}
     frozen_json(Path(str(path) + ".run.json"), spec)
     records = [{"id": q["id"], "response": f"original answer {q['id']}", "run_hash": digest(spec),
-                "review": "Yes.", "identified_false_premise": True} for q in dev]
+                "review": "Yes." if source_version == "strict" else "Yes. The premise is incorrect.",
+                "identified_false_premise": True} for q in dev]
     write_jsonl(path, records)
     scores = source / "dev/fp_identification_judge_codex_test.jsonl"
     signature = {"response_run": spec, "responses_hash": file_digest(path),
@@ -321,6 +324,59 @@ def tiny_gemma():
     )
     model = Gemma2ForCausalLM(config).eval()
     return model, tok
+
+
+@pytest.mark.parametrize("trim", [False, True])
+@pytest.mark.parametrize("answer", ["correct answer", "\n correct answer \n", "\tcorrect answer\t"])
+def test_reference_alignment_handles_template_whitespace_without_pooling_eos(tiny_gemma, trim, answer):
+    from src.pilot_model import answer_prefix, render
+
+    _, tok = tiny_gemma
+    if trim:
+        tok.chat_template = tok.chat_template.replace("m['content']", "m['content'] | trim")
+    question = "\n question \n"
+    prefix = render(tok, question)
+    full = tok.apply_chat_template([{"role": "user", "content": question},
+                                    {"role": "assistant", "content": answer}], tokenize=False)
+    if trim and answer != answer.strip():
+        assert not full[len(prefix):].startswith(answer)  # reproduces the old failure
+    for n, expected in [(1, "correct"), (32, "correct answer")]:
+        ids, (start, end) = answer_prefix(tok, question, answer, n)
+        assert tok.decode(ids[start:end]) == expected
+        assert tok.eos_token_id not in ids[start:end]
+
+
+def test_reference_alignment_rejects_empty_or_modified_content(tiny_gemma):
+    from src.pilot_model import answer_prefix
+
+    _, tok = tiny_gemma
+    with pytest.raises(ValueError, match="must contain text"):
+        answer_prefix(tok, "question", " \n", 32)
+    tok.chat_template = tok.chat_template.replace("m['content']", "m['content'] | upper")
+    with pytest.raises(ValueError, match="beyond whitespace"):
+        answer_prefix(tok, "question", "correct answer", 32)
+
+
+def test_check_fit_validates_all_pairs_without_loading_model(tiny_gemma, tmp_path, monkeypatch, capsys):
+    import scripts.run_pilot as runner
+    from src.pilot import file_digest
+
+    _, tok = tiny_gemma
+    tok.chat_template = tok.chat_template.replace("m['content']", "m['content'] | trim")
+    qs, refs = data(12)
+    for r in refs:
+        r["answers"] = {k: "\n " + v + " \n" for k, v in r["answers"].items()}
+    raw = tmp_path / "references.json"
+    raw.write_text(json.dumps(refs))
+    rows = prepare_rows(qs, refs, folds=3)
+    m = make_manifest(rows, seed=17, folds=3, test_fold=0, dev_fold=1, reference_hash=file_digest(raw))
+    frozen_json(tmp_path / "manifest.json", m)
+    monkeypatch.setattr(runner, "load_config", lambda _: {"source_model": {"model_id": "tiny"}, "paths": {}})
+    monkeypatch.setattr("src.modeling.load_tokenizer", lambda *a, **kw: tok)
+    monkeypatch.setattr("src.pilot_model.load_model", lambda *_: pytest.fail("check-fit must not load weights"))
+    runner.check_fit(SimpleNamespace(config="unused", manifest=tmp_path / "manifest.json",
+                                     references=raw, prefix_tokens=32))
+    assert "[fit check] OK" in capsys.readouterr().out
 
 
 def test_real_gemma_hook_touches_last_prompt_and_decode_only(tiny_gemma):
