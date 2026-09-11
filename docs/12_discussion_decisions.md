@@ -169,7 +169,7 @@ Well-Actually는 Two Axes를 한 문장으로만 인용한다: *"LLM-based fact 
 
 **Table 2.** Main results on Cancer-Myth (585 FPQ, 150 NFP/TPQ) and general medical QA. Judge GPT-4o. 행: Plain / FP Identification / GEPA (FPQ+TPQ) / Balanced premise-check CoT prompting / Unconditional C steering / CAST / Hidden gate + FP prompt (Two Axes-inspired) / **Hidden gate + C steering (ours)**; 선 아래 *GPT-4o Plain, GEPA (reported)*. 열: PCR, PCS, NFP, TPQ 오교정률 (Well 루브릭의 변환 경계는 사전 지정), MedQA, PubMedQA, Medbullets. 모델당 블록. (리뷰 3: CoT 행 추가, CAA → Unconditional, 무작위는 Table 3으로)
 
-**Table 3.** 구성 요소의 세 통제 비교: (A) 같은 C에서 항상/무작위/내부 선택, (B) 같은 C·선택 예산에서 텍스트/CoT/내부 신호, (C) 같은 문항별 mask에서 FP prompt/C steering. 기준 절대값과 ΔPCR·ΔPCS·ΔNFP·ΔTPQ 및 CI를 보고한다. Table 2의 방법별 조정 결과와 구분하고 QA 열을 반복하지 않는다. 같은 설정의 셀만 참조·재사용하며, 이미 본 표에 세 통제가 있으면 독립 표로 분리하지 않는다. oracle은 부록 진단이다. [13](13_task_spec.md) · [22 §6.3](17_manuscript_storyline.md)
+**Table 3.** 구성 요소의 세 통제 비교: (A) 같은 C에서 항상/무작위/내부 선택, (B) 같은 C·선택 예산에서 텍스트/CoT/내부 신호, (C) 같은 문항별 mask에서 FP prompt/C steering. 기준 절대값과 ΔPCR·ΔPCS·ΔNFP·ΔTPQ 및 CI를 보고한다. Table 2의 방법별 조정 결과와 구분하고 QA 열을 반복하지 않는다. 같은 설정의 셀만 참조·재사용하며, 이미 본 표에 세 통제가 있으면 독립 표로 분리하지 않는다. oracle은 부록 진단이다. [13](13_task_spec.md) · [17 §6.3](17_manuscript_storyline.md)
 
 **Figure 1.** TPQ 보존(x) vs. PCR(y). Table 2의 완성 시스템을 표시한다. Table 3의 배치 예산 진단을 추가하면 별도 기호·패널로 구분한다. Table 1 판별기에는 좌표가 없다. 점선 = Plain TPQ 보존율 − ε_TPQ. Well의 시각화 취지를 참고하지만 원문의 1–5점 평균 축과 동일 지표로 부르지 않는다.
 
@@ -261,5 +261,18 @@ Well Table 1은 외부 근거 아래에서도 참 전제의 과잉 부정이 남
 - **"정확한 교정 vs 틀린 반박" 대조.** 취지는 맞으나 Cancer-Myth 0점 답변은 반박이 아니라 얼버무림(193개 3중 질문 중 반박 형태 7개). 합성 쌍 없이는 못 만든다. 분석 부록 후보.
 - **붙여넣은 외부 분석의 미확인 주장**(Tripathi per-head probe, Figure 5, §V-E 2/100, Tan et al.·SVF 수치)은 원문 확인 전 교수님께 사실로 말하지 않는다. "기존 방법은 인과 검증 없이 head를 골랐다"는 비판은 우리가 한 적이 없다.
 - **Related Work 두 절 구조**는 08에 기록.
-- **10월 ARR.** 목표로 준비하되 2주차 27B 격자(RH2 1차)에서 main / Findings / 12월 연기를 결정. 필수 결과 둘(RH2, 쌍둥이 통제의 RH1)과 리뷰어 대비(CREPE 축소판, 판정기 교차 채점, 모델 3개)는 22 §6.
+- **10월 ARR.** (2026-09-11 §14로 대체됨. ARR에서는 main/Findings를 저자가 고르지 않고, 10월 12일이 2026년 마지막 사이클이다.) ~~목표로 준비하되 2주차 27B 격자(RH2 1차)에서 main / Findings / 12월 연기를 결정.~~ 필수 결과 둘(RH2, 쌍둥이 통제의 RH1)과 리뷰어 대비(CREPE 축소판, 판정기 교차 채점, 모델 3개)는 22 §6.
 - **GPU.** 4090 4장으로 충분. 0번 작은 모델, 1–3번 27B. 양자화 금지. 병목은 27B 생성 시간과 판정 비용.
+
+## 14. 2026-09-11 — 모의 ARR 패널과 10월 12일 제출 결정
+
+세부는 [22](22_method_variants_and_arr_plan.md) 개정판. 여기에는 결정만 적는다.
+
+- **10월 12일 ARR에 제출한다.** 2026년 마지막 사이클이고, 건너뛰면 다음 사이클 리뷰가 NAACL 2027 commit 마감(12월 20-23일) 이후에 나와 NAACL 2027이 사라진다. ARR은 학회를 지정하지 않고 내므로 commit하지 않는 비용이 거의 0이다.
+- **main / Findings는 우리가 고르지 않는다.** commit 후 NAACL SAC·PC가 ARR 점수로 정한다. 22 초판 §6의 "2주 뒤 정한다"는 표현은 철회한다.
+- **방법 신규성으로 main을 노리지 않는다.** 모의 패널 12개 리뷰에서 최선의 시나리오도 soundness 3.33 / excitement 3.00, 전부 Findings, champion 0이었다. 31일은 측정 타당성에 쓴다.
+- **최우선 순위는 ε_NFP·ε_QA와 분할 manifest를 실행 전에 고정하는 것이다.** 그다음이 PCR의 반박률 × 정확도 분해와 의사 검증 교정문 대비 채점, 공유 mask 위 paired 검정이다.
+- **정상 질문은 150개뿐이므로 ε를 5%p보다 좁게 잡으면 검정이 성립하지 않는다.** 참 전제 쌍둥이는 교란 통제이자 검정력 수단이다. 19의 "주 방법에 합성 twin 미포함" 결정을 이 계산과 함께 재검토한다.
+- **harm/rescue 귀속을 본문으로 올린다.** 선택이 완벽할 때 남는 피해는 선행 연구에 없는 숫자다.
+- **결정일 둘.** 9월 15일 임상 훈련자 확보 여부, 9월 25일 파일럿 결과를 보고 프레이밍 확정.
+- 문서 간 미해결 모순 9건은 22 §10에 표로 정리했다. 원고 전에 정한다.

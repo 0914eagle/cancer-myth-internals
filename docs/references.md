@@ -113,14 +113,18 @@
 - [Task 명세와 표 뼈대](13_task_spec.md) — Table 1·2·3, Figure 1, 출처, cross-fitting
 - [진행 현황 정리](15_progress_summary.md) — 결정·근거 확인·E1 영향·미결·브랜치
 - [코드 지도](16_code_overview.md) — 파이프라인 stage 1–9, src, 판정기, 리뷰 대응, 13 대비 빈 부품
-- [방법 변형 후보·분야의 빈 자리·10월 ARR·GPU](22_method_variants_and_arr_plan.md) — 2026-09-10
+- [방법 변형 후보·모의 ARR 패널·10월 12일 제출 판단](22_method_variants_and_arr_plan.md) — 2026-09-11 전면 개정
 
 ## 2026-09-10 언급, 원문 미확인 (기억 기반)
 - Tan et al. 2024 — Analyzing the Generalization and Reliability of Steering Vectors — [2407.12404](https://arxiv.org/abs/2407.12404)
-- 거짓 거부 벡터 직교화 (Surgical, Cheap, and Flexible: Mitigating False Refusal via Single Vector Ablation; SCANS) — 22 §4 1순위의 선행 레시피. 원문 확인 필요
+- 거짓 거부 벡터 직교화 (Surgical, Cheap, and Flexible: Mitigating False Refusal via Single Vector Ablation; SCANS) — 22 §4의 직교화 C 후보에 대한 선행 레시피. 원문 확인 필요
 
 ## 2026-09-10 MISP-Bench 확인
 
 - [MISP-Bench v2](https://www.medrxiv.org/content/10.64898/2026.05.07.26352627v2.full) — 2026-08-23 preprint; 사용자 답·근거·방어 지시의 효과 분해.
 - [공식 데이터](https://huggingface.co/datasets/yh0502/misp-bench), [코드](https://github.com/anon-misp-2026/misp-bench).
 - [우리 연구와의 관계·도입 범위](24_misp_relation.md). 현재 runner는 MISP를 실행하지 않는다.
+
+## 제출 일정 (2026-09-11 확인)
+- [ARR Dates and Venues](https://aclrollingreview.org/dates) · [dates.md](https://github.com/acl-org/aclrollingreview/blob/main/dates.md) — 2026년 사이클은 1월 5일·3월 16일·5월 25일·8월 3일·10월 12일. 10월 12일이 마지막
+- [NAACL 2027 Call for Main Conference Papers](https://2027.naacl.org/calls/main_conference_papers/) — commit 12월 20-23일, 본회의 2027년 6월 1-5일 샌프란시스코
