@@ -327,7 +327,9 @@ def report(out, reparse=False):
                 evidence_flags[key] = issue
     lines = ['# Terra NFP judge check', '',
              f'Protocol: {plan.get("protocol", "original")}.',
-             'Current +1-only cases are development diagnostics; they do not test detection of actual overcorrection.',
+             ('Current +1-only cases are development diagnostics; they do not test detection of actual overcorrection.'
+              if {r['score'] for r in labels.values()} == {'1'} else
+              'Balanced selected cases; ambiguous items excluded. AI-assisted reference labels, not independent expert validation.'),
              f'Evidence-format issues: {len(evidence_flags)}. Scores are retained, never flipped or silently dropped.',
              'Agreement below uses emitted scores; flagged judgments require manual evidence review.', '' ,
              f'Readout: {PARSER_VERSION if reparse else "stored results"}. No model calls.',
@@ -341,7 +343,7 @@ def report(out, reparse=False):
         qid = case['id']
         vals = [valid.get(f'{qid}::r{r}', {}).get('score', 'missing') for r in (1, 2)]
         lines.append(f"| {qid} | {case['cohort']} | {labels[qid]['score']} | {vals[0]} | {vals[1]} |")
-    for cohort in ('disagreement', 'unchanged'):
+    for cohort in sorted({c['cohort'] for c in plan['cases']}):
         ids = [c['id'] for c in plan['cases'] if c['cohort'] == cohort]
         paired = [i for i in ids if all(f'{i}::r{r}' in valid for r in (1, 2))]
         agree = sum(valid[f'{i}::r1']['score'] == valid[f'{i}::r2']['score'] for i in paired)
@@ -349,6 +351,9 @@ def report(out, reparse=False):
         correct = sum(v['score'] == int(labels[v['case_id']]['score']) for v in available)
         lines.append(f'\n{cohort}: repeat agreement {agree}/{len(paired)} pairs; '
                      f'human agreement {correct}/{len(available)} judgments.')
+    if 'held_ids' in plan:
+        lines.extend(['', f"Held IDs (not scored): {plan['held_ids']}",
+                      f"Unselected candidates: {plan.get('unselected_candidate_ids', [])}"])
     for key, value in valid.items():
         lines.extend(['', f'## {key}', '', str(value.get('reason') or value['raw'])])
         if plan.get('protocol') == PROTOCOL_V2:

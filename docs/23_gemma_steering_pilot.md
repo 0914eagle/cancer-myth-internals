@@ -614,3 +614,35 @@ scp eagle0914@165.132.76.125:/data1/heejae/cancer_myth_internals/results/pilot/g
 보류 항목을 제외한다면 전체 20답변의 정확도라고 보고하지 않고 제외 수와 이유를 밝힌다.
 이 항목들을 본 뒤 지침을 넓히면 해당 항목은 새 지침의 개발 표본이므로 독립 검증이 아니다.
 이번 검토 중 신규 GPT/생성 호출은 없었다.
+
+
+### 12.7 고정 v2 지침의 양성·음성 5+5 검증
+
+판정 초안을 검토하고 동의한 경우 다음 명령으로 명확한 +1 후보 5개와 −1 후보 5개를
+seed 17로 고정한다. `--accept-ai-review`는 사용자 확인을 받은 AI 보조 라벨임을
+기록하는 옵션이며 독립 전문가 판정이나 맹검 검토를 뜻하지 않는다. 초안에 동의하지
+않으면 TSV를 먼저 수정하고 `--labels`로 지정한다. 보류 6개는 채점하지 않고 보고서에 남긴다.
+
+기존 v2의 지침과 예시를 그대로 복사한다. 준비와 보고는 모델 호출 0회이며,
+score 단계만 최대 20회(10답변 × 2회)의 새 Terra 호출을 사용한다. Gemma 답변을
+다시 생성하거나 기존 sweep을 재개하지 않는다. 중단된 호출도 예산을 소비하며 재시도하지 않는다.
+
+```bash
+git pull --ff-only origin main
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+export BALANCED_DIR="$PILOT_DIR/terra_nfp_balanced_v1"
+python scripts/prepare_balanced_nfp_check.py \
+  --source-dir "$PILOT_DIR/terra_nfp_check_v2" \
+  --review-dir "$PILOT_DIR/nfp_overcorrection_review_v1" \
+  --out-dir "$BALANCED_DIR" \
+  --accept-ai-review &&
+python scripts/check_terra_judge.py score --out-dir "$BALANCED_DIR" &&
+python scripts/check_terra_judge.py report --out-dir "$BALANCED_DIR" --reparse > "$BALANCED_DIR/report.md" &&
+cat "$BALANCED_DIR/report.md"
+```
+
+`normal`과 `overcorrection`의 라벨 일치도를 각각 본다. 모두 +1을 출력하는 판정기는
+정상 답변 10/10이더라도 과잉 교정 답변에서는 0/10이므로 통과했다고 해석하지 않는다.
+같은 답변의 두 판정은 독립 표본 20개가 아니다. 선택된 명확한 10답변의 진단 결과이며,
+전체 NFP 정확도나 보류 문항까지 포함한 성능을 추정하지 않는다. −1 판정의 인용과
+실제 전제 지적 내용도 확인한 뒤 더 큰 평가를 진행할지 결정한다.
