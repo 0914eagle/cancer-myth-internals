@@ -55,9 +55,14 @@ generate() {
 
 judge() {
     local partition="$1" tag="$2"
+    local reuse_args=()
+    local plain_scores="$pilot/$partition/plain_${scores_suffix}"
+    if [[ "$tag" != plain && -f "$plain_scores" ]]; then
+        reuse_args=(--reuse-scores "$plain_scores")
+    fi
     python scripts/run_judge.py --config "$config" --questions "$pilot/split/$partition.jsonl" \
         --responses "$pilot/$partition/$tag.jsonl" --backend "$backend" --model "$judge_model" \
-        --output "$pilot/$partition/${tag}_${scores_suffix}"
+        --output "$pilot/$partition/${tag}_${scores_suffix}" "${reuse_args[@]}"
 }
 
 case "$stage" in

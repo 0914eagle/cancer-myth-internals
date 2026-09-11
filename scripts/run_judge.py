@@ -48,6 +48,51 @@ def build_prompt(row: dict, q: dict, examples_fpq: list, examples_nfp: list) -> 
     raise ValueError(f"unknown set {row['set']}")
 
 
+def load_reuse_scores(path, signature):
+    """Reuse one explicit donor only, with identical judge inputs/settings.
+
+    Whole question/example/rubric hashes plus the exact answer hash ensure the
+    judge prompt is unchanged. Existing destination scores are never replaced.
+    """
+    if path is None:
+        return {}
+    path = Path(path)
+    source = load_json(str(path) + ".run.json")
+    ignored = {"responses_hash", "response_run"}
+    def settings(x):
+        return {k: v for k, v in x.items() if k not in ignored}
+
+    if not signature["requested_model"] or settings(source) != settings(signature):
+        raise ValueError("Reuse source differs in judge/model/questions/examples/rubric")
+    run = source.get("response_run")
+    if not run:
+        raise ValueError("Reuse requires a signed pilot generation run")
+    result = {}
+    source_hash = file_digest(path)
+    seen = set()
+    for row in read_jsonl(path):
+        if row["id"] in seen:
+            raise ValueError("Duplicate reuse source IDs")
+        seen.add(row["id"])
+        if (not valid_score(row)
+            or row.get("judge_run_hash") != digest(source)
+            or row.get("response_run_hash") != digest(run)
+            or row.get("judge_model") != signature["requested_model"]
+            or row.get("judge_backend") != signature["backend"]
+            or row.get("judge_temperature") != signature["temperature"]
+            or row.get("rubric") != row["set"]
+            or not row.get("response_text_hash")):
+            raise ValueError("Invalid or inconsistent reuse source provenance")
+        key = (row["question_id"], row["set"], row["response_text_hash"])
+        if key in result:
+            raise ValueError("Ambiguous reuse source; choose a single canonical score")
+        result[key] = (row, {"source_path": str(path.resolve()),
+                             "source_file_hash": source_hash,
+                             "source_score_id": row["id"],
+                             "source_judge_run_hash": row["judge_run_hash"]})
+    return result
+
+
 def acquire_lock(out_path: Path) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     lock_path = out_path.with_suffix(out_path.suffix + ".lock")
@@ -78,6 +123,7 @@ def main() -> None:
     parser.add_argument("--allow-same-family", action="store_true")
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--reuse-scores", help="Signed canonical scores for identical judge inputs")
     parser.add_argument("--sleep", type=float, default=0.0)
     args = parser.parse_args()
 
@@ -111,6 +157,7 @@ def main() -> None:
                  "responses_hash": file_digest(args.responses), "questions_hash": file_digest(args.questions),
                  "examples_hash": digest([examples_fpq, examples_nfp]), "response_run": response_run,
                  "rubric_hash": file_digest(REPO_ROOT / "src/judge_prompts.py")}
+    reuse = load_reuse_scores(args.reuse_scores, signature)
     if not args.dry_run:
         acquire_lock(out_path)
         meta = Path(str(out_path) + ".run.json")
@@ -140,9 +187,15 @@ def main() -> None:
             jobs.append((job_id, row, q, kind, prompt))
     print(f"[judge] {len(jobs)} prompts to score ({len(done)} done) via {backend} model={model or 'backend default'} -> {out_path}", flush=True)
 
+    def reuse_key(row, q):
+        return (q["id"], q["set"], digest(row["response"]))
+
+    reused_count = sum(reuse_key(row, q) in reuse for _, row, q, _, _ in jobs)
+    print(f"[judge] reusable={reused_count}; new calls={len(jobs) - reused_count}", flush=True)
     if args.dry_run:
-        tokens = sum(int(len(p) / CHARS_PER_TOKEN) for *_, p in jobs)
-        print(f"[dry-run] ~{tokens:,} input tokens over {len(jobs)} calls")
+        tokens = sum(int(len(p) / CHARS_PER_TOKEN) for _, row, q, _, p in jobs
+                     if reuse_key(row, q) not in reuse)
+        print(f"[dry-run] ~{tokens:,} input tokens over {len(jobs) - reused_count} calls")
         return
     if not jobs:
         return
@@ -152,6 +205,20 @@ def main() -> None:
                        temperature=temperature, max_tokens=int(judge_cfg.get("max_tokens", 400)))
     failures, consecutive = 0, 0
     for n, (job_id, row, q, kind, prompt) in enumerate(jobs, start=1):
+        cached = reuse.get(reuse_key(row, q))
+        if cached is not None:
+            donor, provenance = cached
+            if used_models and donor["judge_model"] not in used_models:
+                raise ValueError("Reused judge model differs from destination")
+            used_models.add(donor["judge_model"])
+            append_jsonl(out_path, {
+                **donor, "id": job_id, "response_id": row["id"],
+                "response_model_id": row.get("model_id"),
+                "response_run_hash": row.get("run_hash"),
+                "judge_run_hash": digest(signature), "score_reuse": provenance,
+            })
+            consecutive = 0
+            continue
         text, model_used = "", model
         parsed = False
         for attempt in range(4):
