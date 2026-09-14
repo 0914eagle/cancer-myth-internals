@@ -158,8 +158,8 @@ def generation_rows(manifest, partition, method, question_ids=None):
     rows = [q for q in manifest["questions"] if q["partition"] == partition]
     if question_ids is None:
         return rows
-    if partition != "dev" or method != "premise_cot":
-        raise ValueError("Question subset is only available for dev CoT diagnostics")
+    if partition != "dev" or method not in {"premise_cot", "steering"}:
+        raise ValueError("Question subset is only available for dev CoT/steering diagnostics")
     ids = load_json(question_ids)
     if (
         not isinstance(ids, list)
@@ -490,7 +490,7 @@ def main():
     p.add_argument("--batch-size", type=int, default=4)
     p.add_argument("--max-new-tokens", type=int, default=512)
     p.add_argument("--review-tokens", type=int, default=128)
-    p.add_argument("--question-ids", help="JSON ID list; dev premise_cot diagnostic subset only")
+    p.add_argument("--question-ids", help="JSON ID list; dev CoT/steering diagnostic subset only")
     p.add_argument(
         "--identity-reference",
         help="Require model/config/runtime identity from this .run.json; code hashes remain recorded",

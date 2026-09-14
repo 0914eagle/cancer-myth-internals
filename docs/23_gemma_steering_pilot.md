@@ -1055,3 +1055,13 @@ R10·R17도 외부 AI의 확정적 해석에 대안을 남겼다. 내 이전 R09
 추가 독립 평가나 새 성능 실험이 아니라 비맹검 후속 대조다. 외부의 5/13/0을 최종 라벨로
 바꾸지 않았고 PCR·oracle·원본 점수는 보존했다. 필요한 쟁점만 다시 대조하도록
 [외부 AI용 후속 요청](reviews/external_ai_attribution_18_v1/followup_2026-09-14/reply_for_external_ai.md)을 준비했다.
+
+## 17. 감사 기록 고정 후 빠른 다음 실험
+
+평가 프롬프트는 원본 Cancer-Myth로 고정하고 Terra 한 모델로 모든 행을 비교한다.
+[실행 명령·조건·비용](reviews/quick_next_experiment_2026-09-14.md): 기존 dev의 FPQ 30/NFP 15를
+seed 17로 추출하고 Plain, FP Identification, CoT 128의 답변을 재사용한다.
+CoT 1024와 무조건 L21 paired-C α=0.1 두 조건에서만 새 답변 90개를 생성한다.
+동일 질문·동일 완성 판정 프롬프트는 공유하여 최대 225회 채점하며 예전 Sol/Terra v2 점수는 섞지 않는다.
+중단·실패 슬롯 재호출과 preflight가 없고 report는 오프라인이다. 내부 gate × C는 이번 실행이 아니다.
+현재 로컬 테스트만 완료했으며 서버 SSH 키 인증이 되지 않아 실험은 아직 시작하지 않았다.

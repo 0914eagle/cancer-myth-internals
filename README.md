@@ -1,5 +1,9 @@
 # Cancer-Myth Internals
 
+**다음 실행 — 빠른 45문항 비교:** [원본 평가 프롬프트 + Terra, CoT 1024와 L21 C steering](docs/reviews/quick_next_experiment_2026-09-14.md).
+기존 3조건 답변을 재사용하고 2조건만 생성한다. 최대 225회 채점, 자동 재시도 없음, test 미사용.
+`scripts/quick_pilot.py all --pilot-dir "$PILOT_DIR" --out-dir "$QUICK_DIR"` (아래 문서의 환경 설정 후 실행).
+
 **바로 실행:** [23 §0 서버 명령](docs/23_gemma_steering_pilot.md#0-바로-실행하기--우선-baseline-세-행).
 
 **2026-09-14 CoT 성공 답변 감사:** 기존 +1 FPQ 40개의 [19/3/18 검토 초안·원문·SHA](docs/reviews/cot_positive40_2026-09-14/summary.md)와
