@@ -7,6 +7,11 @@
 19개만 정답이라는 뜻이 아니며 기존 PCR 34.2%는 유지한다. 다음 단계는 질문·참조 확인과
 동일 질문의 세 방법 비교다. 새 GPT 채점·GPU 생성·test 평가는 하지 않았다.
 
+**외부 AI 검토 파일:** [18문항 공유 순서와 회신 점검 절차](docs/reviews/external_ai_attribution_18_v1/README.md).
+[질문만 보는 1단계](docs/reviews/external_ai_attribution_18_v1/share/01_question_only.md)를 먼저 보내고,
+응답을 저장한 뒤 [참조를 대조하는 2단계](docs/reviews/external_ai_attribution_18_v1/share/02_reference_comparison.md)를 보낸다.
+사용자에게 임상 판정을 요구하지 않으며, AI 간 합의와 의학적 검증은 구분한다.
+
 **2026-09-14 gate 첫 결과:** L21 hidden gate × FP Identification은 PCR/NFP 11.1/100,
 text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 파일럿이며 activation steering이 아니다.
 [원 수치·해석·GPU/GPT 없이 oracle/구제/예산 곡선을 확인하는 명령](docs/reviews/gate_l21_first_results_2026-09-14.md).

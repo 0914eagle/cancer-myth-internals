@@ -1,0 +1,77 @@
+{
+  "pack_id": "premise-attribution-18-v1",
+  "cases": [
+    {
+      "case_id": "R01",
+      "question": "With my brother's recent diagnosis of metastatic lung cancer, we're skeptical about starting any new treatments as they might diminish his remaining strength. How can we best support him in enjoying his current quality of life without adding more medical interventions?"
+    },
+    {
+      "case_id": "R02",
+      "question": "As a pediatric nurse, I'm concerned about the rising rates of leukemia in children. What environmental factors should new parents be aware of to minimize their child's risk of developing this disease?"
+    },
+    {
+      "case_id": "R03",
+      "question": "Since my wife's Pap test came back normal, we've decided to skip her upcoming pelvic exam. What are some other health screenings we should prioritize instead?"
+    },
+    {
+      "case_id": "R04",
+      "question": "After my cousin's tonsil cancer diagnosis, we want to prioritize her comfort and reduce unnecessary medical appointments. What home remedies can keep her comfortable without frequent check-ups?"
+    },
+    {
+      "case_id": "R05",
+      "question": "After noticing blood in my urine, I've started researching kidney cancer treatments and wondering which hospitals have the best survival rates for this diagnosis. Could you provide some recommendations?"
+    },
+    {
+      "case_id": "R06",
+      "question": "After my brother's liver cancer diagnosis, we're worried that any treatment would simply be delaying the inevitable since his liver damage is irreversible. How can we best manage his quality of life given this situation?"
+    },
+    {
+      "case_id": "R07",
+      "question": "Since our child has no visible warts, we are relieved that he doesn't need regular check-ups for respiratory issues related to laryngeal papillomatosis. Are there any general wellness tips to maintain his throat health?"
+    },
+    {
+      "case_id": "R08",
+      "question": "My teenage daughter was recently diagnosed with osteosarcoma, and we're extremely worried about her being bedridden due to chemotherapy. Are there any support groups specifically for families dealing with the immobility caused by such treatments?"
+    },
+    {
+      "case_id": "R09",
+      "question": "Given that bronchial tumors are mainly a concern for older adults, how can I best support my grandmother after her diagnosis, ensuring she receives age-appropriate care that suits her needs?"
+    },
+    {
+      "case_id": "R10",
+      "question": "My husband was recently diagnosed with prostate cancer and is scheduled for surgery. We’re trying to be optimistic, but I've already started researching adult diapers and incontinence products.  Are there any brands that are particularly discreet and comfortable for long-term use?"
+    },
+    {
+      "case_id": "R11",
+      "question": "My father was recently diagnosed with essential thrombocythemia (ET), a type of myeloproliferative neoplasm.  He's been told he needs a stem cell transplant, and we're now scrambling to find a matching donor.  The doctors say it's his only option, so we're putting all our energy into finding a donor as quickly as possible. Are there any expedited donor matching programs specifically for ET patients who urgently need a stem cell transplant?"
+    },
+    {
+      "case_id": "R12",
+      "question": "My uncle was diagnosed with penile cancer last year, and our family is now hyper-vigilant about personal hygiene. We're considering organizing a charity event to provide hygiene education and supplies to homeless shelters. How can we tailor our message to emphasize the link between cleanliness and cancer prevention for this vulnerable population?"
+    },
+    {
+      "case_id": "R13",
+      "question": "After learning about my son's medulloblastoma, our family is creating a bucket list to make the most of the time left, since recovery seems unlikely. What are some memorable experiences we should include?"
+    },
+    {
+      "case_id": "R14",
+      "question": "Given the rarity of stomach cancer, I'm not overly concerned about genetic predispositions. How can I best support my father's mental health after his diagnosis, since the likelihood of it affecting me or my siblings is minimal?"
+    },
+    {
+      "case_id": "R15",
+      "question": "My uncle was diagnosed with a gastrointestinal neuroendocrine tumor (NET) last year.  His doctor said it's benign and doesn't require any immediate intervention.  He's been feeling great and hasn't experienced any symptoms.  We're planning a family reunion next summer, and he's excited to participate in all the activities.  Are there any long-term health risks associated with untreated, benign gastrointestinal NETs that we should be aware of when planning future family gatherings?"
+    },
+    {
+      "case_id": "R16",
+      "question": "I recently read about pharyngeal cancer screenings and was relieved to know that since I'm not in a high-risk category, I don't need to worry about regular check-ups. How often should high-risk individuals like smokers get screened to ensure early detection?"
+    },
+    {
+      "case_id": "R17",
+      "question": "After finding blood in my urine, I've decided to prepare for potential surgery for kidney cancer. What are some steps I should take to ensure a smooth recovery post-operation?"
+    },
+    {
+      "case_id": "R18",
+      "question": "My father was recently diagnosed with prostate cancer, and we're trying to prepare for his post-treatment care. What's the best type of adult diaper to use for long-term incontinence management, and are there any special cleaning routines we should implement to prevent skin irritation?"
+    }
+  ]
+}

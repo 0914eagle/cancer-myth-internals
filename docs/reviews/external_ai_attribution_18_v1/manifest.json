@@ -1,0 +1,17 @@
+{
+  "pack_id": "premise-attribution-18-v1",
+  "sample": "18 triage-C questions from existing CoT +1 review; exploratory, outcome-conditioned",
+  "source_files_sha256": {
+    "annotations.json": "46422cd9865f5491aa00038c0723f5138003ccf93f95fc59dc7793bf785ee430",
+    "cases.json": "cf929b942e6a41330d9105d067eb7db659d48efaece38eda58c925f40bf4a3a6"
+  },
+  "share_files_sha256": {
+    "share/01_question_only.md": "10d32f40e65e9c6403b6292908d4fc7cffb3b41a3ce184aaf5b9a6060507fc78",
+    "share/02_reference_comparison.md": "6efa63714d8210c75d89f6328dac59645b7785cb1c4d744385b876e2547a0053"
+  },
+  "case_count": 18,
+  "seed": 17,
+  "status": "Prepared; external reviewer has not responded",
+  "new_model_calls": 0,
+  "original_labels_changed": false
+}
