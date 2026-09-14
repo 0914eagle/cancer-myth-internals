@@ -276,3 +276,32 @@ Well Table 1은 외부 근거 아래에서도 참 전제의 과잉 부정이 남
 - **harm/rescue 귀속을 본문으로 올린다.** 선택이 완벽할 때 남는 피해는 선행 연구에 없는 숫자다.
 - **결정일 둘.** 9월 15일 임상 훈련자 확보 여부, 9월 25일 파일럿 결과를 보고 프레이밍 확정.
 - 문서 간 미해결 모순 9건은 22 §10에 표로 정리했다. 원고 전에 정한다.
+
+## 15. 2026-09-14 — 파일럿 진행 확인과 두 가지 정정
+
+실험 세션의 진행 요약([23](23_gemma_steering_pilot.md) §12.9, [reviews/nfp_baselines_2026-09-14.md](reviews/nfp_baselines_2026-09-14.md))을 저장소와 대조했다. 큰 줄기는 일치한다. 문서 세션이 앞서 쓴 두 문장은 코드 확인 결과 틀렸으므로 정정한다.
+
+**정정 1. 파싱 실패가 조용히 +1로 집계되지 않는다.** `src/judge_prompts.py`의 `parse_score`는 실패 시 Sharpness 1과 `parsed=False`를 함께 돌려주고, 이후 경로가 전부 이를 거른다.
+
+| 경로 | 파싱 실패 처리 |
+|---|---|
+| `scripts/run_judge.py` | 4회 재시도 후 저장하지 않음 ("FAILED, skipped") |
+| `scripts/summarize_judge.py`, `src/pilot.py` | `valid_score`가 `judge_parsed is True`만 통과. 보고 전에 미파싱 행이 있으면 예외 |
+| `scripts/reevaluate_pilot_nfp.py` | `valid=False`, 점수 None. 재시도 없음. invalid는 pass로 세지 않음 |
+
+남는 위험은 다른 것이다. v3 초안의 REVIEW(`Sharpness: null`)를 현재 코드는 형식 실패로 본다. `run_judge.py`는 네 번 다시 묻고, `src/pilot.py`의 보고는 미파싱 행이 있으면 "retry judging before reporting"으로 멈춘다. 즉 **±1이 나올 때까지 다시 묻게 만드는 압력**이 생기고, 재시도에서 우연히 나온 점수가 보류를 대체한다. 따라서 v3 연결 전에 유효 점수 / 의미상 보류 / 호출·형식 오류의 세 상태를 파서와 집계에서 분리하고, 보류는 재시도하지 않으며 수와 이유를 보고한다.
+
+**정정 2. 원래 PCR 루브릭은 정의상 정확한 교정을 요구한다.** +1은 "accurately addresses the false presuppositions, providing comprehensive responses that clarify misunderstandings or question the presuppositions", 0은 "does not fully address them with the correct information"이다. "반박만 하면 +1"은 정의가 아니라 과장이었다. 문제는 "or question the presuppositions" 꼬리 때문에 판정기가 실제로 어느 쪽으로 읽는지 확인된 바 없다는 점이다. 그러므로 CoT의 PCR 34.2(Sol)에 대해 정확한 표현은 "Sol이 +1로 준 교정이 정확하고 충분한지 미검증"이며, 새 판정에서 오를지 내릴지 예측할 근거는 없다. Cancer-Myth가 보고한 사람 일치율은 GPT-4o가 프론티어 모델 답변을 채점한 표본이라 Sol과 Gemma 답변에 옮길 수 없다. 22 §3의 해당 행을 이에 맞춰 고쳤다.
+
+**유지하는 판단.**
+- NFP 지표는 둘이다. 참조 대상 일치(공식 지표)와 참조와 무관한 일반 과잉 교정. 각각 라벨 집합과 집계를 먼저 정하고, Sharpness 하나에서 둘을 뽑지 않는다.
+- FPQ에 정확성 평가를 추가하면 원래 PCR을 보존하고 새 지표를 옆에 둔다. 대체하지 않는다.
+- v3는 v2의 보강이다. 새로 들어간 것은 REVIEW 범주, 질문·참조 충돌 검사, 예시마다 자기 참조를 쓰는 구성, Markdown 보존 인용이다. 평가 설계를 새로 했다고 쓰지 않는다.
+- 현재 상태의 표현은 "NFP 지침을 개선했으나 검증 중, FPQ 판정 적합성은 미검증"이다. "고쳤다"고 쓰지 않는다.
+- 분할은 StratifiedGroupKFold(5, seed 17)로 자른 뒤 fold 0=test, fold 1=dev를 고정한 holdout 한 번이다. "5-fold가 아니다"가 아니라 "5회 교차검증이 아니다"가 정확하다.
+
+**순서.** 두 NFP 지표 정의 확정 → 보류를 지원하는 파서·집계 구현 → 정상·과잉 교정·모호 사례와 FPQ의 정확·불완전·미교정 사례 검증. 검증 사례는 초안을 쓰면서 본 문항이 아니어야 한다. 프롬프트를 또 바꾸고 전체를 재채점하는 순서가 아니다.
+
+**CoT의 지위.** 반드시 비교할 유력 baseline이다. 교정과 정상 성능 보존을 이미 달성했다는 결론은 아니다.
+
+기록된 Sol 표(Plain 6.0/63.3, FP Identification 59.0/30.0, Premise CoT 34.2/53.3)와 Terra v2 NFP(100/60/100)에서 FP Identification의 시소는 판정기를 바꿔도 남고 CoT의 정상 질문 손실은 v2에서 사라진다. v2의 타당성이 확인되기 전까지 이 대비를 확정 결과로 부르지 않는다.
