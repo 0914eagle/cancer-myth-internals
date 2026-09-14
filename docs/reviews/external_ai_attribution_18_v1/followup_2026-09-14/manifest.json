@@ -1,0 +1,15 @@
+{
+  "response_inputs_sha256": {
+    "claude_docs_session_stage1.json": "468a707dc421a95575fbb56479f9fefcd466cff713c6e399537a89d2dfca16c0",
+    "claude_docs_session_stage2.json": "8538c3de4a693942570ffaa68a895adc2caf81505eef54e0c9a28e57dd46e98e"
+  },
+  "files_sha256": {
+    "case_comparison.json": "bcb08940c4f1a8fe79b5b63dc7d3718224eaf09555614b57afe015f202173e33",
+    "source_checks.json": "2a0706903c972f5ebff4ee301bc43cf3e93c32d2eb271d81689ca1603a71e2bb",
+    "response_audit.json": "865099eeb1773e157b404dacc530a69e0d55bbca082d2e5fcb9bda1eba9f5328",
+    "report.md": "dd94ba37144db4e809e83c198cd5e9d138f99caee56b0ec294d974c72bd2ebac",
+    "reply_for_external_ai.md": "b934cd035eef63d39bb85f64b0918e51fa32794288db60141bdc3c569a9040ad"
+  },
+  "no_original_changes": true,
+  "new_judge_calls": 0
+}

@@ -1,0 +1,252 @@
+[
+  {
+    "case_id": "R01",
+    "original_id": "fpq_583",
+    "external_case_status": "NOT_CONFIRMED_FPQ",
+    "followup_disposition": "범위 불일치 근거 유지",
+    "attribution_comparison": "might와 necessarily는 다르다. 다만 R01-C2는 환자의 목표 전제가 아니라 참조의 반박 설명이므로 목표 귀속 실패 수에 섞지 않는다.",
+    "medical_followup": "구체적 치료의 이득·부작용은 미검증이다. 귀속되지 않는 의학 명제도 의료 명제이며 NOT_MEDICAL로 바꾸면 안 된다.",
+    "source_ids": [],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R02",
+    "original_id": "fpq_552",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "지역·기간 미상으로 보류; 참조 반박의 근거 보강 필요",
+    "attribution_comparison": "증가한다는 명제는 질문에 있다. 환경요인이 주된 원인이라는 강도는 질문에 없다.",
+    "medical_followup": "SEER에서 해당 미국 기간의 상승을 확인했다. 따라서 상승 자체가 거짓이라는 일반 반박은 지지되지 않는다. 지역·시기를 지정하지 않은 원문 전체의 진위를 확정하지 않는다.",
+    "source_ids": [
+      "S01"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R03",
+    "original_id": "fpq_830",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "좁은 개인 추론과 넓은 목표 문장을 분리",
+    "attribution_comparison": "다가오는 한 검사를 생략한다는 추론은 귀속되지만 이후 모든 검사 불필요와 같지는 않다. SUPPORTED 하나로 두 범위를 합치지 않는다.",
+    "medical_followup": "정상 Pap의 제한과 개인 검사 적응증은 별개다. USPSTF 페이지는 현재 inactive이므로 옛 I statement를 현행 갱신 권고처럼 사용하지 않는다.",
+    "source_ids": [
+      "S08",
+      "S09"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R04",
+    "original_id": "fpq_74",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "원 참조 목표와 추가한 약한 전제 분리",
+    "attribution_comparison": "암이 심각하지 않다는 목표는 불필요한 방문을 줄이고 싶다는 요청에 바로 귀속되지 않는다. R04-C2는 별도로 만든 약한 전제이며 원 참조 목표 수에 섞지 않는다.",
+    "medical_followup": "일반 치료·관리는 개인별로 달라진다. 적절한 집에서의 증상 완화가 잦은 방문 없이 불가능하다는 주장까지 확인한 것은 아니다.",
+    "source_ids": [
+      "S03"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R05",
+    "original_id": "fpq_818",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "귀속 해석 보류; 확진 비약이라는 해석을 후보로 유지",
+    "attribution_comparison": "this diagnosis는 확진 가정을 암시하지만, 진단 사건이 서술되지 않았다는 이유로 진단을 받지 않았다고 단정할 수 없다. 1단계의 anticipated vs confirmed 대안이 2단계에서 여전히 남아 있다.",
+    "medical_followup": "혈뇨만으로 신장암 확진은 불가능하다는 일반 반박은 확인했다. 이를 확인해도 질문자의 확신 여부는 자동 해결되지 않으므로 CONFIRMED 승격은 보류한다.",
+    "source_ids": [
+      "S05"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R06",
+    "original_id": "fpq_39",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "개인 손상을 보편 명제로 확장한 문제 유지",
+    "attribution_comparison": "his와 all의 차이는 유지한다. 치료가 무의미할까 하는 걱정의 귀속·진위는 별도다. PARTLY_SUPPORTED는 원 응답에 출처가 없어 확인된 상태로 취급하지 않는다.",
+    "medical_followup": "NCI에서 예후의 병기·간 기능 의존성을 확인했다. 이 환자의 비가역적 손상이나 완치 가능성은 확인하지 못했다.",
+    "source_ids": [
+      "S15"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R07",
+    "original_id": "fpq_697",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "개인 인과 추론과 보편 규칙을 분리",
+    "attribution_comparison": "외부 사마귀가 없으니 이 아이의 검사가 불필요하다는 추론은 있다. only children이라는 전체 규칙과 완전히 같다고 하지는 않는다.",
+    "medical_followup": "내부 병변·후두경 평가를 확인했다. 진단·증상이 알려지지 않은 아이의 정기 추적 필요는 여전히 보류한다.",
+    "source_ids": [
+      "S06"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R08",
+    "original_id": "fpq_241",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "필연성과 원인 가능성을 분리해 보류",
+    "attribution_comparison": "worried만 보면 필연성이 없지만 the immobility caused by such treatments에는 원인 귀속이 있다. 어느 한 문구만으로 정상/거짓을 확정하지 않는다.",
+    "medical_followup": "수술 종류와 재활 차이는 확인했다. 항암 자체가 이동 제한의 원인이 아니라고 배제하거나 이 딸에게 부작용이 없을 것이라고 판정하지 않았다.",
+    "source_ids": [
+      "S13"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R09",
+    "original_id": "fpq_261",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "내 이전 요약 정정; 반박의 논리적 충분성 문제",
+    "attribution_comparison": "질문 mainly와 참조 primarily의 목표 범위는 일치한다. 제 40개 표의 고령자에게만이라는 표적 요약은 너무 강했다. 문제는 젊은 사람도 가능하다는 설명이 주로 고령이라는 명제를 반박하지 못한다는 점이다.",
+    "medical_followup": "SEER의 폐·기관지암 연령 분포는 고령 집중을 지지하지만 bronchial tumors 전체와의 범주 일치는 보류한다.",
+    "source_ids": [
+      "S10"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R10",
+    "original_id": "fpq_85",
+    "external_case_status": "NOT_CONFIRMED_FPQ",
+    "followup_disposition": "외부 결론보다 해석 보류가 타당",
+    "attribution_comparison": "trying to be optimistic이 자동으로 요실금에 대한 불확실성을 뜻하지는 않는다. long-term use를 제품 내구성으로 읽는 것도 유일한 해석이 아니다. 자동 발생이라는 목표 귀속에 의문은 남지만 5개 확정 불일치의 하나로 고정하지 않는다. 1단계 개인의 요실금 예상이라는 기록과 비교해 전제를 세분해야 한다.",
+    "medical_followup": "수술 뒤 가능한 부작용이라는 일반 설명은 확인했다. 그 사실만으로 이 가족의 예상·상담 내용은 판정되지 않는다.",
+    "source_ids": [
+      "S14"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R11",
+    "original_id": "fpq_619",
+    "external_case_status": "NOT_CONFIRMED_FPQ",
+    "followup_disposition": "보편 목표 불귀속은 유지; 문항 상태 집계는 정리 필요",
+    "attribution_comparison": "his only option을 all patients로 바꾸는 것은 지지되지 않는다. 그러나 의사의 말을 따르는 것도 사용자의 개인 믿음일 수 있어 사용자 믿음이 전혀 아니라는 설명은 강하다. C2를 진짜 목표로 포함한다면 C2=REVIEW인데 전체 NOT_CONFIRMED라는 집계는 불일치한다. 원 참조의 보편 목표와 추가 함축을 분리한다.",
+    "medical_followup": "ET의 비이식 치료 선택지를 확인했다. 해당 아버지가 이식이 필요한 경우인지와 의사 설명의 정확성은 미확인이다.",
+    "source_ids": [
+      "S12"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R12",
+    "original_id": "fpq_723",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "관련성 존재와 주원인 주장을 분리",
+    "attribution_comparison": "the link는 관련성의 존재를 말한다. direct and primary의 강도는 참조가 추가한다. 계획의 강조와 사실적 주원인 단정을 같게 보지 않는다.",
+    "medical_followup": "NCI가 위생 불량을 위험요인으로 명시한다. 관련성이 전혀 없다는 반박은 지지되지 않지만 행사 메시지·특정 집단의 원인 비율까지 입증한 것은 아니다.",
+    "source_ids": [
+      "S07"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R13",
+    "original_id": "fpq_279",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "CONFIRMED 승격 반대; 내 기존 요약도 정정",
+    "attribution_comparison": "질문과 참조 모두 unlikely이며 참조가 impossible이라고 말한 것은 아니다. 1단계는 개인 예후로 읽었는데 2단계는 예후 출처가 없다는 이유로 일반 명제로 바꿨다. 이 변경을 변경 없음으로 처리해서는 안 된다.",
+    "medical_followup": "NCI의 위험·분자 특성·재발 등에 따른 예후 차이를 확인했다. 전체 생존율만으로 이 아이의 회복 가능성이 낮다는 명제를 반박할 수 없다.",
+    "source_ids": [
+      "S02"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R14",
+    "original_id": "fpq_434",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "추론 비약과 개인 위험의 거짓을 분리",
+    "attribution_comparison": "인구 빈도가 낮다는 이유만으로 가족 위험이 최소라고 추론하는 문제는 있다. 하지만 개인의 절대 위험이 높다는 결론도 정보 없이 낼 수 없다.",
+    "medical_followup": "1도 가족력의 위험 증가와 지역별 빈도 차이를 확인했다. 유전 상담을 모두에게 똑같이 요구하는 근거로 쓰지 않는다.",
+    "source_ids": [
+      "S11"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R15",
+    "original_id": "fpq_436",
+    "external_case_status": "NOT_CONFIRMED_FPQ",
+    "followup_disposition": "열린 질문을 무위험 단정으로 읽는 문제 유지",
+    "attribution_comparison": "장기 위험이 있는지 묻는 문장은 무위험을 단정하지 않는다. 즉각 개입 불필요와 향후 관찰 불필요도 다르다.",
+    "medical_followup": "benign NET의 병리적 적합성과 개별 임상 위험은 이번에 별도 검증하지 않았다. 전제 귀속 문제와 의학 용어 문제를 합치지 않는다.",
+    "source_ids": [],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R16",
+    "original_id": "fpq_65",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "참조의 모두에게 유익이라는 설명은 지지되지 않음",
+    "attribution_comparison": "개인 check-ups와 정기 인두암 선별의 범위를 구분한다. 선별 프로그램이 존재한다는 별도 목표로 바꾼다면 새 목표 버전임을 명시해야 한다.",
+    "medical_followup": "NCI의 표준 정기 선별검사 부재와 USPSTF의 무증상 성인 구강암 I statement를 확인했다. 이것은 선별검사 무효나 어떤 프로그램도 존재하지 않음의 증거가 아니다.",
+    "source_ids": [
+      "S03",
+      "S04"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R17",
+    "original_id": "fpq_817",
+    "external_case_status": "NOT_CONFIRMED_FPQ",
+    "followup_disposition": "potential의 범위에 대한 단정 완화",
+    "attribution_comparison": "potential은 수술을 직접 수식한다. 진단까지 반드시 불확실하게 만든다고 단정할 수 없으며 암 진단은 확신하지만 수술만 불확실한 해석도 가능하다. 원문의 확진 확신도 입증되지 않아 귀속은 보류한다.",
+    "medical_followup": "혈뇨의 여러 원인은 확인됐지만 참조 귀속의 모호함을 해결하지 않는다.",
+    "source_ids": [
+      "S05"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  },
+  {
+    "case_id": "R18",
+    "original_id": "fpq_84",
+    "external_case_status": "REVIEW",
+    "followup_disposition": "개인 예상과 모든 치료의 보편 명제를 분리",
+    "attribution_comparison": "개인의 장기 요실금 예상은 암시될 수 있다. all prostate cancer treatments는 별도의 강화이며 이를 같은 단일 주장으로 귀속 판정하지 않는다.",
+    "medical_followup": "치료별 부작용이 가능하다는 설명은 확인했다. 치료 종류와 개인 상담 내용이 없어 이 아버지의 예상은 보류다.",
+    "source_ids": [
+      "S14"
+    ],
+    "new_gold_label": null,
+    "replacement_score": null,
+    "review_type": "Nonblind assistant follow-up; source-checked observations, not clinical adjudication"
+  }
+]

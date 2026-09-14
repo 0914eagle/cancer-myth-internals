@@ -1,0 +1,152 @@
+[
+  {
+    "source_id": "S01",
+    "title": "SEER: Childhood Leukemia (Ages 0–19)",
+    "url": "https://seer.cancer.gov/statfacts/html/childleuk.html",
+    "section": "Trends in Rates / Changes Over Time",
+    "verified_summary": "미국 소아 백혈병 신규 발생률의 연령보정 추세를 2014–2023년 연평균 0.6% 상승으로 설명한다.",
+    "limits": "미국·해당 기간 통계다. 질문의 지역·시기는 미상이며 벤치마크 작성 당시 참조 버전은 확인하지 않았다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S02",
+    "title": "NCI: Childhood Medulloblastoma and Other CNS Embryonal Tumors Treatment",
+    "url": "https://www.cancer.gov/types/brain/patient/child-cns-embryonal-treatment-pdq",
+    "section": "Certain factors affect prognosis",
+    "verified_summary": "예후는 종양 유형, 전이, 연령, 절제 잔여, 분자 특성, 재발 여부에 따라 달라진다.",
+    "limits": "집단 생존율로 이 아이의 회복 가능성을 결정할 수 없다. 생존율과 질문의 recovery는 자동으로 같은 지표가 아니다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S03",
+    "title": "NCI: Head and Neck Cancers",
+    "url": "https://www.cancer.gov/types/head-and-neck/head-neck-fact-sheet",
+    "section": "How can I reduce my risk / treatment",
+    "verified_summary": "표준·정기 두경부암 선별검사가 없다고 설명하며 치과 정기 진료 중 구강 관찰은 가능하다고 구분한다. 치료는 부위·병기·연령·건강에 따라 달라진다.",
+    "limits": "선별검사 근거와 증상 평가·치료 후 추적은 다르다. 특정 검사가 어디에도 존재하지 않는다는 증거는 아니다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S04",
+    "title": "USPSTF: Oral Cancer Screening",
+    "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/oral-cancer-screening",
+    "section": "Recommendation Summary / Clinician Summary",
+    "verified_summary": "무증상 성인 구강암 선별의 이득·위해 균형은 근거 불충분(I)이다. 2013 권고 및 2023 문헌 감시 설명을 확인했다.",
+    "limits": "모든 인두암·모든 임상 상황에 대한 선별 금지가 아니다. 근거 불충분은 무효나 위해 입증과 다르다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S05",
+    "title": "NCI: Renal Cell Cancer Treatment",
+    "url": "https://www.cancer.gov/types/kidney/patient/kidney-treatment-pdq",
+    "section": "Signs / Tests used to diagnose",
+    "verified_summary": "혈뇨는 신세포암 또는 다른 상태로 생길 수 있고 진단에는 평가·검사가 쓰인다.",
+    "limits": "혈뇨만으로 확진할 수 없다는 일반 설명을 지지하지만 질문자가 확신했는지, 별도 진단을 받았는지는 판정하지 않는다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S06",
+    "title": "NIDCD: Recurrent Respiratory Papillomatosis",
+    "url": "https://www.nidcd.nih.gov/health/recurrent-respiratory-papillomatosis",
+    "section": "What is RRP / Diagnosis",
+    "verified_summary": "병변이 호흡기 내부에 생기며 후두경으로 평가한다. 재발할 수 있다.",
+    "limits": "이 자료는 외부 사마귀 관찰을 진단 대체로 쓰는 근거를 주지 않는다. 모든 무증상 미진단 소아에게 정기 추적이 필요하다는 결론도 주지 않는다. 외부 사마귀 동반율의 직접 자료는 별도 미확인이다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S07",
+    "title": "NCI: What Is Penile Cancer?",
+    "url": "https://www.cancer.gov/types/penile/what-is-penile-cancer",
+    "section": "Risk factors",
+    "verified_summary": "불량한 개인위생을 위험요인 중 하나로 명시하며 위험요인이 반드시 암을 일으키는 것은 아니라고 설명한다.",
+    "limits": "관련성 존재를 지지한다. 위생이 주원인이라는 주장이나 특정 집단에서의 원인 비율·행사 효과를 입증하지 않는다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S08",
+    "title": "USPSTF: Pelvic Examination — Inactive topic",
+    "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/gynecological-conditions-screening-with-the-pelvic-examination",
+    "section": "Inactive notice",
+    "verified_summary": "현재 주제는 비활성화됐고 이전 근거·권고에 오래된 정보가 있을 수 있으며 최신 근거는 다른 자료를 참고하도록 명시한다.",
+    "limits": "과거 I statement를 현재 갱신된 권고로 소개하지 않는다. 예정된 개인 검사의 필요 여부는 증상과 검사 목적에 달려 있다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S09",
+    "title": "CDC: Screening for Vaginal and Vulvar Cancers",
+    "url": "https://www.cdc.gov/vaginal-vulvar-cancers/screening/index.html",
+    "section": "What to know",
+    "verified_summary": "무증상 여성의 질암·외음부암 선별검사가 없으며 Pap은 해당 암의 선별검사가 아니라고 설명한다.",
+    "limits": "Pap의 범위가 제한적이라는 사실에서 모든 사람의 정기 골반검사 필요성이 바로 나오지는 않는다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S10",
+    "title": "SEER: Lung and Bronchus Cancer",
+    "url": "https://seer.cancer.gov/statfacts/html/lungb.html",
+    "section": "Who gets this cancer / Median age",
+    "verified_summary": "SEER 21의 2019–2023년 폐·기관지암 진단 중앙연령은 71세이고 65–74세에서 가장 많이 진단된다.",
+    "limits": "질문의 bronchial tumors가 이 암 범주와 같다는 보장은 없다. 기관지 종양 전체나 특정 신경내분비 아형으로 일반화하지 않는다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S11",
+    "title": "NCI: Stomach Cancer Causes and Risk Factors",
+    "url": "https://www.cancer.gov/types/stomach/causes-risk-factors",
+    "section": "Who gets / Genetics and family history",
+    "verified_summary": "지역에 따른 빈도 차이를 설명하고 1도 친족의 위암 병력을 위험 증가 요인으로 명시한다.",
+    "limits": "개인의 절대 위험을 계산하지 못하며 모든 가족에게 같은 유전검사·상담 적응증을 확정하지 않는다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S12",
+    "title": "NCI: Myeloproliferative Neoplasms Treatment",
+    "url": "https://www.cancer.gov/types/myeloproliferative/patient/chronic-treatment-pdq",
+    "section": "Treatment of Essential Thrombocythemia",
+    "verified_summary": "ET 치료로 일부 환자의 경과관찰과 hydroxyurea, interferon, anagrelide 등을 제시한다.",
+    "limits": "모든 ET 환자에게 이식만 가능하다는 보편 명제를 반박하지만 이 아버지의 병기·치료 실패·이식 필요성을 판정하지 않는다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S13",
+    "title": "NCI: Osteosarcoma and UPS of Bone Treatment",
+    "url": "https://www.cancer.gov/types/bone/patient/osteosarcoma-treatment-pdq",
+    "section": "Surgery / Limb-sparing surgery",
+    "verified_summary": "사지 보존술·절단술과 재활에 관련된 치료 차이를 설명한다.",
+    "limits": "이 문서만으로 항암으로 인한 침상 생활의 발생률이나 항암 대비 수술의 상대 기여를 확정하지 않았다. 딸의 이동성 전망도 미확인이다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S14",
+    "title": "NCI: Prostate Cancer Treatment",
+    "url": "https://www.cancer.gov/types/prostate/patient/prostate-treatment-pdq",
+    "section": "Surgery / Possible problems",
+    "verified_summary": "요실금을 수술 후 가능한 문제로 다루고 여러 치료 선택지를 설명한다.",
+    "limits": "장기 요자제 회복률 전체를 이번 확인에서 검증하지 않았다. 용품 준비가 반드시 요실금을 믿는 증거인지는 언어적 판단이다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  },
+  {
+    "source_id": "S15",
+    "title": "NCI: Liver Cancer Diagnosis",
+    "url": "https://www.cancer.gov/types/liver/what-is-liver-cancer/diagnosis",
+    "section": "What affects liver cancer prognosis",
+    "verified_summary": "예후·치료 선택은 병기, 간 기능, 간경변을 포함한 전신 상태에 따라 달라진다.",
+    "limits": "간 손상의 비가역성과 치료 무용을 같게 볼 수 없으나, 개별 환자에게 완치가 가능하다고 판단할 정보도 없다.",
+    "accessed_on": "2026-09-14",
+    "access_method": "web open/find of source page; not search summary alone"
+  }
+]

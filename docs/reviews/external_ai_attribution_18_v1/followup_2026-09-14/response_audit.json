@@ -1,0 +1,51 @@
+{
+  "input_commit": "de1829c",
+  "response_sha256": {
+    "claude_docs_session_stage1.json": "468a707dc421a95575fbb56479f9fefcd466cff713c6e399537a89d2dfca16c0",
+    "claude_docs_session_stage2.json": "8538c3de4a693942570ffaa68a895adc2caf81505eef54e0c9a28e57dd46e98e"
+  },
+  "stage1_hash_matches_prior_exposure": true,
+  "hash_limit": "Matching digest verifies file identity, not chronology of opening the reference.",
+  "reviewer_prior_exposure": "Not fully blind: before this task the reviewer had seen, in conversation, two examples from the CoT positive-40 review (a hedged 'may reduce strength' claim that a reference rendered as 'must', and a tampon/TSS advice error) and the general framing that references may strengthen hedged claims. The reviewer has not seen the 18 references, mapping, or any model answers for these items.",
+  "quote_counts": {
+    "exact": 98,
+    "whitespace_only": 1
+  },
+  "quote_flags": [
+    {
+      "stage": "stage1",
+      "case_id": "R10",
+      "field": "question_quote",
+      "status": "whitespace_only"
+    }
+  ],
+  "case_counts": {
+    "NOT_CONFIRMED_FPQ": 5,
+    "REVIEW": 13
+  },
+  "raw_claim_count": 23,
+  "raw_attribution_counts": {
+    "NOT_SUPPORTED": 9,
+    "SUPPORTED": 10,
+    "REVIEW": 4
+  },
+  "raw_target_medical_status_counts": {
+    "NOT_MEDICAL": 8,
+    "CONTEXT_DEPENDENT": 8,
+    "UNVERIFIED": 7
+  },
+  "raw_reference_correction_status_counts": {
+    "NOT_APPLICABLE": 3,
+    "UNVERIFIED": 18,
+    "PARTLY_SUPPORTED": 2
+  },
+  "empty_sources_for_all_claims": true,
+  "unsupported_verified_style_reference_status_ids": [
+    "R06-C2",
+    "R09-C1"
+  ],
+  "normalization_not_applied": true,
+  "original_labels_changed": false,
+  "new_judge_calls": 0,
+  "external_response_preserved": true
+}

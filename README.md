@@ -12,6 +12,10 @@
 응답을 저장한 뒤 [참조를 대조하는 2단계](docs/reviews/external_ai_attribution_18_v1/share/02_reference_comparison.md)를 보낸다.
 사용자에게 임상 판정을 요구하지 않으며, AI 간 합의와 의학적 검증은 구분한다.
 
+**외부 AI 회신 대조 완료:** [18개 대조·15개 1차 자료·내 기존 메모 정정](docs/reviews/external_ai_attribution_18_v1/followup_2026-09-14/report.md).
+stage1 SHA는 일치하며 원 응답은 보존했다. 외부의 5/13/0을 확정 라벨로 채택하지 않고,
+귀속·의학 근거·자료의 적용 범위를 분리했다. 새 PCR·oracle은 계산하지 않았다.
+
 **2026-09-14 gate 첫 결과:** L21 hidden gate × FP Identification은 PCR/NFP 11.1/100,
 text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 파일럿이며 activation steering이 아니다.
 [원 수치·해석·GPU/GPT 없이 oracle/구제/예산 곡선을 확인하는 명령](docs/reviews/gate_l21_first_results_2026-09-14.md).
