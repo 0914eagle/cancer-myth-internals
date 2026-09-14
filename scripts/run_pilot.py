@@ -154,11 +154,14 @@ def fit(args):
         )
 
 
-def generation_rows(manifest, partition, method, question_ids=None):
+def generation_rows(manifest, partition, method, question_ids=None, baseline_refresh=False):
     rows = [q for q in manifest["questions"] if q["partition"] == partition]
     if question_ids is None:
         return rows
-    if partition != "dev" or method not in {"premise_cot", "steering"}:
+    allowed = {"premise_cot", "steering"}
+    if baseline_refresh:
+        allowed.update({"plain", "fp_identification"})
+    if partition != "dev" or method not in allowed:
         raise ValueError("Question subset is only available for dev CoT/steering diagnostics")
     ids = load_json(question_ids)
     if (
@@ -176,6 +179,19 @@ def comparison_identity(identity):
     # Shared-module fit/alignment fixes can change this hash; the budget-check
     # caller uses a 128-token replay control before comparing across code hashes.
     return {k: v for k, v in identity.items() if k != "implementation_hash"}
+
+
+def check_fit_compatibility(fit_path, identity, manifest_hash, *, reuse_sha=None, partition="dev"):
+    """Explicitly reuse immutable learned values, without rewriting their training identity."""
+    fit_spec = load_json(fit_path)
+    if reuse_sha is not None:
+        if partition != "dev" or file_digest(fit_path) != reuse_sha:
+            raise ValueError("Fit reuse requires dev and the exact frozen fit SHA-256")
+    same_identity = fit_spec["identity"] == identity
+    compatible_artifact = reuse_sha is not None and comparison_identity(fit_spec["identity"]) == comparison_identity(identity)
+    if fit_spec["manifest_hash"] != manifest_hash or not (same_identity or compatible_artifact):
+        raise ValueError("Direction model/split differs from current run")
+    return fit_spec
 
 
 def generate(args):
@@ -210,8 +226,12 @@ def generate(args):
             raise ValueError("Test generation budgets differ from dev")
     if args.max_new_tokens < 1 or args.review_tokens < 1 or args.batch_size < 1:
         raise ValueError("Token budgets and batch size must be positive")
+    refresh = getattr(args, "baseline_refresh", False)
+    if refresh and (args.partition != "dev" or not getattr(args, "identity_reference", None)
+                    or not getattr(args, "question_ids", None)):
+        raise ValueError("Baseline refresh requires a dev subset and identity reference")
     rows = generation_rows(
-        manifest, args.partition, args.method, getattr(args, "question_ids", None)
+        manifest, args.partition, args.method, getattr(args, "question_ids", None), refresh
     )
     run = {
         "version": VERSION,
@@ -251,12 +271,14 @@ def generate(args):
             ):
                 raise ValueError("Dev steering requires --layer and nonnegative finite --alpha")
             fit_dir = Path(args.fit_dir)
-            fit_spec = load_json(fit_dir / "fit.json")
-            if (
-                fit_spec["manifest_hash"] != manifest["manifest_hash"]
-                or fit_spec["identity"] != run["identity"]
-            ):
-                raise ValueError("Direction model/split differs from current run")
+            reuse_sha = getattr(args, "reuse_fit_sha256", None)
+            fit_spec = check_fit_compatibility(
+                fit_dir / "fit.json", run["identity"], manifest["manifest_hash"],
+                reuse_sha=reuse_sha, partition=args.partition,
+            )
+            if reuse_sha is not None:
+                run.update(fit_spec_hash=reuse_sha, fit_source_identity=fit_spec["identity"],
+                           fit_reuse_policy="immutable learned artifact; model/runtime/split must match")
             key = f"L{args.layer}_c_pair{fit_spec['prefix_tokens']}"
             with np.load(fit_dir / "directions.npz") as arrays:
                 direction = torch.tensor(arrays[key], dtype=torch.float32)
@@ -484,6 +506,8 @@ def main():
     p.add_argument("--partition", choices=["dev", "test"], default="dev")
     p.add_argument("--method", choices=METHODS, required=True)
     p.add_argument("--fit-dir")
+    p.add_argument("--reuse-fit-sha256", help="Dev only: reuse this exact fit artifact across code hashes; model/runtime/split must match")
+    p.add_argument("--baseline-refresh", action="store_true", help="Regenerate baseline on a dev subset with an identity reference")
     p.add_argument("--layer", type=int)
     p.add_argument("--alpha", type=float, help="Fraction of the fit-only residual norm")
     p.add_argument("--selection", help="Required for test; overrides steering layer/alpha")

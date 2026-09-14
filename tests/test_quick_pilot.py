@@ -44,7 +44,8 @@ def fake_generate(monkeypatch, calls):
         spec={'method':method,'partition':'dev','manifest_hash':plan['manifest_hash'],'identity':plan['identity'],
               'review_tokens':int(arg('--review-tokens')),'max_new_tokens':512,'batch_size':1,
               'question_ids':[q['id'] for q in plan['questions']]}
-        if method=='steering':spec.update(layer=21,alpha=.1,direction_hash=file_digest(Path(plan['pilot'])/'fit/directions.npz'))
+        if method=='steering':spec.update(layer=21,alpha=.1,direction_hash=file_digest(Path(plan['pilot'])/'fit/directions.npz'),
+                                         fit_spec_hash=arg('--reuse-fit-sha256'),fit_source_identity=plan['fit_identity'])
         Path(str(path)+'.run.json').write_text(json.dumps(spec))
         write_jsonl(path,[{'id':q['id'],'question':q['question'],'set':q['set'],'run_hash':digest(spec),
                           'response':'Plain response' if method=='steering' else 'Long review answer'} for q in plan['questions']])
@@ -110,3 +111,104 @@ def test_dev_steering_subset_does_not_unlock_test(tmp_path):
     with pytest.raises(ValueError,match='only available'):generation_rows(manifest,'test','steering',path)
     path.write_text('["b"]')
     with pytest.raises(ValueError,match='unique nonempty'):generation_rows(manifest,'dev','steering',path)
+
+
+def test_code_change_refreshes_all_baselines_without_rewriting_sources(sample, monkeypatch):
+    pilot, original_out, _ = sample
+    for tag in mod.BASE:
+        path = pilot / 'dev' / f'{tag}.jsonl'
+        meta = Path(str(path) + '.run.json')
+        run = load_json(meta)
+        run['identity']['implementation_hash'] = 'old-generation-code'
+        rows = list(mod.read_jsonl(path))
+        for row in rows:
+            row['run_hash'] = digest(run)
+        meta.write_text(json.dumps(run))
+        write_jsonl(path, rows)
+    # Fit may have been created after a different alignment-code fix.
+    fp = pilot / 'fit/fit.json'
+    fit = load_json(fp); fit['identity']['implementation_hash'] = 'old-fit-code'
+    fp.write_text(json.dumps(fit))
+    out = original_out.parent / 'refresh'
+    plan = mod.prepare(pilot, out, original_out.parent / 'config.yaml')
+    before = {p: p.read_bytes() for p in (pilot/'dev').iterdir()}
+    before[fp] = fp.read_bytes()
+    assert plan['refresh_baselines'] and plan['generation_budget'] == 225
+    assert plan['identity'] != plan['baseline_identity']
+    calls = []; fake_generate(monkeypatch, calls)
+    mod.generate(out); mod.generate(out)
+    assert len(calls) == 5
+    assert all('--baseline-refresh' in c for c in calls[:3])
+    spec = mod.plan_score(out)
+    assert spec['budget'] <= 225
+    # Refreshed Plain differs from old Plain and is used for actual judging.
+    qid = plan['questions'][0]['id']
+    job = spec['cases'][spec['mapping']['plain'][qid]]
+    assert job['answer_hash'] == digest('Long review answer')
+    assert load_json(out/'baseline_refresh_audit.json')['plain']['answer_changed_ids']
+    assert all(p.read_bytes() == content for p, content in before.items())
+    path = out/'plain.jsonl.run.json'
+    run = load_json(path); run['identity']['implementation_hash'] = 'unexpected-code'
+    path.write_text(json.dumps(run))
+    with pytest.raises(ValueError, match='differs from frozen'):
+        mod.plan_score(out)
+
+
+def test_fit_reuse_requires_exact_artifact_and_unchanged_model_runtime_split(sample):
+    from scripts.run_pilot import check_fit_compatibility
+    pilot, _, manifest = sample
+    path = pilot/'fit/fit.json'; fit = load_json(path)
+    current = {**fit['identity'], 'implementation_hash': 'new-code'}
+    sha = file_digest(path)
+    with pytest.raises(ValueError, match='model/split'):
+        check_fit_compatibility(path, current, manifest['manifest_hash'])
+    assert check_fit_compatibility(path, current, manifest['manifest_hash'], reuse_sha=sha) == fit
+    for changed in ({**current, 'source_model': 'different-model'}, {**current, 'torch_version': 'different-runtime'}):
+        with pytest.raises(ValueError, match='model/split'):
+            check_fit_compatibility(path, changed, manifest['manifest_hash'], reuse_sha=sha)
+    with pytest.raises(ValueError, match='model/split'):
+        check_fit_compatibility(path, current, 'different-split', reuse_sha=sha)
+    for opts in ({'reuse_sha': 'wrong-hash'}, {'reuse_sha': sha, 'partition': 'test'}):
+        with pytest.raises(ValueError, match='exact frozen fit'):
+            check_fit_compatibility(path, current, manifest['manifest_hash'], **opts)
+
+
+def test_refresh_subset_remains_dev_only(tmp_path):
+    path = tmp_path/'ids.json'; path.write_text('["a"]')
+    manifest = {'questions': [{'id': 'a', 'partition': 'dev'}, {'id': 'b', 'partition': 'test'}]}
+    for method in mod.BASE:
+        assert generation_rows(manifest, 'dev', method, path, True) == [manifest['questions'][0]]
+        with pytest.raises(ValueError, match='only available'):
+            generation_rows(manifest, 'test', method, path, True)
+
+
+@pytest.mark.parametrize('method', [*mod.BASE, 'steering'])
+def test_real_runner_refresh_and_fit_provenance(sample, monkeypatch, method):
+    from types import SimpleNamespace
+    from scripts import run_pilot as runner
+    from src import pilot_model
+    pilot, out, _ = sample
+    plan = mod.get_plan(out)
+    current = {**plan['identity'], 'implementation_hash': 'changed-code'}
+    monkeypatch.setattr(runner, 'load_config', mod.load_config)
+    monkeypatch.setattr(pilot_model, 'load_model', lambda _: (None, None))
+    monkeypatch.setattr(pilot_model, 'model_identity', lambda *a: current)
+    calls = []
+    def fake_batch(model, tokenizer, questions, **kwargs):
+        calls.extend(q['id'] for q in questions)
+        assert kwargs['method'] == method
+        return ['new answer' for _ in questions], [{} for _ in questions]
+    monkeypatch.setattr(pilot_model, 'generate_batch', fake_batch)
+    args = SimpleNamespace(config=plan['config_path'], manifest=pilot/'split/manifest.json',
+                           partition='dev', method=method, max_new_tokens=512, review_tokens=128,
+                           batch_size=1, question_ids=out/'question_ids.json', baseline_refresh=method in mod.BASE,
+                           identity_reference=pilot/'dev/plain.jsonl.run.json', output=out/f'runner_{method}.jsonl',
+                           fit_dir=pilot/'fit', layer=21, alpha=.1, reuse_fit_sha256=file_digest(pilot/'fit/fit.json'))
+    runner.generate(args); runner.generate(args)
+    assert len(calls) == 45 and set(calls) == set(load_json(out/'question_ids.json'))
+    meta = load_json(str(args.output)+'.run.json')
+    assert meta['identity'] == current
+    if method == 'steering':
+        assert meta['fit_source_identity'] == plan['fit_identity']
+        assert meta['alpha_abs'] == pytest.approx(.3)
+        assert meta['direction_hash'] == file_digest(pilot/'fit/directions.npz')

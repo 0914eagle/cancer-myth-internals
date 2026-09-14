@@ -1060,8 +1060,14 @@ R10·R17도 외부 AI의 확정적 해석에 대안을 남겼다. 내 이전 R09
 
 평가 프롬프트는 원본 Cancer-Myth로 고정하고 Terra 한 모델로 모든 행을 비교한다.
 [실행 명령·조건·비용](reviews/quick_next_experiment_2026-09-14.md): 기존 dev의 FPQ 30/NFP 15를
-seed 17로 추출하고 Plain, FP Identification, CoT 128의 답변을 재사용한다.
-CoT 1024와 무조건 L21 paired-C α=0.1 두 조건에서만 새 답변 90개를 생성한다.
+seed 17로 추출한다. 코드 identity까지 일치하면 Plain, FP Identification, CoT 128의 답변을
+재사용하고 CoT 1024와 무조건 L21 paired-C α=0.1 두 조건의 새 답변 90개를 생성한다.
+코드 해시만 달라졌다면 같은 45문항에서 기준선까지 다시 생성해 5조건 모두 현재 코드로 비교한다.
+이때 새 최종 답변은 225개이며 검토문/FP 판별 생성 135개가 별도로 있다. GPT 채점 상한은 그대로다.
 동일 질문·동일 완성 판정 프롬프트는 공유하여 최대 225회 채점하며 예전 Sol/Terra v2 점수는 섞지 않는다.
 중단·실패 슬롯 재호출과 preflight가 없고 report는 오프라인이다. 내부 gate × C는 이번 실행이 아니다.
-현재 로컬 테스트만 완료했으며 서버 SSH 키 인증이 되지 않아 실험은 아직 시작하지 않았다.
+서버 첫 실행은 prepare의 baseline 코드/모델 identity 검사에서 중단됐다. 생성·판정 호출은 없었다.
+코드 변경에 대해서는 위 기준선 재생성 경로를 추가했다. 모델/토크나이저/runtime 차이는 계속 중단한다.
+fit은 모델/runtime/분할이 같고 지정한 SHA가 일치할 때만 기존 숫자 벡터를 명시적으로 재사용하며,
+새 steering run에 fit 원본 identity와 SHA를 기록한다. fit 코드를 다시 실행해 같은 벡터가
+나온다는 주장은 하지 않는다. 원본 파일을 덮거나 metadata를 현재 identity로 치환하지 않는다.

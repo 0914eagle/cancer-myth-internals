@@ -18,6 +18,7 @@ if str(ROOT) not in sys.path:
 from scripts.check_terra_judge import events_by_id
 from scripts.reevaluate_pilot_nfp import load_generation
 from scripts.run_judge import build_prompt
+from scripts.run_pilot import comparison_identity
 from src.config import load_config
 from src.jsonl import append_jsonl, load_json, read_jsonl
 from src.judge_prompts import parse_score
@@ -64,11 +65,14 @@ def prepare(pilot, out, config):
                 or run["review_tokens"] != 128 or run["batch_size"] != 1):
             raise ValueError("Need matching baseline identity, final=512, review=128, batch=1")
     impl = digest({n: file_digest(ROOT / "src" / n) for n in ("pilot.py", "pilot_model.py", "steering.py")})
-    if identity["implementation_hash"] != impl or identity["source_model"] != cfg["source_model"]:
-        raise ValueError("Baseline model/code changed; do not mix generations. Replay control needed.")
+    if identity["source_model"] != cfg["source_model"]:
+        raise ValueError("Baseline source model changed; use its original config")
+    refresh = identity["implementation_hash"] != impl
+    current_identity = {**identity, "implementation_hash": impl}
     fit = pilot / "fit/fit.json"
     fit_spec = load_json(fit)
-    if fit_spec["identity"] != identity or fit_spec["manifest_hash"] != manifest["manifest_hash"]:
+    if (comparison_identity(fit_spec["identity"]) != comparison_identity(identity)
+            or fit_spec["manifest_hash"] != manifest["manifest_hash"]):
         raise ValueError("Fit direction differs from baseline model/split")
     direction_path = pilot / "fit/directions.npz"
     import numpy as np
@@ -89,14 +93,19 @@ def prepare(pilot, out, config):
         sources[str(path.resolve())] = file_digest(path)
     plan = {"version": "quick-dev-45-v1", "pilot": str(pilot), "config_path": str(config),
             "config_hash": digest(cfg), "sources": sources, "manifest_hash": manifest["manifest_hash"],
-            "identity": identity, "questions": chosen, "baseline_responses": responses,
+            "identity": current_identity, "baseline_identity": identity,
+            "refresh_baselines": refresh, "generation_conditions": list(METHODS if refresh else NEW),
+            "fit_identity": fit_spec["identity"], "questions": chosen, "baseline_responses": responses,
             "examples": examples, "methods": list(METHODS), "backend": "codex", "model": MODEL,
-            "seed": 17, "generation_budget": 90, "judge_budget_max": 225,
+            "seed": 17, "generation_budget": 225 if refresh else 90, "judge_budget_max": 225,
             "selection": "seed-17 within-set random sample of previously viewed dev; no score filtering"}
     with output_lock(out / "prepare"):
         frozen_json(out / "plan.json", plan)
         frozen_json(out / "question_ids.json", [q["id"] for q in chosen])
-    print("Prepared 30 FPQ + 15 NFP. Reuse 3 baseline conditions; generate 2 x 45 questions.")
+    print(f"Prepared 30 FPQ + 15 NFP. Generate {len(plan['generation_conditions'])} x 45 final answers.")
+    if refresh:
+        print("Code hash changed: regenerate ALL three baselines on this subset; keep original files untouched.")
+        print(f"Baseline implementation: {identity['implementation_hash']}; current: {impl}")
     print("Original Cancer-Myth judge prompts + Terra; at most 225 calls, no retries/preflight. GPT calls now: 0.")
     return plan
 
@@ -124,7 +133,7 @@ def new_rows(out, plan, tag, complete=True):
     if not path.exists():
         return None
     run = load_json(str(path) + ".run.json")
-    method, review = NEW[tag]
+    method, review = (tag, 128) if tag in BASE else NEW[tag]
     expected = {q["id"]: q for q in plan["questions"]}
     if (run["manifest_hash"] != plan["manifest_hash"] or run["partition"] != "dev"
             or run["method"] != method or run["review_tokens"] != review
@@ -132,7 +141,9 @@ def new_rows(out, plan, tag, complete=True):
             or run["identity"] != plan["identity"] or set(run["question_ids"]) != set(expected)):
         raise ValueError("New generation differs from frozen comparison")
     if method == "steering" and (run["layer"] != 21 or run["alpha"] != 0.1
-            or run["direction_hash"] != plan["sources"][str(Path(plan["pilot"]) / "fit/directions.npz")]):
+            or run["direction_hash"] != plan["sources"][str(Path(plan["pilot"]) / "fit/directions.npz")]
+            or run.get("fit_spec_hash") != plan["sources"][str(Path(plan["pilot"]) / "fit/fit.json")]
+            or run.get("fit_source_identity") != plan["fit_identity"]):
         raise ValueError("Steering configuration changed")
     rows = list(read_jsonl(path)); indexed = {r["id"]: r for r in rows}
     if len(rows) != len(indexed) or not set(indexed) <= set(expected):
@@ -148,7 +159,8 @@ def new_rows(out, plan, tag, complete=True):
 
 def generate(out):
     plan = get_plan(out)
-    for tag, (method, review) in NEW.items():
+    for tag in plan["generation_conditions"]:
+        method, review = (tag, 128) if tag in BASE else NEW[tag]
         if new_rows(out, plan, tag) is not None:
             print(f"Reuse complete {tag}; no GPU load.")
             continue
@@ -161,9 +173,23 @@ def generate(out):
                "--output", str(out / f"{tag}.jsonl")]
         if method == "steering":
             cmd += ["--fit-dir", str(Path(plan["pilot"]) / "fit"), "--layer", "21", "--alpha", "0.1"]
+            cmd += ["--reuse-fit-sha256", plan["sources"][str(Path(plan["pilot"]) / "fit/fit.json")]]
+        if tag in BASE:
+            cmd += ["--baseline-refresh"]
         subprocess.run(cmd, cwd=ROOT, check=True)
         if new_rows(out, plan, tag) is None:
             raise ValueError("Incomplete generation")
+    if plan["refresh_baselines"]:
+        audit = {}
+        for tag in BASE:
+            rows = new_rows(out, plan, tag)
+            old = plan["baseline_responses"][tag]
+            audit[tag] = {
+                "answer_changed_ids": [i for i in rows if rows[i]["response"] != old[i]["response"]],
+                "review_changed_ids": [i for i in rows if rows[i].get("review") != old[i].get("review")],
+            }
+        frozen_json(out / "baseline_refresh_audit.json", audit)
+        print("Baseline refresh audit saved. All five scored rows use current-code answers.")
     print("Generation complete. GPT calls: 0. Next: plan-score, then score.")
 
 
@@ -171,7 +197,7 @@ def plan_score(out):
     plan = get_plan(out)
     responses = dict(plan["baseline_responses"])
     sources = {}
-    for tag in NEW:
+    for tag in plan["generation_conditions"]:
         responses[tag] = new_rows(out, plan, tag)
         if responses[tag] is None:
             raise ValueError("Run generate first")
@@ -258,6 +284,7 @@ def report(out):
     lines = ["# Quick Gemma dev comparison", "", "Original Cancer-Myth prompts/few-shot; judge: codex gpt-5.6-terra.",
              "Not exact paper reproduction: judge and split differ. NFP is reference-targeted, not overall QA accuracy.",
              "Exploratory, previously inspected dev: 30 FPQ + 15 NFP. No preservation guarantee or test evaluation.",
+             f"Baselines regenerated on current code: {plan['refresh_baselines']}. Fit values reused unchanged with source identity recorded.",
              f"Attempted {len(events)}/{spec['budget']}; valid {len(values)}. Missing/invalid are never passes.", "",
              "| Method | FPQ valid | PCR % | PCS | NFP valid | NFP pass % | FPQ rescue/harm (pairs) | NFP rescue/harm (pairs) |",
              "|---|---:|---:|---:|---:|---:|---|---|"]
