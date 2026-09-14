@@ -1,9 +1,11 @@
 # 23. Gemma 한 모델: prompting baseline과 기본 C steering 파일럿
 
-2026-09-10. **현재 실행 우선순위**다. 16의 코드 결손, 19의 분할 요구,
+2026-09-10 최초 파일럿 계획. **2026-09-14 현재 실행은 [§13 내부 게이트 파일럿](#13-내부-게이트-파일럿--기존-답변-선택)이다.** §0의 생성·judge·sweep 명령은 초기 실행 기록이다.
+
+초기 설계는 16의 코드 결손, 19의 분할 요구,
 22의 방법 후보를 검토한 뒤, 교수님의 “모델 하나의 baseline부터” 지시에 맞췄다.
 22의 27B·직교화 확정안과 이전 E2 격자를 이 파일럿의 실행 지시로 사용하지 않는다.
-방법론은 구상 중이며 SAE·새 gate·직교화는 이번 구현에 포함하지 않는다.
+초기 구현에는 SAE·새 gate·직교화가 없었다. §13에서 별도 내부 게이트 진단을 추가했으며 SAE·새 steering 설계는 아직 없다.
 
 ## 0. 바로 실행하기 — 우선 baseline 세 행
 
@@ -841,3 +843,81 @@ selection의 available 분포는 Plain 91/19/7, FP Identification 21/27/69, CoT 
 보류 감사를 유지하며 방법 실험을 진행할 수 있다. CoT는 주요 비교군이고 확정된 의료적
 성능 보존 방법은 아니다. FPQ Sol/NFP Terra v2 혼합은 탐색적 파일럿 한계로 명시한다.
 새 judge 호출, 모델 생성, 라벨 변경은 없었다.
+
+## 13. 내부 게이트 파일럿 — 기존 답변 선택
+
+목적: 원 질문의 내부 표상으로 **기존 FP Identification 파이프라인을 사용할 질문**을
+고르면, 항상 사용하는 것보다 NFP 과잉 교정을 줄이면서 FPQ 교정 이득을 유지하는지 본다.
+이 단계는 residual steering이 아니라 저장 답변을 이용한 조건부 prompting 선택 진단이다.
+FP Identification 자체도 Yes/No 판별 후 프롬프트를 적용하므로, gate ON이 무조건 교정 프롬프트를
+강제한다는 뜻은 아니다. 이 action 내부의 탐지 실패도 남는다.
+
+### 고정 설계
+
+- 모델: 기존 `google/gemma-2-9b-it`. 기존 모델/tokenizer revision·chat template을 확인한다.
+- 표상: 원 질문만 단일 user turn으로 렌더링하고 assistant generation header까지 prefill한다.
+  마지막 프롬프트 토큰의 hidden-state index **21**(decoder block 20의 출력)을 읽는다.
+  정답·참조·FPQ/NFP 라벨·CoT 검토문은 모델 입력에 넣지 않는다.
+- L21은 기존 14/21/28 후보 중 중간값을 정한 단일 진단 설정이다. 최적 층이라는 근거가 없고
+  dev를 보고 층이나 classifier hyperparameter를 고르지 않는다.
+- GPU에서는 모델 base forward만 실행하고 LM logits/답변 생성을 하지 않는다. 문항별로 1개씩,
+  fit 438 + dev 147 = 585질문을 추출한다(현재 manifest 기준). test는 읽어 분류하지 않는다.
+  질문별 원자적 cache 저장 및 signature 확인을 하며 정상 중단 후 같은 명령은 캐시를 재사용한다.
+- 기존 fit을 seed 17 StratifiedGroupKFold 3개 중 첫 calibration fold 약 1/3과 나머지 train으로
+  다시 나눈다. 분류기 학습에 calibration을 쓰지 않고, 문턱 결정에 dev를 쓰지 않는다.
+  실제 FPQ/NFP·그룹 수는 artifact split과 실행 로그를 따른다. NFP 보정 표본이 작다는 한계가 있다.
+- hidden: train-only StandardScaler + L2 logistic regression, C=1, balanced class weights,
+  lbfgs, max_iter=3000. 수렴 경고는 실패로 처리한다.
+- text baseline: 같은 train/calibration으로 TF-IDF unigram/bigram, min_df=2,
+  max_features=5000 + 같은 logistic 설정을 사용한다. 이것은 간단한 텍스트 기준이며 텍스트 상한이 아니다.
+- 문턱: calibration NFP의 경험적 FPR이 5% 이하가 되는 가장 낮은 관측 점수 경계.
+  `score > threshold`로 켜며 동점은 함께 제외한다. 예컨대 음성 30개면 1개 이하,
+  18개면 0개만 허용한다. 확률 보장이나 모집단 FPR 5% 보장이 아니고 dev FPR이 높아질 수 있다.
+- 모델 파라미터 학습이 아니라 표상을 읽는 작은 classifier만 학습한다. model weights는 고정이다.
+
+### 평가와 비용
+
+`run_gemma_gate.sh all` = extract(GPU) → fit(CPU) → report(CPU). GPT 호출·Gemma 답변 생성 0회.
+원 데이터 라벨을 gate target으로 사용하며 앞서 보류된 질문/참조 문제도 남아 있다.
+이 baseline 탐색으로 참 전제 진위를 정확하게 안다는 주장을 하지 않는다.
+
+표 1: hidden/text의 dev AUROC, TPR 분자/분모, FPR 분자/분모, 선택 수, calibration FPR.
+표 2: Plain, 항상 FP Identification, Premise CoT, hidden gate × FP Identification,
+text gate × FP Identification의 PCR/PCS/NFP 및 Plain 대비 rescue/harm.
+같은 총 선택 수의 무작위 gate를 500번 추출한 평균과 5–95% 범위를 별도로 출력한다.
+무작위 범위는 bootstrap CI가 아니며 개입량 감소만의 효과와 선택 효과를 구분하는 참고다.
+층별 탐색이나 새로운 방향 학습으로 확대하지 않는다.
+
+FPQ는 기존 Sol, NFP는 Terra v2 점수를 재사용한다. 기존 NFP 전체 3방법 점수가 유효해야 한다.
+judge/protocol 혼합과 dev 재사용의 한계를 가진 탐색적 파일럿이며 논문 최종 비교표가 아니다.
+형식상 근거 flag는 점수를 바꾸지 않고 flag 수를 보고한다. 보류 문항을 자동 제외하지 않는다.
+기존 생성/평가 signature·질문·참조·답변의 일치를 확인한다.
+
+같은 질문의 **완전히 동일한 답변**에 옛 Sol 판정이 다르면 Plain → FP Identification → CoT 순의
+고정 donor를 써서 비교표 내 점수를 공유한다. 유리한 점수를 고르지 않으며 원 점수 파일은 보존한다.
+공유 전 baseline 요약과 변경 ID/점수는 report.json 및 보고서 감사 구간에 기록한다.
+따라서 표의 baseline이 앞서 적은 수치와 달라질 수 있으며 그 차이를 방법 효과로 해석하지 않는다.
+
+### 실행
+
+기존 venv와 GPU를 사용하는 서버 tmux에서:
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+git pull --ff-only origin main
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+export DATA_ROOT=/data1/heejae
+export CUDA_VISIBLE_DEVICES=0
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+bash scripts/run_gemma_gate.sh all
+```
+
+완료 후 `$PILOT_DIR/gate_L21_v1/report.md`에 두 표·무작위 대조·문항별 routing이 저장된다.
+이미 추출/학습을 완료했다면 `bash scripts/run_gemma_gate.sh report`는 GPU나 GPT를 쓰지 않는다.
+추출 후 오류라면 정상 완료한 단계를 반복하지 않고 fit/report로 이어갈 수 있다.
+강제 종료로 lock이 남은 경우 실행 중인 writer가 없는지 확인한 뒤 stale lock을 처리한다.
+
+이번 코드 검증은 합성 데이터의 train/calibration/dev 분리, dev 변화에 대한 학습/문턱 불변성,
+동점 문턱, 저장 판정 재사용·동일 답변 공유·무작위 대조, CPU 모의 모델의 정확한 층/토큰 hook과
+cache resume를 포함한다. 실제 Gemma GPU 실행/성능은 서버에서 아직 확인해야 한다.
+현재 코드 추가는 core generation identity 파일을 수정하지 않으므로 기존 generation을 무효화하지 않는다.
