@@ -230,3 +230,81 @@ def test_real_runner_refresh_and_fit_provenance(sample, monkeypatch, method):
         assert meta['fit_source_identity'] == plan['fit_identity']
         assert meta['alpha_abs'] == pytest.approx(.3)
         assert meta['direction_hash'] == file_digest(pilot/'fit/directions.npz')
+
+
+@pytest.mark.parametrize('raw,kind,expected', [
+    ('{"Reason":"context","Sharpness":-1}', 'nfp', -1),
+    ('{"Reason":"asbestos","Sharpness":-1}', 'fpq', -1),
+    ('{"Reason":"incomplete correction","Sharpness":0}', 'fpq', 0),
+    ('```json\n{"Reason":"quote: \\"yes\\"; {brace}","Sharpness":1}\n```', 'fpq', 1),
+    ('{\n "Sharpness": 1\n}', 'nfp', 1),
+    ('{"Sharpness":0}', 'nfp', None),
+    ('{"Sharpness":null}', 'fpq', None),
+    ('{"Sharpness":true}', 'fpq', None),
+    ('{"Sharpness":1.0}', 'fpq', None),
+    ('{"Sharpness":"1"}', 'fpq', None),
+    ('{"Sharpness":1,"Sharpness":-1}', 'fpq', None),
+    ('{"Sharpness":1}{"Sharpness":-1}', 'fpq', None),
+    ('Example {"Sharpness":1}', 'fpq', None),
+    ('{"Sharpness":1', 'fpq', None),
+])
+def test_compact_json_readout(raw, kind, expected):
+    from scripts.quick_pilot_readout import parse_reply
+    parsed = parse_reply(raw, kind)
+    assert (None if parsed is None else parsed['Sharpness']) == expected
+
+
+def test_offline_recovery_preserves_frozen_run_and_only_calls_unstarted(sample, monkeypatch):
+    from scripts import quick_pilot_readout as reader
+    from src.jsonl import append_jsonl
+    _, out, _ = sample
+    fake_generate(monkeypatch, []); mod.generate(out); spec = mod.plan_score(out)
+    for job in spec['order'][:3]:
+        common = {'id': job['id'], 'run_hash': digest(spec)}
+        append_jsonl(out/'attempts.jsonl', {**common, 'status': 'started'})
+        append_jsonl(out/'attempts.jsonl', {**common, 'status': 'finished', 'valid': False,
+                     'score': None, 'model': mod.MODEL, 'raw': '{"Reason":"saved","Sharpness":-1}'})
+    old_ledger = (out/'attempts.jsonl').read_bytes()
+    frozen = {p: p.read_bytes() for p in out.iterdir() if p.is_file() and p.name != 'attempts.jsonl'}
+    monkeypatch.setattr(reader, 'make_caller', lambda *a, **k: pytest.fail('Offline report made a model call'))
+    audit = reader.report(out)
+    assert audit['attempted'] == audit['valid'] == len(audit['recovered']) == 3
+    assert audit['changed_previously_valid_scores'] == 0
+    assert (out/'attempts.jsonl').read_bytes() == old_ledger
+    prompts = []
+    monkeypatch.setattr(reader, 'make_caller', lambda *a, **k: lambda p: (
+        prompts.append(p) or '{"Reason":"new","Sharpness":1}', mod.MODEL))
+    reader.score(out); reader.score(out)
+    assert prompts == [spec['cases'][job['id']]['prompt'] for job in spec['order'][3:]]
+    assert (out/'attempts.jsonl').read_bytes().startswith(old_ledger)
+    assert all(p.read_bytes() == raw for p, raw in frozen.items())
+    audit = reader.report(out)
+    assert audit['attempted'] == audit['valid'] == spec['budget']
+    assert len(audit['recovered']) == 3
+
+
+def test_readout_never_recovers_wrong_model_or_interrupted_calls(sample, monkeypatch):
+    from scripts import quick_pilot_readout as reader
+    from src.jsonl import append_jsonl
+    _, out, _ = sample
+    fake_generate(monkeypatch, []); mod.generate(out); spec = mod.plan_score(out)
+    for idx, job in enumerate(spec['order'][:2]):
+        common = {'id': job['id'], 'run_hash': digest(spec)}
+        append_jsonl(out/'attempts.jsonl', {**common, 'status': 'started'})
+        if idx == 0:
+            append_jsonl(out/'attempts.jsonl', {**common, 'status': 'finished', 'valid': False,
+                         'model': 'wrong-model', 'raw': '{"Sharpness":1}', 'score': None})
+    audit = reader.report(out)
+    assert audit['valid'] == 0 and audit['recovered'] == []
+    assert len(audit['invalid_or_interrupted_ids']) == 2
+    def interrupt(_): raise KeyboardInterrupt()
+    monkeypatch.setattr(reader, 'make_caller', lambda *a, **k: interrupt)
+    with pytest.raises(KeyboardInterrupt): reader.score(out)
+    prompts = []
+    monkeypatch.setattr(reader, 'make_caller', lambda *a, **k: lambda p: (
+        prompts.append(p) or '{"Sharpness":1}', mod.MODEL))
+    reader.score(out)
+    assert len(prompts) == spec['budget'] - 3
+    audit = reader.report(out)
+    assert audit['valid'] == spec['budget'] - 3
+    assert audit['recovered'] == []

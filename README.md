@@ -3,7 +3,8 @@
 **다음 실행 — 빠른 45문항 비교:** [원본 평가 프롬프트 + Terra, CoT 1024와 L21 C steering](docs/reviews/quick_next_experiment_2026-09-14.md).
 기존 코드와 같으면 3조건 답변을 재사용하고 2조건만 생성한다. 코드가 달라졌으면 같은 45문항에서
 5조건 모두 현재 코드로 생성한다. 최대 225회 채점, 자동 재시도 없음, test 미사용.
-`scripts/quick_pilot.py all --pilot-dir "$PILOT_DIR" --out-dir "$QUICK_DIR"` (아래 문서의 환경 설정 후 실행).
+생성 완료 후 채점 재개: `python scripts/quick_pilot_readout.py resume --out-dir "$QUICK_DIR"`.
+한 줄 JSON 3건은 재호출 없이 복구한다. 신규 준비·생성 명령은 연결 문서를 따른다.
 
 **바로 실행:** [23 §0 서버 명령](docs/23_gemma_steering_pilot.md#0-바로-실행하기--우선-baseline-세-행).
 

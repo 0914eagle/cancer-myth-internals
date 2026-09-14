@@ -1075,3 +1075,13 @@ fit은 모델/runtime/분할이 같고 지정한 SHA가 일치할 때만 기존 
 후속 `Baseline source model changed` 오류는 YAML의 GPU 키 `0`과 JSON의 `"0"`을 직접
 비교한 버그로 로컬 재현됐다. source_model을 동일한 JSON 표현으로 비교하도록 수정했고,
 실제 모델/설정 값 차이는 여전히 차단한다. 코드 해시 변경 여부와 이 직렬화 차이는 별개다.
+
+### 17.1 서버 생성 완료 및 한 줄 JSON 복구
+
+후속 로그에서 baseline 코드 identity가 일치해 3조건을 재사용했고 CoT 1024/steering 각 45개
+생성을 완료했다. 고유 채점 입력은 180개다. 첫 Terra 응답 3건은 유효한 한 줄 JSON인데
+원본 파서가 줄바꿈을 요구해 모두 invalid로 처리했다. 추가 생성은 필요 없다.
+`scripts/quick_pilot_readout.py report --out-dir "$QUICK_DIR"`로 호출 없이 복구를 확인한 뒤,
+`resume`으로 미시작 177건만 채점한다. 원본 루브릭·few-shot·생성 코드·plan·기존 ledger 행은
+보존한다. 새 결과는 `report_json_v2.md`, 파싱 복구 내역은 ledger SHA별 감사 파일에 기록한다.
+이것은 평가 지침 변경이나 새 임상 판정이 아니라 응답 JSON을 읽는 방식의 수정이다.

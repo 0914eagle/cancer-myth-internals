@@ -60,8 +60,8 @@ L21 residual L2 norm 평균이다. L21은 hidden-state index 21, 즉 decoder blo
 
 서버의 기존 가상환경에서 실행한다. 최초 서버 실행은 prepare의 baseline 코드/모델 identity
 검사에서 중단되어 모델 호출이 없었다. 그 중 코드 변경을 처리하는 기준선 재생성 경로를 추가했다.
-아래 코드는 로컬 mock 테스트를 통과한 실행 절차이며 실제 GPU 결과는 아직 없다.
-prepare에서 중단된 기존 `QUICK_DIR`를 그대로 사용해 다시 실행하면 된다.
+이후 서버 로그에서 CoT 1024와 steering 답변 각 45개 생성 완료를 확인했다.
+아래는 신규 실행 절차다. 이미 생성이 완료된 현재 실행은 아래의 **채점 복구·재개** 절차만 따른다.
 
 후속 실행의 `Baseline source model changed`는 실제 Gemma YAML로 로컬 재현한 결과,
 `max_memory`의 GPU 키가 YAML에서 정수 `0`, 저장 JSON에서 문자열 `"0"`인 것을 직접 비교한
@@ -80,28 +80,55 @@ export CUDA_VISIBLE_DEVICES=0
 export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
 export QUICK_DIR="$PILOT_DIR/quick45_original_terra_v1"
 
-python scripts/quick_pilot.py all \
-  --pilot-dir "$PILOT_DIR" --out-dir "$QUICK_DIR"
+python scripts/quick_pilot.py prepare --pilot-dir "$PILOT_DIR" --out-dir "$QUICK_DIR" &&
+python scripts/quick_pilot.py generate --pilot-dir "$PILOT_DIR" --out-dir "$QUICK_DIR" &&
+python scripts/quick_pilot.py plan-score --pilot-dir "$PILOT_DIR" --out-dir "$QUICK_DIR" &&
+python scripts/quick_pilot_readout.py resume --out-dir "$QUICK_DIR"
 ```
 
-`all`은 준비 → Gemma 생성 → 채점 입력 고정 → Terra 채점 → 보고서를 순서대로 실행한다.
+위 명령은 준비 → Gemma 생성 → 채점 입력 고정 → Terra 채점 → 보고서를 순서대로 실행한다.
 기존 shell의 JUDGE_MODEL 값과 무관하게 이 실행은 Terra로 고정돼 있다. SSH 단절을 피하려면
 서버의 tmux 안에서 실행한다.
 
-준비만 먼저 확인하려면 `all` 대신 `prepare`: 모델 호출 0회.
-생성만 하려면 `generate`: GPT 호출 0회.
-`plan-score`: 완성된 답변을 읽고 정확한 신규 판정 입력 수만 계산한다. GPT 호출 0회.
-`score`: 미시작 슬롯만 채점한다.
-`report`: 저장된 결과만 읽는다. 모델 호출 0회.
+`quick_pilot.py prepare`: 모델 호출 0회. `generate`: GPT 호출 0회.
+`quick_pilot.py plan-score`: 완성된 답변을 읽고 정확한 신규 판정 입력 수만 계산한다. GPT 호출 0회.
+`quick_pilot_readout.py score`: 미시작 슬롯만 채점한다.
+`quick_pilot_readout.py report`: 저장된 결과만 읽는다. 모델 호출 0회.
 
 ```bash
-python scripts/quick_pilot.py report \
-  --pilot-dir "$PILOT_DIR" --out-dir "$QUICK_DIR"
+python scripts/quick_pilot_readout.py report --out-dir "$QUICK_DIR"
 ```
 
-출력은 `$QUICK_DIR/report.md`다. PCR·PCS·NFP pass와 Plain 대비 문항별 rescue/harm을 보인다.
+출력은 `$QUICK_DIR/report_json_v2.md`다. PCR·PCS·NFP pass와 Plain 대비 문항별 rescue/harm을 보인다.
 결측이 있으면 해당 집합의 전체 비율은 `incomplete`, 짝 비교에는 실제 유효 쌍 수를 표시한다.
 NFP 15개에서 1개 차이는 6.7%p다. 유의성·성능 보존 보장을 주장하지 않고 다음 실험을 정하는 데 쓴다.
+
+## 채점 복구·재개 — 한 줄 JSON 파서 오류
+
+서버 콘솔 기준 기존 코드와 모델이 일치해 기준선 3조건은 재사용했고, 새 답변은 90개 생성했다.
+고유 판정 입력 180개, 동일 입력 공유 45개다. 처음 3회 응답 모두 한 줄 JSON으로 돌아왔지만
+원본 파서의 `\\{\\n` 조건에 걸려 invalid로 처리됐다. 사용자 제공 원문에서 확인된 판정은
+`nfp_1138=-1`, `fpq_580=-1`, `fpq_607=0`이며, 모두 Terra 응답이고 전송 오류는 없다.
+이는 저장 응답 형식의 확인이며, 판정 내용의 임상적 타당성을 새로 검증한 결과는 아니다.
+
+`quick_pilot_readout.py`는 원래 실행 코드·파서·프롬프트·plan 해시를 수정하지 않는 별도 readout이다.
+전체 JSON 객체(한 줄/여러 줄/코드 블록)를 읽되 중복 키, bool/float/string/null 점수,
+허용 범위 밖 점수, 여러 JSON 객체, 잘린 응답은 성공으로 만들지 않는다. 모든 기존 응답에 같은
+규칙을 적용한다. 모델 불일치·호출 오류·중단은 복구하지 않고, 기존 valid 점수가 바뀌면 중단한다.
+
+```bash
+git pull --ff-only origin main
+python scripts/quick_pilot_readout.py report --out-dir "$QUICK_DIR"
+python scripts/quick_pilot_readout.py resume --out-dir "$QUICK_DIR"
+```
+
+첫 `report`는 호출 0회로 3건을 재해석하며 원본 ledger 행을 덮지 않는다.
+`readout_json_v2_protocol.json`에 새 스크립트 SHA와 판정 plan 해시를 고정하고,
+`readout_audits/<ledger SHA>.json`에 복구 ID·점수·원문 SHA를 기록한다.
+`resume`은 미시작 177건만 호출하고 보고서를 낸다. 생성은 하지 않는다. 응답이 모두 유효하면
+총 호출 180회 안에서 완료된다. 새로운 실패도 자동 재시도하지 않는다.
+이후에는 원래 `quick_pilot.py all/score/report` 대신 이 readout의 `resume/report`를 사용한다.
+원래 `report.md`는 변경하지 않는다.
 
 ## 결과를 본 뒤
 
