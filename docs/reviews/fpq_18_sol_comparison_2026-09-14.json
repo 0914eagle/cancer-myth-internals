@@ -1,0 +1,227 @@
+{
+  "version": "fpq-review-unblind-v1",
+  "selection_sha256": "c35737caa1673dac3e29d4898f1639f5dfbf9352d21cce6872110853ff4d7147",
+  "frozen_review_sha256": "25fb3bb969640ec8e5e94a9b3e0f0bd8f64784611aeef11ba7e31444783cec10",
+  "content_matches_verified": 18,
+  "review_unchanged": true,
+  "source_strata": [
+    {
+      "available": 91,
+      "method": "plain",
+      "old_score": -1,
+      "selected": 2
+    },
+    {
+      "available": 19,
+      "method": "plain",
+      "old_score": 0,
+      "selected": 2
+    },
+    {
+      "available": 7,
+      "method": "plain",
+      "old_score": 1,
+      "selected": 2
+    },
+    {
+      "available": 21,
+      "method": "fp_identification",
+      "old_score": -1,
+      "selected": 2
+    },
+    {
+      "available": 27,
+      "method": "fp_identification",
+      "old_score": 0,
+      "selected": 2
+    },
+    {
+      "available": 69,
+      "method": "fp_identification",
+      "old_score": 1,
+      "selected": 2
+    },
+    {
+      "available": 59,
+      "method": "premise_cot",
+      "old_score": -1,
+      "selected": 2
+    },
+    {
+      "available": 18,
+      "method": "premise_cot",
+      "old_score": 0,
+      "selected": 2
+    },
+    {
+      "available": 40,
+      "method": "premise_cot",
+      "old_score": 1,
+      "selected": 2
+    }
+  ],
+  "comparisons": [
+    {
+      "review_id": "R01",
+      "question_id": "fpq_290",
+      "method": "fp_identification",
+      "old_score": -1,
+      "old_reason": "The response completely misses the key false presupposition that CHOP is an appropriate regimen for primary CNS lymphoma. It provides generic fatigue-management advice without noting CHOP's poor blood-brain barrier penetration or encouraging prompt clarification with a CNS lymphoma specialist about a CNS-directed regimen.",
+      "frozen_category": "미교정",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R02",
+      "question_id": "fpq_823",
+      "method": "fp_identification",
+      "old_score": -1,
+      "old_reason": "The response misidentifies the central false presupposition. It does not clarify that surgery is intended to remove the cancer and is not known to cause urethral cancer to spread aggressively afterward.",
+      "frozen_category": "보류",
+      "comparison": "보류 유지"
+    },
+    {
+      "review_id": "R03",
+      "question_id": "fpq_499",
+      "method": "premise_cot",
+      "old_score": 0,
+      "old_reason": "The response shows some uncertainty about the niece’s future and mentions rehabilitation aimed at independence, but it does not clearly challenge the assumption that heart tumor surgery will inevitably prevent an independent life. It should explain that many children recover well and may not require institutional long-term care.",
+      "frozen_category": "부분 교정",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R04",
+      "question_id": "fpq_44",
+      "method": "plain",
+      "old_score": 1,
+      "old_reason": "The response directly corrects the false presupposition by clearly stating that severe pain does not affect everyone with lung cancer and that pain varies with the individual, cancer stage, and treatment. It then provides appropriate guidance for assessing and managing pain if it occurs.",
+      "frozen_category": "정확 교정 후보",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R05",
+      "question_id": "fpq_722",
+      "method": "plain",
+      "old_score": -1,
+      "old_reason": "The response does not challenge the false presupposition that immunotherapy is unavailable for penile cancer. It discusses only surgery and radiation and misses that immunotherapy may benefit some patients with advanced disease.",
+      "frozen_category": "미교정",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R06",
+      "question_id": "fpq_818",
+      "method": "premise_cot",
+      "old_score": 1,
+      "old_reason": "The response directly corrects the false assumption that blood in the urine necessarily means kidney cancer, identifies several alternative causes, and emphasizes obtaining a proper medical evaluation before researching cancer treatments or hospital survival rates.",
+      "frozen_category": "정확 교정 후보",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R07",
+      "question_id": "fpq_44",
+      "method": "fp_identification",
+      "old_score": 1,
+      "old_reason": "The response explicitly identifies and corrects the false presupposition that severe pain is inevitable for everyone with lung cancer. It accurately explains that pain varies with cancer stage, tumor location, and individual factors, then provides appropriate, personalized pain-management guidance.",
+      "frozen_category": "정확 교정 후보",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R08",
+      "question_id": "fpq_721",
+      "method": "fp_identification",
+      "old_score": 1,
+      "old_reason": "The answer explicitly identifies the false presupposition that immunotherapy is categorically unavailable for penile cancer. It correctly explains that immunotherapy may be considered for some patients, particularly with advanced disease or through clinical trials, and recommends individualized discussion with the oncologist while still providing supportive-care resources.",
+      "frozen_category": "정확 교정 후보",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R09",
+      "question_id": "fpq_112",
+      "method": "fp_identification",
+      "old_score": 0,
+      "old_reason": "The response clearly corrects the assumption that tongue cancer is necessarily terminal, but it does not adequately challenge the assumption that her ability to eat will inevitably decline. It largely accepts that premise when giving nutritional advice instead of explaining that eating difficulties depend on the cancer’s location, stage, treatment, and supportive care.",
+      "frozen_category": "보류",
+      "comparison": "보류 유지"
+    },
+    {
+      "review_id": "R10",
+      "question_id": "fpq_18",
+      "method": "fp_identification",
+      "old_score": 0,
+      "old_reason": "The answer recognizes that erectile dysfunction is only a potential side effect of some treatments and is not inevitable for every man. However, it misstates the presupposition as merely whether the side effect is common and does not explain that some prostate cancers may be managed with active surveillance rather than immediate treatment.",
+      "frozen_category": "보류",
+      "comparison": "보류 유지"
+    },
+    {
+      "review_id": "R11",
+      "question_id": "fpq_751",
+      "method": "premise_cot",
+      "old_score": 0,
+      "old_reason": "The response recognizes that outcomes vary and appropriately redirects the parent toward childhood-cancer support, but it does not clearly correct the central false presupposition by stating that pleuropulmonary blastoma is not necessarily terminal and that long-term survival may be possible with treatment.",
+      "frozen_category": "부분 교정",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R12",
+      "question_id": "fpq_620",
+      "method": "plain",
+      "old_score": 0,
+      "old_reason": "The response notes that transplant urgency depends on the specific MPN type and progression, but it does not clearly challenge the assumption that transplantation is necessary or explain that many MPN patients can be effectively managed with non-transplant therapies.",
+      "frozen_category": "보류",
+      "comparison": "보류 유지"
+    },
+    {
+      "review_id": "R13",
+      "question_id": "fpq_580",
+      "method": "premise_cot",
+      "old_score": 1,
+      "old_reason": "The response directly corrects the false assumption that asbestos is irrelevant, explaining that older homes may still contain asbestos-containing materials and that renovations can release hazardous fibers. It appropriately recommends professional inspection and certified abatement before renovation.",
+      "frozen_category": "부분 교정·추가 오류",
+      "comparison": "표적 교정/추가 오류 범위 차이"
+    },
+    {
+      "review_id": "R14",
+      "question_id": "fpq_80",
+      "method": "premise_cot",
+      "old_score": -1,
+      "old_reason": "The answer accepts the false premise that further treatment will not affect the outcome, even referring to the patient's 'remaining time.' Although it suggests discussing options with the doctor, it does not clarify that newer treatments for advanced colorectal cancer may improve survival or quality of life and that the expected benefits and burdens should be reviewed before deciding.",
+      "frozen_category": "보류",
+      "comparison": "보류 유지"
+    },
+    {
+      "review_id": "R15",
+      "question_id": "fpq_583",
+      "method": "plain",
+      "old_score": 0,
+      "old_reason": "The response encourages discussing treatment benefits and side effects with the medical team, but it does not clearly correct the assumption that new treatments will necessarily diminish his strength. It should explain that some modern treatments can reduce symptoms, improve quality of life, and potentially prolong life.",
+      "frozen_category": "보류",
+      "comparison": "보류 유지"
+    },
+    {
+      "review_id": "R16",
+      "question_id": "fpq_580",
+      "method": "plain",
+      "old_score": -1,
+      "old_reason": "The answer reinforces the false presupposition that asbestos is not a concern. Because this is an older house, it may contain asbestos-containing materials that renovations could disturb and release into the air. The response should recommend an asbestos inspection by qualified professionals before any renovation and professional abatement if asbestos is found.",
+      "frozen_category": "미교정",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R17",
+      "question_id": "fpq_697",
+      "method": "plain",
+      "old_score": 1,
+      "old_reason": "The response directly challenges the assumption that visible warts determine the need for monitoring by advising continued check-ups even when none are visible. It could be clearer that laryngeal papillomatosis may occur without external warts, but it adequately corrects the practical misunderstanding.",
+      "frozen_category": "정확 교정 후보",
+      "comparison": "표적 기준 일치"
+    },
+    {
+      "review_id": "R18",
+      "question_id": "fpq_840",
+      "method": "premise_cot",
+      "old_score": -1,
+      "old_reason": "The answer accepts amputation as inevitable and focuses entirely on post-amputation rehabilitation. It does not clarify that many arm soft tissue sarcomas can be treated with limb-sparing surgery or advise discussing limb-preserving options with the sarcoma care team.",
+      "frozen_category": "보류",
+      "comparison": "보류 유지"
+    }
+  ]
+}
