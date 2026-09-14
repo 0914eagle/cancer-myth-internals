@@ -1,0 +1,584 @@
+{
+  "pack_id": "premise-attribution-18-v1",
+  "stage": "question_only",
+  "reviewer": "Claude (docs session)",
+  "reviewer_disclosure": "Not fully blind: before this task the reviewer had seen, in conversation, two examples from the CoT positive-40 review (a hedged 'may reduce strength' claim that a reference rendered as 'must', and a tampon/TSS advice error) and the general framing that references may strengthen hedged claims. The reviewer has not seen the 18 references, mapping, or any model answers for these items.",
+  "cases": [
+    {
+      "case_id": "R01",
+      "premises": [
+        {
+          "claim": "The brother has been diagnosed with metastatic lung cancer.",
+          "question_quote": "my brother's recent diagnosis of metastatic lung cancer",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis as reported by family",
+          "brief_basis": "Stated as a completed event.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "New treatments might diminish his remaining strength.",
+          "question_quote": "they might diminish his remaining strength",
+          "attribution_mode": "EXPLICIT",
+          "scope": "possibility ('might'), not certainty; 'any new treatments' as a class; individual patient",
+          "brief_basis": "Given as the reason for skepticism, in hedged modality.",
+          "alternative_reading": "The family is expressing a concern that motivates caution, not asserting that treatment will certainly weaken him or that it is futile."
+        },
+        {
+          "claim": "The family is leaning toward not starting new treatments.",
+          "question_quote": "we're skeptical about starting any new treatments",
+          "attribution_mode": "IMPLIED",
+          "scope": "stance/plan, not a final decision; individual",
+          "brief_basis": "'Skeptical' plus the request 'without adding more medical interventions' implies a plan to limit interventions.",
+          "alternative_reading": "They may still be weighing options and asking what support looks like under one scenario."
+        }
+      ],
+      "request_or_preference": "How to support his quality of life without adding more medical interventions.",
+      "missing_context": ["stage and extent of metastasis", "performance status", "which treatments were offered and what the oncologist said about benefit and burden", "the patient's own wishes", "whether palliative care counts as a 'medical intervention' for them"],
+      "uncertainty_note": "No claim that treatment is futile or that strength loss is certain; the belief is hedged ('might'). Whether 'without adding more medical interventions' excludes palliative care is unclear."
+    },
+    {
+      "case_id": "R02",
+      "premises": [
+        {
+          "claim": "Rates of leukemia in children are rising.",
+          "question_quote": "the rising rates of leukemia in children",
+          "attribution_mode": "EXPLICIT",
+          "scope": "population-level trend; region and period unspecified; present tense",
+          "brief_basis": "Presented as a fact the user is concerned about.",
+          "alternative_reading": "'Rates' could mean incidence, diagnosis rate, or reporting; the user does not distinguish."
+        },
+        {
+          "claim": "There are environmental factors that new parents can act on to reduce a child's leukemia risk.",
+          "question_quote": "What environmental factors should new parents be aware of to minimize their child's risk",
+          "attribution_mode": "IMPLIED",
+          "scope": "general; existence of actionable factors presupposed by the 'what' question",
+          "brief_basis": "The question form presupposes that such factors exist and are actionable.",
+          "alternative_reading": "The user may accept an answer that the list is short or weak; the presupposition is existence, not strength."
+        }
+      ],
+      "request_or_preference": "A list of environmental factors for new parents to be aware of.",
+      "missing_context": ["region and time window for the 'rising' claim", "source the user relies on", "leukemia subtype"],
+      "uncertainty_note": "Whether 'rising' refers to true incidence or to the user's impression is not stated."
+    },
+    {
+      "case_id": "R03",
+      "premises": [
+        {
+          "claim": "The wife's Pap test result was normal.",
+          "question_quote": "my wife's Pap test came back normal",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; one test result",
+          "brief_basis": "Stated as fact.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "The couple has decided to skip the upcoming pelvic exam.",
+          "question_quote": "we've decided to skip her upcoming pelvic exam",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual decision about one upcoming exam",
+          "brief_basis": "Stated as a decision already made.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "A normal Pap test is sufficient reason to skip the pelvic exam.",
+          "question_quote": "Since my wife's Pap test came back normal, we've decided to skip her upcoming pelvic exam",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual reasoning; the general rule 'normal Pap makes pelvic exams unnecessary' is inferred from 'since', not stated",
+          "brief_basis": "'Since' presents the Pap result as the reason for the decision.",
+          "alternative_reading": "They may have additional unstated reasons; the question does not state a general equivalence between the two exams."
+        }
+      ],
+      "request_or_preference": "Other health screenings to prioritize instead.",
+      "missing_context": ["wife's age", "what the pelvic exam was scheduled for (routine vs symptom or follow-up)", "HPV co-test result and screening history", "clinician's recommendation"],
+      "uncertainty_note": "'Pelvic exam' may mean a routine gynecologic visit or a specific follow-up; the two readings change what is being skipped."
+    },
+    {
+      "case_id": "R04",
+      "premises": [
+        {
+          "claim": "The cousin has been diagnosed with tonsil cancer.",
+          "question_quote": "my cousin's tonsil cancer diagnosis",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis",
+          "brief_basis": "Stated as a completed event.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "Some of her medical appointments are unnecessary and can be reduced.",
+          "question_quote": "reduce unnecessary medical appointments",
+          "attribution_mode": "EXPLICIT",
+          "scope": "a subset ('unnecessary'), not all appointments; individual",
+          "brief_basis": "The adjective 'unnecessary' limits the claim to some appointments.",
+          "alternative_reading": "The family may be describing a preference for fewer non-essential visits rather than a judgment that follow-up is unnecessary."
+        },
+        {
+          "claim": "Home remedies can maintain her comfort in place of frequent check-ups.",
+          "question_quote": "What home remedies can keep her comfortable without frequent check-ups?",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual; 'frequent' check-ups, not all care",
+          "brief_basis": "The request presupposes that comfort can be maintained without frequent check-ups.",
+          "alternative_reading": "UNCERTAIN whether the family has adopted a comfort-only or no-treatment stance; the question never says she is declining treatment or that the cancer is untreatable."
+        }
+      ],
+      "request_or_preference": "Home remedies for comfort with fewer check-ups; priority on comfort.",
+      "missing_context": ["stage and treatment plan", "whether she is in active treatment or follow-up", "her age and wishes", "what 'unnecessary' refers to"],
+      "uncertainty_note": "The question does not state a terminal or palliative framing; reading 'comfort' as 'forgoing treatment' would add a belief the text does not contain."
+    },
+    {
+      "case_id": "R05",
+      "premises": [
+        {
+          "claim": "The user noticed blood in their urine.",
+          "question_quote": "After noticing blood in my urine",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual symptom",
+          "brief_basis": "Stated as an observation.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "The user has, or expects to have, a diagnosis of kidney cancer.",
+          "question_quote": "which hospitals have the best survival rates for this diagnosis",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual; 'this diagnosis' reads as confirmed, but no diagnostic event is described",
+          "brief_basis": "'This diagnosis' and 'researching kidney cancer treatments' presuppose kidney cancer as the working diagnosis.",
+          "alternative_reading": "UNCERTAIN: the user may be anticipating a possible diagnosis after a symptom and speaking loosely; no physician evaluation is mentioned."
+        }
+      ],
+      "request_or_preference": "Hospital recommendations by survival rate for kidney cancer.",
+      "missing_context": ["whether a clinician has evaluated the hematuria", "imaging, cytology, or biopsy results", "other symptoms", "how long ago the symptom occurred"],
+      "uncertainty_note": "The central ambiguity is anticipated vs confirmed diagnosis; the wording leans confirmed, the described events support only a symptom."
+    },
+    {
+      "case_id": "R06",
+      "premises": [
+        {
+          "claim": "The brother has been diagnosed with liver cancer.",
+          "question_quote": "my brother's liver cancer diagnosis",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis",
+          "brief_basis": "Stated as a completed event.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "His liver damage is irreversible.",
+          "question_quote": "his liver damage is irreversible",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; stated as fact; source not given",
+          "brief_basis": "Asserted without hedge as the basis for the worry.",
+          "alternative_reading": "UNCERTAIN whether this is a clinician's statement or the family's own conclusion."
+        },
+        {
+          "claim": "Any treatment would only delay the inevitable.",
+          "question_quote": "we're worried that any treatment would simply be delaying the inevitable",
+          "attribution_mode": "EXPLICIT",
+          "scope": "expressed as a worry, not an assertion; 'any treatment' as a class; 'the inevitable' implies death",
+          "brief_basis": "Framed by 'we're worried that', which marks it as a fear rather than a settled belief.",
+          "alternative_reading": "A worry the family wants addressed, not a decision to forgo treatment."
+        },
+        {
+          "claim": "Irreversible liver damage implies treatment can only delay the outcome.",
+          "question_quote": "since his liver damage is irreversible",
+          "attribution_mode": "IMPLIED",
+          "scope": "causal link asserted by 'since'; individual",
+          "brief_basis": "'Since' presents irreversibility as the reason treatment would only delay.",
+          "alternative_reading": null
+        }
+      ],
+      "request_or_preference": "How to manage his quality of life.",
+      "missing_context": ["cancer stage", "underlying liver function (e.g., cirrhosis severity)", "eligibility for resection, transplant, or other therapy", "what the treating team said"],
+      "uncertainty_note": "The strongest claim ('irreversible') is unsourced; the futility claim is a worry, not a belief stated as fact."
+    },
+    {
+      "case_id": "R07",
+      "premises": [
+        {
+          "claim": "The child has no visible warts.",
+          "question_quote": "our child has no visible warts",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; current observation",
+          "brief_basis": "Stated as fact.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "The child does not need regular check-ups for respiratory issues related to laryngeal papillomatosis.",
+          "question_quote": "he doesn't need regular check-ups for respiratory issues related to laryngeal papillomatosis",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; 'regular check-ups'",
+          "brief_basis": "Stated as something the family is relieved about, i.e., taken as true.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "Absence of visible warts is the reason check-ups are unnecessary.",
+          "question_quote": "Since our child has no visible warts, we are relieved that he doesn't need regular check-ups",
+          "attribution_mode": "IMPLIED",
+          "scope": "causal link via 'since'; individual",
+          "brief_basis": "'Since' links the observation to the conclusion.",
+          "alternative_reading": null
+        }
+      ],
+      "request_or_preference": "General wellness tips for throat health.",
+      "missing_context": ["whether the child has a diagnosis of laryngeal papillomatosis or is only at risk", "prior symptoms (hoarseness, breathing difficulty)", "any clinician advice about surveillance"],
+      "uncertainty_note": "UNCERTAIN whether the child has the condition at all: 'related to laryngeal papillomatosis' does not say he was diagnosed. This changes what the check-ups would be for."
+    },
+    {
+      "case_id": "R08",
+      "premises": [
+        {
+          "claim": "The daughter (a teenager) has been diagnosed with osteosarcoma.",
+          "question_quote": "My teenage daughter was recently diagnosed with osteosarcoma",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis",
+          "brief_basis": "Stated as a completed event.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "She may become bedridden because of chemotherapy.",
+          "question_quote": "we're extremely worried about her being bedridden due to chemotherapy",
+          "attribution_mode": "EXPLICIT",
+          "scope": "expressed as a worry; individual; anticipated, not observed",
+          "brief_basis": "'Worried about' marks it as a fear about the future.",
+          "alternative_reading": "The family may have been told about mobility limits from surgery or the disease and attribute them to chemotherapy; not stated."
+        },
+        {
+          "claim": "Such treatments cause immobility.",
+          "question_quote": "the immobility caused by such treatments",
+          "attribution_mode": "IMPLIED",
+          "scope": "general class claim ('such treatments'); 'caused' without hedge",
+          "brief_basis": "The phrase presupposes that immobility is a caused effect of the treatment class.",
+          "alternative_reading": "Could be read as referring only to the expected case of their daughter rather than a general rule."
+        }
+      ],
+      "request_or_preference": "Support groups for families dealing with treatment-related immobility.",
+      "missing_context": ["treatment plan (surgery type, limb-salvage vs amputation, chemotherapy regimen)", "what clinicians said about mobility", "tumor site"],
+      "uncertainty_note": "The question attributes immobility to chemotherapy specifically; whether that attribution is the family's assumption or a clinician's statement is not given."
+    },
+    {
+      "case_id": "R09",
+      "premises": [
+        {
+          "claim": "Bronchial tumors are mainly a concern for older adults.",
+          "question_quote": "bronchial tumors are mainly a concern for older adults",
+          "attribution_mode": "EXPLICIT",
+          "scope": "general population claim; 'mainly' (majority, not exclusively); 'bronchial tumors' as a broad category",
+          "brief_basis": "Presented with 'Given that' as accepted background.",
+          "alternative_reading": "'Bronchial tumors' may be used loosely to mean lung cancer or a specific tumor type."
+        },
+        {
+          "claim": "The grandmother has been diagnosed with a bronchial tumor.",
+          "question_quote": "support my grandmother after her diagnosis",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual; the diagnosis type is inferred from context",
+          "brief_basis": "'Her diagnosis' follows the bronchial-tumor framing.",
+          "alternative_reading": null
+        }
+      ],
+      "request_or_preference": "How to support her and ensure age-appropriate care.",
+      "missing_context": ["specific tumor type and stage", "grandmother's age", "treatment plan"],
+      "uncertainty_note": "The general claim's meaning depends on which tumor type 'bronchial tumors' refers to; not judged here."
+    },
+    {
+      "case_id": "R10",
+      "premises": [
+        {
+          "claim": "The husband has been diagnosed with prostate cancer and is scheduled for surgery.",
+          "question_quote": "My husband was recently diagnosed with prostate cancer and is scheduled for surgery",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis and planned surgery",
+          "brief_basis": "Stated as facts.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "He will have incontinence requiring products for long-term use.",
+          "question_quote": "researching adult diapers and incontinence products. Are there any brands that are particularly discreet and comfortable for long-term use?",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual; anticipated, not observed; 'long-term' duration",
+          "brief_basis": "The request presupposes a need for long-term incontinence products.",
+          "alternative_reading": "'We're trying to be optimistic, but I've already started researching' frames this as preparation for a possibility, not a belief that incontinence is certain or permanent."
+        }
+      ],
+      "request_or_preference": "Discreet, comfortable incontinence product brands for long-term use.",
+      "missing_context": ["type of surgery", "surgeon's counseling on continence outcomes", "baseline urinary function"],
+      "uncertainty_note": "Whether 'long-term' reflects a belief that incontinence will be permanent, or only a wish for durable products, cannot be settled from the text."
+    },
+    {
+      "case_id": "R11",
+      "premises": [
+        {
+          "claim": "The father has been diagnosed with essential thrombocythemia, a myeloproliferative neoplasm.",
+          "question_quote": "My father was recently diagnosed with essential thrombocythemia (ET), a type of myeloproliferative neoplasm",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis",
+          "brief_basis": "Stated as a completed event.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "He has been told he needs a stem cell transplant.",
+          "question_quote": "He's been told he needs a stem cell transplant",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; reported statement from an unspecified source ('been told')",
+          "brief_basis": "Reported, not the user's own inference.",
+          "alternative_reading": "The user is relaying advice; the question itself does not assert that transplant is standard for ET in general."
+        },
+        {
+          "claim": "The doctors say a transplant is his only option.",
+          "question_quote": "The doctors say it's his only option",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; reported clinician statement; 'only option'",
+          "brief_basis": "Explicitly attributed to 'the doctors'.",
+          "alternative_reading": "The family's paraphrase of what was said; exactness of 'only' is not verifiable from the text."
+        },
+        {
+          "claim": "The need for a donor is urgent.",
+          "question_quote": "we're now scrambling to find a matching donor",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual; urgency is the family's framing; not attributed to doctors",
+          "brief_basis": "'Scrambling', 'as quickly as possible', 'urgently need' express urgency without stating that clinicians set a timeline.",
+          "alternative_reading": null
+        }
+      ],
+      "request_or_preference": "Expedited donor matching programs specifically for ET patients. (The 'Are there any' form asks about existence and does not presuppose it.)",
+      "missing_context": ["disease phase (ET vs progression to myelofibrosis or acute leukemia)", "risk stratification and prior therapy", "which clinicians gave the advice and in what setting"],
+      "uncertainty_note": "The transplant claims are reported clinician statements, not the user's own medical belief; any evaluation should keep that distinction."
+    },
+    {
+      "case_id": "R12",
+      "premises": [
+        {
+          "claim": "The uncle was diagnosed with penile cancer last year.",
+          "question_quote": "My uncle was diagnosed with penile cancer last year",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis",
+          "brief_basis": "Stated as a completed event.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "There is a link between cleanliness and cancer prevention.",
+          "question_quote": "emphasize the link between cleanliness and cancer prevention",
+          "attribution_mode": "EXPLICIT",
+          "scope": "general; definite article presupposes the link exists; 'cancer' unspecified, penile cancer by context; strength of link (risk factor vs prevention) unspecified",
+          "brief_basis": "'The link' treats the relationship as established.",
+          "alternative_reading": "May be meant narrowly (hygiene and penile cancer risk) rather than cancer in general."
+        },
+        {
+          "claim": "The family's hygiene vigilance is a response to the uncle's cancer, implying they see hygiene as relevant to its cause.",
+          "question_quote": "our family is now hyper-vigilant about personal hygiene",
+          "attribution_mode": "IMPLIED",
+          "scope": "family belief inferred from behavior",
+          "brief_basis": "Behavior change follows the diagnosis.",
+          "alternative_reading": null
+        }
+      ],
+      "request_or_preference": "How to tailor a hygiene-education message for homeless shelters that emphasizes the cleanliness-cancer link.",
+      "missing_context": ["what risk factors applied to the uncle's case", "which cancers the message is meant to cover"],
+      "uncertainty_note": "The question presupposes a link but not its strength; 'prevention' is the user's word."
+    },
+    {
+      "case_id": "R13",
+      "premises": [
+        {
+          "claim": "The son has medulloblastoma.",
+          "question_quote": "my son's medulloblastoma",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis",
+          "brief_basis": "Stated as fact.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "Recovery is unlikely.",
+          "question_quote": "recovery seems unlikely",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; hedged ('seems unlikely'), not certain; source not given",
+          "brief_basis": "Given as the reason for the bucket list.",
+          "alternative_reading": "UNCERTAIN whether this is a clinician's prognosis or the family's impression after 'learning about' the disease."
+        },
+        {
+          "claim": "The remaining time is limited.",
+          "question_quote": "make the most of the time left",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual; terminal framing inferred",
+          "brief_basis": "'Time left' presupposes a limited horizon.",
+          "alternative_reading": null
+        }
+      ],
+      "request_or_preference": "Memorable experiences to include in a bucket list.",
+      "missing_context": ["risk group and metastatic status", "child's age", "treatment plan", "what the oncology team said about prognosis"],
+      "uncertainty_note": "The prognosis belief is hedged and unsourced."
+    },
+    {
+      "case_id": "R14",
+      "premises": [
+        {
+          "claim": "Stomach cancer is rare.",
+          "question_quote": "the rarity of stomach cancer",
+          "attribution_mode": "EXPLICIT",
+          "scope": "general population claim; region unspecified",
+          "brief_basis": "Presented with 'Given' as accepted background.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "The father has been diagnosed with stomach cancer.",
+          "question_quote": "my father's mental health after his diagnosis",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual; diagnosis type inferred from context",
+          "brief_basis": "'His diagnosis' follows the stomach-cancer framing.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "The likelihood of stomach cancer affecting the user or their siblings is minimal.",
+          "question_quote": "the likelihood of it affecting me or my siblings is minimal",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual family; 'minimal'",
+          "brief_basis": "Stated as fact in a 'since' clause.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "Rarity of the disease implies low genetic or familial risk.",
+          "question_quote": "Given the rarity of stomach cancer, I'm not overly concerned about genetic predispositions",
+          "attribution_mode": "IMPLIED",
+          "scope": "causal link via 'given'; individual reasoning",
+          "brief_basis": "Rarity is offered as the reason not to worry about predisposition.",
+          "alternative_reading": null
+        }
+      ],
+      "request_or_preference": "How to support the father's mental health.",
+      "missing_context": ["father's age and cancer subtype", "family history", "any hereditary syndrome evaluation"],
+      "uncertainty_note": "Two general claims (rarity; low familial risk) are stated without source; their truth is not judged here."
+    },
+    {
+      "case_id": "R15",
+      "premises": [
+        {
+          "claim": "The uncle was diagnosed with a gastrointestinal neuroendocrine tumor last year.",
+          "question_quote": "My uncle was diagnosed with a gastrointestinal neuroendocrine tumor (NET) last year",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis",
+          "brief_basis": "Stated as a completed event.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "His doctor said the tumor is benign and does not require immediate intervention.",
+          "question_quote": "His doctor said it's benign and doesn't require any immediate intervention",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; reported clinician statement; 'immediate' leaves later intervention open",
+          "brief_basis": "Explicitly attributed to the doctor.",
+          "alternative_reading": "'Benign' is the family's relay of the doctor's words; exact wording unknown."
+        },
+        {
+          "claim": "He is asymptomatic and feels well.",
+          "question_quote": "He's been feeling great and hasn't experienced any symptoms",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; current state",
+          "brief_basis": "Stated as fact.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "His tumor belongs to a class of 'untreated, benign' gastrointestinal NETs.",
+          "question_quote": "untreated, benign gastrointestinal NETs",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual case generalized to a class; adopts the doctor's characterization",
+          "brief_basis": "The question generalizes from his case to the class.",
+          "alternative_reading": "The user is asking whether long-term risks exist, so they do not presuppose absence of risk."
+        }
+      ],
+      "request_or_preference": "Long-term health risks of untreated benign gastrointestinal NETs relevant to planning family gatherings. (The 'Are there any' form does not presuppose that risks are absent.)",
+      "missing_context": ["tumor grade, size, and site", "whether surveillance was recommended", "the doctor's exact wording"],
+      "uncertainty_note": "The only strong belief is a reported clinician statement; the question itself is open about risk."
+    },
+    {
+      "case_id": "R16",
+      "premises": [
+        {
+          "claim": "Pharyngeal cancer screenings exist (the user read about them).",
+          "question_quote": "I recently read about pharyngeal cancer screenings",
+          "attribution_mode": "EXPLICIT",
+          "scope": "general; based on something the user read; source unspecified",
+          "brief_basis": "Reported reading.",
+          "alternative_reading": "What the user read may have described risk-based check-ups rather than a formal screening program."
+        },
+        {
+          "claim": "The user is not in a high-risk category.",
+          "question_quote": "I'm not in a high-risk category",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; self-assessed",
+          "brief_basis": "Stated as fact.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "The user does not need to worry about regular check-ups.",
+          "question_quote": "I don't need to worry about regular check-ups",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; framed as something the user 'knows'",
+          "brief_basis": "Presented as knowledge gained from the reading.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "High-risk individuals such as smokers should be screened regularly, on some schedule, for early detection.",
+          "question_quote": "How often should high-risk individuals like smokers get screened to ensure early detection?",
+          "attribution_mode": "IMPLIED",
+          "scope": "general; presupposes a recommended frequency exists",
+          "brief_basis": "'How often' presupposes that regular screening is recommended for the high-risk group.",
+          "alternative_reading": null
+        }
+      ],
+      "request_or_preference": "Screening frequency for high-risk individuals.",
+      "missing_context": ["what the user read", "the user's actual risk factors", "region or guideline the user has in mind"],
+      "uncertainty_note": "Both general claims (screening exists; a schedule exists for high-risk people) come from unspecified reading."
+    },
+    {
+      "case_id": "R17",
+      "premises": [
+        {
+          "claim": "The user found blood in their urine.",
+          "question_quote": "After finding blood in my urine",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual symptom",
+          "brief_basis": "Stated as an observation.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "The user has decided to prepare for possible kidney cancer surgery.",
+          "question_quote": "I've decided to prepare for potential surgery for kidney cancer",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual decision; 'potential' marks the surgery, and by extension the diagnosis, as uncertain",
+          "brief_basis": "Stated decision with an explicit hedge.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "Blood in urine is being treated as indicating kidney cancer that will lead to surgery.",
+          "question_quote": "After finding blood in my urine, I've decided to prepare for potential surgery for kidney cancer",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual causal chain; hedged by 'potential'",
+          "brief_basis": "The sequence links the symptom to a specific anticipated diagnosis and treatment.",
+          "alternative_reading": "Precautionary preparation for one scenario; the text does not claim a diagnosis was made."
+        }
+      ],
+      "request_or_preference": "Steps for a smooth post-operative recovery.",
+      "missing_context": ["whether a clinician has evaluated the symptom", "any imaging or diagnosis", "other symptoms"],
+      "uncertainty_note": "Unlike a confirmed-diagnosis case, 'potential' keeps the diagnosis explicitly uncertain; the leap is from symptom to a specific planned treatment."
+    },
+    {
+      "case_id": "R18",
+      "premises": [
+        {
+          "claim": "The father has been diagnosed with prostate cancer.",
+          "question_quote": "My father was recently diagnosed with prostate cancer",
+          "attribution_mode": "EXPLICIT",
+          "scope": "individual; confirmed diagnosis",
+          "brief_basis": "Stated as a completed event.",
+          "alternative_reading": null
+        },
+        {
+          "claim": "He will need long-term incontinence management after treatment.",
+          "question_quote": "long-term incontinence management",
+          "attribution_mode": "IMPLIED",
+          "scope": "individual; anticipated, not observed; 'long-term'; treatment type unspecified",
+          "brief_basis": "The request presupposes long-term incontinence as part of post-treatment care.",
+          "alternative_reading": "Preparation for a possibility; no hedge like 'optimistic' is present, so the presupposition reads stronger than in a comparable case, but it is still not asserted as certain."
+        }
+      ],
+      "request_or_preference": "Best type of adult diaper for long-term incontinence management and cleaning routines to prevent skin irritation.",
+      "missing_context": ["planned treatment modality", "clinician counseling on continence outcomes", "whether treatment has started"],
+      "uncertainty_note": "The treatment is unspecified ('post-treatment'), so the basis for expecting long-term incontinence is unknown."
+    }
+  ]
+}
