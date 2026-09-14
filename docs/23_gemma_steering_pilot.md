@@ -1071,3 +1071,7 @@ seed 17로 추출한다. 코드 identity까지 일치하면 Plain, FP Identifica
 fit은 모델/runtime/분할이 같고 지정한 SHA가 일치할 때만 기존 숫자 벡터를 명시적으로 재사용하며,
 새 steering run에 fit 원본 identity와 SHA를 기록한다. fit 코드를 다시 실행해 같은 벡터가
 나온다는 주장은 하지 않는다. 원본 파일을 덮거나 metadata를 현재 identity로 치환하지 않는다.
+
+후속 `Baseline source model changed` 오류는 YAML의 GPU 키 `0`과 JSON의 `"0"`을 직접
+비교한 버그로 로컬 재현됐다. source_model을 동일한 JSON 표현으로 비교하도록 수정했고,
+실제 모델/설정 값 차이는 여전히 차단한다. 코드 해시 변경 여부와 이 직렬화 차이는 별개다.

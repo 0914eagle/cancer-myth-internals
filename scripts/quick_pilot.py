@@ -65,8 +65,13 @@ def prepare(pilot, out, config):
                 or run["review_tokens"] != 128 or run["batch_size"] != 1):
             raise ValueError("Need matching baseline identity, final=512, review=128, batch=1")
     impl = digest({n: file_digest(ROOT / "src" / n) for n in ("pilot.py", "pilot_model.py", "steering.py")})
-    if identity["source_model"] != cfg["source_model"]:
-        raise ValueError("Baseline source model changed; use its original config")
+    # model_identity is JSON-round-tripped before saving: YAML's integer GPU
+    # keys (max_memory: {0: ...}) become strings. Compare their JSON form.
+    if digest(identity["source_model"]) != digest(cfg["source_model"]):
+        raise ValueError(
+            "Baseline source model changed; use its original config. "
+            f"Stored: {identity['source_model']!r}; configured: {cfg['source_model']!r}"
+        )
     refresh = identity["implementation_hash"] != impl
     current_identity = {**identity, "implementation_hash": impl}
     fit = pilot / "fit/fit.json"

@@ -63,6 +63,13 @@ L21 residual L2 norm 평균이다. L21은 hidden-state index 21, 즉 decoder blo
 아래 코드는 로컬 mock 테스트를 통과한 실행 절차이며 실제 GPU 결과는 아직 없다.
 prepare에서 중단된 기존 `QUICK_DIR`를 그대로 사용해 다시 실행하면 된다.
 
+후속 실행의 `Baseline source model changed`는 실제 Gemma YAML로 로컬 재현한 결과,
+`max_memory`의 GPU 키가 YAML에서 정수 `0`, 저장 JSON에서 문자열 `"0"`인 것을 직접 비교한
+버그였다. 모델 identity는 저장 시 JSON으로 정규화되므로 source_model 검사도 동일한 JSON
+표현의 해시로 비교하도록 수정했다. 실제 모델 ID·dtype·메모리 설정 값 변경은 계속 차단하며,
+오류에 저장/현재 설정을 함께 표시한다. 이전에 원인을 코드 변경으로만 단정한 설명은 정정한다.
+실제 코드 해시까지 달라졌는지는 prepare가 출력하는 재생성 조건 수(2 또는 5)로 확인한다.
+
 ```bash
 cd /home/eagle0914/cancer-myth-internals
 git switch main

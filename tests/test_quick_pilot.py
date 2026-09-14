@@ -19,7 +19,9 @@ def sample(tmp_path, monkeypatch):
     test={'id':'locked','set':'fpq','partition':'test','question':'Never read for inference','group_id':'test'}
     manifest=make_manifest(qs+[test],seed=17,folds=5,test_fold=0,dev_fold=1,reference_hash='ref')
     (pilot/'split/manifest.json').write_text(json.dumps(manifest))
-    ident={'source_model':{'model_id':'google/gemma-2-9b-it'},'implementation_hash':digest({n:file_digest(mod.ROOT/'src'/n) for n in ('pilot.py','pilot_model.py','steering.py')})}
+    source_model = mod.load_config(mod.ROOT/'configs/gemma2_9b.yaml')['source_model']
+    # Real YAML contains integer GPU keys; model_identity writes JSON string keys.
+    ident={'source_model':json.loads(json.dumps(source_model)),'implementation_hash':digest({n:file_digest(mod.ROOT/'src'/n) for n in ('pilot.py','pilot_model.py','steering.py')})}
     for method in mod.BASE:
         run={'method':method,'partition':'dev','manifest_hash':manifest['manifest_hash'],'identity':ident,'max_new_tokens':512,'review_tokens':128,'batch_size':1}
         path=pilot/'dev'/f'{method}.jsonl'
@@ -29,7 +31,7 @@ def sample(tmp_path, monkeypatch):
     (pilot/'fit/fit.json').write_text(json.dumps({'manifest_hash':manifest['manifest_hash'],'identity':ident,'prefix_tokens':32}))
     np.savez(pilot/'fit/directions.npz',L21_c_pair32=np.ones(4)/2,L21_norm_scale=3.)
     examples=tmp_path/'examples.json';examples.write_text(json.dumps([{'example_question':'Example','example_assumption':'Assumption','answer':'Answer','score':{'Sharpness':1}}]))
-    cfg={'source_model':ident['source_model'],'judge':{'examples_fpq':str(examples),'examples_nfp':str(examples)}}
+    cfg={'source_model':source_model,'judge':{'examples_fpq':str(examples),'examples_nfp':str(examples)}}
     monkeypatch.setattr(mod,'load_config',lambda _:cfg)
     mod.prepare(pilot,out,tmp_path/'config.yaml')
     return pilot,out,manifest
@@ -102,6 +104,22 @@ def test_source_tampering_fails_before_calls(sample):
     pilot,out,_=sample
     with (pilot/'dev/plain.jsonl').open('a') as f:f.write('\n')
     with pytest.raises(ValueError,match='changed'):mod.get_plan(out)
+
+
+@pytest.mark.parametrize('field,value', [('model_id', 'different-model'), ('dtype', 'float32'),
+                                        ('max_memory', {0: '18GiB'})])
+def test_json_gpu_keys_match_but_real_model_config_changes_fail(sample, monkeypatch, field, value):
+    pilot, out, _ = sample
+    plan = mod.get_plan(out)
+    cfg = mod.load_config(plan['config_path'])
+    assert cfg['source_model']['max_memory'] == {0: '22GiB'}
+    assert plan['identity']['source_model']['max_memory'] == {'0': '22GiB'}
+    changed = {**cfg, 'source_model': {**cfg['source_model'], field: value}}
+    monkeypatch.setattr(mod, 'load_config', lambda _: changed)
+    new_out = out.parent/'different_config'
+    with pytest.raises(ValueError, match='Baseline source model changed.*Stored:.*configured:'):
+        mod.prepare(pilot, new_out, plan['config_path'])
+    assert not new_out.exists()
 
 
 def test_dev_steering_subset_does_not_unlock_test(tmp_path):
