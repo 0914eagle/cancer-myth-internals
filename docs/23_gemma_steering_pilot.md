@@ -921,3 +921,19 @@ bash scripts/run_gemma_gate.sh all
 동점 문턱, 저장 판정 재사용·동일 답변 공유·무작위 대조, CPU 모의 모델의 정확한 층/토큰 hook과
 cache resume를 포함한다. 실제 Gemma GPU 실행/성능은 서버에서 아직 확인해야 한다.
 현재 코드 추가는 core generation identity 파일을 수정하지 않으므로 기존 generation을 무효화하지 않는다.
+
+## 14. 첫 gate 결과와 오프라인 후속 진단 (2026-09-14)
+
+§13의 서버 실행 결과를 받았다. hidden AUROC 0.638, text 0.766;
+hidden gate × FP ID의 PCR/NFP는 11.1/100, text는 16.2/96.7이며,
+CoT의 34.2/100보다 좋은 결과는 아직 없다. 이번 결과는 저장 답변의 **프롬프트 라우팅**이고
+hidden gate × activation steering은 실행하지 않았다.
+
+[상세 결과·해석 정정·실행 명령](reviews/gate_l21_first_results_2026-09-14.md)에 원 콘솔 수치,
+FPQ-label oracle 59.0/100과 observed-benefit oracle 60.7/100의 차이,
+text rescue 13/19와 net gain 12/19의 차이를 기록했다. Oracle은 개입이 오류 없다는 증거가 아니다.
+
+`scripts/gate_diagnostics.py`는 원본 provenance를 확인하고 oracle, benefit AUROC,
+같은 k의 hidden/text/random 기대 곡선, calibration-only 문턱 곡선을 별도 폴더에 출력한다.
+선택 사항인 C 비교는 train-only grouped CV를 사용한다. GPT/Gemma 호출 0회, test 미사용이며,
+기존 파일은 보존한다. 추가 진단 결과는 아직 서버에서 받지 않았으므로 실제 숫자를 채우지 않는다.

@@ -1,9 +1,11 @@
-# 15. 진행 현황 정리 (2026-09-10)
+# 15. 진행 현황 정리 (2026-09-14)
 
-> **최신 실행 상태:** [23](23_gemma_steering_pilot.md)의 Gemma-2-9B-it 파일럿 코드를 구현했다.
-> Plain/FP Identification 적용/CoT/기본 C를 먼저 비교한다. 모델별 새 방법은 아직 미정이다.
-> fit 전용 C·scale, grouped holdout, 판정 파싱/캐시 검증을 새 실행 경로에 반영했다.
-> 실제 9B GPU 생성·GPT-4o 채점은 아직 실행하지 않았다. 장기 Table 3는 CREPE 전이 방향이다.
+> **최신 실행 상태:** [23](23_gemma_steering_pilot.md)의 Gemma-2-9B-it baseline과 L21 gate 파일럿을 실행했다.
+> Plain/FP Identification/CoT 답변을 생성했고 FPQ는 Sol, NFP는 Terra v2 판정을 사용한다.
+> 첫 hidden gate × FP Identification의 PCR/NFP는 11.1/100으로 CoT 34.2/100을 넘지 못했다.
+> 이번 gate는 저장 답변의 프롬프트 라우팅이며 조건부 activation steering은 아직 실행하지 않았다.
+> [결과·정정·오프라인 후속 명령](reviews/gate_l21_first_results_2026-09-14.md). 새 oracle/곡선/C 진단 수치는 아직 미확보다.
+> 평가상의 모호함과 dev 반복 사용 한계가 남는다. 방법론은 미정이며 장기 Table 3는 CREPE 전이 방향이다.
 > 아래 이전 계획의 모델 순서·표 번호·미결 상태보다 이 갱신과 23을 우선한다.
 
 문서 세션(2026-09-07–10)과 실험 세션의 작업을 한 곳에 모은 것. 세부는 각 문서 링크. 이 문서는 "지금 어디까지 왔고 무엇이 열려 있나"만 답한다.

@@ -1,6 +1,10 @@
 # Cancer-Myth Internals
 
 **바로 실행:** [23 §0 서버 명령](docs/23_gemma_steering_pilot.md#0-바로-실행하기--우선-baseline-세-행).
+
+**2026-09-14 gate 첫 결과:** L21 hidden gate × FP Identification은 PCR/NFP 11.1/100,
+text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 파일럿이며 activation steering이 아니다.
+[원 수치·해석·GPU/GPT 없이 oracle/구제/예산 곡선을 확인하는 명령](docs/reviews/gate_l21_first_results_2026-09-14.md).
 `prepare → baselines → report-baselines`로 첫 dev 표를 만든 뒤 `fit → sweep → report`로 steering을 비교한다.
 [24 — MISP-Bench와의 관계](docs/24_misp_relation.md): CoT/검증 지시 근거, 입력 요소별 외부 평가 후보, 현재 파일럿과의 구분.
 

@@ -93,6 +93,12 @@ def test_fit_never_uses_dev_to_train_or_calibrate(data, tmp_path):
         a["gates"]["hidden"]["scores"][i] != b["gates"]["hidden"]["scores"][i]
         for i in split["dev_ids"]
     )
+    from scripts.gate_diagnostics import regularization_check
+
+    first = regularization_check(rows, split, load_json(out / "features.json"), a, out)
+    changed = regularization_check(rows, split, load_json(other / "features.json"), b, other)
+    for key in ("C_candidates", "chosen_C", "threshold", "parameters"):
+        assert first[key] == changed[key]
 
 
 def test_report_replays_scores_without_model_calls(data, monkeypatch):
@@ -200,6 +206,21 @@ def test_report_replays_scores_without_model_calls(data, monkeypatch):
     assert len(result["random_draw_metrics"]) == 500
     # Deterministic report, no further scoring.
     mod.report(pilot, out, nfp)
+    from scripts.gate_diagnostics import diagnose
+
+    diagnostic_dir = out / "diagnostics"
+    original_report_hash = file_digest(out / "report.json")
+    d = diagnose(pilot, out, nfp, diagnostic_dir)
+    assert d["oracle_metrics"]["FPQ-label oracle"]["fpq"]["pass"] == 100
+    assert d["oracle_metrics"]["FPQ-label oracle"]["nfp"]["pass"] == 100
+    assert d["cot_metrics"]["fpq"]["pass"] == 0  # same-answer donor rule preserved
+    assert len(d["budget_curves"]) == 3 * (len(dev) + 1)
+    assert file_digest(out / "report.json") == original_report_hash
+    assert diagnose(pilot, out, nfp, diagnostic_dir) == d
+    altered = pilot / "dev" / "plain_judge_codex_gpt-5.6-sol.jsonl"
+    altered.write_text(altered.read_text() + "\n")
+    with pytest.raises(ValueError, match="Source changed"):
+        diagnose(pilot, out, nfp, out / "changed-source")
 
 
 def test_group_leakage_is_rejected(data):
