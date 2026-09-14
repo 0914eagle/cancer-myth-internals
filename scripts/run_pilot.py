@@ -154,6 +154,30 @@ def fit(args):
         )
 
 
+def generation_rows(manifest, partition, method, question_ids=None):
+    rows = [q for q in manifest["questions"] if q["partition"] == partition]
+    if question_ids is None:
+        return rows
+    if partition != "dev" or method != "premise_cot":
+        raise ValueError("Question subset is only available for dev CoT diagnostics")
+    ids = load_json(question_ids)
+    if (
+        not isinstance(ids, list)
+        or not ids
+        or any(not isinstance(i, str) for i in ids)
+        or len(set(ids)) != len(ids)
+        or not set(ids) <= {q["id"] for q in rows}
+    ):
+        raise ValueError("Need unique nonempty dev question IDs")
+    return [q for q in rows if q["id"] in set(ids)]
+
+
+def comparison_identity(identity):
+    # Shared-module fit/alignment fixes can change this hash; the budget-check
+    # caller uses a 128-token replay control before comparing across code hashes.
+    return {k: v for k, v in identity.items() if k != "implementation_hash"}
+
+
 def generate(args):
     import numpy as np
     import torch
@@ -186,7 +210,9 @@ def generate(args):
             raise ValueError("Test generation budgets differ from dev")
     if args.max_new_tokens < 1 or args.review_tokens < 1 or args.batch_size < 1:
         raise ValueError("Token budgets and batch size must be positive")
-    rows = [q for q in manifest["questions"] if q["partition"] == args.partition]
+    rows = generation_rows(
+        manifest, args.partition, args.method, getattr(args, "question_ids", None)
+    )
     run = {
         "version": VERSION,
         "manifest_hash": manifest["manifest_hash"],
@@ -201,10 +227,19 @@ def generate(args):
     }
     if args.partition == "test":
         run["selection_hash"] = file_digest(args.selection)
+    if getattr(args, "question_ids", None):
+        run["diagnostic_subset_hash"] = file_digest(args.question_ids)
+    if getattr(args, "identity_reference", None):
+        run["identity_reference_hash"] = file_digest(args.identity_reference)
     spec = None
     with output_lock(args.output):
         model, tokenizer = load_model(cfg)
         run["identity"] = model_identity(model, tokenizer, cfg)
+        if getattr(args, "identity_reference", None):
+            if comparison_identity(run["identity"]) != comparison_identity(
+                load_json(args.identity_reference)["identity"]
+            ):
+                raise ValueError("Model/tokenizer/config identity differs from comparison baseline")
         if args.partition == "test" and run["identity"] != selection["identity"]:
             raise ValueError("Resolved model/tokenizer revision changed since dev")
         if args.method == "steering":
@@ -455,6 +490,11 @@ def main():
     p.add_argument("--batch-size", type=int, default=4)
     p.add_argument("--max-new-tokens", type=int, default=512)
     p.add_argument("--review-tokens", type=int, default=128)
+    p.add_argument("--question-ids", help="JSON ID list; dev premise_cot diagnostic subset only")
+    p.add_argument(
+        "--identity-reference",
+        help="Require model/config/runtime identity from this .run.json; code hashes remain recorded",
+    )
     p.add_argument("--output", required=True)
     p.set_defaults(func=generate)
     p = subs.add_parser("select")

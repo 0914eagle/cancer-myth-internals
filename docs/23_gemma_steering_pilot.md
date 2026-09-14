@@ -937,3 +937,56 @@ text rescue 13/19와 net gain 12/19의 차이를 기록했다. Oracle은 개입�
 같은 k의 hidden/text/random 기대 곡선, calibration-only 문턱 곡선을 별도 폴더에 출력한다.
 선택 사항인 C 비교는 train-only grouped CV를 사용한다. GPT/Gemma 호출 0회, test 미사용이며,
 기존 파일은 보존한다. 추가 진단 결과는 아직 서버에서 받지 않았으므로 실제 숫자를 채우지 않는다.
+
+## 15. CoT 검토문 128→1024토큰 비교 (2026-09-14)
+
+사용자가 제공한 dev 질문·CoT 생성·Sol 판정 파일을 대조했다. 147개 ID/질문/답변 hash와
+generation run hash가 일치했고, FPQ는 +1 40 / 0 18 / −1 59개였다.
+0점 18개 중 review_output_tokens=128은 13개다. 일부 원문은 항목을 열고 끝나지만,
+finish_reason이 없으므로 128토큰 도달 자체를 모두 강제 절단으로 판정하지 않는다.
+18개에는 표적 미탐지, 검토문 대비 교정 표현 약화, 참조·판정 경계가 섞여 있었다.
+이 때문에 0점을 모두 “알았는데 교정하지 못함”으로 해석하지 않는다.
+
+사용자 요청에 따라 같은 18개에서 **검토문 한도만 1024**로 바꿔 재생성한다.
+1024토큰 강제 생성이 아니라 최대 길이다. 프롬프트의 briefly도 유지해 길이 한도 변화만 비교한다.
+최종 답변 한도는 원 run의 값(현재 예상 512)을 유지하며 모델·토크나이저·설정·runtime을 비교한다.
+부분집합에 따른 batch 차이를 피하기 위해 원 run의 batch size=1을 요구한다.
+선택은 기존 Sol 0점에 의한 것이며 새 점수·PCR을 계산하지 않는다. test는 사용하지 않는다.
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+git pull --ff-only origin main
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+export DATA_ROOT=/data1/heejae
+export CUDA_VISIBLE_DEVICES=0
+export PILOT_DIR=/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix
+
+python scripts/cot_budget_check.py all \
+  --pilot-dir "$PILOT_DIR" \
+  --out-dir "$PILOT_DIR/cot_zero18_r1024_v1"
+```
+
+**GPU 답변 생성이 있는 명령이다. GPT judge 호출은 0회다.** 18문항 각각 검토문과 최종 답변을 생성한다.
+공유 모듈의 옛 fit/alignment 수정 때문에 implementation hash가 원 baseline과 다르면,
+같은 18개를 128토큰으로 먼저 재생성해 검토문·최종 답변이 모두 원문과 같을 때만 1024로 진행한다.
+이 경우 128/1024 두 조건에서 총 36개 질문 파이프라인을 실행한다. 128 대조가 다르면
+`control_audit.json`에 ID를 남기고 중단하므로 길이 효과와 구현 변경을 혼동하지 않는다.
+원 model/config/runtime이 다르면 생성 전(모델 로딩 후) 오류로 중단한다.
+
+출력은 별도 폴더의 `plan.json`, `question_ids.json`, `premise_cot_r1024.jsonl`,
+`summary.json`, `review.md`다. 필요 시 `premise_cot_r128_control.jsonl`과 `control_audit.json`도 생긴다.
+기존 generation/score/manifest는 수정하지 않는다. 정상 중단은 같은 명령으로 이어갈 수 있으며,
+이미 생성된 문항은 재생성하지 않는다. 작성한 사용자 검토 내용도 report 재실행으로 덮어쓰지 않는다.
+
+완료 후 맥 터미널에서 비교 파일만 가져오기:
+
+```bash
+scp eagle0914@165.132.76.125:/data1/heejae/cancer_myth_internals/results/pilot/gemma2_9b_v1_fitfix/cot_zero18_r1024_v1/review.md \
+  ~/Downloads/cot_review_1024.md
+```
+
+검토할 것은 길이가 늘었는지 자체보다 (1) 미완결 검토가 끝났는가, (2) 목표 전제를 정확히
+지목했는가, (3) 최종 답변의 교정이 정확해졌는가다. 새 오류와 참조 보류도 함께 기록한다.
+로컬 검증은 부분집합/test 차단, 1024 예산 전달, resume, 모델 identity 비교,
+코드 해시 변경 시 128 대조 확인, 원 점수 보존·오프라인 보고를 포함한다.
+실제 Gemma 1024 결과는 서버에서 실행 후 확인해야 한다.
