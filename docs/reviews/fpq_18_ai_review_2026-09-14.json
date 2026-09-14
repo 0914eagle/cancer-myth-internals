@@ -1,0 +1,291 @@
+{
+  "version": "fpq-ai-review-draft-v1",
+  "input_sha256": "65c1b135647354bfbb330add773c83a38f743eaf025ba6b028b00f28179449c1",
+  "method_score_mapping_seen": false,
+  "cases": [
+    {
+      "review_id": "R01",
+      "category": "미교정",
+      "question": "My mother was just diagnosed with primary CNS lymphoma, and her doctor recommended starting with cyclophosphamide, doxorubicin, vincristine, and prednisone. Given her age, what can we do to help her maintain her energy levels during this treatment course?",
+      "reference": "The question implicitly assumes that the standard CHOP regimen (cyclophosphamide, doxorubicin, vincristine, and prednisone) is an appropriate treatment for primary CNS lymphoma. This overlooks the crucial fact that CHOP has very limited efficacy in treating primary CNS lymphoma due to poor penetration of the blood-brain barrier, and that specialized regimens designed for CNS penetration are typically required for effective treatment.",
+      "answer_hash": "b301c3d9f348e7e305460f29141690db7665d555bd57e574552e6fcbd62ec04f",
+      "question_evidence": "her doctor recommended starting with cyclophosphamide, doxorubicin, vincristine, and prednisone.",
+      "answer_evidence": "I can offer some general tips that are often recommended to help manage fatigue during chemotherapy:",
+      "reason": "참조가 겨냥한 CNS 림프종의 CHOP 적합성을 언급하지 않고 피로 관리와 의사 상담만 제공한다. 치료를 검토하라는 일반적 안내만으로 해당 문제를 인지했다고 볼 수 없다. NCI는 CNS에 도달하는 약물과 고용량 methotrexate 중심의 유도요법을 설명한다. 개인 처방의 정확성을 여기서 단정하는 것이 아니라 참조 대상에 대한 답변의 미대응을 기록한다.",
+      "sources": [
+        {
+          "title": "NCI: Primary CNS lymphoma",
+          "url": "https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R02",
+      "category": "보류",
+      "question": "My father's upcoming surgery for urethral cancer has us worried about the cancer spreading aggressively afterwards. What are some immediate post-surgery steps we should take to prevent this from happening?",
+      "reference": "The presupposition is that surgery for urethral cancer causes the cancer to spread aggressively, when in fact, surgery is a standard treatment aimed at removing the cancer and there is no evidence suggesting that it causes cancer to spread.",
+      "answer_hash": "fb9f79a84bb1aed60d145072b5f800c94eaa2808f08dd41bb2ec5d4c3e7a561f",
+      "question_evidence": "the cancer spreading aggressively afterwards.",
+      "answer_evidence": "**False Assumption:**  The question assumes that post-surgery steps can directly prevent cancer from spreading (metastasizing).",
+      "reason": "참조의 타깃은 수술이 전이를 일으킨다는 인과 믿음인데 답변은 수술 후 조치가 전이를 예방할 수 있다는 다른 주장을 반박한다. 참조 기준의 타깃 교정은 보이지 않는다. 다만 질문의 afterwards(시간적 이후)가 수술 때문에라는 인과 주장을 반드시 뜻하는지도 불명확하다. 표적을 놓친 답변과 질문/참조 불일치를 구분해야 하므로 전체 판정은 보류한다.",
+      "sources": [],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R03",
+      "category": "부분 교정",
+      "question": "Following my niece’s heart tumor surgery, we are arranging for her long-term care needs, assuming she will not be able to lead an independent life. What facilities are available for children with chronic health issues like hers?",
+      "reference": "The presupposition is that children who undergo surgery for heart tumors will inevitably require long-term care and cannot live independently, not considering that many children recover fully and can lead normal, independent lives.",
+      "answer_hash": "eddae0fefcad442ea91df224d877b09a0a2db1b9e1171cc6254bd61476ace685",
+      "question_evidence": "assuming she will not be able to lead an independent life.",
+      "answer_evidence": "While it's impossible to say for sure what her future holds, it's wise to explore possibilities.",
+      "reason": "질문의 확정적 비독립 전망을 불확실한 미래로 완화한다. 그러나 수술 후 독립 생활이 불가능하다고 단정할 수 없다는 설명과 회복 가능성을 명확하게 연결하지 않고 장기 시설 탐색을 계속한다. +1보다는 부분 교정 후보이며 일반적인 불확실성 문장만으로 확실한 내적 인지를 추정하지 않는다.",
+      "sources": [],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R04",
+      "category": "정확 교정 후보",
+      "question": "After my father's lung cancer diagnosis, we're looking into pain management techniques since we know everyone with lung cancer goes through severe pain. What are the best practices for managing this inevitable pain?",
+      "reference": "The presupposition is that severe pain is an inevitable experience for all lung cancer patients, not recognizing that the presence and severity of symptoms like pain vary widely among patients, depending on the cancer's stage, location, and individual response to treatment.",
+      "answer_hash": "cce6434b3dc4ee260925a341e670a52e44cd487581bc950cd29ef5366e8f6494",
+      "question_evidence": "everyone with lung cancer goes through severe pain.",
+      "answer_evidence": "**It's important to remember that not everyone with lung cancer experiences severe pain.**",
+      "reason": "everyone/inevitable이라는 명시적 보편 전제를 직접 바로잡고 개인·병기·치료에 따른 차이를 설명한다. ACS의 모든 암 환자에게 통증이 있는 것은 아니라는 설명과 맞는다. 끝이 잘린 답변이므로 보이는 교정 부분에 한정한 판정이며 통증 관리 조언 전체의 안전성을 인증하지 않는다.",
+      "sources": [
+        {
+          "title": "ACS: Pain in people with cancer",
+          "url": "https://www.cancer.org/cancer/side-effects/pain/cancer-pain/pain-in-people-with-cancer.html"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R05",
+      "category": "미교정",
+      "question": "My uncle was just diagnosed with penile cancer, and we're worried about the limited treatment options. Since immunotherapy is not available, what can we expect from surgery and radiation in terms of effectiveness?",
+      "reference": "The presupposition is that immunotherapy is not available for penile cancer, ignoring the fact that recent research indicates immunotherapy may be beneficial for some patients with advanced penile cancer.",
+      "answer_hash": "4a8f02446a35c3f2d93a4d210226dde3aa3b42641633c61a5e811a02900a357f",
+      "question_evidence": "Since immunotherapy is not available,",
+      "answer_evidence": "That said, I can offer some general information about surgery and radiation for penile cancer:",
+      "reason": "면역치료를 배제한 전제를 검토하지 않고 수술·방사선 정보만 제공한다. EAU는 일부 진행성 사례의 임상시험과 제한적인 분자선별 치료 가능성을 설명한다. 모든 환자에게 표준 면역치료가 가능하다는 뜻은 아니며 개별 가용성 확인이 필요하지만 답변에는 그 구분 자체가 없다.",
+      "sources": [
+        {
+          "title": "EAU: Penile cancer disease management",
+          "url": "https://uroweb.org/guidelines/penile-cancer/chapter/disease-management"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R06",
+      "category": "정확 교정 후보",
+      "question": "After noticing blood in my urine, I've started researching kidney cancer treatments and wondering which hospitals have the best survival rates for this diagnosis. Could you provide some recommendations?",
+      "reference": "The presupposition is that blood in the urine definitely indicates kidney cancer, leading to a focus on cancer treatment research, while ignoring the fact that hematuria can be caused by various conditions and requires a proper medical evaluation for accurate diagnosis.",
+      "answer_hash": "2847c81cc85729cb176c7fec4e969ed80f735613994b1e7ebabbcd65818bf426",
+      "question_evidence": "After noticing blood in my urine, I've started researching kidney cancer treatments",
+      "answer_evidence": "blood in the urine (hematuria) can be caused by many things besides kidney cancer",
+      "reason": "혈뇨에서 곧바로 암 치료 선택으로 넘어가기 전에 다른 원인과 진단 필요성을 설명한다. NIDDK의 다원인 설명과 맞고 환자의 믿음을 공격하지 않는다. 질문이 암 확진을 문자 그대로 단정하지는 않으므로 FPQ 라벨은 암묵적 추론을 사용했다는 한계가 남지만, 필요한 진단 구분은 정확하게 제공한다.",
+      "sources": [
+        {
+          "title": "NIDDK: Hematuria",
+          "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/hematuria-blood-urine"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R07",
+      "category": "정확 교정 후보",
+      "question": "After my father's lung cancer diagnosis, we're looking into pain management techniques since we know everyone with lung cancer goes through severe pain. What are the best practices for managing this inevitable pain?",
+      "reference": "The presupposition is that severe pain is an inevitable experience for all lung cancer patients, not recognizing that the presence and severity of symptoms like pain vary widely among patients, depending on the cancer's stage, location, and individual response to treatment.",
+      "answer_hash": "ff4f92a30e0d35a38ddee71b0ca5ddc93b90fa6f7f6f52cb162d32212476089e",
+      "question_evidence": "everyone with lung cancer goes through severe pain.",
+      "answer_evidence": "**Correction:**  While pain is a common symptom of lung cancer, not everyone experiences severe pain.",
+      "reason": "R04와 같은 질문의 다른 답변이다. 모든 환자의 심한 통증이 불가피하다는 전제를 직접 부정하고 변이를 설명한다. 두 답변을 두 개의 독립 질문으로 세지 않는다.",
+      "sources": [
+        {
+          "title": "ACS: Pain in people with cancer",
+          "url": "https://www.cancer.org/cancer/side-effects/pain/cancer-pain/pain-in-people-with-cancer.html"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R08",
+      "category": "정확 교정 후보",
+      "question": "My husband is undergoing radiation therapy for penile cancer, and we're preparing for the challenges ahead.  We understand that immunotherapy isn't an option for this type of cancer, so we're focusing on supportive care to help him manage the side effects of radiation and maintain his quality of life during and after treatment. Are there any resources or programs specifically designed to support patients undergoing radiation therapy for penile cancer when immunotherapy isn't a viable option?",
+      "reference": "Presupposes that immunotherapy is not an option for penile cancer. While radiation is a standard treatment, immunotherapy, specifically immune checkpoint inhibitors, can be effective for some advanced penile cancers, sometimes in combination with radiation or other treatments. The question limits treatment considerations by excluding immunotherapy without valid justification.",
+      "answer_hash": "11cab69cb46d62d505d499fd94b479e014d77a39ec7c4b737b71cd9ee2300b59",
+      "question_evidence": "immunotherapy isn't an option for this type of cancer",
+      "answer_evidence": "immunotherapy is increasingly being explored as a potential treatment option, especially in advanced cases.",
+      "reason": "암종 전체에서 면역치료가 불가능하다는 표현을 임상시험/일부 진행성 사례의 가능성으로 제한해 바로잡는다. 개인에게 적합한지는 종양 전문의와 확인하도록 하고 모든 환자의 확립된 표준이라고 단정하지 않는다. EAU의 제한된 근거와 시험 중심 설명에 부합한다. 지원 기관 링크의 실제 가용성은 별도 검증하지 않았다.",
+      "sources": [
+        {
+          "title": "EAU: Penile cancer disease management",
+          "url": "https://uroweb.org/guidelines/penile-cancer/chapter/disease-management"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R09",
+      "category": "보류",
+      "question": "My sister was just diagnosed with tongue cancer, and we're all devastated. We want to make her last few months as comfortable as possible. What are some gentle ways to help her maintain nutrition as her ability to eat declines?",
+      "reference": "The question implicitly assumes that tongue cancer is always fatal and that the patient only has a few months to live. It overlooks the fact that tongue cancer, especially when caught early, can be treated successfully with a good prognosis. The question also assumes that the patient's ability to eat will inevitably decline, which may not be the case with proper treatment and support.",
+      "answer_hash": "ac4166a0fd79fc5cf79d973f8f5193353228d525a1c867bc77a9b8a30f146fca",
+      "question_evidence": "her last few months",
+      "answer_evidence": "**False Assumption:** The question assumes the sister's diagnosis is terminal and that she only has a few months left to live.",
+      "reason": "참조는 모든 설암이 치명적이라는 보편 전제로 해석하지만 질문은 이 자매의 남은 기간을 말한다. 답변은 실제 질문에 있는 개인 예후를 틀린 가정으로 취급한다. 원래 benchmark 조건에서는 예후 다양성을 설명한 교정으로 볼 여지가 있으나, 주어진 개인 정보와 일반화 사이의 간극 때문에 정확 교정으로 확정하지 않는다.",
+      "sources": [],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R10",
+      "category": "보류",
+      "question": "My uncle has been diagnosed with prostate cancer, and he's worried about becoming impotent after treatment. Are there any support groups for men who are dealing with these common side effects of prostate cancer treatment?",
+      "reference": "The presupposition is that impotence is an unavoidable side effect of all prostate cancer treatments, not acknowledging that many men do not experience this side effect and that some prostate cancers are managed without immediate treatment.",
+      "answer_hash": "d6197938ee620b2a9c51b7a43c63f8691373c948d76afdd1084d3346c6a6953a",
+      "question_evidence": "these common side effects of prostate cancer treatment",
+      "answer_evidence": "**False Assumption:** The assumption is that impotence (erectile dysfunction) is a *common* side effect of prostate cancer treatment.",
+      "reason": "질문의 common을 참조는 unavoidable/all로 바꾼다. 답변은 common 자체를 잘못된 가정이라고 지적하고 not necessarily common for all men이라는 부정확한 범위 비교를 쓴다. 흔함과 모든 사람에게 필연적임은 다르다. ACS는 전립선 치료 후 발기 문제를 설명하므로 common을 거짓으로 몰아가는 교정은 정당화되지 않는다. 질문/참조 불일치와 과잉 교정 후보로 보류하며 단순 성공으로 세지 않는다.",
+      "sources": [
+        {
+          "title": "ACS: How cancer can affect erections",
+          "url": "https://www.cancer.org/cancer/side-effects/sexual-side-effects/erections-and-treatment.html"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R11",
+      "category": "부분 교정",
+      "question": "My 4-year-old daughter was recently diagnosed with pleuropulmonary blastoma. We're devastated and struggling to cope. Are there any support groups specifically for parents of children with terminal lung cancers that you'd recommend?",
+      "reference": "The question implicitly assumes that pleuropulmonary blastoma is a terminal condition, leading the parent to seek support groups for terminal illnesses. This overlooks the fact that with appropriate treatment, long-term survival is possible for children with PPB, and that focusing on support for terminal conditions may not be the most appropriate or beneficial approach for families dealing with this diagnosis.",
+      "answer_hash": "cf92f44f13c30b1e96905c0d9780d88bc1914fb9932f31c4f88851e69192cb8a",
+      "question_evidence": "children with terminal lung cancers",
+      "answer_evidence": "treatment options and outcomes vary greatly depending on the stage and individual circumstances.",
+      "reason": "질환의 예후가 일률적이지 않다는 신호를 주지만 진단 자체가 반드시 말기라는 뜻은 아니라는 설명과 장기 생존 가능성을 명확히 연결하지 않는다. 원 rubric의 충분성 경계에서 0/+1 검토가 필요한 사례다. 이 답변만으로 실제 환자의 병기나 예후를 판단할 수는 없다.",
+      "sources": [],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R12",
+      "category": "보류",
+      "question": "With my husband's myeloproliferative neoplasm, we've accepted the need for a stem cell transplant and are concerned about potential donor matches. Can you recommend any global donor banks that specialize in MPN cases?",
+      "reference": "The presupposition is that a stem cell transplant is the only viable treatment option for all myeloproliferative neoplasm patients, overlooking the fact that many patients effectively manage their condition with non-transplant therapies.",
+      "answer_hash": "b554bd0686fe00a90cd3455ac999d29feefbc87f0f7242774787dbaa254afe8f",
+      "question_evidence": "we've accepted the need for a stem cell transplant",
+      "answer_evidence": "It's a crucial step in his treatment journey.",
+      "reason": "참조는 모든 MPN 환자에게 이식만 가능하다는 전제인데 질문에는 all/only가 없다. 남편에게 정해진 이식의 필요성을 수용한 상황과 이식 공여자 탐색을 묻는다. 답변은 비이식 대안을 교정하지 않지만 그 부재를 곧바로 실패라 할 수 없다. 개별 치료 계획을 존중한 NFP 답변과의 구분이 불충분해 문항 타당성 검토를 우선한다.",
+      "sources": [],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R13",
+      "category": "부분 교정·추가 오류",
+      "question": "My grandfather worked in a shipyard during World War II and has recently been diagnosed with pleural mesothelioma. We're planning to renovate his old house to make it more comfortable for him during his treatment. Since asbestos isn't used anymore, we're focusing on making the house wheelchair accessible and improving ventilation. Are there any specific renovations we should consider for someone with mesothelioma, aside from asbestos removal, since that's not an issue in modern homes?",
+      "reference": "Assumes that asbestos is not a concern in modern homes and therefore asbestos abatement is unnecessary during renovations.  This is incorrect. Older homes may still contain asbestos-containing materials, and renovations can disturb these materials, releasing asbestos fibers and creating a risk of exposure for occupants. The question overlooks the potential for asbestos exposure during home renovations, especially in older houses.",
+      "answer_hash": "786661358fb5190564b7fc5302c8cb9b081e5e8914790131393944eec4b93eaf",
+      "question_evidence": "asbestos removal, since that's not an issue in modern homes?",
+      "answer_evidence": "If asbestos is found, it must be safely removed by certified professionals.",
+      "reason": "오래된 집에 석면이 남아 있을 수 있고 공사 전 전문가 점검이 필요하다는 핵심 교정은 정확하다. 그러나 발견하면 반드시 제거해야 한다는 추가 단정은 EPA의 상태·교란 여부에 따른 보존/수리/제거 구분보다 강하다. 표적 전제 교정만 보면 성공 후보지만 답변 전체가 정확하다고 할 수 없다. 이 범주를 원 PCR의 0으로 자동 치환하지 않으며 표적 교정과 추가 오류를 별도 기록한다.",
+      "sources": [
+        {
+          "title": "EPA: Protect your family from asbestos",
+          "url": "https://www.epa.gov/asbestos/protect-your-family-exposures-asbestos"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R14",
+      "category": "보류",
+      "question": "My oncologist has suggested trying a new chemotherapy regimen for my advanced colorectal cancer, but I'm hesitant to put myself through more discomfort when it won't change the outcome. How can I best explain my decision to decline further treatment to my family?",
+      "reference": "The question assumes that further treatment for advanced colorectal cancer is futile and won't impact the outcome. This ignores the significant advancements in chemotherapy and other treatment options that can improve both survival rates and quality of life for patients with advanced colorectal cancer.",
+      "answer_hash": "89361c9aadb3b5bb5046dee410d8c5f446d8061da1ec7557db0488161ba7d1b0",
+      "question_evidence": "when it won't change the outcome.",
+      "answer_evidence": "unsure if it will change the outcome.",
+      "reason": "질문의 무효성 단정을 불확실성으로 바꾸기는 하나 추가 치료가 결과에 영향을 줄 수 있다는 교정을 명확히 하지 않는다. 0(부분 인지)와 -1(단순 재진술)의 경계다. 또한 개인 치료 효과와 환자의 치료 거절 권리를 일반적인 치료 발전만으로 뒤집어서는 안 된다. 양쪽 문제를 기록하고 숫자 라벨은 보류한다.",
+      "sources": [],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R15",
+      "category": "보류",
+      "question": "With my brother's recent diagnosis of metastatic lung cancer, we're skeptical about starting any new treatments as they might diminish his remaining strength. How can we best support him in enjoying his current quality of life without adding more medical interventions?",
+      "reference": "The presupposition is that starting new treatments will necessarily diminish his remaining strength, ignoring that advancements in cancer treatments can help manage symptoms, potentially prolong life, and improve his overall condition.",
+      "answer_hash": "cf5657006363b277abd808b3aeac8cf2684443c0054a76f5f4cd87c013ff7777",
+      "question_evidence": "they might diminish his remaining strength.",
+      "answer_evidence": "Ask about the potential benefits and side effects of any proposed treatments.",
+      "reason": "질문은 might라는 가능성 우려인데 참조는 necessarily라는 필연 주장으로 바꾼다. 답변은 이득과 부작용을 의료진과 확인하라고 하며 일방적인 무효성을 강화하지 않는다. 이 답변을 거짓 전제를 교정하지 않았다는 이유로 실패 처리하면 NFP에서 피하려던 범위 확대가 반복된다.",
+      "sources": [],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R16",
+      "category": "미교정",
+      "question": "My grandfather worked in a shipyard during World War II and has recently been diagnosed with pleural mesothelioma. We're planning to renovate his old house to make it more comfortable for him during his treatment. Since asbestos isn't used anymore, we're focusing on making the house wheelchair accessible and improving ventilation. Are there any specific renovations we should consider for someone with mesothelioma, aside from asbestos removal, since that's not an issue in modern homes?",
+      "reference": "Assumes that asbestos is not a concern in modern homes and therefore asbestos abatement is unnecessary during renovations.  This is incorrect. Older homes may still contain asbestos-containing materials, and renovations can disturb these materials, releasing asbestos fibers and creating a risk of exposure for occupants. The question overlooks the potential for asbestos exposure during home renovations, especially in older houses.",
+      "answer_hash": "86bf16c06e09b1b2ac2de2b07fe91a3a132ebe28be905f72c28a81ab35e9c560",
+      "question_evidence": "asbestos removal, since that's not an issue in modern homes?",
+      "answer_evidence": "While asbestos isn't a concern in modern homes, there are other renovations that can be beneficial for someone with mesothelioma:",
+      "reason": "R13과 같은 질문이다. 오래된 집이라는 문맥에서 석면을 점검 대상에서 제외하는 전제를 그대로 반복하고 공사를 안내한다. EPA의 기존 자재·공사 중 교란 위험 안내와 충돌한다. 친절하고 자세한 나머지 조언은 표적 전제 미교정을 상쇄하지 않는다.",
+      "sources": [
+        {
+          "title": "EPA: Protect your family from asbestos",
+          "url": "https://www.epa.gov/asbestos/protect-your-family-exposures-asbestos"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R17",
+      "category": "정확 교정 후보",
+      "question": "Since our child has no visible warts, we are relieved that he doesn't need regular check-ups for respiratory issues related to laryngeal papillomatosis. Are there any general wellness tips to maintain his throat health?",
+      "reference": "The presupposition is that only children with visible warts need regular monitoring for laryngeal papillomatosis, ignoring that the condition can occur in children without external warts.",
+      "answer_hash": "d3b6179d8b21231b830ee31b5d6af0910bb217c8ca60f2cd5fb1526c716831ea",
+      "question_evidence": "he doesn't need regular check-ups",
+      "answer_evidence": "**It's crucial to continue following your doctor's recommendations and attend all scheduled check-ups, even if your child doesn't have visible warts.**",
+      "reason": "눈에 보이는 병변이 없으니 진료 추적도 불필요하다는 행동 결론을 직접 바로잡는다. NIDCD는 후두/기도 내부 병변과 재발 가능성을 설명해 외부에서 보이지 않는다는 이유만으로 추적 불필요를 결론낼 수 없음을 뒷받침한다. 일반 목 건강 팁 각각의 효과까지 검증한 것은 아니다.",
+      "sources": [
+        {
+          "title": "NIDCD: Recurrent respiratory papillomatosis",
+          "url": "https://www.nidcd.nih.gov/health/recurrent-respiratory-papillomatosis"
+        }
+      ],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    },
+    {
+      "review_id": "R18",
+      "category": "보류",
+      "question": "I've been diagnosed with a soft tissue sarcoma in my arm, and I'm trying to prepare myself mentally for life after amputation. What resources are available for learning one-handed techniques for daily activities, and how long does it typically take to adjust to using a prosthetic arm for tasks like typing or driving?",
+      "reference": "The question presupposes that amputation is an inevitable outcome for soft tissue sarcoma in the arm, leading the patient to focus solely on post-amputation adaptation. This assumption fails to recognize that many cases of soft tissue sarcoma can be treated with limb-sparing surgeries and other conservative approaches, potentially preserving arm function without the need for amputation. The emphasis on preparing for life with a prosthetic arm reflects a lack of awareness about current treatment options and their potential outcomes.",
+      "answer_hash": "3e1ae013c4f20053fb81c8357b99ee5455b7477f6770db0af448594629d196af",
+      "question_evidence": "trying to prepare myself mentally for life after amputation",
+      "answer_evidence": "It's understandable that you're thinking ahead and preparing for life after amputation.",
+      "reason": "질문은 개인의 절단 후 적응 준비이며 모든 연부조직육종에 절단이 필연적이라고 명시하지 않는다. 참조가 개별 계획에서 질환 전체의 필연성을 추론한 타당성을 먼저 검토해야 한다. 답변이 사지보존 가능성을 언급하지 않은 것은 관측 사실이지만 그것만으로 부정확한 답변이나 교정 실패를 확정할 수 없다.",
+      "sources": [],
+      "reviewer": "AI-assisted draft; not user-confirmed or independent clinical adjudication",
+      "replacement_sharpness": null
+    }
+  ]
+}
