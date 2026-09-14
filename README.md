@@ -1,6 +1,10 @@
 # Cancer-Myth Internals
 
-**다음 실행 — 빠른 45문항 비교:** [원본 평가 프롬프트 + Terra, CoT 1024와 L21 C steering](docs/reviews/quick_next_experiment_2026-09-14.md).
+**다음 실행 — 최대 9시간 C 방향 진단:** [GPU 0·1 overnight 실행·실험표·아침 보고서](docs/experiments/overnight_c_diagnostics.md).
+`bash scripts/run_overnight_c.sh start`로 SSH와 독립 실행한다. 기존 C의 강도·층·위치, 무작위 방향,
+fit 전용 새 방향, 소규모 생성 답변을 비교한다. GPT 채점 0회, test 미사용. 개별 실패·시간 초과도 보고한다.
+
+**앞선 45문항 비교:** [원본 평가 프롬프트 + Terra, CoT 1024와 L21 C steering](docs/reviews/quick_next_experiment_2026-09-14.md).
 기존 코드와 같으면 3조건 답변을 재사용하고 2조건만 생성한다. 코드가 달라졌으면 같은 45문항에서
 5조건 모두 현재 코드로 생성한다. 최대 225회 채점, 자동 재시도 없음, test 미사용.
 생성 완료 후 채점 재개: `python scripts/quick_pilot_readout.py resume --out-dir "$QUICK_DIR"`.
