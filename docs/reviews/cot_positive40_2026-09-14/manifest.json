@@ -1,0 +1,20 @@
+{
+  "description": "Exact archival copies of the completed local 40-case AI review; not new gold annotations.",
+  "review_date": "2026-09-14",
+  "files_sha256": {
+    "summary.md": "3ef30373013d340201a0045e61273f012afca333839253cbea485a089aa93fde",
+    "detailed_review.md": "8cf6f3cd2b183bcb42595721a22311d4264786ad62ac6289383a98e2cc1b0b82",
+    "annotations.json": "46422cd9865f5491aa00038c0723f5138003ccf93f95fc59dc7793bf785ee430",
+    "cases.json": "cf929b942e6a41330d9105d067eb7db659d48efaece38eda58c925f40bf4a3a6",
+    "audit.json": "eb12c5de3d058230cdec98d0c77a047fff65cee800a33589d102f572cf620a98"
+  },
+  "input_files_sha256": {
+    "/Users/heejae/Downloads/cot_review/dev.jsonl": "e4ba9023d20a61f3e32c89bb5cfabed26a5be38aec7e11db84fe610f6785d442",
+    "/Users/heejae/Downloads/cot_review/premise_cot.jsonl": "c8421f47aab92312965fea04d44579b9629c8693f2259ff80614f7f008032a1a",
+    "/Users/heejae/Downloads/cot_review/premise_cot_judge_codex_gpt-5.6-sol.jsonl": "5674a8d5bc5edeb691f732bb47644e9b42346e6805157e0fbc9bf4d532b4576a"
+  },
+  "scope": "Original 128-token CoT review run; Sol +1 FPQ subset; 40 answer records, 40 distinct question IDs.",
+  "new_model_or_judge_calls": 0,
+  "human_confirmation": "pending",
+  "scores_changed": false
+}

@@ -2,6 +2,11 @@
 
 **바로 실행:** [23 §0 서버 명령](docs/23_gemma_steering_pilot.md#0-바로-실행하기--우선-baseline-세-행).
 
+**2026-09-14 CoT 성공 답변 감사:** 기존 +1 FPQ 40개의 [19/3/18 검토 초안·원문·SHA](docs/reviews/cot_positive40_2026-09-14/summary.md)와
+[전제 귀속·세 방법 비교·추가 의학적 오류 감사 절차](docs/reviews/fpq_attribution_audit_protocol_2026-09-14.md)를 보존했다.
+19개만 정답이라는 뜻이 아니며 기존 PCR 34.2%는 유지한다. 다음 단계는 질문·참조 확인과
+동일 질문의 세 방법 비교다. 새 GPT 채점·GPU 생성·test 평가는 하지 않았다.
+
 **2026-09-14 gate 첫 결과:** L21 hidden gate × FP Identification은 PCR/NFP 11.1/100,
 text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 파일럿이며 activation steering이 아니다.
 [원 수치·해석·GPU/GPT 없이 oracle/구제/예산 곡선을 확인하는 명령](docs/reviews/gate_l21_first_results_2026-09-14.md).

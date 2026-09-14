@@ -1,0 +1,21 @@
+{
+  "scope": "40 FPQ answers with original Sol sharpness +1; original 128-token review run",
+  "counts": {
+    "A": 19,
+    "B": 3,
+    "C": 18
+  },
+  "inputs_sha256": {
+    "/Users/heejae/Downloads/cot_review/dev.jsonl": "e4ba9023d20a61f3e32c89bb5cfabed26a5be38aec7e11db84fe610f6785d442",
+    "/Users/heejae/Downloads/cot_review/premise_cot.jsonl": "c8421f47aab92312965fea04d44579b9629c8693f2259ff80614f7f008032a1a",
+    "/Users/heejae/Downloads/cot_review/premise_cot_judge_codex_gpt-5.6-sol.jsonl": "5674a8d5bc5edeb691f732bb47644e9b42346e6805157e0fbc9bf4d532b4576a"
+  },
+  "id_question_set_alignment": true,
+  "selected_response_run_hash_alignment": true,
+  "selected_response_text_hash_alignment": true,
+  "full_run_manifest_available": false,
+  "new_generation_calls": 0,
+  "new_external_judge_calls": 0,
+  "reviewer": "assistant; qualitative review, not independent clinical adjudication",
+  "source_files_unchanged": true
+}
