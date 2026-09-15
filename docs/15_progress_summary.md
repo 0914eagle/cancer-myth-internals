@@ -1,4 +1,10 @@
-# 15. 진행 현황 정리 (2026-09-14)
+# 15. 진행 현황 정리 (2026-09-15 갱신, 과거 기록 포함)
+
+> **2026-09-15 갱신:** 현재 통합 현황은 [26 — 실험·의사결정 이력](26_experiment_history_and_decisions.md), 방법 후보는 [27](27_method_candidates_and_tests.md)를 우선한다.
+> Gemma Quick45는 180/180 판정 완료, overnight는 1,144/1,144 작업 완료(49.4분, GPT 0회)다.
+> Qwen 질문 판별은 text/hidden/DiM AUROC .756/.638/.731. 최종 답변 512 제한을 fit 12개에서 점검한 뒤 별도 1024 suite로 전환했다.
+> 마지막 사용자 생성 로그는 extract_verify 319/732이며 최종 Well 점수·일반 의료 QA·선택적 C steering 효과는 아직 확보하지 않았다.
+> 기존 결과·평가 버전을 보존하며 아래 과거 “미확보/다음 단계”를 현재 상태로 읽지 않는다. 다음 독립 GPU 작업부터 물리 0·1 병렬을 기본으로 한다.
 
 > **최신 실행 상태:** [23](23_gemma_steering_pilot.md)의 Gemma-2-9B-it baseline과 L21 gate 파일럿을 실행했다.
 > Plain/FP Identification/CoT 답변을 생성했고 FPQ는 Sol, NFP는 Terra v2 판정을 사용한다.

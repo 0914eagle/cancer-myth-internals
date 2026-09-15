@@ -1,0 +1,8 @@
+# CoT review budget: 128 → 1024 — selected dev cases
+
+18 old score-0 FPQs. GPU generation performed; GPT judge calls: 0. Test not used.
+Final-answer budget unchanged: 512; batch size 1; prompts/model identity unchanged.
+1024 is a maximum, not a required length. Hitting the cap alone does not prove truncation.
+This is a selected diagnostic sample; no PCR, population improvement, or new scores are inferred.
+Reviews changed: 12/18; answers changed: 12/18; new reviews at cap: 0.
+A longer review also changes the input to the answer stage; this is the effect of the review-budget change on the full pipeline.

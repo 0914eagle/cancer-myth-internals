@@ -1,0 +1,42 @@
+{
+  "recorded_date": "2026-09-15",
+  "code_head_before_documentation": "9fcf23d",
+  "sources": [
+    {
+      "source_path": "/Users/heejae/Downloads/overnight_c_review/report.md",
+      "archived_file": "overnight_report.txt",
+      "bytes": 28851,
+      "sha256": "0a2578bad8d7f3ae8c07966fbd868879dab4b2115983e0955a7ac9e1d2bd3cf1",
+      "scope": "User-provided report copied verbatim; full remote ledger not independently recomputed."
+    },
+    {
+      "source_path": "/Users/heejae/Downloads/quick45_review/quick45_original_terra_v1/report_json_v2.md",
+      "archived_file": "quick45_report.txt",
+      "bytes": 1224,
+      "sha256": "27c303b4d9cc339a6019e5b0ca32fd137f436bc99792315a5da046f4ac09b9e8",
+      "scope": "User-provided report copied verbatim; full remote ledger not independently recomputed."
+    },
+    {
+      "source_path": "/Users/heejae/Downloads/overnight_c_review/summary.json",
+      "archived_file": null,
+      "bytes": 1393289,
+      "sha256": "deedc8ed343ef95c03d887de280d06d15adad1ab90ed077b842ff748fa50234b",
+      "scope": "Available local summary; hash recorded, not copied. Main document uses report aggregates."
+    },
+    {
+      "source_path": "/Users/heejae/Downloads/cot_review_1024.md",
+      "source_sha256": "eb7fda08f328aa4042f398b8cbf1ba4d6852b6fbd8ccdd5b4f8cc65b7e98a0cb",
+      "source_bytes": 84881,
+      "archived_file": "cot_review_budget_excerpt.txt",
+      "sha256": "ac70ae6987d0dcead4bd5194cad0aec535365417fab62e4ceba59afd0f5acfbb",
+      "scope": "Introductory summary excerpt; trailing blank lines removed; full answers not copied."
+    }
+  ],
+  "console_only": [
+    "Qwen holdout_prefill_v1 gate table",
+    "Qwen fit-only final budget report",
+    "extract_verify 319/732 progress",
+    "Gemma gate diagnostics follow-up summary"
+  ],
+  "note": "No model, judge or test calls. Report-internal relative links point to original server artifacts; archived text is not rewritten."
+}

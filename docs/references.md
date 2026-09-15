@@ -128,3 +128,8 @@
 ## 제출 일정 (2026-09-11 확인)
 - [ARR Dates and Venues](https://aclrollingreview.org/dates) · [dates.md](https://github.com/acl-org/aclrollingreview/blob/main/dates.md) — 2026년 사이클은 1월 5일·3월 16일·5월 25일·8월 3일·10월 12일. 10월 12일이 마지막
 - [NAACL 2027 Call for Main Conference Papers](https://2027.naacl.org/calls/main_conference_papers/) — commit 12월 20-23일, 본회의 2027년 6월 1-5일 샌프란시스코
+
+
+## 2026-09-15 방법 후보 후속 확인
+
+[27 — 후보별 가까운 선행과 신규성 범위](27_method_candidates_and_tests.md)에 BiPO, ReFT/LoReFT, MAT-Steer, prompt-only steering, FPCG, PASTA, Contextual-Truth, FalseQA와 부분공간 개입 원고를 연결했다. 특히 최소 반사실 쌍과 `h+UBUᵀ(h−μ)`는 [One Concept at a Time 저자 공개 원고 §4–5](https://gsood.com/research/papers/steer.pdf)에 있다. 의료 전제 교정 효과를 이미 검증한 논문으로 확대하지 않는다. [Conceptors for Semantic Steering](https://arxiv.org/html/2605.04980v1)은 양극의 부분공간 개입 비교 선행이다. 새 후보가 기존 문헌에 없다는 주장은 아직 하지 않는다.

@@ -1,0 +1,341 @@
+# Overnight C diagnostics
+
+Planned tasks: 1144. complete: 1144; failed: 0; timed_out: 0; skipped: 0; pending: 0.
+Report model calls: 0. This report uses existing local task artifacts only.
+Planned judge calls: 0. Completed generation tasks: 380 (includes fit candidate construction).
+Teacher-forced likelihood is a diagnostic proxy, **not PCR, medical correctness, or proof that C is a correction/style direction**. Dev is exploratory; no test evaluation.
+Projection separation is descriptive: reading a direction does not establish causal control. Generated answers below are unjudged.
+
+## Run status
+
+```json
+{
+  "pid": 863908,
+  "status": "complete",
+  "elapsed_seconds": 2962.3349442481995,
+  "hours_limit": 9.0,
+  "gpus": [
+    0,
+    1
+  ],
+  "counts": {
+    "complete": 1144
+  },
+  "judge_calls": 0
+}
+```
+
+## Frozen direction inputs
+
+Original complete fit pairs: 135. Dev reference pairs: 24. Fit questions for own-model contrast: 64.
+Author counts below cover complete selected fit pairs, not unused one-sided references.
+
+| Layer | Dimension | Unit-vector norm | Fit residual scale |
+|---|---:|---:|---:|
+| 14 | 3584 | 1.0000 | 154.4064 |
+| 21 | 3584 | 1.0000 | 331.8292 |
+| 28 | 3584 | 1.0000 | 527.3159 |
+
+```json
+{
+  "negative": {
+    "Claude-3.5-Sonnet": 15,
+    "DeepSeek-R1": 16,
+    "DeepSeek-V3": 14,
+    "GPT-3.5": 19,
+    "GPT-4-Turbo": 12,
+    "GPT-4o": 18,
+    "GPT-4o (MDAgents)": 23,
+    "Gemini-1.5-Pro": 18
+  },
+  "positive": {
+    "Claude-3.5-Sonnet": 17,
+    "DeepSeek-R1": 17,
+    "DeepSeek-V3": 11,
+    "GPT-3.5": 4,
+    "GPT-4-Turbo": 15,
+    "GPT-4o": 10,
+    "GPT-4o (MDAgents)": 4,
+    "Gemini-1.5-Pro": 57
+  }
+}
+```
+
+## Completion by experiment
+
+| Kind | Complete | Failed | Timed out | Skipped | Pending |
+|---|---:|---:|---:|---:|---:|
+| dose | 732 | 0 | 0 | 0 | 0 |
+| extract | 2 | 0 | 0 | 0 | 0 |
+| generate | 380 | 0 | 0 | 0 | 0 |
+| project | 30 | 0 | 0 | 0 | 0 |
+
+## Dose response
+
+Each row compares the same pair and direction against alpha=0 (same policy, or an explicitly shared all-token zero control). Positive and negative answer changes are reported separately. Both may become less likely even when their difference rises.
+Pair counts can differ after failures/timeouts; compare per-pair entries in summary.json before interpreting a curve. No significance claims or automatic winner selection.
+
+| Direction | Layer | Group | Policy | Alpha | Paired / planned | Δ margin | Δ correction logp | Δ failure logp |
+|---|---:|---|---|---:|---:|---:|---:|---:|
+| gemma_instruction_full | 21 | 09_alternative_directions | all | -0.1 | 12/12 | -0.0268 | -0.0521 | -0.0253 |
+| gemma_instruction_full | 21 | 09_alternative_directions | all | 0.0 | 12/12 | 0.0000 | 0.0000 | 0.0000 |
+| gemma_instruction_full | 21 | 09_alternative_directions | all | 0.1 | 12/12 | 0.0108 | -0.0058 | -0.0165 |
+| gemma_instruction_full | 21 | 09_alternative_directions | all | 0.3 | 12/12 | -0.0139 | -0.1903 | -0.1764 |
+| gemma_instruction_full | 21 | 09_alternative_directions | all | 0.6 | 12/12 | -0.1269 | -0.9088 | -0.7819 |
+| gemma_instruction_full | 21 | 09_alternative_directions | all | 1.0 | 12/12 | -0.4500 | -3.1841 | -2.7341 |
+| gemma_instruction_prefix32 | 21 | 09_alternative_directions | all | -0.1 | 12/12 | -0.0235 | -0.0701 | -0.0466 |
+| gemma_instruction_prefix32 | 21 | 09_alternative_directions | all | 0.0 | 12/12 | 0.0000 | 0.0000 | 0.0000 |
+| gemma_instruction_prefix32 | 21 | 09_alternative_directions | all | 0.1 | 12/12 | 0.0068 | 0.0176 | 0.0108 |
+| gemma_instruction_prefix32 | 21 | 09_alternative_directions | all | 0.3 | 12/12 | -0.0203 | -0.0655 | -0.0452 |
+| gemma_instruction_prefix32 | 21 | 09_alternative_directions | all | 0.6 | 12/12 | -0.0409 | -0.5278 | -0.4869 |
+| gemma_instruction_prefix32 | 21 | 09_alternative_directions | all | 1.0 | 12/12 | -0.0363 | -2.6805 | -2.6443 |
+| original_prefix32 | 14 | 06_layer_comparison | all | -0.1 | 12/12 | -0.0062 | -0.0022 | 0.0040 |
+| original_prefix32 | 14 | 06_layer_comparison | all | 0.0 | 12/12 | 0.0000 | 0.0000 | 0.0000 |
+| original_prefix32 | 14 | 06_layer_comparison | all | 0.1 | 12/12 | 0.0035 | -0.0069 | -0.0104 |
+| original_prefix32 | 14 | 06_layer_comparison | all | 0.3 | 12/12 | 0.0073 | -0.0439 | -0.0511 |
+| original_prefix32 | 14 | 06_layer_comparison | all | 0.6 | 12/12 | 0.0178 | -0.1937 | -0.2115 |
+| original_prefix32 | 21 | 01_original_dose | all | -0.3 | 24/24 | -0.0696 | -0.1003 | -0.0306 |
+| original_prefix32 | 21 | 01_original_dose | all | -0.1 | 24/24 | -0.0196 | -0.0074 | 0.0122 |
+| original_prefix32 | 21 | 01_original_dose | all | 0.0 | 24/24 | 0.0000 | 0.0000 | 0.0000 |
+| original_prefix32 | 21 | 01_original_dose | all | 0.1 | 24/24 | 0.0146 | -0.0236 | -0.0382 |
+| original_prefix32 | 21 | 01_original_dose | all | 0.3 | 24/24 | 0.0407 | -0.2024 | -0.2430 |
+| original_prefix32 | 21 | 01_original_dose | all | 0.6 | 24/24 | 0.1100 | -1.1476 | -1.2576 |
+| original_prefix32 | 21 | 01_original_dose | all | 1.0 | 24/24 | 0.0578 | -4.6534 | -4.7112 |
+| original_prefix32 | 21 | 07_position_and_ablation | ablate | 0.0 | 12/12 | -0.0168 | -0.0108 | 0.0061 |
+| original_prefix32 | 21 | 07_position_and_ablation | first_k | 0.1 | 12/12 | 0.0031 | -0.0031 | -0.0062 |
+| original_prefix32 | 21 | 07_position_and_ablation | first_k | 0.3 | 12/12 | 0.0143 | -0.0115 | -0.0258 |
+| original_prefix32 | 21 | 07_position_and_ablation | first_k | 0.6 | 12/12 | 0.0680 | -0.0435 | -0.1115 |
+| original_prefix32 | 21 | 07_position_and_ablation | prefill | 0.1 | 12/12 | -0.0003 | -0.0011 | -0.0008 |
+| original_prefix32 | 21 | 07_position_and_ablation | prefill | 0.3 | 12/12 | -0.0012 | -0.0009 | 0.0003 |
+| original_prefix32 | 21 | 07_position_and_ablation | prefill | 0.6 | 12/12 | -0.0021 | -0.0006 | 0.0015 |
+| original_prefix32 | 28 | 06_layer_comparison | all | -0.1 | 12/12 | -0.0351 | 0.0261 | 0.0612 |
+| original_prefix32 | 28 | 06_layer_comparison | all | 0.0 | 12/12 | 0.0000 | 0.0000 | 0.0000 |
+| original_prefix32 | 28 | 06_layer_comparison | all | 0.1 | 12/12 | 0.0358 | -0.0623 | -0.0981 |
+| original_prefix32 | 28 | 06_layer_comparison | all | 0.3 | 12/12 | 0.0914 | -0.3427 | -0.4341 |
+| original_prefix32 | 28 | 06_layer_comparison | all | 0.6 | 12/12 | 0.0807 | -1.7458 | -1.8265 |
+| random_17 [random seed 17] | 21 | 05_random_controls | all | 0.0 | 12/12 | 0.0000 | 0.0000 | 0.0000 |
+| random_17 [random seed 17] | 21 | 05_random_controls | all | 0.1 | 12/12 | -0.0021 | 0.0005 | 0.0026 |
+| random_17 [random seed 17] | 21 | 05_random_controls | all | 0.3 | 12/12 | -0.0189 | -0.0078 | 0.0110 |
+| random_17 [random seed 17] | 21 | 05_random_controls | all | 0.6 | 12/12 | -0.0441 | -0.1127 | -0.0685 |
+| random_29 [random seed 29] | 21 | 05_random_controls | all | 0.0 | 12/12 | 0.0000 | 0.0000 | 0.0000 |
+| random_29 [random seed 29] | 21 | 05_random_controls | all | 0.1 | 12/12 | -0.0090 | 0.0041 | 0.0131 |
+| random_29 [random seed 29] | 21 | 05_random_controls | all | 0.3 | 12/12 | -0.0320 | -0.0036 | 0.0284 |
+| random_29 [random seed 29] | 21 | 05_random_controls | all | 0.6 | 12/12 | -0.0761 | -0.0974 | -0.0212 |
+| random_43 [random seed 43] | 21 | 05_random_controls | all | 0.0 | 12/12 | 0.0000 | 0.0000 | 0.0000 |
+| random_43 [random seed 43] | 21 | 05_random_controls | all | 0.1 | 12/12 | -0.0054 | -0.0066 | -0.0011 |
+| random_43 [random seed 43] | 21 | 05_random_controls | all | 0.3 | 12/12 | -0.0298 | -0.0361 | -0.0063 |
+| random_43 [random seed 43] | 21 | 05_random_controls | all | 0.6 | 12/12 | -0.0914 | -0.1518 | -0.0604 |
+| reference_full | 21 | 09_alternative_directions | all | -0.1 | 12/12 | -0.0251 | -0.0204 | 0.0048 |
+| reference_full | 21 | 09_alternative_directions | all | 0.0 | 12/12 | 0.0000 | 0.0000 | 0.0000 |
+| reference_full | 21 | 09_alternative_directions | all | 0.1 | 12/12 | 0.0186 | -0.0227 | -0.0413 |
+| reference_full | 21 | 09_alternative_directions | all | 0.3 | 12/12 | 0.0401 | -0.2080 | -0.2481 |
+| reference_full | 21 | 09_alternative_directions | all | 0.6 | 12/12 | 0.0526 | -0.8849 | -0.9375 |
+| reference_full | 21 | 09_alternative_directions | all | 1.0 | 12/12 | -0.0599 | -3.3191 | -3.2592 |
+
+![Teacher-forced likelihood curves](curves.svg)
+
+Prefix-32 and remaining-answer likelihoods and per-pair control IDs are retained in summary.json.
+
+## Projection diagnostic
+
+Only FPQ labels +1/−1 enter AUROC; 0, missing labels, and NFP are excluded. These are prior rubric labels, not a new clinical review. High projection predicts +1; no sign flipping to improve AUROC.
+
+| Direction | Layer | Pooling | Complete / planned | +1 | −1 | AUROC |
+|---|---:|---|---:|---:|---:|---:|
+| original_prefix32 | 21 | prefix32 | 30/30 | 4 | 21 | 0.7619 |
+| original_prefix32 | 21 | full | 30/30 | 4 | 21 | 0.9643 |
+
+## Actual residual intervention
+
+Norms are measured after the residual update, including dtype rounding. Means are weighted by modified predictor positions, not by answer count. Relative change is the mean of each position's ||Δh|| / ||h||, not a ratio of aggregate means. Maximum relative change is the largest recorded position-level ratio.
+Dose positive/negative sequences and free generation are separate. Alpha=0 addition has zero modified positions; its hidden norm is unmeasured. Ablation remains active at alpha=0 and has no additive alpha_abs. A missing audit is never imputed as zero intervention.
+
+| Kind / sequence | Direction | Layer | Policy | Alpha | Additive alpha_abs | Valid audit / complete / planned | Modified positions | Mean actual ‖Δh‖ | Mean original ‖h‖ | Mean relative Δ | Max relative Δ |
+|---|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| dose / negative | gemma_instruction_full | 21 | all | -0.1 | -33.1829 | 12/12/12 | 4502 | 33.2717 | 283.7476 | 0.1192 | 0.2362 |
+| dose / positive | gemma_instruction_full | 21 | all | -0.1 | -33.1829 | 12/12/12 | 5580 | 33.2677 | 285.3863 | 0.1187 | 0.2391 |
+| dose / negative | gemma_instruction_full | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | gemma_instruction_full | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | gemma_instruction_full | 21 | all | 0.1 | 33.1829 | 12/12/12 | 4502 | 33.2583 | 283.7476 | 0.1192 | 0.2361 |
+| dose / positive | gemma_instruction_full | 21 | all | 0.1 | 33.1829 | 12/12/12 | 5580 | 33.2567 | 285.3863 | 0.1186 | 0.2390 |
+| dose / negative | gemma_instruction_full | 21 | all | 0.3 | 99.5488 | 12/12/12 | 4502 | 99.5997 | 283.7476 | 0.3569 | 0.7083 |
+| dose / positive | gemma_instruction_full | 21 | all | 0.3 | 99.5488 | 12/12/12 | 5580 | 99.5995 | 285.3863 | 0.3553 | 0.7172 |
+| dose / negative | gemma_instruction_full | 21 | all | 0.6 | 199.0975 | 12/12/12 | 4502 | 199.0753 | 283.7476 | 0.7133 | 1.4164 |
+| dose / positive | gemma_instruction_full | 21 | all | 0.6 | 199.0975 | 12/12/12 | 5580 | 199.0771 | 285.3863 | 0.7102 | 1.4336 |
+| dose / negative | gemma_instruction_full | 21 | all | 1.0 | 331.8292 | 12/12/12 | 4502 | 331.8257 | 283.7476 | 1.1890 | 2.3615 |
+| dose / positive | gemma_instruction_full | 21 | all | 1.0 | 331.8292 | 12/12/12 | 5580 | 331.8233 | 285.3863 | 1.1837 | 2.3897 |
+| dose / negative | gemma_instruction_prefix32 | 21 | all | -0.1 | -33.1829 | 12/12/12 | 4502 | 33.1819 | 283.7476 | 0.1189 | 0.2361 |
+| dose / positive | gemma_instruction_prefix32 | 21 | all | -0.1 | -33.1829 | 12/12/12 | 5580 | 33.1796 | 285.3863 | 0.1184 | 0.2390 |
+| dose / negative | gemma_instruction_prefix32 | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | gemma_instruction_prefix32 | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | gemma_instruction_prefix32 | 21 | all | 0.1 | 33.1829 | 12/12/12 | 4502 | 33.1863 | 283.7476 | 0.1189 | 0.2361 |
+| dose / positive | gemma_instruction_prefix32 | 21 | all | 0.1 | 33.1829 | 12/12/12 | 5580 | 33.1857 | 285.3863 | 0.1184 | 0.2390 |
+| dose / negative | gemma_instruction_prefix32 | 21 | all | 0.3 | 99.5488 | 12/12/12 | 4502 | 99.5523 | 283.7476 | 0.3567 | 0.7083 |
+| dose / positive | gemma_instruction_prefix32 | 21 | all | 0.3 | 99.5488 | 12/12/12 | 5580 | 99.5523 | 285.3863 | 0.3551 | 0.7171 |
+| dose / negative | gemma_instruction_prefix32 | 21 | all | 0.6 | 199.0975 | 12/12/12 | 4502 | 199.1048 | 283.7476 | 0.7134 | 1.4168 |
+| dose / positive | gemma_instruction_prefix32 | 21 | all | 0.6 | 199.0975 | 12/12/12 | 5580 | 199.1061 | 285.3863 | 0.7103 | 1.4343 |
+| dose / negative | gemma_instruction_prefix32 | 21 | all | 1.0 | 331.8292 | 12/12/12 | 4502 | 331.8529 | 283.7476 | 1.1891 | 2.3609 |
+| dose / positive | gemma_instruction_prefix32 | 21 | all | 1.0 | 331.8292 | 12/12/12 | 5580 | 331.8540 | 285.3863 | 1.1838 | 2.3906 |
+| dose / negative | original_prefix32 | 14 | all | -0.1 | -15.4406 | 12/12/12 | 4502 | 15.4405 | 168.2004 | 0.0958 | 0.1797 |
+| dose / positive | original_prefix32 | 14 | all | -0.1 | -15.4406 | 12/12/12 | 5580 | 15.4405 | 169.0435 | 0.0954 | 0.1712 |
+| dose / negative | original_prefix32 | 14 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | original_prefix32 | 14 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | original_prefix32 | 14 | all | 0.1 | 15.4406 | 12/12/12 | 4502 | 15.4401 | 168.2004 | 0.0958 | 0.1796 |
+| dose / positive | original_prefix32 | 14 | all | 0.1 | 15.4406 | 12/12/12 | 5580 | 15.4400 | 169.0435 | 0.0954 | 0.1712 |
+| dose / negative | original_prefix32 | 14 | all | 0.3 | 46.3219 | 12/12/12 | 4502 | 46.3184 | 168.2004 | 0.2873 | 0.5391 |
+| dose / positive | original_prefix32 | 14 | all | 0.3 | 46.3219 | 12/12/12 | 5580 | 46.3185 | 169.0435 | 0.2862 | 0.5138 |
+| dose / negative | original_prefix32 | 14 | all | 0.6 | 92.6438 | 12/12/12 | 4502 | 92.6494 | 168.2004 | 0.5748 | 1.0781 |
+| dose / positive | original_prefix32 | 14 | all | 0.6 | 92.6438 | 12/12/12 | 5580 | 92.6493 | 169.0435 | 0.5724 | 1.0274 |
+| dose / negative | original_prefix32 | 21 | ablate | 0.0 | — | 12/12/12 | 4502 | 25.4647 | 283.7476 | 0.0903 | 0.3273 |
+| dose / positive | original_prefix32 | 21 | ablate | 0.0 | — | 12/12/12 | 5580 | 31.3026 | 285.3863 | 0.1098 | 0.3629 |
+| dose / negative | original_prefix32 | 21 | all | -0.3 | -99.5488 | 24/24/24 | 9726 | 99.5199 | 285.3263 | 0.3548 | 0.7085 |
+| dose / positive | original_prefix32 | 21 | all | -0.3 | -99.5488 | 24/24/24 | 11084 | 99.5204 | 286.8804 | 0.3534 | 0.7171 |
+| dose / negative | original_prefix32 | 21 | all | -0.1 | -33.1829 | 24/24/24 | 9726 | 33.1818 | 285.3263 | 0.1183 | 0.2360 |
+| dose / positive | original_prefix32 | 21 | all | -0.1 | -33.1829 | 24/24/24 | 11084 | 33.1829 | 286.8804 | 0.1178 | 0.2389 |
+| dose / negative | original_prefix32 | 21 | all | 0.0 | 0.0000 | 24/24/24 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | original_prefix32 | 21 | all | 0.0 | 0.0000 | 24/24/24 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | original_prefix32 | 21 | all | 0.1 | 33.1829 | 24/24/24 | 9726 | 33.1845 | 285.3263 | 0.1183 | 0.2361 |
+| dose / positive | original_prefix32 | 21 | all | 0.1 | 33.1829 | 24/24/24 | 11084 | 33.1853 | 286.8804 | 0.1178 | 0.2391 |
+| dose / negative | original_prefix32 | 21 | all | 0.3 | 99.5488 | 24/24/24 | 9726 | 99.5272 | 285.3263 | 0.3548 | 0.7082 |
+| dose / positive | original_prefix32 | 21 | all | 0.3 | 99.5488 | 24/24/24 | 11084 | 99.5294 | 286.8804 | 0.3535 | 0.7169 |
+| dose / negative | original_prefix32 | 21 | all | 0.6 | 199.0975 | 24/24/24 | 9726 | 199.0507 | 285.3263 | 0.7096 | 1.4172 |
+| dose / positive | original_prefix32 | 21 | all | 0.6 | 199.0975 | 24/24/24 | 11084 | 199.0525 | 286.8804 | 0.7069 | 1.4342 |
+| dose / negative | original_prefix32 | 21 | all | 1.0 | 331.8292 | 24/24/24 | 9726 | 331.8824 | 285.3263 | 1.1831 | 2.3606 |
+| dose / positive | original_prefix32 | 21 | all | 1.0 | 331.8292 | 24/24/24 | 11084 | 331.8791 | 286.8804 | 1.1786 | 2.3904 |
+| dose / negative | original_prefix32 | 21 | first_k | 0.1 | 33.1829 | 12/12/12 | 384 | 33.1897 | 287.1124 | 0.1177 | 0.2222 |
+| dose / positive | original_prefix32 | 21 | first_k | 0.1 | 33.1829 | 12/12/12 | 384 | 33.1948 | 298.4729 | 0.1128 | 0.1595 |
+| dose / negative | original_prefix32 | 21 | first_k | 0.3 | 99.5488 | 12/12/12 | 384 | 99.5318 | 287.1124 | 0.3529 | 0.6666 |
+| dose / positive | original_prefix32 | 21 | first_k | 0.3 | 99.5488 | 12/12/12 | 384 | 99.5392 | 298.4729 | 0.3382 | 0.4777 |
+| dose / negative | original_prefix32 | 21 | first_k | 0.6 | 199.0975 | 12/12/12 | 384 | 199.0511 | 287.1124 | 0.7057 | 1.3338 |
+| dose / positive | original_prefix32 | 21 | first_k | 0.6 | 199.0975 | 12/12/12 | 384 | 199.0558 | 298.4729 | 0.6764 | 0.9555 |
+| dose / negative | original_prefix32 | 21 | prefill | 0.1 | 33.1829 | 12/12/12 | 12 | 33.2892 | 330.4495 | 0.1009 | 0.1070 |
+| dose / positive | original_prefix32 | 21 | prefill | 0.1 | 33.1829 | 12/12/12 | 12 | 33.3016 | 330.2109 | 0.1011 | 0.1073 |
+| dose / negative | original_prefix32 | 21 | prefill | 0.3 | 99.5488 | 12/12/12 | 12 | 99.6572 | 330.4495 | 0.3022 | 0.3211 |
+| dose / positive | original_prefix32 | 21 | prefill | 0.3 | 99.5488 | 12/12/12 | 12 | 99.6690 | 330.2109 | 0.3025 | 0.3207 |
+| dose / negative | original_prefix32 | 21 | prefill | 0.6 | 199.0975 | 12/12/12 | 12 | 199.0621 | 330.4495 | 0.6037 | 0.6426 |
+| dose / positive | original_prefix32 | 21 | prefill | 0.6 | 199.0975 | 12/12/12 | 12 | 199.0509 | 330.2109 | 0.6040 | 0.6403 |
+| dose / negative | original_prefix32 | 28 | all | -0.1 | -52.7316 | 12/12/12 | 4502 | 52.7191 | 427.7233 | 0.1254 | 0.2459 |
+| dose / positive | original_prefix32 | 28 | all | -0.1 | -52.7316 | 12/12/12 | 5580 | 52.7205 | 427.0382 | 0.1257 | 0.2739 |
+| dose / negative | original_prefix32 | 28 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | original_prefix32 | 28 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | original_prefix32 | 28 | all | 0.1 | 52.7316 | 12/12/12 | 4502 | 52.7246 | 427.7233 | 0.1254 | 0.2458 |
+| dose / positive | original_prefix32 | 28 | all | 0.1 | 52.7316 | 12/12/12 | 5580 | 52.7258 | 427.0382 | 0.1257 | 0.2739 |
+| dose / negative | original_prefix32 | 28 | all | 0.3 | 158.1948 | 12/12/12 | 4502 | 158.1896 | 427.7233 | 0.3763 | 0.7373 |
+| dose / positive | original_prefix32 | 28 | all | 0.3 | 158.1948 | 12/12/12 | 5580 | 158.1883 | 427.0382 | 0.3772 | 0.8218 |
+| dose / negative | original_prefix32 | 28 | all | 0.6 | 316.3896 | 12/12/12 | 4502 | 316.3781 | 427.7233 | 0.7526 | 1.4746 |
+| dose / positive | original_prefix32 | 28 | all | 0.6 | 316.3896 | 12/12/12 | 5580 | 316.3759 | 427.0382 | 0.7544 | 1.6437 |
+| dose / negative | random_17 | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | random_17 | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | random_17 | 21 | all | 0.1 | 33.1829 | 12/12/12 | 4502 | 33.1828 | 283.7476 | 0.1189 | 0.2361 |
+| dose / positive | random_17 | 21 | all | 0.1 | 33.1829 | 12/12/12 | 5580 | 33.1828 | 285.3863 | 0.1184 | 0.2391 |
+| dose / negative | random_17 | 21 | all | 0.3 | 99.5488 | 12/12/12 | 4502 | 99.5510 | 283.7476 | 0.3567 | 0.7084 |
+| dose / positive | random_17 | 21 | all | 0.3 | 99.5488 | 12/12/12 | 5580 | 99.5508 | 285.3863 | 0.3551 | 0.7172 |
+| dose / negative | random_17 | 21 | all | 0.6 | 199.0975 | 12/12/12 | 4502 | 199.1046 | 283.7476 | 0.7134 | 1.4166 |
+| dose / positive | random_17 | 21 | all | 0.6 | 199.0975 | 12/12/12 | 5580 | 199.1044 | 285.3863 | 0.7103 | 1.4343 |
+| dose / negative | random_29 | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | random_29 | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | random_29 | 21 | all | 0.1 | 33.1829 | 12/12/12 | 4502 | 33.1823 | 283.7476 | 0.1189 | 0.2361 |
+| dose / positive | random_29 | 21 | all | 0.1 | 33.1829 | 12/12/12 | 5580 | 33.1823 | 285.3863 | 0.1184 | 0.2391 |
+| dose / negative | random_29 | 21 | all | 0.3 | 99.5488 | 12/12/12 | 4502 | 99.5517 | 283.7476 | 0.3567 | 0.7083 |
+| dose / positive | random_29 | 21 | all | 0.3 | 99.5488 | 12/12/12 | 5580 | 99.5518 | 285.3863 | 0.3551 | 0.7171 |
+| dose / negative | random_29 | 21 | all | 0.6 | 199.0975 | 12/12/12 | 4502 | 199.1009 | 283.7476 | 0.7134 | 1.4167 |
+| dose / positive | random_29 | 21 | all | 0.6 | 199.0975 | 12/12/12 | 5580 | 199.1010 | 285.3863 | 0.7103 | 1.4342 |
+| dose / negative | random_43 | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | random_43 | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | random_43 | 21 | all | 0.1 | 33.1829 | 12/12/12 | 4502 | 33.1797 | 283.7476 | 0.1189 | 0.2361 |
+| dose / positive | random_43 | 21 | all | 0.1 | 33.1829 | 12/12/12 | 5580 | 33.1797 | 285.3863 | 0.1184 | 0.2391 |
+| dose / negative | random_43 | 21 | all | 0.3 | 99.5488 | 12/12/12 | 4502 | 99.5473 | 283.7476 | 0.3567 | 0.7083 |
+| dose / positive | random_43 | 21 | all | 0.3 | 99.5488 | 12/12/12 | 5580 | 99.5471 | 285.3863 | 0.3551 | 0.7171 |
+| dose / negative | random_43 | 21 | all | 0.6 | 199.0975 | 12/12/12 | 4502 | 199.0971 | 283.7476 | 0.7134 | 1.4166 |
+| dose / positive | random_43 | 21 | all | 0.6 | 199.0975 | 12/12/12 | 5580 | 199.0968 | 285.3863 | 0.7103 | 1.4342 |
+| dose / negative | reference_full | 21 | all | -0.1 | -33.1829 | 12/12/12 | 4502 | 33.1670 | 283.7476 | 0.1188 | 0.2360 |
+| dose / positive | reference_full | 21 | all | -0.1 | -33.1829 | 12/12/12 | 5580 | 33.1678 | 285.3863 | 0.1183 | 0.2391 |
+| dose / negative | reference_full | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / positive | reference_full | 21 | all | 0.0 | 0.0000 | 12/12/12 | 0 | 0.0000 | — | 0.0000 | 0.0000 |
+| dose / negative | reference_full | 21 | all | 0.1 | 33.1829 | 12/12/12 | 4502 | 33.1710 | 283.7476 | 0.1189 | 0.2361 |
+| dose / positive | reference_full | 21 | all | 0.1 | 33.1829 | 12/12/12 | 5580 | 33.1690 | 285.3863 | 0.1183 | 0.2390 |
+| dose / negative | reference_full | 21 | all | 0.3 | 99.5488 | 12/12/12 | 4502 | 99.5221 | 283.7476 | 0.3566 | 0.7084 |
+| dose / positive | reference_full | 21 | all | 0.3 | 99.5488 | 12/12/12 | 5580 | 99.5210 | 285.3863 | 0.3550 | 0.7171 |
+| dose / negative | reference_full | 21 | all | 0.6 | 199.0975 | 12/12/12 | 4502 | 199.0508 | 283.7476 | 0.7132 | 1.4161 |
+| dose / positive | reference_full | 21 | all | 0.6 | 199.0975 | 12/12/12 | 5580 | 199.0496 | 285.3863 | 0.7101 | 1.4337 |
+| dose / negative | reference_full | 21 | all | 1.0 | 331.8292 | 12/12/12 | 4502 | 331.7789 | 283.7476 | 1.1888 | 2.3608 |
+| dose / positive | reference_full | 21 | all | 1.0 | 331.8292 | 12/12/12 | 5580 | 331.7787 | 285.3863 | 1.1836 | 2.3901 |
+| generate / generation | gemma_instruction_full | 21 | all | 0.1 | 33.1829 | 18/18/18 | 8431 | 33.2546 | 285.9445 | 0.1187 | 0.2454 |
+| generate / generation | gemma_instruction_full | 21 | all | 0.3 | 99.5488 | 18/18/18 | 8788 | 99.5991 | 281.9109 | 0.3600 | 0.6783 |
+| generate / generation | gemma_instruction_prefix32 | 21 | all | 0.1 | 33.1829 | 18/18/18 | 8387 | 33.1842 | 284.2780 | 0.1194 | 0.2983 |
+| generate / generation | gemma_instruction_prefix32 | 21 | all | 0.3 | 99.5488 | 18/18/18 | 8206 | 99.5515 | 286.5985 | 0.3541 | 0.7469 |
+| generate / generation | original_prefix32 | 21 | ablate | 0.0 | — | 18/18/18 | 8026 | 27.7966 | 285.3745 | 0.0980 | 0.3337 |
+| generate / generation | original_prefix32 | 21 | all | -0.1 | -33.1829 | 18/18/18 | 8046 | 33.1834 | 284.7626 | 0.1193 | 0.2489 |
+| generate / generation | original_prefix32 | 21 | all | 0.1 | 33.1829 | 18/18/18 | 7945 | 33.1843 | 283.0157 | 0.1200 | 0.2409 |
+| generate / generation | original_prefix32 | 21 | all | 0.3 | 99.5488 | 18/18/18 | 8376 | 99.5280 | 280.9999 | 0.3621 | 0.8933 |
+| generate / generation | original_prefix32 | 21 | all | 0.6 | 199.0975 | 18/18/18 | 9216 | 199.0519 | 254.3918 | 0.8008 | 1.2978 |
+| generate / generation | original_prefix32 | 21 | first_k | 0.3 | 99.5488 | 18/18/18 | 576 | 99.5378 | 291.7026 | 0.3470 | 0.5079 |
+| generate / generation | original_prefix32 | 21 | prefill | 0.3 | 99.5488 | 18/18/18 | 18 | 99.6586 | 333.0644 | 0.2997 | 0.3264 |
+| generate / generation | reference_full | 21 | all | 0.1 | 33.1829 | 18/18/18 | 7729 | 33.1706 | 284.4615 | 0.1192 | 0.2505 |
+| generate / generation | reference_full | 21 | all | 0.3 | 99.5488 | 18/18/18 | 7351 | 99.5249 | 281.0721 | 0.3627 | 0.7103 |
+| generate / generation | unspecified | None | all | 0.0 | — | 0/146/146 | 0 | — | — | — | — |
+
+Rows with no direction/hook have no applicable intervention audit; these are marked in summary.json, not treated as measured zeros.
+
+## Unjudged generation checks
+
+Exact text changes do not establish improvement or a style-only effect. Token-cap hits flag truncation for inspection.
+
+| Direction / method | Split | Layer | Policy | Alpha | Complete / planned | Changed / compared to Plain | Mean output tokens | Cap hits |
+|---|---|---:|---|---:|---:|---:|---:|---:|
+| unspecified / fit_plain | fit | None | all | 0.0 | 64/64 | 0/0 | 430.3750 | 19 |
+| unspecified / fit_correct_prompt | fit | None | all | 0.0 | 64/64 | 0/0 | 323.2188 | 2 |
+| unspecified / generate | dev | None | all | 0.0 | 18/18 | 0/18 | 445.2222 | 6 |
+| original_prefix32 / generate | dev | 21 | all | 0.1 | 18/18 | 18/18 | 441.3889 | 6 |
+| original_prefix32 / generate | dev | 21 | all | 0.3 | 18/18 | 18/18 | 465.3333 | 10 |
+| original_prefix32 / generate | dev | 21 | all | 0.6 | 18/18 | 18/18 | 512.0000 | 18 |
+| original_prefix32 / generate | dev | 21 | all | -0.1 | 18/18 | 18/18 | 447.0000 | 8 |
+| original_prefix32 / generate | dev | 21 | prefill | 0.3 | 18/18 | 15/18 | 442.1111 | 6 |
+| original_prefix32 / generate | dev | 21 | first_k | 0.3 | 18/18 | 18/18 | 449.7778 | 6 |
+| original_prefix32 / generate | dev | 21 | ablate | 0.0 | 18/18 | 18/18 | 445.8889 | 6 |
+| reference_full / generate | dev | 21 | all | 0.1 | 18/18 | 18/18 | 429.3889 | 6 |
+| reference_full / generate | dev | 21 | all | 0.3 | 18/18 | 18/18 | 408.3889 | 0 |
+| gemma_instruction_prefix32 / generate | dev | 21 | all | 0.1 | 18/18 | 18/18 | 465.9444 | 9 |
+| gemma_instruction_prefix32 / generate | dev | 21 | all | 0.3 | 18/18 | 18/18 | 455.8889 | 7 |
+| gemma_instruction_full / generate | dev | 21 | all | 0.1 | 18/18 | 18/18 | 468.3889 | 10 |
+| gemma_instruction_full / generate | dev | 21 | all | 0.3 | 18/18 | 18/18 | 488.2222 | 12 |
+
+[Read all completed dev answer comparisons](generated_examples.md). Fit candidate-construction answers remain in their individual task artifacts.
+
+## Candidate direction extraction
+
+Fit construction is not held-out evidence of correction. Pair counts below report available candidates; their outputs have no new correctness labels.
+
+| Task | Status | Pairs | Layers | Unnormalized difference norms |
+|---|---|---:|---|---|
+| 00168_extract_d91c848dacd6 | complete | 135 | [14, 21, 28] | {'L14_prefix32': 10.271998405456543, 'L14_full': 5.264892578125, 'L21_prefix32': 17.28270721435547, 'L21_full': 10.520943641662598, 'L28_prefix32': 25.28550910949707, 'L28_full': 15.906160354614258} |
+| 00297_extract_5c9bfa5678b6 | complete | 64 | [14, 21, 28] | {'L14_prefix32': 45.8727912902832, 'L14_full': 10.82912540435791, 'L21_prefix32': 73.97119140625, 'L21_full': 21.66933822631836, 'L28_prefix32': 115.81626892089844, 'L28_full': 32.783416748046875} |
+
+## Direction overlap
+
+Cosine measures vector overlap only; neither high nor low overlap establishes a pure style or correction direction.
+
+| Comparison | Status | Cosine | Reason |
+|---|---|---:|---|
+| reference_full | complete | 0.6099 |  |
+| gemma_instruction_prefix32 | complete | -0.0240 |  |
+| gemma_instruction_full | complete | 0.2440 |  |
+| original_vs_reextracted_prefix32 | complete | 1.0000 |  |
+
+## Failures and unstarted work
+
+| Task | Kind | Status | Reason |
+|---|---|---|---|
+| — | — | All planned artifacts complete | Numerical/semantic quality still requires inspection |
+
+## Recorded limitations
+
+- No GPT/judge calls; teacher-forced likelihood is not PCR or clinical correctness.
+- Dev is exploratory and previously inspected. Test is never evaluated.
+- Gemma instruction-contrast pairs are unjudged, not verified correction-success/failure pairs.
+- Author-matched NFP reference pairs are unavailable here; no pure-style cosine is claimed.
+- Ablation removes the whole axis, not selectively the compliance component.
+- 512-token answer cap retained. High alpha can degrade both reference likelihoods.
+
+Plan SHA-256: `9be1cf4cacb3520a4a84b12176038b4a0ca34937d9bad3bb893682503c7ea35a`.
+Per-task inputs/results are preserved under tasks/. This report never modifies those artifacts.

@@ -1,5 +1,12 @@
 # Cancer-Myth Internals
 
+**현재까지 무엇을 했고 왜 바꿨는가 (2026-09-15):** [26 — 실험 수치·발견·중단·전환 이력](docs/26_experiment_history_and_decisions.md).
+Gemma baseline/판정 감사/gate/Quick45/overnight와 Qwen 판별·512→1024 전환을 구분했다.
+사용자 마지막 로그는 `extract_verify 319/732`이며 실시간 서버 상태 확인은 아니다.
+**새 방법론 논의:** [27 — 확인된 대조쌍·학습 C·효과 예측·쌍둥이 증폭·선행과 반증 조건](docs/27_method_candidates_and_tests.md).
+후보는 미실행이며 신규성·성능을 확보했다고 주장하지 않는다. 다음 독립 GPU 실험은 물리 0·1 병렬이 기본이다.
+아래 과거 계획과 충돌하는 현재 상태·판정기·표 역할은 26/27과 실행 명세 25를 우선한다.
+
 **다음 실행 — 판별·생성 baseline 분리 (2026-09-15):** [25 — 공통 질문, Qwen/Gemma 실행, Well 평가, grouped holdout/OOF](docs/25_baseline_suite.md).
 `scripts/run_baselines.sh`의 `prepare → gpu → gate`는 외부 GPT 채점 없이 실행한다.
 답변 평가는 별도 `judge-plan → judge → report`이며 새 호출 상한을 명시해야 한다.
@@ -80,6 +87,8 @@ text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 
 
 | 파일 | 내용 |
 |---|---|
+| [docs/26_experiment_history_and_decisions.md](docs/26_experiment_history_and_decisions.md) | 실측 수치, 발견, 중단 이유, 변경 내용, 원본 보고서·출처 수준, 현재 진행 |
+| [docs/27_method_candidates_and_tests.md](docs/27_method_candidates_and_tests.md) | 새 방법 후보 전체 지도, 수식·선행·한계, 우선순위와 병렬 의존성 |
 | [docs/00_why_this_paper.md](docs/00_why_this_paper.md) | ICLR/ICML 2026 의료 NLP 106편 중 왜 Cancer-Myth인가. 지도 조건, 스크리닝, 탈락 후보 |
 | [docs/01_cancer_myth.md](docs/01_cancer_myth.md) | 앵커 논문 정리 — 정의, 7 카테고리, PCR/PCS, NFP, Table 1·3 원본, 저장소 |
 | [docs/02_followups_and_gap.md](docs/02_followups_and_gap.md) | 후속 연구 14편 중 핵심 4편이 무엇을 봤고 무엇을 남겼나 |

@@ -1,5 +1,12 @@
 # 25. 질문 판별과 답변 생성 baseline 실행
 
+> **2026-09-15 실행 후 갱신:** 실제 결과·변경 이유는 [26 §8–9](26_experiment_history_and_decisions.md#8-새-qwen-suite-질문-판별과-답변-평가를-분리했다)를 따른다.
+> 아래 512 기본값과 `qwen25_7b_v1` 명령은 최초 suite 기록이다. 길이 점검 후 현재 전환 절차는
+> [final 1024 별도 suite 준비](reviews/final_budget_check_protocol.md#user-reported-outcome-and-full-suite-transition)다.
+> 새 폴더의 `generation_defaults.json`이 1024를 고정하며 원 폴더/캐시는 재명명하지 않는다.
+> 사용자 마지막 로그 extract_verify 319/732에는 실행 폴더가 없어 최종 run metadata 확인이 남는다.
+> 이 페이지 말미의 “아직 실행하지 않은 것”은 코드 추가 당시 기록이다. Qwen prefill과 일부 gate는 이미 실행했다.
+
 2026-09-15. 이 문서가 새 baseline 실행 순서다. 기존 Gemma pilot/quick45/overnight
 파일과 점수는 그대로 보존한다. 코드 구현·오프라인 검증과 실제 모델 성능 측정은 구분한다.
 

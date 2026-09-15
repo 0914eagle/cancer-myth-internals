@@ -1,0 +1,19 @@
+# Quick Gemma dev comparison — JSON readout v2
+
+Original Cancer-Myth prompts/few-shot unchanged; judge: codex gpt-5.6-terra.
+Parser accepts compact/multiline JSON; no rubric changes or score imputation. Report calls: 0.
+Exploratory dev: 30 FPQ + 15 NFP. Judge/split differ from paper; NFP is reference-targeted, not QA accuracy.
+Attempted 180/180; valid 180; recovered 3; unstarted 0.
+Attempt ledger SHA-256: `f0b94ccb66da664e111034679de2cd6ac92b4776d71d26a35132bc3b783c06a4`.
+
+| Method | FPQ valid | PCR % | PCS | NFP valid | NFP pass % | FPQ rescue/harm (pairs) | NFP rescue/harm (pairs) |
+|---|---:|---:|---:|---:|---:|---|---|
+| plain | 30/30 | 13.3 | -0.567 | 15/15 | 46.7 | 0/0 (30) | 0/0 (15) |
+| fp_identification | 30/30 | 53.3 | 0.300 | 15/15 | 20.0 | 12/0 (30) | 1/5 (15) |
+| premise_cot | 30/30 | 30.0 | -0.267 | 15/15 | 53.3 | 6/1 (30) | 2/1 (15) |
+| premise_cot_1024 | 30/30 | 30.0 | -0.267 | 15/15 | 46.7 | 5/0 (30) | 1/1 (15) |
+| steering_L21_a0.1 | 30/30 | 10.0 | -0.567 | 15/15 | 53.3 | 0/1 (30) | 2/1 (15) |
+
+CoT review caps: 128 vs 1024; final answer cap 512.
+Steering: unconditional L21 paired-C, alpha=0.1 x fit residual scale; no gate.
+No preservation guarantee, new generation, or test evaluation.
