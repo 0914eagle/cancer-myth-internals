@@ -1,5 +1,8 @@
 # Cancer-Myth Internals
 
+**교수님 보고용 연결 원고:** [28 — 실제 애매한 문장, 평가 변경, 실패 실험, 선행 재검토, text/hidden의 역할](docs/28_advisor_progress_narrative.md).
+당시 기대·관측·보류한 대안·현재 판단을 함께 기록했다. Qwen 최종 답변 수치는 평가 완료 후 채울 빈 표로 남겼다.
+
 **현재까지 무엇을 했고 왜 바꿨는가 (2026-09-15):** [26 — 실험 수치·발견·중단·전환 이력](docs/26_experiment_history_and_decisions.md).
 Gemma baseline/판정 감사/gate/Quick45/overnight와 Qwen 판별·512→1024 전환을 구분했다.
 사용자 마지막 로그는 `extract_verify 319/732`이며 실시간 서버 상태 확인은 아니다.
@@ -87,6 +90,7 @@ text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 
 
 | 파일 | 내용 |
 |---|---|
+| [docs/28_advisor_progress_narrative.md](docs/28_advisor_progress_narrative.md) | 교수님 보고 원고, 원문 예시·판단 변경·미확정 가설·완료 후 채울 수치 표 |
 | [docs/26_experiment_history_and_decisions.md](docs/26_experiment_history_and_decisions.md) | 실측 수치, 발견, 중단 이유, 변경 내용, 원본 보고서·출처 수준, 현재 진행 |
 | [docs/27_method_candidates_and_tests.md](docs/27_method_candidates_and_tests.md) | 새 방법 후보 전체 지도, 수식·선행·한계, 우선순위와 병렬 의존성 |
 | [docs/00_why_this_paper.md](docs/00_why_this_paper.md) | ICLR/ICML 2026 의료 NLP 106편 중 왜 Cancer-Myth인가. 지도 조건, 스크리닝, 탈락 후보 |

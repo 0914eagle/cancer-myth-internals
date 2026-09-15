@@ -1,5 +1,7 @@
 # 15. 진행 현황 정리 (2026-09-15 갱신, 과거 기록 포함)
 
+**교수님 보고 준비:** [28](28_advisor_progress_narrative.md)에 평가가 애매했던 실제 문장·변경 이유·기각/보류한 대안·text 대비 hidden 필요성의 조건을 연결했다. 최종 Qwen 답변 평가는 아직 대기다.
+
 > **2026-09-15 갱신:** 현재 통합 현황은 [26 — 실험·의사결정 이력](26_experiment_history_and_decisions.md), 방법 후보는 [27](27_method_candidates_and_tests.md)를 우선한다.
 > Gemma Quick45는 180/180 판정 완료, overnight는 1,144/1,144 작업 완료(49.4분, GPT 0회)다.
 > Qwen 질문 판별은 text/hidden/DiM AUROC .756/.638/.731. 최종 답변 512 제한을 fit 12개에서 점검한 뒤 별도 1024 suite로 전환했다.
