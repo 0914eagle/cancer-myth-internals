@@ -3,6 +3,8 @@
 **교수님 보고용 연결 원고:** [28 — 실제 애매한 문장, 평가 변경, 실패 실험, 선행 재검토, text/hidden의 역할](docs/28_advisor_progress_narrative.md).
 당시 기대·관측·보류한 대안·현재 판단을 함께 기록했다. Qwen 최종 답변 수치는 평가 완료 후 채울 빈 표로 남겼다.
 
+**2026-09-15 결정: 10월 12일 ARR 제출 확정, 분석 논문.** 범위·일정은 [12 §16](docs/12_discussion_decisions.md).
+
 **현재까지 무엇을 했고 왜 바꿨는가 (2026-09-15):** [26 — 실험 수치·발견·중단·전환 이력](docs/26_experiment_history_and_decisions.md).
 Gemma baseline/판정 감사/gate/Quick45/overnight와 Qwen 판별·512→1024 전환을 구분했다.
 사용자 마지막 로그는 `extract_verify 319/732`이며 실시간 서버 상태 확인은 아니다.
