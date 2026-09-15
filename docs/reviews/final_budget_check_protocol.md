@@ -57,3 +57,60 @@ python scripts/check_final_budget.py report \
 
 Review files: `$BUDGET_DIR/report.md`, `$BUDGET_DIR/examples.md`.
 Tests are provided for the server; no local pytest, torch, or GPU checks were run.
+
+## User-reported outcome and full-suite transition
+
+Source: user-pasted server report in this discussion; original ledger/examples
+not yet copied into the repository. All 12 pairs completed for each method:
+
+| Method | 512 length stops | 1024 length stops | Changed answers | Prefix divergence |
+|---|---:|---:|---:|---:|
+| Plain | 7/12 | 0/12 | 7/12 | 0/12 |
+| Zero-shot CoT | 8/12 | 0/12 | 8/12 | 0/12 |
+
+All 15 length-stopped answers ended with EOS at 1024; reviews did not change.
+Source Plain replay matched 12/12. This supports a 1024 final budget, not improved
+correction accuracy; other methods' 1024 cap rates still need monitoring.
+
+`scripts/prepare_final1024.py` snapshots the source suite into a new, non-nested
+directory. It copies immutable shared generation/binary caches, features,
+available detection records and completed question-level gate results. It does
+not copy final-answer ledgers, generation method specs, judge scores, process
+locks or logs. Cache keys include exact prompt, budget and runtime identity.
+Hence saved reasoning/extractions with the same budget can be reused; old
+512-token finals are not labelled as 1024 outputs, even if they ended at EOS.
+Final answers are regenerated with 1024, not continued by appending saved text.
+
+The new `generation_defaults.json` freezes final cap=1024 for the existing CLI
+and shell wrapper. Old suites without that file continue to default to 512.
+Generation code/prompts and cache signatures are unchanged. Prepared snapshots
+are idempotent; rerunning preparation does not import later source work into an
+already active destination. Never run preparation/generation concurrently on
+the destination. No judge is invoked by migration, generate, detect, gate, or
+judge-plan. A separate explicitly capped `judge` command is still required.
+
+Stop the old **512 generation** job in its original tmux window with Ctrl-C
+before starting the replacement (do not use a broad process kill). This avoids
+paying GPU time for both full suites. Keep the original folder.
+
+```bash
+cd /home/eagle0914/cancer-myth-internals
+git pull --ff-only origin main
+source /data1/heejae/uv/cancer_myth_internals/bin/activate
+source scripts/env.sh /data1/heejae
+python -m pytest -q tests/test_final1024_migration.py tests/test_baseline_cli.py
+export OLD_SUITE_DIR=/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_v1
+export SUITE_DIR=/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1
+export CUDA_VISIBLE_DEVICES=0
+python scripts/prepare_final1024.py --source-dir "$OLD_SUITE_DIR" --out-dir "$SUITE_DIR" &&
+bash scripts/run_baselines.sh generate &&
+bash scripts/run_baselines.sh detect &&
+bash scripts/run_baselines.sh gate &&
+bash scripts/run_baselines.sh judge-plan
+```
+
+Run inside tmux. `generate` does not repeat feature extraction; `detect` reuses
+available premise-review and binary caches. The chain does **not** score answers.
+Resume via the same commands. Afterward inspect `status`, cap rates, and judge
+plan before approving a bounded scoring batch. No local pytest/model run was
+performed for this transition code; only static syntax/diff checks.

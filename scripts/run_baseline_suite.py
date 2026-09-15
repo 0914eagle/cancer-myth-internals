@@ -34,6 +34,22 @@ def choose_rows(suite, partition):
     return [q for q in suite["questions"] if partition == "all" or q["partition"] == partition]
 
 
+def final_budget(out, explicit=None):
+    path = Path(out) / "generation_defaults.json"
+    if path.exists():
+        defaults = json.loads(path.read_text())
+        value = defaults["final_tokens"]
+        if defaults.get("requires_cache_migration") and not (Path(out) / "cache_migration_complete.json").exists():
+            raise ValueError("Cache migration incomplete; rerun prepare_final1024.py first")
+        if explicit is not None and explicit != value:
+            raise ValueError("Final budget differs from frozen run defaults; use a separate run directory")
+    else:
+        value = 512 if explicit is None else explicit
+    if type(value) is not int or value < 1:
+        raise ValueError("Positive integer final token budget required")
+    return value
+
+
 def atomic_jsonl(path, rows):
     path = Path(path)
     tmp = path.with_suffix(path.suffix + ".tmp")
@@ -119,8 +135,10 @@ def run(args):
         if not rows:
             raise ValueError("Empty generation/extraction partition")
         if args.stage == "generate":
+            budget = final_budget(out, args.final_tokens)
+            print(f"Final-answer cap: {budget}; review cap: {args.review_tokens}. Judge calls: 0.", flush=True)
             bg.run_generation(rows, cfg, out / "model", args.methods,
-                              final_tokens=args.final_tokens, review_tokens=args.review_tokens,
+                              final_tokens=budget, review_tokens=args.review_tokens,
                               extraction_tokens=args.extraction_tokens)
             lookup = {q["id"]: q for q in suite["questions"]}
             with output_lock(out / "export_answers"):
@@ -201,7 +219,8 @@ def main():
                 p.add_argument("--review-tokens", type=int, default=1024)
             if stage == "generate":
                 p.add_argument("--methods", nargs="+", choices=METHODS, default=list(METHODS))
-                p.add_argument("--final-tokens", type=int, default=512)
+                p.add_argument("--final-tokens", type=int, default=None,
+                               help="Run's generation_defaults.json, otherwise 512; frozen defaults cannot be overridden")
                 p.add_argument("--extraction-tokens", type=int, default=512)
             if stage == "extract":
                 p.add_argument("--layers", type=int, nargs="+")
