@@ -1,6 +1,11 @@
 # Cancer-Myth Internals
 
-**다음 실행 — 최대 9시간 C 방향 진단:** [GPU 0·1 overnight 실행·실험표·아침 보고서](docs/experiments/overnight_c_diagnostics.md).
+**다음 실행 — 판별·생성 baseline 분리 (2026-09-15):** [25 — 공통 질문, Qwen/Gemma 실행, Well 평가, grouped holdout/OOF](docs/25_baseline_suite.md).
+`scripts/run_baselines.sh`의 `prepare → gpu → gate`는 외부 GPT 채점 없이 실행한다.
+답변 평가는 별도 `judge-plan → judge → report`이며 새 호출 상한을 명시해야 한다.
+Well의 당시 split은 공개되지 않아 우리 manifest를 사용한다. GEPA/finetuning은 이번 자동 실행에 포함하지 않는다.
+
+**앞선 최대 9시간 C 방향 진단:** [GPU 0·1 overnight 실행·실험표·아침 보고서](docs/experiments/overnight_c_diagnostics.md).
 `bash scripts/run_overnight_c.sh start`로 SSH와 독립 실행한다. 기존 C의 강도·층·위치, 무작위 방향,
 fit 전용 새 방향, 소규모 생성 답변을 비교한다. GPT 채점 0회, test 미사용. 개별 실패·시간 초과도 보고한다.
 
