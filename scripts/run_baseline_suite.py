@@ -72,9 +72,10 @@ def variant_rows(suite, path):
         if r.get("id") in seen:
             raise ValueError("Duplicate variant ID")
         seen.add(r["id"])
-        if r.get("set") == "tpair":
+        if r.get("set") == "tpair" or r.get("label_false_premise") == 1:
+            # True twin (negative) or false paraphrase (positive): both derive from an FPQ.
             if by_id[origin]["set"] != "fpq":
-                raise ValueError("A true-premise twin must derive from an FPQ")
+                raise ValueError("A twin-file row must derive from an FPQ")
         elif r.get("set") != by_id[origin]["set"]:
             raise ValueError("A paraphrase keeps its source question's set")
         rows.append({"id": r["id"], "question": r["question"]})

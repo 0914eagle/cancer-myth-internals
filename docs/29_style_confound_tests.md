@@ -28,8 +28,10 @@ FPQ는 GPT-4o가 통념에서 써낸 질문이고 NFP는 LLM이 오경보를 낸
 |---|---|---|---|
 | natural | FPQ vs NFP | 같은 것 (OOF) | 기준 행. crossfit과 같은 수치가 나와야 함 |
 | twins | FPQ vs 쌍둥이 | 같은 것 (OOF) | 문체 고정 시 남는 판별력 |
+| edited | 거짓 의역 vs 참 쌍둥이 | 같은 것 (OOF) | **가장 깨끗한 최소 쌍.** 두 구간 모두 LLM이 다시 썼으므로 편집 흔적이 상쇄되고 진위만 남음 |
 | para | 의역 FPQ vs 의역 NFP | 같은 것 (OOF) | 출처 문체 제거 시 남는 판별력 |
 | natural→twins | FPQ vs NFP | FPQ vs 쌍둥이 | 자연 데이터로 배운 게이트가 문체 없이 버티는가 |
+| natural→edited | FPQ vs NFP | 거짓 의역 vs 참 쌍둥이 | 위와 같음, 편집 흔적 없는 쌍 |
 | natural→para | FPQ vs NFP | 의역 | 위와 같음, 의역 쪽 |
 | para→natural | 의역 | FPQ vs NFP | 문체 없이 배운 게이트가 자연 데이터에서 얼마나 되는가 |
 | twins→natural | FPQ vs 쌍둥이 | FPQ vs NFP | 전제 진위만 배운 게이트의 전이 |
@@ -140,6 +142,16 @@ p3는 프롬프트 버전이 바뀌므로 `para.jsonl`을 지우고 100문항부
 **p3 100문항 결과.** ok 90/100 (FPQ 46/50, NFP 44/50), `lost_premise` 0, `not_faithful` 10 (FPQ 4, NFP 6), near-copy 0,
 Jaccard 중앙값 0.30. 수락률이 클래스 대칭이 됐고 문체 변화는 유지됐다. 이 설정(Sonnet 5, p3)으로 732문항 전체를 돌린다.
 
+**쌍둥이 파일 확인 (2026-09-16).** `$DATA/e1_rows_v1/questions_twins.jsonl`(9월 10일 생성, 711행)에는 두 종류가 있다:
+참 쌍둥이 327(`set=tpair`, 정렬 성공 506 중; `still_false` 82, `length` 97 탈락)과 **거짓 의역** 384(전제 구간을 다시 썼지만
+여전히 거짓, `label_false_premise=1`; `lost_belief` 42, `length` 80 탈락). 둘 다 있는 문항 259. 부정어 사용은 참 1/327, 거짓
+8/384로 "not"만 끼운 쌍둥이는 아니다. 길이비 1.14/1.11. pair_id는 `fpq_<번호>`로 suite와 같은 체계라 텍스트 매핑이 필요 없다.
+드라이버는 파일을 두 종류로 나누고 `edited`(거짓 의역 vs 참 쌍둥이, 259쌍) 조건을 추가했다. 이 쌍은 두 구간 모두 LLM이 썼으므로
+"편집된 텍스트 자체를 감지한다"는 반론이 사라진다. 눈 검사에서 본 것: fpq_423·fpq_696은 자연스럽다. fpq_317(TKI는 탈모를 거의
+안 일으킨다고 들었다 → 그런데 탈모 환자 자료를 묻는다), fpq_303(적극 감시 가능성 → 그런데 다가오는 항암 준비를 묻는다)은
+전제를 고치자 질문이 맞지 않는다. 문체 검정에는 쓸 수 있으나(구간 밖 바이트 동일), 논문에서 쌍둥이를 "정상 질문"이라 부르면
+안 되고 "최소 쌍"으로만 부른다(27 §172). 그런 문항의 비율은 §7에 적는다.
+
 **서버에서 claude 로그인.** 브라우저 없는 서버에서는 두 방법 중 하나.
 1. 구독 계정(권장): 서버에서 `claude auth login` → 터미널에 URL이 뜨면 노트북 브라우저로 열어 로그인 → 표시된 코드를
    서버 터미널에 붙여넣기. 확인은 `claude auth status`. 로그인 정보는 그 계정 홈에 남으므로 tmux 세션마다 다시 할 필요 없다.
@@ -162,8 +174,10 @@ CLI 기본 모델이다. `run_judge.py`에도 선택지는 열려 있지만 **�
 |---|---|---|---|---|---|---|
 | natural | | | | | | |
 | twins (n=) | | | | | | |
+| edited (n=) | | | | | | |
 | para (n=) | | | | | | |
 | natural→twins | | | | | | |
+| natural→edited | | | | | | |
 | natural→para | | | | | | |
 | para→natural | | | | | | |
 | twins→natural | | | | | | |

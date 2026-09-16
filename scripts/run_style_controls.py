@@ -27,7 +27,7 @@ if str(ROOT) not in sys.path:
 from src.baseline_suite import load_suite
 from src.jsonl import read_jsonl
 from src.pilot import digest, file_digest, frozen_json, output_lock
-from src.style_controls import CONDITIONS, assemble, fold_assignment, report, run_conditions, summarize
+from src.style_controls import CONDITIONS, assemble, fold_assignment, report, run_conditions, split_twin_file, summarize
 
 
 def load_features(path):
@@ -59,26 +59,31 @@ def main():
     suite_dir = Path(args.suite_dir).resolve()
     suite = load_suite(suite_dir)
     natural = suite["questions"]
-    twins = list(read_jsonl(args.twins)) if args.twins else []
+    twin_rows = list(read_jsonl(args.twins)) if args.twins else []
+    twins, fparas = split_twin_file(twin_rows)
+    print(f"[twins] file: {len(twins)} true twins, {len(fparas)} false paraphrases", flush=True)
     # Twins may come from the E1 row set, which is larger than the suite; keep those whose FPQ is in the suite.
     ids = {q["id"] for q in natural}
     if args.twins_questions:
         from src.pilot import normalized
         by_text = {normalized(q["question"]): q["id"] for q in natural}
         source = {q["id"]: normalized(q["question"]) for q in read_jsonl(args.twins_questions)}
-        remapped = []
-        for t in twins:
-            suite_id = by_text.get(source.get(t.get("pair_id"), ""))
-            if suite_id:
-                remapped.append({**t, "id": f"{suite_id}_true", "pair_id": suite_id})
-        print(f"[twins] {len(remapped)}/{len(twins)} mapped to suite questions by text", flush=True)
-        twins = remapped
-    dropped = [t for t in twins if t.get("pair_id") not in ids]
+        def remap(rows, suffix):
+            out = []
+            for t in rows:
+                suite_id = by_text.get(source.get(t.get("pair_id"), ""))
+                if suite_id:
+                    out.append({**t, "id": f"{suite_id}_{suffix}", "pair_id": suite_id})
+            print(f"[twins] {len(out)}/{len(rows)} {suffix} rows mapped to suite questions by text", flush=True)
+            return out
+        twins, fparas = remap(twins, "true"), remap(fparas, "fpara")
+    dropped = [t for t in twins + fparas if t.get("pair_id") not in ids]
     twins = [t for t in twins if t.get("pair_id") in ids]
+    fparas = [t for t in fparas if t.get("pair_id") in ids]
     if dropped:
-        print(f"[twins] {len(dropped)} twins whose FPQ is not in the suite were dropped", flush=True)
+        print(f"[twins] {len(dropped)} twin-file rows whose FPQ is not in the suite were dropped", flush=True)
     para = list(read_jsonl(args.paraphrases)) if args.paraphrases else []
-    nat, tw, pa = assemble(natural, twins, para)
+    nat, tw, pa, fp = assemble(natural, twins, para, fparas)
 
     features = {}
     hidden_wanted = any(s in args.signals for s in ("hidden", "mean"))
@@ -99,7 +104,7 @@ def main():
         layers = ()
 
     assignment = fold_assignment(natural, folds=args.folds, seed=args.seed)
-    result = run_conditions(nat, tw, pa, assignment=assignment, signals=args.signals, features=features,
+    result = run_conditions(nat, tw, pa, fp, assignment=assignment, signals=args.signals, features=features,
                             layers=layers, c_grid=args.c_grid, conditions=args.conditions, seed=args.seed)
     summaries = summarize(result, repeats=args.bootstrap, seed=args.seed)
     text = report(result, summaries)
@@ -107,7 +112,8 @@ def main():
     destination = suite_dir / "style_controls" / args.name
     spec = {"suite_hash": digest(suite), "twins_sha256": file_digest(args.twins) if args.twins else None,
             "paraphrases_sha256": file_digest(args.paraphrases) if args.paraphrases else None,
-            "twins_n": len(tw), "para_n": len(pa), "signals": args.signals, "conditions": args.conditions,
+            "twins_n": len(tw), "false_paraphrases_n": len(fp), "para_n": len(pa),
+            "signals": args.signals, "conditions": args.conditions,
             "layers": list(layers or ()), "c_grid": args.c_grid, "folds": args.folds, "seed": args.seed,
             "fold_assignment": assignment,
             "implementation_hash": file_digest(ROOT / "src/style_controls.py")}

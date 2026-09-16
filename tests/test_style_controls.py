@@ -208,7 +208,7 @@ def gate_rows():
 @pytest.fixture
 def controls_data():
     rng = np.random.default_rng(7)
-    natural, twins, para, features = [], [], [], {}
+    natural, twins, para, fparas, features = [], [], [], [], {}
     for g in range(60):
         fpq_id, nfp_id = f"fpq_{g:03}", f"nfp_{g:03}"
         natural.append({"id": fpq_id, "set": "fpq", "group_id": f"src_{g:03}", "partition": "fit",
@@ -219,20 +219,25 @@ def controls_data():
         if g % 2 == 0:
             twins.append({"id": fpq_id + "_true", "set": "tpair", "pair_id": fpq_id,
                           "question": f"I heard that herb {g} does not cure cancer, so is chemo unnecessary?"})
+        if g % 4 == 0:
+            fparas.append({"id": fpq_id + "_fpara", "set": "fpara", "label_false_premise": 1, "pair_id": fpq_id,
+                           "question": f"I heard that herb {g} wipes out cancer, so is chemo unnecessary?"})
         para.append({"id": fpq_id + "_para", "set": "fpq", "paraphrase_of": fpq_id,
                      "question": f"Herb {g} cures cancer; is chemo needed?"})
         para.append({"id": nfp_id + "_para", "set": "nfp", "paraphrase_of": nfp_id,
                      "question": f"Condition {g}; which screening schedule is needed?"})
         for row_id, y in ((fpq_id, 1), (nfp_id, -1), (fpq_id + "_para", 1), (nfp_id + "_para", -1)):
             features[row_id] = {11: np.array([2.0 * y, *rng.normal(size=3)])}
-    return natural, twins, para, features
+    return natural, twins, para, fparas, features
 
 
 def test_conditions_cover_every_row_once_without_origin_leakage(controls_data):
-    natural, twins, para, features = controls_data
-    nat, tw, pa = sc.assemble(natural, twins, para)
+    natural, twins, para, fparas, features = controls_data
+    tw_rows, fp_rows = sc.split_twin_file(twins + fparas)
+    assert len(tw_rows) == 30 and len(fp_rows) == 15
+    nat, tw, pa, fp = sc.assemble(natural, tw_rows, para, fp_rows)
     assignment = sc.fold_assignment(natural, folds=3, seed=1)
-    result = sc.run_conditions(nat, tw, pa, assignment=assignment, signals=("text", "style", "hidden"),
+    result = sc.run_conditions(nat, tw, pa, fp, assignment=assignment, signals=("text", "style", "hidden"),
                                features=features, layers=(11,), c_grid=(1.0,), seed=1)
     preds = result["predictions"]
     conditions = {p["condition"] for p in preds}
@@ -243,24 +248,27 @@ def test_conditions_cover_every_row_once_without_origin_leakage(controls_data):
             ids = [p["id"] for p in preds if p["condition"] == name and p["signal"] == sig]
             assert len(ids) == len(set(ids))
     assert len([p for p in preds if p["condition"] == "twins" and p["signal"] == "text"]) == 60
+    edited = [p for p in preds if p["condition"] == "edited" and p["signal"] == "text"]
+    assert len(edited) == 30 and sum(p["label"] for p in edited) == 15
+    assert all(p["source"] in ("fparas", "twins") for p in edited)
     assert len([p for p in preds if p["condition"] == "para" and p["signal"] == "text"]) == 120
     # Rewrites inherit the fold: an origin is never in train and evaluation of one fold.
     for p in preds:
         assert p["fold"] == assignment[p["origin"]]
     # Hidden skipped where twins lack features, run where every row has them.
     skipped = {(s["condition"], s.get("signal")) for s in result["skipped"]}
-    assert ("twins", "hidden") in skipped and ("natural->twins", "hidden") in skipped
+    assert ("twins", "hidden") in skipped and ("natural->twins", "hidden") in skipped and ("edited", "hidden") in skipped
     assert any(p["condition"] == "para" and p["signal"] == "hidden" for p in preds)
     summaries = sc.summarize(result, repeats=10, seed=1)
     assert summaries["natural"]["signals"]["text"]["auroc"] > 0.9
     assert summaries["natural"]["signals"]["hidden"]["auroc"] > 0.9
     assert "hidden" in summaries["natural"]["delta_vs_text"] and summaries["natural"]["delta_vs_text"]["hidden"]["ci"]
     text = sc.report(result, summaries)
-    assert "| natural | text |" in text and "| twins | style |" in text and "Skipped:" in text
+    assert "| natural | text |" in text and "| twins | style |" in text and "| edited | text |" in text and "Skipped:" in text
 
 
 def test_assemble_rejects_mislabeled_rewrites(controls_data):
-    natural, twins, para, _ = controls_data
+    natural, twins, para, fparas, _ = controls_data
     with pytest.raises(ValueError):
         sc.assemble(natural, [{**twins[0], "set": "nfp"}], [])
     with pytest.raises(ValueError):
@@ -269,4 +277,9 @@ def test_assemble_rejects_mislabeled_rewrites(controls_data):
         sc.assemble(natural, [{**twins[0], "pair_id": "nfp_000"}], [])
     with pytest.raises(ValueError):
         sc.assemble(natural, [{**twins[0], "id": natural[0]["id"]}], [])
+    with pytest.raises(ValueError):
+        sc.assemble(natural, [], [], [{**fparas[0], "label_false_premise": 0}])
+    with pytest.raises(ValueError):
+        sc.split_twin_file([{"id": "x", "set": "weird", "pair_id": "fpq_000", "question": "q"}])
     assert sc.condition_rows("twins", *sc.assemble(natural, [], [])) is None
+    assert sc.condition_rows("edited", *sc.assemble(natural, twins, [], [])) is None
