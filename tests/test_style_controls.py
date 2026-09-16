@@ -59,6 +59,17 @@ def test_parse_claude_result_reads_reply_and_served_model():
         llm_backend.parse_claude_result("not json", "m")
 
 
+def test_parse_claude_result_ignores_background_haiku_usage():
+    import json
+    payload = json.dumps({"type": "result", "subtype": "success", "is_error": False, "result": "Rating: 4",
+                          "modelUsage": {"claude-haiku-4-5-20251001": {"inputTokens": 3}, "claude-sonnet-5": {"inputTokens": 900}}})
+    assert llm_backend.parse_claude_result(payload, "claude-sonnet-5") == ("Rating: 4", "claude-sonnet-5")
+    dated = payload.replace('"claude-sonnet-5"', '"claude-sonnet-5-20260601"')
+    assert llm_backend.parse_claude_result(dated, "claude-sonnet-5") == ("Rating: 4", "claude-sonnet-5-20260601")
+    # Requested model absent from usage: the mix is reported, not guessed.
+    assert llm_backend.parse_claude_result(payload, "claude-opus-5")[1] == "claude-haiku-4-5-20251001,claude-sonnet-5"
+
+
 def test_run_claude_uses_print_mode_without_tools(monkeypatch):
     seen = {}
 

@@ -97,7 +97,18 @@ def parse_claude_result(stdout: str, fallback_model: str) -> tuple[str, str]:
     if not answer:
         raise RuntimeError("claude -p wrote an empty result")
     usage = data.get("modelUsage") or {}
-    served = ",".join(sorted(k for k in usage if isinstance(k, str))) if isinstance(usage, dict) else ""
+    keys = sorted(k for k in usage if isinstance(k, str)) if isinstance(usage, dict) else []
+    # The CLI also bills small background calls (a Haiku entry next to the
+    # requested model). The served model is the requested one when it appears
+    # in the usage, exactly or in dated form; a lone key is taken as is; any
+    # other mix is reported joined so a judge plan rejects it visibly.
+    wanted = [k for k in keys if fallback_model and (k == fallback_model or k.startswith(fallback_model + "-"))]
+    if len(wanted) == 1:
+        served = wanted[0]
+    elif len(keys) == 1:
+        served = keys[0]
+    else:
+        served = ",".join(keys)
     return answer, served or fallback_model or "claude-default"
 
 
