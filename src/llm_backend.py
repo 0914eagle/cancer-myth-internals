@@ -25,6 +25,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Callable
 
@@ -113,11 +114,32 @@ def run_claude(prompt: str, model: str, timeout: int, claude_cmd: str = "claude"
     ]
     if model:
         cmd += ["--model", model]
-    proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout)
-    if proc.returncode != 0:
+    # The CLI's OAuth token refresh can collide with another claude process
+    # ("refreshing it or exited mid-refresh ... retry in a minute"). A judge
+    # ledger never retries a started job, so the transport retries here, a few
+    # times with a pause; a persistent failure (usage limit, logged out) still
+    # raises after the last attempt.
+    detail = ""
+    for attempt in range(CLAUDE_TRANSIENT_ATTEMPTS):
+        proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout)
+        if proc.returncode == 0:
+            return parse_claude_result(proc.stdout, model)
         detail = (proc.stderr or proc.stdout)[-300:]
-        raise RuntimeError(f"claude -p failed ({proc.returncode}): {detail}")
-    return parse_claude_result(proc.stdout, model)
+        if attempt + 1 < CLAUDE_TRANSIENT_ATTEMPTS and _claude_transient(detail):
+            time.sleep(CLAUDE_TRANSIENT_PAUSE * (attempt + 1))
+            continue
+        break
+    raise RuntimeError(f"claude -p failed ({proc.returncode}): {detail}")
+
+
+CLAUDE_TRANSIENT_ATTEMPTS = 4
+CLAUDE_TRANSIENT_PAUSE = 20.0  # seconds; 20, 40, 60
+_TRANSIENT_MARKERS = ("transient", "mid-refresh", "refreshing it", "retry in a minute", "overloaded", "529", "ECONNRESET", "ETIMEDOUT")
+
+
+def _claude_transient(detail: str) -> bool:
+    lowered = (detail or "").lower()
+    return any(m.lower() in lowered for m in _TRANSIENT_MARKERS)
 
 
 def run_openai(prompt: str, model: str, timeout: int, *, temperature: float = 0.0, max_tokens: int = 400) -> tuple[str, str]:

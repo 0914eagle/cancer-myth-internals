@@ -81,6 +81,30 @@ def test_run_claude_uses_print_mode_without_tools(monkeypatch):
         llm_backend.run_claude("x", "", 5)
 
 
+def test_run_claude_retries_transient_token_refresh_then_gives_up(monkeypatch):
+    import time as _time
+    monkeypatch.setattr(_time, "sleep", lambda s: None)
+    transient = '{"is_error":true,"result":"another Claude Code process is refreshing it or exited mid-refresh. This is usually transient; retry in a minute","type":"result"}'
+    outcomes = iter([SimpleNamespace(returncode=1, stdout=transient, stderr=""),
+                     SimpleNamespace(returncode=0, stdout=_result(), stderr="")])
+    calls = []
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: (calls.append(1), next(outcomes))[1])
+    assert llm_backend.run_claude("x", "sonnet", 5) == ("YES", "claude-x-1")
+    assert len(calls) == 2
+    # Non-transient failure (usage limit) is not retried.
+    calls.clear()
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: (calls.append(1), SimpleNamespace(returncode=1, stdout="", stderr="usage limit reached"))[1])
+    with pytest.raises(RuntimeError, match="usage limit"):
+        llm_backend.run_claude("x", "sonnet", 5)
+    assert len(calls) == 1
+    # Persistent transient failure gives up after the attempt cap.
+    calls.clear()
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: (calls.append(1), SimpleNamespace(returncode=1, stdout=transient, stderr=""))[1])
+    with pytest.raises(RuntimeError, match="transient"):
+        llm_backend.run_claude("x", "sonnet", 5)
+    assert len(calls) == llm_backend.CLAUDE_TRANSIENT_ATTEMPTS
+
+
 def test_backend_available_checks_claude_binary(monkeypatch):
     import shutil
     monkeypatch.setattr(shutil, "which", lambda name: "/usr/bin/claude" if name == "claude" else None)
