@@ -87,10 +87,11 @@ def make_paraphrase(q: dict[str, Any], llm, *, writer: str = "",
     question = q["question"]
     reply = llm(PARAPHRASE_PROMPT.format(question=question))
     new = (reply or "").strip().strip("\"'“”‘’ ")
-    audit: dict[str, Any] = {"jaccard": None, "premise_checked": False, "retried": False}
+    audit: dict[str, Any] = {"jaccard": None, "premise_checked": False, "retried": False, "rewrite": None}
     if not new:
         return None, "empty", audit
     audit["jaccard"] = word_jaccard(question, new)
+    audit["rewrite"] = new
     if normalized(new) == normalized(question):
         return None, "unchanged", audit
     if audit["jaccard"] > max_jaccard:
@@ -101,17 +102,20 @@ def make_paraphrase(q: dict[str, Any], llm, *, writer: str = "",
             return None, "empty", audit
         new = again
         audit["jaccard"] = word_jaccard(question, new)
+        audit["rewrite"] = new
         if normalized(new) == normalized(question) or audit["jaccard"] > max_jaccard:
             return None, "near_copy", audit
     if len(new) > 2 * len(question) + 100:
         return None, "too_long", audit
     if q.get("set") == "fpq" and q.get("premise_text"):
         audit["premise_checked"] = True
-        verdict = (llm(TWIN_CHECK_PROMPT.format(question=new, premise=q["premise_text"])) or "").strip().upper()
-        if not verdict.startswith("YES"):
+        verdict = (llm(TWIN_CHECK_PROMPT.format(question=new, premise=q["premise_text"])) or "").strip()
+        audit["premise_verdict"] = verdict[:200]
+        if not verdict.upper().startswith("YES"):
             return None, "lost_premise", audit
-    verdict = (llm(FIDELITY_PROMPT.format(original=question, rewrite=new)) or "").strip().upper()
-    if not verdict.startswith("YES"):
+    verdict = (llm(FIDELITY_PROMPT.format(original=question, rewrite=new)) or "").strip()
+    audit["fidelity_verdict"] = verdict[:200]
+    if not verdict.upper().startswith("YES"):
         return None, "not_faithful", audit
     row = {
         "id": f"{q['id']}_para",

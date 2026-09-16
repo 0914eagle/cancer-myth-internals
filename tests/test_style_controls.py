@@ -123,7 +123,9 @@ def test_paraphrase_accepts_only_rewrites_that_keep_premise_and_meaning():
     assert any(p.startswith(FIDELITY_PROMPT[:30]) for p in llm.log)
 
     lost = _scripted([("BELIEF:", "NO"), ("MESSAGE:", "Is it fine to skip chemotherapy?")])
-    assert make_paraphrase(FPQ, lost)[1] == "lost_premise"
+    row, status, audit = make_paraphrase(FPQ, lost)
+    assert status == "lost_premise" and audit["rewrite"] == "Is it fine to skip chemotherapy?"
+    assert audit["premise_verdict"] == "NO"
     unfaithful = _scripted([("ORIGINAL:", "NO"), ("BELIEF:", "YES"),
                             ("MESSAGE:", "Because turmeric eliminates colon cancer, I plan to stop chemotherapy, right?")])
     assert make_paraphrase(FPQ, unfaithful)[1] == "not_faithful"

@@ -42,6 +42,8 @@ def main() -> None:
     parser.add_argument("--codex-cmd", default="codex")
     parser.add_argument("--claude-cmd", default="claude")
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--retry-status", nargs="*", default=[],
+                        help="checkpoint statuses to attempt again (e.g. lost_premise not_faithful); ok rows are never redone")
     parser.add_argument("--max-jaccard", type=float, default=0.6,
                         help="word overlap above which a rewrite is a near copy (retried once, then dropped)")
     parser.add_argument("--seed", type=int, default=17)
@@ -77,7 +79,10 @@ def main() -> None:
     if progress.exists():
         for r in read_jsonl(progress):
             done[r["id"]] = r
-        done = {k: v for k, v in done.items() if v.get("status") != "empty"}
+        redo = set(args.retry_status) | {"empty"}
+        if "ok" in redo:
+            raise SystemExit("--retry-status cannot include ok")
+        done = {k: v for k, v in done.items() if v.get("status") not in redo}
     if any(d.get("writer") not in (None, writer) for d in done.values()):
         raise SystemExit(f"Checkpoint {progress} was written by a different writer or prompt version "
                          f"(now {writer}); delete it or use a new --out-dir")
@@ -122,6 +127,19 @@ def main() -> None:
     (out_dir / "para_audit.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     by_id = {q["id"]: q for q in suite["questions"]}
+    rejected = [d for d in done.values() if not d.get("row")]
+    md = ["# Rejected paraphrases (why each was dropped)", "",
+          "lost_premise: the checker said the rewrite no longer takes the false belief for granted.",
+          "not_faithful: the checker said beliefs/request changed. Read the rewrite yourself: a NO on a rewrite",
+          "that plainly keeps the belief means the checker, not the writer, is at fault.", ""]
+    for d in rejected:
+        q = by_id.get(d["id"], {})
+        md += [f"## {d['id']} ({q.get('set')}) — {d['status']}",
+               f"- original: {q.get('question')}",
+               f"- rewrite:  {d.get('rewrite')}",
+               f"- premise_text: {q.get('premise_text')}" if q.get("set") == "fpq" else "",
+               f"- verdicts: premise={d.get('premise_verdict')!r} fidelity={d.get('fidelity_verdict')!r}", ""]
+    (out_dir / "para_rejected.md").write_text("\n".join(md), encoding="utf-8")
     rng = random.Random(args.seed)
     sample = rng.sample(accepted, min(30, len(accepted)))
     md = ["# Paraphrases (check by eye)", ""]
@@ -130,7 +148,7 @@ def main() -> None:
                f"- original: {by_id[r['paraphrase_of']]['question']}",
                f"- rewrite:  {r['question']}", ""]
     (out_dir / "para_sample.md").write_text("\n".join(md), encoding="utf-8")
-    print(f"[para] status: {dict(status)}")
+    print(f"[para] status: {dict(status)}; rejected rows listed in {out_dir / 'para_rejected.md'}")
     print(f"[done] {out_dir / 'questions_para.jsonl'} ({len(accepted)} rows). Judge calls: 0.")
 
 
