@@ -58,6 +58,9 @@ def main() -> None:
     llm = make_llm(backend, model, args.codex_cmd, claude_cmd=args.claude_cmd)
     if llm is None:
         raise SystemExit(f"backend {backend} unavailable")
+    if llm("Reply with exactly the word OK.") is None:
+        raise SystemExit(f"backend {backend} answered nothing; check `claude auth status`, ANTHROPIC_API_KEY, "
+                         "or codex login before spending the run")
 
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -69,11 +72,19 @@ def main() -> None:
         fpq = fpq[: args.limit]
     print(f"[twins] {len(fpq)} fpq rows with a verified span; {len(done)} already attempted", flush=True)
 
-    n_new = 0
+    n_new, consecutive_failures = 0, 0
     for q in fpq:
         if q["id"] in done:
             continue
+        before = llm.failures["n"]
         twin, status = make_true_twin(q, llm)
+        if llm.failures["n"] > before:
+            consecutive_failures += 1
+            print(f"[twins] backend failure on {q['id']}; not recorded ({consecutive_failures} in a row)", flush=True)
+            if consecutive_failures >= 3:
+                raise SystemExit("three consecutive backend failures -- backend/login/limit not usable; fix and rerun")
+            continue
+        consecutive_failures = 0
         append_jsonl(progress, {"id": q["id"], "status": status, "twin": twin})
         done[q["id"]] = {"id": q["id"], "status": status, "twin": twin}
         n_new += 1

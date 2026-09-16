@@ -57,6 +57,9 @@ def main() -> None:
     if llm is None:
         raise SystemExit(f"backend {backend} unavailable")
     writer = f"{backend}:{model or 'default'}"
+    if llm("Reply with exactly the word OK.") is None:
+        raise SystemExit(f"backend {backend} answered nothing; check `claude auth status` (subscription login), "
+                         "ANTHROPIC_API_KEY, or codex login before spending the run")
 
     suite = load_suite(args.suite_dir)
     rows = list(suite["questions"])
@@ -65,16 +68,31 @@ def main() -> None:
     out_dir = Path(args.out_dir) if args.out_dir else Path(args.suite_dir) / "variants" / "para"
     out_dir.mkdir(parents=True, exist_ok=True)
     progress = out_dir / "para.jsonl"
-    done = {r["id"]: r for r in read_jsonl(progress)} if progress.exists() else {}
+    # Last record per ID wins; "empty" rows are re-attempted (a dead backend used to be recorded that way).
+    done = {}
+    if progress.exists():
+        for r in read_jsonl(progress):
+            done[r["id"]] = r
+        done = {k: v for k, v in done.items() if v.get("status") != "empty"}
     if any(d.get("writer") not in (None, writer) for d in done.values()):
         raise SystemExit("Checkpoint was written by a different writer; use a new --out-dir")
     print(f"[para] {len(rows)} questions; {len(done)} already attempted; writer={writer}", flush=True)
 
-    n_new = 0
+    n_new, consecutive_failures = 0, 0
     for q in rows:
         if q["id"] in done:
             continue
+        before = llm.failures["n"]
         row, status, audit = make_paraphrase(q, llm, writer=writer)
+        if llm.failures["n"] > before:
+            # Backend failure (timeout, auth, rate limit): not a property of the question; never recorded.
+            consecutive_failures += 1
+            print(f"[para] backend failure on {q['id']}; not recorded ({consecutive_failures} in a row)", flush=True)
+            if consecutive_failures >= 3:
+                raise SystemExit("three consecutive backend failures -- backend/login/limit not usable; "
+                                 "fix and rerun (the checkpoint resumes)")
+            continue
+        consecutive_failures = 0
         record = {"id": q["id"], "status": status, "row": row, "writer": writer, **audit}
         append_jsonl(progress, record)
         done[q["id"]] = record

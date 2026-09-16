@@ -106,22 +106,28 @@ cat "$SUITE_DIR/style_controls/v1/report.md"
 없이 드라이버를 돌리면 hidden/mean 행은 그 조건에서 건너뛰고 보고서에 이유가 적힌다. text/style/masked는
 언제나 돈다.
 
-**역할 고정 (2026-09-16 사용자 결정).** 판정기 = Terra(`--backend codex`, 26 그대로). writer(쌍둥이·의역) = **Claude Opus 5**
-(`configs/default.yaml` `judge.claude_model: claude-opus-5`). 그래서 `--backend claude`만 주면 Opus 5가 쓰고, `run_judge.py`는
+**역할 고정 (2026-09-16 사용자 결정).** 판정기 = Terra(`--backend codex`, 26 그대로). writer(쌍둥이·의역) = **Claude Sonnet 5**
+(`configs/default.yaml` `judge.claude_model: claude-sonnet-5`; 처음 Opus 5로 정했다가 구독 사용량을 아끼려 같은 날 Sonnet 5로 내림.
+writer는 판정에 관여하지 않으므로 타당성에 영향 없음). `--backend claude`만 주면 Sonnet 5가 쓰고, `run_judge.py`는
 backend를 주지 않는 한 codex/Terra다. 한 표 안에서 판정기를 섞지 않는다.
+
+**첫 실행에서 난 오류와 수정.** `claude -p failed (1): ... "Not logged in · Please run /login"`. 원인은 모델이 아니라 백엔드가
+`--bare`를 붙였기 때문이다: `--bare`는 ANTHROPIC_API_KEY만 읽고 구독 로그인(OAuth)은 절대 읽지 않는다. `--bare`를 빼고 짧은
+고정 시스템 프롬프트(`--system-prompt`)를 주도록 고쳤다. 같이 고친 것: 백엔드 실패(인증·타임아웃·한도)는 문항의 "empty"로
+기록하지 않고 건너뛰며, 3회 연속이면 중단한다. 시작 전에 스모크 호출 1회로 로그인을 확인한다. 예전 체크포인트의 "empty" 행은 재시도한다.
 
 **서버에서 claude 로그인.** 브라우저 없는 서버에서는 두 방법 중 하나.
 1. 구독 계정(권장): 서버에서 `claude auth login` → 터미널에 URL이 뜨면 노트북 브라우저로 열어 로그인 → 표시된 코드를
    서버 터미널에 붙여넣기. 확인은 `claude auth status`. 로그인 정보는 그 계정 홈에 남으므로 tmux 세션마다 다시 할 필요 없다.
    장시간 배치는 `claude setup-token`으로 장기 토큰을 만들어 `export CLAUDE_CODE_OAUTH_TOKEN=...`으로 넣어도 된다(토큰은 git에 넣지 않는다).
 2. API 키(사용량 과금): `export ANTHROPIC_API_KEY=sk-ant-...`. 구독 한도와 무관하게 돈다.
-스모크: `echo "Reply with OK." | claude -p --bare --tools "" --no-session-persistence --output-format json --model claude-opus-5`
+스모크: `echo "Reply with OK." | claude -p --tools "" --no-session-persistence --output-format json --model claude-sonnet-5`
 → `"is_error":false`이고 `result`가 `OK`면 된다. 인증 실패면 `"result":"Authentication error..."`가 보인다.
 호출 수는 의역 732×2–3 ≈ 2,000, 쌍둥이 294×2 ≈ 600으로 짧은 호출 2,600회 안팎이다. 구독 5시간 한도에 걸리면 스크립트가
 체크포인트에서 재개하므로 같은 명령을 다시 돌리면 된다.
 
-**Claude 백엔드.** `--backend claude`는 Claude Code CLI의 print 모드(`claude -p --bare --tools "" --no-session-persistence
---output-format json`)로 codex exec와 같은 자리에서 쓴다. stdin으로 프롬프트를 넣고 JSON의 `result`를 읽으며
+**Claude 백엔드.** `--backend claude`는 Claude Code CLI의 print 모드(`claude -p --tools "" --disable-slash-commands
+--no-session-persistence --system-prompt <고정 문장> --output-format json`)로 codex exec와 같은 자리에서 쓴다. stdin으로 프롬프트를 넣고 JSON의 `result`를 읽으며
 서빙 모델은 `modelUsage` 키로 행마다 기록한다. `configs/default.yaml`의 `judge.claude_model`이 비어 있으면
 CLI 기본 모델이다. `run_judge.py`에도 선택지는 열려 있지만 **보고 표의 판정기는 Terra 그대로**다. 판정기를
 바꾸면 표 전체를 한 판정기로 다시 채점해야 한다(25 §"Well 판정").

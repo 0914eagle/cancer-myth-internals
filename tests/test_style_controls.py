@@ -73,6 +73,7 @@ def test_run_claude_uses_print_mode_without_tools(monkeypatch):
     cmd = seen["cmd"]
     assert cmd[0] == "claude" and "-p" in cmd and "--output-format" in cmd and "json" in cmd
     assert cmd[cmd.index("--tools") + 1] == "" and "--no-session-persistence" in cmd
+    assert "--bare" not in cmd and "--system-prompt" in cmd  # --bare never reads the subscription login
     assert cmd[cmd.index("--model") + 1] == "sonnet"
     assert seen["prompt"] == "hello" and seen["timeout"] == 42
 

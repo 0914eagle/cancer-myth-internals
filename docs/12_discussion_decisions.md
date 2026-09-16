@@ -363,4 +363,5 @@ crossfit에서 text 0.755 > hidden 0.693이 나왔고, 실험 세션은 "문체 
 같이 반영한 것: (1) calibration 5% 문턱이 OOF에서 8–10%로 흩어져 TPR 열을 그대로 비교할 수 없다는 지적에 따라
 gate 보고서에 같은 오탐(5/8/10%)의 TPR과 FPR≤0.1 partial AUROC 부록 표를 붙였다(29 §8). (2) 쌍둥이·의역 writer로
 codex 대신 Claude Code CLI(`claude -p`)를 쓸 수 있게 `--backend claude`를 열었다. **사용자 결정: 판정기는 Terra 그대로, writer는
-Claude Opus 5**(`configs/default.yaml` `judge.claude_model`). 로그인·실행 명령은 29 §6.
+Claude Sonnet 5**(`configs/default.yaml` `judge.claude_model`; Opus 5로 정했다가 구독 사용량 때문에 같은 날 Sonnet 5로). 로그인·실행 명령과
+첫 실행 오류(`--bare`가 구독 로그인을 읽지 않음)의 수정은 29 §6.

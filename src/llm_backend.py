@@ -8,7 +8,10 @@ chose" is not a provenance record).
 
 `claude` is the Claude Code CLI in print mode (`claude -p`): the prompt goes in
 on stdin, every tool is disabled, nothing is persisted, and the JSON result
-carries the reply plus the model that served it. It is a writer/aligner
+carries the reply plus the model that served it. Not `--bare`: that flag reads
+only ANTHROPIC_API_KEY and never the subscription (OAuth) login, so a logged-in
+server fails with "Not logged in". A fixed short system prompt replaces the
+Claude Code default one (smaller, cache-stable). It is a writer/aligner
 backend (twins, paraphrases, span alignment); the reported judge stays the
 one the table names, and the same identity check applies.
 
@@ -97,10 +100,15 @@ def parse_claude_result(stdout: str, fallback_model: str) -> tuple[str, str]:
     return answer, served or fallback_model or "claude-default"
 
 
+CLAUDE_SYSTEM_PROMPT = ("You are a careful writing assistant used by a script. Follow the instructions in the "
+                        "message exactly and reply with only what is asked: no preamble, no explanation, no markdown.")
+
+
 def run_claude(prompt: str, model: str, timeout: int, claude_cmd: str = "claude") -> tuple[str, str]:
     """One tool-less `claude -p`. Returns (answer, model_used)."""
     cmd = claude_cmd.split() + [
-        "-p", "--bare", "--tools", "", "--no-session-persistence",
+        "-p", "--tools", "", "--disable-slash-commands", "--no-session-persistence",
+        "--system-prompt", CLAUDE_SYSTEM_PROMPT,
         "--output-format", "json", "--permission-mode", "default",
     ]
     if model:
