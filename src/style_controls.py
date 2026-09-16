@@ -47,7 +47,8 @@ from src.baseline_gates import TEXT_SIGNALS, _fit_predict
 from src.baseline_suite import _group_folds
 
 CONDITIONS = ("natural", "twins", "edited", "para", "same_writer", "natural->twins", "natural->edited",
-              "natural->para", "natural->same_writer", "para->natural", "twins->natural")
+              "natural->para", "natural->same_writer", "para->natural", "twins->natural",
+              "twins->para", "edited->para")
 
 
 def row_label(q):
@@ -146,6 +147,10 @@ def condition_rows(name, nat, tw, pa, fp=(), *, fpq_writer="gpt-4o"):
         "natural->same_writer": (nat, same),
         "para->natural": (pa, nat),
         "twins->natural": (pairs, nat),
+        # Truth-trained gates scored on the one-writer distribution with the
+        # natural class mix: does premise signal learned on pairs carry over?
+        "twins->para": (pairs, pa),
+        "edited->para": (edited, pa),
     }
     if name not in table:
         raise ValueError(f"Unknown condition {name}")

@@ -322,3 +322,15 @@ def test_assemble_rejects_mislabeled_rewrites(controls_data):
         sc.split_twin_file([{"id": "x", "set": "weird", "pair_id": "fpq_000", "question": "q"}])
     assert sc.condition_rows("twins", *sc.assemble(natural, [], [])) is None
     assert sc.condition_rows("edited", *sc.assemble(natural, twins, [], [])) is None
+
+
+def test_twin_remap_keeps_row_ids_for_feature_lookup():
+    import importlib.util
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    spec = importlib.util.spec_from_file_location("rsc", root / "scripts" / "run_style_controls.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    rows = [{"id": "fpq_2_true_ab12", "pair_id": "e1_fpq_2", "question": "x"},
+            {"id": "fpq_9_true_cd34", "pair_id": "e1_missing", "question": "y"}]
+    out = mod.remap_twins(rows, {"q two": "fpq_2"}, {"e1_fpq_2": "q two"}, "true")
+    assert out == [{"id": "fpq_2_true_ab12", "pair_id": "fpq_2", "question": "x"}]

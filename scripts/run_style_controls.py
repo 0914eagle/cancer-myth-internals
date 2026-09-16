@@ -30,6 +30,20 @@ from src.pilot import digest, file_digest, frozen_json, output_lock
 from src.style_controls import CONDITIONS, assemble, fold_assignment, report, run_conditions, split_twin_file, summarize
 
 
+def remap_twins(rows, by_text, source, suffix):
+    """Point pair_id at the suite question with the same text. Only pair_id is
+    rewritten: the row's own id must stay as in the twins file, because the
+    `extract --variant-file` features are keyed by it (v1 lost every twin
+    hidden row by renaming ids here)."""
+    out = []
+    for t in rows:
+        suite_id = by_text.get(source.get(t.get("pair_id"), ""))
+        if suite_id:
+            out.append({**t, "pair_id": suite_id})
+    print(f"[twins] {len(out)}/{len(rows)} {suffix} rows mapped to suite questions by text", flush=True)
+    return out
+
+
 def load_features(path):
     from src import baseline_generation as bg
     path = Path(path)
@@ -69,15 +83,7 @@ def main():
         from src.pilot import normalized
         by_text = {normalized(q["question"]): q["id"] for q in natural}
         source = {q["id"]: normalized(q["question"]) for q in read_jsonl(args.twins_questions)}
-        def remap(rows, suffix):
-            out = []
-            for t in rows:
-                suite_id = by_text.get(source.get(t.get("pair_id"), ""))
-                if suite_id:
-                    out.append({**t, "id": f"{suite_id}_{suffix}", "pair_id": suite_id})
-            print(f"[twins] {len(out)}/{len(rows)} {suffix} rows mapped to suite questions by text", flush=True)
-            return out
-        twins, fparas = remap(twins, "true"), remap(fparas, "fpara")
+        twins, fparas = remap_twins(twins, by_text, source, "true"), remap_twins(fparas, by_text, source, "fpara")
     dropped = [t for t in twins + fparas if t.get("pair_id") not in ids]
     twins = [t for t in twins if t.get("pair_id") in ids]
     fparas = [t for t in fparas if t.get("pair_id") in ids]
