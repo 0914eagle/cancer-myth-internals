@@ -137,6 +137,9 @@ fpq_123은 고환암·흑색종 질문에 "Oral cancer only affects older adults
 같은 종류의 자료 문제이며, 이런 행은 검사기가 NO를 내면 그대로 빠지므로 결과를 왜곡하지 않지만 수를 §7에 적는다.
 p3는 프롬프트 버전이 바뀌므로 `para.jsonl`을 지우고 100문항부터 다시 돌린다(약 300회).
 
+**p3 100문항 결과.** ok 90/100 (FPQ 46/50, NFP 44/50), `lost_premise` 0, `not_faithful` 10 (FPQ 4, NFP 6), near-copy 0,
+Jaccard 중앙값 0.30. 수락률이 클래스 대칭이 됐고 문체 변화는 유지됐다. 이 설정(Sonnet 5, p3)으로 732문항 전체를 돌린다.
+
 **서버에서 claude 로그인.** 브라우저 없는 서버에서는 두 방법 중 하나.
 1. 구독 계정(권장): 서버에서 `claude auth login` → 터미널에 URL이 뜨면 노트북 브라우저로 열어 로그인 → 표시된 코드를
    서버 터미널에 붙여넣기. 확인은 `claude auth status`. 로그인 정보는 그 계정 홈에 남으므로 tmux 세션마다 다시 할 필요 없다.
