@@ -202,22 +202,76 @@ NFP 중 GPT-4o가 쓴 31개만 음성으로 쓰면 FPQ와 같은 writer다(`same
 (2) 방법: 12 §17.2의 A(text+DiM 결합 선택)의 근거였던 자연 데이터 게이트 성능은 대부분 문체일 수 있다. 방법 ablation 표에
 **style 게이트로 라우팅한 행**을 넣어야 하고, 방법이 그 행을 못 넘으면 방법 주장은 접는다. 확정은 검정 2·3 결과 후.
 
-### 7.2 검정 2·3 (실행 후 채움)
+### 7.2 검정 3 (쌍둥이·편집쌍·같은 저자): `style_controls/v0_twins`, 2026-09-16
+
+v1(의역 포함)이 도는 동안 `--paraphrases` 없이 돌린 결과. fold 배정은 natural crossfit과 같고, 쌍둥이·거짓 의역은
+원본 FPQ의 fold를 물려받는다. 쌍둥이 326(fpq_419는 suite 밖이라 제외), 거짓 의역 384, 둘 다 있는 쌍 259. AUROC는
+fold 안 평가 크기 가중, 차이는 같은 group 재표집을 두 신호에 공유한 paired bootstrap 500회.
+
+**같은 조건 안에서 학습·평가 (문체 고정 뒤에도 전제 신호가 있는가)**
+
+| 조건 (pos/neg) | text | style | masked | hidden | mean | hidden − text [CI] |
+|---|---|---|---|---|---|---|
+| natural (583/149) | 0.748 | 0.687 | 0.703 | 0.720 | 0.687 | −0.028 [−0.067, +0.006] |
+| twins (326/326) | 0.767 | 0.708 | 0.691 | 0.754 | 0.627 | −0.013 [−0.058, +0.033] |
+| edited (259/259) | 0.790 | 0.689 | 0.703 | 0.764 | 0.606 | −0.025 [−0.059, +0.013] |
+| same_writer (583/31) | 0.836 | 0.814 | 0.805 | 0.734 | 0.706 | −0.101 [−0.211, +0.002] |
+
+**조건을 건너 전이 (natural에서 배운 게이트가 전제를 읽었는가)**
+
+| 학습 → 평가 | text | style | masked | hidden | mean |
+|---|---|---|---|---|---|
+| natural → twins | 0.491 | 0.532 | 0.542 | 0.507 | 0.557 |
+| natural → edited | 0.498 | 0.510 | 0.515 | 0.525 | 0.523 |
+| natural → same_writer | 0.596 | 0.429 | 0.478 | 0.487 | 0.356 |
+| twins → natural | 0.456 | 0.567 | 0.594 | 0.540 | 0.629 |
+
+(natural hidden이 7.1의 0.693과 다른 것은 이 드라이버가 layer와 C를 fold마다 함께 고르고 내부 CV seed가 fold별로
+다르기 때문. CI 안이며 같은 데이터다.)
+
+**판독.**
+
+1. **natural에서 학습한 게이트는 어느 신호든 전제를 읽지 않았다.** natural→twins, natural→edited가 text·hidden·mean 모두
+   0.49–0.56이다. 전제 구간만 참으로 바꾼 쌍둥이를 원본과 구별하지 못한다. 7.1의 crossfit 수치(text 0.755, hidden 0.693)는
+   "FPQ 틀 대 정상 질문 틀"을 배운 것이고, §5 표의 첫 행("게이트 전반이 출처를 읽는다")이 text에도 그대로 적용된다.
+   원래 질문("text 우위가 문체인가")의 답은 "text 우위만이 아니라 게이트 전체가 문체"다.
+2. **문체를 고정하고 그 안에서 학습하면 전제 신호는 있다.** twins·edited에서 text 0.77–0.79, hidden 0.75–0.76이고
+   둘의 차이는 CI가 0을 포함한다. edited는 두 구간 모두 같은 writer가 다시 쓴 쌍이라 편집 흔적이 상쇄된 가장 깨끗한 비교인데
+   거기서 hidden 0.764 [0.742, 0.796]다. 즉 마지막 프롬프트 토큰의 잔차에 전제 진위가 선형으로 읽히긴 한다. 다만 이건
+   "쌍둥이 쌍으로 학습했을 때"의 이야기고, 배포 게이트를 natural로 학습하면 그 신호를 쓰지 못한다(1번).
+3. **twins·edited의 style 0.69–0.71은 순수 출처가 아니다.** 쌍둥이는 구간 밖이 바이트 동일하므로 style이 읽는 건 구간 안의
+   기능어 변화다. 참 구간은 hedge·부정(may, not, usually, sometimes)을 얻고 거짓 구간은 단정형이다. `FUNCTION_WORDS`에
+   조동사·부정·빈도 부사가 들어 있어 style이 그 형태를 읽는다. 이 조건의 하한선은 "문체"가 아니라 "진위의 언어적 형태"를
+   일부 포함하므로, twins·edited에서는 hidden·text의 절대값보다 natural→twins 전이(1번)를 봐야 한다.
+4. **DiM(mean)은 문체를 고정하면 무너진다.** natural 0.687 → twins 0.627 → edited 0.606, 하한선 아래. FPQ−NFP 평균차
+   방향은 출처 방향이다. 12 §17의 "DiM-only 21개" 보완 신호 주장은 접는다. 같은 논리가 답변 쌍 평균차로 만든 steering C에도
+   적용된다(저자 불균형 Gemini 57 vs 18, 23·26): C가 교정 방향이 아니라 저자 방향일 수 있음을 검증된 같은 모델 쌍으로
+   다시 확인해야 한다.
+5. **문체 차이의 실체는 생성 모델 지문이 아니라 FPQ 틀이다.** same_writer(GPT-4o가 쓴 NFP 31개만 음성)에서 style 0.814,
+   masked 0.805로 오히려 natural보다 높다. 같은 GPT-4o가 썼어도 FPQ(상황+믿음 서술)와 NFP(질문)는 틀이 다르다. 그리고
+   natural→same_writer에서 style 0.429, hidden 0.487: natural 게이트는 GPT-4o NFP를 FPQ로 본다. natural 게이트가 NFP를
+   가르던 근거는 Gemini·Claude NFP의 문체였다. 표본 31이라 CI가 넓다(§9).
+6. **twins→natural도 실패한다(text 0.456, hidden 0.540).** 전제 진위로 학습한 게이트는 natural NFP를 모른다. 이는 실패라기보다
+   "natural 평가가 전제 탐지 평가가 아니다"의 반대편 증거다. 전제 게이트의 배포 평가는 문체가 통일된 분포(para 조건)에서 해야
+   하고, 그 결과가 v1이다.
+
+**결론(잠정, v1 전).** §5 표에서 해당 행은 첫 행(전반이 출처)과 다섯째 행(자연 게이트가 문체에 과적합)이다. 12 §17.2의
+A(text+DiM 결합)는 natural 성능이 근거였으므로 그 근거가 사라졌다. 남는 선택지는 (a) twins·edited 쌍으로 학습한 게이트를
+para에서 평가해 문체 통일 분포에서의 성능을 보고하거나, (b) 게이트를 문체 게이트로 못 박고 방법 기여를 개입 쪽에 두는 것.
+v1의 para·natural→para·para→natural 행이 (a)의 가부를 정한다.
+
+의역 감사(`variants/para/para_audit.md`, writer claude:claude-sonnet-5:p3): 시도 731, 수락 **674** (FPQ 539/583 = 92.5%,
+NFP 135/149 = 90.6%), lost_premise 10, not_faithful 47, near-copy 재시도 2, 단어 Jaccard 중앙값 0.30(min 0.11, max 0.60).
+두 클래스의 탈락률이 비슷해 수락 편향은 작다. Qwen prefill 674/674 → `model_variants/para`.
+쌍둥이 감사: `twins_audit.md`의 상태별 수, 눈으로 본 30개 중 잘못된 것(fpq_317, fpq_303이 비문; §6 오류 기록).
+
+### 7.3 검정 2 (의역) 및 일곱 조건 전체: `style_controls/v1` (실행 중, 채움 예정)
 
 | 조건 | text | style | masked | hidden | mean | hidden − text [CI] |
 |---|---|---|---|---|---|---|
-| natural | | | | | | |
-| twins (n=) | | | | | | |
-| edited (n=) | | | | | | |
-| para (n=) | | | | | | |
-| natural→twins | | | | | | |
-| natural→edited | | | | | | |
+| para (539/135) | | | | | | |
 | natural→para | | | | | | |
 | para→natural | | | | | | |
-| twins→natural | | | | | | |
-
-의역 감사: 수락 /732, 상태별 수, 원문·의역 단어 Jaccard 중앙값(높으면 거의 복사라 약한 통제).
-쌍둥이 감사: `twins_audit.md`의 상태별 수, 눈으로 본 30개 중 잘못된 것.
 
 ## 8. 부록: 같은 오탐에서의 TPR (실험 세션 지적, 2026-09-16)
 
