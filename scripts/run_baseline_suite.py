@@ -64,11 +64,15 @@ def variant_rows(suite, path):
     new ID with `pair_id`/`paraphrase_of` naming the suite question. Twins
     (set tpair) are negatives derived from an FPQ; paraphrases keep the set."""
     by_id = {q["id"]: q for q in suite["questions"]}
-    rows, seen = [], set()
+    rows, seen, skipped = [], set(), []
     for r in read_jsonl(path):
         origin = r.get("paraphrase_of") or r.get("pair_id") or r.get("id")
-        if origin not in by_id or not isinstance(r.get("question"), str) or not r["question"].strip():
-            raise ValueError(f"Variant row {r.get('id')!r} does not trace to a suite question")
+        if origin not in by_id:
+            # E1 twins were built from 585 FPQ; the suite keeps 583 (conflict/few-shot exclusions).
+            skipped.append(r.get("id"))
+            continue
+        if not isinstance(r.get("question"), str) or not r["question"].strip():
+            raise ValueError(f"Variant row {r.get('id')!r} has no question text")
         if r.get("id") in seen:
             raise ValueError("Duplicate variant ID")
         seen.add(r["id"])
@@ -79,6 +83,8 @@ def variant_rows(suite, path):
         elif r.get("set") != by_id[origin]["set"]:
             raise ValueError("A paraphrase keeps its source question's set")
         rows.append({"id": r["id"], "question": r["question"]})
+    if skipped:
+        print(f"[variant] {len(skipped)} rows skipped: source question not in this suite (e.g. {skipped[0]})", flush=True)
     if not rows:
         raise ValueError("Empty variant file")
     return rows
