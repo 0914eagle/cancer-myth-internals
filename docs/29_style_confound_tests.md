@@ -106,6 +106,20 @@ cat "$SUITE_DIR/style_controls/v1/report.md"
 없이 드라이버를 돌리면 hidden/mean 행은 그 조건에서 건너뛰고 보고서에 이유가 적힌다. text/style/masked는
 언제나 돈다.
 
+**역할 고정 (2026-09-16 사용자 결정).** 판정기 = Terra(`--backend codex`, 26 그대로). writer(쌍둥이·의역) = **Claude Opus 5**
+(`configs/default.yaml` `judge.claude_model: claude-opus-5`). 그래서 `--backend claude`만 주면 Opus 5가 쓰고, `run_judge.py`는
+backend를 주지 않는 한 codex/Terra다. 한 표 안에서 판정기를 섞지 않는다.
+
+**서버에서 claude 로그인.** 브라우저 없는 서버에서는 두 방법 중 하나.
+1. 구독 계정(권장): 서버에서 `claude auth login` → 터미널에 URL이 뜨면 노트북 브라우저로 열어 로그인 → 표시된 코드를
+   서버 터미널에 붙여넣기. 확인은 `claude auth status`. 로그인 정보는 그 계정 홈에 남으므로 tmux 세션마다 다시 할 필요 없다.
+   장시간 배치는 `claude setup-token`으로 장기 토큰을 만들어 `export CLAUDE_CODE_OAUTH_TOKEN=...`으로 넣어도 된다(토큰은 git에 넣지 않는다).
+2. API 키(사용량 과금): `export ANTHROPIC_API_KEY=sk-ant-...`. 구독 한도와 무관하게 돈다.
+스모크: `echo "Reply with OK." | claude -p --bare --tools "" --no-session-persistence --output-format json --model claude-opus-5`
+→ `"is_error":false`이고 `result`가 `OK`면 된다. 인증 실패면 `"result":"Authentication error..."`가 보인다.
+호출 수는 의역 732×2–3 ≈ 2,000, 쌍둥이 294×2 ≈ 600으로 짧은 호출 2,600회 안팎이다. 구독 5시간 한도에 걸리면 스크립트가
+체크포인트에서 재개하므로 같은 명령을 다시 돌리면 된다.
+
 **Claude 백엔드.** `--backend claude`는 Claude Code CLI의 print 모드(`claude -p --bare --tools "" --no-session-persistence
 --output-format json`)로 codex exec와 같은 자리에서 쓴다. stdin으로 프롬프트를 넣고 JSON의 `result`를 읽으며
 서빙 모델은 `modelUsage` 키로 행마다 기록한다. `configs/default.yaml`의 `judge.claude_model`이 비어 있으면
