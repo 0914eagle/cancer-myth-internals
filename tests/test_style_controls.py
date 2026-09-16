@@ -12,8 +12,7 @@ from src import baseline_gates as gates
 from src import baseline_suite as suite
 from src import llm_backend
 from src import style_controls as sc
-from src.paraphrase import FIDELITY_PROMPT, PARAPHRASE_PROMPT, RETRY_PROMPT, make_paraphrase, word_jaccard
-from src.rows import TWIN_CHECK_PROMPT
+from src.paraphrase import FIDELITY_PROMPT, PARAPHRASE_PROMPT, PREMISE_KEEP_PROMPT, RETRY_PROMPT, make_paraphrase, word_jaccard
 from src.style_features import FUNCTION_WORDS, mask_content, style_feature_names, style_vector
 
 
@@ -119,7 +118,7 @@ def test_paraphrase_accepts_only_rewrites_that_keep_premise_and_meaning():
     assert row["set"] == "fpq" and row["writer"] == "claude:test" and audit["premise_checked"]
     assert 0 < audit["jaccard"] < 1
     assert any(p.startswith(PARAPHRASE_PROMPT[:30]) for p in llm.log)
-    assert any(p.startswith(TWIN_CHECK_PROMPT[:30]) for p in llm.log)
+    assert any(p.startswith(PREMISE_KEEP_PROMPT[:30]) for p in llm.log)
     assert any(p.startswith(FIDELITY_PROMPT[:30]) for p in llm.log)
 
     lost = _scripted([("BELIEF:", "NO"), ("MESSAGE:", "Is it fine to skip chemotherapy?")])
@@ -151,7 +150,7 @@ def test_paraphrase_accepts_only_rewrites_that_keep_premise_and_meaning():
     llm = _scripted([("ORIGINAL:", "YES"), ("MESSAGE:", "After turning 50, how frequently is a colonoscopy needed?")])
     row, status, audit = make_paraphrase(nfp, llm)
     assert status == "ok" and row["set"] == "nfp" and not audit["premise_checked"]
-    assert not any(p.startswith(TWIN_CHECK_PROMPT[:30]) for p in llm.log)
+    assert not any(p.startswith(PREMISE_KEEP_PROMPT[:30]) for p in llm.log)
     assert word_jaccard("a b c", "a b d") == pytest.approx(0.5)
 
 

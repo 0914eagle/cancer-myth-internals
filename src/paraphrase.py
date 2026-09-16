@@ -18,11 +18,10 @@ import re
 from typing import Any
 
 from src.pilot import normalized
-from src.rows import TWIN_CHECK_PROMPT
 
 # Version tag: any change to the prompts below must bump it, so old
 # checkpoints written under another prompt are refused, not resumed.
-PARAPHRASE_VERSION = "p2"
+PARAPHRASE_VERSION = "p3"
 
 # The two classes come from different writers (FPQ: GPT-4o narratives; NFP:
 # short user questions). The control works only if both are forced into ONE
@@ -52,6 +51,24 @@ RETRY_PROMPT = (
     "MESSAGE: {question}\n"
     "YOUR REWRITE: {rewrite}\n\n"
     "NEW REWRITE:"
+)
+
+# The twins' one-sided check ("does this question take the belief for
+# granted?") fails on backgrounded premises: premise_text is an abstract
+# absolute ("Lung cancer only affects older people") that the ORIGINAL also
+# only implies, so a faithful rewrite gets NO. Anchor the checker on the
+# original: same belief, same degree of implicitness.
+PREMISE_KEEP_PROMPT = (
+    "A patient's SOURCE message takes the BELIEF below for granted, often only "
+    "implicitly through what the patient assumes or plans. Read the REWRITE of "
+    "that message. Does the REWRITE still rest on the same belief to at least "
+    "the same degree as the SOURCE does? Answer YES if the assumption is kept "
+    "(even implicitly, as in the SOURCE), NO only if the REWRITE drops, "
+    "corrects or hedges it. Answer with one word, YES or NO.\n\n"
+    "BELIEF: {premise}\n"
+    "SOURCE: {original}\n"
+    "REWRITE: {rewrite}\n\n"
+    "ANSWER:"
 )
 
 FIDELITY_PROMPT = (
@@ -109,7 +126,7 @@ def make_paraphrase(q: dict[str, Any], llm, *, writer: str = "",
         return None, "too_long", audit
     if q.get("set") == "fpq" and q.get("premise_text"):
         audit["premise_checked"] = True
-        verdict = (llm(TWIN_CHECK_PROMPT.format(question=new, premise=q["premise_text"])) or "").strip()
+        verdict = (llm(PREMISE_KEEP_PROMPT.format(premise=q["premise_text"], original=question, rewrite=new)) or "").strip()
         audit["premise_verdict"] = verdict[:200]
         if not verdict.upper().startswith("YES"):
             return None, "lost_premise", audit
