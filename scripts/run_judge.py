@@ -114,9 +114,10 @@ def main() -> None:
     parser.add_argument("--responses", required=True)
     parser.add_argument("--questions", required=True)
     parser.add_argument("--output", required=True)
-    parser.add_argument("--backend", choices=["codex", "openai"], default=None, help="default: config judge.backend")
+    parser.add_argument("--backend", choices=["codex", "openai", "claude"], default=None, help="default: config judge.backend")
     parser.add_argument("--model", default=None, help="default: config judge.model (openai) / codex default")
     parser.add_argument("--codex-cmd", default="codex")
+    parser.add_argument("--claude-cmd", default="claude")
     parser.add_argument("--timeout", type=int, default=180)
     parser.add_argument("--temperature", type=float, default=None, help="openai only")
     parser.add_argument("--paper-protocol", action="store_true", help="openai only: temperature 0.7 as in validate.py")
@@ -133,7 +134,9 @@ def main() -> None:
     if args.model is not None:
         model = args.model
     else:
-        model = judge_cfg.get("model", "gpt-4o") if backend == "openai" else judge_cfg.get("codex_model", "")
+        model = (judge_cfg.get("model", "gpt-4o") if backend == "openai"
+                 else judge_cfg.get("claude_model", "") if backend == "claude"
+                 else judge_cfg.get("codex_model", ""))
     temperature = 0.7 if args.paper_protocol else (
         args.temperature if args.temperature is not None else float(judge_cfg.get("temperature", 0.0))
     )
@@ -201,7 +204,7 @@ def main() -> None:
         return
 
     check_judge_identity(model, args.allow_same_family)
-    call = make_caller(backend, model, timeout=args.timeout, codex_cmd=args.codex_cmd,
+    call = make_caller(backend, model, timeout=args.timeout, codex_cmd=args.codex_cmd, claude_cmd=args.claude_cmd,
                        temperature=temperature, max_tokens=int(judge_cfg.get("max_tokens", 400)))
     failures, consecutive = 0, 0
     for n, (job_id, row, q, kind, prompt) in enumerate(jobs, start=1):

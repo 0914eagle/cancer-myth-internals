@@ -28,7 +28,7 @@ E0   make_rows.py            questions.jsonl (fpq 585 / nfp 150 / tpq), activati
 E0b  make_true_twins.py      각 fpq의 전제 구간만 참으로 바꾼 쌍둥이 (set=tpair). 스플라이스 + LLM 확인
 E1   run_e1_model.sh  stage 1  run_generate.py         Plain 응답 (greedy; --paper-protocol이면 0.7)
                       stage 2  extract_activations     A/B/D, 전 층, span_mean·last_subtoken
-                      stage 3  run_judge.py            Cancer-Myth 판정 (codex 또는 openai)
+                      stage 3  run_judge.py            Cancer-Myth 판정 (codex, openai 또는 claude -p; 보고 표는 한 판정기)
                       stage 4  make_response_rows.py   위치 E 행 + 라벨(pcr, nfp_score) 병합
                       stage 5  extract_activations     E (응답 첫 5/32토큰, teacher-forced); 라벨을 A/B/D 매니페스트에도 병합
                       stage 6  run_probe_sweep.py      A 읽기: 층 × 위치 AUROC, logistic + diff-of-means, 히트맵
@@ -39,6 +39,9 @@ E1   run_e1_model.sh  stage 1  run_generate.py         Plain 응답 (greedy; --p
                       stage 9  probe_sweep_twins       fpq vs 쌍둥이로 A probe와 텍스트 상한 재측정
 E2   run_e2_steer_125.sh     run_steer.py (policy none / unconditional / gated, alpha, gate layer·threshold)
                              → run_judge.py → summarize_judge.py
+문체  make_paraphrases.py     suite 732문항을 한 writer가 같은 문체로 의역 (전제 유지·충실성 확인, variants/para)
+     run_style_controls.py   natural / twins / para와 교차 전이 7조건 × text·style·masked·hidden·mean (29)
+     run_baseline_suite.py   gate --signals style masked (내용어 없는 문체 하한선), extract --variant-file (쌍둥이·의역 prefill)
 보조  calibrate_judge.py     all_data.json의 GPT-4o 점수와 대조 (3-way 일치, κ, PCR 차이)
      run_e1_4gpu_125.sh      4장에 모델 분배 (phase 1 소형 3개, phase 2 27B, phase 3 후속 단계)
      run_e1_stages_125.sh    끝난 모델의 stage 3–8을 유휴 카드에서

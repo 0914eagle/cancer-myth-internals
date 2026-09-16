@@ -57,6 +57,32 @@ def atomic_jsonl(path, rows):
     tmp.replace(path)
 
 
+def variant_rows(suite, path):
+    """Rewritten questions must trace to a suite question and keep its class.
+
+    A variant row carries either the suite ID itself (same-ID rewrite), or a
+    new ID with `pair_id`/`paraphrase_of` naming the suite question. Twins
+    (set tpair) are negatives derived from an FPQ; paraphrases keep the set."""
+    by_id = {q["id"]: q for q in suite["questions"]}
+    rows, seen = [], set()
+    for r in read_jsonl(path):
+        origin = r.get("paraphrase_of") or r.get("pair_id") or r.get("id")
+        if origin not in by_id or not isinstance(r.get("question"), str) or not r["question"].strip():
+            raise ValueError(f"Variant row {r.get('id')!r} does not trace to a suite question")
+        if r.get("id") in seen:
+            raise ValueError("Duplicate variant ID")
+        seen.add(r["id"])
+        if r.get("set") == "tpair":
+            if by_id[origin]["set"] != "fpq":
+                raise ValueError("A true-premise twin must derive from an FPQ")
+        elif r.get("set") != by_id[origin]["set"]:
+            raise ValueError("A paraphrase keeps its source question's set")
+        rows.append({"id": r["id"], "question": r["question"]})
+    if not rows:
+        raise ValueError("Empty variant file")
+    return rows
+
+
 def load_gate_inputs(out, signals):
     if not any(s in signals for s in ("hidden", "mean", "direct", "review")):
         return None, {}
@@ -156,8 +182,18 @@ def run(args):
             print("Continuous direct/review detection scores stored. Judge calls: 0.")
         else:
             layers = args.layers or sorted({round(cfg["source_model"]["n_layers"] * x) for x in (.4, .6, .8)})
-            bg.extract_features(rows, cfg, out / "model", layers)
-            print("Question prefill states stored. Answers generated: 0. Judge calls: 0.")
+            model_dir = out / "model"
+            if bool(args.variant_file) != bool(args.variant_name):
+                raise ValueError("--variant-file and --variant-name go together")
+            if args.variant_file:
+                rows = variant_rows(suite, args.variant_file)
+                model_dir = out / "model_variants" / args.variant_name
+                if (model_dir / "features" / "spec.json").exists():
+                    existing = json.loads((model_dir / "features" / "spec.json").read_text())
+                    if existing["questions"] != bg._question_rows(rows):
+                        raise ValueError("Variant feature directory holds different questions; use a new name")
+            bg.extract_features(rows, cfg, model_dir, layers)
+            print(f"Question prefill states stored under {model_dir}. Answers generated: 0. Judge calls: 0.")
         return
     if args.stage == "gate":
         import hashlib
@@ -224,6 +260,8 @@ def main():
                 p.add_argument("--extraction-tokens", type=int, default=512)
             if stage == "extract":
                 p.add_argument("--layers", type=int, nargs="+")
+                p.add_argument("--variant-file", help="Rewritten questions (twins/paraphrases) sharing the suite's IDs or pair_id/paraphrase_of")
+                p.add_argument("--variant-name", help="Stores features under <out>/model_variants/<name> instead of <out>/model")
         if stage in {"splits", "gate"}:
             p.add_argument("--scheme", choices=("holdout", "crossfit"), default="holdout")
             p.add_argument("--evaluation", choices=("dev", "test"), default="dev")
@@ -231,8 +269,9 @@ def main():
             p.add_argument("--seed", type=int, default=17)
             if stage == "gate":
                 p.add_argument("--name", default="holdout_v1")
-                p.add_argument("--signals", nargs="+", choices=("text", "hidden", "mean", "direct", "review"),
-                               default=["text", "hidden", "mean", "direct", "review"])
+                p.add_argument("--signals", nargs="+", choices=("text", "style", "masked", "hidden", "mean", "direct", "review"),
+                               default=["text", "hidden", "mean", "direct", "review"],
+                               help="style/masked are content-blind register readouts (opt in; see docs/29)")
                 p.add_argument("--layers", nargs="+", type=int)
                 p.add_argument("--c-grid", nargs="+", type=float, default=[.001, .01, .1, 1.0])
                 p.add_argument("--target-fpr", type=float, default=.05)

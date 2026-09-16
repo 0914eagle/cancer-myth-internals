@@ -31,7 +31,7 @@ from src.jsonl import append_jsonl, read_jsonl, write_jsonl
 from src.rows import activation_rows, align_premise, load_fpq, load_nfp, load_tpq
 
 
-def make_llm(backend: str, model: str, codex_cmd: str, timeout: int = 180):
+def make_llm(backend: str, model: str, codex_cmd: str, timeout: int = 180, claude_cmd: str = "claude"):
     """One alignment call. A timeout or backend error is retried once and then
     treated as "no answer" (the row keeps B and D, loses A) instead of killing
     the run; the count of such rows is printed at the end."""
@@ -39,9 +39,10 @@ def make_llm(backend: str, model: str, codex_cmd: str, timeout: int = 180):
 
     from src.llm_backend import backend_available, make_caller
 
-    if not backend_available(backend, codex_cmd):
+    if not backend_available(backend, codex_cmd, claude_cmd):
         return None
-    call = make_caller(backend, model, timeout=timeout, codex_cmd=codex_cmd, temperature=0.0, max_tokens=120)
+    call = make_caller(backend, model, timeout=timeout, codex_cmd=codex_cmd, claude_cmd=claude_cmd,
+                       temperature=0.0, max_tokens=120)
     failures = {"n": 0}
 
     def llm(prompt: str) -> str | None:
@@ -65,9 +66,10 @@ def main() -> None:
     parser.add_argument("--align", choices=["llm", "heuristic", "none"], default="llm")
     parser.add_argument("--heuristic-fallback", action="store_true",
                         help="when the LLM finds no verbatim span, fall back to content-word overlap (off: A dropped for that row)")
-    parser.add_argument("--align-backend", choices=["codex", "openai"], default=None, help="default: config judge.backend")
+    parser.add_argument("--align-backend", choices=["codex", "openai", "claude"], default=None, help="default: config judge.backend")
     parser.add_argument("--align-model", default=None, help="default: config judge model for the backend")
     parser.add_argument("--codex-cmd", default="codex")
+    parser.add_argument("--claude-cmd", default="claude")
     parser.add_argument("--limit", type=int, default=None, help="Per set, for a smoke run.")
     parser.add_argument("--seed", type=int, default=17)
     args = parser.parse_args()
@@ -100,9 +102,11 @@ def main() -> None:
     judge_cfg = cfg["judge"]
     backend = args.align_backend or judge_cfg.get("backend", "codex")
     model = args.align_model if args.align_model is not None else (
-        judge_cfg.get("model", "gpt-4o") if backend == "openai" else judge_cfg.get("codex_model", "")
+        judge_cfg.get("model", "gpt-4o") if backend == "openai"
+        else judge_cfg.get("claude_model", "") if backend == "claude"
+        else judge_cfg.get("codex_model", "")
     )
-    llm = make_llm(backend, model, args.codex_cmd) if args.align == "llm" else None
+    llm = make_llm(backend, model, args.codex_cmd, claude_cmd=args.claude_cmd) if args.align == "llm" else None
     if args.align == "llm" and llm is None:
         print(f"[align] backend {backend} unavailable (no key / no codex on PATH) -> heuristic alignment", flush=True)
     elif llm is not None:

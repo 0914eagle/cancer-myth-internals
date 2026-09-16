@@ -6,6 +6,8 @@
 > 새 폴더의 `generation_defaults.json`이 1024를 고정하며 원 폴더/캐시는 재명명하지 않는다.
 > 사용자 마지막 로그 extract_verify 319/732에는 실행 폴더가 없어 최종 run metadata 확인이 남는다.
 > 이 페이지 말미의 “아직 실행하지 않은 것”은 코드 추가 당시 기록이다. Qwen prefill과 일부 gate는 이미 실행했다.
+> **2026-09-16 추가:** gate 신호 `style`/`masked`(문체 하한선), 보고서의 같은 오탐 TPR 부록, `extract --variant-file`,
+> 의역·쌍둥이 통제 드라이버는 [29](29_style_confound_tests.md). 기존 `crossfit_v1`의 plan.json은 동결이라 새 신호는 새 이름으로 돌린다.
 
 2026-09-15. 이 문서가 새 baseline 실행 순서다. 기존 Gemma pilot/quick45/overnight
 파일과 점수는 그대로 보존한다. 코드 구현·오프라인 검증과 실제 모델 성능 측정은 구분한다.

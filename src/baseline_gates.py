@@ -12,6 +12,11 @@ import numpy as np
 
 from src.baseline_suite import _group_folds, validate_roles
 
+# Signals that read the question text only (no hidden states, no elicitation).
+# text: word 1-2gram TF-IDF; style/masked: content-blind (src/style_features.py).
+TEXT_SIGNALS = ("text", "style", "masked")
+ALL_SIGNALS = TEXT_SIGNALS + ("hidden", "mean", "direct", "review")
+
 
 def threshold_at_fpr(negative_scores, target=0.05):
     x = np.asarray(negative_scores, dtype=float)
@@ -35,6 +40,18 @@ def _fit_predict(kind, train_rows, predict_rows, *, features, layer, c, seed):
                               LogisticRegression(**settings))
         train = [q["question"] for q in train_rows]
         test = [q["question"] for q in predict_rows]
+    elif kind == "style":
+        from src.style_features import style_vector
+        model = make_pipeline(StandardScaler(), LogisticRegression(**settings))
+        train = np.stack([style_vector(q["question"]) for q in train_rows])
+        test = np.stack([style_vector(q["question"]) for q in predict_rows])
+    elif kind == "masked":
+        from src.style_features import mask_content
+        model = make_pipeline(TfidfVectorizer(token_pattern=r"\S+", ngram_range=(1, 3), max_features=5000,
+                                              min_df=1, lowercase=False),
+                              LogisticRegression(**settings))
+        train = [mask_content(q["question"]) for q in train_rows]
+        test = [mask_content(q["question"]) for q in predict_rows]
     else:
         train = np.stack([features[q["id"]][layer] for q in train_rows])
         test = np.stack([features[q["id"]][layer] for q in predict_rows])
@@ -62,7 +79,7 @@ def run_gate_comparison(rows, split, *, features=None, detections=None,
     if split["question_hash"] != digest(rows):
         raise ValueError("Split questions changed")
     if (not signals or len(signals) != len(set(signals))
-            or set(signals) - {"text", "hidden", "mean", "direct", "review"}):
+            or set(signals) - set(ALL_SIGNALS)):
         raise ValueError("Unknown/duplicate signal")
     if not c_grid or any(not np.isfinite(c) or c <= 0 for c in c_grid):
         raise ValueError("Positive finite regularization grid required")
@@ -96,7 +113,7 @@ def run_gate_comparison(rows, split, *, features=None, detections=None,
             else:
                 inner = _group_folds(train, 3, seed + fold["fold"])
                 candidates = []
-                for layer in ((None,) if kind == "text" else sorted(set(layers))):
+                for layer in ((None,) if kind in TEXT_SIGNALS else sorted(set(layers))):
                     for c in ((1.0,) if kind == "mean" else sorted(set(c_grid))):
                         aucs = []
                         for tr, va in inner:
@@ -171,6 +188,123 @@ def bootstrap_ci(predictions, *, repeats=500, seed=17):
     return {name: np.quantile(v, [0.025, 0.975]).tolist() for name, v in values.items() if v}
 
 
+def matched_operating_point(predictions, fpr):
+    """TPR when each held fold flags the same share of ITS evaluation negatives.
+
+    The calibration threshold targets an FPR but lands elsewhere out of fold
+    (5% became 8-10% in crossfit_v1), and it lands differently per signal, so
+    the TPR column is not comparable across rows. Here the threshold is set
+    post hoc on the fold's evaluation negatives so that floor(fpr * n_neg)
+    of them are flagged (strict >), the same count for every signal. This is
+    an oracle operating point for comparison, not a deployable threshold.
+    Fold-wise because raw scores are not comparable across folds."""
+    if not 0 <= fpr < 1:
+        raise ValueError("fpr must be in [0, 1)")
+    valid = [p for p in predictions if p["score"] is not None]
+    tp = fp = n_pos = n_neg = 0
+    for fold in sorted({p["fold"] for p in valid}):
+        subset = [p for p in valid if p["fold"] == fold]
+        negatives = [p["score"] for p in subset if p["set"] == "nfp"]
+        positives = [p["score"] for p in subset if p["set"] == "fpq"]
+        if not negatives or not positives:
+            continue
+        threshold = threshold_at_fpr(negatives, fpr)
+        tp += sum(s > threshold for s in positives)
+        fp += sum(s > threshold for s in negatives)
+        n_pos += len(positives)
+        n_neg += len(negatives)
+    if not n_pos or not n_neg:
+        return {"fpr_target": fpr, "tpr": None, "fpr": None, "tp": tp, "fp": fp, "fpq_n": n_pos, "nfp_n": n_neg}
+    return {"fpr_target": fpr, "tpr": tp / n_pos, "fpr": fp / n_neg, "tp": tp, "fp": fp,
+            "fpq_n": n_pos, "nfp_n": n_neg}
+
+
+def partial_auroc(predictions, max_fpr=0.1):
+    """Fold-weighted standardized partial AUROC over FPR in [0, max_fpr]
+    (sklearn's McClish correction; 0.5 = chance, 1 = perfect in that range)."""
+    from sklearn.metrics import roc_auc_score
+    if not 0 < max_fpr <= 1:
+        raise ValueError("max_fpr must be in (0, 1]")
+    valid = [p for p in predictions if p["score"] is not None]
+    aucs, weights = [], []
+    for fold in sorted({p["fold"] for p in valid}):
+        subset = [p for p in valid if p["fold"] == fold]
+        if {p["set"] for p in subset} != {"fpq", "nfp"}:
+            continue
+        aucs.append(float(roc_auc_score([p["set"] == "fpq" for p in subset], [p["score"] for p in subset],
+                                        max_fpr=max_fpr)))
+        weights.append(len(subset))
+    return float(np.average(aucs, weights=weights)) if aucs else None
+
+
+def _group_resamples(predictions, repeats, seed):
+    rng = np.random.default_rng(seed)
+    grouped = {}
+    for p in predictions:
+        grouped.setdefault(p["fold"], {}).setdefault(p["group_id"], []).append(p)
+    for _ in range(repeats):
+        sample = []
+        for groups in grouped.values():
+            keys = list(groups)
+            for i in rng.integers(0, len(keys), len(keys)):
+                sample.extend(groups[keys[i]])
+        yield sample
+
+
+def bootstrap_matched(predictions, *, fprs=(0.05, 0.08, 0.10), max_fpr=0.1, repeats=500, seed=17):
+    """Group bootstrap (within folds) of the matched-FPR TPRs and partial AUROC."""
+    out = {"matched": {str(f): matched_operating_point(predictions, f) for f in fprs},
+           "partial_auroc": {"max_fpr": max_fpr, "value": partial_auroc(predictions, max_fpr)}}
+    if repeats < 1:
+        return out
+    draws = {str(f): [] for f in fprs}
+    pauc = []
+    for sample in _group_resamples(predictions, repeats, seed):
+        for f in fprs:
+            value = matched_operating_point(sample, f)["tpr"]
+            if value is not None:
+                draws[str(f)].append(value)
+        value = partial_auroc(sample, max_fpr)
+        if value is not None:
+            pauc.append(value)
+    for f in fprs:
+        out["matched"][str(f)]["ci"] = np.quantile(draws[str(f)], [0.025, 0.975]).tolist() if draws[str(f)] else None
+    out["partial_auroc"]["ci"] = np.quantile(pauc, [0.025, 0.975]).tolist() if pauc else None
+    return out
+
+
+def matched_report(result, *, fprs=(0.05, 0.08, 0.10), max_fpr=0.1, repeats=500):
+    """Appendix table: every signal at the same evaluation-negative FPR."""
+    lines = ["", "## Matched operating points (appendix)", "",
+             "Thresholds here are set post hoc on each held fold's evaluation negatives so every signal flags the",
+             "same share of normal questions; this compares rankings at equal FPR and is NOT a deployable threshold.",
+             f"pAUROC: standardized partial AUROC over FPR in [0, {max_fpr:g}] (0.5 = chance).",
+             "Intervals: group bootstrap within folds.", "",
+             "| Signal | " + " | ".join(f"TPR @ FPR {f:.0%} [95% CI] (TP/FPQ, FP/NFP)" for f in fprs)
+             + f" | pAUROC@{max_fpr:g} [95% CI] |",
+             "|---|" + "---:|" * (len(fprs) + 1)]
+    summaries = {}
+    for signal in dict.fromkeys(p["signal"] for p in result["predictions"]):
+        ps = [p for p in result["predictions"] if p["signal"] == signal]
+        summary = bootstrap_matched(ps, fprs=fprs, max_fpr=max_fpr, repeats=repeats)
+        summaries[signal] = summary
+        cells = []
+        for f in fprs:
+            m = summary["matched"][str(f)]
+            if m["tpr"] is None:
+                cells.append("unavailable")
+                continue
+            ci = m.get("ci")
+            cells.append(f"{m['tpr']:.3f}" + (f" [{ci[0]:.3f}, {ci[1]:.3f}]" if ci else "")
+                         + f" ({m['tp']}/{m['fpq_n']}, {m['fp']}/{m['nfp_n']})")
+        pa = summary["partial_auroc"]
+        ci = pa.get("ci")
+        cells.append("unavailable" if pa["value"] is None else
+                     f"{pa['value']:.3f}" + (f" [{ci[0]:.3f}, {ci[1]:.3f}]" if ci else ""))
+        lines.append(f"| {signal} | " + " | ".join(cells) + " |")
+    return "\n".join(lines) + "\n", summaries
+
+
 def gate_report(result, *, repeats=500):
     lines = ["# Question-level gate comparison", "",
              "Question labels only. No answer-quality scoring, routing or steering in this table.",
@@ -195,4 +329,9 @@ def gate_report(result, *, repeats=500):
         vals = ["incomplete" if incomplete else cell(summary, ci, key) for key in ("auroc", "tpr", "fpr")]
         lines.append(f"| {signal} | {summary['valid']}/{summary['expected']} | " + " | ".join(vals)
                      + f" | {summary['tp']}/{summary['fpq_n']} | {summary['fp']}/{summary['nfp_n']} |")
-    return "\n".join(lines) + "\n", summaries
+    lines.append("")
+    lines.append("style/masked rows (if present) see no content words: the register floor every gate must clear.")
+    matched_text, matched = matched_report(result, repeats=repeats)
+    for signal, extra in matched.items():
+        summaries.setdefault(signal, {})["matched"] = extra
+    return "\n".join(lines) + "\n" + matched_text, summaries

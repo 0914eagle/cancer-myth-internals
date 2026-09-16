@@ -47,9 +47,10 @@ def kappa(a: list[int], b: list[int]) -> float:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default="configs/default.yaml")
-    parser.add_argument("--backend", choices=["codex", "openai"], default=None)
+    parser.add_argument("--backend", choices=["codex", "openai", "claude"], default=None)
     parser.add_argument("--model", default=None)
     parser.add_argument("--codex-cmd", default="codex")
+    parser.add_argument("--claude-cmd", default="claude")
     parser.add_argument("--models", nargs="+", default=["GPT-4o", "Claude-3.5-Sonnet", "DeepSeek-R1"],
                         help="answer authors in all_data.json to score")
     parser.add_argument("--n", type=int, default=150, help="questions per answer model")
@@ -62,7 +63,9 @@ def main() -> None:
     judge_cfg = cfg["judge"]
     backend = args.backend or judge_cfg.get("backend", "codex")
     model = args.model if args.model is not None else (
-        judge_cfg.get("model", "gpt-4o") if backend == "openai" else judge_cfg.get("codex_model", "")
+        judge_cfg.get("model", "gpt-4o") if backend == "openai"
+        else judge_cfg.get("claude_model", "") if backend == "claude"
+        else judge_cfg.get("codex_model", "")
     )
     examples = load_json(judge_cfg["examples_fpq"])
     data = load_json(Path(cfg["data"]["cancer_myth_repo"]) / "data" / "all_data.json")
@@ -87,7 +90,7 @@ def main() -> None:
 
     if jobs:
         check_judge_identity(model, args.allow_same_family)
-        call = make_caller(backend, model, timeout=180, codex_cmd=args.codex_cmd, temperature=0.0)
+        call = make_caller(backend, model, timeout=180, codex_cmd=args.codex_cmd, claude_cmd=args.claude_cmd, temperature=0.0)
         consecutive_failures = 0
         for n, (job_id, row, author) in enumerate(jobs, start=1):
             prompt = construct_prompt_fpq(row["example_question"], row["example_assumption"], row["answers"][author], examples)

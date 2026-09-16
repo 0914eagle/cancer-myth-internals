@@ -8,6 +8,8 @@
 **현재까지 무엇을 했고 왜 바꿨는가 (2026-09-15):** [26 — 실험 수치·발견·중단·전환 이력](docs/26_experiment_history_and_decisions.md).
 Gemma baseline/판정 감사/gate/Quick45/overnight와 Qwen 판별·512→1024 전환을 구분했다.
 사용자 마지막 로그는 `extract_verify 319/732`이며 실시간 서버 상태 확인은 아니다.
+**문체 교란 검정 (2026-09-16):** text 0.755 > hidden 0.693이 출처 문체인지 전제인지 — 하한선·의역·쌍둥이 세 검정과 판독 기준은 [29](docs/29_style_confound_tests.md).
+
 **새 방법론 논의:** [27 — 확인된 대조쌍·학습 C·효과 예측·쌍둥이 증폭·선행과 반증 조건](docs/27_method_candidates_and_tests.md).
 후보는 미실행이며 신규성·성능을 확보했다고 주장하지 않는다. 다음 독립 GPU 실험은 물리 0·1 병렬이 기본이다.
 아래 과거 계획과 충돌하는 현재 상태·판정기·표 역할은 26/27과 실행 명세 25를 우선한다.
@@ -92,6 +94,7 @@ text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 
 
 | 파일 | 내용 |
 |---|---|
+| [docs/29_style_confound_tests.md](docs/29_style_confound_tests.md) | 문체 교란 검정 셋(문체 하한선·의역·쌍둥이)의 절차, 누출 규칙, 판독 기준, 같은 오탐 TPR 부록, claude 백엔드 |
 | [docs/28_advisor_progress_narrative.md](docs/28_advisor_progress_narrative.md) | 교수님 보고 원고, 원문 예시·판단 변경·미확정 가설·완료 후 채울 수치 표 |
 | [docs/26_experiment_history_and_decisions.md](docs/26_experiment_history_and_decisions.md) | 실측 수치, 발견, 중단 이유, 변경 내용, 원본 보고서·출처 수준, 현재 진행 |
 | [docs/27_method_candidates_and_tests.md](docs/27_method_candidates_and_tests.md) | 새 방법 후보 전체 지도, 수식·선행·한계, 우선순위와 병렬 의존성 |

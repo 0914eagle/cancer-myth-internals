@@ -39,9 +39,10 @@ def main() -> None:
     parser.add_argument("--config", default="configs/default.yaml")
     parser.add_argument("--questions", required=True)
     parser.add_argument("--out-dir", required=True)
-    parser.add_argument("--backend", choices=["codex", "openai"], default=None)
+    parser.add_argument("--backend", choices=["codex", "openai", "claude"], default=None)
     parser.add_argument("--model", default=None)
     parser.add_argument("--codex-cmd", default="codex")
+    parser.add_argument("--claude-cmd", default="claude")
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--seed", type=int, default=17)
     args = parser.parse_args()
@@ -50,9 +51,11 @@ def main() -> None:
     judge_cfg = cfg["judge"]
     backend = args.backend or judge_cfg.get("backend", "codex")
     model = args.model if args.model is not None else (
-        judge_cfg.get("model", "gpt-4o") if backend == "openai" else judge_cfg.get("codex_model", "")
+        judge_cfg.get("model", "gpt-4o") if backend == "openai"
+        else judge_cfg.get("claude_model", "") if backend == "claude"
+        else judge_cfg.get("codex_model", "")
     )
-    llm = make_llm(backend, model, args.codex_cmd)
+    llm = make_llm(backend, model, args.codex_cmd, claude_cmd=args.claude_cmd)
     if llm is None:
         raise SystemExit(f"backend {backend} unavailable")
 

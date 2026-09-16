@@ -61,6 +61,7 @@ judge:
   # before it scores a table, and one judge scores every row of one table.
   backend: codex
   codex_model: ""          # empty = codex default; the banner's model name is recorded per row
+  claude_model: ""         # `claude -p` backend (writer/aligner use); empty = CLI default, served model recorded per row
   model: gpt-4o            # openai backend
   temperature: 0.0         # openai backend; --paper-protocol restores 0.7
   max_tokens: 400
