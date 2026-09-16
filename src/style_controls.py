@@ -21,6 +21,12 @@ no origin leaks across train and evaluation).
   natural->para  gate fitted on natural, scored on the paraphrases
   para->natural  gate fitted on paraphrases, scored on natural
   twins->natural gate fitted on FPQ-vs-twin, scored on natural
+  same_writer    FPQ vs only the NFP written by the FPQ writer (nfp.json
+                 from_model == gpt-4o, 31 of 149): no rewriting, same
+                 generator on both sides, so generator fingerprints cancel.
+                 Few negatives, wide intervals.
+  natural->same_writer  gate fitted on all natural, scored on FPQ vs
+                 same-writer NFP only
 
 Class label: `label` = 1 for FPQ and for any rewrite marked
 label_false_premise=1 (false paraphrases), 0 otherwise (NFP, true twins).
@@ -40,8 +46,8 @@ import numpy as np
 from src.baseline_gates import TEXT_SIGNALS, _fit_predict
 from src.baseline_suite import _group_folds
 
-CONDITIONS = ("natural", "twins", "edited", "para", "natural->twins", "natural->edited",
-              "natural->para", "para->natural", "twins->natural")
+CONDITIONS = ("natural", "twins", "edited", "para", "same_writer", "natural->twins", "natural->edited",
+              "natural->para", "natural->same_writer", "para->natural", "twins->natural")
 
 
 def row_label(q):
@@ -59,7 +65,8 @@ def _tag(rows, source):
     for q in rows:
         origin = q.get("paraphrase_of") or q.get("pair_id") or q["id"]
         out.append({"id": q["id"], "question": q["question"], "set": q["set"], "label": row_label(q),
-                    "origin": origin, "source": source, "group_id": q.get("group_id") or origin})
+                    "origin": origin, "source": source, "group_id": q.get("group_id") or origin,
+                    "writer": q.get("from_model")})
     return out
 
 
@@ -115,9 +122,13 @@ def fold_assignment(natural, *, folds=5, seed=17):
     return assignment
 
 
-def condition_rows(name, nat, tw, pa, fp=()):
+def condition_rows(name, nat, tw, pa, fp=(), *, fpq_writer="gpt-4o"):
     """(train_pool, eval_pool) row lists for one condition, before fold split."""
     twin_origins = {t["origin"] for t in tw}
+    # Same-writer negatives: NFP rows whose recorded generator equals the FPQ generator.
+    # FPQ rows without a from_model field are assumed to be the FPQ writer (Cancer-Myth: GPT-4o).
+    same = [r for r in nat if r["set"] == "fpq" and r["writer"] in (None, fpq_writer)] + \
+           [r for r in nat if r["set"] == "nfp" and r["writer"] == fpq_writer]
     fpq_with_twin = [r for r in nat if r["set"] == "fpq" and r["id"] in twin_origins]
     pairs = fpq_with_twin + tw
     # edited: only origins that have BOTH a false paraphrase and a true twin.
@@ -131,6 +142,8 @@ def condition_rows(name, nat, tw, pa, fp=()):
         "natural->twins": (nat, pairs),
         "natural->edited": (nat, edited),
         "natural->para": (nat, pa),
+        "same_writer": (same, same),
+        "natural->same_writer": (nat, same),
         "para->natural": (pa, nat),
         "twins->natural": (pairs, nat),
     }
@@ -167,14 +180,15 @@ def _select(kind, train, *, features, layers, c_grid, seed):
 
 
 def run_conditions(nat, tw, pa, fp=(), *, assignment, signals=("text", "style", "masked", "hidden", "mean"),
-                   features=None, layers=(), c_grid=(0.001, 0.01, 0.1, 1.0), conditions=CONDITIONS, seed=17):
+                   features=None, layers=(), c_grid=(0.001, 0.01, 0.1, 1.0), conditions=CONDITIONS, seed=17,
+                   fpq_writer="gpt-4o"):
     """Out-of-fold scores for every condition x signal. Hidden signals run
     only where every row of the condition has features; the result lists
     what was skipped and why."""
     features = features or {}
     predictions, selections, skipped = [], [], []
     for name in conditions:
-        pools = condition_rows(name, nat, tw, pa, fp)
+        pools = condition_rows(name, nat, tw, pa, fp, fpq_writer=fpq_writer)
         if pools is None:
             skipped.append({"condition": name, "reason": "no rows / missing class"})
             continue
@@ -191,8 +205,13 @@ def run_conditions(nat, tw, pa, fp=(), *, assignment, signals=("text", "style", 
                 train = [r for r in train_pool if assignment[r["origin"]] != k]
                 held = [r for r in eval_pool if assignment[r["origin"]] == k]
                 if {r["label"] for r in train} != {0, 1} or {r["label"] for r in held} != {0, 1}:
-                    raise ValueError(f"{name}/{kind}: fold {k} lacks a class")
-                best, candidates = _select(kind, train, features=features, layers=layers, c_grid=c_grid, seed=seed + k)
+                    skipped.append({"condition": name, "signal": kind, "reason": f"fold {k} lacks a class"})
+                    continue
+                try:
+                    best, candidates = _select(kind, train, features=features, layers=layers, c_grid=c_grid, seed=seed + k)
+                except ValueError as exc:  # inner CV cannot split (too few negatives)
+                    skipped.append({"condition": name, "signal": kind, "reason": f"fold {k}: {exc}"})
+                    continue
                 scores = _fit_predict(kind, _as_fit_rows(train), _as_fit_rows(held), features=features,
                                       layer=best["layer"], c=best["C"], seed=seed)
                 selections.append({"condition": name, "signal": kind, "fold": k, "best": best,

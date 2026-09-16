@@ -6,7 +6,8 @@
 
 Qwen 732문항 crossfit(26, `qwen25_7b_final1024_v1/gates/crossfit_v1`)에서 질문 판별 AUROC는
 text 0.755 [0.709, 0.799] > hidden 0.693 > mean(DiM) 0.681 > review 0.587 > direct 0.466이었다.
-FPQ는 GPT-4o가 통념에서 써낸 질문이고 NFP는 LLM이 오경보를 낸 사용자 질문이라 **출처가 다르다**.
+FPQ는 GPT-4o가 통념에서 써낸 질문이고 NFP는 LLM이 거짓 전제로 오판했으나 의사가 정상으로 확인한 질문이라 **선별 절차와
+생성 주체가 다르다**(NFP의 `from_model`: Gemini-1.5-Pro 74, Claude-3.5-Sonnet 44, GPT-4o 31; §7.1).
 그래서 text가 읽는 것이 전제의 거짓인지 출처의 문체인지 구분되지 않는다. E1에서도 같은 경고가
 있었다(15 §"텍스트만으로도 갈린다", TF-IDF 0.771). 이 문서는 그 가설을 세 가지 통제로 판별하는 절차다.
 
@@ -30,7 +31,9 @@ FPQ는 GPT-4o가 통념에서 써낸 질문이고 NFP는 LLM이 오경보를 낸
 | twins | FPQ vs 쌍둥이 | 같은 것 (OOF) | 문체 고정 시 남는 판별력 |
 | edited | 거짓 의역 vs 참 쌍둥이 | 같은 것 (OOF) | **가장 깨끗한 최소 쌍.** 두 구간 모두 LLM이 다시 썼으므로 편집 흔적이 상쇄되고 진위만 남음 |
 | para | 의역 FPQ vs 의역 NFP | 같은 것 (OOF) | 출처 문체 제거 시 남는 판별력 |
+| same_writer | FPQ vs GPT-4o가 쓴 NFP 31 | 같은 것 (OOF) | 다시쓰기 없이 writer를 맞춘 자연 통제. 음성 31개라 CI 넓음 |
 | natural→twins | FPQ vs NFP | FPQ vs 쌍둥이 | 자연 데이터로 배운 게이트가 문체 없이 버티는가 |
+| natural→same_writer | FPQ vs NFP | FPQ vs GPT-4o NFP | 자연 게이트가 같은 writer 음성에서 얼마나 남는가 |
 | natural→edited | FPQ vs NFP | 거짓 의역 vs 참 쌍둥이 | 위와 같음, 편집 흔적 없는 쌍 |
 | natural→para | FPQ vs NFP | 의역 | 위와 같음, 의역 쪽 |
 | para→natural | 의역 | FPQ vs NFP | 문체 없이 배운 게이트가 자연 데이터에서 얼마나 되는가 |
@@ -188,7 +191,13 @@ CI가 크게 겹친다. 같은 오탐 5%에서는 text 0.189 대 style 0.178로 
 오탐 구간의 pAUROC는 모든 신호가 0.55–0.59로 우연에 가깝다. 즉 배포 관심 운영점에서는 어떤 게이트도 문체 이상을 거의
 보여주지 못한다.
 
-**함의.** (1) 벤치마크: Cancer-Myth 질문 판별은 출처 교란이 크다(GPT-4o 서사 FPQ 대 사용자 질문 NFP). 어떤 게이트를 "전제
+**문체 차이의 실체 (suite `questions.jsonl` 집계).** FPQ 583: 단어 중앙값 40(p10/p90 31/65), 문장 2. NFP 149: 단어 중앙값
+50(35/73), 문장 3, `from_model` Gemini-1.5-Pro 74 / Claude-3.5-Sonnet 44 / GPT-4o 31. FPQ는 GPT-4o 단독(E1 행 `from_model`).
+즉 NFP는 사용자가 쓴 짧은 질문이 아니라 **세 모델이 쓴 더 긴 질문**이고, 하한선 0.70은 "GPT-4o 한 모델 대 세 모델 혼합"의
+생성기 지문과 길이 차이다. 이전 판의 "NFP는 사용자 질문" 서술은 근거가 없어 삭제한다. 여기서 공짜 통제가 하나 나온다:
+NFP 중 GPT-4o가 쓴 31개만 음성으로 쓰면 FPQ와 같은 writer다(`same_writer` 조건, 표본이 작아 CI가 넓다).
+
+**함의.** (1) 벤치마크: Cancer-Myth 질문 판별은 출처 교란이 크다(GPT-4o 단독 FPQ 대 세 모델이 쓴 NFP). 어떤 게이트를 "전제
 감지"라 부르려면 문체 통제 위의 여분을 보여야 한다. 이는 분석 논문의 발견이며 모의 패널(22 §3)이 요구한 측정 타당성 항목이다.
 (2) 방법: 12 §17.2의 A(text+DiM 결합 선택)의 근거였던 자연 데이터 게이트 성능은 대부분 문체일 수 있다. 방법 ablation 표에
 **style 게이트로 라우팅한 행**을 넣어야 하고, 방법이 그 행을 못 넘으면 방법 주장은 접는다. 확정은 검정 2·3 결과 후.

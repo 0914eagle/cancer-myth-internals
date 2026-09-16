@@ -215,7 +215,8 @@ def controls_data():
                         "question": f"I heard that herb {g} cures cancer, so is chemo unnecessary?",
                         "correction": "no"})
         natural.append({"id": nfp_id, "set": "nfp", "group_id": f"src_{g + 100:03}", "partition": "fit",
-                        "question": f"What screening schedule applies to condition {g}?"})
+                        "question": f"What screening schedule applies to condition {g}?",
+                        "from_model": "gpt-4o" if g % 3 == 0 else "gemini"})
         if g % 2 == 0:
             twins.append({"id": fpq_id + "_true", "set": "tpair", "pair_id": fpq_id,
                           "question": f"I heard that herb {g} does not cure cancer, so is chemo unnecessary?"})
@@ -248,6 +249,9 @@ def test_conditions_cover_every_row_once_without_origin_leakage(controls_data):
             ids = [p["id"] for p in preds if p["condition"] == name and p["signal"] == sig]
             assert len(ids) == len(set(ids))
     assert len([p for p in preds if p["condition"] == "twins" and p["signal"] == "text"]) == 60
+    same = [p for p in preds if p["condition"] == "same_writer" and p["signal"] == "text"]
+    assert sum(1 - p["label"] for p in same) == 20 and sum(p["label"] for p in same) == 60
+    assert len([p for p in preds if p["condition"] == "natural->same_writer" and p["signal"] == "text"]) == 80
     edited = [p for p in preds if p["condition"] == "edited" and p["signal"] == "text"]
     assert len(edited) == 30 and sum(p["label"] for p in edited) == 15
     assert all(p["source"] in ("fparas", "twins") for p in edited)

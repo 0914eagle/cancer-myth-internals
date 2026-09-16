@@ -54,6 +54,7 @@ def main():
     parser.add_argument("--seed", type=int, default=17)
     parser.add_argument("--bootstrap", type=int, default=500)
     parser.add_argument("--name", default="v1")
+    parser.add_argument("--fpq-writer", default="gpt-4o", help="from_model value of the FPQ generator; NFP rows with the same value form the same_writer control")
     args = parser.parse_args()
 
     suite_dir = Path(args.suite_dir).resolve()
@@ -104,8 +105,11 @@ def main():
         layers = ()
 
     assignment = fold_assignment(natural, folds=args.folds, seed=args.seed)
+    same_writer_nfp = sum(1 for q in natural if q["set"] == "nfp" and q.get("from_model") == args.fpq_writer)
+    print(f"[same_writer] NFP written by {args.fpq_writer}: {same_writer_nfp}", flush=True)
     result = run_conditions(nat, tw, pa, fp, assignment=assignment, signals=args.signals, features=features,
-                            layers=layers, c_grid=args.c_grid, conditions=args.conditions, seed=args.seed)
+                            layers=layers, c_grid=args.c_grid, conditions=args.conditions, seed=args.seed,
+                            fpq_writer=args.fpq_writer)
     summaries = summarize(result, repeats=args.bootstrap, seed=args.seed)
     text = report(result, summaries)
 
@@ -113,7 +117,7 @@ def main():
     spec = {"suite_hash": digest(suite), "twins_sha256": file_digest(args.twins) if args.twins else None,
             "paraphrases_sha256": file_digest(args.paraphrases) if args.paraphrases else None,
             "twins_n": len(tw), "false_paraphrases_n": len(fp), "para_n": len(pa),
-            "signals": args.signals, "conditions": args.conditions,
+            "signals": args.signals, "conditions": args.conditions, "fpq_writer": args.fpq_writer,
             "layers": list(layers or ()), "c_grid": args.c_grid, "folds": args.folds, "seed": args.seed,
             "fold_assignment": assignment,
             "implementation_hash": file_digest(ROOT / "src/style_controls.py")}
