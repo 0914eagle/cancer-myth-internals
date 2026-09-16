@@ -100,7 +100,7 @@ CUDA_VISIBLE_DEVICES=1 python scripts/run_baseline_suite.py extract --config con
   --out-dir "$SUITE_DIR" --variant-file "$DATA/e1_rows_v1/questions_twins.jsonl" --variant-name twins
 #    E1 행 id와 suite id 체계가 다르면 --twins-questions로 원문 텍스트 기준 매핑
 
-# 4. 세 검정 한 번에 (CPU)
+# 4. 세 검정 한 번에 (CPU; hidden 내부 CV 때문에 1–3시간, 조건·신호별 진행 줄이 찍힘. 판정 0)
 python scripts/run_style_controls.py --suite-dir "$SUITE_DIR" \
   --twins "$DATA/e1_rows_v1/questions_twins.jsonl" --twins-questions "$DATA/e1_rows_v1/questions.jsonl" \
   --paraphrases "$SUITE_DIR/variants/para/questions_para.jsonl" --name v1

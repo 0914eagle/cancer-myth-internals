@@ -185,15 +185,23 @@ def run_conditions(nat, tw, pa, fp=(), *, assignment, signals=("text", "style", 
     """Out-of-fold scores for every condition x signal. Hidden signals run
     only where every row of the condition has features; the result lists
     what was skipped and why."""
+    import time
     features = features or {}
     predictions, selections, skipped = [], [], []
+    started = time.time()
+    n_layers = max(1, len(set(layers or ())))
     for name in conditions:
         pools = condition_rows(name, nat, tw, pa, fp, fpq_writer=fpq_writer)
         if pools is None:
             skipped.append({"condition": name, "reason": "no rows / missing class"})
             continue
         train_pool, eval_pool = pools
+        print(f"[controls] {name}: train pool {len(train_pool)}, eval pool {len(eval_pool)}", flush=True)
         for kind in signals:
+            # Cost note: each fold fits (layers x C-grid x 3 inner) + 1 models;
+            # hidden on 3584-dim states is the slow one, minutes per fold.
+            fits = (n_layers if kind not in TEXT_SIGNALS else 1) * (1 if kind == "mean" else len(set(c_grid))) * 3 + 1
+            t0 = time.time()
             if kind not in TEXT_SIGNALS:
                 missing = [r["id"] for r in train_pool + eval_pool if r["id"] not in features]
                 if missing:
@@ -220,6 +228,8 @@ def run_conditions(nat, tw, pa, fp=(), *, assignment, signals=("text", "style", 
                     predictions.append({"condition": name, "signal": kind, "fold": k, "id": r["id"],
                                         "origin": r["origin"], "group_id": r["group_id"], "set": r["set"],
                                         "label": r["label"], "source": r["source"], "score": float(s)})
+            print(f"[controls]   {kind}: {len(folds)} folds x {fits} fits in {time.time() - t0:.0f}s "
+                  f"(elapsed {time.time() - started:.0f}s)", flush=True)
     return {"predictions": predictions, "selections": selections, "skipped": skipped,
             "signals": list(signals), "conditions": list(conditions), "layers": list(layers), "c_grid": list(c_grid)}
 
