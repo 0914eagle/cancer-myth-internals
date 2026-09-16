@@ -11,6 +11,12 @@ SUITE_CONFIG="${SUITE_CONFIG:-configs/qwen25_7b.yaml}"
 SUITE_DIR="${SUITE_DIR:-$ART/results/baselines/qwen25_7b_v1}"
 FPQ_REFERENCE_FILE="${FPQ_REFERENCE_FILE:-$ART/data/cancer_myth_fpq_well.jsonl}"
 PYTHON="${PYTHON:-python}"
+# Judge transport. codex = Terra (default). claude = `claude -p` Sonnet 5 when the
+# codex quota is spent (decision 2026-09-16). A different judge gets its own
+# directory: the plan hash includes backend/model, so plans never mix.
+JUDGE_BACKEND="${JUDGE_BACKEND:-codex}"
+JUDGE_MODEL="${JUDGE_MODEL:-}"
+if [[ "$JUDGE_BACKEND" == "codex" ]]; then WELL_DIR="${WELL_DIR:-$SUITE_DIR/well_judge}"; else WELL_DIR="${WELL_DIR:-$SUITE_DIR/well_judge_$JUDGE_BACKEND}"; fi
 stage="${1:-help}"
 case "$stage" in
   test)
@@ -64,14 +70,15 @@ case "$stage" in
     for method in plain zero_shot_cot fp_identification extract_verify premise_review; do
       answer_files+=("$SUITE_DIR/answers/$method.jsonl")
     done
-    "$PYTHON" scripts/evaluate_well.py prepare --questions "$SUITE_DIR/questions.jsonl" --answers "${answer_files[@]}" --out-dir "$SUITE_DIR/well_judge"
+    model_args=(); [[ -n "$JUDGE_MODEL" ]] && model_args=(--model "$JUDGE_MODEL")
+    "$PYTHON" scripts/evaluate_well.py prepare --questions "$SUITE_DIR/questions.jsonl" --answers "${answer_files[@]}" --out-dir "$WELL_DIR" --backend "$JUDGE_BACKEND" "${model_args[@]}"
     ;;
   judge)
     : "${MAX_JUDGE_CALLS:?Set MAX_JUDGE_CALLS explicitly, e.g. 20. No automatic unbounded judge run.}"
-    "$PYTHON" scripts/evaluate_well.py score --out-dir "$SUITE_DIR/well_judge" --max-calls "$MAX_JUDGE_CALLS"
+    "$PYTHON" scripts/evaluate_well.py score --out-dir "$WELL_DIR" --max-calls "$MAX_JUDGE_CALLS"
     ;;
   report)
-    "$PYTHON" scripts/evaluate_well.py report --out-dir "$SUITE_DIR/well_judge"
+    "$PYTHON" scripts/evaluate_well.py report --out-dir "$WELL_DIR"
     ;;
   status)
     "$PYTHON" scripts/run_baseline_suite.py status --out-dir "$SUITE_DIR"

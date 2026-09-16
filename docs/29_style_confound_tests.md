@@ -111,7 +111,7 @@ cat "$SUITE_DIR/style_controls/v1/report.md"
 없이 드라이버를 돌리면 hidden/mean 행은 그 조건에서 건너뛰고 보고서에 이유가 적힌다. text/style/masked는
 언제나 돈다.
 
-**역할 고정 (2026-09-16 사용자 결정).** 판정기 = Terra(`--backend codex`, 26 그대로). writer(쌍둥이·의역) = **Claude Sonnet 5**
+**역할 고정 (2026-09-16 사용자 결정).** 판정기 = Terra(`--backend codex`, 26 그대로). **예외(9/16 밤):** codex 사용량 소진으로 Qwen suite의 Well 0–5 판정 배치(2,965회)는 `claude -p` **Sonnet 5**로 돌린다(`JUDGE_BACKEND=claude bash scripts/run_baselines.sh judge-plan|judge|report`, 결과 폴더 `well_judge_claude/`). Terra의 GPT-4o 보정은 이 판정기로 옮겨지지 않으므로 표마다 판정기를 적고, codex 사용량이 돌아오면 40문항을 Terra로 겹쳐 판정해 일치율을 낸다. writer(Sonnet 5)와 판정기가 같은 가족이 되지만 이 배치가 판정하는 것은 Qwen 답변이지 writer 산출물이 아니다. writer(쌍둥이·의역) = **Claude Sonnet 5**
 (`configs/default.yaml` `judge.claude_model: claude-sonnet-5`; 처음 Opus 5로 정했다가 구독 사용량을 아끼려 같은 날 Sonnet 5로 내림.
 writer는 판정에 관여하지 않으므로 타당성에 영향 없음). `--backend claude`만 주면 Sonnet 5가 쓰고, `run_judge.py`는
 backend를 주지 않는 한 codex/Terra다. 한 표 안에서 판정기를 섞지 않는다.

@@ -20,6 +20,17 @@ ROOT = Path(__file__).resolve().parents[1]
 TEMPLATES = ROOT / "prompts" / "well"
 VERSION = "well-answer-eval-v1"
 DEFAULT_MODEL = "gpt-5.6-terra"
+BACKENDS = ("codex", "openai", "claude")
+DEFAULT_MODELS = {"codex": DEFAULT_MODEL, "claude": "claude-sonnet-5"}
+
+
+def model_matches(used, planned):
+    """A reply counts only if the served model is the planned one. `claude -p`
+    reports the dated ID (claude-sonnet-5-2026MMDD) for a requested alias, so a
+    planned alias also matches its dated form; never the other way round."""
+    if not isinstance(used, str) or not planned:
+        return False
+    return used == planned or used.startswith(planned + "-")
 
 
 def template_manifest():
@@ -100,7 +111,7 @@ def _source(path):
 
 def prepare(questions_path, answer_paths, out_dir, *, backend="codex", model=DEFAULT_MODEL):
     """Freeze complete prompts, answer mapping and provenance; never call a model."""
-    if backend not in {"codex", "openai"} or not model:
+    if backend not in BACKENDS or not model:
         raise ValueError("Explicit supported backend/model required")
     check_judge_identity(model)
     sources = template_manifest()
@@ -206,7 +217,7 @@ def read_ledger(out_dir, plan, plan_hash):
         if row["status"] != "finished":
             continue
         rating = parse_rating(row.get("raw"))
-        valid = rating is not None and row.get("model") == plan["model"] and "error" not in row
+        valid = rating is not None and model_matches(row.get("model"), plan["model"]) and "error" not in row
         if row.get("valid") != valid or row.get("score") != (rating if valid else None):
             raise ValueError("Stored validity/score differs from raw reply")
         if valid:
@@ -214,7 +225,7 @@ def read_ledger(out_dir, plan, plan_hash):
     return events, scores
 
 
-def score(out_dir, *, max_calls, timeout=180, codex_cmd="codex", caller=None):
+def score(out_dir, *, max_calls, timeout=180, codex_cmd="codex", claude_cmd="claude", caller=None):
     """At most max_calls NEW attempts. Started/invalid jobs are never retried."""
     if type(max_calls) is not int or max_calls < 1:
         raise ValueError("max_calls must be an explicit positive integer")
@@ -230,7 +241,13 @@ def score(out_dir, *, max_calls, timeout=180, codex_cmd="codex", caller=None):
         if not pending:
             return {"new_calls": 0, "remaining_unstarted": 0}
         call = caller or make_caller(plan["backend"], plan["model"], timeout=timeout,
-                                     codex_cmd=codex_cmd, **plan["call_settings"])
+                                     codex_cmd=codex_cmd, claude_cmd=claude_cmd, **plan["call_settings"])
+        if caller is None and plan["backend"] == "claude":
+            # A started job is never retried, so an exhausted subscription must
+            # fail here, before any ledger event, not on the first real job.
+            probe, used = call("Reply with the single word OK.")
+            if not model_matches(used, plan["model"]):
+                raise SystemExit(f"claude -p served {used!r}, plan wants {plan['model']!r}; no ledger event written")
         calls, invalid_streak = 0, 0
         for jobid in pending:
             common = {"id": jobid, "plan_hash": plan_hash}
@@ -240,7 +257,7 @@ def score(out_dir, *, max_calls, timeout=180, codex_cmd="codex", caller=None):
             try:
                 raw, used = call(plan["jobs"][jobid]["prompt"])
                 rating = parse_rating(raw)
-                valid = rating is not None and used == plan["model"]
+                valid = rating is not None and model_matches(used, plan["model"])
                 event = {**common, "status": "finished", "raw": raw, "model": used,
                          "valid": valid, "score": rating if valid else None}
             except Exception as exc:
@@ -249,7 +266,7 @@ def score(out_dir, *, max_calls, timeout=180, codex_cmd="codex", caller=None):
             _append(out / "attempts.jsonl", event)
             invalid_streak = 0 if event["valid"] else invalid_streak + 1
             print(f"{jobid[:12]}: {event['score'] if event['valid'] else 'invalid'}", flush=True)
-            if "error" in event or event.get("model") != plan["model"] or invalid_streak >= 3:
+            if "error" in event or not model_matches(event.get("model"), plan["model"]) or invalid_streak >= 3:
                 break
         return {"new_calls": calls, "remaining_unstarted": len(plan["jobs"]) - len(previous) - calls}
 

@@ -182,3 +182,38 @@ def test_empty_answer_file_is_not_silently_dropped(run):
     empty.write_text("")
     with pytest.raises(ValueError, match="Empty answer file"):
         prepare(qp, [ap, empty], out)
+
+
+def test_claude_backend_accepts_dated_served_model_and_rejects_other(run):
+    from src.well_eval import model_matches
+    assert model_matches("claude-sonnet-5", "claude-sonnet-5")
+    assert model_matches("claude-sonnet-5-20260601", "claude-sonnet-5")
+    assert not model_matches("claude-sonnet-5", "claude-sonnet-5-20260601")
+    assert not model_matches("claude-sonnet-50", "claude-sonnet-5")
+    assert not model_matches("claude-opus-5", "claude-sonnet-5")
+    qp, ap, out, _, _ = run
+    plan = prepare(qp, [ap], out, backend="claude", model="claude-sonnet-5")
+    assert plan["unique_calls"] == 2
+    served = lambda _: ("Rating: 4", "claude-sonnet-5-20260601")
+    assert score(out, max_calls=10, caller=served)["new_calls"] == 2
+    assert report(out)["unique_valid"] == 2
+    # An unrelated served model still stops the run and never counts.
+    qp2, ap2, out2, _, _ = run
+    out2 = out2.parent / "other"
+    prepare(qp2, [ap2], out2, backend="claude", model="claude-sonnet-5")
+    assert score(out2, max_calls=10, caller=lambda _: ("Rating: 4", "claude-opus-5"))["new_calls"] == 1
+    assert report(out2)["unique_valid"] == 0
+
+
+def test_claude_score_preflight_fails_before_any_ledger_event(run, monkeypatch):
+    from src import well_eval
+    qp, ap, out, _, _ = run
+    prepare(qp, [ap], out, backend="claude", model="claude-sonnet-5")
+    def broken(*a, **k):
+        def call(prompt):
+            raise RuntimeError("claude -p failed (1): usage limit reached")
+        return call
+    monkeypatch.setattr(well_eval, "make_caller", broken)
+    with pytest.raises(RuntimeError, match="usage limit"):
+        score(out, max_calls=5)
+    assert not (out / "attempts.jsonl").exists()
