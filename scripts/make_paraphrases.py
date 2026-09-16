@@ -29,7 +29,7 @@ from scripts.make_rows import make_llm
 from src.baseline_suite import load_suite
 from src.config import load_config
 from src.jsonl import append_jsonl, read_jsonl, write_jsonl
-from src.paraphrase import make_paraphrase
+from src.paraphrase import PARAPHRASE_VERSION, make_paraphrase
 
 
 def main() -> None:
@@ -42,6 +42,8 @@ def main() -> None:
     parser.add_argument("--codex-cmd", default="codex")
     parser.add_argument("--claude-cmd", default="claude")
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--max-jaccard", type=float, default=0.6,
+                        help="word overlap above which a rewrite is a near copy (retried once, then dropped)")
     parser.add_argument("--seed", type=int, default=17)
     args = parser.parse_args()
 
@@ -56,7 +58,7 @@ def main() -> None:
     llm = make_llm(backend, model, args.codex_cmd, claude_cmd=args.claude_cmd)
     if llm is None:
         raise SystemExit(f"backend {backend} unavailable")
-    writer = f"{backend}:{model or 'default'}"
+    writer = f"{backend}:{model or 'default'}:{PARAPHRASE_VERSION}"
     if llm("Reply with exactly the word OK.") is None:
         raise SystemExit(f"backend {backend} answered nothing; check `claude auth status` (subscription login), "
                          "ANTHROPIC_API_KEY, or codex login before spending the run")
@@ -64,7 +66,9 @@ def main() -> None:
     suite = load_suite(args.suite_dir)
     rows = list(suite["questions"])
     if args.limit:
-        rows = rows[: args.limit]
+        # Half FPQ, half NFP, so the eyeball sample shows both registers.
+        half = max(args.limit // 2, 1)
+        rows = [q for q in rows if q["set"] == "fpq"][:half] + [q for q in rows if q["set"] == "nfp"][:args.limit - half]
     out_dir = Path(args.out_dir) if args.out_dir else Path(args.suite_dir) / "variants" / "para"
     out_dir.mkdir(parents=True, exist_ok=True)
     progress = out_dir / "para.jsonl"
@@ -75,7 +79,8 @@ def main() -> None:
             done[r["id"]] = r
         done = {k: v for k, v in done.items() if v.get("status") != "empty"}
     if any(d.get("writer") not in (None, writer) for d in done.values()):
-        raise SystemExit("Checkpoint was written by a different writer; use a new --out-dir")
+        raise SystemExit(f"Checkpoint {progress} was written by a different writer or prompt version "
+                         f"(now {writer}); delete it or use a new --out-dir")
     print(f"[para] {len(rows)} questions; {len(done)} already attempted; writer={writer}", flush=True)
 
     n_new, consecutive_failures = 0, 0
@@ -83,7 +88,7 @@ def main() -> None:
         if q["id"] in done:
             continue
         before = llm.failures["n"]
-        row, status, audit = make_paraphrase(q, llm, writer=writer)
+        row, status, audit = make_paraphrase(q, llm, writer=writer, max_jaccard=args.max_jaccard)
         if llm.failures["n"] > before:
             # Backend failure (timeout, auth, rate limit): not a property of the question; never recorded.
             consecutive_failures += 1
@@ -108,7 +113,8 @@ def main() -> None:
     lines = ["# Paraphrase audit", "", f"writer: {writer}", "", "| status | n |", "|---|---:|"]
     lines += [f"| {k} | {v} |" for k, v in sorted(status.items())]
     lines += ["", f"accepted: {len(accepted)} of {len(done)} attempted (fpq {by_set['fpq']}, nfp {by_set['nfp']})"]
-    lines += [f"premise check applied: {sum(bool(d.get('premise_checked')) for d in done.values())} rows"]
+    lines += [f"premise check applied: {sum(bool(d.get('premise_checked')) for d in done.values())} rows",
+              f"near-copy retries: {sum(bool(d.get('retried')) for d in done.values())} rows (max_jaccard {args.max_jaccard})"]
     if jacc:
         jacc = sorted(jacc)
         lines += [f"word Jaccard original vs rewrite: median {jacc[len(jacc) // 2]:.2f}, "

@@ -12,7 +12,7 @@ from src import baseline_gates as gates
 from src import baseline_suite as suite
 from src import llm_backend
 from src import style_controls as sc
-from src.paraphrase import FIDELITY_PROMPT, PARAPHRASE_PROMPT, make_paraphrase, word_jaccard
+from src.paraphrase import FIDELITY_PROMPT, PARAPHRASE_PROMPT, RETRY_PROMPT, make_paraphrase, word_jaccard
 from src.rows import TWIN_CHECK_PROMPT
 from src.style_features import FUNCTION_WORDS, mask_content, style_feature_names, style_vector
 
@@ -132,6 +132,17 @@ def test_paraphrase_accepts_only_rewrites_that_keep_premise_and_meaning():
     long = _scripted([("MESSAGE:", "x " * 200)])
     assert make_paraphrase(FPQ, long)[1] == "too_long"
     assert make_paraphrase(FPQ, _scripted([("MESSAGE:", "")]))[1] == "empty"
+
+    # Near copy: retried once with the retry prompt; still a copy -> dropped.
+    copy = _scripted([("MESSAGE:", "I heard turmeric cures colon cancer, so can I skip the chemo?")])
+    row, status, audit = make_paraphrase(FPQ, copy)
+    assert status == "near_copy" and audit["retried"] and audit["jaccard"] > 0.6
+    assert any(p.startswith(RETRY_PROMPT[:30]) for p in copy.log)
+    fixed = _scripted([("ORIGINAL:", "YES"), ("BELIEF:", "YES"),
+                       ("NEW REWRITE:", "Since turmeric gets rid of colon cancer, is chemotherapy something I can avoid?"),
+                       ("MESSAGE:", "I heard turmeric cures colon cancer, so can I skip the chemo?")])
+    row, status, audit = make_paraphrase(FPQ, fixed)
+    assert status == "ok" and audit["retried"] and audit["jaccard"] <= 0.6
 
     nfp = {"id": "nfp_1", "set": "nfp", "group_id": "g2", "partition": "fit",
            "question": "How often should I get a colonoscopy after 50?"}

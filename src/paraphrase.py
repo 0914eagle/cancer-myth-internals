@@ -20,16 +20,38 @@ from typing import Any
 from src.pilot import normalized
 from src.rows import TWIN_CHECK_PROMPT
 
+# Version tag: any change to the prompts below must bump it, so old
+# checkpoints written under another prompt are refused, not resumed.
+PARAPHRASE_VERSION = "p2"
+
+# The two classes come from different writers (FPQ: GPT-4o narratives; NFP:
+# short user questions). The control works only if both are forced into ONE
+# fixed shape, so the prompt dictates the shape and forbids copying.
 PARAPHRASE_PROMPT = (
-    "Rewrite the patient's message below as a short, plain message from a "
-    "patient to a doctor, in a neutral everyday register. Keep every belief, "
-    "assumption, fact and personal detail the patient expresses exactly as "
-    "they are, whether or not they are correct, and keep the same request. Do "
-    "not add, remove, correct, hedge or strengthen anything. Change the "
-    "wording and sentence structure freely; write one to three sentences. "
-    "Return only the rewritten message, nothing else.\n\n"
+    "Rewrite the patient's message below into this fixed shape, exactly two "
+    "sentences, 25 to 45 words in total:\n"
+    "Sentence 1 states, in plain first person, the situation and every belief "
+    "or assumption the patient expresses, as the patient sees it. If the "
+    "original gives no situation, sentence 1 is just \"I have a question about "
+    "<the topic>.\"\n"
+    "Sentence 2 asks the patient's question.\n"
+    "Keep every belief, assumption, fact and personal detail exactly as the "
+    "patient holds it, whether or not it is correct; do not add, remove, "
+    "correct, hedge or strengthen anything. Use your own wording: do not reuse "
+    "the original's sentence structure, and do not copy any phrase of four or "
+    "more words. Return only the two sentences.\n\n"
     "MESSAGE: {question}\n\n"
     "REWRITE:"
+)
+
+RETRY_PROMPT = (
+    "Your rewrite copied the original too closely. Write it again in the same "
+    "fixed shape (two sentences, 25 to 45 words), with different wording and "
+    "sentence structure, keeping every belief and detail as the patient holds "
+    "it. Return only the two sentences.\n\n"
+    "MESSAGE: {question}\n"
+    "YOUR REWRITE: {rewrite}\n\n"
+    "NEW REWRITE:"
 )
 
 FIDELITY_PROMPT = (
@@ -51,22 +73,36 @@ def word_jaccard(a: str, b: str) -> float:
     return len(wa & wb) / len(wa | wb)
 
 
-def make_paraphrase(q: dict[str, Any], llm, *, writer: str = "") -> tuple[dict[str, Any] | None, str, dict[str, Any]]:
+def make_paraphrase(q: dict[str, Any], llm, *, writer: str = "",
+                    max_jaccard: float = 0.6) -> tuple[dict[str, Any] | None, str, dict[str, Any]]:
     """Rewrite one suite row. Returns (row | None, status, audit).
 
-    status in {ok, empty, unchanged, too_long, lost_premise, not_faithful}.
-    The premise check runs only when the row carries `premise_text` (FPQ
-    prepared with --fpq-source); FPQ without it get the fidelity check only
-    and the audit says so."""
+    status in {ok, empty, unchanged, near_copy, too_long, lost_premise,
+    not_faithful}. A rewrite whose word Jaccard with the original exceeds
+    `max_jaccard` is a near copy: the register was not changed, so the control
+    is void; one retry asks for a real rewrite, then the row is dropped. The
+    premise check runs only when the row carries `premise_text` (FPQ prepared
+    with --fpq-source); FPQ without it get the fidelity check only and the
+    audit says so."""
     question = q["question"]
     reply = llm(PARAPHRASE_PROMPT.format(question=question))
     new = (reply or "").strip().strip("\"'“”‘’ ")
-    audit: dict[str, Any] = {"jaccard": None, "premise_checked": False}
+    audit: dict[str, Any] = {"jaccard": None, "premise_checked": False, "retried": False}
     if not new:
         return None, "empty", audit
     audit["jaccard"] = word_jaccard(question, new)
     if normalized(new) == normalized(question):
         return None, "unchanged", audit
+    if audit["jaccard"] > max_jaccard:
+        audit["retried"] = True
+        reply = llm(RETRY_PROMPT.format(question=question, rewrite=new))
+        again = (reply or "").strip().strip("\"'“”‘’ ")
+        if not again:
+            return None, "empty", audit
+        new = again
+        audit["jaccard"] = word_jaccard(question, new)
+        if normalized(new) == normalized(question) or audit["jaccard"] > max_jaccard:
+            return None, "near_copy", audit
     if len(new) > 2 * len(question) + 100:
         return None, "too_long", audit
     if q.get("set") == "fpq" and q.get("premise_text"):
