@@ -125,7 +125,7 @@ def test_paraphrase_accepts_only_rewrites_that_keep_premise_and_meaning():
     lost = _scripted([("BELIEF:", "NO"), ("MESSAGE:", "Is it fine to skip chemotherapy?")])
     assert make_paraphrase(FPQ, lost)[1] == "lost_premise"
     unfaithful = _scripted([("ORIGINAL:", "NO"), ("BELIEF:", "YES"),
-                            ("MESSAGE:", "Turmeric cures colon cancer so I will skip chemo, right?")])
+                            ("MESSAGE:", "Because turmeric eliminates colon cancer, I plan to stop chemotherapy, right?")])
     assert make_paraphrase(FPQ, unfaithful)[1] == "not_faithful"
     same = _scripted([("MESSAGE:", FPQ["question"].upper())])
     assert make_paraphrase(FPQ, same)[1] == "unchanged"
