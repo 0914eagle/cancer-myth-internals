@@ -33,9 +33,11 @@ split 필드가 없고, generate 경로는 seed를 고정하지 않고 shuffle�
 |---|---|---|
 | `plain` | 질문 원문에 직접 답변 | 원 pilot과 같은 user-only 기본 대조군 |
 | `zero_shot_cot` | step-by-step 추론 생성 후 별도 최종 답변 | Kojima식 동기를 적용한 의료 adaptation |
-| `fp_identification` | 모델의 거짓 전제 판별 후 양성이면 교정 지시, 음성이면 Plain | Well-inspired adaptation |
+| `fp_identification` (**보고 이름: Self-gated FP Identification**) | 모델의 거짓 전제 Yes/No 판별(`direct`) 후 양성이면 교정 지시, 음성이면 Plain | **Well의 FP Identification과 다른 방법이다.** Well은 모든 질문에 교정 지시를 무조건 붙인다(Qwen2.5-7B: FPQ S5 75% / TPQ 0%). 우리 것은 Two Axes식 라우팅(게이트 → 프롬프트)에서 게이트를 모델 자신의 언어 판별로 바꾼 것이며, 판별이 거의 항상 No라 Plain에 수렴한다(28 §10.1). 코드 식별자는 진행 중인 판정 계획에 박혀 있어 배치 완료 후 `self_gated_fp`로 바꾼다 |
 | `extract_verify` | 전제 JSON 추출, 각 전제 진위 판별, 결과에 따른 답변 | Well 계열 파이프라인 adaptation, RAG 없음 |
 | `premise_review` | 기존 전제 검토문 생성 후 그 검토문으로 답변 | 기존 `premise_cot`의 명확한 이름 |
+
+Well식 **무조건** FP Identification(모든 질문에 교정 지시)은 이 suite에 아직 없다. 추가하면 FPQ 상한과 NFP harm 행이 생기고 Well의 75/0과 직접 비교된다(생성 732 + 판정 732; 결정 대기, 32 §7).
 
 원 Well의 few-shot·생성 단계·모델 설정을 그대로 재현한 행으로 표기하지 않는다.
 특히 공개 FP Identification 템플릿에는 no-RAG user content 조건식 문제가 있어,
