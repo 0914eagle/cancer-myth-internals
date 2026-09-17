@@ -37,3 +37,22 @@ def test_labels_require_both_directions():
     assert labels["b"]["knows"] == "unsure" and abs(labels["b"]["k2_margin"]) < 1e-9
     assert labels["c"]["knows"] == "no" and labels["c"]["k2_margin"] < 0
     assert labels["d"]["knows"] == "unsure"
+
+
+def test_forced_choice_labels_and_margin():
+    def rec(qid, s, o, v, **kw):
+        return {"id": qid, "statement": s, "order": o, "verdict": v, **kw}
+    records = [
+        rec("a", "myth", "tf", "False", p_false=.9), rec("a", "myth", "ft", "False", p_false=.9),
+        rec("a", "correction", "tf", "False", p_false=.9), rec("a", "correction", "ft", "False", p_false=.9),
+        # mc: myth is A, correction is B -> correct answer B; cm -> A
+        rec("a", "pair", "mc", "B", p_a=.2), rec("a", "pair", "cm", "A", p_a=.8),
+        rec("b", "pair", "mc", "A", p_a=.7), rec("b", "pair", "cm", "A", p_a=.7),   # always A: position bias
+    ]
+    labels = {l["id"]: l for l in pk.label_rows(records)}
+    assert labels["a"]["knows"] == "unsure" and labels["a"]["knows_fc"] == "yes"
+    assert abs(labels["a"]["fc_margin"] - 0.3) < 1e-9
+    assert labels["b"]["knows_fc"] == "unsure" and labels["b"]["knows"] is None
+    assert pk.parse_choice("B. The second statement is accurate.") == "B"
+    assert pk.parse_choice("Statement A is accurate") == "A"
+    assert pk.parse_choice("Both are wrong") is None
