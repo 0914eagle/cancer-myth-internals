@@ -156,6 +156,7 @@ def main():
     p.add_argument("--seed", type=int, default=17)
     p.add_argument("--bootstrap", type=int, default=500)
     p.add_argument("--name", default="v1")
+    p.add_argument("--crepe-max", type=int, default=0, help="stratified subsample of CREPE rows for the probes (0 = all; 8,466 x inner CV on 3584 dims takes hours)")
     args = parser.parse_args()
 
     if args.stage == "fetch-hf":
@@ -227,6 +228,14 @@ def main():
     nat, tw, pa, fp = assemble(natural, twins, para, fparas)
     cr = [{"id": r["id"], "question": r["question"], "set": r["set"], "label": r["label"], "origin": r["id"],
            "source": "crepe", "group_id": r["id"], "writer": None} for r in crepe_rows]
+    if args.crepe_max and len(cr) > args.crepe_max:
+        rng = np.random.default_rng(args.seed)
+        pos = [r for r in cr if r["label"] == 1]; neg = [r for r in cr if r["label"] == 0]
+        share = len(pos) / len(cr)
+        k_pos = int(round(args.crepe_max * share)); k_neg = args.crepe_max - k_pos
+        cr = [pos[i] for i in sorted(rng.choice(len(pos), min(k_pos, len(pos)), replace=False))] + \
+             [neg[i] for i in sorted(rng.choice(len(neg), min(k_neg, len(neg)), replace=False))]
+        print(f"[crepe] subsampled to {len(cr)} (pos {k_pos}, neg {k_neg}) with seed {args.seed}", flush=True)
     features = {}
     for label, path in (("natural", suite_dir / "model"), ("twins", suite_dir / "model_variants" / "twins"),
                         ("para", suite_dir / "model_variants" / "para"), ("crepe", suite_dir / "crepe" / "model")):
