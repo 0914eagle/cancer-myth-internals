@@ -59,11 +59,11 @@ def parse_choice(text):
 
 
 def usable_statement(text):
-    """Reject non-statements (fpq_0 'From physicians.', 29 §6): short, or no verb-ish token."""
+    """Reject non-statements (fpq_0 'From physicians.', 29 §6). A verb list was
+    too strict (it dropped "isn't", "lose", "works", "goes": 58 rows on 9/17);
+    length and word count are enough to catch the real defects."""
     t = (text or "").strip()
-    if len(t) < 20 or " " not in t:
-        return False
-    return bool(re.search(r"\b(is|are|was|were|can|cannot|can't|does|do|will|has|have|causes?|means?|only|always|never|should|must|leads?|makes?)\b", t, re.IGNORECASE))
+    return len(t) >= 20 and len(t.split()) >= 4
 
 
 def label_rows(records):

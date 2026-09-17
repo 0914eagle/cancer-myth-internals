@@ -13,6 +13,9 @@ def test_parse_and_statement_filter():
     assert pk.parse_verdict("") is None
     assert not pk.usable_statement("From physicians.")
     assert pk.usable_statement("Lung cancer only affects older people.")
+    assert pk.usable_statement("Pancreatic cancer isn't treatable.")
+    assert pk.usable_statement("I am too young to be diagnosed with cancer.")
+    assert pk.usable_statement("All leukemia patients lose their hair during treatment.")
 
 
 def test_labels_require_both_directions():
