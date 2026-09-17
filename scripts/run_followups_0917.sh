@@ -4,6 +4,7 @@
 #              loop (15-min retries; the preflight makes a retry during a usage limit free).
 #   B (GPU 1): knowledge probe (31) -> CREPE clone/inspect/extract -> CREPE<->Cancer-Myth transfer eval.
 # Usage:  bash scripts/run_followups_0917.sh        (SUITE_DIR must point at the final1024 suite)
+#         ONLY=A bash scripts/run_followups_0917.sh   relaunch one chain (A or B) without restarting the other
 # Logs:   $SUITE_DIR/logs/followups_0917/{A_fp_unconditional,B_knowledge_crepe}.log
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
@@ -16,6 +17,7 @@ LOG="$SUITE_DIR/logs/followups_0917"; mkdir -p "$LOG" "$(dirname "$CREPE_DIR")"
 test -s "$SUITE_DIR/questions.jsonl" || { echo "[error] $SUITE_DIR has no questions.jsonl" >&2; exit 2; }
 test -s "$ROWS/questions_twins.jsonl" || echo "[warn] $ROWS/questions_twins.jsonl missing; CREPE eval will skip twin rows"
 
+if [[ "${ONLY:-AB}" == *A* ]]; then
 nohup bash -c '
 set -uo pipefail
 echo "[A] start $(date)"
@@ -33,7 +35,9 @@ python scripts/evaluate_well.py report --out-dir "$W" | tail -8
 echo "[A] done $(date)"
 ' > "$LOG/A_fp_unconditional.log" 2>&1 &
 echo "[A] pid $!  log $LOG/A_fp_unconditional.log"
+fi
 
+if [[ "${ONLY:-AB}" == *B* ]]; then
 nohup bash -c '
 set -uo pipefail
 echo "[B] start $(date)"
@@ -49,4 +53,5 @@ python scripts/crepe_transfer.py eval --suite-dir "$SUITE_DIR" \
 echo "[B] done $(date)"
 ' > "$LOG/B_knowledge_crepe.log" 2>&1 &
 echo "[B] pid $!  log $LOG/B_knowledge_crepe.log"
+fi
 echo "Watch: tail -f $LOG/A_fp_unconditional.log $LOG/B_knowledge_crepe.log"

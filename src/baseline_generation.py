@@ -275,7 +275,23 @@ def _freeze_identity(out, runtime, cfg):
     with (out / "identity.lock").open("a") as lock:
         fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
         try:
-            _atomic_json(out / "identity.json", identity, frozen=True)
+            path = out / "identity.json"
+            if path.exists():
+                # The protocol is model identity + prompts + seed + decoding. The
+                # source-file hash is provenance, not protocol: adding a method
+                # (fp_unconditional, 2026-09-17) must not orphan a finished run.
+                # Every implementation that touched the run is logged instead.
+                saved = json.loads(path.read_text())
+                strip = lambda d: {k: v for k, v in d.items() if k != "implementation_sha256"}
+                if strip(saved) != strip(identity):
+                    raise ValueError(f"Artifact mismatch at {path}; use a new run directory")
+                seen = out / "identity_implementations.jsonl"
+                known = {json.loads(l)["implementation_sha256"] for l in seen.read_text().splitlines()} if seen.exists() else set()
+                if identity["implementation_sha256"] not in known | {saved.get("implementation_sha256")}:
+                    with seen.open("a", encoding="utf-8") as f:
+                        f.write(json.dumps({"implementation_sha256": identity["implementation_sha256"]}) + "\n")
+            else:
+                _atomic_json(path, identity, frozen=True)
         finally:
             fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
 

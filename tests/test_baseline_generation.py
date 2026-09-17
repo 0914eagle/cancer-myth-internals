@@ -293,3 +293,17 @@ def test_shared_identity_prevents_seed_change(runtime, tmp_path):
     bg.run_generation(ROWS, {"seed": 17}, tmp_path, ["plain"])
     with pytest.raises(ValueError, match="identity.json"):
         bg.run_detection(ROWS, {"seed": 18}, tmp_path)
+
+
+def test_shared_identity_tolerates_implementation_hash_but_not_prompts(runtime, tmp_path, monkeypatch):
+    bg.run_generation(ROWS, {}, tmp_path, ["plain"], final_tokens=20, review_tokens=30, extraction_tokens=40)
+    saved = json.loads((tmp_path / "identity.json").read_text())
+    # Same protocol, different source hash (a method was added): accepted and logged.
+    (tmp_path / "identity.json").write_text(json.dumps({**saved, "implementation_sha256": "old" * 10}))
+    bg.run_generation(ROWS, {}, tmp_path, ["fp_unconditional"], final_tokens=20, review_tokens=30, extraction_tokens=40)
+    logged = (tmp_path / "identity_implementations.jsonl").read_text()
+    assert saved["implementation_sha256"] in logged
+    # A prompt change is a protocol change and still refuses.
+    monkeypatch.setitem(bg.PROMPTS, "direct", "changed")
+    with pytest.raises(ValueError, match="identity.json"):
+        bg.run_generation(ROWS, {}, tmp_path, ["plain"], final_tokens=20, review_tokens=30, extraction_tokens=40)
