@@ -10,6 +10,8 @@ Gemma baseline/판정 감사/gate/Quick45/overnight와 Qwen 판별·512→1024 �
 사용자 마지막 로그는 `extract_verify 319/732`이며 실시간 서버 상태 확인은 아니다.
 **교수님 보고 (9/11 이후 요약, 2026-09-16):** [30](docs/30_advisor_report_2026-09-16.md).
 
+**현재 상태 정리 (2026-09-17):** 한 것·확정 결론·버린 가설·열린 질문·할 일·논문 갈래 — [32](docs/32_status_2026-09-17.md).
+
 **지식 결손 vs 순응 분해 (설계, 2026-09-16):** FPQ 실패를 "모른다"와 "알면서 순응"으로 갈라 내부 신호·개입이 어느 쪽에서 작동하는지 — [31](docs/31_knowledge_vs_deference.md).
 
 **문체 교란 검정 (2026-09-16):** text 0.755 > hidden 0.693이 출처 문체인지 전제인지 — 하한선·의역·쌍둥이 세 검정과 판독 기준은 [29](docs/29_style_confound_tests.md).
@@ -98,6 +100,7 @@ text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 
 
 | 파일 | 내용 |
 |---|---|
+| [docs/32_status_2026-09-17.md](docs/32_status_2026-09-17.md) | 9/17 현재 상태: 시간순 진행, 확정 결론 9개, 버린 가설, 데이터셋 입장, 열린 질문, 할 일, 논문 갈래, 문서 지도 |
 | [docs/31_knowledge_vs_deference.md](docs/31_knowledge_vs_deference.md) | FPQ 실패의 지식 결손/순응 분해 설계: 지식 라벨(K1 직접 질문 + K2 로짓, 교정문 대조), 2×2 표, 사전 판독, CREPE 병행 |
 | [docs/30_advisor_report_2026-09-16.md](docs/30_advisor_report_2026-09-16.md) | 9월 11일 이후 진행을 교수님 보고 형식으로: 모의 심사, Gemma 파일럿·판정 점검, 게이트·C 진단, Qwen suite, 문체 교란 검정, 일정 |
 | [docs/29_style_confound_tests.md](docs/29_style_confound_tests.md) | 문체 교란 검정 셋(문체 하한선·의역·쌍둥이)의 절차, 누출 규칙, 판독 기준, 같은 오탐 TPR 부록, claude 백엔드 |
