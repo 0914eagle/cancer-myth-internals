@@ -1,6 +1,6 @@
 # 31. 지식 결손 vs 순응: FPQ 실패의 분해 (설계, 2026-09-16)
 
-> 상태: 설계. 29 §7.2(쌍둥이 결과) 뒤에 나온 "probe의 상한은 모델 지식" 가설을 실험으로 바꾼 것. 실행 전.
+> 상태: 코드 완료(`scripts/probe_knowledge.py`), 9/17 `scripts/run_followups_0917.sh`로 GPU 1에서 실행. 산출물 `<suite>/knowledge/qwen25_7b/{knowledge.jsonl,labels.jsonl,report.md}`. 설계: 29 §7.2(쌍둥이 결과) 뒤에 나온 "probe의 상한은 모델 지식" 가설을 실험으로 바꾼 것. 실행 전.
 > 근거: 29 §7.2 판독 1·2(natural 게이트는 전제를 못 읽고, 문체 고정 쌍에서는 hidden 0.76 ≤ text 0.79),
 > 23·26(steering이 확률만 밀고 교정은 못 함), 28 §10.1(Well 0–5 판정, 진행 중).
 

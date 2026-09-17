@@ -62,3 +62,16 @@
 | Extract+FactCheck MiniCheck 판 | 732 + MiniCheck | 732 | 〃 | 선택 |
 | Terra 겹침 40 | 0 | 40 (codex 복귀 후) | 판정기 일치율 | 필수, 시점 미정 |
 | 조건부 steering | C 재구성 후 | FPQ+NFP | 원래 방법 | 31 결과와 C 검증 뒤 |
+
+## 5. 실행 (9/17)
+
+`scripts/run_followups_0917.sh` 하나가 tmux 한 창에서 nohup 두 개를 띄운다.
+
+| 작업 | GPU | 단계 | 산출물 |
+|---|---|---|---|
+| A | 0 | `fp_unconditional` 생성 732 → answers 내보내기 → Well 판정 계획(`well_judge_claude_fpu/`) → Sonnet 채점 루프(15분 재시도) → report | `answers/fp_unconditional.jsonl`, `well_judge_claude_fpu/report.md` |
+| B | 1 | 지식 검사(31) → CREPE clone·inspect·추출 → CREPE↔Cancer-Myth 전이 평가 | `knowledge/qwen25_7b/report.md`, `crepe/transfer/v1/report.md` |
+
+CREPE 라벨 필드는 자동 감지(`labels`에 /false/, 또는 비어 있지 않은 `presuppositions`)이며 감지 실패 시 B가 inspect 출력을 남기고 멈춘다.
+그때는 `--label-key/--positive-regex`를 넣어 `extract`와 `eval`을 손으로 잇는다. A의 채점은 본 배치(`well_judge_claude/`)와 같은
+구독 한도를 나눠 쓰므로 둘 다 느려질 수 있다.

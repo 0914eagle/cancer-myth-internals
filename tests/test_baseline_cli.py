@@ -56,7 +56,7 @@ def test_suite_cli_connects_generation_detection_features_and_evaluation(tmp_pat
     assert plan["calls_now"] == 0 and plan["shared_calls"] > 0
     report = well_eval.report(judge_out)
     assert report["attempted"] == 0 and report["unstarted"] == plan["unique_calls"]
-    assert len(report["methods"]) == 5
+    assert len(report["methods"]) == len(bg.METHODS)
     for sets in report["methods"].values():
         assert sets["fpq"]["expected"] == sets["nfp"]["expected"] == 45
         assert sets["fpq"]["valid"] == sets["nfp"]["valid"] == 0

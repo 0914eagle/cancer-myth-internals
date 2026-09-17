@@ -21,7 +21,7 @@ from src.config import load_config
 from src.jsonl import read_jsonl, write_jsonl
 from src.pilot import digest, frozen_json, file_digest, output_lock
 
-METHODS = ("plain", "zero_shot_cot", "fp_identification", "extract_verify", "premise_review")
+from src.baseline_generation import METHODS
 
 
 def gpu_guard():

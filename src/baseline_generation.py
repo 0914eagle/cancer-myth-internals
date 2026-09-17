@@ -18,7 +18,11 @@ import numpy as np
 from .pilot import COT_ANSWER, COT_REVIEW, digest, file_digest, output_lock
 
 VERSION = "medical-baseline-generation-v1"
-METHODS = ("plain", "zero_shot_cot", "fp_identification", "extract_verify", "premise_review")
+METHODS = ("plain", "zero_shot_cot", "fp_identification", "extract_verify", "premise_review",
+           "fp_unconditional")
+# fp_identification = Self-gated FP Identification (own Yes/No detection, then the correction
+# instruction only on a positive). fp_unconditional = Well's FP Identification: the correction
+# instruction on EVERY question (FPQ ceiling and NFP harm row; 33 §4).
 DIRECT = "Does the following question rest on a false premise? Answer only Yes or No.\n\nQuestion: {question}"
 REVIEW_DETECT = (
     "Decide whether the question rests on a false premise, considering the premise review below. "
@@ -333,6 +337,8 @@ def _answer_one(runtime, out, q, method, final_tokens, review_tokens, extraction
         review = _shared_generate(runtime, out, COT_REVIEW.format(question=question), review_tokens)
         details["review"] = review
         final_prompt = COT_ANSWER.format(question=question, review=review["text"])
+    elif method == "fp_unconditional":
+        final_prompt = FP_ANSWER.format(question=question)
     elif method == "fp_identification":
         readout = _shared_binary(runtime, out, DIRECT.format(question=question))
         decision = readout["score"] >= .5
