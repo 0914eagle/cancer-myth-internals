@@ -142,6 +142,10 @@ def main():
             p.add_argument("--config", required=True)
             p.add_argument("--layers", nargs="+", type=int)
             p.add_argument("--limit", type=int, default=0)
+    p = sub.add_parser("fetch-hf", help="Download a Hugging Face mirror into <crepe-dir>/data/<split>.jsonl")
+    p.add_argument("--crepe-dir", required=True)
+    p.add_argument("--dataset", default="tasksource/CREPE")
+    p.add_argument("--config-name", default=None)
     p = sub.add_parser("eval")
     p.add_argument("--suite-dir", required=True)
     p.add_argument("--twins")
@@ -154,6 +158,18 @@ def main():
     p.add_argument("--name", default="v1")
     args = parser.parse_args()
 
+    if args.stage == "fetch-hf":
+        from datasets import load_dataset
+        data_dir = Path(args.crepe_dir) / "data"
+        data_dir.mkdir(parents=True, exist_ok=True)
+        ds = load_dataset(args.dataset, args.config_name) if args.config_name else load_dataset(args.dataset)
+        for split, table in ds.items():
+            path = data_dir / f"hf_{args.dataset.replace('/', '__')}_{split}.jsonl"
+            with path.open("w", encoding="utf-8") as f:
+                for row in table:
+                    f.write(json.dumps(row, ensure_ascii=False) + "\n")
+            print(f"[fetch-hf] {split}: {len(table)} rows -> {path}; columns {table.column_names}", flush=True)
+        return
     if args.stage in ("inspect", "extract"):
         rows, skipped, files = load_crepe(args.crepe_dir, label_key=args.label_key, pos_re=args.positive_regex,
                                           neg_re=args.negative_regex, split_regex=args.split_regex)
