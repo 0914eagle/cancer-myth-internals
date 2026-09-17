@@ -159,7 +159,7 @@ def main():
                     hidden = torch.stack(o.hidden_states, 0)[:, 0].float().cpu().numpy()  # (L+1, T, d)
                 del o
                 arrays = {}
-                if r["kind"] == "isolated":
+                if r["kind"] in ("isolated", "isolated_clean"):
                     _, _, cs, ce = shift_span(rendered, r["text"], (0, len(r["text"])))
                     arrays["last"] = pool(hidden, [hidden.shape[1] - 1], "last")
                     arrays["mean"] = pool(hidden, token_positions(offsets, cs, ce), "mean")
