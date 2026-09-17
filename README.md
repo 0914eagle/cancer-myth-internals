@@ -10,6 +10,8 @@ Gemma baseline/판정 감사/gate/Quick45/overnight와 Qwen 판별·512→1024 �
 사용자 마지막 로그는 `extract_verify 319/732`이며 실시간 서버 상태 확인은 아니다.
 **교수님 보고 (9/11 이후 요약, 2026-09-16):** [30](docs/30_advisor_report_2026-09-16.md).
 
+**신호는 어디에 있나 (2026-09-17 저녁):** 전제 구간 hidden probe 0.97 vs 마지막 토큰 0.78, CREPE 전이(파이프라인 검증), 무조건 교정 행 57/5, 2×2 최종(실패의 90%는 아는 통념) — [34](docs/34_where_the_signal_lives.md).
+
 **Baseline 목록 (2026-09-17):** 선행 논문 방법 vs 우리가 돌린 것. Gemma 파일럿의 FP Identification(무조건)과 Qwen suite의 것(self-gated)이 다른 방법임을 명시 — [33](docs/33_baseline_inventory.md).
 
 **현재 상태 정리 (2026-09-17):** 한 것·확정 결론·버린 가설·열린 질문·할 일·논문 갈래 — [32](docs/32_status_2026-09-17.md).
@@ -102,6 +104,7 @@ text gate는 16.2/96.7, CoT는 34.2/100이었다. 이는 프롬프트 라우팅 
 
 | 파일 | 내용 |
 |---|---|
+| [docs/34_where_the_signal_lives.md](docs/34_where_the_signal_lives.md) | 위치×층 probe(구간 0.97 / 마지막 토큰 0.78), CREPE↔Cancer-Myth 전이, 무조건 FP 행, 2×2 최종, 토큰 스캔 게이트 제안 |
 | [docs/33_baseline_inventory.md](docs/33_baseline_inventory.md) | 선행 논문(Cancer-Myth, Well, Two Axes, Tripathi, CAST)의 방법 목록과 우리가 Gemma/Qwen에서 실제로 돌린 것, 빠진 행, 추가 후보와 비용 |
 | [docs/32_status_2026-09-17.md](docs/32_status_2026-09-17.md) | 9/17 현재 상태: 시간순 진행, 확정 결론 9개, 버린 가설, 데이터셋 입장, 열린 질문, 할 일, 논문 갈래, 문서 지도 |
 | [docs/31_knowledge_vs_deference.md](docs/31_knowledge_vs_deference.md) | FPQ 실패의 지식 결손/순응 분해 설계: 지식 라벨(K1 직접 질문 + K2 로짓, 교정문 대조), 2×2 표, 사전 판독, CREPE 병행 |

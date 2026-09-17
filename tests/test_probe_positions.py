@@ -36,8 +36,11 @@ def test_build_rows_maps_spans_and_pairs():
              {"id": "fpq_2", "set": "fpq", "question": "Q two text here", "premise_text": "short", "correction": "Correction statement number two."},
              {"id": "nfp_1", "set": "nfp", "question": "N one"}]
     e1 = [{"id": "e1_1", "question": "Q one text here", "premise_span": [2, 5]}, {"id": "e1_2", "question": "Q two text here", "premise_span": [0, 3]}]
-    twins = [{"id": "e1_1_true", "set": "tpair", "pair_id": "e1_1", "question": "Q ONE text here", "premise_span": [2, 5]},
-             {"id": "e1_1_fpara", "label_false_premise": 1, "pair_id": "e1_1", "question": "Q uno text here", "premise_span": [2, 5]}]
+    twins = [{"id": "e1_1_true", "set": "tpair", "pair_id": "e1_1", "question": "Q ONE text here", "premise_span": [2, 5], "replaced_with": "ONE"},
+             {"id": "e1_1_fpara", "label_false_premise": 1, "pair_id": "e1_1", "question": "Q uno text here", "premise_span": [2, 5], "replaced_with": "uno"}]
     rows = pp.build_rows(suite, e1, twins)
     kinds = sorted((r["kind"], r["label"], r["origin"]) for r in rows)
-    assert kinds == [("fpara", 1, "fpq_1"), ("isolated", 0, "fpq_1"), ("isolated", 1, "fpq_1"), ("natural", 1, "fpq_1"), ("twin", 0, "fpq_1")]
+    assert kinds == [("fpara", 1, "fpq_1"), ("isolated", 0, "fpq_1"), ("isolated", 1, "fpq_1"),
+                     ("isolated_clean", 0, "fpq_1"), ("isolated_clean", 1, "fpq_1"), ("natural", 1, "fpq_1"), ("twin", 0, "fpq_1")]
+    clean = {r["id"]: r["text"] for r in rows if r["kind"] == "isolated_clean"}
+    assert clean == {"fpq_1_fspan": "uno", "fpq_1_tspan": "ONE"}

@@ -85,6 +85,12 @@ def build_rows(suite_questions, e1_rows, twin_rows):
             twins[sid] = t
         elif t.get("label_false_premise") == 1:
             fparas[sid] = t
+    # isolated_clean: the two Sonnet-written spans as bare statements (false paraphrase span vs true twin span).
+    # The myth/correction pair is confounded by the correction field's "The presupposition is that ..." form.
+    for sid in twins:
+        if sid in fparas and twins[sid].get("replaced_with") and fparas[sid].get("replaced_with"):
+            rows.append({"id": f"{sid}_fspan", "kind": "isolated_clean", "label": 1, "origin": sid, "text": fparas[sid]["replaced_with"].strip()})
+            rows.append({"id": f"{sid}_tspan", "kind": "isolated_clean", "label": 0, "origin": sid, "text": twins[sid]["replaced_with"].strip()})
     for sid, e1 in e1_by_suite.items():
         if sid in twins:
             rows.append({"id": sid, "kind": "natural", "label": 1, "origin": sid, "text": suite[sid]["question"], "span": e1["premise_span"]})
@@ -210,6 +216,7 @@ def main():
         return res
 
     iso = [r for r in rows if r["kind"] == "isolated"]
+    iso_clean = [r for r in rows if r["kind"] == "isolated_clean"]
     nat = {r["origin"]: r for r in rows if r["kind"] == "natural"}
     twn = {r["origin"]: r for r in rows if r["kind"] == "twin"}
     fpa = {r["origin"]: r for r in rows if r["kind"] == "fpara"}
@@ -218,6 +225,8 @@ def main():
     results = {}
     for pos in POS_ISOLATED:
         results[("isolated", pos)] = cv(iso, pos); print(f"[positions] isolated/{pos} done", flush=True)
+        if iso_clean:
+            results[("isolated_clean", pos)] = cv(iso_clean, pos); print(f"[positions] isolated_clean/{pos} done", flush=True)
     for name, cond_rows in (("twins", twins_rows), ("edited", edited_rows)):
         for pos in POS_NARRATIVE:
             results[(name, pos)] = cv(cond_rows, pos); print(f"[positions] {name}/{pos} done", flush=True)
@@ -228,8 +237,34 @@ def main():
             for layer in layers:
                 res[layer] = fit_score(iso, cond_rows, pi, pn, layer)
             results[(f"isolated->{name}", f"{pi}->{pn}")] = res
+    # Lexical baselines on the SAME pairs: TF-IDF / style / masked on the span substring and on the whole question.
+    from src.baseline_gates import _fit_predict
+    def text_cv(cond_rows, field, kind):
+        groups = [r["origin"] for r in cond_rows]
+        aucs = []
+        for tr, te in GroupKFold(n_splits=args.folds).split(cond_rows, groups=groups):
+            def as_fit(idx):
+                return [{"id": cond_rows[i]["id"], "set": "fpq" if cond_rows[i]["label"] == 1 else "nfp",
+                         "question": field(cond_rows[i])} for i in idx]
+            train, test = as_fit(tr), as_fit(te)
+            y = [1 if r["set"] == "fpq" else 0 for r in test]
+            if len(set(y)) < 2 or len({1 if r["set"] == "fpq" else 0 for r in train}) < 2:
+                continue
+            aucs.append(float(roc_auc_score(y, _fit_predict(kind, train, test, features={}, layer=None, c=args.C if kind == "text" else 0.001, seed=args.seed))))
+        return float(np.mean(aucs)) if aucs else None
+    span_text = lambda r: r["text"][int(r["span"][0]):int(r["span"][1])]
+    whole = lambda r: r["text"]
+    lex = {}
+    for name, cond_rows in (("twins", twins_rows), ("edited", edited_rows)):
+        for kind in ("text", "style", "masked"):
+            lex[(name, f"{kind} on span text")] = text_cv(cond_rows, span_text, kind)
+            lex[(name, f"{kind} on whole question")] = text_cv(cond_rows, whole, kind)
+    if iso_clean:
+        for kind in ("text", "style", "masked"):
+            lex[("isolated_clean", f"{kind} on statement")] = text_cv(iso_clean, whole, kind)
     lines = [f"# Position x layer probes ({args.name}; C={args.C}, {args.folds}-fold by origin; AUROC mean over folds)", "",
-             f"isolated {len(iso)} rows ({len(iso)//2} myth/correction pairs); twins {len(twins_rows)//2} pairs; edited {len(edited_rows)//2} pairs", "",
+             f"isolated {len(iso)} rows ({len(iso)//2} myth/correction pairs; CONFOUNDED: corrections start 'The presupposition is that ...'); "
+             f"isolated_clean {len(iso_clean)//2} pairs (false span vs true span, both Sonnet-written); twins {len(twins_rows)//2} pairs; edited {len(edited_rows)//2} pairs", "",
              "| condition | position | best layer | best AUROC | " + " | ".join(f"L{l}" for l in layers) + " |",
              "|---|---|---|---|" + "|".join("---:" for _ in layers) + "|"]
     for (cond, pos), res in results.items():
@@ -237,6 +272,9 @@ def main():
         ok = [(l, v) for l, v in zip(layers, vals) if v is not None]
         best = max(ok, key=lambda x: x[1]) if ok else (None, None)
         lines.append(f"| {cond} | {pos} | {best[0]} | {best[1]:.3f} |" + "|".join(f" {v:.3f} " if v is not None else " NA " for v in vals) + "|")
+    lines += ["", "## Lexical floor on the same pairs (no hidden states)", "", "| condition | readout | AUROC |", "|---|---|---:|"]
+    for (cond, what), v in lex.items():
+        lines.append(f"| {cond} | {what} | {v:.3f} |" if v is not None else f"| {cond} | {what} | NA |")
     lines += ["", "Read: isolated says whether the model's state marks a myth as false at all (Marks&Tegmark-style). "
               "twins/edited at span_* vs last says where the signal dies inside the narrative. isolated->twins says whether the "
               "isolated falsity direction transfers to the embedded span. For reference, the last-token probe at L11/17/22 "
