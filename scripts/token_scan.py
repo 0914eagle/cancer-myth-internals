@@ -273,7 +273,8 @@ def main():
         lines += ["", f"Localization: S argmax token inside the premise span for {hit}/{tot} FPQ rows with a span ({hit / max(tot, 1):.1%}).", ""]
     lines += ["Read: S_max on natural and para says whether a span-trained scanner separates FPQ from NFP without any span; "
               "S_max on twins/edited says whether it separates truth alone; natural->crepe rows in 34 §2 are the last-token reference."]
-    frozen_json(out / "result.json", {"|".join(map(str, k)): v for k, v in results.items()})
+    # Derived from the cache; always overwritten (a frozen write refused a re-run on 9/17).
+    (out / "result.json").write_text(json.dumps({"|".join(map(str, k)): v for k, v in results.items()}, indent=2))
     (out / "report.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     print(f"Written to {out}. Judge calls: 0.")

@@ -279,7 +279,8 @@ def main():
               "twins/edited at span_* vs last says where the signal dies inside the narrative. isolated->twins says whether the "
               "isolated falsity direction transfers to the embedded span. For reference, the last-token probe at L11/17/22 "
               "with inner-CV C gave twins 0.754 / edited 0.764 (29 §7.2); text 0.767 / 0.790."]
-    frozen_json(out / "result.json", {"|".join(k): {str(l): v for l, v in res.items()} for k, res in results.items()})
+    # Derived from the cache; always overwritten (a frozen write refused a re-run on 9/17).
+    (out / "result.json").write_text(json.dumps({"|".join(k): {str(l): v for l, v in res.items()} for k, res in results.items()}, indent=2))
     (out / "report.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     print(f"Written to {out}. Judge calls: 0.")
