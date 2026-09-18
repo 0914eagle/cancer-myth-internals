@@ -66,7 +66,8 @@ def test_evaluation_rows_hold_out_partitions_and_add_twins_as_nfp_kind_twin():
     twins, _ = lt.map_twin_rows(TWINS, E1, SUITE)
     rows = lt.evaluation_rows(SUITE, twins, ("fit",))
     ids = [r["id"] for r in rows]
-    assert ids == ["fpq_3", "nfp_2", "e1_c_true"]
+    assert ids == ["fpq_3", "nfp_2", "nfp_1", "e1_c_true"]  # fit-partition NFP is evaluated too: never trained on
+    assert [lt.row_group(r) for r in rows] == ["fpq_dev", "nfp_test", "nfp_fit", "twin_dev"]
     twin = rows[-1]
     assert twin["set"] == "nfp" and twin["kind"] == "twin" and twin["partition"] == "dev" and twin["origin"] == "fpq_3"
     with pytest.raises(ValueError):

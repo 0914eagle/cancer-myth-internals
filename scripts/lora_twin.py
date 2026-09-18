@@ -199,12 +199,19 @@ def stage_generate(args):
             raise ValueError(f"No adapter at {adapter_dir}; run the train stage")
         original = bg.make_runtime
         bg.make_runtime = lambda c: _adapted_runtime(c, adapter_dir, original)  # the generation loop builds its runtime here
-    print(f"[generate] {args.which}: {len(rows)} rows ({which_rows}), budget {budget}, method {method}", flush=True)
-    bg.run_generation([{"id": r["id"], "question": r["question"]} for r in rows], cfg, gen_dir / "model", ["plain"], final_tokens=budget)
+    groups = {}
+    for r in rows:
+        groups.setdefault(lt.row_group(r), []).append(r)
+    print(f"[generate] {args.which}: {len(rows)} rows ({which_rows}) in groups "
+          f"{ {g: len(v) for g, v in groups.items()} }, budget {budget}, method {method}", flush=True)
     lookup = {r["id"]: r for r in rows}
-    records = bg.load_generation_records(gen_dir / "model", "plain")
-    exported = [{**rec, "method": method, "set": lookup[rec["id"]]["set"], "partition": lookup[rec["id"]]["partition"],
-                 "kind": lookup[rec["id"]].get("kind") or lookup[rec["id"]]["set"]} for rec in records]
+    exported = []
+    for group, members in sorted(groups.items()):
+        model_dir = gen_dir / f"model_{group}"
+        bg.run_generation([{"id": r["id"], "question": r["question"]} for r in members], cfg, model_dir, ["plain"], final_tokens=budget)
+        for rec in bg.load_generation_records(model_dir, "plain"):
+            q = lookup[rec["id"]]
+            exported.append({**rec, "method": method, "set": q["set"], "partition": q["partition"], "kind": q.get("kind") or q["set"]})
     with output_lock(gen_dir / "export"):
         lt.write_jsonl(gen_dir / "answers" / f"{method}.jsonl", exported)
     done = sum(r.get("status") == "complete" for r in exported)
