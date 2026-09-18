@@ -5,15 +5,15 @@
     #    answers to the training twins (GPU, ~200 generations); everything else is offline.
     CUDA_VISIBLE_DEVICES=0 python scripts/lora_twin.py data --suite-dir $SUITE_DIR --config configs/qwen25_7b.yaml \\
         --twins $ROWS/questions_twins.jsonl --e1-questions $ROWS/questions.jsonl \\
-        --well-dir $SUITE_DIR/well_judge_claude --out $OUT --negatives twins
+        --well-dir $SUITE_DIR/well_judge_claude_fpu --out $OUT --negatives twins
     # 2) train: LoRA on train.jsonl (GPU, minutes)
     CUDA_VISIBLE_DEVICES=0 python scripts/lora_twin.py train --config configs/qwen25_7b.yaml --out $OUT
     # 3) generate: Plain answers of base+adapter on the held-out rows, and of the BASE on held-out twins
     CUDA_VISIBLE_DEVICES=0 python scripts/lora_twin.py generate --config configs/qwen25_7b.yaml --out $OUT --which adapter
     CUDA_VISIBLE_DEVICES=0 python scripts/lora_twin.py generate --config configs/qwen25_7b.yaml --out $OUT --which base
     # 4) judge with the usual Well pipeline (claude backend), then
-    python scripts/lora_twin.py compare --out $OUT --baseline-well $SUITE_DIR/well_judge_claude \\
-        --lora-well $OUT/well_judge_claude
+    python scripts/lora_twin.py compare --out $OUT --lora-well $OUT/well_judge_claude \\
+        --baseline-well $SUITE_DIR/well_judge_claude $SUITE_DIR/well_judge_claude_fpu
 
 The control adapter (Well's FPQ-only LoRA) is the same pipeline with
 --negatives none and another --out. Judge calls: none in this script.
@@ -213,12 +213,14 @@ def stage_compare(args):
     eval_rows = list(read_jsonl(out / "eval_questions.jsonl"))
     ids = {r["id"] for r in eval_rows}
     score_sets = {}
-    for method in ("plain", "fp_unconditional"):
-        try:
-            scores = lt.judge_scores(args.baseline_well, method)
-        except ValueError:
-            continue
-        score_sets[method] = {q: s for q, s in scores.items() if q in ids}
+    for well in args.baseline_well:  # plain and fp_unconditional may live in different judge dirs
+        for method in ("plain", "fp_unconditional"):
+            try:
+                scores = lt.judge_scores(well, method)
+            except ValueError:
+                continue
+            merged = score_sets.setdefault(method, {})
+            merged.update({q: s for q, s in scores.items() if q in ids and s is not None})
     for well in args.lora_well:
         from src.well_eval import load_plan
         plan, _ = load_plan(well)
@@ -268,7 +270,8 @@ def main():
     p.add_argument("--suite-dir", help="read the frozen final token budget from here")
     p.add_argument("--final-tokens", type=int, default=1024)
     p = sub.add_parser("compare")
-    p.add_argument("--out", required=True); p.add_argument("--baseline-well", required=True)
+    p.add_argument("--out", required=True)
+    p.add_argument("--baseline-well", nargs="+", required=True, help="judge dirs holding plain / fp_unconditional scores")
     p.add_argument("--lora-well", nargs="+", default=[])
     args = ap.parse_args()
     {"data": stage_data, "train": stage_train, "generate": stage_generate, "compare": stage_compare}[args.stage](args)
