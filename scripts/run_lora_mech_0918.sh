@@ -5,13 +5,14 @@
 #   Chain L (GPU 1): twin LoRA data -> train -> generate (adapter, base twins) -> Sonnet judge loop
 #                    -> compare; then the FPQ-only control LoRA the same way.
 #                    => $SUITE_DIR/lora/{twin_v1,fpqonly_v1}/compare.md
-# Usage:  bash scripts/run_lora_mech_0918.sh          (SUITE_DIR must point at the final1024 suite; peft installed)
+# Usage:  nohup bash scripts/run_lora_mech_0918.sh > $ART/launcher_0918.log 2>&1 &
+#         (SUITE_DIR defaults to $ART/results/baselines/qwen25_7b_final1024_v1; peft must be in the uv venv: uv pip install peft)
 #         ONLY=L bash scripts/run_lora_mech_0918.sh   relaunch one chain (M or L); SKIP_EXTRACT=1 skips step 0
 # Logs:   $SUITE_DIR/logs/lora_mech_0918/{extract0,extract1,M_mechanism,L_lora}.log
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 source scripts/env.sh "${DATA_ROOT:-/data1/heejae}"
-export SUITE_DIR="${SUITE_DIR:?export SUITE_DIR=.../results/baselines/qwen25_7b_final1024_v1 first}"
+export SUITE_DIR="${SUITE_DIR:-$ART/results/baselines/qwen25_7b_final1024_v1}"   # the final1024 suite by default
 export ROWS="${ROWS:-$DATA/e1_rows_v1}"
 export JUDGE_MAX="${JUDGE_MAX:-1500}"
 export CFG=configs/qwen25_7b.yaml
@@ -20,7 +21,8 @@ test -s "$SUITE_DIR/questions.jsonl" || { echo "[error] $SUITE_DIR has no questi
 test -s "$ROWS/questions_twins.jsonl" || { echo "[error] $ROWS/questions_twins.jsonl missing" >&2; exit 2; }
 test -s "$SUITE_DIR/answers/fp_unconditional.jsonl" || { echo "[error] fp_unconditional answers missing" >&2; exit 2; }
 test -s "$SUITE_DIR/well_judge_claude_fpu/judge_plan.json" || { echo "[error] well_judge_claude_fpu (fp_unconditional scores) missing" >&2; exit 2; }
-python -c "import peft" 2>/dev/null || { echo "[error] pip install peft first" >&2; exit 2; }
+python -c "import peft" 2>/dev/null || { echo "[error] peft missing in $(command -v python); install into the uv venv: uv pip install peft" >&2; exit 2; }
+echo "[env] python $(command -v python); suite $SUITE_DIR"
 
 if [[ "${SKIP_EXTRACT:-0}" != "1" ]]; then
   echo "[0] mechanism extract on both GPUs $(date)"
