@@ -245,7 +245,7 @@ def stage_compare(args):
     lines, table = lt.s5_table(eval_rows, score_sets)
     header = [f"# Twin LoRA comparison ({out.name})", "",
               f"Evaluation rows {len(eval_rows)}: held-out suite FPQ/NFP plus true twins of held-out FPQ origins (judged with the NFP/TPQ template).",
-              "S5/all counts a score of 5 over ALL rows of the group (missing = not 5). Rescue/harm: rows that became 5 / stopped being 5 relative to plain.", ""]
+              "Rates are over ALL rows of the group (missing = not counted). FPQ: >=4 is the doc's 'clear correction' column; NFP/twin: S5 is 'natural', <=2 strong over-correction. Rescue/harm: rows that became 5 / stopped being 5 relative to plain.", ""]
     (out / "compare.md").write_text("\n".join(header + lines) + "\n")
     (out / "compare.json").write_text(json.dumps(table, indent=2) + "\n")
     print("\n".join(header + lines))
@@ -262,7 +262,7 @@ def main():
     p.add_argument("--well-dir", required=True, help="Well judge dir holding fp_unconditional scores")
     p.add_argument("--out", required=True)
     p.add_argument("--negatives", choices=lt.NEGATIVES, default="twins")
-    p.add_argument("--min-score", type=int, default=5, help="keep FPQ targets the judge scored at least this")
+    p.add_argument("--min-score", type=int, default=4, help="keep FPQ targets the judge scored at least this (4 = 'clear correction' in 28 §10.1; 5 keeps only 24%% of FPQ)")
     p.add_argument("--no-fpara", action="store_true", help="drop the false-paraphrase positives")
     p.add_argument("--train-partitions", nargs="+", default=["fit"])
     p.add_argument("--skip-generation", action="store_true", help="use cached twin Plain answers only")

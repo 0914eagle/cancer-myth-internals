@@ -178,33 +178,36 @@ def batches(n, batch_size, seed, epoch):
 
 def s5_table(questions, score_sets, *, plain_key="plain"):
     """questions: eval rows (id, set, partition, kind?). score_sets: {method: {id: score}}.
-    Returns markdown lines with S5/all per method for FPQ / NFP / twin, per partition,
-    and S5 rescue/harm against plain where both are scored."""
+    Markdown lines per method x (kind, partition): S5/all, >=4/all (28 §10.1 "clear
+    correction" for FPQ), <=2/all (strong over-correction for NFP/twins), mean 1-5,
+    and S5 rescue/harm against plain where both are scored. Missing = not counted."""
     groups = defaultdict(list)
     for q in questions:
         kind = q.get("kind") or q["set"]
         groups[(kind, "all")].append(q["id"])
         groups[(kind, q.get("partition", "?"))].append(q["id"])
-    lines = ["| Method | Rows | Partition | Valid/expected | S5/all | Mean 1-5 | Rescue/harm vs plain |", "|---|---|---|---:|---:|---:|---|"]
+    lines = ["| Method | Rows | Partition | Valid/expected | S5/all | >=4/all | <=2/all | Mean 1-5 | S5 rescue/harm vs plain |",
+             "|---|---|---|---:|---:|---:|---:|---:|---|"]
     out = {}
+    plain = score_sets.get(plain_key, {})
     for method, scores in score_sets.items():
         for (kind, part), ids in sorted(groups.items()):
-            vals = [scores.get(i) for i in ids]
-            valid = [v for v in vals if v is not None]
+            n = len(ids)
+            valid = [scores[i] for i in ids if scores.get(i) is not None]
             readable = [v for v in valid if 1 <= v <= 5]
-            s5 = sum(v == 5 for v in valid)
-            plain = score_sets.get(plain_key, {})
+            s5, ge4, le2 = sum(v == 5 for v in valid), sum(v >= 4 for v in valid), sum(1 <= v <= 2 for v in valid)
             paired = [i for i in ids if scores.get(i) is not None and plain.get(i) is not None]
             rescue = sum(scores[i] == 5 and plain[i] != 5 for i in paired)
             harm = sum(scores[i] != 5 and plain[i] == 5 for i in paired)
             mean = sum(readable) / len(readable) if readable else None
-            out[(method, kind, part)] = {"expected": len(ids), "valid": len(valid), "s5": s5,
-                                        "s5_over_all": s5 / len(ids) if ids else None, "mean": mean,
+            out[(method, kind, part)] = {"expected": n, "valid": len(valid), "s5": s5, "ge4": ge4, "le2": le2,
+                                        "s5_over_all": s5 / n if n else None, "ge4_over_all": ge4 / n if n else None,
+                                        "le2_over_all": le2 / n if n else None, "mean": mean,
                                         "rescue": rescue, "harm": harm, "paired": len(paired)}
-            pct = f"{100 * s5 / len(ids):.1f}%" if ids else "NA"
-            lines.append(f"| {method} | {kind} | {part} | {len(valid)}/{len(ids)} | {s5}/{len(ids)} ({pct}) | "
+            pct = lambda k: f"{k}/{n} ({100 * k / n:.1f}%)" if n else "NA"
+            lines.append(f"| {method} | {kind} | {part} | {len(valid)}/{n} | {pct(s5)} | {pct(ge4)} | {pct(le2)} | "
                          f"{mean:.2f} | {rescue}/{harm} ({len(paired)}) |" if mean is not None else
-                         f"| {method} | {kind} | {part} | {len(valid)}/{len(ids)} | {s5}/{len(ids)} ({pct}) | NA | {rescue}/{harm} ({len(paired)}) |")
+                         f"| {method} | {kind} | {part} | {len(valid)}/{n} | {pct(s5)} | {pct(ge4)} | {pct(le2)} | NA | {rescue}/{harm} ({len(paired)}) |")
     return lines, {"|".join(k): v for k, v in out.items()}
 
 

@@ -4,7 +4,7 @@
 #   Chain M (GPU 0): patch L17 -> patch L20 -> eval  => $SUITE_DIR/mechanism/mech_v1/report.md
 #   Chain L (GPU 1): twin LoRA data -> train -> generate (adapter, base twins) -> Sonnet judge loop
 #                    -> compare; then the FPQ-only control LoRA the same way.
-#                    => $SUITE_DIR/lora/{twin_v1,fpqonly_v1}/compare.md
+#                    => $SUITE_DIR/lora/{twin_$TAG,fpqonly_$TAG}/compare.md  (TAG defaults to s4: MIN_SCORE 4)
 # Usage:  nohup bash scripts/run_lora_mech_0918.sh > $ART/launcher_0918.log 2>&1 &
 #         (SUITE_DIR defaults to $ART/results/baselines/qwen25_7b_final1024_v1; peft must be in the uv venv: uv pip install peft)
 #         ONLY=L bash scripts/run_lora_mech_0918.sh   relaunch one chain (M or L); SKIP_EXTRACT=1 skips step 0
@@ -15,6 +15,8 @@ source scripts/env.sh "${DATA_ROOT:-/data1/heejae}"
 export SUITE_DIR="${SUITE_DIR:-$ART/results/baselines/qwen25_7b_final1024_v1}"   # the final1024 suite by default
 export ROWS="${ROWS:-$DATA/e1_rows_v1}"
 export JUDGE_MAX="${JUDGE_MAX:-1500}"
+export MIN_SCORE="${MIN_SCORE:-4}"     # FPQ targets: fp_unconditional answers the judge scored >= this (4 = clear correction)
+export TAG="${TAG:-s$MIN_SCORE}"       # run names twin_$TAG / fpqonly_$TAG
 export CFG=configs/qwen25_7b.yaml
 LOG="$SUITE_DIR/logs/lora_mech_0918"; mkdir -p "$LOG"
 test -s "$SUITE_DIR/questions.jsonl" || { echo "[error] $SUITE_DIR has no questions.jsonl" >&2; exit 2; }
@@ -65,7 +67,7 @@ run_one() {  # $1 = run name, $2 = negatives
   echo "[L:$1] data $(date)"
   CUDA_VISIBLE_DEVICES=1 python scripts/lora_twin.py data --suite-dir "$SUITE_DIR" --config "$CFG" \
     --twins "$ROWS/questions_twins.jsonl" --e1-questions "$ROWS/questions.jsonl" \
-    --well-dir "$SUITE_DIR/well_judge_claude_fpu" --out "$OUT" --negatives "$2" || return 1
+    --well-dir "$SUITE_DIR/well_judge_claude_fpu" --out "$OUT" --negatives "$2" --min-score "$MIN_SCORE" || return 1
   echo "[L:$1] train $(date)"
   CUDA_VISIBLE_DEVICES=1 python scripts/lora_twin.py train --config "$CFG" --out "$OUT" || return 1
   echo "[L:$1] generate adapter $(date)"
@@ -82,8 +84,8 @@ run_one() {  # $1 = run name, $2 = negatives
     --baseline-well "$SUITE_DIR/well_judge_claude" "$SUITE_DIR/well_judge_claude_fpu" || return 1
   echo "[L:$1] done $(date)  -> $OUT/compare.md"
 }
-run_one twin_v1 twins || { echo "[L] twin_v1 failed"; exit 1; }
-run_one fpqonly_v1 none || { echo "[L] fpqonly_v1 failed"; exit 1; }
+run_one "twin_$TAG" twins || { echo "[L] twin_$TAG failed"; exit 1; }
+run_one "fpqonly_$TAG" none || { echo "[L] fpqonly_$TAG failed"; exit 1; }
 echo "[L] all done $(date)"
 ' > "$LOG/L_lora.log" 2>&1 &
 echo "[L] pid $!  log $LOG/L_lora.log"

@@ -107,7 +107,8 @@ def test_s5_table_reports_per_kind_and_rescue_harm():
               "lora_x": {"f1": 5, "f2": 5, "n1": 3, "t1": None}}
     lines, table = lt.s5_table(rows, scores)
     fpq = table["lora_x|fpq|all"]
-    assert fpq["s5"] == 2 and fpq["rescue"] == 1 and fpq["harm"] == 0
+    assert fpq["s5"] == 2 and fpq["ge4"] == 2 and fpq["rescue"] == 1 and fpq["harm"] == 0
+    assert table["plain|fpq|all"] == {**table["plain|fpq|all"], "s5": 1, "ge4": 1, "le2": 1}
     assert table["lora_x|nfp|all"]["harm"] == 1 and table["lora_x|twin|all"]["valid"] == 0
     assert any(line.startswith("| lora_x | twin | dev |") for line in lines)
 
