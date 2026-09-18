@@ -56,8 +56,9 @@ def jaccard(a, b):
 
 
 def clean(t):
-    t = (t or "").strip().strip("\"'“”‘’ ")
-    return t.split("\n")[0].strip()
+    """First line of the reply, quotes stripped on both ends."""
+    t = (t or "").strip().split("\n")[0].strip()
+    return t.strip("\"'“”‘’ ")
 
 
 def build_rows(suite_questions, e1_rows, twin_rows, para_rows):
