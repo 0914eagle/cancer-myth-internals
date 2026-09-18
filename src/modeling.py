@@ -60,6 +60,8 @@ def load_causal_lm(
         }
         print(f"[model] max_memory -> {kwargs['max_memory']}", flush=True)
 
+    if model_cfg.get("attn_implementation"):
+        kwargs["attn_implementation"] = model_cfg["attn_implementation"]  # "eager" returns attention weights
     model = AutoModelForCausalLM.from_pretrained(
         model_cfg["model_id"],
         torch_dtype=torch_dtype(model_cfg.get("dtype", "bfloat16")),
