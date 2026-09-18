@@ -7,6 +7,11 @@ span->last-token transplant pilot. Judge calls 0.
     CUDA_VISIBLE_DEVICES=0 python scripts/mechanism_scan.py patch --suite-dir $SUITE_DIR --config configs/qwen25_7b.yaml --name mech_v1
     python scripts/mechanism_scan.py eval --suite-dir $SUITE_DIR --name mech_v1
 
+Two GPUs: extract with --shard 0/2 on GPU 0 and --shard 1/2 on GPU 1 (each
+shard takes its own lock and skips cached rows); patch with --layers 17 on one
+card and --layers 20 on the other (results land in patch_results_L{L}.json and
+eval merges every patch_results*.json).
+
 Rows: FPQ with a twin (span from E1), true twins, false paraphrases, NFP.
 extract (eager attention): per row and layer/head, attention mass from the
 last prompt token to the premise span (①); per-head attention output at the
@@ -57,6 +62,13 @@ def span_mass(attn_last, idx):
     return attn_last[:, :, idx].sum(axis=-1)
 
 
+def parse_shard(text):
+    k, n = (int(x) for x in str(text).split("/"))
+    if n < 1 or not 0 <= k < n:
+        raise ValueError(f"--shard must be k/n with 0 <= k < n, got {text!r}")
+    return k, n
+
+
 def build_rows(suite_questions, e1_rows, twin_rows):
     by_text = {normalized(q["question"]): q["id"] for q in suite_questions}
     e1_text = {r["id"]: normalized(r.get("question", "")) for r in e1_rows}
@@ -88,6 +100,16 @@ def build_rows(suite_questions, e1_rows, twin_rows):
     return rows
 
 
+def merge_patch_results(out):
+    """patch_results_L{L}.json per layer (plus a legacy patch_results.json) -> one dict, layers ascending."""
+    merged = {}
+    paths = sorted(Path(out).glob("patch_results_L*.json"), key=lambda p: int(p.stem.split("_L")[1]))
+    legacy = Path(out) / "patch_results.json"
+    for path in ([legacy] if legacy.exists() else []) + paths:
+        merged.update(json.loads(path.read_text()))
+    return merged
+
+
 def _load_runtime(config_path):
     from src import baseline_generation as bg
     from src.config import load_config
@@ -103,6 +125,7 @@ def main():
     p.add_argument("--suite-dir", required=True); p.add_argument("--config", required=True)
     p.add_argument("--e1-questions", required=True); p.add_argument("--twins", required=True)
     p.add_argument("--name", default="mech_v1"); p.add_argument("--limit", type=int, default=0)
+    p.add_argument("--shard", default="0/1", help="k/n: process rows k::n (run one process per GPU)")
     p = sub.add_parser("patch")
     p.add_argument("--suite-dir", required=True); p.add_argument("--config", required=True)
     p.add_argument("--name", default="mech_v1"); p.add_argument("--layers", nargs="+", type=int, default=[17, 20])
@@ -123,13 +146,17 @@ def main():
         rows = build_rows(suite["questions"], list(read_jsonl(args.e1_questions)), list(read_jsonl(args.twins)))
         if args.limit:
             rows = rows[:args.limit]
-        with (out / "rows.jsonl").open("w", encoding="utf-8") as f:
-            for r in rows:
-                f.write(json.dumps(r, ensure_ascii=False) + "\n")
+        rows_text = "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows)
+        rows_path = out / "rows.jsonl"
+        if rows_path.exists() and rows_path.read_text(encoding="utf-8") != rows_text:
+            raise ValueError(f"{rows_path} exists with different rows; use a new --name")
+        rows_path.write_text(rows_text, encoding="utf-8")
         kinds = defaultdict(int)
         for r in rows:
             kinds[r["kind"] + "/" + r["set"]] += 1
-        print(f"[mech] rows {len(rows)} {dict(kinds)}", flush=True)
+        k, n = parse_shard(args.shard)
+        rows = rows[k::n]
+        print(f"[mech] rows {sum(kinds.values())} {dict(kinds)}; shard {k}/{n} -> {len(rows)} rows", flush=True)
         runtime = _load_runtime(args.config)
         tok, model, torch = runtime.tokenizer, runtime.model, runtime.torch
         from src.modeling import decoder_layers
@@ -143,7 +170,7 @@ def main():
             return hook
         handles = [blk.self_attn.o_proj.register_forward_hook(make_hook(i)) for i, blk in enumerate(blocks)]
         try:
-            with output_lock(out / "extract"):
+            with output_lock(out / f"extract.shard{k}of{n}"):
                 for i, r in enumerate(rows, 1):
                     path = cache / f"{r['id']}.npz"
                     if path.exists():
@@ -202,60 +229,66 @@ def main():
         blocks = decoder_layers(model)
         results = {}
         for L in args.layers:
-            # direction from span means: false (natural FPQ + fpara) vs true (twin)
-            X, y = [], []
-            for a, b in pairs_twins + pairs_edited:
-                X.append(load(a)["resid_span_mean"][L - 1].astype(np.float32)); y.append(1)
-                X.append(load(b)["resid_span_mean"][L - 1].astype(np.float32)); y.append(0)
-            X = np.stack(X); sc = StandardScaler().fit(X)
-            clf = LogisticRegression(C=0.01, class_weight="balanced", max_iter=3000).fit(sc.transform(X), y)
-            d = clf.coef_[0] / sc.scale_  # back to raw space
-            d = d / np.linalg.norm(d)
-            proj_train = X @ d
-            mu, sd = proj_train.mean(), proj_train.std() + 1e-8
-            state = {"delta": None}
-            def hook(_m, _inp, output):
-                if state["delta"] is None:
-                    return output
-                h = output[0] if isinstance(output, tuple) else output
-                h[:, -1, :] = h[:, -1, :] + state["delta"].to(h.dtype)
-                return (h,) + tuple(output[1:]) if isinstance(output, tuple) else h
-            handle = blocks[L - 1].register_forward_hook(hook)
-            try:
-                d_t = torch.tensor(d, device=model.get_input_embeddings().weight.device, dtype=torch.float32)
-                eval_rows = [x for pr in pairs_twins for x in pr] + [x for pr in pairs_edited for x in pr] + nfp
-                seen = set(); uniq = []
-                for r in eval_rows:
-                    if r["id"] not in seen:
-                        seen.add(r["id"]); uniq.append(r)
-                scores = {a: {} for a in args.alphas}
-                for i, r in enumerate(uniq, 1):
-                    z = load(r)
-                    src = z["resid_span_mean"][L - 1] if not np.isnan(z["resid_span_mean"][L - 1]).any() else z["resid_q_mean"][L - 1]
-                    zscore = float((src.astype(np.float32) @ d - mu) / sd)
-                    hnorm = float(np.linalg.norm(z["resid_last"][L - 1].astype(np.float32)))
-                    for a in args.alphas:
-                        state["delta"] = None if a == 0 else (a * zscore * args.scale * hnorm) * d_t
-                        scores[a][r["id"]] = runtime.binary(DIRECT.format(question=r["text"]))["score"]
-                    if i % 50 == 0 or i == len(uniq):
-                        print(f"[patch] L{L} {i}/{len(uniq)}", flush=True)
-                state["delta"] = None
-            finally:
-                handle.remove()
-            for a in args.alphas:
-                sc_ = scores[a]
-                def auc(items):
-                    y_ = [lab for lab, _ in items]; s_ = [v for _, v in items]
-                    return float(roc_auc_score(y_, s_)) if len(set(y_)) == 2 else None
-                results[f"L{L}|alpha{a}"] = {
-                    "twins": auc([(1, sc_[x["id"]]) for x, _ in pairs_twins] + [(0, sc_[t["id"]]) for _, t in pairs_twins]),
-                    "edited": auc([(1, sc_[x["id"]]) for x, _ in pairs_edited] + [(0, sc_[t["id"]]) for _, t in pairs_edited]),
-                    "natural": auc([(1, sc_[x["id"]]) for x, _ in pairs_twins] + [(0, sc_[n["id"]]) for n in nfp]),
-                    "mean_p_yes_fpq": float(np.mean([sc_[x["id"]] for x, _ in pairs_twins])),
-                    "mean_p_yes_twin": float(np.mean([sc_[t["id"]] for _, t in pairs_twins])),
-                    "mean_p_yes_nfp": float(np.mean([sc_[n["id"]] for n in nfp])),
-                }
-        (out / "patch_results.json").write_text(json.dumps(results, indent=2))
+            if (out / f"patch_results_L{L}.json").exists():
+                print(f"[patch] L{L} already done; skipping", flush=True)
+                continue
+            with output_lock(out / f"patch_L{L}"):
+                # direction from span means: false (natural FPQ + fpara) vs true (twin)
+                X, y = [], []
+                for a, b in pairs_twins + pairs_edited:
+                    X.append(load(a)["resid_span_mean"][L - 1].astype(np.float32)); y.append(1)
+                    X.append(load(b)["resid_span_mean"][L - 1].astype(np.float32)); y.append(0)
+                X = np.stack(X); sc = StandardScaler().fit(X)
+                clf = LogisticRegression(C=0.01, class_weight="balanced", max_iter=3000).fit(sc.transform(X), y)
+                d = clf.coef_[0] / sc.scale_  # back to raw space
+                d = d / np.linalg.norm(d)
+                proj_train = X @ d
+                mu, sd = proj_train.mean(), proj_train.std() + 1e-8
+                state = {"delta": None}
+                def hook(_m, _inp, output):
+                    if state["delta"] is None:
+                        return output
+                    h = output[0] if isinstance(output, tuple) else output
+                    h[:, -1, :] = h[:, -1, :] + state["delta"].to(h.dtype)
+                    return (h,) + tuple(output[1:]) if isinstance(output, tuple) else h
+                handle = blocks[L - 1].register_forward_hook(hook)
+                try:
+                    d_t = torch.tensor(d, device=model.get_input_embeddings().weight.device, dtype=torch.float32)
+                    eval_rows = [x for pr in pairs_twins for x in pr] + [x for pr in pairs_edited for x in pr] + nfp
+                    seen = set(); uniq = []
+                    for r in eval_rows:
+                        if r["id"] not in seen:
+                            seen.add(r["id"]); uniq.append(r)
+                    scores = {a: {} for a in args.alphas}
+                    for i, r in enumerate(uniq, 1):
+                        z = load(r)
+                        src = z["resid_span_mean"][L - 1] if not np.isnan(z["resid_span_mean"][L - 1]).any() else z["resid_q_mean"][L - 1]
+                        zscore = float((src.astype(np.float32) @ d - mu) / sd)
+                        hnorm = float(np.linalg.norm(z["resid_last"][L - 1].astype(np.float32)))
+                        for a in args.alphas:
+                            state["delta"] = None if a == 0 else (a * zscore * args.scale * hnorm) * d_t
+                            scores[a][r["id"]] = runtime.binary(DIRECT.format(question=r["text"]))["score"]
+                        if i % 50 == 0 or i == len(uniq):
+                            print(f"[patch] L{L} {i}/{len(uniq)}", flush=True)
+                    state["delta"] = None
+                finally:
+                    handle.remove()
+                layer_results = {}
+                for a in args.alphas:
+                    sc_ = scores[a]
+                    def auc(items):
+                        y_ = [lab for lab, _ in items]; s_ = [v for _, v in items]
+                        return float(roc_auc_score(y_, s_)) if len(set(y_)) == 2 else None
+                    layer_results[f"L{L}|alpha{a}"] = {
+                        "twins": auc([(1, sc_[x["id"]]) for x, _ in pairs_twins] + [(0, sc_[t["id"]]) for _, t in pairs_twins]),
+                        "edited": auc([(1, sc_[x["id"]]) for x, _ in pairs_edited] + [(0, sc_[t["id"]]) for _, t in pairs_edited]),
+                        "natural": auc([(1, sc_[x["id"]]) for x, _ in pairs_twins] + [(0, sc_[n["id"]]) for n in nfp]),
+                        "mean_p_yes_fpq": float(np.mean([sc_[x["id"]] for x, _ in pairs_twins])),
+                        "mean_p_yes_twin": float(np.mean([sc_[t["id"]] for _, t in pairs_twins])),
+                        "mean_p_yes_nfp": float(np.mean([sc_[n["id"]] for n in nfp])),
+                    }
+                (out / f"patch_results_L{L}.json").write_text(json.dumps(layer_results, indent=2))
+            results.update(layer_results)
         print(json.dumps(results, indent=2))
         print(f"Written to {out}. Judge calls: 0.")
         return
@@ -314,9 +347,8 @@ def main():
     for l in (11, 17, 20):
         lines.append(f"| residual L{l} (reference) | {cv_auc(R[:, l - 1, :]):.3f} |")
     # ③ patch results if present
-    pr_path = out / "patch_results.json"
-    if pr_path.exists():
-        pr = json.loads(pr_path.read_text())
+    pr = merge_patch_results(out)
+    if pr:
         lines += ["", "## ③ Span->last transplant: DIRECT Yes/No readout AUROC", "",
                   "| layer | alpha | twins | edited | natural (FPQ vs NFP) | P(Yes) FPQ / twin / NFP |", "|---|---:|---:|---:|---:|---|"]
         for k, v in pr.items():
@@ -324,7 +356,7 @@ def main():
             f = lambda x: f"{x:.3f}" if x is not None else "NA"
             lines.append(f"| {Lk} | {ak[5:]} | {f(v['twins'])} | {f(v['edited'])} | {f(v['natural'])} | {v['mean_p_yes_fpq']:.2f} / {v['mean_p_yes_twin']:.2f} / {v['mean_p_yes_nfp']:.2f} |")
     else:
-        lines += ["", "(③ patch_results.json not found; run the patch stage)"]
+        lines += ["", "(③ no patch_results_L*.json found; run the patch stage)"]
     lines += ["", "Read: ① says whether the answer position even looks at the premise, and whether it looks differently at false vs true spans. "
               "② says whether any single head's output carries truth at the last token better than the whole residual (0.75-0.78). "
               "③: if the readout AUROC rises with alpha, the truth signal is computed at the span but not delivered; alpha=0 is the unpatched direct readout (~0.5)."]
