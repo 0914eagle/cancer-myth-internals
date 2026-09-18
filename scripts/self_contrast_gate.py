@@ -83,6 +83,28 @@ def build_rows(suite_questions, e1_rows, twin_rows, para_rows):
     return rows
 
 
+def crepe_rows(crepe_dir, max_n, seed=17):
+    """N CREPE false-presupposition questions (premise_text = first human-written presupposition) + N normal."""
+    fp, normal = [], []
+    for path in sorted(Path(crepe_dir).glob("data/hf_*.jsonl")):
+        for r in read_jsonl(path):
+            labels = [str(l).lower() for l in (r.get("labels") or [])]
+            q = (r.get("question") or "").strip()
+            if not q:
+                continue
+            if any("false" in l for l in labels):
+                pres = [p for p in (r.get("presuppositions") or []) if str(p).strip()]
+                if pres:
+                    fp.append({"id": f"crepe_fp_{r.get('id', len(fp))}", "kind": "crepe", "set": "fpq", "label": 1,
+                               "origin": f"crepe_fp_{r.get('id', len(fp))}", "question": q, "premise_text": str(pres[0]).strip()})
+            elif any("normal" in l for l in labels):
+                normal.append({"id": f"crepe_ok_{r.get('id', len(normal))}", "kind": "crepe", "set": "nfp", "label": 0,
+                               "origin": f"crepe_ok_{r.get('id', len(normal))}", "question": q, "premise_text": None})
+    rng = np.random.default_rng(seed)
+    pick = lambda xs: [xs[i] for i in sorted(rng.choice(len(xs), min(max_n, len(xs)), replace=False))]
+    return pick(fp) + pick(normal)
+
+
 def gate_score(p_a_belief_first, p_a_alt_first):
     """Mass on the alternative: order 'bf' (belief=A) -> 1 - P(A); order 'af' (alt=A) -> P(A)."""
     return ((1.0 - p_a_belief_first) + p_a_alt_first) / 2.0
@@ -95,6 +117,7 @@ def main():
     p.add_argument("--suite-dir", required=True); p.add_argument("--config", required=True)
     p.add_argument("--e1-questions", required=True); p.add_argument("--twins", required=True)
     p.add_argument("--paraphrases"); p.add_argument("--name", default="scg_v1")
+    p.add_argument("--crepe-dir"); p.add_argument("--crepe-max", type=int, default=0, help="add N CREPE false-presupposition + N normal questions")
     p.add_argument("--max-new-tokens", type=int, default=60); p.add_argument("--limit", type=int, default=0)
     p = sub.add_parser("eval")
     p.add_argument("--suite-dir", required=True); p.add_argument("--name", default="scg_v1")
@@ -111,8 +134,14 @@ def main():
         suite = load_suite(S)
         rows = build_rows(suite["questions"], list(read_jsonl(args.e1_questions)), list(read_jsonl(args.twins)),
                           list(read_jsonl(args.paraphrases)) if args.paraphrases else [])
+        if args.crepe_dir and args.crepe_max:
+            rows += crepe_rows(args.crepe_dir, args.crepe_max)
         if args.limit:
             rows = rows[:args.limit]
+        existing = {r["id"]: r for r in read_jsonl(out / "rows.jsonl")} if (out / "rows.jsonl").exists() else {}
+        for r in rows:
+            existing[r["id"]] = r
+        rows = list(existing.values())
         with (out / "rows.jsonl").open("w", encoding="utf-8") as f:
             for r in rows:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
@@ -162,6 +191,7 @@ def main():
         "twins (FPQ vs true twin)": [x for d in by_origin.values() if "twin" in d and "natural" in d and rows[d["natural"]]["set"] == "fpq" for x in (d["natural"], d["twin"])],
         "edited (false para vs true twin)": [x for d in by_origin.values() if "twin" in d and "fpara" in d for x in (d["fpara"], d["twin"])],
         "para (FPQ vs NFP, one writer)": [i for i, r in rows.items() if r["kind"] == "para"],
+        "crepe (false presupposition vs normal)": [i for i, r in rows.items() if r["kind"] == "crepe"],
     }
     lines += ["| eval set | AUROC | n |", "|---|---:|---:|"]
     for name, ids in sets.items():
@@ -171,6 +201,14 @@ def main():
     fpq = [i for i, r in rows.items() if r["kind"] == "natural" and r["set"] == "fpq" and r.get("premise_text")]
     jac = [jaccard(recs[i]["belief"], rows[i]["premise_text"]) for i in fpq if i in recs]
     lines += ["", f"Belief vs annotated myth (natural FPQ, content-word Jaccard): median {np.median(jac):.2f}; share >= 0.25: {np.mean(np.asarray(jac) >= 0.25):.1%}; share >= 0.5: {np.mean(np.asarray(jac) >= 0.5):.1%}", ""]
+    cfp = [i for i, r in rows.items() if r["kind"] == "crepe" and r["label"] == 1 and r.get("premise_text") and i in recs]
+    if cfp:
+        cj = np.asarray([jaccard(recs[i]["belief"], rows[i]["premise_text"]) for i in cfp])
+        lines += [f"Belief vs human presupposition (CREPE false-presupposition questions, n={len(cfp)}): median {np.median(cj):.2f}; share >= 0.25: {np.mean(cj >= 0.25):.1%}; share >= 0.5: {np.mean(cj >= 0.5):.1%}", ""]
+        lines += ["CREPE examples (presupposition | belief | alt | score):"]
+        for i in cfp[:8]:
+            e = recs[i]; lines.append(f"- {rows[i]['premise_text'][:80]!r} | {e['belief'][:90]!r} | {e['alternative'][:70]!r} | {e.get('score')}")
+        lines.append("")
     # routing with judged answers
     def well_scores(d):
         d = Path(d)
