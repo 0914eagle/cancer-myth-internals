@@ -99,7 +99,11 @@ def stage_train(args):
         raise ValueError("train.jsonl differs from data_summary.json; rerun the data stage")
     adapter_dir = out / "adapter"
     if (adapter_dir / "adapter_config.json").exists():
-        raise ValueError(f"Adapter already exists at {adapter_dir}; use another --out")
+        trained = json.loads((out / "train_identity.json").read_text())
+        if trained.get("data_hash") != summary["data_hash"]:
+            raise ValueError(f"Adapter at {adapter_dir} was trained on different data; use another --out")
+        print(f"[train] adapter already trained on this data at {adapter_dir}; skipping. Judge calls: 0.")
+        return
     from peft import LoraConfig, get_peft_model
     import peft
     cfg = load_config(args.config)
@@ -163,10 +167,10 @@ def stage_train(args):
     print(f"Adapter saved to {adapter_dir} ({total} steps). Judge calls: 0.")
 
 
-def _adapted_runtime(cfg, adapter_dir):
-    from src import baseline_generation as bg
+def _adapted_runtime(cfg, adapter_dir, make_runtime):
+    """make_runtime is the ORIGINAL factory (captured before patching, or this recurses)."""
     from peft import PeftModel
-    runtime = bg.make_runtime(cfg)
+    runtime = make_runtime(cfg)
     merged = PeftModel.from_pretrained(runtime.model, str(adapter_dir)).merge_and_unload()
     merged.eval()
     runtime.model = merged
@@ -193,7 +197,8 @@ def stage_generate(args):
         adapter_dir = out / "adapter"
         if not (adapter_dir / "adapter_config.json").exists():
             raise ValueError(f"No adapter at {adapter_dir}; run the train stage")
-        bg.make_runtime = lambda c, _cfg=cfg: _adapted_runtime(_cfg, adapter_dir)  # the generation loop builds its runtime here
+        original = bg.make_runtime
+        bg.make_runtime = lambda c: _adapted_runtime(c, adapter_dir, original)  # the generation loop builds its runtime here
     print(f"[generate] {args.which}: {len(rows)} rows ({which_rows}), budget {budget}, method {method}", flush=True)
     bg.run_generation([{"id": r["id"], "question": r["question"]} for r in rows], cfg, gen_dir / "model", ["plain"], final_tokens=budget)
     lookup = {r["id"]: r for r in rows}

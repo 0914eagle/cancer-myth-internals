@@ -132,3 +132,30 @@ def test_cli_stages_exist():
     cli = importlib.util.module_from_spec(spec); spec.loader.exec_module(cli)
     for name in ("stage_data", "stage_train", "stage_generate", "stage_compare"):
         assert callable(getattr(cli, name))
+
+
+def test_adapted_runtime_uses_the_original_factory(monkeypatch, tmp_path):
+    """Regression: patching bg.make_runtime with a wrapper that itself called bg.make_runtime recursed forever."""
+    import importlib.util
+    import sys
+    from types import SimpleNamespace
+    spec = importlib.util.spec_from_file_location("cli2", Path(__file__).resolve().parents[1] / "scripts" / "lora_twin.py")
+    cli = importlib.util.module_from_spec(spec); spec.loader.exec_module(cli)
+    calls = []
+
+    class FakePeftModel:
+        @staticmethod
+        def from_pretrained(model, path):
+            calls.append(("peft", path))
+            return SimpleNamespace(merge_and_unload=lambda: SimpleNamespace(eval=lambda: None, merged=True))
+    monkeypatch.setitem(sys.modules, "peft", SimpleNamespace(PeftModel=FakePeftModel))
+    adapter = tmp_path / "adapter"; adapter.mkdir()
+    (adapter / "adapter_model.safetensors").write_bytes(b"x")
+    (tmp_path / "train_identity.json").write_text("{}")
+
+    def original(cfg):
+        calls.append(("original", cfg))
+        return SimpleNamespace(model="base", identity={"model": "fake"})
+    runtime = cli._adapted_runtime({"c": 1}, adapter, original)
+    assert calls[0] == ("original", {"c": 1}) and runtime.model.merged
+    assert runtime.identity["adapter"]["path"] == str(adapter)
