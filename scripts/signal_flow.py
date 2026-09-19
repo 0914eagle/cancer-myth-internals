@@ -196,6 +196,7 @@ def stage_patch(args, out):
             base_f = _proj(zf["last"], D, Cc, fold); base_t = _proj(zt["last"], D, Cc, fold)
             delta_all = zt["span_mean"].astype(np.float32) - zf["span_mean"].astype(np.float32)  # (L, d)
             patched = np.full((len(blocks), len(blocks)), np.nan, np.float32)  # [patch layer-1, readout layer-1]
+            patched_last = np.zeros((len(blocks), len(blocks), delta_all.shape[1]), np.float16)  # full last-token states
             p_yes = np.full(len(blocks), np.nan, np.float32)
             device = model.get_input_embeddings().weight.device
             for L in layers:
@@ -208,9 +209,11 @@ def stage_patch(args, out):
                     state["delta"] = None
                     handle.remove()
                 patched[L - 1] = _proj(hid[:, -1, :], D, Cc, fold)
+                patched_last[L - 1] = hid[:, -1, :].astype(np.float16)
                 p_yes[L - 1] = py
             np.savez_compressed(path, base_fpq=base_f, base_twin=base_t, p_yes_fpq=zf["p_yes"], p_yes_twin=zt["p_yes"],
-                                patched=patched, p_yes_patched=p_yes, layers=np.asarray(layers))
+                                patched=patched, patched_last=patched_last, p_yes_patched=p_yes, layers=np.asarray(layers),
+                                fold=np.asarray(fold), last_fpq=zf["last"], last_twin=zt["last"])
             if i % 10 == 0 or i == len(pairs):
                 print(f"[patch] {i}/{len(pairs)} pairs", flush=True)
     print(f"Written to {out}. Judge calls: 0.")
@@ -269,6 +272,21 @@ def stage_eval(args, out):
                 nat[(l, b)] = sf.auroc([1] * len(s_f) + [0] * len(s_n), s_f + s_n) if s_f and s_n else None
         lines += [""] + sf.heatmap_lines([f"L{l + 1}" for l in range(L)], ["pre", "q_before", "post", "last"], nat,
                                          "B2. Same direction, natural FPQ vs NFP (NFP has no span: q_before = whole question)")
+    # last-token directions (FPQ vs twin at the answer position), 2-fold by origin: the "0.78-type" probe
+    E = np.zeros_like(D); Ec = np.zeros_like(Cc)
+    for fold in range(2):
+        tr = [(a, t) for a, t in pairs if sf.fold_of(a["origin"]) != fold]
+        Xp = np.stack([fit(a)["last"].astype(np.float32) for a, _ in tr]); Xn = np.stack([fit(t)["last"].astype(np.float32) for _, t in tr])
+        for l in range(L):
+            E[fold, l], Ec[fold, l] = sf.fit_direction(Xp[:, l], Xn[:, l], C=0.01)
+    lines += ["", "## A2. Last-token direction e_l (fitted at the answer position, 2-fold): held-out AUROC per layer", "",
+              "| layer | last token (twins) | last token (natural FPQ vs NFP) |", "|---|---:|---:|"]
+    for l in range(L):
+        s_f = [_proj(fit(a)["last"], E, Ec, sf.fold_of(a["origin"]))[l] for a in fpq]
+        s_t = [_proj(fit(t)["last"], E, Ec, sf.fold_of(t["origin"]))[l] for _, t in pairs]
+        s_n = [_proj(fit(r)["last"], E, Ec, sf.fold_of(r["origin"]))[l] for r in nfp]
+        a1 = sf.auroc([1] * len(s_f) + [0] * len(s_t), s_f + s_t); a2 = sf.auroc([1] * len(s_f) + [0] * len(s_n), s_f + s_n)
+        lines.append(f"| L{l + 1} | {'NA' if a1 is None else f'{a1:.3f}'} | {'NA' if a2 is None else f'{a2:.3f}'} |")
     # C. patch
     patch_dir = out / "cache_patch"
     if patch_dir.exists() and any(patch_dir.iterdir()):
@@ -289,6 +307,25 @@ def stage_eval(args, out):
                 cells.append(f"{np.median(tf):.2f}" if tf else "NA")
             ppatched = float(np.nanmean([z["p_yes_patched"][Lp - 1] for z in Z]))
             lines.append(f"| L{Lp} | " + " | ".join(cells) + f" | {pf:.2f} -> {ppatched:.2f} ({pt:.2f}) |")
+        if "patched_last" in Z[0].files:
+            lines += ["", "## C2. Same patching, read along the LAST-TOKEN direction e_R (the axis that separates FPQ from twin at the answer position)", "",
+                      "| patch L | " + " | ".join(f"R{r}" for r in readouts) + " |", "|---|" + "---:|" * len(readouts)]
+            for Lp in layers:
+                cells = []
+                for R in readouts:
+                    if R < Lp:
+                        cells.append("-"); continue
+                    tf = []
+                    for z in Z:
+                        fold = int(z["fold"])
+                        pr = float((z["patched_last"][Lp - 1, R - 1].astype(np.float32) - Ec[fold, R - 1]) @ E[fold, R - 1])
+                        bf = float((z["last_fpq"][R - 1].astype(np.float32) - Ec[fold, R - 1]) @ E[fold, R - 1])
+                        bt = float((z["last_twin"][R - 1].astype(np.float32) - Ec[fold, R - 1]) @ E[fold, R - 1])
+                        v = sf.transfer_fraction(np.array(pr), np.array(bf), np.array(bt))
+                        if np.isfinite(v):
+                            tf.append(float(v))
+                    cells.append(f"{np.median(tf):.2f}" if tf else "NA")
+                lines.append(f"| L{Lp} | " + " | ".join(cells) + " |")
     lines += ["", "Read: A shows how much of the span's truth signal is linearly present at the answer position per layer. "
               "B shows where along the prompt it lives and where it fades. C shows whether writing the twin's span state into the FPQ at layer L "
               "moves the answer position toward the twin (transfer near 1 at some R) and whether the Yes/No readout follows."]
