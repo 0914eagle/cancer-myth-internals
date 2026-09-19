@@ -72,10 +72,26 @@ def stage_data(args):
         twin_answers = {r["id"]: r["response"] for r in bg.load_generation_records(gen_dir, "plain")
                         if r.get("status") == "complete" and isinstance(r.get("response"), str)}
         print(f"[data] twin Plain answers available: {len(twin_answers)}/{len(rows)}", flush=True)
-    train_rows, summary = lt.assemble_training(
-        questions, twins, fparas, fp_answers, fp_scores, twin_answers,
-        train_partitions=args.train_partitions, negatives=args.negatives,
-        min_score=args.min_score, fpara_positives=not args.no_fpara)
+    if args.objective == "dpo":
+        if args.negatives != "twins":
+            raise ValueError("DPO pairs need twins")
+        plain_answers = lt.read_answers(Path(args.suite_dir) / "answers" / "plain.jsonl")
+        fpu_dir = out / "twin_fpu"
+        if not args.skip_generation:
+            print(f"[data] generating fp_unconditional (rejected) answers for {len(rows)} training twins", flush=True)
+            bg.run_generation(rows, load_config(args.config), fpu_dir, ["fp_unconditional"], final_tokens=budget)
+        twin_fpu = {r["id"]: r["response"] for r in bg.load_generation_records(fpu_dir, "fp_unconditional")
+                    if r.get("status") == "complete" and isinstance(r.get("response"), str)}
+        print(f"[data] twin fp_unconditional answers available: {len(twin_fpu)}/{len(rows)}", flush=True)
+        train_rows, summary = lt.assemble_dpo(
+            questions, twins, fp_answers, fp_scores, plain_answers, twin_answers, twin_fpu,
+            train_partitions=args.train_partitions, min_score=args.min_score)
+    else:
+        train_rows, summary = lt.assemble_training(
+            questions, twins, fparas, fp_answers, fp_scores, twin_answers,
+            train_partitions=args.train_partitions, negatives=args.negatives,
+            min_score=args.min_score, fpara_positives=not args.no_fpara)
+        summary["objective"] = "sft"
     eval_rows = lt.evaluation_rows(questions, twins, args.train_partitions)
     with output_lock(out / "data"):
         lt.write_jsonl(out / "train.jsonl", train_rows)
@@ -120,13 +136,22 @@ def stage_train(args):
                       target_modules=args.targets, bias="none", task_type="CAUSAL_LM")
     model = get_peft_model(model, lcfg)
     model.print_trainable_parameters()
+    objective = summary.get("objective", "sft")
+    if args.lr is None:
+        args.lr = 1e-4 if objective == "sft" else 5e-5
     examples, truncated = [], 0
     for r in rows:
-        ids, labels, cut = lt.encode_example(tok, render, r["question"], r["target"], args.max_len)
-        truncated += cut
-        examples.append((ids, labels))
-    print(f"[train] {len(examples)} examples; {truncated} truncated to {args.max_len}; "
-          f"max length {max(len(i) for i, _ in examples)}", flush=True)
+        if objective == "dpo":
+            c = lt.encode_example(tok, render, r["question"], r["chosen"], args.max_len)
+            j = lt.encode_example(tok, render, r["question"], r["rejected"], args.max_len)
+            truncated += c[2] + j[2]
+            examples.append(((c[0], c[1]), (j[0], j[1])))
+        else:
+            ids, labels, cut = lt.encode_example(tok, render, r["question"], r["target"], args.max_len)
+            truncated += cut
+            examples.append((ids, labels))
+    longest = max(len(e[0][0]) if objective == "dpo" else len(e[0]) for e in examples)
+    print(f"[train] {objective}: {len(examples)} examples; {truncated} truncated to {args.max_len}; max length {longest}", flush=True)
     params = [p for p in model.parameters() if p.requires_grad]
     opt = torch.optim.AdamW(params, lr=args.lr, weight_decay=0.0, betas=(0.9, 0.999))
     per_epoch = math.ceil(len(examples) / (args.batch * args.grad_accum))
@@ -135,21 +160,49 @@ def stage_train(args):
     sched = get_cosine_schedule_with_warmup(opt, max(1, int(args.warmup * total)), total)
     device = model.get_input_embeddings().weight.device
     identity = {"version": lt.VERSION, "base": m, "data_hash": summary["data_hash"], "data_summary": summary,
+                "objective": objective,
                 "hyperparams": {k: getattr(args, k) for k in ("r", "alpha", "dropout", "targets", "lr", "epochs", "batch",
-                                                              "grad_accum", "max_len", "seed", "warmup", "gradient_checkpointing")},
+                                                              "grad_accum", "max_len", "seed", "warmup", "gradient_checkpointing", "beta")},
                 "steps": total, "peft_version": peft.__version__, "torch_version": torch.__version__}
     frozen_json(out / "train_identity.json", identity)
     log = (out / "train_log.jsonl").open("w", encoding="utf-8")
+
+    def seq_logprob(ids, labels):
+        """Sum of log p(token) over supervised (label != -100) positions; one sequence."""
+        x = torch.tensor([ids], device=device); y = torch.tensor([labels], device=device)
+        logits = model(input_ids=x, attention_mask=torch.ones_like(x)).logits[:, :-1].float()
+        tgt = y[:, 1:]
+        mask = tgt != -100
+        lp = torch.log_softmax(logits, -1).gather(-1, tgt.clamp(min=0).unsqueeze(-1)).squeeze(-1)
+        return (lp * mask).sum()
+
+    ref = []
+    if objective == "dpo":
+        model.eval()
+        with torch.no_grad(), model.disable_adapter():
+            for i, (c, j) in enumerate(examples, 1):
+                ref.append((float(seq_logprob(*c)), float(seq_logprob(*j))))
+                if i % 50 == 0 or i == len(examples):
+                    print(f"[train] reference log-probs {i}/{len(examples)}", flush=True)
     model.train()
     step, t0 = 0, time.time()
     with output_lock(out / "train"):
         for epoch in range(args.epochs):
             groups = lt.batches(len(examples), args.batch, args.seed, epoch)
-            running, count = 0.0, 0
+            running, count, wins = 0.0, 0, 0
             for gi, group in enumerate(groups, 1):
-                batch = lt.pad_batch([examples[i] for i in group], tok.pad_token_id)
-                tensors = {k: torch.tensor(v, device=device) for k, v in batch.items()}
-                loss = model(**tensors).loss / args.grad_accum
+                if objective == "dpo":
+                    loss = 0.0
+                    for i in group:
+                        (c, j), (rc, rj) = examples[i], ref[i]
+                        margin = (seq_logprob(*c) - rc) - (seq_logprob(*j) - rj)
+                        loss = loss - torch.nn.functional.logsigmoid(args.beta * margin)
+                        wins += int(margin.item() > 0)
+                    loss = loss / (len(group) * args.grad_accum)
+                else:
+                    batch = lt.pad_batch([examples[i] for i in group], tok.pad_token_id)
+                    tensors = {k: torch.tensor(v, device=device) for k, v in batch.items()}
+                    loss = model(**tensors).loss / args.grad_accum
                 loss.backward()
                 running += float(loss) * args.grad_accum; count += 1
                 if gi % args.grad_accum == 0 or gi == len(groups):
@@ -159,9 +212,11 @@ def stage_train(args):
                     if step % args.log_every == 0 or step == total:
                         entry = {"epoch": epoch, "step": step, "of": total, "loss": running / count,
                                  "lr": sched.get_last_lr()[0], "elapsed_s": round(time.time() - t0, 1)}
+                        if objective == "dpo":
+                            entry["pref_acc"] = wins / max(1, count * args.batch)
                         log.write(json.dumps(entry) + "\n"); log.flush()
                         print(f"[train] {json.dumps(entry)}", flush=True)
-                        running, count = 0.0, 0
+                        running, count, wins = 0.0, 0, 0
         model.save_pretrained(adapter_dir)
     log.close()
     print(f"Adapter saved to {adapter_dir} ({total} steps). Judge calls: 0.")
@@ -266,11 +321,14 @@ def main():
     p.add_argument("--no-fpara", action="store_true", help="drop the false-paraphrase positives")
     p.add_argument("--train-partitions", nargs="+", default=["fit"])
     p.add_argument("--skip-generation", action="store_true", help="use cached twin Plain answers only")
+    p.add_argument("--objective", choices=("sft", "dpo"), default="sft",
+                   help="sft: question -> target rows. dpo: (chosen, rejected) pairs per origin; generates the twins' fp_unconditional answers as rejected samples")
     p = sub.add_parser("train")
     p.add_argument("--config", required=True); p.add_argument("--out", required=True)
     p.add_argument("--r", type=int, default=16); p.add_argument("--alpha", type=int, default=32)
     p.add_argument("--dropout", type=float, default=0.05); p.add_argument("--targets", nargs="+", default=DEFAULT_TARGETS)
-    p.add_argument("--lr", type=float, default=1e-4); p.add_argument("--epochs", type=int, default=3)
+    p.add_argument("--lr", type=float, default=None, help="default 1e-4 (sft) / 5e-5 (dpo)"); p.add_argument("--epochs", type=int, default=3)
+    p.add_argument("--beta", type=float, default=0.1, help="DPO temperature")
     p.add_argument("--batch", type=int, default=1); p.add_argument("--grad-accum", type=int, default=8)
     p.add_argument("--max-len", type=int, default=1536); p.add_argument("--seed", type=int, default=17)
     p.add_argument("--warmup", type=float, default=0.05); p.add_argument("--log-every", type=int, default=5)

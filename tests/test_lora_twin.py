@@ -161,3 +161,29 @@ def test_adapted_runtime_uses_the_original_factory(monkeypatch, tmp_path):
     runtime = cli._adapted_runtime({"c": 1}, adapter, original)
     assert calls[0] == ("original", {"c": 1}) and runtime.model.merged
     assert runtime.identity["adapter"]["path"] == str(adapter)
+
+
+def test_assemble_dpo_builds_one_fpq_and_one_twin_pair_per_origin():
+    twins, _ = lt.map_twin_rows(TWINS, E1, SUITE)
+    fp = {"fpq_1": "corrected 1", "fpq_2": "corrected 2"}
+    scores = {"fpq_1": 5, "fpq_2": 3}
+    plain = {"fpq_1": "follows 1", "fpq_2": "follows 2"}
+    twin_plain = {"e1_a_true": "normal a", "e1_b_true": "normal b"}
+    twin_fpu = {"e1_a_true": "over-corrected a"}  # e1_b_true missing
+    rows, summary = lt.assemble_dpo(SUITE, twins, fp, scores, plain, twin_plain, twin_fpu)
+    assert [(r["kind"], r["chosen"], r["rejected"]) for r in rows] == [
+        ("fpq", "corrected 1", "follows 1"), ("twin", "normal a", "over-corrected a")]
+    assert summary["objective"] == "dpo" and summary["kinds"] == {"fpq": 1, "twin": 1}
+    assert summary["dropped"] == {"fp_answer_below_min_score": 1}
+    rows2, summary2 = lt.assemble_dpo(SUITE, twins, fp, {"fpq_1": 5, "fpq_2": 5}, plain, twin_plain, twin_fpu)
+    assert summary2["dropped"] == {"missing_answer": 1} and len(rows2) == 2
+
+
+def test_dpo_loss_prefers_chosen_and_is_symmetric_at_zero_margin():
+    import math
+    loss0, margin0 = lt.dpo_loss(-10, -10, -10, -10)
+    assert margin0 == 0 and loss0 == pytest.approx(math.log(2))
+    good, m_good = lt.dpo_loss(-5, -20, -10, -10, beta=0.1)
+    bad, m_bad = lt.dpo_loss(-20, -5, -10, -10, beta=0.1)
+    assert m_good == 15 and m_bad == -15 and good < math.log(2) < bad
+    assert lt.dpo_loss(-5, -20, -10, -10, beta=1.0)[0] < good  # larger beta sharpens

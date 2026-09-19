@@ -115,6 +115,57 @@ def assemble_training(suite_questions, twins, fparas, fp_answers, fp_scores, twi
     return rows, summary
 
 
+def assemble_dpo(suite_questions, twins, fp_answers, fp_scores, plain_answers, twin_answers, twin_fpu_answers, *,
+                 train_partitions=("fit",), min_score=4):
+    """Preference pairs, balanced by construction (one FPQ pair + one twin pair per origin):
+      fpq   question -> chosen = own fp_unconditional answer (judge >= min_score), rejected = own Plain answer
+      twin  question -> chosen = own Plain answer,                                  rejected = own fp_unconditional answer
+    The two pairs of an origin differ only in the premise span, so the preferred
+    behaviour flips with the span's truth and nothing else."""
+    fpq_train, _ = split_origins(suite_questions, train_partitions)
+    by_id = {q["id"]: q for q in suite_questions}
+    rows, dropped = [], Counter()
+
+    def ok(text):
+        return isinstance(text, str) and bool(text.strip())
+    for origin in sorted(fpq_train):
+        if origin not in twins:
+            dropped["no_twin"] += 1
+            continue
+        t = twins[origin]
+        chosen_f, rejected_f = fp_answers.get(origin), plain_answers.get(origin)
+        chosen_t, rejected_t = twin_answers.get(t["id"]), twin_fpu_answers.get(t["id"])
+        score = fp_scores.get(origin)
+        if score is None or score < min_score:
+            dropped["fp_answer_below_min_score"] += 1
+            continue
+        if not all(ok(x) for x in (chosen_f, rejected_f, chosen_t, rejected_t)):
+            dropped["missing_answer"] += 1
+            continue
+        rows.append({"id": origin, "origin": origin, "kind": "fpq", "label": 1, "question": by_id[origin]["question"],
+                     "chosen": chosen_f.strip(), "rejected": rejected_f.strip(), "judge_score": score})
+        rows.append({"id": t["id"], "origin": origin, "kind": "twin", "label": 0, "question": t["question"],
+                     "chosen": chosen_t.strip(), "rejected": rejected_t.strip(), "judge_score": None})
+    if not rows:
+        raise ValueError(f"No DPO rows; dropped {dict(dropped)}")
+    summary = {"version": VERSION, "objective": "dpo", "negatives": "twins", "min_score": min_score,
+               "train_partitions": sorted(train_partitions), "fpq_train_origins": len(fpq_train), "rows": len(rows),
+               "kinds": dict(Counter(r["kind"] for r in rows)), "origins_used": len({r["origin"] for r in rows}),
+               "dropped": dict(dropped), "data_hash": digest(rows)}
+    return rows, summary
+
+
+def dpo_loss(pi_chosen, pi_rejected, ref_chosen, ref_rejected, beta=0.1):
+    """Sequence log-probs -> (loss, margin). loss = -log sigmoid(beta * margin),
+    margin = (pi_c - ref_c) - (pi_r - ref_r). Pure python for tests; the trainer
+    applies the same formula on tensors."""
+    import math
+    margin = (pi_chosen - ref_chosen) - (pi_rejected - ref_rejected)
+    z = beta * margin
+    loss = math.log1p(math.exp(-z)) if z > -30 else -z
+    return loss, margin
+
+
 def evaluation_rows(suite_questions, twins, train_partitions=("fit",)):
     """Held-out FPQ, EVERY NFP (training never touches NFP, so all 149 are a
     transfer measurement; their original partition is kept for per-partition
@@ -204,7 +255,9 @@ def s5_table(questions, score_sets, *, plain_key="plain"):
                                         "s5_over_all": s5 / n if n else None, "ge4_over_all": ge4 / n if n else None,
                                         "le2_over_all": le2 / n if n else None, "mean": mean,
                                         "rescue": rescue, "harm": harm, "paired": len(paired)}
-            pct = lambda k: f"{k}/{n} ({100 * k / n:.1f}%)" if n else "NA"
+
+            def pct(k, n=n):
+                return f"{k}/{n} ({100 * k / n:.1f}%)" if n else "NA"
             lines.append(f"| {method} | {kind} | {part} | {len(valid)}/{n} | {pct(s5)} | {pct(ge4)} | {pct(le2)} | "
                          f"{mean:.2f} | {rescue}/{harm} ({len(paired)}) |" if mean is not None else
                          f"| {method} | {kind} | {part} | {len(valid)}/{n} | {pct(s5)} | {pct(ge4)} | {pct(le2)} | NA | {rescue}/{harm} ({len(paired)}) |")
