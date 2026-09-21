@@ -330,6 +330,28 @@ def stage_eval(args, out):
                     v = T2[:, Lp - 1, R - 1]; v = v[np.isfinite(v)]
                     cells.append(f"{np.median(v):.2f}" if v.size else "NA")
                 lines.append(f"| L{Lp} | " + " | ".join(cells) + " |")
+        # C3: per-item output change, in log-odds, stratified by whether the pair's outputs differed to begin with
+        def logit(p):
+            p = np.clip(np.asarray(p, dtype=float), 1e-6, 1 - 1e-6)
+            return np.log(p / (1 - p))
+        lo_f = np.array([logit(z["p_yes_fpq"]) for z in Z]); lo_t = np.array([logit(z["p_yes_twin"]) for z in Z])
+        sep = lo_f - lo_t                                  # > 0: FPQ already more "Yes" than its twin
+        separated = sep > 0.5
+        lines += ["", f"## C3. Per-item output change: delta log-odds(Yes) = patched - FPQ (n={len(Z)}; 'separated' = FPQ minus twin log-odds > 0.5 nats, n={int(separated.sum())})", "",
+                  f"baseline log-odds(Yes): FPQ median {np.median(lo_f):.2f} [IQR {np.percentile(lo_f, 25):.2f}, {np.percentile(lo_f, 75):.2f}], twin median {np.median(lo_t):.2f}; "
+                  f"FPQ - twin median {np.median(sep):.2f}, share > 0.5 nats {separated.mean():.2f}, share < -0.5 nats {(sep < -0.5).mean():.2f}", "",
+                  "| patch L | median delta (all) | IQR | share \|delta\|>0.5 | share delta<-0.5 (toward No) | separated: median delta | separated: median delta/(twin-FPQ) |",
+                  "|---|---:|---|---:|---:|---:|---:|"]
+        for Lp in layers:
+            lo_p = np.array([logit(z["p_yes_patched"][Lp - 1]) for z in Z])
+            dl = lo_p - lo_f
+            ok = np.isfinite(dl)
+            d_all = dl[ok]
+            d_sep = dl[ok & separated]; s_sep = (lo_t - lo_f)[ok & separated]
+            frac = np.median(d_sep / s_sep) if d_sep.size else float("nan")
+            lines.append(f"| L{Lp} | {np.median(d_all):+.3f} | [{np.percentile(d_all, 25):+.2f}, {np.percentile(d_all, 75):+.2f}] | "
+                         f"{(np.abs(d_all) > 0.5).mean():.2f} | {(d_all < -0.5).mean():.2f} | "
+                         f"{(np.median(d_sep) if d_sep.size else float('nan')):+.3f} | {frac:+.2f} |")
     lines += ["", "Read: A shows how much of the span's truth signal is linearly present at the answer position per layer. "
               "B shows where along the prompt it lives and where it fades. C shows whether writing the twin's span state into the FPQ at layer L "
               "moves the answer position toward the twin (transfer near 1 at some R) and whether the Yes/No readout follows."]
