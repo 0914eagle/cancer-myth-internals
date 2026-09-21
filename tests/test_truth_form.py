@@ -40,3 +40,19 @@ def test_two_by_two_separates_truth_from_expression():
     assert tf.report_lines("g", r)[0].startswith("| g | 30 |")
     with pytest.raises(ValueError):
         tf.two_by_two({"a": {"FA": 1, "FH": 1, "TA": 1, "TH": 1}})
+
+
+def test_assembled_design_helpers():
+    props = tf.parse_props('{"F": "Bronchial tumors affect only older people.", "T": "bronchial tumors do not affect only older people", "TAIL": "How can I support my grandmother?"}')
+    assert props["F"] == "Bronchial tumors affect only older people" and props["TAIL"].startswith("How")
+    assert tf.parse_props('{"F": "x", "T": "x", "TAIL": "y"}') is None  # identical clauses rejected
+    built = tf.assemble(props)
+    assert built["FD"] == "Given that bronchial tumors affect only older people, how can I support my grandmother?"
+    assert built["FS"] == "Given that I've read that bronchial tumors affect only older people, how can I support my grandmother?"
+    assert built["TS"].replace(tf.SOURCE_PHRASE, "") == built["TD"]  # source phrase is the only D/S difference
+    v = tf.parse_pair_verdict("SAME_CLAIM=YES; F_FALSE=YES; T_TRUE=yes; TAIL_NEUTRAL=NO")
+    assert v == {"SAME_CLAIM": True, "F_FALSE": True, "T_TRUE": True, "TAIL_NEUTRAL": False}
+    assert tf.parse_pair_verdict("SAME_CLAIM=YES") is None
+    scores = {f"o{i}": {"FD": 1.0 + i, "FS": 1.1 + i, "TD": -1.0 + i, "TS": -0.9 + i} for i in range(5)}
+    r = tf.two_by_two(scores, tf.DESIGNS["assembled"]["cells"])
+    assert r["cells"] == ["FD", "FS", "TD", "TS"] and r["truth_effect"] == pytest.approx(2.0) and "residual" not in r["variance_share"]
