@@ -16,9 +16,8 @@
     "workers": 5
   },
   "results/frontier_cli/luna_plain_20260922_v1/status.json": {
-    "state": "stopped",
-    "error": "Judgment stopped; inspect ledger",
-    "pid": 2398929
+    "state": "complete",
+    "pid": 2492120
   },
   "results/frontier_cli/luna_corrections_20260922_v1/status.json": {
     "state": "complete",
@@ -45,8 +44,8 @@
     "workers": 5
   },
   "results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/status.json": {
-    "state": "stopped",
-    "valid": 156,
+    "state": "complete",
+    "valid": 732,
     "target": 732,
     "workers": 10,
     "generator": "gpt-5.6-luna",

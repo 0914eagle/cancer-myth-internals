@@ -1,5 +1,5 @@
 {
-  "captured_utc": "2026-09-22T16:19:07.228604+00:00",
+  "captured_utc": "2026-09-22T17:34:35.996706+00:00",
   "source_sha256": {
     "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/questions.jsonl": "29423db5764d8980c88a498f07aaa484b6567b784dcf0c6016405bfdf31c39cf",
     "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/well_judge_claude/judge_plan.json": "da2dc194a2c99b7f63b358c6b75d5cc11ea84e7b7837a92ae98278cd150d1ac7",
@@ -15,7 +15,7 @@
     "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1/judge_plan.json": "5dccdfbdc5c801eb40562f5ea05296fab3839d70aff1261e006ac74402bad6cd",
     "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1/attempts.jsonl": "23224b047781328cb8f84657875eeb419a7ba9bfc9f2c192530ae0e072d7a5e1",
     "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/judge_plan.json": "d7eec5328f261544982dffb1b289e722b234deb3a03fa060c77227f3b36b7c82",
-    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/attempts.jsonl": "7eb1197c7acde95709ec399c35a3cad759523bea6dd529631fd18fcb4b597bc4",
+    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/attempts.jsonl": "b71b55c18f5c07555f54ae2f0f3d80075a4d1fde56b42096efd19505be2e746e",
     "/home/eagle0914/cancer-myth-internals/docs/reviews/frontier_claude_2026-09-22/plain_nfp_audit/qwen_sonnet_paired_149.json": "f23961130d331e64172c723e11cab4a60d86ea24443553302e9a5498f80edc49",
     "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/gates/crossfit_v2_style/result.json": "2711760474b3627b97e0d77c3978c93d630cbc8ee0cbff7f8b1183c1964f2d69",
     "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_s4/well_judge_claude/judge_plan.json": "efad38766851e42deecb15ee18b2a58e356b1976941bdd7dfd4b784febbb7289",
@@ -36,11 +36,11 @@
     "/home/eagle0914/cancer-myth-internals/docs/reviews/annotated_premises_2026-09-22/run_v1/summary.json": "e986f0f7d10ae29c08a1b2e560d189a7ae916688b334d75e21dff9d8d0a199e5",
     "/home/eagle0914/cancer-myth-internals/docs/reviews/existing_diagnostic_links_2026-09-22/summary.json": "22da1214757794b0c1e43bec9b1e324c8cb8568f80e5a2f9028d2d614189f867",
     "/home/eagle0914/cancer-myth-internals/results/frontier_cli/sonnet_plain_20260922_v1/status.json": "19e9c0380dba8eaed0cc79b7a0533aee670bd207a39f2a4bae57fd7a21384e8a",
-    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/status.json": "081ad530d4d731dec5016ea67a096b1fd83562ab1dc2a50d6181a7f4c421c99f",
+    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/status.json": "ff632203a9d0d183569f49bd47417059e97c60ab03f592edd646fe33f1c34664",
     "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/status.json": "6233b380076176e11945040ee1ea1d76402bee09cdca2827e1fe96359e13ed73",
     "/home/eagle0914/cancer-myth-internals/results/frontier_cli/sonnet_corrections_20260922_v1/status.json": "04d48a2859ba199b0413e5897e92a0dbee5833cd0fb7dc4e82420213f797a1f8",
     "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/plain/status.json": "edabc1c5d09974d3e31a19052085810f335143788b7c299a100240343e9d1a00",
-    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/status.json": "c7af7b49a9e7f6d93bc021689e864364f91cc9f00c89b65f4408210e345c7613",
+    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/status.json": "5ad87eb44a655ba8a8a883c8f3197047f880bdc23e4360cfcfcec0209adf8e4a",
     "/home/eagle0914/cancer-myth-internals/scripts/export_advisor_snapshot.py": "6db48b1b3b72fbfeee057b58a0860ed4afa01993a93148c1e619cd1d8ec9b2cc"
   },
   "model_calls": 0,

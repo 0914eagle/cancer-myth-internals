@@ -1,7 +1,7 @@
 # Cancer-Myth Internals
 
 **2026-09-23 통합 기준: `main`.** [37 — 교수님 발표 원고와 검증된 표 1·2·3](docs/37_advisor_presentation_2026-09-23.md), [문항별 점수·출처](docs/reviews/advisor_presentation_2026-09-23/README.md).
-프론티어 비교, CREPE → 원 FPQ/NFP, text/hidden 선택의 답변 효용을 확인했다. 아래 문서는 작성 당시 이력이며 현재 수치·해석은 37을 우선한다. Luna Plain은 37의 동결 시점에 부분 채점 상태다.
+프론티어 비교, CREPE → 원 FPQ/NFP, text/hidden 선택의 답변 효용을 확인했다. 아래 문서는 작성 당시 이력이며 현재 수치·해석은 37을 우선한다. Luna Plain도 732문항 채점이 완료돼 37번 표에 반영했다.
 [브랜치 통합·보관 기록](docs/reviews/branch_consolidation_2026-09-23.md).
 
 **2026-09-22 당시 다음 확인:** [36 — CREPE → 원 FPQ/NFP 결과 조회, 텍스트 게이트 병행 비교, Two Axes와의 관계](docs/36_gate_scope_transfer_and_next_steps.md).

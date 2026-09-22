@@ -19,11 +19,11 @@
 | [replacement_summary.json](replacement_summary.json) | 별도 Sonnet 보완 전제 725개 집계. 전문가 정답이 아님 |
 | [lora_scores.csv](lora_scores.csv), [lora_summary.json](lora_summary.json) | 원 NFP와 수정 질문을 분리한 미세조정 탐색 점수 |
 | [nfp_examples.json](nfp_examples.json) | 호스피스·통계 요청의 두 사례 원 질문, Qwen/Sonnet 답변·판정문 |
-| [run_status.json](run_status.json) | 동결 당시 상태. Luna Plain 생성 완료, 채점 156/732 중단 |
+| [run_status.json](run_status.json) | 갱신 시점 상태. Luna Plain 생성 735/735, 채점 732/732 완료 |
 | [provenance.json](provenance.json) | 동결 UTC 시각, 원장·계획·집계·추출 스크립트 SHA-256 |
 
 `positions_tables.md` 등은 원 자동 보고서의 표만 발췌했다. 과거 자동 보고서에 남은 “진위 정보가 사라진다” 같은 설명은 채택하지 않으며, 해석 범위는 원고에 명시했다. 새 의료 사실 검증이나 전체 실패 원인 분류를 수행한 것은 아니다.
 
-Luna Plain의 부분 점수는 원자료 보존을 위해 CSV·JSON에는 포함되지만 완료 모델과 비교하는 발표 표에는 넣지 않았다. 누락을 0점으로 취급하지 않는다. 본문 비율은 유효 채점 분모이며, 기존 보고서의 `S5/all expected` 필드와 혼합하지 않는다.
+Luna Plain 완료 후 CSV·JSON과 발표 표를 갱신했다. 이전 156개 유효 점수를 유지하고, 추가 576개를 반영했다. 이전 부분 집계는 Git 이력에 남아 있다. 누락을 0점으로 취급하지 않는다. 본문 비율은 유효 채점 분모이며, 기존 보고서의 `S5/all expected` 필드와 혼합하지 않는다.
 
 재생성 명령은 [원고 부록 C](../../37_advisor_presentation_2026-09-23.md#부록-c-이번-문서의-수치-검증과-재현)에 있다. 서버 원장 없이도 CSV에서 개수와 비율을 다시 계산할 수 있다. 원장 무결성 검증에는 원본 서버 파일이 필요하다.
