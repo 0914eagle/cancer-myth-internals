@@ -29,6 +29,11 @@ isolated→구간 전이(0.62~0.67)도 같은 이유로 무효.
 
 ## 2. CREPE 전이 (`crepe/transfer/v1`, CREPE 3,000 층화 표집, 마지막 토큰)
 
+> **9/22 범위 정정:** 아래 `CREPE → twins/edited`는 원 FPQ/NFP 분류가 아니다. `CREPE → natural`은 코드에 있지만 이 표에
+> 숫자가 없어 [36 §5](36_gate_scope_transfer_and_next_steps.md)의 읽기 전용 명령으로 기존 산출물을 먼저 확인한다.
+> 아래의 원인 설명(주제·길이만 읽음, 전제가 마지막 토큰 근처라 CREPE에서 성공함)은 확정 결과가 아니라 가설로 취급한다.
+> 특정 전이 조건의 결과를 의료 전체 또는 hidden probing 자체의 실패로 일반화하지 않는다.
+
 | 조건 | text | style | masked | hidden | mean |
 |---|---|---|---|---|---|
 | CREPE 안 5-fold | 0.673 | 0.666 | 0.667 | **0.766** [.748, .785] | 0.757 |
