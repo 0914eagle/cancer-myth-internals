@@ -1,0 +1,53 @@
+{
+  "coverage": {
+    "questions": 732,
+    "forced_choice_labels_in_cohort": 580,
+    "direct_and_review": 732,
+    "well": {
+      "extract_verify": 725,
+      "fp_identification": 731,
+      "plain": 731,
+      "premise_review": 732,
+      "zero_shot_cot": 731,
+      "fp_unconditional": 732
+    }
+  },
+  "direct_review": {
+    "fpq": {
+      "n": 583,
+      "direct_flagged": 43,
+      "review_flagged": 185,
+      "direct_no_review_yes": 168,
+      "direct_yes_review_no": 26
+    },
+    "nfp": {
+      "n": 149,
+      "direct_flagged": 17,
+      "review_flagged": 26,
+      "direct_no_review_yes": 22,
+      "direct_yes_review_no": 13
+    }
+  },
+  "forced_choice_vs_direct": {
+    "fc_correct_n": 526,
+    "direct_flagged": 41,
+    "direct_missed": 485,
+    "direct_missed_plain_fail": 472,
+    "direct_missed_unconditional_ge4": 272
+  },
+  "direct_vs_plain": {
+    "n": 582,
+    "counts": {
+      "missed_well_lt4": 527,
+      "missed_well_ge4": 12,
+      "detected_well_lt4": 41,
+      "detected_well_ge4": 2
+    }
+  },
+  "missed_by_both_gates": {
+    "n": 349,
+    "fc_correct": 316,
+    "direct_flagged": 27,
+    "unconditional_ge4": 188
+  }
+}
