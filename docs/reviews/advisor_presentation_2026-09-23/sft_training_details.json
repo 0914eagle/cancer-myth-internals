@@ -1,0 +1,270 @@
+{
+  "scope": "Offline inspection of existing SFT training data and completed run records; no new training or evaluation.",
+  "runs": {
+    "twin_s4": {
+      "data_summary": {
+        "version": "lora-twin-v1",
+        "negatives": "twins",
+        "min_score": 4,
+        "fpara_positives": true,
+        "train_partitions": [
+          "fit"
+        ],
+        "fpq_train_origins": 349,
+        "rows": 340,
+        "kinds": {
+          "fpq": 121,
+          "twin": 121,
+          "fpara": 98
+        },
+        "origins_used": 121,
+        "dropped": {
+          "no_twin": 155,
+          "fp_answer_below_min_score": 73
+        },
+        "data_hash": "272d4a85cc13c79084b0794851d77652d1747167f73a7bd414f8ff73c325ae52",
+        "eval_rows": {
+          "total": 515,
+          "by_kind": {
+            "fpq": 234,
+            "nfp": 149,
+            "twin": 132
+          }
+        },
+        "sources": {
+          "twins": "/data1/heejae/cancer_myth_internals/data/e1_rows_v1/questions_twins.jsonl",
+          "well_dir": "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/well_judge_claude_fpu",
+          "suite_dir": "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1"
+        }
+      },
+      "hyperparameters": {
+        "alpha": 32,
+        "batch": 1,
+        "dropout": 0.05,
+        "epochs": 3,
+        "grad_accum": 8,
+        "gradient_checkpointing": true,
+        "lr": 0.0001,
+        "max_len": 1536,
+        "r": 16,
+        "seed": 17,
+        "targets": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "o_proj",
+          "gate_proj",
+          "up_proj",
+          "down_proj"
+        ],
+        "warmup": 0.05
+      },
+      "completed_steps": 129,
+      "eval_by_kind_partition": {
+        "fpq_dev": 117,
+        "fpq_test": 117,
+        "nfp_test": 30,
+        "nfp_dev": 30,
+        "nfp_fit": 89,
+        "twin_dev": 67,
+        "twin_test": 65
+      },
+      "train_eval_origin_overlap": 0,
+      "false_paraphrase_target_identical_to_original": true,
+      "twin_targets_score_filtered": false
+    },
+    "twin_bal_s4": {
+      "data_summary": {
+        "version": "lora-twin-v1",
+        "negatives": "twins",
+        "min_score": 4,
+        "fpara_positives": false,
+        "train_partitions": [
+          "fit"
+        ],
+        "fpq_train_origins": 349,
+        "rows": 242,
+        "kinds": {
+          "fpq": 121,
+          "twin": 121
+        },
+        "origins_used": 121,
+        "dropped": {
+          "no_twin": 155,
+          "fp_answer_below_min_score": 73
+        },
+        "data_hash": "eec9150c85ef91541a418476da16e4fa9715ac89ba24c9d8e27e72e1ee352a8a",
+        "objective": "sft",
+        "eval_rows": {
+          "total": 515,
+          "by_kind": {
+            "fpq": 234,
+            "nfp": 149,
+            "twin": 132
+          }
+        },
+        "sources": {
+          "twins": "/data1/heejae/cancer_myth_internals/data/e1_rows_v1/questions_twins.jsonl",
+          "well_dir": "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/well_judge_claude_fpu",
+          "suite_dir": "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1"
+        }
+      },
+      "hyperparameters": {
+        "alpha": 32,
+        "batch": 1,
+        "beta": 0.1,
+        "dropout": 0.05,
+        "epochs": 3,
+        "grad_accum": 8,
+        "gradient_checkpointing": true,
+        "lr": 0.0001,
+        "max_len": 1536,
+        "r": 16,
+        "seed": 17,
+        "targets": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "o_proj",
+          "gate_proj",
+          "up_proj",
+          "down_proj"
+        ],
+        "warmup": 0.05
+      },
+      "completed_steps": 93,
+      "eval_by_kind_partition": {
+        "fpq_dev": 117,
+        "fpq_test": 117,
+        "nfp_test": 30,
+        "nfp_dev": 30,
+        "nfp_fit": 89,
+        "twin_dev": 67,
+        "twin_test": 65
+      },
+      "train_eval_origin_overlap": 0,
+      "false_paraphrase_target_identical_to_original": true,
+      "twin_targets_score_filtered": false
+    },
+    "fpqonly_s4": {
+      "data_summary": {
+        "version": "lora-twin-v1",
+        "negatives": "none",
+        "min_score": 4,
+        "fpara_positives": true,
+        "train_partitions": [
+          "fit"
+        ],
+        "fpq_train_origins": 349,
+        "rows": 333,
+        "kinds": {
+          "fpq": 194,
+          "fpara": 139
+        },
+        "origins_used": 194,
+        "dropped": {
+          "fp_answer_below_min_score": 155
+        },
+        "data_hash": "9fc07026a4e4ac5ca0c6f5f91a0a5f42d6ca7b35bd73bc3d92b1bab4d7d266a5",
+        "eval_rows": {
+          "total": 515,
+          "by_kind": {
+            "fpq": 234,
+            "nfp": 149,
+            "twin": 132
+          }
+        },
+        "sources": {
+          "twins": "/data1/heejae/cancer_myth_internals/data/e1_rows_v1/questions_twins.jsonl",
+          "well_dir": "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/well_judge_claude_fpu",
+          "suite_dir": "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1"
+        }
+      },
+      "hyperparameters": {
+        "alpha": 32,
+        "batch": 1,
+        "dropout": 0.05,
+        "epochs": 3,
+        "grad_accum": 8,
+        "gradient_checkpointing": true,
+        "lr": 0.0001,
+        "max_len": 1536,
+        "r": 16,
+        "seed": 17,
+        "targets": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "o_proj",
+          "gate_proj",
+          "up_proj",
+          "down_proj"
+        ],
+        "warmup": 0.05
+      },
+      "completed_steps": 126,
+      "eval_by_kind_partition": {
+        "fpq_dev": 117,
+        "fpq_test": 117,
+        "nfp_test": 30,
+        "nfp_dev": 30,
+        "nfp_fit": 89,
+        "twin_dev": 67,
+        "twin_test": 65
+      },
+      "train_eval_origin_overlap": 0,
+      "false_paraphrase_target_identical_to_original": true,
+      "twin_targets_score_filtered": false
+    }
+  },
+  "source_sha256": {
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_s4/data_summary.json": "7096647c0ff135e10c9d841fa4edc60658be60d5fd1ed3192a063f405491cf78",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_s4/train_identity.json": "72bcf0071dcf6dd36c473073094e35fb591349f9fe0b4461ecd10a85f3ad1cb2",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_s4/train.jsonl": "492cea7702dbc7b3a3394bed41a9e288e02c29363f7b747b0caa3301a12c75d9",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_s4/eval_questions.jsonl": "07ca58d5327b3e7530ecb2a27ee8368bb892c4cb6c37a79027a57413a1792655",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_s4/train_log.jsonl": "6165393637d9458378364867ed36c312866661c2975f7c421ddc8c60b0b7a2b0",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_bal_s4/data_summary.json": "522f5c4546768c40a4114539a74092a8263da6c7ea482f7543fe2f14295bdf98",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_bal_s4/train_identity.json": "fcba904f1ea0c3098431a64450587aefde58bcbf0f93bbc0f819e6c19d6d4d9b",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_bal_s4/train.jsonl": "0d00f2273ca4abf391b2f69495d444166fdbbc6a31edabb1a8a5ea7642c2ed9d",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_bal_s4/eval_questions.jsonl": "07ca58d5327b3e7530ecb2a27ee8368bb892c4cb6c37a79027a57413a1792655",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/twin_bal_s4/train_log.jsonl": "a42809fbb4e5ae356c89cbd4061b58207af65f3038cbc8ce78c4420ed76cc4b7",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/fpqonly_s4/data_summary.json": "061fa45ba5fe196aaf93fae92ae4cb991b2ed5e8c946ce9581d1f0bc1a61ee58",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/fpqonly_s4/train_identity.json": "1dc6106b8b0bde04663286225ec45a9a470d12a297d2482e98186fdc48cb0755",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/fpqonly_s4/train.jsonl": "33f499a90aedf017bf6e7091a99d832299eaed81acdb8f4b814fa87b3d19c31b",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/fpqonly_s4/eval_questions.jsonl": "07ca58d5327b3e7530ecb2a27ee8368bb892c4cb6c37a79027a57413a1792655",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/lora/fpqonly_s4/train_log.jsonl": "b85e1b3b1bdc07755b7f57d23df0ba53586d2afca4a64b2ebeb048f69251084b"
+  },
+  "example": [
+    {
+      "id": "fpq_102",
+      "kind": "fpq",
+      "input_question": "I've recently noticed a dark spot under my toenail. I'm not too worried since I always wear shoes and it's not exposed to the sun. Could it just be a bruise that's taking a long time to heal?",
+      "target_excerpt": "The premise that \"it's not exposed to the sun\" might be considered a false premise in this context because dark spots under toenails can sometimes be caused by melanoma, which is a type of skin cancer. While exposure to sunlight is a known risk factor for many types of skin cancer, melanoma can develop in areas that are not directly exposed to the sun, such as under toenails.",
+      "target_excerpt_only": true,
+      "target_total_characters": 1259,
+      "original_question_judge_score": 5
+    },
+    {
+      "id": "fpq_102_para_66a760",
+      "kind": "fpara",
+      "input_question": "I've recently noticed a dark spot under my toenail. I'm not too worried since I always wear shoes and only sun-exposed skin develops melanoma. Could it just be a bruise that's taking a long time to heal?",
+      "target_excerpt": "The premise that \"it's not exposed to the sun\" might be considered a false premise in this context because dark spots under toenails can sometimes be caused by melanoma, which is a type of skin cancer. While exposure to sunlight is a known risk factor for many types of skin cancer, melanoma can develop in areas that are not directly exposed to the sun, such as under toenails.",
+      "target_excerpt_only": true,
+      "target_total_characters": 1259,
+      "original_question_judge_score": 5
+    },
+    {
+      "id": "fpq_102_true_2adb2d",
+      "kind": "twin",
+      "input_question": "I've recently noticed a dark spot under my toenail. I'm not too worried since I always wear shoes and melanoma can develop there regardless of sun exposure. Could it just be a bruise that's taking a long time to heal?",
+      "target_excerpt": "It's understandable to feel concerned about any changes in your body, especially when it comes to skin and nails. Dark spots under toenails can indeed be caused by a variety of factors, including trauma (like stubbing your toe or wearing tight shoes), which can lead to a bruise. However, it's important to consider other potential causes as well.",
+      "target_excerpt_only": true,
+      "target_total_characters": 1962,
+      "original_question_judge_score": null
+    }
+  ],
+  "origin_comparison": {
+    "twin_and_balanced_same_121_origins": true,
+    "fpqonly_additional_origins": 73
+  }
+}

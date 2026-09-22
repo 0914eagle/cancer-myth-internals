@@ -17,6 +17,7 @@
 | [diagnostic_summary.json](diagnostic_summary.json) | 선택지 판단·직접 탐지·검토·교정 응답의 기존 문항별 연결 |
 | [annotated_summary.json](annotated_summary.json) | 기존 전제 주석 제공 진단. 실제 배포 gate 결과가 아님 |
 | [replacement_summary.json](replacement_summary.json) | 별도 Sonnet 보완 전제 725개 집계. 전문가 정답이 아님 |
+| [sft_training_details.json](sft_training_details.json) | SFT 세 조건의 실제 입력·목표 답변 구성, 예시 발췌, 학습 설정·완료 step, 원문 분리와 원본 파일 SHA-256. 별도 오프라인 점검으로 추가 |
 | [lora_scores.csv](lora_scores.csv), [lora_summary.json](lora_summary.json) | 원 NFP와 수정 질문을 분리한 미세조정 탐색 점수 |
 | [nfp_examples.json](nfp_examples.json) | 호스피스·통계 요청의 두 사례 원 질문, Qwen/Sonnet 답변·판정문 |
 | [run_status.json](run_status.json) | 갱신 시점 상태. Luna Plain 생성 735/735, 채점 732/732 완료 |
