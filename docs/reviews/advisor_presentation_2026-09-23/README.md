@@ -1,13 +1,13 @@
 # 발표 원고의 수치 근거 — 2026-09-23
 
-[발표 원고 37](../../37_advisor_presentation_2026-09-23.md)의 동결 근거다. 모델 호출·학습·채점 없이 기존 결과를 읽었다. 표 2-B의 routing과 무작위 선택 기대값은 이번에 저장된 점수로 계산했다. 기존 탐색 자료를 새로운 독립 test처럼 해석하지 않는다.
+[발표 원고 37](../../37_advisor_presentation_2026-09-23.md)의 동결 근거다. 모델 호출·학습·채점 없이 기존 결과를 읽었다. 표 2의 gate routing과 무작위 선택 기대값은 이번에 저장된 점수로 계산했다. 기존 탐색 자료를 새로운 독립 test처럼 해석하지 않는다.
 
 | 파일 | 용도 |
 |---|---|
 | [answer_scores.csv](answer_scores.csv) | 생성 모델·방법·문항별 유효 Well 점수. 모델 출력 원문은 포함하지 않음 |
-| [answer_summary.json](answer_summary.json) | 표 A·2-A의 개수, 분모, 0–5 분포, ≥4, S5, 평균, 누락 |
+| [answer_summary.json](answer_summary.json) | 표 A 및 통합 표 2의 기존 baseline 개수, 분모, 0–5 분포, ≥4, S5, 평균, 누락 |
 | [routing_scores.csv](routing_scores.csv) | 공통 731개 × 5정책. Plain/교정/선택 점수와 gate 결정 |
-| [routing_summary.json](routing_summary.json) | 표 2-B, 구제·손실, 선택 수를 맞춘 무작위 정책 기대값, 제외 ID |
+| [routing_summary.json](routing_summary.json) | 통합 표 2의 선택 정책, 구제·손실, 선택 수를 맞춘 무작위 정책 기대값, 제외 ID |
 | [gate_summary.json](gate_summary.json) | 표 1의 기존 AUROC·CI·탐지·오탐 집계 |
 | [transfer_summary.json](transfer_summary.json) | 표 3의 조건별 전이 AUROC·CI와 분모 |
 | [style_summary.json](style_summary.json) | 별도 style_controls/v2 프로토콜의 원본·의역·수정 조건 비교 |
