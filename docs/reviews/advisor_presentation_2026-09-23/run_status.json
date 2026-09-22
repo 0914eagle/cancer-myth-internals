@@ -1,0 +1,55 @@
+{
+  "results/frontier_cli/sonnet_plain_20260922_v1/status.json": {
+    "state": "complete",
+    "target": 735,
+    "counts": {
+      "complete": 735
+    },
+    "pending": 0,
+    "evaluation_completed": 732,
+    "models": {
+      "claude-sonnet-5": 735
+    },
+    "failed_ids": [],
+    "updated_unix": 1790065973.8111129,
+    "pid": 1957179,
+    "workers": 5
+  },
+  "results/frontier_cli/luna_plain_20260922_v1/status.json": {
+    "state": "stopped",
+    "error": "Judgment stopped; inspect ledger",
+    "pid": 2398929
+  },
+  "results/frontier_cli/luna_corrections_20260922_v1/status.json": {
+    "state": "complete",
+    "pid": 2258549
+  },
+  "results/frontier_cli/sonnet_corrections_20260922_v1/status.json": {
+    "state": "complete",
+    "pid": 2258548
+  },
+  "results/frontier_cli/luna_plain_20260922_v1/plain/status.json": {
+    "state": "complete",
+    "target": 735,
+    "counts": {
+      "complete": 735
+    },
+    "pending": 0,
+    "evaluation_completed": 732,
+    "models": {
+      "gpt-5.6-luna": 735
+    },
+    "failed_ids": [],
+    "updated_unix": 1790089806.7968976,
+    "pid": 2398929,
+    "workers": 5
+  },
+  "results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/status.json": {
+    "state": "stopped",
+    "valid": 156,
+    "target": 732,
+    "workers": 10,
+    "generator": "gpt-5.6-luna",
+    "judge": "claude-sonnet-5"
+  }
+}
