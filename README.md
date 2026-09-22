@@ -1,10 +1,14 @@
 # Cancer-Myth Internals
 
-**2026-09-22 다음 확인:** [36 — CREPE → 원 FPQ/NFP 결과 조회, 텍스트 게이트 병행 비교, Two Axes와의 관계](docs/36_gate_scope_transfer_and_next_steps.md).
+**2026-09-23 통합 기준: `main`.** [37 — 교수님 발표 원고와 검증된 표 1·2·3](docs/37_advisor_presentation_2026-09-23.md), [문항별 점수·출처](docs/reviews/advisor_presentation_2026-09-23/README.md).
+프론티어 비교, CREPE → 원 FPQ/NFP, text/hidden 선택의 답변 효용을 확인했다. 아래 문서는 작성 당시 이력이며 현재 수치·해석은 37을 우선한다. Luna Plain은 37의 동결 시점에 부분 채점 상태다.
+[브랜치 통합·보관 기록](docs/reviews/branch_consolidation_2026-09-23.md).
+
+**2026-09-22 당시 다음 확인:** [36 — CREPE → 원 FPQ/NFP 결과 조회, 텍스트 게이트 병행 비교, Two Axes와의 관계](docs/36_gate_scope_transfer_and_next_steps.md).
 `crepe->natural`은 기존 코드에 있으므로 서버 산출물부터 읽는다. 0.510/0.537은 원 FPQ/NFP가 아닌 전제 수정 대조 조건의 점수다.
 의료 전체의 probe 실패나 텍스트만으로 해결됐다는 결론은 아직 내리지 않는다. 새 실험 결과는 없다.
 
-**2026-09-21 최신: 진위 × 표현 통제 자료 감사** — [35: 완료한 것·50개 검토·왜 score 해석을 보류하는지·소규모 재구성 절차](docs/35_truth_form_audit_and_next_steps.md).
+**2026-09-21 감사: 진위 × 표현 통제 자료 감사** — [35: 완료한 것·50개 검토·왜 score 해석을 보류하는지·소규모 재구성 절차](docs/35_truth_form_audit_and_next_steps.md).
 80개 중 자동 통과 50개는 검증된 최소 변경 50개를 뜻하지 않는다. 원본 320행은 로컬에 보존하고 Git에는 해시와 항목별 근거를 기록했다. 새 GPU 점수·의료 라벨은 없다.
 아래 과거의 “진위/표현/주제 확정”, “회로 부재” 등 강한 해석은 34 §10과 35의 관측·가설 구분을 우선한다.
 
