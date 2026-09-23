@@ -1,0 +1,48 @@
+{
+  "source_run": "results/frontier_cli/luna_direct_cot_20260923_v1",
+  "state": "complete",
+  "counts": {
+    "direct": {
+      "complete": 732
+    },
+    "review": {
+      "complete": 732
+    },
+    "cot": {
+      "complete": 732
+    }
+  },
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "medium",
+  "threshold": 0.5,
+  "auroc_reporting": "Omitted from presentation; self-reported scores retained in raw run artifacts.",
+  "source_status_sha256": "4c39ced564fab05022d7ee18db5f0d16100a9b0cdbf9922baf418907ec56dcbe",
+  "metrics": {
+    "direct": {
+      "n_valid": 732,
+      "fpq": {
+        "n": 583,
+        "gate_on": 365,
+        "rate": 0.6260720411663808
+      },
+      "nfp": {
+        "n": 149,
+        "gate_on": 59,
+        "rate": 0.3959731543624161
+      }
+    },
+    "cot": {
+      "n_valid": 732,
+      "fpq": {
+        "n": 583,
+        "gate_on": 487,
+        "rate": 0.8353344768439108
+      },
+      "nfp": {
+        "n": 149,
+        "gate_on": 97,
+        "rate": 0.6510067114093959
+      }
+    }
+  }
+}
