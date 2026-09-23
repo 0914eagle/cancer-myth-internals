@@ -1,0 +1,121 @@
+{
+  "common_n": 731,
+  "excluded_ids": [
+    "fpq_389"
+  ],
+  "results": {
+    "plain": {
+      "interventions": 0,
+      "fpq": {
+        "n": 582,
+        "ge4": 14,
+        "s5": 1,
+        "rescue_ge4": 0,
+        "harm_ge4": 0
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 149,
+        "s5": 134,
+        "rescue_ge4": 0,
+        "harm_ge4": 0
+      }
+    },
+    "always_correct": {
+      "interventions": 731,
+      "fpq": {
+        "n": 582,
+        "ge4": 332,
+        "s5": 143,
+        "rescue_ge4": 318,
+        "harm_ge4": 0
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 32,
+        "s5": 7,
+        "rescue_ge4": 0,
+        "harm_ge4": 117
+      }
+    },
+    "text": {
+      "interventions": 577,
+      "fpq": {
+        "n": 582,
+        "ge4": 295,
+        "s5": 135,
+        "rescue_ge4": 281,
+        "harm_ge4": 0
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 90,
+        "s5": 66,
+        "rescue_ge4": 0,
+        "harm_ge4": 59
+      }
+    },
+    "hidden": {
+      "interventions": 507,
+      "fpq": {
+        "n": 582,
+        "ge4": 261,
+        "s5": 124,
+        "rescue_ge4": 247,
+        "harm_ge4": 0
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 96,
+        "s5": 75,
+        "rescue_ge4": 0,
+        "harm_ge4": 53
+      }
+    },
+    "label_oracle": {
+      "interventions": 582,
+      "fpq": {
+        "n": 582,
+        "ge4": 332,
+        "s5": 143,
+        "rescue_ge4": 318,
+        "harm_ge4": 0
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 149,
+        "s5": 134,
+        "rescue_ge4": 0,
+        "harm_ge4": 0
+      }
+    },
+    "random_expected_text": {
+      "interventions": 577,
+      "n": 731,
+      "fpq": {
+        "ge4_fraction": 0.45533821296439614,
+        "s5_fraction": 0.19430380639429115
+      },
+      "nfp": {
+        "ge4_fraction": 0.38019078397708367,
+        "s5_fraction": 0.2265444963688611
+      }
+    },
+    "random_expected_hidden": {
+      "interventions": 507,
+      "n": 731,
+      "fpq": {
+        "ge4_fraction": 0.40301615731403945,
+        "s5_fraction": 0.170939869594445
+      },
+      "nfp": {
+        "ge4_fraction": 0.455384276388877,
+        "s5_fraction": 0.30816478300388384
+      }
+    }
+  },
+  "original_score_file": "docs/reviews/advisor_presentation_2026-09-23/routing_scores.csv",
+  "original_score_sha256": "9b3c4d3947b2703bb71889053b1f55d3d6c6b5fda1be1babe46763f03bff278e",
+  "decisions_sha256": "b03e381c48b61585e9d3bbc865bd16e0277e9b752a27ecfdcb9029ef53d09622",
+  "note": "Retrospective selection of unchanged stored answers and Well scores using default classifier decisions."
+}
