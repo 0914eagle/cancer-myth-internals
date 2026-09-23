@@ -1,0 +1,93 @@
+{
+  "threshold": 0.5,
+  "score_type": "model-reported confidence, not token probabilities",
+  "auc_protocol": "pooled AUROC, not fold-weighted crossfit AUROC",
+  "ci_protocol": "percentile source-group bootstrap; conditional on frozen responses; not API resampling",
+  "bootstrap_seed": 20260923,
+  "bootstrap_replicates": 2000,
+  "scores_sha256": "f21d931ee221784ec203d9f976800e996465b19d8a174fed69427efa2c698fe1",
+  "all_valid": {
+    "verify_annotated": {
+      "n_valid": 730,
+      "source_groups": 514,
+      "auroc": 0.8939919020781555,
+      "auroc_ci95": [
+        0.8613163102836545,
+        0.9233879145845741
+      ],
+      "bootstrap_valid_replicates": 2000,
+      "fpq": {
+        "n": 583,
+        "gate_on": 564,
+        "rate": 0.967409948542024
+      },
+      "nfp": {
+        "n": 147,
+        "gate_on": 111,
+        "rate": 0.7551020408163265
+      }
+    },
+    "verify_extracted": {
+      "n_valid": 730,
+      "source_groups": 516,
+      "auroc": 0.5395233859695734,
+      "auroc_ci95": [
+        0.4903329769469762,
+        0.5888834891937086
+      ],
+      "bootstrap_valid_replicates": 2000,
+      "fpq": {
+        "n": 581,
+        "gate_on": 62,
+        "rate": 0.10671256454388985
+      },
+      "nfp": {
+        "n": 149,
+        "gate_on": 7,
+        "rate": 0.04697986577181208
+      }
+    }
+  },
+  "common_questions": {
+    "verify_annotated": {
+      "n_valid": 728,
+      "source_groups": 514,
+      "auroc": 0.8955472033908227,
+      "auroc_ci95": [
+        0.8645346457291495,
+        0.9241460139867805
+      ],
+      "bootstrap_valid_replicates": 2000,
+      "fpq": {
+        "n": 581,
+        "gate_on": 563,
+        "rate": 0.9690189328743546
+      },
+      "nfp": {
+        "n": 147,
+        "gate_on": 111,
+        "rate": 0.7551020408163265
+      }
+    },
+    "verify_extracted": {
+      "n_valid": 728,
+      "source_groups": 514,
+      "auroc": 0.5414895734541665,
+      "auroc_ci95": [
+        0.4931773930290622,
+        0.5883064008903711
+      ],
+      "bootstrap_valid_replicates": 2000,
+      "fpq": {
+        "n": 581,
+        "gate_on": 62,
+        "rate": 0.10671256454388985
+      },
+      "nfp": {
+        "n": 147,
+        "gate_on": 6,
+        "rate": 0.04081632653061224
+      }
+    }
+  }
+}
