@@ -5,7 +5,7 @@
   "ci_protocol": "percentile source-group bootstrap; conditional on frozen responses; not API resampling",
   "bootstrap_seed": 20260923,
   "bootstrap_replicates": 2000,
-  "scores_sha256": "f21d931ee221784ec203d9f976800e996465b19d8a174fed69427efa2c698fe1",
+  "scores_sha256": "fecb0d17939543f74da978647264d5138a1dcff819fbf65d190e92788d76f340",
   "all_valid": {
     "verify_annotated": {
       "n_valid": 730,

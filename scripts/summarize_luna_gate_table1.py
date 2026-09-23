@@ -91,7 +91,7 @@ def export(run, target):
                          'premise_count': len(values), 'record_sha256': sha(p)})
     target.mkdir(parents=True, exist_ok=True)
     with (target / 'table1_scores.csv').open('w') as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator='\n')
         writer.writeheader()
         writer.writerows(rows)
     manifest = {'run_dir': str(run.resolve()), 'plan_sha256': sha(plan_path),
