@@ -1,0 +1,26 @@
+{
+  "canonical_questions_source": "results/frontier_cli/sonnet_plain_20260922_v1/evaluation_questions.json",
+  "canonical_source_sha256": "db6d43eeb5a55278b463ca5c3ad2da92dfe998b196dca826d1decc6e84c62a06",
+  "counts": {
+    "dev_fpq": 117,
+    "fit_fpq": 349,
+    "test_fpq": 117,
+    "fit_nfp": 89,
+    "test_nfp": 30,
+    "dev_nfp": 30
+  },
+  "answer_targets": 272,
+  "answer_counts": {
+    "fpq": 194,
+    "nfp": 78
+  },
+  "notes": [
+    "Frozen existing grouped split; previously inspected, not a virgin test.",
+    "Public synthetic benchmark questions. NFP TPQ annotations are not extra questions.",
+    "Answer targets are model-generated, selected by existing Well scores, not human-written ground truth."
+  ],
+  "files": {
+    "cancer_questions.jsonl": "880564c27c5dcfde296334b95b00b825256c7cb0c7d89e37fee2696c9e64c12c",
+    "cancer_fit_answers.jsonl": "74e1870b34abe2ee63c8d66c5610d9a955f22720498324eb9503860f99d986ed"
+  }
+}
