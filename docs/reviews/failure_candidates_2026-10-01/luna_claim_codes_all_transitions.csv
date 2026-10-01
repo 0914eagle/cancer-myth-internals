@@ -1,0 +1,10 @@
+dataset,transition,n,personal_code,general_code
+fpq,stable_no,171,158,33
+fpq,stable_no_to_yes,1,1,1
+fpq,stable_yes,196,180,93
+fpq,stable_yes_to_no,103,102,15
+fpq,unstable,112,109,24
+nfp,stable_no,76,73,12
+nfp,stable_yes,14,13,6
+nfp,stable_yes_to_no,25,25,4
+nfp,unstable,34,34,8

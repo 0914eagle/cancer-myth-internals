@@ -1,0 +1,29 @@
+{
+  "inputs": {
+    "pairs": {
+      "path": "docs/reviews/core_failures_2026-10-01/all_3659_pair_transitions.csv",
+      "sha256": "92f94f94ef5b216ec9cfbcfe52c57b7ac45905a95ed1abd062f1689f6658a874"
+    },
+    "fpq_audit": {
+      "path": "docs/reviews/boundary_followup_2026-10-01/independent_audit_summary.json",
+      "sha256": "30ad3fa221baad98ca95a704632579b2e712c8f4b8e2afadc2250d9118a6cc59"
+    },
+    "nfp_audit": {
+      "path": "docs/reviews/nfp_plain_pair_review_2026-10-01/paired_review_full.json",
+      "sha256": "da3c341df0ea2ab4ef1a3ef1cd46c5f30d667a811bc710fb5235b4842ddc3143"
+    },
+    "claim_links": {
+      "path": "docs/reviews/boundary_followup_2026-10-01/all_732_claim_gate_links.csv",
+      "sha256": "1ee2e6dd33ebb63da8a9cd1bcf0d9c589c2dee34feb62b9a0d77032346d9d74f"
+    }
+  },
+  "new_model_calls": 0,
+  "scope": "Existing 3659 answer pairs, selected FPQ 178 pairs, selected NFP 121 losses, Luna 732 question links.",
+  "limitations": [
+    "Selected cohorts are not population error rates; same questions recur across models.",
+    "FPQ independent audit and NFP paired audit use different tasks and prompts.",
+    "AI codes are not causal explanations or clinical truth labels.",
+    "Gate results and answer outcomes are separate tasks, not interchangeable causes.",
+    "No existing labels, Well scores, or coding judgments changed."
+  ]
+}
