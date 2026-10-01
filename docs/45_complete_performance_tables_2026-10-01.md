@@ -50,17 +50,19 @@ Text/hidden은 crossfit 기본 classifier 판정이다. Qwen2.5 Direct/CoT는 Ye
 <tr><td>무조건 교정</td><td>56.9</td><td>21.5</td><td>86.6</td><td>17.4</td><td>89.5</td><td>1.3</td><td>72.0</td><td>2.0</td><td>71.0</td><td>28.9</td><td>83.4</td><td>5.4</td></tr>
 <tr><td>Self-gated FP Identification</td><td>7.0</td><td>89.9</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
 <tr><th colspan="13">Gate로 저장 답변 선택</th></tr>
-<tr><td>Direct gate</td><td>—</td><td>—</td><td>64.7</td><td>61.7</td><td>—</td><td>—</td><td>37.2</td><td>83.9</td><td>53.0</td><td>72.5</td><td>53.5</td><td>75.8</td></tr>
-<tr><td>전제 검토 CoT gate · 2-step</td><td>—</td><td>—</td><td>78.6</td><td>42.3</td><td>—</td><td>—</td><td>43.4</td><td>67.1</td><td>62.1</td><td>59.7</td><td>62.1</td><td>60.4</td></tr>
-<tr><td>Text gate</td><td>50.7</td><td>60.4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Direct gate</td><td>6.9</td><td>90.6</td><td>64.7</td><td>61.7</td><td>—</td><td>—</td><td>37.2</td><td>83.9</td><td>53.0</td><td>72.5</td><td>53.5</td><td>75.8</td></tr>
+<tr><td>전제 검토 CoT gate · 2-step</td><td>21.3</td><td>85.9</td><td>78.6</td><td>42.3</td><td>—</td><td>—</td><td>43.4</td><td>67.1</td><td>62.1</td><td>59.7</td><td>62.1</td><td>60.4</td></tr>
+<tr><td>Text gate</td><td>50.7</td><td>60.4</td><td>79.6</td><td>53.7</td><td>85.8</td><td>35.6</td><td>63.8</td><td>50.3</td><td>68.3</td><td>49.0</td><td>78.2</td><td>48.3</td></tr>
 <tr><td>Hidden gate</td><td>44.8</td><td>64.4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
 </tbody>
 </table>
 
 수치는 **Well ≥4 비율(%)**이며 FPQ·NFP 모두 높을수록 좋다. S5와 문항별 분모는 [상세 수치 원장](reviews/advisor_2026-10-02/tables.md)에 보존했다. `—`는 보고할 해당 조합의 결과가 없다는 뜻이다. 균형 지시와 Label oracle은 본문 표에서 제외했다.
 
+Text gate는 모든 답변 모델에 **동일한 crossfit 텍스트 판정**을 적용했다. Qwen2.5 Direct·전제 검토 CoT gate 선택 행도 저장된 판정과 답변 점수를 연결한 값이다. [추가 선택 결과·원장](reviews/table2_completion_2026-10-01/routing_tables.md). Luna 일반 CoT·전제 검토 CoT 답변은 추가 생성·채점이 끝나기 전까지 `—`로 둔다.
+
 ¹ 일반 CoT는 Qwen2.5에서 2-step, Gemma·Qwen3.8에서 1-step이다. GPT-Luna·Claude의 균형 지시 결과를 일반 CoT 값으로 사용하지 않았다. 전제 검토 CoT는 질문의 전제를 먼저 검토한 뒤 질문+검토문으로 답변을 생성한다.
 
-Qwen2.5의 Plain·일반 CoT·Self-gated·Text gate·Hidden gate는 FPQ 582개, 그 외 표시된 조건은 583개이며 NFP는 모두 149개다. 모델 간 프롬프트·절차 차이가 있으므로 순수한 모델 능력 비교로 해석하지 않는다. Sonnet 답변도 Sonnet으로 채점한 기존 결과다. NFP ≥4의 감소는 Table 1의 gate 오탐률과 같은 수치가 아니다.
+Qwen2.5의 Plain·일반 CoT·Self-gated 및 모든 gate 선택 행은 FPQ 582개, 그 외 표시된 조건은 583개이며 NFP는 모두 149개다. 모델 간 프롬프트·절차 차이가 있으므로 순수한 모델 능력 비교로 해석하지 않는다. Sonnet 답변도 Sonnet으로 채점한 기존 결과다. NFP ≥4의 감소는 Table 1의 gate 오탐률과 같은 수치가 아니다.
 
 근거: [동결 수치표](reviews/advisor_2026-10-02/tables.md), [원장과 출처](reviews/advisor_2026-10-02/snapshot.json), [개인 상황 보호 실험](41_behavior_diagnosis_and_classification_2026-10-01.md#4-개인-상황-보호-direct-분석).
