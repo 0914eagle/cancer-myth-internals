@@ -1,0 +1,22 @@
+[
+  {
+    "label": "fpq",
+    "n": 103,
+    "yes_by_condition": {
+      "control": 0,
+      "content": 1,
+      "criterion": 2,
+      "both": 5
+    }
+  },
+  {
+    "label": "nfp",
+    "n": 24,
+    "yes_by_condition": {
+      "control": 1,
+      "content": 1,
+      "criterion": 2,
+      "both": 1
+    }
+  }
+]

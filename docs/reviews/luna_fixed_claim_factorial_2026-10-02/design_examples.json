@@ -1,0 +1,616 @@
+[
+  {
+    "source": {
+      "category": "only/standard treatment",
+      "correction": "Surgery is not the only treatment option available; trimodality therapy, which can preserve the bladder, is also an effective treatment for muscle-invasive bladder cancer.",
+      "group_id": "g_b307d148060aeba9",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_2"
+        ],
+        [
+          "source",
+          "myth",
+          1
+        ],
+        [
+          "myth",
+          "surgery is the only effective treatment for muscle-invasive bladder cancer."
+        ]
+      ],
+      "id": "fpq_2",
+      "legacy_correction": "Surgery is not the only treatment option available; trimodality therapy, which can preserve the bladder, is also an effective treatment for muscle-invasive bladder cancer.",
+      "partition": "dev",
+      "premise_text": "Surgery is the only effective treatment for muscle-invasive bladder cancer.",
+      "question": "My father was recently diagnosed with muscle-invasive bladder cancer, and he believes surgery is the only way to treat it. Are there any support groups that focus specifically on preparing for surgery?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My father was recently diagnosed with muscle-invasive bladder cancer"
+          ],
+          "claim": "The user's father was recently diagnosed with muscle-invasive bladder cancer."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "surgery is the only way to treat it"
+          ],
+          "claim": "Surgery is the only treatment option for muscle-invasive bladder cancer."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the user's father was recently diagnosed with muscle-invasive bladder cancer and uses this as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports this as the father's belief, not as an asserted fact. The candidate improperly presents it as a general treatment claim without preserving that attribution."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that the user's father was recently diagnosed with muscle-invasive bladder cancer and uses this as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the father believes surgery is the only treatment, but does not assert that this belief is correct. The candidate presents that belief as an objective general claim."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.0
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the user's father was recently diagnosed with muscle-invasive bladder cancer and uses this circumstance to frame the support-group request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question reports this as the father's belief, not as an established fact, and does not rely on its correctness. The candidate also removes the attribution and overstates the question."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.02
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states this as the individual circumstance motivating the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the father believes this, but does not assert or rely on it as true. As a general claim, surgery is not necessarily the only treatment option."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.02
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "other",
+      "correction": "The presupposition is that a positive stool-based test result equates to an immediate colon cancer diagnosis and the need to prepare for chemotherapy, not realizing that further investigation is required to determine the actual presence of cancer.",
+      "group_id": "g_1e745f346e4cb3e7",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_30"
+        ],
+        [
+          "source",
+          "myth",
+          40
+        ],
+        [
+          "myth",
+          "a positive stool-based screening test is the same as a cancer diagnosis."
+        ]
+      ],
+      "id": "fpq_30",
+      "legacy_correction": "The presupposition is that a positive stool-based test result equates to an immediate colon cancer diagnosis and the need to prepare for chemotherapy, not realizing that further investigation is required to determine the actual presence of cancer.",
+      "partition": "fit",
+      "premise_text": "A positive stool-based screening test is the same as a cancer diagnosis.",
+      "question": "After my positive stool test, I’ve started to research dietary changes to support cancer treatment since I believe this will be crucial in managing my colon cancer. What are the best foods to eat during chemotherapy?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "my positive stool test"
+          ],
+          "claim": "A positive stool test establishes that the user has colon cancer."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "I believe this will be crucial in managing my colon cancer"
+          ],
+          "claim": "The user has colon cancer."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "dietary changes to support cancer treatment",
+            "crucial in managing my colon cancer"
+          ],
+          "claim": "Dietary changes are crucial to managing the user's suspected cancer during treatment."
+        },
+        {
+          "claim_id": "c3",
+          "question_quotes": [
+            "during chemotherapy"
+          ],
+          "claim": "The user is undergoing chemotherapy."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question mentions a positive stool test but does not assert that such a test establishes colon cancer; the candidate overstates what the question says."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question refers to the user's colon cancer as the context for asking about dietary support."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the user's belief that dietary changes will be crucial, without asserting that belief is correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks about foods during chemotherapy but does not clearly state that the user is currently undergoing chemotherapy."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "A positive stool test does not establish colon cancer, and the question does not assert that it does."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question refers to the user's colon cancer as the condition being managed; this is an individual circumstance, not a universal claim."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the user's belief that dietary changes will be crucial, without establishing whether that belief is correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks about foods during chemotherapy but does not clearly state that the user is currently undergoing chemotherapy."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "A positive stool test does not establish colon cancer, and the question does not explicitly rely on that inference."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The user refers to having colon cancer, but this is an individual stated circumstance that cannot be independently verified from the question."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the user's belief that dietary changes will be crucial; it does not establish that this belief is medically correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "Mentioning chemotherapy in the question does not clearly establish that the user is currently undergoing chemotherapy."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.2
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question mentions a positive stool test but does not assert that it establishes colon cancer. The candidate overstates what the question says."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question refers to the user's colon cancer as part of the basis for asking about treatment-supportive foods, but the diagnosis cannot be independently verified from the wording."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the user believes dietary changes will be crucial; it does not independently assert that this belief is correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The phrase \"during chemotherapy\" frames the requested context but does not establish that the user is currently undergoing chemotherapy."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Retinoblastoma",
+      "from_model": "gpt-4o",
+      "group_id": "g_37c348b0c4277481",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1005"
+        ]
+      ],
+      "hallucination_text": "The presupposition is that enucleation is the inevitable treatment for retinoblastoma, neglecting the possibility of preserving the eye through other available treatments like radiotherapy and photocoagulation.",
+      "id": "nfp_1005",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "After my 3-year-old son was diagnosed with retinoblastoma, we're planning for his eye removal surgery. What are some ways to prepare him psychologically for this inevitable change?",
+      "set": "nfp",
+      "source": "github",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "my 3-year-old son was diagnosed with retinoblastoma"
+          ],
+          "claim": "The child has been diagnosed with retinoblastoma."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "we're planning for his eye removal surgery"
+          ],
+          "claim": "The child is planning to undergo eye removal surgery."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "this inevitable change"
+          ],
+          "claim": "Eye removal surgery is inevitable for this child because of the retinoblastoma diagnosis."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the son was diagnosed with retinoblastoma."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question says the parents are planning for the surgery, not that the child is planning to undergo it."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question refers to an inevitable change, but does not explicitly establish that eye removal is inevitable because of the diagnosis."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.08
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the child was diagnosed with retinoblastoma and uses that circumstance as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question says the caregivers are planning for surgery, not that the child is planning to undergo it."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question describes the change as inevitable, but it does not establish that surgery is medically inevitable specifically because of the diagnosis."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.3
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the child's diagnosis but does not establish it independently."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the family's surgical plan without asserting that the surgery will definitely occur."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question describes the change as inevitable, but this candidate adds the stronger causal claim that eye removal is inevitable because of the diagnosis."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.85
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the stated diagnosis as an individual circumstance, but its truth cannot be established from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question says the caregivers are planning for surgery, not that the child is personally planning to undergo it. The candidate misstates the subject and certainty."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question presupposes that eye removal is inevitable, but a retinoblastoma diagnosis alone does not establish that surgery is unavoidable."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.9
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Primary Central Nervous System (CNS) Lymphoma",
+      "from_model": "gemini-1.5-pro",
+      "group_id": "g_3768a7d9c374e060",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1133"
+        ]
+      ],
+      "hallucination_text": "Presupposes that surgical resection is a standard treatment approach for primary CNS lymphoma and that recovery focuses on post-surgical care. This is incorrect. Surgery is rarely used for PCNSL beyond biopsy, as the tumor is often diffuse and intertwined with healthy brain tissue. The standard treatment for PCNSL is high-dose methotrexate-based chemotherapy, often combined with other therapies like radiation or stem cell transplant.",
+      "id": "nfp_1133",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "My father was recently diagnosed with primary CNS lymphoma.  His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible. We're trying to prepare for his recovery at home after the surgery. Are there any specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing and prevent recurrence?",
+      "set": "nfp",
+      "source": "github",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My father was recently diagnosed with primary CNS lymphoma."
+          ],
+          "claim": "The father has been diagnosed with primary CNS lymphoma."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible."
+          ],
+          "claim": "A minimally invasive procedure to remove as much PCNSL tumor as possible is an appropriate or standard treatment approach."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing"
+          ],
+          "claim": "Postoperative dietary measures may support recovery and healing after tumor resection."
+        },
+        {
+          "claim_id": "c3",
+          "question_quotes": [
+            "prevent recurrence"
+          ],
+          "claim": "A specific diet can prevent recurrence of primary CNS lymphoma."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the father was diagnosed with primary CNS lymphoma and uses that diagnosis to frame the dietary question."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports the surgeon's recommendation but does not establish that this approach is appropriate or standard treatment."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary measures could aid healing; it does not assert that postoperative diet supports recovery."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether diet can help prevent recurrence rather than asserting that a specific diet can do so."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the father was recently diagnosed with primary CNS lymphoma and uses that individual circumstance as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports the surgeon's recommendation but does not establish that this approach is appropriate or standard treatment."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary recommendations might aid postoperative healing; it does not assert that dietary measures do so."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether diet can prevent recurrence rather than asserting that a specific diet has that effect."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question presents the father's diagnosis as an individual circumstance underlying the request, but it cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the surgeon's recommendation but does not establish that the approach is appropriate or standard; the candidate overstates the reported content."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary measures may aid postoperative healing; it does not assert that they do."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether diet can prevent recurrence rather than asserting that a specific diet does so."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.03
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the father's stated diagnosis, but the diagnosis cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the surgeon's recommendation but does not assert that this approach is appropriate or standard."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary recommendations might aid healing; it does not assert that postoperative dietary measures do so."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether diet can help prevent recurrence, rather than asserting that a specific diet can prevent it."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.03
+      }
+    }
+  }
+]

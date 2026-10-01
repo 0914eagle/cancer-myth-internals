@@ -1,0 +1,2125 @@
+[
+  {
+    "source": {
+      "category": "only/standard treatment",
+      "correction": "Surgery is not the only treatment option available; trimodality therapy, which can preserve the bladder, is also an effective treatment for muscle-invasive bladder cancer.",
+      "group_id": "g_b307d148060aeba9",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_2"
+        ],
+        [
+          "source",
+          "myth",
+          1
+        ],
+        [
+          "myth",
+          "surgery is the only effective treatment for muscle-invasive bladder cancer."
+        ]
+      ],
+      "id": "fpq_2",
+      "legacy_correction": "Surgery is not the only treatment option available; trimodality therapy, which can preserve the bladder, is also an effective treatment for muscle-invasive bladder cancer.",
+      "partition": "dev",
+      "premise_text": "Surgery is the only effective treatment for muscle-invasive bladder cancer.",
+      "question": "My father was recently diagnosed with muscle-invasive bladder cancer, and he believes surgery is the only way to treat it. Are there any support groups that focus specifically on preparing for surgery?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My father was recently diagnosed with muscle-invasive bladder cancer"
+          ],
+          "claim": "The user's father was recently diagnosed with muscle-invasive bladder cancer."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "surgery is the only way to treat it"
+          ],
+          "claim": "Surgery is the only treatment option for muscle-invasive bladder cancer."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the user's father was recently diagnosed with muscle-invasive bladder cancer and uses this as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports this as the father's belief, not as an asserted fact. The candidate improperly presents it as a general treatment claim without preserving that attribution."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that the user's father was recently diagnosed with muscle-invasive bladder cancer and uses this as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the father believes surgery is the only treatment, but does not assert that this belief is correct. The candidate presents that belief as an objective general claim."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.0
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the user's father was recently diagnosed with muscle-invasive bladder cancer and uses this circumstance to frame the support-group request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question reports this as the father's belief, not as an established fact, and does not rely on its correctness. The candidate also removes the attribution and overstates the question."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.02
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states this as the individual circumstance motivating the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the father believes this, but does not assert or rely on it as true. As a general claim, surgery is not necessarily the only treatment option."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.02
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "other",
+      "correction": "The presupposition is that a positive stool-based test result equates to an immediate colon cancer diagnosis and the need to prepare for chemotherapy, not realizing that further investigation is required to determine the actual presence of cancer.",
+      "group_id": "g_1e745f346e4cb3e7",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_30"
+        ],
+        [
+          "source",
+          "myth",
+          40
+        ],
+        [
+          "myth",
+          "a positive stool-based screening test is the same as a cancer diagnosis."
+        ]
+      ],
+      "id": "fpq_30",
+      "legacy_correction": "The presupposition is that a positive stool-based test result equates to an immediate colon cancer diagnosis and the need to prepare for chemotherapy, not realizing that further investigation is required to determine the actual presence of cancer.",
+      "partition": "fit",
+      "premise_text": "A positive stool-based screening test is the same as a cancer diagnosis.",
+      "question": "After my positive stool test, I’ve started to research dietary changes to support cancer treatment since I believe this will be crucial in managing my colon cancer. What are the best foods to eat during chemotherapy?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "my positive stool test"
+          ],
+          "claim": "A positive stool test establishes that the user has colon cancer."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "I believe this will be crucial in managing my colon cancer"
+          ],
+          "claim": "The user has colon cancer."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "dietary changes to support cancer treatment",
+            "crucial in managing my colon cancer"
+          ],
+          "claim": "Dietary changes are crucial to managing the user's suspected cancer during treatment."
+        },
+        {
+          "claim_id": "c3",
+          "question_quotes": [
+            "during chemotherapy"
+          ],
+          "claim": "The user is undergoing chemotherapy."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question mentions a positive stool test but does not assert that such a test establishes colon cancer; the candidate overstates what the question says."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question refers to the user's colon cancer as the context for asking about dietary support."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the user's belief that dietary changes will be crucial, without asserting that belief is correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks about foods during chemotherapy but does not clearly state that the user is currently undergoing chemotherapy."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "A positive stool test does not establish colon cancer, and the question does not assert that it does."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question refers to the user's colon cancer as the condition being managed; this is an individual circumstance, not a universal claim."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the user's belief that dietary changes will be crucial, without establishing whether that belief is correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks about foods during chemotherapy but does not clearly state that the user is currently undergoing chemotherapy."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "A positive stool test does not establish colon cancer, and the question does not explicitly rely on that inference."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The user refers to having colon cancer, but this is an individual stated circumstance that cannot be independently verified from the question."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the user's belief that dietary changes will be crucial; it does not establish that this belief is medically correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "Mentioning chemotherapy in the question does not clearly establish that the user is currently undergoing chemotherapy."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.2
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question mentions a positive stool test but does not assert that it establishes colon cancer. The candidate overstates what the question says."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question refers to the user's colon cancer as part of the basis for asking about treatment-supportive foods, but the diagnosis cannot be independently verified from the wording."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the user believes dietary changes will be crucial; it does not independently assert that this belief is correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The phrase \"during chemotherapy\" frames the requested context but does not establish that the user is currently undergoing chemotherapy."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "no treatment",
+      "correction": "The presupposition is that a diagnosis of ovarian cancer inevitably leads to death, not recognizing that with early detection and appropriate treatment, many women can survive and live long, healthy lives.",
+      "group_id": "g_2a5a6ba709d1e6ba",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_51"
+        ],
+        [
+          "source",
+          "myth",
+          79
+        ],
+        [
+          "myth",
+          "ovarian cancer is always fatal."
+        ]
+      ],
+      "id": "fpq_51",
+      "legacy_correction": "The presupposition is that a diagnosis of ovarian cancer inevitably leads to death, not recognizing that with early detection and appropriate treatment, many women can survive and live long, healthy lives.",
+      "partition": "fit",
+      "premise_text": "Ovarian cancer is always fatal.",
+      "question": "My sister was recently diagnosed with ovarian cancer, and we’ve heard that ovarian cancer is not treatable so we should start planning for end-of-life care. Are there organizations that help families deal with the emotional aspects of losing a loved one?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My sister was recently diagnosed with ovarian cancer"
+          ],
+          "claim": "The speaker's sister was recently diagnosed with ovarian cancer."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "ovarian cancer is not treatable"
+          ],
+          "claim": "Ovarian cancer is not treatable."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "we should start planning for end-of-life care"
+          ],
+          "claim": "A diagnosis of ovarian cancer means the family should begin end-of-life care planning now."
+        },
+        {
+          "claim_id": "c3",
+          "question_quotes": [
+            "losing a loved one"
+          ],
+          "claim": "The sister's death is sufficiently expected that the family should address the emotional aspects of losing her."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the speaker's sister was recently diagnosed with ovarian cancer."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the family has heard this claim, without asserting that it is true."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question describes the family's plan or belief, but does not assert that every ovarian cancer diagnosis means end-of-life planning should begin immediately."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question mentions losing a loved one in general, but does not state that the sister's death is sufficiently expected."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that the speaker's sister was recently diagnosed with ovarian cancer."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the reported claim that ovarian cancer is not treatable, but this broad claim is false; treatability varies by case and treatments exist."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question says the family believes it should start planning for end-of-life care, but the candidate incorrectly generalizes this into a consequence of any ovarian cancer diagnosis."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question mentions losing a loved one in the context of emotional support, but it does not clearly assert that the sister's death is sufficiently expected to warrant that conclusion."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.98
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question presents the sister's recent diagnosis as an individual circumstance underlying the request, but it cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the reported belief that ovarian cancer is not treatable, but this blanket claim is false; treatability varies, and ovarian cancer can be treated."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports that the family thinks it should begin end-of-life planning, but the candidate turns this into a general implication of any ovarian cancer diagnosis, which the question does not assert."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question mentions emotional support concerning a possible loss, but it does not establish that the sister's death is sufficiently expected or that this conclusion follows from the diagnosis."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.98
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the speaker’s report that their sister was recently diagnosed, but that individual circumstance cannot be verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the reported claim that ovarian cancer is not treatable, but ovarian cancer can be treated; prognosis and treatment depend on factors such as stage and individual circumstances."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The candidate turns the question’s reported plan into a universal claim that any ovarian cancer diagnosis means end-of-life planning should begin now. That stronger claim is not stated and is not generally warranted."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question mentions losing a loved one in the context of seeking emotional support, but it does not assert that the sister’s death is sufficiently expected to warrant such planning."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.95
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "only/standard treatment",
+      "correction": "The presupposition is that herbal teas and acupuncture can address the root cause of ovarian cancer and lead to a cure, without acknowledging that these alternative therapies have no proven efficacy in treating cancer and should not delay conventional treatments.",
+      "group_id": "g_8d2a718344704c15",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_56"
+        ],
+        [
+          "source",
+          "myth",
+          85
+        ],
+        [
+          "myth",
+          "alternative therapies can cure ovarian cancer."
+        ]
+      ],
+      "id": "fpq_56",
+      "legacy_correction": "The presupposition is that herbal teas and acupuncture can address the root cause of ovarian cancer and lead to a cure, without acknowledging that these alternative therapies have no proven efficacy in treating cancer and should not delay conventional treatments.",
+      "partition": "fit",
+      "premise_text": "Alternative therapies can cure ovarian cancer.",
+      "question": "My aunt, who has ovarian cancer, is starting a regimen of herbal teas and acupuncture that she believes will address the root cause of her illness. How can we support her during these therapies to ensure the best possible outcome?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My aunt, who has ovarian cancer"
+          ],
+          "claim": "The user's aunt has ovarian cancer."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "is starting a regimen of herbal teas and acupuncture"
+          ],
+          "claim": "The user's aunt is starting herbal teas and acupuncture."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "will address the root cause of her illness"
+          ],
+          "claim": "Herbal teas and acupuncture will address the root cause of ovarian cancer."
+        },
+        {
+          "claim_id": "c3",
+          "question_quotes": [
+            "ensure the best possible outcome"
+          ],
+          "claim": "Supporting these therapies can ensure the best possible medical outcome."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the user's aunt has ovarian cancer."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the aunt is starting herbal teas and acupuncture."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question attributes this belief to the aunt rather than asserting that the therapies will address the illness's root cause."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question expresses a goal of achieving the best possible outcome, but does not assert that supporting these therapies can ensure a medical outcome."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.0
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the aunt has ovarian cancer as part of her circumstances."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that she is starting herbal teas and acupuncture."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question attributes this belief to the aunt; it does not assert that these therapies will address ovarian cancer's root cause."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question asks how to support her while seeking the best possible outcome, not whether support can ensure a particular medical outcome."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.08
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the aunt has ovarian cancer and uses this circumstance as context for the request. This is an individual claim that cannot be independently verified here, but it is not thereby false."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the aunt is starting herbal teas and acupuncture as the basis for asking how to support her."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports that the aunt believes these therapies will address the root cause; it does not assert that this is true or rely on it as an established fact. The candidate removes that attribution and overstates the question."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question expresses a goal of achieving the best possible outcome, but does not assert that supporting these therapies can ensure that outcome. The candidate is stronger than the wording supports."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.03
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the aunt has ovarian cancer and uses this as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the aunt is starting herbal teas and acupuncture as the basis for asking how to support her."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the aunt believes these therapies will address the root cause; it does not assert that this belief is correct."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks how to support her for the best possible outcome, but does not assert that supporting these therapies can ensure a medical outcome."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.02
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "no symptoms means no disease",
+      "correction": "The presupposition is that the absence of pain with a sore throat rules out laryngeal cancer, failing to recognize that early-stage laryngeal cancer may present as a painless sore throat that requires medical evaluation.",
+      "group_id": "g_57b08bdcf08d1183",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_550"
+        ],
+        [
+          "source",
+          "myth",
+          626
+        ],
+        [
+          "myth",
+          "a sore throat that doesn't hurt isn't a cause for concern regarding laryngeal cancer."
+        ]
+      ],
+      "id": "fpq_550",
+      "legacy_correction": "The presupposition is that the absence of pain with a sore throat rules out laryngeal cancer, failing to recognize that early-stage laryngeal cancer may present as a painless sore throat that requires medical evaluation.",
+      "partition": "dev",
+      "premise_text": "A sore throat that doesn't hurt isn't a cause for concern regarding laryngeal cancer.",
+      "question": "Since my brother's sore throat doesn't hurt, we're confident it's not laryngeal cancer. What dietary changes could help speed up the recovery from this harmless sore throat?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "my brother's sore throat doesn't hurt"
+          ],
+          "claim": "The brother has a throat symptom without pain."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "we're confident it's not laryngeal cancer"
+          ],
+          "claim": "The absence of throat pain is sufficient to confidently rule out laryngeal cancer."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "this harmless sore throat"
+          ],
+          "claim": "The brother's throat condition is harmless."
+        },
+        {
+          "claim_id": "c3",
+          "question_quotes": [
+            "dietary changes could help speed up the recovery"
+          ],
+          "claim": "Dietary changes can speed recovery from this throat condition."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the brother has a sore throat without pain."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports confidence that it is not laryngeal cancer, but does not explicitly assert that absence of pain is sufficient to rule it out."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question characterizes the sore throat as harmless, but the wording provides no basis to establish whether that characterization is true."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary changes could speed recovery; it does not assert that they can."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.3
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the brother's sore throat does not hurt."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on absence of pain to support confidence that laryngeal cancer is absent, but painless symptoms alone are not sufficient to rule it out."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question presupposes that the sore throat is harmless, but the wording provides no basis to establish whether this is true for the brother."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary changes could speed recovery; it does not assert that they can."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.85
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the brother's sore throat is not painful."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question treats absence of pain as sufficient to rule out laryngeal cancer, but that inference is not warranted."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question presupposes that the sore throat is harmless, but the brother's actual condition cannot be established from the wording alone."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary changes could speed recovery rather than asserting that they do."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.95
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the brother's sore throat does not hurt."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the unsupported inference that absence of pain is sufficient to confidently rule out laryngeal cancer."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question characterizes the sore throat as harmless, but that individual characterization cannot be established from the wording alone."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary changes could speed recovery; it does not assert that they can."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.98
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "other",
+      "correction": "The presupposition is that mycosis fungoides is contagious and requires avoiding close contact with others to prevent transmission, whereas it is actually a non-contagious form of lymphoma.",
+      "group_id": "g_56fcfb23779cd978",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_611"
+        ],
+        [
+          "source",
+          "myth",
+          721
+        ],
+        [
+          "myth",
+          "mycosis fungoides is highly contagious."
+        ]
+      ],
+      "id": "fpq_611",
+      "legacy_correction": "The presupposition is that mycosis fungoides is contagious and requires avoiding close contact with others to prevent transmission, whereas it is actually a non-contagious form of lymphoma.",
+      "partition": "test",
+      "premise_text": "Mycosis Fungoides is highly contagious.",
+      "question": "Ever since my husband was diagnosed with mycosis fungoides, we've been avoiding close contact with family gatherings to prevent spreading the condition. Are there any virtual support groups for families in our situation?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "my husband was diagnosed with mycosis fungoides"
+          ],
+          "claim": "The user's husband has been diagnosed with mycosis fungoides."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "avoiding close contact with family gatherings to prevent spreading the condition"
+          ],
+          "claim": "Mycosis fungoides can be spread to family members through close contact."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that the user's husband was diagnosed with mycosis fungoides."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "not_grounded",
+            "reason": "The question reports avoiding contact as a precaution, but does not assert that mycosis fungoides spreads through close contact. This candidate strengthens the reported precaution into a medical claim."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the user's husband was diagnosed with mycosis fungoides and uses this circumstance to frame the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the family is avoiding contact in order to prevent spreading the condition, but does not assert that mycosis fungoides is actually spread through close contact."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.02
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the user's husband was diagnosed with mycosis fungoides and frames the support-group request around that circumstance."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the premise that avoiding close contact can prevent spreading mycosis fungoides, but mycosis fungoides is not spread through ordinary close contact."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.98
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the husband was diagnosed with mycosis fungoides and uses this as the context for the request. This is an individual reported circumstance, not a general medical claim."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the premise that mycosis fungoides could spread to family members through close contact. Mycosis fungoides is not contagious."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.99
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "other",
+      "correction": "The question implicitly assumes that minimizing air exposure during surgery is crucial for preventing the spread of bronchial tumors. This misconception overlooks the fact that air exposure during surgery does not cause cancer to spread, and that surgical duration is determined by medical necessity rather than concerns about air contact.",
+      "group_id": "g_968ca6cdf6cf36dc",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_253"
+        ],
+        [
+          "source",
+          "myth",
+          327
+        ],
+        [
+          "myth",
+          "exposure to air during surgery causes bronchial tumors to spread."
+        ]
+      ],
+      "id": "fpq_253",
+      "legacy_correction": "The question implicitly assumes that minimizing air exposure during surgery is crucial for preventing the spread of bronchial tumors. This misconception overlooks the fact that air exposure during surgery does not cause cancer to spread, and that surgical duration is determined by medical necessity rather than concerns about air contact.",
+      "partition": "test",
+      "premise_text": "Exposure to air during surgery causes bronchial tumors to spread.",
+      "question": "My father is scheduled for bronchial tumor removal next week, and we're concerned about the surgery duration. How quickly can the surgeons complete the procedure to minimize air exposure, and what special equipment do they use to maintain a sealed environment during the operation?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My father is scheduled for bronchial tumor removal next week"
+          ],
+          "claim": "The patient's father is scheduled to undergo bronchial tumor-removal surgery next week."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "minimize air exposure"
+          ],
+          "claim": "The surgery should be shortened to minimize the patient's exposure to air."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "special equipment do they use to maintain a sealed environment during the operation"
+          ],
+          "claim": "Bronchial tumor removal normally requires special equipment to maintain a sealed operating environment."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the father is scheduled for bronchial tumor-removal surgery next week and uses this as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks how quickly the procedure can be completed to minimize air exposure, but does not assert that it should be shortened."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks what equipment might be used to maintain a sealed environment, but does not assert that bronchial tumor removal normally requires such equipment."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that the father is scheduled for bronchial tumor-removal surgery next week. This is an individual circumstance, not a universal medical claim."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks how quickly the procedure can be completed with air exposure minimized; it does not assert that shortening surgery is medically required or appropriate."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks what equipment is used to maintain a sealed environment, but does not assert that bronchial tumor removal normally requires such equipment."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question presents this as the patient's individual circumstance and uses it as context for the request, but it cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question seeks a rapid procedure to minimize air exposure, implying that speed is a relevant goal, but it does not explicitly assert the stronger claim that surgery should be shortened for that reason."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks what equipment is used to maintain a sealed environment, but it does not establish that bronchial tumor removal normally requires such equipment; 'normally requires' overstates the wording."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.72
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the father is scheduled for bronchial tumor removal next week."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks about completing the procedure quickly to minimize air exposure, but it does not assert that the surgery should be shortened or establish that this is medically appropriate."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks what equipment is used, but does not assert that bronchial tumor removal normally requires special equipment or a sealed operating environment."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.08
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "inevitable side effect",
+      "correction": "Presupposes that a hysterectomy for endometrial cancer will automatically induce hot flashes. While surgical menopause can occur if the ovaries are removed along with the uterus, this isn't always the case, especially in early-stage endometrial cancer.  The question prematurely assumes the occurrence of hot flashes without acknowledging the possibility of ovary preservation and the variability of individual experiences.",
+      "group_id": "g_44163c72fa9d592b",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_350"
+        ],
+        [
+          "source",
+          "myth",
+          439
+        ],
+        [
+          "myth",
+          "a hysterectomy is the only treatment for endometrial cancer."
+        ]
+      ],
+      "id": "fpq_350",
+      "legacy_correction": "Presupposes that a hysterectomy for endometrial cancer will automatically induce hot flashes. While surgical menopause can occur if the ovaries are removed along with the uterus, this isn't always the case, especially in early-stage endometrial cancer.  The question prematurely assumes the occurrence of hot flashes without acknowledging the possibility of ovary preservation and the variability of individual experiences.",
+      "partition": "test",
+      "premise_text": "A hysterectomy is the only treatment for endometrial cancer.",
+      "question": "My sister has endometrial cancer and is having a hysterectomy. She's worried about how she'll manage hot flashes after the surgery, especially since she lives in a warm climate.  Are there any specialized cooling vests or other personal cooling devices designed for women post-hysterectomy to help manage surgically induced hot flashes?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My sister has endometrial cancer",
+            "is having a hysterectomy"
+          ],
+          "claim": "The sister has endometrial cancer and is undergoing a hysterectomy."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "manage hot flashes after the surgery",
+            "surgically induced hot flashes"
+          ],
+          "claim": "The hysterectomy will cause surgically induced hot flashes."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "she lives in a warm climate"
+          ],
+          "claim": "The sister lives in a warm climate."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that the sister has endometrial cancer and is having a hysterectomy."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question expresses concern about managing hot flashes and calls them surgically induced, but it does not establish that the hysterectomy will necessarily cause them."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that the sister lives in a warm climate."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.15
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question presents the sister's cancer diagnosis and planned hysterectomy as background facts supporting the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question discusses managing possible post-surgery hot flashes, but it does not establish that the hysterectomy will cause them; that depends on the individual's surgical circumstances."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the sister lives in a warm climate as a reason cooling devices may be useful."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question states this individual circumstance and uses it as context, but it cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The candidate overstates the premise by saying the hysterectomy will cause hot flashes; the question does not establish that this outcome is certain."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the stated individual circumstance that she lives in a warm climate, but its truth cannot be independently verified from the wording."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.85
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question states that the sister has endometrial cancer and is having a hysterectomy, but these individual circumstances cannot be independently verified from the wording."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question refers to managing possible surgically induced hot flashes, but does not establish that the hysterectomy will cause them; the candidate overstates the wording."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question states that she lives in a warm climate, but this individual circumstance cannot be independently verified from the wording."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.2
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "only/standard treatment",
+      "correction": "Presupposes that eye drops are a standard treatment for shrinking intraocular melanoma.  Eye drops are not used to treat intraocular melanoma.  The standard treatments typically include plaque radiotherapy, proton beam therapy, or enucleation (removal of the eye) depending on the size and location of the tumor.  The question reflects a misunderstanding of the treatment options for this type of cancer.",
+      "group_id": "g_b5e0498ed763e2db",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_566"
+        ],
+        [
+          "source",
+          "myth",
+          657
+        ],
+        [
+          "myth",
+          "intraocular melanoma always presents noticeable symptoms early on."
+        ]
+      ],
+      "id": "fpq_566",
+      "legacy_correction": "Presupposes that eye drops are a standard treatment for shrinking intraocular melanoma.  Eye drops are not used to treat intraocular melanoma.  The standard treatments typically include plaque radiotherapy, proton beam therapy, or enucleation (removal of the eye) depending on the size and location of the tumor.  The question reflects a misunderstanding of the treatment options for this type of cancer.",
+      "partition": "test",
+      "premise_text": "Intraocular melanoma always presents noticeable symptoms early on.",
+      "question": "I was recently diagnosed with intraocular melanoma in my right eye. The doctor said it's small and hasn't spread. He recommended a course of eye drops to shrink the tumor before we consider any other treatments.  I'm worried about the drops affecting my vision. Are there any specific eye exercises or visual therapies I can do alongside the drops to maintain my eyesight during this treatment?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "recently diagnosed with intraocular melanoma in my right eye"
+          ],
+          "claim": "The questioner has been diagnosed with intraocular melanoma in the right eye."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "it's small and hasn't spread"
+          ],
+          "claim": "The melanoma is small and has not metastasized."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "a course of eye drops to shrink the tumor"
+          ],
+          "claim": "Eye drops are an appropriate treatment that can shrink intraocular melanoma before other treatments."
+        },
+        {
+          "claim_id": "c3",
+          "question_quotes": [
+            "specific eye exercises or visual therapies I can do alongside the drops"
+          ],
+          "claim": "Eye exercises or visual therapies could maintain eyesight while eye drops treat the tumor."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the questioner was diagnosed with intraocular melanoma in the right eye."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "reported_only",
+            "reason": "The question reports the doctor’s statement that the melanoma is small and has not spread; it does not independently establish that statement as fact."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports that the doctor recommended eye drops intended to shrink the tumor, but does not establish that they are appropriate or effective."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether exercises or visual therapies could maintain eyesight; it does not assert that they would do so."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the questioner's stated diagnosis, but the wording alone does not independently establish whether that diagnosis is correct."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the doctor's reported characterization that the tumor is small and has not spread, but does not independently verify it."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question treats eye drops as intended to shrink an intraocular melanoma, but eye drops are not an established tumor-shrinking treatment for this condition. The candidate also overstates the report by calling the treatment appropriate."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether exercises or visual therapies could maintain eyesight during treatment; it does not assert that they would be effective."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.75
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "reported_only",
+            "reason": "The question reports that the questioner was diagnosed with intraocular melanoma in the right eye. It does not independently establish or assert this as a general fact."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "reported_only",
+            "reason": "The question attributes the tumor's small size and lack of spread to the doctor. This is reported information, not a general claim relied on as independently verified."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports that eye drops were recommended, but does not assert that they are appropriate or that they can shrink intraocular melanoma. The candidate overstates the question's content."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether exercises or visual therapies could maintain eyesight during treatment. It does not assert that they would do so."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.02
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question presents this as the questioner's individual diagnosis and uses it as context, but it cannot be independently verified from the wording."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "This is attributed to the doctor as an individual clinical finding; the question does not independently establish whether the tumor is small or has spread."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "reported_only",
+            "reason": "The question reports that a doctor recommended drops for this purpose, but does not establish that they are generally appropriate or effective for shrinking intraocular melanoma. The candidate overstates the reported treatment plan."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether such exercises or therapies exist and could help; it does not assert that they can maintain eyesight."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.2
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "other",
+      "correction": "The question assumes that pleuropulmonary blastoma is a late-onset cancer that affects adults in their 50s and impacts retirement planning. This misunderstanding fails to recognize that pleuropulmonary blastoma is a childhood cancer that rarely, if ever, occurs in adults, and would not typically be a consideration in retirement planning.",
+      "group_id": "g_c14890750c41d9c4",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_747"
+        ],
+        [
+          "source",
+          "myth",
+          880
+        ],
+        [
+          "myth",
+          "pleuropulmonary blastoma only affects older adults."
+        ]
+      ],
+      "id": "fpq_747",
+      "legacy_correction": "The question assumes that pleuropulmonary blastoma is a late-onset cancer that affects adults in their 50s and impacts retirement planning. This misunderstanding fails to recognize that pleuropulmonary blastoma is a childhood cancer that rarely, if ever, occurs in adults, and would not typically be a consideration in retirement planning.",
+      "partition": "fit",
+      "premise_text": "Pleuropulmonary Blastoma only affects older adults.",
+      "question": "My wife, who's in her 50s, was just diagnosed with pleuropulmonary blastoma. We're concerned about how this might affect our retirement plans. Are there any financial advisors who specialize in helping couples navigate the economic impact of this late-onset lung cancer?",
+      "set": "fpq",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My wife, who's in her 50s, was just diagnosed with pleuropulmonary blastoma."
+          ],
+          "claim": "The wife has been diagnosed with pleuropulmonary blastoma and is in her 50s."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "this late-onset lung cancer"
+          ],
+          "claim": "Pleuropulmonary blastoma in someone in her 50s is accurately characterized as late-onset lung cancer."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the wife's stated diagnosis and age; the individual diagnosis cannot be verified from the wording, and it is not presented as a general medical claim."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question characterizes the reported condition in a woman in her 50s as late-onset lung cancer, which is a reasonable description in context."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question presents the wife's age and diagnosis as her stated circumstances and bases the request for financial guidance on them."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question characterizes the reported pleuropulmonary blastoma as a late-onset lung cancer and relies on that characterization in seeking advice about its economic impact."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the wife’s age and diagnosis as an individual circumstance, without relying on independently verifiable evidence. It should not be treated as false merely because it cannot be verified here."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question relies on describing the reported diagnosis in someone in her 50s as late-onset lung cancer; this characterization is consistent with the wording and does not overstate it as a universal claim."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the reported diagnosis and age, but the individual's medical circumstances cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on characterizing pleuropulmonary blastoma in a woman in her 50s as late-onset lung cancer, which is an inaccurate or materially oversimplified characterization of this rare tumor."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.85
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Acute Myeloid Leukemia (AML)",
+      "from_model": "gpt-4o",
+      "group_id": "g_2bb1095ecad09dfe",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1001"
+        ]
+      ],
+      "hallucination_text": "The presupposition is that acute myeloid leukemia is primarily a childhood cancer, not recognizing that AML can occur at any age but is more common in older adults, with the average age at diagnosis being around 65 years.",
+      "id": "nfp_1001",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "My nephew, who is a toddler, was recently diagnosed with acute myeloid leukemia, and we're trying to find a pediatric oncologist specializing in AML because we understand it's primarily a childhood cancer. Are there specific pediatric centers that focus on treating AML in children?",
+      "set": "nfp",
+      "source": "github",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My nephew, who is a toddler, was recently diagnosed with acute myeloid leukemia"
+          ],
+          "claim": "The nephew is a toddler who was recently diagnosed with acute myeloid leukemia."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "because we understand it's primarily a childhood cancer"
+          ],
+          "claim": "Acute myeloid leukemia is primarily a childhood cancer."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question presents the nephew's age and diagnosis as the factual context for seeking a specialist."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the family's understanding that AML is primarily a childhood cancer, but does not independently assert that belief as established fact."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.2
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the nephew is a toddler and was recently diagnosed with AML, using this as the basis for seeking pediatric oncology care."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the understanding that AML is primarily a childhood cancer, but AML is not primarily a childhood cancer."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.99
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the nephew is a toddler recently diagnosed with AML and uses this circumstance to seek pediatric oncology care."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "reported_only",
+            "reason": "The question reports the family’s understanding that AML is primarily a childhood cancer, rather than asserting it as established fact. AML is not primarily a childhood cancer overall."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the nephew's age and diagnosis as an individual circumstance but does not independently establish them."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question uses the belief that AML is primarily a childhood cancer as its stated rationale, but AML occurs more commonly in adults than children."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.95
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Retinoblastoma",
+      "from_model": "gpt-4o",
+      "group_id": "g_37c348b0c4277481",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1005"
+        ]
+      ],
+      "hallucination_text": "The presupposition is that enucleation is the inevitable treatment for retinoblastoma, neglecting the possibility of preserving the eye through other available treatments like radiotherapy and photocoagulation.",
+      "id": "nfp_1005",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "After my 3-year-old son was diagnosed with retinoblastoma, we're planning for his eye removal surgery. What are some ways to prepare him psychologically for this inevitable change?",
+      "set": "nfp",
+      "source": "github",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "my 3-year-old son was diagnosed with retinoblastoma"
+          ],
+          "claim": "The child has been diagnosed with retinoblastoma."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "we're planning for his eye removal surgery"
+          ],
+          "claim": "The child is planning to undergo eye removal surgery."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "this inevitable change"
+          ],
+          "claim": "Eye removal surgery is inevitable for this child because of the retinoblastoma diagnosis."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that the son was diagnosed with retinoblastoma."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question says the parents are planning for the surgery, not that the child is planning to undergo it."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question refers to an inevitable change, but does not explicitly establish that eye removal is inevitable because of the diagnosis."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.08
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the child was diagnosed with retinoblastoma and uses that circumstance as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question says the caregivers are planning for surgery, not that the child is planning to undergo it."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question describes the change as inevitable, but it does not establish that surgery is medically inevitable specifically because of the diagnosis."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.3
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the child's diagnosis but does not establish it independently."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the family's surgical plan without asserting that the surgery will definitely occur."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question describes the change as inevitable, but this candidate adds the stronger causal claim that eye removal is inevitable because of the diagnosis."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.85
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the stated diagnosis as an individual circumstance, but its truth cannot be established from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question says the caregivers are planning for surgery, not that the child is personally planning to undergo it. The candidate misstates the subject and certainty."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The question presupposes that eye removal is inevitable, but a retinoblastoma diagnosis alone does not establish that surgery is unavoidable."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.9
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Wilms Tumor and Other Childhood Kidney Tumors",
+      "from_model": "claude-3.5-sonnet",
+      "group_id": "g_fd82b773057129b5",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1075"
+        ]
+      ],
+      "hallucination_text": "The question implicitly assumes that blood in urine is a definitive diagnostic tool for Wilms tumor, overlooking the fact that various other conditions can cause this symptom. It also suggests that boosting the immune system can directly impact the effectiveness of cancer treatment, which is not scientifically proven for Wilms tumor.",
+      "id": "nfp_1075",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "My 5-year-old nephew was recently diagnosed with a Wilms tumor after his parents noticed blood in his urine. We're devastated but trying to stay positive. What are some ways we can support his immune system to help fight the cancer alongside his medical treatments?",
+      "set": "nfp",
+      "source": "github",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My 5-year-old nephew was recently diagnosed with a Wilms tumor"
+          ],
+          "claim": "The nephew is five years old and has recently been diagnosed with a Wilms tumor."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "after his parents noticed blood in his urine"
+          ],
+          "claim": "Blood in the urine was noticed before the Wilms tumor diagnosis."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "support his immune system to help fight the cancer alongside his medical treatments"
+          ],
+          "claim": "Supporting the immune system can help fight Wilms tumor alongside medical treatment."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question asserts this individual diagnosis and age, but the truth of those reported facts cannot be independently determined from the wording."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question states that blood in the urine was noticed before the diagnosis, but this reported sequence cannot be independently verified from the wording."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks for ways to support the child with the hoped-for purpose of helping fight cancer; it does not clearly assert the broader efficacy claim that immune support can do so."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that the nephew is five years old and was recently diagnosed with a Wilms tumor."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question directly states that blood in the urine was noticed before the diagnosis."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The request presupposes that supporting the immune system can help fight the cancer alongside treatment, but this broad claim is not established as a general way to treat Wilms tumor. The candidate faithfully captures that implied premise."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.75
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question presents the nephew's age and reported Wilms tumor diagnosis as its stated context."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question explicitly states that blood in the urine was noticed before the diagnosis."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question asks for ways intended to support the child's care, but does not assert that immune support can in fact fight Wilms tumor; the candidate turns the requested purpose into a general efficacy claim."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.08
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question presents the nephew's age and diagnosis as circumstances underlying the request, but the diagnosis cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question states that blood in the urine was noticed before the diagnosis, but this individual medical history cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "false",
+            "question_relation": "relied_on",
+            "reason": "The request presupposes that supporting the immune system can help fight the tumor alongside treatment, but that broad therapeutic inference is not established merely by the question and overstates what general immune support can be assumed to accomplish."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.75
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Primary Central Nervous System (CNS) Lymphoma",
+      "from_model": "gemini-1.5-pro",
+      "group_id": "g_3768a7d9c374e060",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1133"
+        ]
+      ],
+      "hallucination_text": "Presupposes that surgical resection is a standard treatment approach for primary CNS lymphoma and that recovery focuses on post-surgical care. This is incorrect. Surgery is rarely used for PCNSL beyond biopsy, as the tumor is often diffuse and intertwined with healthy brain tissue. The standard treatment for PCNSL is high-dose methotrexate-based chemotherapy, often combined with other therapies like radiation or stem cell transplant.",
+      "id": "nfp_1133",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "My father was recently diagnosed with primary CNS lymphoma.  His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible. We're trying to prepare for his recovery at home after the surgery. Are there any specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing and prevent recurrence?",
+      "set": "nfp",
+      "source": "github",
+      "candidates": [
+        {
+          "claim_id": "c0",
+          "question_quotes": [
+            "My father was recently diagnosed with primary CNS lymphoma."
+          ],
+          "claim": "The father has been diagnosed with primary CNS lymphoma."
+        },
+        {
+          "claim_id": "c1",
+          "question_quotes": [
+            "His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible."
+          ],
+          "claim": "A minimally invasive procedure to remove as much PCNSL tumor as possible is an appropriate or standard treatment approach."
+        },
+        {
+          "claim_id": "c2",
+          "question_quotes": [
+            "specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing"
+          ],
+          "claim": "Postoperative dietary measures may support recovery and healing after tumor resection."
+        },
+        {
+          "claim_id": "c3",
+          "question_quotes": [
+            "prevent recurrence"
+          ],
+          "claim": "A specific diet can prevent recurrence of primary CNS lymphoma."
+        }
+      ]
+    },
+    "results": {
+      "control": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the father was diagnosed with primary CNS lymphoma and uses that diagnosis to frame the dietary question."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports the surgeon's recommendation but does not establish that this approach is appropriate or standard treatment."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary measures could aid healing; it does not assert that postoperative diet supports recovery."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether diet can help prevent recurrence rather than asserting that a specific diet can do so."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "content": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "supported",
+            "question_relation": "relied_on",
+            "reason": "The question states that the father was recently diagnosed with primary CNS lymphoma and uses that individual circumstance as context for the request."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "not_grounded",
+            "reason": "The question reports the surgeon's recommendation but does not establish that this approach is appropriate or standard treatment."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary recommendations might aid postoperative healing; it does not assert that dietary measures do so."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether diet can prevent recurrence rather than asserting that a specific diet has that effect."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      },
+      "criterion": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question presents the father's diagnosis as an individual circumstance underlying the request, but it cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the surgeon's recommendation but does not establish that the approach is appropriate or standard; the candidate overstates the reported content."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary measures may aid postoperative healing; it does not assert that they do."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether diet can prevent recurrence rather than asserting that a specific diet does so."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.03
+      },
+      "both": {
+        "claim_assessments": [
+          {
+            "claim_id": "c0",
+            "assessment": "undetermined",
+            "question_relation": "relied_on",
+            "reason": "The question relies on the father's stated diagnosis, but the diagnosis cannot be independently verified from the wording alone."
+          },
+          {
+            "claim_id": "c1",
+            "assessment": "undetermined",
+            "question_relation": "reported_only",
+            "reason": "The question reports the surgeon's recommendation but does not assert that this approach is appropriate or standard."
+          },
+          {
+            "claim_id": "c2",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether dietary recommendations might aid healing; it does not assert that postoperative dietary measures do so."
+          },
+          {
+            "claim_id": "c3",
+            "assessment": "undetermined",
+            "question_relation": "queried_only",
+            "reason": "The question asks whether diet can help prevent recurrence, rather than asserting that a specific diet can prevent it."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.03
+      }
+    }
+  }
+]

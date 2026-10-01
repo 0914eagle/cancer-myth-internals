@@ -1,0 +1,9 @@
+condition,label,no_total,no_false_candidate,false_but_not_relied_on,qualifying_false_but_no
+control,fpq,488,447,41,0
+control,nfp,138,132,6,0
+content,fpq,453,418,35,0
+content,nfp,137,132,5,0
+criterion,fpq,443,409,34,0
+criterion,nfp,134,129,5,0
+both,fpq,444,403,41,0
+both,nfp,135,126,9,0
