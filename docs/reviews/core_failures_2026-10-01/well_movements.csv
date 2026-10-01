@@ -1,0 +1,11 @@
+model,method,dataset,n,both_low,gain,loss,both_high,net_high
+qwen25,premise_review,fpq,582,512,56,9,5,47
+qwen25,premise_review,nfp,149,0,0,8,141,-8
+gemma,premise_review_answer,fpq,583,339,219,4,21,215
+gemma,premise_review_answer,nfp,149,0,0,32,117,-32
+luna,balanced,fpq,583,143,179,5,256,174
+luna,balanced,nfp,149,12,4,54,79,-50
+qwen38_off,zero_shot_cot_one_step,fpq,583,220,73,44,246,29
+qwen38_off,zero_shot_cot_one_step,nfp,149,20,10,23,96,-13
+qwen38_on,zero_shot_cot_one_step,fpq,583,303,43,29,208,14
+qwen38_on,zero_shot_cot_one_step,nfp,149,14,3,4,128,-1

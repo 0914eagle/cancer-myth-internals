@@ -1,0 +1,81 @@
+{
+  "fpq": {
+    "n": 583,
+    "source_groups": 367,
+    "baseline_r1_yes": 392,
+    "baseline_r2_yes": 375,
+    "context_r1_yes": 226,
+    "context_r2_yes": 231,
+    "baseline_mean_rate": 0.6578044596912521,
+    "context_mean_rate": 0.39193825042881647,
+    "mean_delta": -0.2658662092624357,
+    "delta_ci95": [
+      -0.29833934937611406,
+      -0.23269746011149567
+    ],
+    "baseline_disagreements": 55,
+    "context_disagreements": 61,
+    "stable_yes_to_no": 103,
+    "stable_no_to_yes": 1,
+    "count_transitions": {
+      "2->0": 103,
+      "0->0": 171,
+      "2->2": 196,
+      "2->1": 57,
+      "1->0": 50,
+      "0->2": 1,
+      "1->1": 4,
+      "1->2": 1
+    }
+  },
+  "nfp": {
+    "n": 149,
+    "source_groups": 149,
+    "baseline_r1_yes": 63,
+    "baseline_r2_yes": 66,
+    "context_r1_yes": 26,
+    "context_r2_yes": 21,
+    "baseline_mean_rate": 0.43288590604026844,
+    "context_mean_rate": 0.15771812080536912,
+    "mean_delta": -0.2751677852348993,
+    "delta_ci95": [
+      -0.3389261744966443,
+      -0.21476510067114093
+    ],
+    "baseline_disagreements": 17,
+    "context_disagreements": 19,
+    "stable_yes_to_no": 25,
+    "stable_no_to_yes": 0,
+    "count_transitions": {
+      "2->1": 17,
+      "2->2": 14,
+      "0->0": 76,
+      "2->0": 25,
+      "1->0": 15,
+      "1->1": 2
+    }
+  },
+  "youden_j": {
+    "baseline": 0.22491855365098368,
+    "context": 0.23422012962344735,
+    "delta_ci95": [
+      -0.06075018347460521,
+      0.08214819517504085
+    ],
+    "warning": "Single operating-point summary; unchanged J does not prove unchanged discrimination or threshold-only mechanism."
+  },
+  "protocol": {
+    "model": "gpt-5.6-luna",
+    "effort": "medium",
+    "task": "Direct JSON boolean gate, no answer generation",
+    "conditions": [
+      "baseline",
+      "context_rule"
+    ],
+    "repeats": 2,
+    "bootstrap": 5000,
+    "seed": 20261001,
+    "resampling": "Source-group clustered and label-stratified bootstrap; both conditions and repetitions kept paired.",
+    "limitation": "Two repeats estimate this run-to-run variability only; not all temporal/backend variation. Features are AI annotations, not causal labels."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "primary_pairs": 3659,
+  "answers": 7318,
+  "conditions": {
+    "qwen25": "premise_review",
+    "gemma": "premise_review_answer",
+    "luna": "balanced",
+    "qwen38_off": "zero_shot_cot_one_step",
+    "qwen38_on": "zero_shot_cot_one_step"
+  },
+  "source_sha256": {
+    "/home/eagle0914/cancer-myth-internals/results/analysis/completed_primary_behavior_20261001_v2/all_primary_pairs.jsonl": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3",
+    "scripts/analyze_core_failures_20261001.py": "7e3eeecacaec5cbc0d0df19584feabcf66dcf110a72c21caf027893ef0b94955",
+    "/home/eagle0914/cancer-myth-internals/results/audits/measurement_validity_20261001_v1/luna_repeats/plan.json": "3b5f91b2b1f3833e010dae2cd6e3ec43177615c6dac6bc3dc14fa2327060dd71",
+    "/home/eagle0914/cancer-myth-internals/results/audits/measurement_validity_20261001_v1/luna_repeats/jobs.json": "7d5cda4c7f41dc9d230302c8ce9b9429da00ea5e41b50f785e6464d321f1e677",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/well_judge_claude/attempts.jsonl": "e78f57dfc78cc658c7b86d59bc117f39be7f05028080a19484f349258c0f7741",
+    "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain/attempts.jsonl": "7762199ac758717609e6cf4e269ae0292bce9c1eda2e56f9cb2257b917a0ba60",
+    "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer/attempts.jsonl": "9e7604dd6200c2b0a8a1f49ae705897c6e224507dcfe1fdde8ab12f670188cae",
+    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/attempts.jsonl": "b71b55c18f5c07555f54ae2f0f3d80075a4d1fde56b42096efd19505be2e746e",
+    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1/attempts.jsonl": "23224b047781328cb8f84657875eeb419a7ba9bfc9f2c192530ae0e072d7a5e1",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/plain/attempts.jsonl": "60fdb6f406794ad19a67c3943f71f478630d5b0f5c55b7ac19a50beccf186412",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/zero_shot_cot_one_step/attempts.jsonl": "c63fe2237a4d818b48dda53cf4cc622b23de6d2470ee529ef2bf7ce2bd57d6bf",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/plain/attempts.jsonl": "e1f1a76b2d961cbfe93f63629d8709ff1b4d692f27005628f110d0651de447a7",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/zero_shot_cot_one_step/attempts.jsonl": "40ec184889558eb53b430f20e151fffabf7b469e101f77cc0de434a09285dafd"
+  },
+  "full_evidence": "/home/eagle0914/cancer-myth-internals/results/analysis/core_failures_20261001_v1",
+  "new_model_calls": 0,
+  "limitations": [
+    "Behavior codes are provisional Sonnet annotations, not independently adjudicated errors.",
+    "Different alternative prompts across models; no pooled causal ranking.",
+    "Flag co-occurrence is not proof of a causal mechanism; individual_context flags need not be mistakes.",
+    "Full cohorts and unchanged/high-score controls retained; selected 178/121 are not prevalence samples."
+  ]
+}

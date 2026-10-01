@@ -1,0 +1,5140 @@
+[
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "fpq",
+    "well_transition": "all",
+    "n": 582,
+    "plain": {
+      "well_scores": {
+        "2": 51,
+        "1": 514,
+        "4": 13,
+        "3": 3,
+        "5": 1
+      },
+      "target": {
+        "corrects_target": 60,
+        "endorses_target_error": 231,
+        "misses_target": 193,
+        "related_without_correction": 98
+      },
+      "stance": {
+        "challenge": 28,
+        "none": 431,
+        "qualification": 123
+      },
+      "grounding": {
+        "explicit": 96,
+        "none": 378,
+        "absent": 52,
+        "implied": 51,
+        "strengthened_or_shifted": 5
+      },
+      "response": {
+        "substantive": 577,
+        "partial": 5
+      },
+      "flags": {
+        "scope_strengthening": 26,
+        "personal_context_reopened": 6,
+        "request_to_assertion": 2,
+        "context_shift": 10,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 47,
+        "2": 78,
+        "1": 429,
+        "5": 14,
+        "3": 14
+      },
+      "target": {
+        "corrects_target": 126,
+        "endorses_target_error": 211,
+        "misses_target": 132,
+        "related_without_correction": 113
+      },
+      "stance": {
+        "challenge": 92,
+        "qualification": 146,
+        "none": 344
+      },
+      "grounding": {
+        "explicit": 160,
+        "strengthened_or_shifted": 11,
+        "none": 305,
+        "absent": 36,
+        "implied": 70
+      },
+      "response": {
+        "substantive": 572,
+        "partial": 10
+      },
+      "flags": {
+        "scope_strengthening": 27,
+        "personal_context_reopened": 16,
+        "request_to_assertion": 1,
+        "context_shift": 26,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 33,
+      "endorses_target_error -> corrects_target": 41,
+      "endorses_target_error -> endorses_target_error": 118,
+      "misses_target -> misses_target": 70,
+      "related_without_correction -> corrects_target": 26,
+      "misses_target -> related_without_correction": 30,
+      "misses_target -> endorses_target_error": 67,
+      "endorses_target_error -> related_without_correction": 34,
+      "misses_target -> corrects_target": 26,
+      "endorses_target_error -> misses_target": 38,
+      "related_without_correction -> misses_target": 19,
+      "corrects_target -> related_without_correction": 12,
+      "related_without_correction -> related_without_correction": 37,
+      "corrects_target -> misses_target": 5,
+      "related_without_correction -> endorses_target_error": 16,
+      "corrects_target -> endorses_target_error": 10
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 10,
+      "none -> qualification": 83,
+      "none -> none": 299,
+      "qualification -> challenge": 33,
+      "none -> challenge": 49,
+      "qualification -> qualification": 54,
+      "qualification -> none": 36,
+      "challenge -> qualification": 9,
+      "challenge -> none": 9
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 532,
+        "0->1": 24,
+        "1->1": 3,
+        "1->0": 23
+      },
+      "personal_context_reopened": {
+        "0->0": 561,
+        "0->1": 15,
+        "1->0": 5,
+        "1->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 579,
+        "0->1": 1,
+        "1->0": 2
+      },
+      "context_shift": {
+        "0->0": 549,
+        "1->1": 3,
+        "0->1": 23,
+        "1->0": 7
+      },
+      "unverifiable_as_false": {
+        "0->0": 582
+      }
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "fpq",
+    "well_transition": "0->0",
+    "n": 512,
+    "plain": {
+      "well_scores": {
+        "1": 474,
+        "2": 37,
+        "3": 1
+      },
+      "target": {
+        "endorses_target_error": 213,
+        "misses_target": 182,
+        "related_without_correction": 86,
+        "corrects_target": 31
+      },
+      "stance": {
+        "none": 402,
+        "qualification": 97,
+        "challenge": 13
+      },
+      "grounding": {
+        "none": 353,
+        "absent": 48,
+        "implied": 44,
+        "explicit": 63,
+        "strengthened_or_shifted": 4
+      },
+      "response": {
+        "substantive": 507,
+        "partial": 5
+      },
+      "flags": {
+        "scope_strengthening": 23,
+        "personal_context_reopened": 5,
+        "request_to_assertion": 2,
+        "context_shift": 8,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 77,
+        "1": 425,
+        "3": 10
+      },
+      "target": {
+        "corrects_target": 61,
+        "endorses_target_error": 209,
+        "misses_target": 132,
+        "related_without_correction": 110
+      },
+      "stance": {
+        "qualification": 139,
+        "none": 342,
+        "challenge": 31
+      },
+      "grounding": {
+        "strengthened_or_shifted": 10,
+        "none": 303,
+        "explicit": 98,
+        "absent": 36,
+        "implied": 65
+      },
+      "response": {
+        "substantive": 507,
+        "partial": 5
+      },
+      "flags": {
+        "scope_strengthening": 27,
+        "personal_context_reopened": 13,
+        "request_to_assertion": 1,
+        "context_shift": 19,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "endorses_target_error -> corrects_target": 23,
+      "endorses_target_error -> endorses_target_error": 118,
+      "misses_target -> misses_target": 70,
+      "related_without_correction -> corrects_target": 14,
+      "misses_target -> related_without_correction": 30,
+      "misses_target -> endorses_target_error": 67,
+      "endorses_target_error -> related_without_correction": 34,
+      "misses_target -> corrects_target": 15,
+      "endorses_target_error -> misses_target": 38,
+      "related_without_correction -> misses_target": 19,
+      "corrects_target -> related_without_correction": 9,
+      "related_without_correction -> related_without_correction": 37,
+      "corrects_target -> misses_target": 5,
+      "corrects_target -> corrects_target": 9,
+      "related_without_correction -> endorses_target_error": 16,
+      "corrects_target -> endorses_target_error": 8
+    },
+    "stance_transitions": {
+      "none -> qualification": 81,
+      "none -> none": 299,
+      "qualification -> challenge": 9,
+      "qualification -> qualification": 52,
+      "qualification -> none": 36,
+      "challenge -> qualification": 6,
+      "none -> challenge": 22,
+      "challenge -> none": 7
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 465,
+        "0->1": 24,
+        "1->1": 3,
+        "1->0": 20
+      },
+      "personal_context_reopened": {
+        "0->0": 495,
+        "0->1": 12,
+        "1->0": 4,
+        "1->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 509,
+        "0->1": 1,
+        "1->0": 2
+      },
+      "context_shift": {
+        "1->1": 3,
+        "0->0": 488,
+        "0->1": 16,
+        "1->0": 5
+      },
+      "unverifiable_as_false": {
+        "0->0": 512
+      }
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "fpq",
+    "well_transition": "0->1",
+    "n": 56,
+    "plain": {
+      "well_scores": {
+        "2": 14,
+        "1": 40,
+        "3": 2
+      },
+      "target": {
+        "corrects_target": 15,
+        "endorses_target_error": 18,
+        "related_without_correction": 12,
+        "misses_target": 11
+      },
+      "stance": {
+        "challenge": 5,
+        "none": 29,
+        "qualification": 22
+      },
+      "grounding": {
+        "explicit": 22,
+        "none": 25,
+        "absent": 4,
+        "implied": 4,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 56
+      },
+      "flags": {
+        "scope_strengthening": 3,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 43,
+        "5": 13
+      },
+      "target": {
+        "corrects_target": 56
+      },
+      "stance": {
+        "challenge": 53,
+        "qualification": 3
+      },
+      "grounding": {
+        "explicit": 54,
+        "implied": 1,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 52,
+        "partial": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 3,
+        "request_to_assertion": 0,
+        "context_shift": 6,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 15,
+      "endorses_target_error -> corrects_target": 18,
+      "related_without_correction -> corrects_target": 12,
+      "misses_target -> corrects_target": 11
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 5,
+      "none -> challenge": 27,
+      "qualification -> challenge": 21,
+      "none -> qualification": 2,
+      "qualification -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 53,
+        "1->0": 3
+      },
+      "personal_context_reopened": {
+        "0->0": 53,
+        "0->1": 3
+      },
+      "request_to_assertion": {
+        "0->0": 56
+      },
+      "context_shift": {
+        "0->0": 48,
+        "0->1": 6,
+        "1->0": 2
+      },
+      "unverifiable_as_false": {
+        "0->0": 56
+      }
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "fpq",
+    "well_transition": "1->0",
+    "n": 9,
+    "plain": {
+      "well_scores": {
+        "4": 9
+      },
+      "target": {
+        "corrects_target": 9
+      },
+      "stance": {
+        "qualification": 3,
+        "challenge": 6
+      },
+      "grounding": {
+        "explicit": 7,
+        "implied": 2
+      },
+      "response": {
+        "substantive": 9
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 1,
+        "3": 4,
+        "1": 4
+      },
+      "target": {
+        "corrects_target": 4,
+        "endorses_target_error": 2,
+        "related_without_correction": 3
+      },
+      "stance": {
+        "challenge": 4,
+        "qualification": 3,
+        "none": 2
+      },
+      "grounding": {
+        "implied": 4,
+        "none": 2,
+        "explicit": 3
+      },
+      "response": {
+        "substantive": 8,
+        "partial": 1
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 4,
+      "corrects_target -> endorses_target_error": 2,
+      "corrects_target -> related_without_correction": 3
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 2,
+      "qualification -> qualification": 1,
+      "challenge -> none": 2,
+      "challenge -> qualification": 2,
+      "challenge -> challenge": 2
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 9
+      },
+      "personal_context_reopened": {
+        "0->0": 9
+      },
+      "request_to_assertion": {
+        "0->0": 9
+      },
+      "context_shift": {
+        "0->0": 8,
+        "0->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 9
+      }
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "fpq",
+    "well_transition": "1->1",
+    "n": 5,
+    "plain": {
+      "well_scores": {
+        "4": 4,
+        "5": 1
+      },
+      "target": {
+        "corrects_target": 5
+      },
+      "stance": {
+        "qualification": 1,
+        "challenge": 4
+      },
+      "grounding": {
+        "implied": 1,
+        "explicit": 4
+      },
+      "response": {
+        "substantive": 5
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 4,
+        "5": 1
+      },
+      "target": {
+        "corrects_target": 5
+      },
+      "stance": {
+        "challenge": 4,
+        "qualification": 1
+      },
+      "grounding": {
+        "explicit": 5
+      },
+      "response": {
+        "substantive": 5
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 5
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 1,
+      "challenge -> challenge": 3,
+      "challenge -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 5
+      },
+      "personal_context_reopened": {
+        "0->0": 4,
+        "1->0": 1
+      },
+      "request_to_assertion": {
+        "0->0": 5
+      },
+      "context_shift": {
+        "0->0": 5
+      },
+      "unverifiable_as_false": {
+        "0->0": 5
+      }
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "nfp",
+    "well_transition": "all",
+    "n": 149,
+    "plain": {
+      "well_scores": {
+        "5": 134,
+        "4": 15
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "none": 116,
+        "qualification": 33
+      },
+      "grounding": {
+        "none": 115,
+        "explicit": 22,
+        "implied": 11,
+        "absent": 1
+      },
+      "response": {
+        "substantive": 145,
+        "partial": 4
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 3,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 39,
+        "5": 102,
+        "2": 6,
+        "1": 2
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "qualification": 32,
+        "none": 108,
+        "challenge": 9
+      },
+      "grounding": {
+        "explicit": 24,
+        "none": 107,
+        "implied": 15,
+        "strengthened_or_shifted": 2,
+        "absent": 1
+      },
+      "response": {
+        "substantive": 145,
+        "partial": 4
+      },
+      "flags": {
+        "scope_strengthening": 7,
+        "personal_context_reopened": 5,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 149
+    },
+    "stance_transitions": {
+      "none -> qualification": 18,
+      "none -> none": 92,
+      "none -> challenge": 6,
+      "qualification -> qualification": 14,
+      "qualification -> challenge": 3,
+      "qualification -> none": 16
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 141,
+        "0->1": 7,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 144,
+        "0->1": 4,
+        "1->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 149
+      },
+      "context_shift": {
+        "0->0": 145,
+        "0->1": 1,
+        "1->0": 3
+      },
+      "unverifiable_as_false": {
+        "0->0": 149
+      }
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "nfp",
+    "well_transition": "0->0",
+    "n": 0,
+    "plain": {
+      "well_scores": {},
+      "target": {},
+      "stance": {},
+      "grounding": {},
+      "response": {},
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {},
+      "target": {},
+      "stance": {},
+      "grounding": {},
+      "response": {},
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {},
+    "stance_transitions": {},
+    "flag_transitions": {
+      "scope_strengthening": {},
+      "personal_context_reopened": {},
+      "request_to_assertion": {},
+      "context_shift": {},
+      "unverifiable_as_false": {}
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "nfp",
+    "well_transition": "0->1",
+    "n": 0,
+    "plain": {
+      "well_scores": {},
+      "target": {},
+      "stance": {},
+      "grounding": {},
+      "response": {},
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {},
+      "target": {},
+      "stance": {},
+      "grounding": {},
+      "response": {},
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {},
+    "stance_transitions": {},
+    "flag_transitions": {
+      "scope_strengthening": {},
+      "personal_context_reopened": {},
+      "request_to_assertion": {},
+      "context_shift": {},
+      "unverifiable_as_false": {}
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "nfp",
+    "well_transition": "1->0",
+    "n": 8,
+    "plain": {
+      "well_scores": {
+        "5": 8
+      },
+      "target": {
+        "not_applicable": 8
+      },
+      "stance": {
+        "none": 5,
+        "qualification": 3
+      },
+      "grounding": {
+        "none": 5,
+        "implied": 2,
+        "explicit": 1
+      },
+      "response": {
+        "substantive": 8
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 6,
+        "1": 2
+      },
+      "target": {
+        "not_applicable": 8
+      },
+      "stance": {
+        "challenge": 5,
+        "qualification": 2,
+        "none": 1
+      },
+      "grounding": {
+        "explicit": 5,
+        "implied": 2,
+        "none": 1
+      },
+      "response": {
+        "substantive": 6,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 2,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 8
+    },
+    "stance_transitions": {
+      "none -> challenge": 4,
+      "qualification -> qualification": 2,
+      "qualification -> challenge": 1,
+      "none -> none": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 8
+      },
+      "personal_context_reopened": {
+        "0->0": 6,
+        "0->1": 2
+      },
+      "request_to_assertion": {
+        "0->0": 8
+      },
+      "context_shift": {
+        "0->0": 7,
+        "1->0": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 8
+      }
+    }
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "dataset": "nfp",
+    "well_transition": "1->1",
+    "n": 141,
+    "plain": {
+      "well_scores": {
+        "5": 126,
+        "4": 15
+      },
+      "target": {
+        "not_applicable": 141
+      },
+      "stance": {
+        "none": 111,
+        "qualification": 30
+      },
+      "grounding": {
+        "none": 110,
+        "explicit": 21,
+        "implied": 9,
+        "absent": 1
+      },
+      "response": {
+        "substantive": 137,
+        "partial": 4
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 39,
+        "5": 102
+      },
+      "target": {
+        "not_applicable": 141
+      },
+      "stance": {
+        "qualification": 30,
+        "none": 107,
+        "challenge": 4
+      },
+      "grounding": {
+        "explicit": 19,
+        "none": 106,
+        "implied": 13,
+        "strengthened_or_shifted": 2,
+        "absent": 1
+      },
+      "response": {
+        "substantive": 139,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 7,
+        "personal_context_reopened": 3,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 141
+    },
+    "stance_transitions": {
+      "none -> qualification": 18,
+      "none -> none": 91,
+      "qualification -> qualification": 12,
+      "qualification -> challenge": 2,
+      "qualification -> none": 16,
+      "none -> challenge": 2
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 133,
+        "0->1": 7,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 138,
+        "0->1": 2,
+        "1->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 141
+      },
+      "context_shift": {
+        "0->0": 138,
+        "0->1": 1,
+        "1->0": 2
+      },
+      "unverifiable_as_false": {
+        "0->0": 141
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "fpq",
+    "well_transition": "all",
+    "n": 583,
+    "plain": {
+      "well_scores": {
+        "1": 497,
+        "2": 53,
+        "4": 23,
+        "3": 8,
+        "5": 2
+      },
+      "target": {
+        "related_without_correction": 129,
+        "endorses_target_error": 175,
+        "misses_target": 197,
+        "corrects_target": 82
+      },
+      "stance": {
+        "qualification": 158,
+        "none": 370,
+        "challenge": 55
+      },
+      "grounding": {
+        "explicit": 120,
+        "none": 332,
+        "implied": 87,
+        "absent": 36,
+        "strengthened_or_shifted": 8
+      },
+      "response": {
+        "substantive": 574,
+        "partial": 8,
+        "withheld": 1
+      },
+      "flags": {
+        "scope_strengthening": 37,
+        "personal_context_reopened": 19,
+        "request_to_assertion": 0,
+        "context_shift": 14,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 206,
+        "1": 287,
+        "2": 42,
+        "5": 34,
+        "3": 14
+      },
+      "target": {
+        "corrects_target": 289,
+        "endorses_target_error": 107,
+        "misses_target": 114,
+        "related_without_correction": 73
+      },
+      "stance": {
+        "challenge": 297,
+        "none": 204,
+        "qualification": 82
+      },
+      "grounding": {
+        "explicit": 333,
+        "none": 183,
+        "implied": 45,
+        "absent": 19,
+        "strengthened_or_shifted": 3
+      },
+      "response": {
+        "substantive": 540,
+        "partial": 41,
+        "withheld": 2
+      },
+      "flags": {
+        "scope_strengthening": 25,
+        "personal_context_reopened": 18,
+        "request_to_assertion": 1,
+        "context_shift": 17,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "related_without_correction -> corrects_target": 77,
+      "endorses_target_error -> corrects_target": 82,
+      "endorses_target_error -> endorses_target_error": 45,
+      "misses_target -> misses_target": 71,
+      "corrects_target -> endorses_target_error": 4,
+      "related_without_correction -> misses_target": 17,
+      "related_without_correction -> related_without_correction": 18,
+      "endorses_target_error -> misses_target": 23,
+      "misses_target -> corrects_target": 61,
+      "misses_target -> related_without_correction": 24,
+      "misses_target -> endorses_target_error": 41,
+      "corrects_target -> misses_target": 3,
+      "related_without_correction -> endorses_target_error": 17,
+      "endorses_target_error -> related_without_correction": 25,
+      "corrects_target -> corrects_target": 69,
+      "corrects_target -> related_without_correction": 6
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 89,
+      "none -> challenge": 155,
+      "none -> none": 168,
+      "qualification -> none": 36,
+      "none -> qualification": 47,
+      "qualification -> qualification": 33,
+      "challenge -> challenge": 53,
+      "challenge -> qualification": 2
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 526,
+        "0->1": 20,
+        "1->0": 32,
+        "1->1": 5
+      },
+      "personal_context_reopened": {
+        "0->0": 550,
+        "0->1": 14,
+        "1->0": 15,
+        "1->1": 4
+      },
+      "request_to_assertion": {
+        "0->0": 582,
+        "0->1": 1
+      },
+      "context_shift": {
+        "0->0": 554,
+        "0->1": 15,
+        "1->0": 12,
+        "1->1": 2
+      },
+      "unverifiable_as_false": {
+        "0->0": 583
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "fpq",
+    "well_transition": "0->0",
+    "n": 339,
+    "plain": {
+      "well_scores": {
+        "1": 318,
+        "2": 18,
+        "3": 3
+      },
+      "target": {
+        "endorses_target_error": 107,
+        "misses_target": 145,
+        "corrects_target": 19,
+        "related_without_correction": 68
+      },
+      "stance": {
+        "none": 244,
+        "qualification": 89,
+        "challenge": 6
+      },
+      "grounding": {
+        "none": 221,
+        "implied": 51,
+        "explicit": 41,
+        "absent": 23,
+        "strengthened_or_shifted": 3
+      },
+      "response": {
+        "substantive": 333,
+        "partial": 6
+      },
+      "flags": {
+        "scope_strengthening": 21,
+        "personal_context_reopened": 7,
+        "request_to_assertion": 0,
+        "context_shift": 4,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "1": 286,
+        "2": 41,
+        "3": 12
+      },
+      "target": {
+        "endorses_target_error": 107,
+        "misses_target": 114,
+        "related_without_correction": 72,
+        "corrects_target": 46
+      },
+      "stance": {
+        "none": 204,
+        "qualification": 77,
+        "challenge": 58
+      },
+      "grounding": {
+        "none": 183,
+        "implied": 33,
+        "explicit": 102,
+        "absent": 19,
+        "strengthened_or_shifted": 2
+      },
+      "response": {
+        "substantive": 326,
+        "partial": 13
+      },
+      "flags": {
+        "scope_strengthening": 24,
+        "personal_context_reopened": 6,
+        "request_to_assertion": 1,
+        "context_shift": 12,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "endorses_target_error -> endorses_target_error": 45,
+      "misses_target -> misses_target": 71,
+      "corrects_target -> endorses_target_error": 4,
+      "related_without_correction -> misses_target": 17,
+      "related_without_correction -> related_without_correction": 18,
+      "endorses_target_error -> misses_target": 23,
+      "misses_target -> related_without_correction": 24,
+      "misses_target -> endorses_target_error": 41,
+      "corrects_target -> misses_target": 3,
+      "related_without_correction -> endorses_target_error": 17,
+      "endorses_target_error -> corrects_target": 14,
+      "endorses_target_error -> related_without_correction": 25,
+      "related_without_correction -> corrects_target": 16,
+      "misses_target -> corrects_target": 9,
+      "corrects_target -> corrects_target": 7,
+      "corrects_target -> related_without_correction": 5
+    },
+    "stance_transitions": {
+      "none -> none": 168,
+      "qualification -> none": 36,
+      "none -> qualification": 45,
+      "qualification -> qualification": 31,
+      "qualification -> challenge": 22,
+      "none -> challenge": 31,
+      "challenge -> challenge": 5,
+      "challenge -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->1": 19,
+        "0->0": 299,
+        "1->1": 5,
+        "1->0": 16
+      },
+      "personal_context_reopened": {
+        "0->0": 328,
+        "1->0": 5,
+        "0->1": 4,
+        "1->1": 2
+      },
+      "request_to_assertion": {
+        "0->0": 338,
+        "0->1": 1
+      },
+      "context_shift": {
+        "0->0": 324,
+        "0->1": 11,
+        "1->0": 3,
+        "1->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 339
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "fpq",
+    "well_transition": "0->1",
+    "n": 219,
+    "plain": {
+      "well_scores": {
+        "1": 179,
+        "2": 35,
+        "3": 5
+      },
+      "target": {
+        "related_without_correction": 61,
+        "endorses_target_error": 68,
+        "misses_target": 52,
+        "corrects_target": 38
+      },
+      "stance": {
+        "qualification": 67,
+        "none": 126,
+        "challenge": 26
+      },
+      "grounding": {
+        "explicit": 59,
+        "none": 111,
+        "implied": 31,
+        "absent": 13,
+        "strengthened_or_shifted": 5
+      },
+      "response": {
+        "substantive": 217,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 16,
+        "personal_context_reopened": 12,
+        "request_to_assertion": 0,
+        "context_shift": 9,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 191,
+        "5": 28
+      },
+      "target": {
+        "corrects_target": 219
+      },
+      "stance": {
+        "challenge": 215,
+        "qualification": 4
+      },
+      "grounding": {
+        "explicit": 208,
+        "implied": 10,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 190,
+        "partial": 28,
+        "withheld": 1
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 12,
+        "request_to_assertion": 0,
+        "context_shift": 4,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "related_without_correction -> corrects_target": 61,
+      "endorses_target_error -> corrects_target": 68,
+      "misses_target -> corrects_target": 52,
+      "corrects_target -> corrects_target": 38
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 66,
+      "none -> challenge": 124,
+      "none -> qualification": 2,
+      "challenge -> challenge": 25,
+      "challenge -> qualification": 1,
+      "qualification -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 202,
+        "1->0": 16,
+        "0->1": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 197,
+        "0->1": 10,
+        "1->0": 10,
+        "1->1": 2
+      },
+      "request_to_assertion": {
+        "0->0": 219
+      },
+      "context_shift": {
+        "0->0": 206,
+        "0->1": 4,
+        "1->0": 9
+      },
+      "unverifiable_as_false": {
+        "0->0": 219
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "fpq",
+    "well_transition": "1->0",
+    "n": 4,
+    "plain": {
+      "well_scores": {
+        "4": 4
+      },
+      "target": {
+        "corrects_target": 4
+      },
+      "stance": {
+        "challenge": 3,
+        "qualification": 1
+      },
+      "grounding": {
+        "explicit": 3,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 1,
+        "3": 2,
+        "1": 1
+      },
+      "target": {
+        "corrects_target": 3,
+        "related_without_correction": 1
+      },
+      "stance": {
+        "challenge": 3,
+        "qualification": 1
+      },
+      "grounding": {
+        "explicit": 3,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 3,
+      "corrects_target -> related_without_correction": 1
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 3,
+      "qualification -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 4
+      },
+      "personal_context_reopened": {
+        "0->0": 4
+      },
+      "request_to_assertion": {
+        "0->0": 4
+      },
+      "context_shift": {
+        "0->0": 4
+      },
+      "unverifiable_as_false": {
+        "0->0": 4
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "fpq",
+    "well_transition": "1->1",
+    "n": 21,
+    "plain": {
+      "well_scores": {
+        "4": 19,
+        "5": 2
+      },
+      "target": {
+        "corrects_target": 21
+      },
+      "stance": {
+        "challenge": 20,
+        "qualification": 1
+      },
+      "grounding": {
+        "explicit": 17,
+        "implied": 4
+      },
+      "response": {
+        "substantive": 20,
+        "withheld": 1
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 6,
+        "4": 15
+      },
+      "target": {
+        "corrects_target": 21
+      },
+      "stance": {
+        "challenge": 21
+      },
+      "grounding": {
+        "explicit": 20,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 20,
+        "withheld": 1
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 21
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 20,
+      "qualification -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 21
+      },
+      "personal_context_reopened": {
+        "0->0": 21
+      },
+      "request_to_assertion": {
+        "0->0": 21
+      },
+      "context_shift": {
+        "0->0": 20,
+        "1->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 21
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "nfp",
+    "well_transition": "all",
+    "n": 149,
+    "plain": {
+      "well_scores": {
+        "4": 27,
+        "5": 122
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "qualification": 54,
+        "challenge": 2,
+        "none": 93
+      },
+      "grounding": {
+        "explicit": 32,
+        "none": 91,
+        "implied": 24,
+        "absent": 2
+      },
+      "response": {
+        "substantive": 147,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 2,
+        "personal_context_reopened": 2,
+        "request_to_assertion": 0,
+        "context_shift": 6,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 23,
+        "1": 7,
+        "5": 94,
+        "2": 20,
+        "3": 5
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "challenge": 35,
+        "none": 70,
+        "qualification": 44
+      },
+      "grounding": {
+        "explicit": 58,
+        "none": 70,
+        "implied": 18,
+        "strengthened_or_shifted": 3
+      },
+      "response": {
+        "substantive": 136,
+        "partial": 13
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 7,
+        "request_to_assertion": 1,
+        "context_shift": 3,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 149
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 15,
+      "challenge -> challenge": 2,
+      "none -> challenge": 18,
+      "none -> none": 54,
+      "qualification -> qualification": 23,
+      "qualification -> none": 16,
+      "none -> qualification": 21
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 147,
+        "1->0": 2
+      },
+      "personal_context_reopened": {
+        "0->0": 140,
+        "0->1": 7,
+        "1->0": 2
+      },
+      "request_to_assertion": {
+        "0->0": 148,
+        "0->1": 1
+      },
+      "context_shift": {
+        "0->0": 142,
+        "1->0": 4,
+        "1->1": 2,
+        "0->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 149
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "nfp",
+    "well_transition": "0->0",
+    "n": 0,
+    "plain": {
+      "well_scores": {},
+      "target": {},
+      "stance": {},
+      "grounding": {},
+      "response": {},
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {},
+      "target": {},
+      "stance": {},
+      "grounding": {},
+      "response": {},
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {},
+    "stance_transitions": {},
+    "flag_transitions": {
+      "scope_strengthening": {},
+      "personal_context_reopened": {},
+      "request_to_assertion": {},
+      "context_shift": {},
+      "unverifiable_as_false": {}
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "nfp",
+    "well_transition": "0->1",
+    "n": 0,
+    "plain": {
+      "well_scores": {},
+      "target": {},
+      "stance": {},
+      "grounding": {},
+      "response": {},
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {},
+      "target": {},
+      "stance": {},
+      "grounding": {},
+      "response": {},
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {},
+    "stance_transitions": {},
+    "flag_transitions": {
+      "scope_strengthening": {},
+      "personal_context_reopened": {},
+      "request_to_assertion": {},
+      "context_shift": {},
+      "unverifiable_as_false": {}
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "nfp",
+    "well_transition": "1->0",
+    "n": 32,
+    "plain": {
+      "well_scores": {
+        "4": 10,
+        "5": 22
+      },
+      "target": {
+        "not_applicable": 32
+      },
+      "stance": {
+        "challenge": 2,
+        "none": 18,
+        "qualification": 12
+      },
+      "grounding": {
+        "explicit": 10,
+        "none": 18,
+        "implied": 4
+      },
+      "response": {
+        "substantive": 32
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 3,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "1": 7,
+        "2": 20,
+        "3": 5
+      },
+      "target": {
+        "not_applicable": 32
+      },
+      "stance": {
+        "challenge": 29,
+        "qualification": 3
+      },
+      "grounding": {
+        "explicit": 32
+      },
+      "response": {
+        "substantive": 24,
+        "partial": 8
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 6,
+        "request_to_assertion": 1,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 32
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 2,
+      "none -> challenge": 17,
+      "qualification -> challenge": 10,
+      "qualification -> qualification": 2,
+      "none -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 31,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 26,
+        "0->1": 6
+      },
+      "request_to_assertion": {
+        "0->0": 31,
+        "0->1": 1
+      },
+      "context_shift": {
+        "0->0": 29,
+        "1->0": 2,
+        "1->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 32
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "dataset": "nfp",
+    "well_transition": "1->1",
+    "n": 117,
+    "plain": {
+      "well_scores": {
+        "4": 17,
+        "5": 100
+      },
+      "target": {
+        "not_applicable": 117
+      },
+      "stance": {
+        "qualification": 42,
+        "none": 75
+      },
+      "grounding": {
+        "explicit": 22,
+        "none": 73,
+        "implied": 20,
+        "absent": 2
+      },
+      "response": {
+        "substantive": 115,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 2,
+        "request_to_assertion": 0,
+        "context_shift": 3,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 23,
+        "5": 94
+      },
+      "target": {
+        "not_applicable": 117
+      },
+      "stance": {
+        "challenge": 6,
+        "none": 70,
+        "qualification": 41
+      },
+      "grounding": {
+        "explicit": 26,
+        "none": 70,
+        "implied": 18,
+        "strengthened_or_shifted": 3
+      },
+      "response": {
+        "substantive": 112,
+        "partial": 5
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 117
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 5,
+      "none -> none": 54,
+      "qualification -> qualification": 21,
+      "qualification -> none": 16,
+      "none -> qualification": 20,
+      "none -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 116,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 114,
+        "1->0": 2,
+        "0->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 117
+      },
+      "context_shift": {
+        "0->0": 113,
+        "1->1": 1,
+        "1->0": 2,
+        "0->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 117
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "fpq",
+    "well_transition": "all",
+    "n": 583,
+    "plain": {
+      "well_scores": {
+        "5": 152,
+        "4": 109,
+        "1": 202,
+        "3": 21,
+        "2": 99
+      },
+      "target": {
+        "corrects_target": 354,
+        "misses_target": 109,
+        "endorses_target_error": 20,
+        "related_without_correction": 100
+      },
+      "stance": {
+        "challenge": 285,
+        "none": 101,
+        "qualification": 197
+      },
+      "grounding": {
+        "explicit": 359,
+        "none": 89,
+        "implied": 116,
+        "strengthened_or_shifted": 7,
+        "absent": 12
+      },
+      "response": {
+        "substantive": 573,
+        "partial": 10
+      },
+      "flags": {
+        "scope_strengthening": 6,
+        "personal_context_reopened": 43,
+        "request_to_assertion": 1,
+        "context_shift": 17,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 280,
+        "1": 78,
+        "4": 155,
+        "2": 51,
+        "3": 19
+      },
+      "target": {
+        "corrects_target": 490,
+        "misses_target": 37,
+        "related_without_correction": 46,
+        "endorses_target_error": 9,
+        "unclear": 1
+      },
+      "stance": {
+        "challenge": 457,
+        "none": 25,
+        "qualification": 101
+      },
+      "grounding": {
+        "explicit": 448,
+        "none": 22,
+        "implied": 107,
+        "absent": 3,
+        "strengthened_or_shifted": 3
+      },
+      "response": {
+        "substantive": 573,
+        "partial": 10
+      },
+      "flags": {
+        "scope_strengthening": 7,
+        "personal_context_reopened": 48,
+        "request_to_assertion": 0,
+        "context_shift": 10,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 350,
+      "misses_target -> misses_target": 29,
+      "misses_target -> related_without_correction": 20,
+      "endorses_target_error -> endorses_target_error": 4,
+      "misses_target -> corrects_target": 54,
+      "related_without_correction -> corrects_target": 74,
+      "related_without_correction -> misses_target": 7,
+      "related_without_correction -> related_without_correction": 19,
+      "endorses_target_error -> corrects_target": 12,
+      "endorses_target_error -> misses_target": 1,
+      "corrects_target -> related_without_correction": 4,
+      "endorses_target_error -> related_without_correction": 3,
+      "misses_target -> endorses_target_error": 5,
+      "misses_target -> unclear": 1
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 276,
+      "none -> none": 21,
+      "none -> qualification": 37,
+      "qualification -> challenge": 138,
+      "none -> challenge": 43,
+      "qualification -> qualification": 55,
+      "challenge -> qualification": 9,
+      "qualification -> none": 4
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 572,
+        "0->1": 5,
+        "1->1": 2,
+        "1->0": 4
+      },
+      "personal_context_reopened": {
+        "0->0": 501,
+        "1->0": 34,
+        "1->1": 9,
+        "0->1": 39
+      },
+      "request_to_assertion": {
+        "0->0": 582,
+        "1->0": 1
+      },
+      "context_shift": {
+        "0->0": 556,
+        "1->0": 17,
+        "0->1": 10
+      },
+      "unverifiable_as_false": {
+        "0->0": 583
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "fpq",
+    "well_transition": "0->0",
+    "n": 143,
+    "plain": {
+      "well_scores": {
+        "1": 114,
+        "2": 24,
+        "3": 5
+      },
+      "target": {
+        "misses_target": 71,
+        "endorses_target_error": 8,
+        "corrects_target": 18,
+        "related_without_correction": 46
+      },
+      "stance": {
+        "none": 56,
+        "qualification": 72,
+        "challenge": 15
+      },
+      "grounding": {
+        "none": 52,
+        "implied": 39,
+        "explicit": 44,
+        "strengthened_or_shifted": 4,
+        "absent": 4
+      },
+      "response": {
+        "substantive": 141,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 4,
+        "personal_context_reopened": 6,
+        "request_to_assertion": 0,
+        "context_shift": 5,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "1": 78,
+        "2": 49,
+        "3": 16
+      },
+      "target": {
+        "misses_target": 37,
+        "related_without_correction": 44,
+        "endorses_target_error": 9,
+        "corrects_target": 53
+      },
+      "stance": {
+        "none": 25,
+        "qualification": 61,
+        "challenge": 57
+      },
+      "grounding": {
+        "none": 22,
+        "implied": 38,
+        "explicit": 79,
+        "absent": 3,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 141,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 5,
+        "personal_context_reopened": 6,
+        "request_to_assertion": 0,
+        "context_shift": 6,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "misses_target -> misses_target": 29,
+      "misses_target -> related_without_correction": 20,
+      "endorses_target_error -> endorses_target_error": 4,
+      "misses_target -> corrects_target": 17,
+      "corrects_target -> corrects_target": 15,
+      "related_without_correction -> misses_target": 7,
+      "related_without_correction -> related_without_correction": 18,
+      "related_without_correction -> corrects_target": 21,
+      "endorses_target_error -> misses_target": 1,
+      "corrects_target -> related_without_correction": 3,
+      "endorses_target_error -> related_without_correction": 3,
+      "misses_target -> endorses_target_error": 5
+    },
+    "stance_transitions": {
+      "none -> none": 21,
+      "none -> qualification": 26,
+      "qualification -> challenge": 34,
+      "none -> challenge": 9,
+      "qualification -> qualification": 34,
+      "challenge -> challenge": 14,
+      "qualification -> none": 4,
+      "challenge -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 136,
+        "1->1": 2,
+        "1->0": 2,
+        "0->1": 3
+      },
+      "personal_context_reopened": {
+        "0->0": 132,
+        "0->1": 5,
+        "1->0": 5,
+        "1->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 143
+      },
+      "context_shift": {
+        "0->0": 132,
+        "0->1": 6,
+        "1->0": 5
+      },
+      "unverifiable_as_false": {
+        "0->0": 143
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "fpq",
+    "well_transition": "0->1",
+    "n": 179,
+    "plain": {
+      "well_scores": {
+        "3": 16,
+        "1": 88,
+        "2": 75
+      },
+      "target": {
+        "corrects_target": 76,
+        "related_without_correction": 53,
+        "misses_target": 38,
+        "endorses_target_error": 12
+      },
+      "stance": {
+        "qualification": 101,
+        "none": 45,
+        "challenge": 33
+      },
+      "grounding": {
+        "implied": 47,
+        "none": 37,
+        "explicit": 85,
+        "strengthened_or_shifted": 2,
+        "absent": 8
+      },
+      "response": {
+        "substantive": 178,
+        "partial": 1
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 15,
+        "request_to_assertion": 0,
+        "context_shift": 8,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 83,
+        "4": 96
+      },
+      "target": {
+        "corrects_target": 178,
+        "unclear": 1
+      },
+      "stance": {
+        "challenge": 149,
+        "qualification": 30
+      },
+      "grounding": {
+        "explicit": 133,
+        "implied": 45,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 177,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 21,
+        "request_to_assertion": 0,
+        "context_shift": 3,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 76,
+      "related_without_correction -> corrects_target": 53,
+      "misses_target -> corrects_target": 37,
+      "endorses_target_error -> corrects_target": 12,
+      "misses_target -> unclear": 1
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 84,
+      "none -> challenge": 34,
+      "none -> qualification": 11,
+      "qualification -> qualification": 17,
+      "challenge -> challenge": 31,
+      "challenge -> qualification": 2
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 177,
+        "0->1": 1,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 146,
+        "1->1": 3,
+        "0->1": 18,
+        "1->0": 12
+      },
+      "request_to_assertion": {
+        "0->0": 179
+      },
+      "context_shift": {
+        "0->0": 168,
+        "1->0": 8,
+        "0->1": 3
+      },
+      "unverifiable_as_false": {
+        "0->0": 179
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "fpq",
+    "well_transition": "1->0",
+    "n": 5,
+    "plain": {
+      "well_scores": {
+        "5": 2,
+        "4": 3
+      },
+      "target": {
+        "corrects_target": 5
+      },
+      "stance": {
+        "challenge": 4,
+        "qualification": 1
+      },
+      "grounding": {
+        "explicit": 5
+      },
+      "response": {
+        "substantive": 5
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 2,
+        "3": 3
+      },
+      "target": {
+        "related_without_correction": 1,
+        "corrects_target": 4
+      },
+      "stance": {
+        "qualification": 2,
+        "challenge": 3
+      },
+      "grounding": {
+        "strengthened_or_shifted": 1,
+        "explicit": 4
+      },
+      "response": {
+        "substantive": 4,
+        "partial": 1
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> related_without_correction": 1,
+      "corrects_target -> corrects_target": 4
+    },
+    "stance_transitions": {
+      "challenge -> qualification": 2,
+      "challenge -> challenge": 2,
+      "qualification -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 5
+      },
+      "personal_context_reopened": {
+        "0->0": 5
+      },
+      "request_to_assertion": {
+        "0->0": 5
+      },
+      "context_shift": {
+        "0->1": 1,
+        "0->0": 4
+      },
+      "unverifiable_as_false": {
+        "0->0": 5
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "fpq",
+    "well_transition": "1->1",
+    "n": 256,
+    "plain": {
+      "well_scores": {
+        "5": 150,
+        "4": 106
+      },
+      "target": {
+        "corrects_target": 255,
+        "related_without_correction": 1
+      },
+      "stance": {
+        "challenge": 233,
+        "qualification": 23
+      },
+      "grounding": {
+        "explicit": 225,
+        "implied": 30,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 249,
+        "partial": 7
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 22,
+        "request_to_assertion": 1,
+        "context_shift": 4,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 197,
+        "4": 59
+      },
+      "target": {
+        "corrects_target": 255,
+        "related_without_correction": 1
+      },
+      "stance": {
+        "challenge": 248,
+        "qualification": 8
+      },
+      "grounding": {
+        "explicit": 232,
+        "implied": 24
+      },
+      "response": {
+        "substantive": 251,
+        "partial": 5
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 21,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 255,
+      "related_without_correction -> related_without_correction": 1
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 229,
+      "qualification -> challenge": 19,
+      "challenge -> qualification": 4,
+      "qualification -> qualification": 4
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 254,
+        "0->1": 1,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 218,
+        "1->0": 17,
+        "0->1": 16,
+        "1->1": 5
+      },
+      "request_to_assertion": {
+        "0->0": 255,
+        "1->0": 1
+      },
+      "context_shift": {
+        "0->0": 252,
+        "1->0": 4
+      },
+      "unverifiable_as_false": {
+        "0->0": 256
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "nfp",
+    "well_transition": "all",
+    "n": 149,
+    "plain": {
+      "well_scores": {
+        "4": 36,
+        "2": 14,
+        "5": 97,
+        "3": 2
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "challenge": 30,
+        "qualification": 91,
+        "none": 28
+      },
+      "grounding": {
+        "explicit": 77,
+        "implied": 39,
+        "none": 28,
+        "absent": 1,
+        "strengthened_or_shifted": 4
+      },
+      "response": {
+        "substantive": 147,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 19,
+        "request_to_assertion": 1,
+        "context_shift": 11,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 32,
+        "1": 5,
+        "4": 51,
+        "2": 47,
+        "3": 14
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "challenge": 65,
+        "qualification": 80,
+        "none": 4
+      },
+      "grounding": {
+        "explicit": 99,
+        "implied": 43,
+        "none": 4,
+        "strengthened_or_shifted": 2,
+        "absent": 1
+      },
+      "response": {
+        "substantive": 149
+      },
+      "flags": {
+        "scope_strengthening": 2,
+        "personal_context_reopened": 19,
+        "request_to_assertion": 0,
+        "context_shift": 10,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 149
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 27,
+      "qualification -> challenge": 38,
+      "qualification -> qualification": 53,
+      "none -> qualification": 24,
+      "none -> none": 4,
+      "challenge -> qualification": 3
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 146,
+        "1->0": 1,
+        "0->1": 2
+      },
+      "personal_context_reopened": {
+        "0->0": 113,
+        "0->1": 17,
+        "1->1": 2,
+        "1->0": 17
+      },
+      "request_to_assertion": {
+        "0->0": 148,
+        "1->0": 1
+      },
+      "context_shift": {
+        "0->0": 128,
+        "0->1": 10,
+        "1->0": 11
+      },
+      "unverifiable_as_false": {
+        "0->0": 149
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "nfp",
+    "well_transition": "0->0",
+    "n": 12,
+    "plain": {
+      "well_scores": {
+        "2": 12
+      },
+      "target": {
+        "not_applicable": 12
+      },
+      "stance": {
+        "challenge": 10,
+        "qualification": 2
+      },
+      "grounding": {
+        "explicit": 11,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 10,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 3,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "1": 2,
+        "2": 10
+      },
+      "target": {
+        "not_applicable": 12
+      },
+      "stance": {
+        "challenge": 11,
+        "qualification": 1
+      },
+      "grounding": {
+        "explicit": 11,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 12
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 12
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 10,
+      "qualification -> qualification": 1,
+      "qualification -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 12
+      },
+      "personal_context_reopened": {
+        "0->0": 8,
+        "0->1": 1,
+        "1->0": 3
+      },
+      "request_to_assertion": {
+        "0->0": 12
+      },
+      "context_shift": {
+        "0->0": 11,
+        "1->0": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 12
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "nfp",
+    "well_transition": "0->1",
+    "n": 4,
+    "plain": {
+      "well_scores": {
+        "2": 2,
+        "3": 2
+      },
+      "target": {
+        "not_applicable": 4
+      },
+      "stance": {
+        "qualification": 4
+      },
+      "grounding": {
+        "explicit": 3,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 2,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 3,
+        "5": 1
+      },
+      "target": {
+        "not_applicable": 4
+      },
+      "stance": {
+        "qualification": 3,
+        "challenge": 1
+      },
+      "grounding": {
+        "explicit": 2,
+        "implied": 2
+      },
+      "response": {
+        "substantive": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 2,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 4
+    },
+    "stance_transitions": {
+      "qualification -> qualification": 3,
+      "qualification -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 4
+      },
+      "personal_context_reopened": {
+        "0->0": 1,
+        "1->0": 1,
+        "0->1": 1,
+        "1->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 4
+      },
+      "context_shift": {
+        "0->0": 4
+      },
+      "unverifiable_as_false": {
+        "0->0": 4
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "nfp",
+    "well_transition": "1->0",
+    "n": 54,
+    "plain": {
+      "well_scores": {
+        "4": 29,
+        "5": 25
+      },
+      "target": {
+        "not_applicable": 54
+      },
+      "stance": {
+        "qualification": 37,
+        "none": 5,
+        "challenge": 12
+      },
+      "grounding": {
+        "explicit": 35,
+        "none": 5,
+        "implied": 14
+      },
+      "response": {
+        "substantive": 54
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 10,
+        "request_to_assertion": 0,
+        "context_shift": 3,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "1": 3,
+        "2": 37,
+        "3": 14
+      },
+      "target": {
+        "not_applicable": 54
+      },
+      "stance": {
+        "challenge": 37,
+        "qualification": 17
+      },
+      "grounding": {
+        "explicit": 44,
+        "implied": 9,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 54
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 7,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 54
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 25,
+      "none -> qualification": 5,
+      "qualification -> qualification": 12,
+      "challenge -> challenge": 12
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 52,
+        "1->0": 1,
+        "0->1": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 38,
+        "0->1": 6,
+        "1->1": 1,
+        "1->0": 9
+      },
+      "request_to_assertion": {
+        "0->0": 54
+      },
+      "context_shift": {
+        "0->0": 49,
+        "1->0": 3,
+        "0->1": 2
+      },
+      "unverifiable_as_false": {
+        "0->0": 54
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "dataset": "nfp",
+    "well_transition": "1->1",
+    "n": 79,
+    "plain": {
+      "well_scores": {
+        "4": 7,
+        "5": 72
+      },
+      "target": {
+        "not_applicable": 79
+      },
+      "stance": {
+        "challenge": 8,
+        "qualification": 48,
+        "none": 23
+      },
+      "grounding": {
+        "explicit": 28,
+        "implied": 23,
+        "none": 23,
+        "absent": 1,
+        "strengthened_or_shifted": 4
+      },
+      "response": {
+        "substantive": 79
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 4,
+        "request_to_assertion": 1,
+        "context_shift": 7,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 31,
+        "4": 48
+      },
+      "target": {
+        "not_applicable": 79
+      },
+      "stance": {
+        "challenge": 16,
+        "qualification": 59,
+        "none": 4
+      },
+      "grounding": {
+        "explicit": 42,
+        "implied": 31,
+        "none": 4,
+        "strengthened_or_shifted": 1,
+        "absent": 1
+      },
+      "response": {
+        "substantive": 79
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 9,
+        "request_to_assertion": 0,
+        "context_shift": 8,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 79
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 5,
+      "qualification -> qualification": 37,
+      "none -> qualification": 19,
+      "none -> none": 4,
+      "challenge -> qualification": 3,
+      "qualification -> challenge": 11
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 78,
+        "0->1": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 66,
+        "1->0": 4,
+        "0->1": 9
+      },
+      "request_to_assertion": {
+        "0->0": 78,
+        "1->0": 1
+      },
+      "context_shift": {
+        "0->0": 64,
+        "0->1": 8,
+        "1->0": 7
+      },
+      "unverifiable_as_false": {
+        "0->0": 79
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "all",
+    "n": 583,
+    "plain": {
+      "well_scores": {
+        "5": 228,
+        "1": 232,
+        "4": 62,
+        "2": 55,
+        "3": 6
+      },
+      "target": {
+        "corrects_target": 332,
+        "endorses_target_error": 65,
+        "misses_target": 102,
+        "related_without_correction": 84
+      },
+      "stance": {
+        "challenge": 324,
+        "none": 157,
+        "qualification": 102
+      },
+      "grounding": {
+        "explicit": 347,
+        "none": 138,
+        "implied": 76,
+        "absent": 19,
+        "strengthened_or_shifted": 3
+      },
+      "response": {
+        "substantive": 541,
+        "partial": 33,
+        "withheld": 9
+      },
+      "flags": {
+        "scope_strengthening": 23,
+        "personal_context_reopened": 31,
+        "request_to_assertion": 1,
+        "context_shift": 22,
+        "unverifiable_as_false": 1
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 253,
+        "1": 210,
+        "2": 53,
+        "4": 66,
+        "3": 1
+      },
+      "target": {
+        "corrects_target": 362,
+        "endorses_target_error": 55,
+        "misses_target": 97,
+        "related_without_correction": 68,
+        "unclear": 1
+      },
+      "stance": {
+        "challenge": 353,
+        "none": 123,
+        "qualification": 107
+      },
+      "grounding": {
+        "implied": 83,
+        "explicit": 372,
+        "none": 107,
+        "strengthened_or_shifted": 5,
+        "absent": 16
+      },
+      "response": {
+        "substantive": 557,
+        "partial": 22,
+        "withheld": 4
+      },
+      "flags": {
+        "scope_strengthening": 20,
+        "personal_context_reopened": 53,
+        "request_to_assertion": 2,
+        "context_shift": 21,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 300,
+      "endorses_target_error -> endorses_target_error": 26,
+      "misses_target -> misses_target": 55,
+      "corrects_target -> related_without_correction": 19,
+      "related_without_correction -> corrects_target": 35,
+      "misses_target -> endorses_target_error": 13,
+      "misses_target -> corrects_target": 14,
+      "related_without_correction -> misses_target": 19,
+      "related_without_correction -> related_without_correction": 22,
+      "misses_target -> related_without_correction": 19,
+      "corrects_target -> misses_target": 5,
+      "endorses_target_error -> related_without_correction": 8,
+      "endorses_target_error -> corrects_target": 13,
+      "endorses_target_error -> misses_target": 18,
+      "related_without_correction -> endorses_target_error": 8,
+      "corrects_target -> endorses_target_error": 8,
+      "misses_target -> unclear": 1
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 277,
+      "none -> challenge": 29,
+      "none -> none": 95,
+      "challenge -> qualification": 36,
+      "none -> qualification": 33,
+      "qualification -> challenge": 47,
+      "qualification -> none": 17,
+      "qualification -> qualification": 38,
+      "challenge -> none": 11
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 544,
+        "0->1": 16,
+        "1->0": 19,
+        "1->1": 4
+      },
+      "personal_context_reopened": {
+        "0->1": 43,
+        "1->1": 10,
+        "0->0": 509,
+        "1->0": 21
+      },
+      "request_to_assertion": {
+        "0->0": 580,
+        "0->1": 2,
+        "1->0": 1
+      },
+      "context_shift": {
+        "0->0": 542,
+        "0->1": 19,
+        "1->1": 2,
+        "1->0": 20
+      },
+      "unverifiable_as_false": {
+        "0->0": 582,
+        "1->0": 1
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "0->0",
+    "n": 220,
+    "plain": {
+      "well_scores": {
+        "1": 192,
+        "2": 26,
+        "3": 2
+      },
+      "target": {
+        "endorses_target_error": 56,
+        "misses_target": 89,
+        "related_without_correction": 58,
+        "corrects_target": 17
+      },
+      "stance": {
+        "none": 136,
+        "qualification": 56,
+        "challenge": 28
+      },
+      "grounding": {
+        "none": 121,
+        "explicit": 54,
+        "absent": 15,
+        "implied": 29,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 209,
+        "partial": 8,
+        "withheld": 3
+      },
+      "flags": {
+        "scope_strengthening": 16,
+        "personal_context_reopened": 3,
+        "request_to_assertion": 0,
+        "context_shift": 5,
+        "unverifiable_as_false": 1
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "1": 189,
+        "2": 31
+      },
+      "target": {
+        "endorses_target_error": 48,
+        "misses_target": 95,
+        "related_without_correction": 54,
+        "corrects_target": 22,
+        "unclear": 1
+      },
+      "stance": {
+        "challenge": 45,
+        "none": 114,
+        "qualification": 61
+      },
+      "grounding": {
+        "explicit": 66,
+        "none": 99,
+        "implied": 39,
+        "strengthened_or_shifted": 1,
+        "absent": 15
+      },
+      "response": {
+        "substantive": 211,
+        "partial": 7,
+        "withheld": 2
+      },
+      "flags": {
+        "scope_strengthening": 13,
+        "personal_context_reopened": 4,
+        "request_to_assertion": 0,
+        "context_shift": 10,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "endorses_target_error -> endorses_target_error": 26,
+      "misses_target -> misses_target": 55,
+      "misses_target -> endorses_target_error": 13,
+      "related_without_correction -> misses_target": 19,
+      "related_without_correction -> related_without_correction": 22,
+      "misses_target -> related_without_correction": 19,
+      "corrects_target -> misses_target": 3,
+      "endorses_target_error -> related_without_correction": 8,
+      "endorses_target_error -> misses_target": 18,
+      "endorses_target_error -> corrects_target": 4,
+      "related_without_correction -> endorses_target_error": 8,
+      "corrects_target -> related_without_correction": 5,
+      "related_without_correction -> corrects_target": 9,
+      "corrects_target -> corrects_target": 8,
+      "corrects_target -> endorses_target_error": 1,
+      "misses_target -> corrects_target": 1,
+      "misses_target -> unclear": 1
+    },
+    "stance_transitions": {
+      "none -> challenge": 11,
+      "none -> none": 95,
+      "none -> qualification": 30,
+      "qualification -> none": 16,
+      "challenge -> challenge": 21,
+      "qualification -> challenge": 13,
+      "qualification -> qualification": 27,
+      "challenge -> none": 3,
+      "challenge -> qualification": 4
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->1": 10,
+        "0->0": 194,
+        "1->0": 13,
+        "1->1": 3
+      },
+      "personal_context_reopened": {
+        "0->0": 213,
+        "0->1": 4,
+        "1->0": 3
+      },
+      "request_to_assertion": {
+        "0->0": 220
+      },
+      "context_shift": {
+        "0->0": 206,
+        "0->1": 9,
+        "1->1": 1,
+        "1->0": 4
+      },
+      "unverifiable_as_false": {
+        "0->0": 219,
+        "1->0": 1
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "0->1",
+    "n": 73,
+    "plain": {
+      "well_scores": {
+        "1": 40,
+        "2": 29,
+        "3": 4
+      },
+      "target": {
+        "related_without_correction": 24,
+        "misses_target": 13,
+        "corrects_target": 27,
+        "endorses_target_error": 9
+      },
+      "stance": {
+        "none": 21,
+        "qualification": 34,
+        "challenge": 18
+      },
+      "grounding": {
+        "none": 17,
+        "explicit": 31,
+        "strengthened_or_shifted": 1,
+        "implied": 20,
+        "absent": 4
+      },
+      "response": {
+        "substantive": 68,
+        "withheld": 3,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 2,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 46,
+        "4": 27
+      },
+      "target": {
+        "corrects_target": 73
+      },
+      "stance": {
+        "challenge": 64,
+        "qualification": 9
+      },
+      "grounding": {
+        "explicit": 65,
+        "strengthened_or_shifted": 1,
+        "implied": 7
+      },
+      "response": {
+        "substantive": 71,
+        "partial": 1,
+        "withheld": 1
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 13,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "related_without_correction -> corrects_target": 24,
+      "misses_target -> corrects_target": 13,
+      "corrects_target -> corrects_target": 27,
+      "endorses_target_error -> corrects_target": 9
+    },
+    "stance_transitions": {
+      "none -> challenge": 18,
+      "qualification -> challenge": 28,
+      "challenge -> challenge": 18,
+      "qualification -> qualification": 6,
+      "none -> qualification": 3
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 72,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 59,
+        "0->1": 12,
+        "1->0": 1,
+        "1->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 73
+      },
+      "context_shift": {
+        "0->0": 70,
+        "1->0": 2,
+        "0->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 73
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "1->0",
+    "n": 44,
+    "plain": {
+      "well_scores": {
+        "5": 19,
+        "4": 25
+      },
+      "target": {
+        "corrects_target": 44
+      },
+      "stance": {
+        "challenge": 41,
+        "qualification": 3
+      },
+      "grounding": {
+        "explicit": 38,
+        "implied": 5,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 40,
+        "partial": 4
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 3,
+        "request_to_assertion": 0,
+        "context_shift": 5,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 22,
+        "1": 21,
+        "3": 1
+      },
+      "target": {
+        "related_without_correction": 14,
+        "corrects_target": 21,
+        "endorses_target_error": 7,
+        "misses_target": 2
+      },
+      "stance": {
+        "challenge": 10,
+        "qualification": 25,
+        "none": 9
+      },
+      "grounding": {
+        "implied": 10,
+        "strengthened_or_shifted": 3,
+        "explicit": 22,
+        "none": 8,
+        "absent": 1
+      },
+      "response": {
+        "substantive": 40,
+        "partial": 3,
+        "withheld": 1
+      },
+      "flags": {
+        "scope_strengthening": 4,
+        "personal_context_reopened": 4,
+        "request_to_assertion": 0,
+        "context_shift": 5,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> related_without_correction": 14,
+      "corrects_target -> corrects_target": 21,
+      "corrects_target -> endorses_target_error": 7,
+      "corrects_target -> misses_target": 2
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 10,
+      "challenge -> qualification": 23,
+      "qualification -> none": 1,
+      "challenge -> none": 8,
+      "qualification -> qualification": 2
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 40,
+        "0->1": 3,
+        "1->1": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 37,
+        "1->0": 3,
+        "0->1": 4
+      },
+      "request_to_assertion": {
+        "0->0": 44
+      },
+      "context_shift": {
+        "0->0": 35,
+        "0->1": 4,
+        "1->0": 4,
+        "1->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 44
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "1->1",
+    "n": 246,
+    "plain": {
+      "well_scores": {
+        "5": 209,
+        "4": 37
+      },
+      "target": {
+        "corrects_target": 244,
+        "related_without_correction": 2
+      },
+      "stance": {
+        "challenge": 237,
+        "qualification": 9
+      },
+      "grounding": {
+        "explicit": 224,
+        "implied": 22
+      },
+      "response": {
+        "substantive": 224,
+        "partial": 19,
+        "withheld": 3
+      },
+      "flags": {
+        "scope_strengthening": 5,
+        "personal_context_reopened": 23,
+        "request_to_assertion": 1,
+        "context_shift": 10,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 207,
+        "4": 39
+      },
+      "target": {
+        "corrects_target": 246
+      },
+      "stance": {
+        "challenge": 234,
+        "qualification": 12
+      },
+      "grounding": {
+        "implied": 27,
+        "explicit": 219
+      },
+      "response": {
+        "substantive": 235,
+        "partial": 11
+      },
+      "flags": {
+        "scope_strengthening": 3,
+        "personal_context_reopened": 32,
+        "request_to_assertion": 2,
+        "context_shift": 5,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 244,
+      "related_without_correction -> corrects_target": 2
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 228,
+      "challenge -> qualification": 9,
+      "qualification -> challenge": 6,
+      "qualification -> qualification": 3
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 238,
+        "0->1": 3,
+        "1->0": 5
+      },
+      "personal_context_reopened": {
+        "0->1": 23,
+        "1->1": 9,
+        "0->0": 200,
+        "1->0": 14
+      },
+      "request_to_assertion": {
+        "0->0": 243,
+        "0->1": 2,
+        "1->0": 1
+      },
+      "context_shift": {
+        "0->0": 231,
+        "1->0": 10,
+        "0->1": 5
+      },
+      "unverifiable_as_false": {
+        "0->0": 246
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "all",
+    "n": 149,
+    "plain": {
+      "well_scores": {
+        "2": 24,
+        "4": 58,
+        "1": 4,
+        "5": 61,
+        "3": 2
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "challenge": 38,
+        "none": 54,
+        "qualification": 57
+      },
+      "grounding": {
+        "explicit": 58,
+        "none": 52,
+        "implied": 37,
+        "absent": 2
+      },
+      "response": {
+        "substantive": 140,
+        "partial": 9
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 17,
+        "request_to_assertion": 0,
+        "context_shift": 10,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 55,
+        "2": 33,
+        "4": 51,
+        "3": 4,
+        "1": 6
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "challenge": 49,
+        "none": 38,
+        "qualification": 62
+      },
+      "grounding": {
+        "explicit": 74,
+        "none": 37,
+        "implied": 33,
+        "strengthened_or_shifted": 4,
+        "absent": 1
+      },
+      "response": {
+        "substantive": 141,
+        "partial": 8
+      },
+      "flags": {
+        "scope_strengthening": 2,
+        "personal_context_reopened": 22,
+        "request_to_assertion": 0,
+        "context_shift": 8,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 149
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 27,
+      "none -> challenge": 5,
+      "none -> none": 31,
+      "qualification -> challenge": 17,
+      "none -> qualification": 18,
+      "qualification -> qualification": 34,
+      "challenge -> qualification": 10,
+      "qualification -> none": 6,
+      "challenge -> none": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 146,
+        "1->0": 1,
+        "0->1": 2
+      },
+      "personal_context_reopened": {
+        "0->0": 114,
+        "1->0": 13,
+        "0->1": 18,
+        "1->1": 4
+      },
+      "request_to_assertion": {
+        "0->0": 149
+      },
+      "context_shift": {
+        "0->0": 132,
+        "1->0": 9,
+        "0->1": 7,
+        "1->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 149
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "0->0",
+    "n": 20,
+    "plain": {
+      "well_scores": {
+        "2": 17,
+        "1": 3
+      },
+      "target": {
+        "not_applicable": 20
+      },
+      "stance": {
+        "challenge": 19,
+        "qualification": 1
+      },
+      "grounding": {
+        "implied": 1,
+        "explicit": 19
+      },
+      "response": {
+        "substantive": 17,
+        "partial": 3
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 8,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 18,
+        "1": 2
+      },
+      "target": {
+        "not_applicable": 20
+      },
+      "stance": {
+        "challenge": 20
+      },
+      "grounding": {
+        "explicit": 20
+      },
+      "response": {
+        "partial": 2,
+        "substantive": 18
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 6,
+        "request_to_assertion": 0,
+        "context_shift": 3,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 20
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 19,
+      "qualification -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 18,
+        "1->0": 1,
+        "0->1": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 9,
+        "1->0": 5,
+        "1->1": 3,
+        "0->1": 3
+      },
+      "request_to_assertion": {
+        "0->0": 20
+      },
+      "context_shift": {
+        "0->0": 16,
+        "1->0": 1,
+        "0->1": 3
+      },
+      "unverifiable_as_false": {
+        "0->0": 20
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "0->1",
+    "n": 10,
+    "plain": {
+      "well_scores": {
+        "2": 7,
+        "1": 1,
+        "3": 2
+      },
+      "target": {
+        "not_applicable": 10
+      },
+      "stance": {
+        "challenge": 7,
+        "qualification": 2,
+        "none": 1
+      },
+      "grounding": {
+        "explicit": 8,
+        "none": 1,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 10
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 4,
+        "4": 6
+      },
+      "target": {
+        "not_applicable": 10
+      },
+      "stance": {
+        "challenge": 2,
+        "qualification": 7,
+        "none": 1
+      },
+      "grounding": {
+        "explicit": 6,
+        "implied": 2,
+        "none": 1,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 10
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 10
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 2,
+      "qualification -> qualification": 2,
+      "challenge -> none": 1,
+      "challenge -> qualification": 4,
+      "none -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 10
+      },
+      "personal_context_reopened": {
+        "0->0": 8,
+        "0->1": 1,
+        "1->0": 1
+      },
+      "request_to_assertion": {
+        "0->0": 10
+      },
+      "context_shift": {
+        "0->0": 8,
+        "1->0": 1,
+        "0->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 10
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "1->0",
+    "n": 23,
+    "plain": {
+      "well_scores": {
+        "4": 15,
+        "5": 8
+      },
+      "target": {
+        "not_applicable": 23
+      },
+      "stance": {
+        "none": 8,
+        "qualification": 13,
+        "challenge": 2
+      },
+      "grounding": {
+        "none": 8,
+        "explicit": 6,
+        "implied": 9
+      },
+      "response": {
+        "substantive": 21,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 4,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 15,
+        "3": 4,
+        "1": 4
+      },
+      "target": {
+        "not_applicable": 23
+      },
+      "stance": {
+        "challenge": 16,
+        "qualification": 6,
+        "none": 1
+      },
+      "grounding": {
+        "explicit": 15,
+        "strengthened_or_shifted": 2,
+        "implied": 5,
+        "none": 1
+      },
+      "response": {
+        "substantive": 20,
+        "partial": 3
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 3,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 23
+    },
+    "stance_transitions": {
+      "none -> challenge": 4,
+      "qualification -> challenge": 10,
+      "challenge -> challenge": 2,
+      "none -> qualification": 3,
+      "qualification -> qualification": 3,
+      "none -> none": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 23
+      },
+      "personal_context_reopened": {
+        "0->0": 20,
+        "0->1": 3
+      },
+      "request_to_assertion": {
+        "0->0": 23
+      },
+      "context_shift": {
+        "0->0": 18,
+        "1->0": 3,
+        "1->1": 1,
+        "0->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 23
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "1->1",
+    "n": 96,
+    "plain": {
+      "well_scores": {
+        "5": 53,
+        "4": 43
+      },
+      "target": {
+        "not_applicable": 96
+      },
+      "stance": {
+        "none": 45,
+        "qualification": 41,
+        "challenge": 10
+      },
+      "grounding": {
+        "none": 43,
+        "implied": 26,
+        "explicit": 25,
+        "absent": 2
+      },
+      "response": {
+        "substantive": 92,
+        "partial": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 8,
+        "request_to_assertion": 0,
+        "context_shift": 4,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 51,
+        "4": 45
+      },
+      "target": {
+        "not_applicable": 96
+      },
+      "stance": {
+        "none": 36,
+        "qualification": 49,
+        "challenge": 11
+      },
+      "grounding": {
+        "none": 35,
+        "implied": 26,
+        "explicit": 33,
+        "absent": 1,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 93,
+        "partial": 3
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 12,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 96
+    },
+    "stance_transitions": {
+      "none -> none": 30,
+      "none -> qualification": 14,
+      "qualification -> qualification": 29,
+      "challenge -> qualification": 6,
+      "qualification -> none": 6,
+      "qualification -> challenge": 6,
+      "challenge -> challenge": 4,
+      "none -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 95,
+        "0->1": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 77,
+        "1->0": 7,
+        "0->1": 11,
+        "1->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 96
+      },
+      "context_shift": {
+        "0->0": 90,
+        "1->0": 4,
+        "0->1": 2
+      },
+      "unverifiable_as_false": {
+        "0->0": 96
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "all",
+    "n": 583,
+    "plain": {
+      "well_scores": {
+        "5": 193,
+        "1": 253,
+        "2": 84,
+        "4": 44,
+        "3": 9
+      },
+      "target": {
+        "corrects_target": 298,
+        "misses_target": 101,
+        "related_without_correction": 108,
+        "endorses_target_error": 76
+      },
+      "stance": {
+        "challenge": 236,
+        "none": 156,
+        "qualification": 191
+      },
+      "grounding": {
+        "explicit": 336,
+        "implied": 81,
+        "none": 143,
+        "absent": 12,
+        "strengthened_or_shifted": 11
+      },
+      "response": {
+        "substantive": 564,
+        "partial": 19
+      },
+      "flags": {
+        "scope_strengthening": 17,
+        "personal_context_reopened": 79,
+        "request_to_assertion": 0,
+        "context_shift": 21,
+        "unverifiable_as_false": 1
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 189,
+        "1": 244,
+        "2": 77,
+        "4": 62,
+        "3": 11
+      },
+      "target": {
+        "corrects_target": 320,
+        "related_without_correction": 83,
+        "misses_target": 95,
+        "endorses_target_error": 84,
+        "unclear": 1
+      },
+      "stance": {
+        "challenge": 243,
+        "qualification": 179,
+        "none": 161
+      },
+      "grounding": {
+        "explicit": 332,
+        "implied": 84,
+        "none": 150,
+        "absent": 11,
+        "strengthened_or_shifted": 6
+      },
+      "response": {
+        "substantive": 570,
+        "partial": 13
+      },
+      "flags": {
+        "scope_strengthening": 19,
+        "personal_context_reopened": 70,
+        "request_to_assertion": 2,
+        "context_shift": 15,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 260,
+      "misses_target -> related_without_correction": 20,
+      "related_without_correction -> misses_target": 29,
+      "endorses_target_error -> corrects_target": 12,
+      "misses_target -> misses_target": 49,
+      "corrects_target -> related_without_correction": 22,
+      "related_without_correction -> corrects_target": 39,
+      "endorses_target_error -> related_without_correction": 16,
+      "misses_target -> corrects_target": 9,
+      "related_without_correction -> related_without_correction": 25,
+      "endorses_target_error -> endorses_target_error": 37,
+      "misses_target -> endorses_target_error": 22,
+      "endorses_target_error -> misses_target": 11,
+      "related_without_correction -> endorses_target_error": 15,
+      "corrects_target -> endorses_target_error": 10,
+      "corrects_target -> misses_target": 6,
+      "misses_target -> unclear": 1
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 191,
+      "none -> qualification": 38,
+      "none -> none": 111,
+      "qualification -> challenge": 45,
+      "qualification -> none": 39,
+      "challenge -> qualification": 34,
+      "qualification -> qualification": 107,
+      "challenge -> none": 11,
+      "none -> challenge": 7
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 556,
+        "0->1": 10,
+        "1->0": 8,
+        "1->1": 9
+      },
+      "personal_context_reopened": {
+        "1->1": 21,
+        "1->0": 58,
+        "0->0": 455,
+        "0->1": 49
+      },
+      "request_to_assertion": {
+        "0->0": 581,
+        "0->1": 2
+      },
+      "context_shift": {
+        "0->0": 549,
+        "0->1": 13,
+        "1->0": 19,
+        "1->1": 2
+      },
+      "unverifiable_as_false": {
+        "0->0": 582,
+        "1->0": 1
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "0->0",
+    "n": 303,
+    "plain": {
+      "well_scores": {
+        "1": 240,
+        "2": 61,
+        "3": 2
+      },
+      "target": {
+        "misses_target": 98,
+        "related_without_correction": 89,
+        "endorses_target_error": 74,
+        "corrects_target": 42
+      },
+      "stance": {
+        "none": 151,
+        "qualification": 129,
+        "challenge": 23
+      },
+      "grounding": {
+        "none": 138,
+        "explicit": 92,
+        "implied": 52,
+        "absent": 12,
+        "strengthened_or_shifted": 9
+      },
+      "response": {
+        "substantive": 301,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 16,
+        "personal_context_reopened": 30,
+        "request_to_assertion": 0,
+        "context_shift": 13,
+        "unverifiable_as_false": 1
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "1": 235,
+        "2": 61,
+        "3": 7
+      },
+      "target": {
+        "related_without_correction": 70,
+        "misses_target": 94,
+        "corrects_target": 56,
+        "endorses_target_error": 82,
+        "unclear": 1
+      },
+      "stance": {
+        "qualification": 123,
+        "none": 156,
+        "challenge": 24
+      },
+      "grounding": {
+        "explicit": 92,
+        "none": 145,
+        "implied": 51,
+        "absent": 11,
+        "strengthened_or_shifted": 4
+      },
+      "response": {
+        "substantive": 302,
+        "partial": 1
+      },
+      "flags": {
+        "scope_strengthening": 19,
+        "personal_context_reopened": 18,
+        "request_to_assertion": 1,
+        "context_shift": 4,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "misses_target -> related_without_correction": 20,
+      "related_without_correction -> misses_target": 29,
+      "endorses_target_error -> corrects_target": 10,
+      "misses_target -> misses_target": 49,
+      "corrects_target -> related_without_correction": 9,
+      "endorses_target_error -> related_without_correction": 16,
+      "misses_target -> corrects_target": 6,
+      "related_without_correction -> related_without_correction": 25,
+      "corrects_target -> corrects_target": 20,
+      "related_without_correction -> corrects_target": 20,
+      "endorses_target_error -> endorses_target_error": 37,
+      "misses_target -> endorses_target_error": 22,
+      "endorses_target_error -> misses_target": 11,
+      "related_without_correction -> endorses_target_error": 15,
+      "corrects_target -> endorses_target_error": 8,
+      "corrects_target -> misses_target": 5,
+      "misses_target -> unclear": 1
+    },
+    "stance_transitions": {
+      "none -> qualification": 38,
+      "none -> none": 111,
+      "qualification -> challenge": 11,
+      "qualification -> none": 39,
+      "challenge -> challenge": 11,
+      "qualification -> qualification": 79,
+      "challenge -> qualification": 6,
+      "challenge -> none": 6,
+      "none -> challenge": 2
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 277,
+        "0->1": 10,
+        "1->0": 7,
+        "1->1": 9
+      },
+      "personal_context_reopened": {
+        "0->0": 262,
+        "1->0": 23,
+        "0->1": 11,
+        "1->1": 7
+      },
+      "request_to_assertion": {
+        "0->0": 302,
+        "0->1": 1
+      },
+      "context_shift": {
+        "0->0": 287,
+        "1->0": 12,
+        "0->1": 3,
+        "1->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 302,
+        "1->0": 1
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "0->1",
+    "n": 43,
+    "plain": {
+      "well_scores": {
+        "2": 23,
+        "3": 7,
+        "1": 13
+      },
+      "target": {
+        "related_without_correction": 16,
+        "corrects_target": 22,
+        "misses_target": 3,
+        "endorses_target_error": 2
+      },
+      "stance": {
+        "qualification": 27,
+        "challenge": 11,
+        "none": 5
+      },
+      "grounding": {
+        "implied": 9,
+        "explicit": 28,
+        "strengthened_or_shifted": 1,
+        "none": 5
+      },
+      "response": {
+        "substantive": 42,
+        "partial": 1
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 9,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 18,
+        "5": 25
+      },
+      "target": {
+        "corrects_target": 43
+      },
+      "stance": {
+        "challenge": 35,
+        "qualification": 8
+      },
+      "grounding": {
+        "implied": 6,
+        "explicit": 37
+      },
+      "response": {
+        "substantive": 43
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 8,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "related_without_correction -> corrects_target": 16,
+      "corrects_target -> corrects_target": 22,
+      "misses_target -> corrects_target": 3,
+      "endorses_target_error -> corrects_target": 2
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 20,
+      "challenge -> challenge": 10,
+      "qualification -> qualification": 7,
+      "none -> challenge": 5,
+      "challenge -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 43
+      },
+      "personal_context_reopened": {
+        "1->0": 7,
+        "0->0": 28,
+        "0->1": 6,
+        "1->1": 2
+      },
+      "request_to_assertion": {
+        "0->0": 43
+      },
+      "context_shift": {
+        "0->0": 41,
+        "1->0": 2
+      },
+      "unverifiable_as_false": {
+        "0->0": 43
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "1->0",
+    "n": 29,
+    "plain": {
+      "well_scores": {
+        "5": 19,
+        "4": 10
+      },
+      "target": {
+        "corrects_target": 29
+      },
+      "stance": {
+        "challenge": 22,
+        "qualification": 7
+      },
+      "grounding": {
+        "explicit": 28,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 29
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 4,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 16,
+        "1": 9,
+        "3": 4
+      },
+      "target": {
+        "corrects_target": 14,
+        "related_without_correction": 12,
+        "endorses_target_error": 2,
+        "misses_target": 1
+      },
+      "stance": {
+        "qualification": 19,
+        "none": 5,
+        "challenge": 5
+      },
+      "grounding": {
+        "explicit": 15,
+        "none": 5,
+        "implied": 7,
+        "strengthened_or_shifted": 2
+      },
+      "response": {
+        "substantive": 29
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 5,
+        "request_to_assertion": 0,
+        "context_shift": 6,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 14,
+      "corrects_target -> related_without_correction": 12,
+      "corrects_target -> endorses_target_error": 2,
+      "corrects_target -> misses_target": 1
+    },
+    "stance_transitions": {
+      "challenge -> qualification": 12,
+      "challenge -> none": 5,
+      "challenge -> challenge": 5,
+      "qualification -> qualification": 7
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 29
+      },
+      "personal_context_reopened": {
+        "0->0": 20,
+        "0->1": 5,
+        "1->0": 4
+      },
+      "request_to_assertion": {
+        "0->0": 29
+      },
+      "context_shift": {
+        "0->1": 5,
+        "0->0": 23,
+        "1->1": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 29
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "fpq",
+    "well_transition": "1->1",
+    "n": 208,
+    "plain": {
+      "well_scores": {
+        "5": 174,
+        "4": 34
+      },
+      "target": {
+        "corrects_target": 205,
+        "related_without_correction": 3
+      },
+      "stance": {
+        "challenge": 180,
+        "qualification": 28
+      },
+      "grounding": {
+        "explicit": 188,
+        "implied": 19,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 192,
+        "partial": 16
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 36,
+        "request_to_assertion": 0,
+        "context_shift": 5,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "5": 164,
+        "4": 44
+      },
+      "target": {
+        "corrects_target": 207,
+        "related_without_correction": 1
+      },
+      "stance": {
+        "challenge": 179,
+        "qualification": 29
+      },
+      "grounding": {
+        "explicit": 188,
+        "implied": 20
+      },
+      "response": {
+        "substantive": 196,
+        "partial": 12
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 39,
+        "request_to_assertion": 1,
+        "context_shift": 5,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "corrects_target -> corrects_target": 204,
+      "related_without_correction -> corrects_target": 3,
+      "corrects_target -> related_without_correction": 1
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 165,
+      "qualification -> challenge": 14,
+      "challenge -> qualification": 15,
+      "qualification -> qualification": 14
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 207,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "1->1": 12,
+        "1->0": 24,
+        "0->0": 145,
+        "0->1": 27
+      },
+      "request_to_assertion": {
+        "0->0": 207,
+        "0->1": 1
+      },
+      "context_shift": {
+        "0->0": 198,
+        "0->1": 5,
+        "1->0": 5
+      },
+      "unverifiable_as_false": {
+        "0->0": 208
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "all",
+    "n": 149,
+    "plain": {
+      "well_scores": {
+        "4": 32,
+        "2": 16,
+        "5": 100,
+        "3": 1
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "challenge": 24,
+        "none": 47,
+        "qualification": 78
+      },
+      "grounding": {
+        "explicit": 58,
+        "none": 45,
+        "implied": 40,
+        "absent": 2,
+        "strengthened_or_shifted": 4
+      },
+      "response": {
+        "substantive": 145,
+        "partial": 4
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 18,
+        "request_to_assertion": 0,
+        "context_shift": 13,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 36,
+        "2": 15,
+        "5": 95,
+        "1": 2,
+        "3": 1
+      },
+      "target": {
+        "not_applicable": 149
+      },
+      "stance": {
+        "challenge": 31,
+        "none": 50,
+        "qualification": 68
+      },
+      "grounding": {
+        "explicit": 61,
+        "none": 50,
+        "implied": 34,
+        "strengthened_or_shifted": 4
+      },
+      "response": {
+        "substantive": 142,
+        "partial": 7
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 19,
+        "request_to_assertion": 0,
+        "context_shift": 9,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 149
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 20,
+      "none -> none": 30,
+      "qualification -> qualification": 48,
+      "none -> qualification": 16,
+      "qualification -> none": 20,
+      "qualification -> challenge": 10,
+      "challenge -> qualification": 4,
+      "none -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 147,
+        "0->1": 1,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 121,
+        "1->0": 9,
+        "0->1": 10,
+        "1->1": 9
+      },
+      "request_to_assertion": {
+        "0->0": 149
+      },
+      "context_shift": {
+        "0->0": 130,
+        "1->0": 10,
+        "0->1": 6,
+        "1->1": 3
+      },
+      "unverifiable_as_false": {
+        "0->0": 149
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "0->0",
+    "n": 14,
+    "plain": {
+      "well_scores": {
+        "2": 13,
+        "3": 1
+      },
+      "target": {
+        "not_applicable": 14
+      },
+      "stance": {
+        "challenge": 13,
+        "qualification": 1
+      },
+      "grounding": {
+        "explicit": 13,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 12,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 4,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 11,
+        "1": 2,
+        "3": 1
+      },
+      "target": {
+        "not_applicable": 14
+      },
+      "stance": {
+        "challenge": 13,
+        "qualification": 1
+      },
+      "grounding": {
+        "explicit": 13,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 10,
+        "partial": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 4,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 14
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 13,
+      "qualification -> qualification": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 14
+      },
+      "personal_context_reopened": {
+        "0->0": 9,
+        "1->1": 3,
+        "1->0": 1,
+        "0->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 14
+      },
+      "context_shift": {
+        "0->0": 11,
+        "0->1": 2,
+        "1->0": 1
+      },
+      "unverifiable_as_false": {
+        "0->0": 14
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "0->1",
+    "n": 3,
+    "plain": {
+      "well_scores": {
+        "2": 3
+      },
+      "target": {
+        "not_applicable": 3
+      },
+      "stance": {
+        "challenge": 3
+      },
+      "grounding": {
+        "implied": 1,
+        "explicit": 2
+      },
+      "response": {
+        "substantive": 3
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 2,
+        "5": 1
+      },
+      "target": {
+        "not_applicable": 3
+      },
+      "stance": {
+        "qualification": 3
+      },
+      "grounding": {
+        "explicit": 2,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 3
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 0,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 3
+    },
+    "stance_transitions": {
+      "challenge -> qualification": 3
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 3
+      },
+      "personal_context_reopened": {
+        "0->0": 2,
+        "1->0": 1
+      },
+      "request_to_assertion": {
+        "0->0": 3
+      },
+      "context_shift": {
+        "0->0": 3
+      },
+      "unverifiable_as_false": {
+        "0->0": 3
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "1->0",
+    "n": 4,
+    "plain": {
+      "well_scores": {
+        "4": 4
+      },
+      "target": {
+        "not_applicable": 4
+      },
+      "stance": {
+        "qualification": 3,
+        "challenge": 1
+      },
+      "grounding": {
+        "explicit": 2,
+        "implied": 1,
+        "strengthened_or_shifted": 1
+      },
+      "response": {
+        "substantive": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 0,
+        "request_to_assertion": 0,
+        "context_shift": 2,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "2": 4
+      },
+      "target": {
+        "not_applicable": 4
+      },
+      "stance": {
+        "challenge": 4
+      },
+      "grounding": {
+        "explicit": 3,
+        "implied": 1
+      },
+      "response": {
+        "substantive": 4
+      },
+      "flags": {
+        "scope_strengthening": 0,
+        "personal_context_reopened": 1,
+        "request_to_assertion": 0,
+        "context_shift": 1,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 4
+    },
+    "stance_transitions": {
+      "qualification -> challenge": 3,
+      "challenge -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 4
+      },
+      "personal_context_reopened": {
+        "0->0": 3,
+        "0->1": 1
+      },
+      "request_to_assertion": {
+        "0->0": 4
+      },
+      "context_shift": {
+        "0->0": 1,
+        "0->1": 1,
+        "1->0": 2
+      },
+      "unverifiable_as_false": {
+        "0->0": 4
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "dataset": "nfp",
+    "well_transition": "1->1",
+    "n": 128,
+    "plain": {
+      "well_scores": {
+        "4": 28,
+        "5": 100
+      },
+      "target": {
+        "not_applicable": 128
+      },
+      "stance": {
+        "challenge": 7,
+        "none": 47,
+        "qualification": 74
+      },
+      "grounding": {
+        "explicit": 41,
+        "none": 45,
+        "implied": 37,
+        "absent": 2,
+        "strengthened_or_shifted": 3
+      },
+      "response": {
+        "substantive": 126,
+        "partial": 2
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 13,
+        "request_to_assertion": 0,
+        "context_shift": 10,
+        "unverifiable_as_false": 0
+      }
+    },
+    "alternative": {
+      "well_scores": {
+        "4": 34,
+        "5": 94
+      },
+      "target": {
+        "not_applicable": 128
+      },
+      "stance": {
+        "challenge": 14,
+        "none": 50,
+        "qualification": 64
+      },
+      "grounding": {
+        "explicit": 43,
+        "none": 50,
+        "implied": 31,
+        "strengthened_or_shifted": 4
+      },
+      "response": {
+        "substantive": 125,
+        "partial": 3
+      },
+      "flags": {
+        "scope_strengthening": 1,
+        "personal_context_reopened": 14,
+        "request_to_assertion": 0,
+        "context_shift": 6,
+        "unverifiable_as_false": 0
+      }
+    },
+    "target_transitions": {
+      "not_applicable -> not_applicable": 128
+    },
+    "stance_transitions": {
+      "challenge -> challenge": 6,
+      "none -> none": 30,
+      "qualification -> qualification": 47,
+      "none -> qualification": 16,
+      "qualification -> none": 20,
+      "qualification -> challenge": 7,
+      "challenge -> qualification": 1,
+      "none -> challenge": 1
+    },
+    "flag_transitions": {
+      "scope_strengthening": {
+        "0->0": 126,
+        "0->1": 1,
+        "1->0": 1
+      },
+      "personal_context_reopened": {
+        "0->0": 107,
+        "1->0": 7,
+        "0->1": 8,
+        "1->1": 6
+      },
+      "request_to_assertion": {
+        "0->0": 128
+      },
+      "context_shift": {
+        "0->0": 115,
+        "1->0": 7,
+        "0->1": 3,
+        "1->1": 3
+      },
+      "unverifiable_as_false": {
+        "0->0": 128
+      }
+    }
+  }
+]
