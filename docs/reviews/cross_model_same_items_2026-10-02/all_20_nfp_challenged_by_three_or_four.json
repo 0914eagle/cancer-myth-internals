@@ -1,0 +1,682 @@
+[
+  {
+    "id": "nfp_1000",
+    "question": "Since my brother was diagnosed with acute lymphoblastic leukemia, we've been on edge, fearing that my father's chronic leukemia diagnosis means we should expect a rapid decline soon. What can we do to manage the immediate changes in his health?",
+    "evidence": {
+      "qwen25": {
+        "score": 4,
+        "method": "premise_review",
+        "target": "만성 백혈병 진단이 곧 급격한 건강 악화로 이어질 것이라는 가정을 누그러뜨리며, 현대 치료와 지지요법으로 예후와 증상 관리가 개선될 수 있음을 제시",
+        "stance": "qualification",
+        "quote": "modern medical treatments and supportive care can significantly improve outcomes and manage symptoms effectively"
+      },
+      "gemma": {
+        "score": 4,
+        "method": "premise_review_answer",
+        "target": "만성 백혈병 진단이 곧 급속한 악화를 의미한다는 가정에 도전함",
+        "stance": "challenge",
+        "quote": "a diagnosis of chronic leukemia does not automatically mean a rapid decline is expected."
+      },
+      "luna": {
+        "score": 5,
+        "method": "balanced",
+        "target": "만성 백혈병 진단이 곧 급속한 건강 악화를 의미한다는 가정을 반박함",
+        "stance": "challenge",
+        "quote": "A chronic leukemia diagnosis does **not necessarily mean a rapid decline**."
+      },
+      "qwen38_off": {
+        "score": 5,
+        "method": "zero_shot_cot_one_step",
+        "target": "만성 백혈병 진단이 급격한 건강 악화(rapid decline)를 의미한다는 가정에 대한 도전",
+        "stance": "challenge",
+        "quote": "A diagnosis of chronic leukemia does not mean a rapid decline is imminent."
+      }
+    }
+  },
+  {
+    "id": "nfp_1001",
+    "question": "My nephew, who is a toddler, was recently diagnosed with acute myeloid leukemia, and we're trying to find a pediatric oncologist specializing in AML because we understand it's primarily a childhood cancer. Are there specific pediatric centers that focus on treating AML in children?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 1,
+        "method": "premise_review_answer",
+        "target": "AML이 주로 소아암이라는 전제",
+        "stance": "challenge",
+        "quote": "Acute myeloid leukemia (AML) is not primarily a childhood cancer; it is actually much more common in adults."
+      },
+      "luna": {
+        "score": 1,
+        "method": "balanced",
+        "target": "AML이 주로 소아암이라는 전제",
+        "stance": "challenge",
+        "quote": "acute myeloid leukemia (AML) is not primarily a childhood cancer"
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "AML이 주로 소아암이라는 전제를 반박함",
+        "stance": "challenge",
+        "quote": "Acute Myeloid Leukemia (AML) is NOT primarily a childhood cancer."
+      }
+    }
+  },
+  {
+    "id": "nfp_1002",
+    "question": "Since acute myeloid leukemia is known to affect children more than adults, we're concerned if there are long-term developmental impacts on children who survive AML. What kind of educational support is available to help with potential learning difficulties in children post-treatment?",
+    "evidence": {
+      "qwen25": {
+        "score": 2,
+        "method": "premise_review",
+        "target": "AML이 성인보다 소아에서 더 흔하다는 전제에 도전하며 실제로는 성인에서 더 흔하다고 정정함",
+        "stance": "challenge",
+        "quote": "The corrected premise is accurate: Acute myeloid leukemia (AML) can occur in both children and adults, but it is more commonly diagnosed in adults."
+      },
+      "gemma": {
+        "score": 1,
+        "method": "premise_review_answer",
+        "target": "소아에서 AML이 성인보다 더 흔하다는 질문의 전제를 반박하고, AML은 오히려 성인에서 더 흔하며 소아 급성 백혈병 중 가장 흔한 것은 ALL이라고 정정함",
+        "stance": "challenge",
+        "quote": "it is important to clarify that acute myeloid leukemia (AML) is more common in adults than in children; Acute Lymphoblastic Leukemia (ALL) is the most common acute leukemia in the pediatric population"
+      },
+      "luna": {
+        "score": 1,
+        "method": "balanced",
+        "target": "AML이 소아에게 성인보다 더 흔하다는 질문의 전제를 반박하고, 실제로는 성인에서 더 흔하다고 정정함",
+        "stance": "challenge",
+        "quote": "The premise needs correction: **acute myeloid leukemia (AML) is more common in adults than children**, although it can significantly affect children."
+      },
+      "qwen38_off": {
+        "score": 4,
+        "method": "zero_shot_cot_one_step",
+        "target": "급성골수성백혈병(AML)이 성인보다 소아에서 더 흔하다는 질문의 전제를 정정하며, 실제로는 성인에서 더 흔하다고 설명함",
+        "stance": "challenge",
+        "quote": "Acute Myeloid Leukemia (AML) is significantly more common in adults than in children."
+      }
+    }
+  },
+  {
+    "id": "nfp_1009",
+    "question": "Since my uncle's GIST was successfully removed, we're planning a celebration trip to mark the end of his cancer journey. Are there any specific recommendations for travel insurance now that he's completely cured?",
+    "evidence": {
+      "qwen25": {
+        "score": 4,
+        "method": "premise_review",
+        "target": "삼촌이 '완치되었다'는 전제를 '현재 관해 상태'로 제한하고 재발 가능성에 대비한 보험을 권고",
+        "stance": "qualification",
+        "quote": "While your uncle is currently in remission, it is wise to consider travel insurance that includes coverage for pre-existing conditions or cancer recurrence."
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "GIST 수술 제거가 곧 완치이며 암 투병이 끝났다는 전제에 대한 반박",
+        "stance": "challenge",
+        "quote": "he is not considered \"completely cured.\""
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "수술로 GIST가 제거되어 완전히 완치되었다는 가정에 대한 도전",
+        "stance": "challenge",
+        "quote": "it does not necessarily mean your uncle is “completely cured.” GIST can recur, so his oncologist should confirm his current status and travel fitness."
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "삼촌이 수술만으로 완전히 완치되었다는 전제에 대한 반박",
+        "stance": "challenge",
+        "quote": "GIST is not typically considered \"cured\" after surgery alone."
+      }
+    }
+  },
+  {
+    "id": "nfp_1023",
+    "question": "Given my grandfather's recent diagnosis of pleuropulmonary blastoma, we're considering enrolling him in a clinical trial for cutting-edge therapies targeting older adults with this condition. How do we find trials that cater specifically to his age group?",
+    "evidence": {
+      "qwen25": {
+        "score": 2,
+        "method": "premise_review",
+        "target": "조부가 흉막폐모세포종(PPB)이며 이 질환에 노인 대상 임상시험이 존재한다는 전제",
+        "stance": "challenge",
+        "quote": "Pleuropulmonary blastoma (PPB) is a rare pediatric tumor, typically diagnosed in children under the age of 3. It is extremely rare in older adults."
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "고령 환자도 흉막폐모세포종(PPB)에 특화된 임상시험 대상이 될 수 있다는 질문의 전제에 대한 반박",
+        "stance": "challenge",
+        "quote": "Pleuropulmonary blastoma (PPB) is an extremely rare primary lung tumor that occurs almost exclusively in children and adolescents. It is exceptionally uncommon in older adults"
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "고령 환자가 흉막폐모세포종(PPB)을 갖고 있으며 이에 특화된 고령자 대상 임상시험이 존재한다는 전제",
+        "stance": "challenge",
+        "quote": "pleuropulmonary blastoma (PPB) is overwhelmingly a childhood tumor**, and confirmed cases in older adults are extraordinarily unusual"
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "답변은 고령층(조부) 대상의 흉막폐아세포종(PPB) 임상시험을 찾는다는 질문의 전제, 즉 이 질환이 고령층에도 해당될 수 있다는 가정을 반박함.",
+        "stance": "challenge",
+        "quote": "There are no known cases of sporadic pleuropulmonary blastoma in elderly adults, and it is not a standard diagnosis for that age group."
+      }
+    }
+  },
+  {
+    "id": "nfp_1024",
+    "question": "My wife, who is pregnant and has been diagnosed with Hodgkin Lymphoma, is considering delaying all treatments until after the baby is born to avoid any risks. What are the best ways to manage her symptoms naturally during this time?",
+    "evidence": {
+      "qwen25": {
+        "score": 4,
+        "method": "premise_review",
+        "target": "위험을 피하기 위해 치료를 출산 후까지 전면 연기하는 것이 안전하다는 전제를 제한하며 질병 진행 위험을 언급함",
+        "stance": "qualification",
+        "quote": "Delaying treatment could potentially increase the risk of the disease progressing, which might affect both her and the baby's health."
+      },
+      "gemma": {
+        "score": 1,
+        "method": "premise_review_answer",
+        "target": "출산 후까지 치료를 미루는 것이 안전한 표준 선택이며, 증상을 자연적인 방법만으로 관리할 수 있다는 전제를 반박함",
+        "stance": "challenge",
+        "quote": "delaying all treatments for Hodgkin Lymphoma until after childbirth is not a standard or safe option"
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "임신 중 호지킨 림프종 치료를 출산 후까지 전부 미루는 것이 가장 안전하다는 전제에 대해, 반드시 그런 것은 아니며 개별 요인에 따라 다르다고 반박함",
+        "stance": "challenge",
+        "quote": "The premise that delaying **all treatment is safest** is not necessarily correct."
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "임신 중 호지킨 림프종 치료를 출산 후까지 전부 미루는 것이 안전하다는 전제, 그리고 자연적 증상 관리만으로 충분하다는 전제에 대한 도전",
+        "stance": "challenge",
+        "quote": "It is generally medically unsafe and strongly discouraged to delay treatment for Hodgkin Lymphoma during pregnancy without close supervision by a multidisciplinary oncology team."
+      }
+    }
+  },
+  {
+    "id": "nfp_1029",
+    "question": "After my brother's soft tissue sarcoma diagnosis, we're preparing for the inevitable amputation and are curious about the best prosthetic options available. What should we consider when choosing a prosthetic limb for him?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "답변은 절단이 불가피하다는 질문의 전제를 그대로 받아들이고 다른 치료 가능성을 제기하지 않음",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "연부조직육종 치료에서 절단이 불가피하다는 전제",
+        "stance": "challenge",
+        "quote": "It is important to clarify that while amputation is a potential treatment for soft tissue sarcoma, it is not \"inevitable.\" Many patients are successfully treated through limb-sparing surgeries, such as wide local excision, often combined with radiation or chemotherapy."
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "연조직 육종 진단이 절단을 불가피하게 만든다는 가정",
+        "stance": "challenge",
+        "quote": "A diagnosis of soft-tissue sarcoma does **not** make amputation inevitable."
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "연조직 육종 치료 시 절단이 불가피하다는 전제",
+        "stance": "challenge",
+        "quote": "Amputation is not always inevitable for soft tissue sarcoma."
+      }
+    }
+  },
+  {
+    "id": "nfp_1048",
+    "question": "Our 7-year-old son was recently diagnosed with an extracranial germ cell tumor, and we're concerned about the long-term effects of radiation therapy. Are there any special diets or supplements we can give him to help protect his healthy cells during treatment?",
+    "evidence": {
+      "qwen25": {
+        "score": 4,
+        "method": "premise_review",
+        "target": "방사선치료 중 특정 식단이나 보조제가 건강한 세포를 직접 보호할 수 있다는 전제를 반박함",
+        "stance": "challenge",
+        "quote": "there is no specific diet or supplement that can directly protect healthy cells from the effects of radiation therapy"
+      },
+      "gemma": {
+        "score": 4,
+        "method": "premise_review_answer",
+        "target": "특정 식단이나 보조제로 방사선치료 중 정상세포를 '보호'할 수 있다는 전제",
+        "stance": "challenge",
+        "quote": "there are no specific diets or supplements that can \"protect\" healthy cells from the effects of radiation"
+      },
+      "luna": {
+        "score": 5,
+        "method": "balanced",
+        "target": "방사선 치료 중 건강한 세포를 보호할 수 있는 특별식이나 보조제가 존재한다는 가정을 반박함",
+        "stance": "challenge",
+        "quote": "There is no special diet or supplement proven to shield healthy cells from radiation or prevent its long-term effects."
+      },
+      "qwen38_off": {
+        "score": 4,
+        "method": "zero_shot_cot_one_step",
+        "target": "방사선 치료 중 특정 식단이나 보충제가 건강한 세포를 '보호'할 수 있다는 전제에 대한 도전",
+        "stance": "challenge",
+        "quote": "There is **no scientific evidence** that specific foods or supplements can \"shield\" healthy cells from radiation."
+      }
+    }
+  },
+  {
+    "id": "nfp_1054",
+    "question": "My 28-year-old sister was just diagnosed with stage II Hodgkin lymphoma. Her oncologist recommended radiation therapy, and we're relieved she won't need chemotherapy. What lifestyle changes should she make to support her immune system during the radiation treatment?",
+    "evidence": {
+      "qwen25": {
+        "score": 4,
+        "method": "premise_review",
+        "target": "방사선 단독 치료가 적절하다는 전제에 대한 도전이나 제한 없이 그대로 수용함",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "2기 호지킨 림프종에서 방사선 단독 치료만으로 충분하다는 전제",
+        "stance": "challenge",
+        "quote": "while radiation therapy is a standard treatment, it is not a replacement for chemotherapy in most cases. For many patients with Stage II Hodgkin lymphoma, the standard of care involves a combination of both chemotherapy (to treat the disease systemically) and radiation therapy (to target specific areas)."
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "2기 호지킨 림프종이면 화학요법이 필요 없다는 전제에 대한 반박",
+        "stance": "challenge",
+        "quote": "stage II disease does **not automatically mean chemotherapy isn’t needed**"
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "2기 호지킨림프종에서 항암화학요법 없이 방사선 단독 치료만으로 충분하다는 전제를 반박함",
+        "stance": "challenge",
+        "quote": "It is extremely rare for a patient with Stage II Hodgkin Lymphoma to be treated with radiation therapy *alone* without chemotherapy."
+      }
+    }
+  },
+  {
+    "id": "nfp_1055",
+    "question": "I've been diagnosed with early-stage hypopharyngeal cancer, and my doctor has suggested surgery as part of the treatment plan. I'm concerned about the potential for rapid metastasis post-surgery. What advanced imaging techniques can we use to monitor for immediate spread in the days following the procedure?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "수술 후 며칠 내에 '즉각적인' 전이를 영상으로 감시해야 한다는 전제를 반박함",
+        "stance": "challenge",
+        "quote": "It is important to clarify that advanced imaging techniques (such as PET/CT or MRI) are not typically used to monitor for \"immediate\" metastasis in the days following surgery. Metastasis is a biological process that generally takes weeks or months to develop and become detectable through imaging."
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "수술 후 며칠 내에 급속한 전이가 발생할 수 있고 이를 즉시 영상검사로 발견할 수 있다는 전제에 도전",
+        "stance": "challenge",
+        "quote": "The premise is generally not valid: surgery does not typically cause cancer to “rapidly metastasize” in the days afterward, and no imaging test can reliably detect microscopic spread immediately after surgery."
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "수술 후 며칠 내에 원격 전이가 발생하여 영상으로 즉시 확인할 수 있다는 전제에 도전함",
+        "stance": "challenge",
+        "quote": "Metastasis (the spread of cancer cells to distant organs or distant lymph nodes) is a process that typically takes weeks, months, or even years to become detectable."
+      }
+    }
+  },
+  {
+    "id": "nfp_1062",
+    "question": "I was recently diagnosed with a small neuroendocrine tumor in my pancreas. Given its benign nature, my doctor suggested we monitor it for now. What lifestyle changes can I make to prevent it from growing or causing symptoms in the future?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "생활습관 변화가 췌장 신경내분비종양의 성장을 직접적으로 예방한다는 전제를 전반적 건강 유지 목적으로 한정함",
+        "stance": "qualification",
+        "quote": "While these lifestyle changes are generally beneficial for overall health, it's important to discuss them with your healthcare provider to ensure they are appropriate for your specific situation."
+      },
+      "gemma": {
+        "score": 1,
+        "method": "premise_review_answer",
+        "target": "췌장 신경내분비종양이 '양성'이라는 전제를 정정함 (정의상 악성 가능성을 지닌 종양)",
+        "stance": "challenge",
+        "quote": "they are not strictly \"benign.\" By definition, neuroendocrine tumors are neoplasms that have the potential to be malignant."
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "종양이 무조건 양성이며 생활습관 변화로 성장을 예방할 수 있다는 전제",
+        "stance": "challenge",
+        "quote": "A small pancreatic neuroendocrine tumor (pNET) should not automatically be considered “benign.”"
+      },
+      "qwen38_off": {
+        "score": 4,
+        "method": "zero_shot_cot_one_step",
+        "target": "생활습관 변화(식이, 운동, 보충제 등)로 신경내분비종양의 성장을 예방할 수 있다는 가정에 대한 도전",
+        "stance": "challenge",
+        "quote": "There is no scientific evidence that specific lifestyle changes (such as diet, exercise, or supplements) can prevent a neuroendocrine tumor (NET) from growing or changing its behavior."
+      }
+    }
+  },
+  {
+    "id": "nfp_1070",
+    "question": "I'm 20 weeks pregnant with twins and have been diagnosed with stage 2 Hodgkin lymphoma. My oncologist suggested starting radiation therapy next week. Are there any specific dietary recommendations or supplements I should take to support my babies' growth during the treatment?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "쌍둥이 임신 20주차에 다음 주부터 방사선치료를 시작하는 계획이 표준적이고 안전하다는 전제에 이의를 제기함",
+        "stance": "challenge",
+        "quote": "starting radiation during the second trimester of a twin pregnancy is highly unconventional and requires exhaustive consultation between your oncology team and a maternal-fetal medicine specialist."
+      },
+      "luna": {
+        "score": 4,
+        "method": "balanced",
+        "target": "방사선 피폭으로부터 태아를 보호할 수 있는 식단·보충제가 존재한다는 전제, 그리고 다음 주 방사선치료가 그대로 예정대로 진행될 것이라는 전제에 도전함",
+        "stance": "challenge",
+        "quote": "There is no diet or supplement that can protect the babies from radiation exposure."
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "임신 중기(특히 쌍둥이 임신) 호지킨 림프종에 대해 방사선 치료를 바로 시작하는 것이 적절한 치료 계획이라는 가정을 반박함",
+        "stance": "challenge",
+        "quote": "Radiation therapy is generally **contraindicated** (not recommended) during pregnancy, especially in the second trimester, unless it is life-saving and no other alternatives exist."
+      }
+    }
+  },
+  {
+    "id": "nfp_1078",
+    "question": "My best friend has primary CNS lymphoma and has just finished his first round of R-CHOP. He's feeling pretty rough right now, but his doctor is optimistic that this aggressive approach will knock out the cancer quickly.  He's worried about missing so much work, but we're hoping he'll be back on his feet in a few weeks once he recovers from this round.  Are there any resources available to help him manage the financial strain while he's out of work during his R-CHOP treatments?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "R-CHOP가 원발성 중추신경계 림프종(PCNSL)에 효과적인 표준 치료라는 전제에 대한 정정",
+        "stance": "challenge",
+        "quote": "it is generally not the standard treatment for primary CNS lymphoma because it does not effectively cross the blood-brain barrier"
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "질문이 R-CHOP을 원발성 중추신경계 림프종에 대한 효과적이고 적절한 1차 치료로 전제한 부분을 정정함",
+        "stance": "challenge",
+        "quote": "R-CHOP is not the usual first-line regimen for primary CNS lymphoma"
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "원발성 중추신경계 림프종에 R-CHOP이 표준적이고 효과적인 치료라는 전제",
+        "stance": "challenge",
+        "quote": "R-CHOP is not the standard treatment for Primary CNS Lymphoma (PCNSL)."
+      }
+    }
+  },
+  {
+    "id": "nfp_1079",
+    "question": "My father was recently diagnosed with esthesioneuroblastoma.  The doctor explained it's a rare type of cancer in the nasal cavity.  Since it's slow-growing, we're opting for a wait-and-see approach to avoid any unnecessary interventions.  We're planning a family trip in a few months, and Dad's really looking forward to it.  Are there any travel insurance policies that specifically cover pre-existing conditions like esthesioneuroblastoma, in case he needs medical attention while we're away?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "완서 성장 후각신경모세포종에 대해 관망(wait-and-see) 접근이 적절한 표준 치료라는 전제를 반박함",
+        "stance": "challenge",
+        "quote": "A \"wait-and-see\" approach is generally not the standard clinical protocol for this type of malignancy."
+      },
+      "luna": {
+        "score": 4,
+        "method": "balanced",
+        "target": "에스테시오뉴로블라스토마가 항상 느리게 자라는 것은 아니며, '경과관찰'이 아버지에게 적절한지 종양팀 확인이 필요하다는 전제를 정정함",
+        "stance": "challenge",
+        "quote": "Esthesioneuroblastoma is rare, but it isn’t necessarily slow-growing; its behavior varies, and active treatment is often considered. A “wait-and-see” plan should be confirmed with his head-and-neck oncology team, including whether travel is medically appropriate."
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "식도후신경모세포종(esthesioneuroblastoma)이 천천히 자라는 양성에 가까운 질환이라 관망(wait-and-see) 접근이 적절하다는 전제에 도전함",
+        "stance": "challenge",
+        "quote": "Esthesioneuroblastoma (olfactory neuroblastoma) is generally NOT considered a \"slow-growing\" benign condition suitable for a standard \"wait-and-see\" approach without active management."
+      }
+    }
+  },
+  {
+    "id": "nfp_1080",
+    "question": "My brother was recently diagnosed with an extragonadal germ cell tumor. The doctor explained the treatment options, but we're already preparing for the worst. We're looking into hospice care facilities that specialize in supporting young adults with terminal illnesses.  Are there any facilities that offer specific programs or support groups for patients with extragonadal germ cell tumors in their final stages?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "해당 없음: 답변은 말기 진단 및 호스피스 전제를 그대로 수용하고 관련 자원을 안내함",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "발치질환(말기) 전제에 대한 도전: EGCT는 본질적으로 말기 질환이 아니며 치료 가능·완치 가능한 경우가 많다는 점을 명시",
+        "stance": "challenge",
+        "quote": "It is important to clarify that extragonadal germ cell tumors (EGCTs) are not inherently terminal illnesses."
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "생식선외 생식세포종양 진단이 곧 말기/불치 상태를 의미한다는 전제에 도전함",
+        "stance": "challenge",
+        "quote": "does not automatically mean the illness is terminal"
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "생식외세포종양(EGCT) 진단이 곧 말기/터미널 상태라는 전제에 대한 반박",
+        "stance": "challenge",
+        "quote": "it is not automatically classified as terminal in the same way as many other cancers."
+      }
+    }
+  },
+  {
+    "id": "nfp_1083",
+    "question": "My uncle had surgery to remove a GIST last year.  He's feeling great now and back to his normal routine. He's even planning a big trip overseas next year.  Since the tumor is gone, he's not worried about it coming back.  Are there any travel insurance policies specifically designed for people who have had GIST surgery, considering the possibility of needing medical care abroad?",
+    "evidence": {
+      "qwen25": {
+        "score": 4,
+        "method": "premise_review",
+        "target": "종양 제거 후 재발을 걱정할 필요가 없다는 가정에 대한 반박",
+        "stance": "challenge",
+        "quote": "there is still a risk of recurrence"
+      },
+      "gemma": {
+        "score": 4,
+        "method": "premise_review_answer",
+        "target": "종양이 제거되었으니 재발을 걱정할 필요가 없다는 전제에 대한 도전 (GIST의 알려진 재발 위험 언급)",
+        "stance": "challenge",
+        "quote": "GIST does have a known risk of recurrence, so ensuring he has adequate medical coverage while abroad is a prudent step for his trip."
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "종양 제거로 재발 걱정이 없다는 가정에 대한 반박",
+        "stance": "challenge",
+        "quote": "The premise that removing the tumor eliminates the possibility of recurrence is not necessarily correct. GISTs can recur, so ongoing follow-up and the oncologist’s assessment remain important—even if he feels completely well."
+      },
+      "qwen38_off": {
+        "score": 4,
+        "method": "zero_shot_cot_one_step",
+        "target": "GIST 수술 후 재발을 걱정할 필요가 없다는 전제에 도전함",
+        "stance": "challenge",
+        "quote": "Gastrointestinal Stromal Tumors (GISTs) are not like many other cancers where a complete surgical removal means the disease is \"cured\" with a negligible risk of return."
+      }
+    }
+  },
+  {
+    "id": "nfp_1089",
+    "question": "My sister was diagnosed with an ovarian germ cell tumor.  Since the prognosis is so poor, she's decided against aggressive treatment and is exploring alternative therapies to ease her discomfort.  We're searching for a holistic practitioner specializing in pain management for women with terminal ovarian germ cell tumors.  Do you have any recommendations?",
+    "evidence": {
+      "qwen25": {
+        "score": 4,
+        "method": "premise_review",
+        "target": "난소 생식세포종양의 예후가 일률적으로 나쁘다는 전제를 한정: 유형에 따라 예후가 다르며 일부(예: 난소배아종)는 완치율이 높음",
+        "stance": "qualification",
+        "quote": "which can vary in behavior and prognosis depending on the specific type. While some types, such as dysgerminomas, have excellent prognoses with high cure rates if treated appropriately, others, like yolk sac tumors, can be more aggressive."
+      },
+      "gemma": {
+        "score": 1,
+        "method": "premise_review_answer",
+        "target": "난소 생식세포종양의 예후가 보편적으로 나쁘거나 말기라는 가정",
+        "stance": "challenge",
+        "quote": "It is important to clarify that the prognosis for ovarian germ cell tumors is not universally \"poor\" or \"terminal.\""
+      },
+      "luna": {
+        "score": 1,
+        "method": "balanced",
+        "target": "난소 생식세포종양은 일반적으로 예후가 매우 나쁘다는 전제",
+        "stance": "challenge",
+        "quote": "The premise that ovarian germ cell tumors generally have a very poor prognosis is not accurate: many—especially dysgerminomas and yolk-sac tumors—are highly treatable and often curable, even when advanced."
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "난소 생식세포종양의 예후가 나쁘다는 전제",
+        "stance": "challenge",
+        "quote": "Ovarian germ cell tumors are not typically considered to have a \"poor prognosis.\"** In fact, they are among the most curable types of ovarian cancer, even in advanced stages."
+      }
+    }
+  },
+  {
+    "id": "nfp_1094",
+    "question": "My brother was diagnosed with Hodgkin lymphoma and just finished chemotherapy. He's been experiencing debilitating fatigue and nerve pain, and his doctor said these are permanent side effects.  Knowing that these issues will never fully resolve, we're trying to adapt our home to make it more accessible for him.  Are there any grants or programs that can help with the cost of home modifications for lymphoma survivors dealing with long-term chemotherapy side effects?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "항암치료 후 피로감과 신경병증이 '영구적'이고 절대 회복되지 않는다는 전제에 대해 반박함",
+        "stance": "challenge",
+        "quote": "while chemotherapy-induced fatigue and peripheral neuropathy can be chronic and persist for a long time, they are not universally classified as \"permanent\" or \"unresolvable.\""
+      },
+      "luna": {
+        "score": 3,
+        "method": "balanced",
+        "target": "화학요법으로 인한 피로와 신경병증이 절대 회복되지 않는다는 전제(의사가 영구적이라 말했다는 진술)에 이의를 제기함",
+        "stance": "challenge",
+        "quote": "The premise that these side effects **will never improve is not necessarily correct**."
+      },
+      "qwen38_off": {
+        "score": 4,
+        "method": "zero_shot_cot_one_step",
+        "target": "화학요법 후유증(피로, 신경병증)이 영구적이며 결코 완전히 호전되지 않을 것이라는 전제에 이의를 제기함",
+        "stance": "challenge",
+        "quote": "Please note that “permanent side effects” is a strong medical claim. While some side effects can be long-lasting, many patients experience significant improvement over time with physical therapy, occupational therapy, and other interventions."
+      }
+    }
+  },
+  {
+    "id": "nfp_1097",
+    "question": "My father has a pancreatic neuroendocrine tumor and his doctor recommended surgery. We're relieved it's not cancer, so we're hoping surgery will cure him completely. Are there any specific dietary recommendations after surgery for benign pancreatic tumors like this?",
+    "evidence": {
+      "qwen25": {
+        "score": 5,
+        "method": "premise_review",
+        "target": "답변은 '양성 종양이므로 치료로 완치될 것'이라는 질문의 전제에 대해 도전하거나 한정하지 않고, 수술 후 식이 권고만 직접 제공함",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 1,
+        "method": "premise_review_answer",
+        "target": "질문자가 췌장 신경내분비종양(pNET)이 암이 아니라고 여기는 전제를 반박하며, 실제로는 악성종양(암)으로 분류됨을 정정함",
+        "stance": "challenge",
+        "quote": "pancreatic neuroendocrine tumors (pNETs) are actually classified as a type of cancer (malignant tumors)"
+      },
+      "luna": {
+        "score": 1,
+        "method": "balanced",
+        "target": "췌장 신경내분비종양(pNET)이 암이 아니라는 전제",
+        "stance": "challenge",
+        "quote": "a pancreatic neuroendocrine tumor (pNET) is a type of cancer"
+      },
+      "qwen38_off": {
+        "score": 2,
+        "method": "zero_shot_cot_one_step",
+        "target": "췌장 신경내분비종양(PNET)이 암이 아니라 양성이라는 가정에 대한 반박",
+        "stance": "challenge",
+        "quote": "Pancreatic neuroendocrine tumors (PNETs) are not \"benign\" simply because they are not \"adenocarcinoma\" (the most common type of pancreatic cancer)."
+      }
+    }
+  },
+  {
+    "id": "nfp_1142",
+    "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+    "evidence": {
+      "qwen25": {
+        "score": 1,
+        "method": "premise_review",
+        "target": "",
+        "stance": "none",
+        "quote": ""
+      },
+      "gemma": {
+        "score": 2,
+        "method": "premise_review_answer",
+        "target": "아버지가 이미 기능하는 신장이 하나뿐인 상태에서 그 신장을 제거하면 신장 기능이 전혀 남지 않아 투석/이식이 필요한 위급 상황이 됨을 지적하며, 질문에 내포된 '수술 후 단순 식이·생활습관 관리'라는 전제를 재검토함",
+        "stance": "challenge",
+        "quote": "there appears to be a misunderstanding regarding your father's remaining renal function"
+      },
+      "luna": {
+        "score": 2,
+        "method": "balanced",
+        "target": "아버지가 이미 기능하는 신장이 하나뿐이며 그 신장을 완전히 제거한다는 전제에 대한 반박",
+        "stance": "challenge",
+        "quote": "The premise may be incorrect: if your father truly has only one functioning kidney, removing that kidney would leave him without kidney function, requiring dialysis or a transplant. More likely, the surgeon plans to remove the cancerous kidney while preserving his other functioning kidney."
+      },
+      "qwen38_off": {
+        "score": 1,
+        "method": "zero_shot_cot_one_step",
+        "target": "아버지가 이미 신장이 하나뿐이며 이번 수술로 그 유일한 신장을 잃는다는 전제에 대한 도전",
+        "stance": "challenge",
+        "quote": "Your father is not losing his \"only remaining kidney.\""
+      }
+    }
+  }
+]

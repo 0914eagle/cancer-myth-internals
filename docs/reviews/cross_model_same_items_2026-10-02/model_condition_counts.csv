@@ -1,0 +1,11 @@
+model,alternative_method,label,n,plain_target_correction,alternative_target_correction,gained_correction,lost_correction,plain_challenge,alternative_challenge,plain_low_well,alternative_low_well
+qwen25,premise_review,fpq,582,60,126,93,27,28,92,568,521
+qwen25,premise_review,nfp,149,,,,,0,9,0,8
+gemma,premise_review_answer,fpq,583,82,289,220,13,55,297,558,343
+gemma,premise_review_answer,nfp,149,,,,,2,35,0,32
+luna,balanced,fpq,583,354,490,140,4,285,457,322,148
+luna,balanced,nfp,149,,,,,30,65,16,66
+qwen38_off,zero_shot_cot_one_step,fpq,583,332,362,62,32,324,353,293,264
+qwen38_off,zero_shot_cot_one_step,nfp,149,,,,,38,49,30,43
+qwen38_on,zero_shot_cot_one_step,fpq,583,298,320,60,38,236,243,346,332
+qwen38_on,zero_shot_cot_one_step,nfp,149,,,,,24,31,17,18

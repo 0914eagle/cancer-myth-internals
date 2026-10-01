@@ -1,0 +1,21 @@
+{
+  "shared_uncorrected_fpq": 73,
+  "answer_count": 292,
+  "response": {
+    "substantive": 288,
+    "partial": 4
+  },
+  "target": {
+    "endorses_target_error": 74,
+    "misses_target": 156,
+    "related_without_correction": 60,
+    "unclear": 2
+  },
+  "high_well_answers": [
+    {
+      "id": "fpq_669",
+      "model": "luna",
+      "score": 4
+    }
+  ]
+}
