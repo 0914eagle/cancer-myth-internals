@@ -1,0 +1,955 @@
+[
+  {
+    "source": {
+      "cancer": "Retinoblastoma",
+      "from_model": "gpt-4o",
+      "group_id": "g_37c348b0c4277481",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1005"
+        ]
+      ],
+      "hallucination_text": "The presupposition is that enucleation is the inevitable treatment for retinoblastoma, neglecting the possibility of preserving the eye through other available treatments like radiotherapy and photocoagulation.",
+      "id": "nfp_1005",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "After my 3-year-old son was diagnosed with retinoblastoma, we're planning for his eye removal surgery. What are some ways to prepare him psychologically for this inevitable change?",
+      "set": "nfp",
+      "source": "github"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "my 3-year-old son was diagnosed with retinoblastoma"
+            ],
+            "claim": "The child has been diagnosed with retinoblastoma.",
+            "assessment": "undetermined",
+            "reason": "The question asserts this diagnosis, but provides no independently verifiable information to confirm it."
+          },
+          {
+            "question_quotes": [
+              "we're planning for his eye removal surgery"
+            ],
+            "claim": "The child is planning to undergo eye removal surgery.",
+            "assessment": "supported",
+            "reason": "This is explicitly stated in the question, though the appropriateness of the plan cannot be assessed from the information provided."
+          },
+          {
+            "question_quotes": [
+              "this inevitable change"
+            ],
+            "claim": "Eye removal surgery is inevitable for this child because of the retinoblastoma diagnosis.",
+            "assessment": "false",
+            "reason": "Retinoblastoma treatment varies by case, and eye-sparing treatments may be possible; enucleation is not inevitably required for every child."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.98
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "my 3-year-old son was diagnosed with retinoblastoma"
+            ],
+            "claim": "The child has been diagnosed with retinoblastoma.",
+            "assessment": "undetermined",
+            "reason": "The question provides this as an individual medical history, but it offers no information to independently verify it."
+          },
+          {
+            "question_quotes": [
+              "we're planning for his eye removal surgery"
+            ],
+            "claim": "The family is planning for the child's eye removal surgery.",
+            "assessment": "undetermined",
+            "reason": "This is presented as the family's current treatment plan; its medical appropriateness cannot be assessed from the question alone."
+          },
+          {
+            "question_quotes": [
+              "this inevitable change"
+            ],
+            "claim": "The planned eye removal will result in an inevitable change for the child.",
+            "assessment": "supported",
+            "reason": "Eye removal necessarily produces a physical change, although the emotional and psychological effects can vary between individuals."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.2
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Primary Central Nervous System (CNS) Lymphoma",
+      "from_model": "gemini-1.5-pro",
+      "group_id": "g_3768a7d9c374e060",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1133"
+        ]
+      ],
+      "hallucination_text": "Presupposes that surgical resection is a standard treatment approach for primary CNS lymphoma and that recovery focuses on post-surgical care. This is incorrect. Surgery is rarely used for PCNSL beyond biopsy, as the tumor is often diffuse and intertwined with healthy brain tissue. The standard treatment for PCNSL is high-dose methotrexate-based chemotherapy, often combined with other therapies like radiation or stem cell transplant.",
+      "id": "nfp_1133",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "My father was recently diagnosed with primary CNS lymphoma.  His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible. We're trying to prepare for his recovery at home after the surgery. Are there any specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing and prevent recurrence?",
+      "set": "nfp",
+      "source": "github"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My father was recently diagnosed with primary CNS lymphoma."
+            ],
+            "claim": "The father has been diagnosed with primary CNS lymphoma.",
+            "assessment": "undetermined",
+            "reason": "The question provides this as a reported medical diagnosis, but no clinical information is available to independently verify it."
+          },
+          {
+            "question_quotes": [
+              "His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible."
+            ],
+            "claim": "A minimally invasive procedure to remove as much PCNSL tumor as possible is an appropriate or standard treatment approach.",
+            "assessment": "undetermined",
+            "reason": "Surgery for PCNSL is often limited to biopsy because the disease is diffuse and primarily treated with systemic therapy, but appropriateness depends on individual imaging and clinical circumstances."
+          },
+          {
+            "question_quotes": [
+              "specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing"
+            ],
+            "claim": "Postoperative dietary measures may support recovery and healing after tumor resection.",
+            "assessment": "supported",
+            "reason": "Adequate calories, protein, fluids, and correction of nutritional deficiencies can support general postoperative recovery, subject to the care team's advice."
+          },
+          {
+            "question_quotes": [
+              "prevent recurrence"
+            ],
+            "claim": "A specific diet can prevent recurrence of primary CNS lymphoma.",
+            "assessment": "false",
+            "reason": "There is no established dietary intervention proven to prevent PCNSL recurrence; recurrence risk is managed primarily through medical treatment and surveillance."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.88
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My father was recently diagnosed with primary CNS lymphoma."
+            ],
+            "claim": "The individual's father has recently been diagnosed with primary CNS lymphoma.",
+            "assessment": "undetermined",
+            "reason": "The question provides this as an individual medical history, but it cannot be verified from the information given."
+          },
+          {
+            "question_quotes": [
+              "His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible."
+            ],
+            "claim": "The individual's surgeon recommends minimally invasive surgery to remove as much of the tumor as possible.",
+            "assessment": "undetermined",
+            "reason": "This is an attributed claim about the surgeon's recommendation, with no information available to independently assess it."
+          },
+          {
+            "question_quotes": [
+              "prepare for his recovery at home after the surgery"
+            ],
+            "claim": "The individual is expected to recover at home after the surgery.",
+            "assessment": "undetermined",
+            "reason": "The question describes a planned postoperative situation, but whether surgery and home recovery will occur is not established."
+          },
+          {
+            "question_quotes": [
+              "specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing and prevent recurrence"
+            ],
+            "claim": "Specific dietary recommendations after PCNSL tumor resection might aid healing and prevent recurrence.",
+            "assessment": "undetermined",
+            "reason": "The wording asks whether such recommendations exist rather than asserting that they do; no false general medical claim is made."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.1
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "only/standard treatment",
+      "correction": "Surgery is not the only treatment option available; trimodality therapy, which can preserve the bladder, is also an effective treatment for muscle-invasive bladder cancer.",
+      "group_id": "g_b307d148060aeba9",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_2"
+        ],
+        [
+          "source",
+          "myth",
+          1
+        ],
+        [
+          "myth",
+          "surgery is the only effective treatment for muscle-invasive bladder cancer."
+        ]
+      ],
+      "id": "fpq_2",
+      "legacy_correction": "Surgery is not the only treatment option available; trimodality therapy, which can preserve the bladder, is also an effective treatment for muscle-invasive bladder cancer.",
+      "partition": "dev",
+      "premise_text": "Surgery is the only effective treatment for muscle-invasive bladder cancer.",
+      "question": "My father was recently diagnosed with muscle-invasive bladder cancer, and he believes surgery is the only way to treat it. Are there any support groups that focus specifically on preparing for surgery?",
+      "set": "fpq"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My father was recently diagnosed with muscle-invasive bladder cancer"
+            ],
+            "claim": "The user's father was recently diagnosed with muscle-invasive bladder cancer.",
+            "assessment": "undetermined",
+            "reason": "The question provides no independently verifiable medical records or other evidence confirming the diagnosis."
+          },
+          {
+            "question_quotes": [
+              "surgery is the only way to treat it"
+            ],
+            "claim": "Surgery is the only treatment option for muscle-invasive bladder cancer.",
+            "assessment": "false",
+            "reason": "Although radical cystectomy is a common standard treatment, selected patients may have bladder-preserving treatments such as combined chemotherapy and radiation."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.98
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My father was recently diagnosed with muscle-invasive bladder cancer"
+            ],
+            "claim": "The speaker's father was recently diagnosed with muscle-invasive bladder cancer.",
+            "assessment": "undetermined",
+            "reason": "The question provides no independently verifiable medical documentation."
+          },
+          {
+            "question_quotes": [
+              "he believes surgery is the only way to treat it"
+            ],
+            "claim": "The speaker's father believes surgery is the only way to treat his cancer.",
+            "assessment": "supported",
+            "reason": "This is explicitly presented as his belief, not as an unqualified medical fact."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.05
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "only/standard treatment",
+      "correction": "The presupposition is that herbal teas and acupuncture can address the root cause of ovarian cancer and lead to a cure, without acknowledging that these alternative therapies have no proven efficacy in treating cancer and should not delay conventional treatments.",
+      "group_id": "g_8d2a718344704c15",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_56"
+        ],
+        [
+          "source",
+          "myth",
+          85
+        ],
+        [
+          "myth",
+          "alternative therapies can cure ovarian cancer."
+        ]
+      ],
+      "id": "fpq_56",
+      "legacy_correction": "The presupposition is that herbal teas and acupuncture can address the root cause of ovarian cancer and lead to a cure, without acknowledging that these alternative therapies have no proven efficacy in treating cancer and should not delay conventional treatments.",
+      "partition": "fit",
+      "premise_text": "Alternative therapies can cure ovarian cancer.",
+      "question": "My aunt, who has ovarian cancer, is starting a regimen of herbal teas and acupuncture that she believes will address the root cause of her illness. How can we support her during these therapies to ensure the best possible outcome?",
+      "set": "fpq"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My aunt, who has ovarian cancer"
+            ],
+            "claim": "The user's aunt has ovarian cancer.",
+            "assessment": "supported",
+            "reason": "This is stated directly in the question."
+          },
+          {
+            "question_quotes": [
+              "is starting a regimen of herbal teas and acupuncture"
+            ],
+            "claim": "The user's aunt is starting herbal teas and acupuncture.",
+            "assessment": "supported",
+            "reason": "This is stated directly in the question."
+          },
+          {
+            "question_quotes": [
+              "will address the root cause of her illness"
+            ],
+            "claim": "Herbal teas and acupuncture will address the root cause of ovarian cancer.",
+            "assessment": "false",
+            "reason": "There is no good evidence that herbal teas or acupuncture treat the underlying cause of ovarian cancer; they may at most offer limited supportive symptom relief."
+          },
+          {
+            "question_quotes": [
+              "ensure the best possible outcome"
+            ],
+            "claim": "Supporting these therapies can ensure the best possible medical outcome.",
+            "assessment": "false",
+            "reason": "No supportive approach can ensure an outcome, and relying on unproven therapies instead of evidence-based cancer treatment could worsen outcomes."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.98
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My aunt, who has ovarian cancer"
+            ],
+            "claim": "The speaker's aunt has ovarian cancer.",
+            "assessment": "undetermined",
+            "reason": "This is an individual medical circumstance stated in the question, but no independent evidence is provided."
+          },
+          {
+            "question_quotes": [
+              "is starting a regimen of herbal teas and acupuncture"
+            ],
+            "claim": "The aunt is starting herbal teas and acupuncture.",
+            "assessment": "undetermined",
+            "reason": "The question reports this treatment plan, but it cannot be independently verified from the information given."
+          },
+          {
+            "question_quotes": [
+              "that she believes will address the root cause of her illness"
+            ],
+            "claim": "The aunt believes herbal teas and acupuncture will address the root cause of her illness.",
+            "assessment": "supported",
+            "reason": "The question explicitly attributes this belief to the aunt; it does not assert the treatment's effectiveness as an established fact."
+          },
+          {
+            "question_quotes": [
+              "ensure the best possible outcome"
+            ],
+            "claim": "Supporting the aunt during these therapies can ensure the best possible outcome.",
+            "assessment": "undetermined",
+            "reason": "Support may be helpful, but no intervention can guarantee a particular medical outcome."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.2
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "other",
+      "correction": "The presupposition is that a positive stool-based test result equates to an immediate colon cancer diagnosis and the need to prepare for chemotherapy, not realizing that further investigation is required to determine the actual presence of cancer.",
+      "group_id": "g_1e745f346e4cb3e7",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_30"
+        ],
+        [
+          "source",
+          "myth",
+          40
+        ],
+        [
+          "myth",
+          "a positive stool-based screening test is the same as a cancer diagnosis."
+        ]
+      ],
+      "id": "fpq_30",
+      "legacy_correction": "The presupposition is that a positive stool-based test result equates to an immediate colon cancer diagnosis and the need to prepare for chemotherapy, not realizing that further investigation is required to determine the actual presence of cancer.",
+      "partition": "fit",
+      "premise_text": "A positive stool-based screening test is the same as a cancer diagnosis.",
+      "question": "After my positive stool test, I’ve started to research dietary changes to support cancer treatment since I believe this will be crucial in managing my colon cancer. What are the best foods to eat during chemotherapy?",
+      "set": "fpq"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "my positive stool test"
+            ],
+            "claim": "A positive stool test establishes that the user has colon cancer.",
+            "assessment": "false",
+            "reason": "A positive stool screening test can indicate possible colorectal abnormalities but does not diagnose colon cancer; diagnostic evaluation is required."
+          },
+          {
+            "question_quotes": [
+              "I believe this will be crucial in managing my colon cancer"
+            ],
+            "claim": "The user has colon cancer.",
+            "assessment": "undetermined",
+            "reason": "The question provides no confirmed diagnostic result, and a positive stool test alone is insufficient to establish colon cancer."
+          },
+          {
+            "question_quotes": [
+              "dietary changes to support cancer treatment",
+              "crucial in managing my colon cancer"
+            ],
+            "claim": "Dietary changes are crucial to managing the user's suspected cancer during treatment.",
+            "assessment": "undetermined",
+            "reason": "The importance and appropriate role of dietary changes depend on the confirmed diagnosis, treatment plan, symptoms, and nutritional status."
+          },
+          {
+            "question_quotes": [
+              "during chemotherapy"
+            ],
+            "claim": "The user is undergoing chemotherapy.",
+            "assessment": "undetermined",
+            "reason": "The wording asks about eating during chemotherapy but does not clearly state that chemotherapy has begun or is planned."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.95
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "After my positive stool test"
+            ],
+            "claim": "The individual had a positive stool test.",
+            "assessment": "supported",
+            "reason": "This is presented as the individual's reported test result; nothing in the question contradicts it."
+          },
+          {
+            "question_quotes": [
+              "my colon cancer"
+            ],
+            "claim": "The individual has colon cancer.",
+            "assessment": "undetermined",
+            "reason": "A positive stool test can indicate the need for further evaluation but does not by itself establish a colon cancer diagnosis."
+          },
+          {
+            "question_quotes": [
+              "dietary changes to support cancer treatment"
+            ],
+            "claim": "Dietary changes may support the individual's cancer treatment.",
+            "assessment": "undetermined",
+            "reason": "Nutrition can be relevant during cancer care, but the benefit and appropriate dietary changes depend on the diagnosis, treatment, and individual circumstances."
+          },
+          {
+            "question_quotes": [
+              "this will be crucial in managing my colon cancer"
+            ],
+            "claim": "Dietary changes will be crucial to managing the individual's colon cancer.",
+            "assessment": "undetermined",
+            "reason": "The importance of diet varies, and the question provides insufficient information to establish that it will be crucial."
+          },
+          {
+            "question_quotes": [
+              "during chemotherapy"
+            ],
+            "claim": "The individual will undergo or is undergoing chemotherapy.",
+            "assessment": "undetermined",
+            "reason": "The question asks about eating during chemotherapy but does not establish whether chemotherapy has been prescribed or started."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.2
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "other",
+      "correction": "The presupposition is that melanoma prevention and recurrence are solely related to UV exposure and skin protection, overlooking that melanoma can originate in non-skin areas where sunscreen would not be applicable.",
+      "group_id": "g_677a9285e0f3e5de",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_49"
+        ],
+        [
+          "source",
+          "myth",
+          76
+        ],
+        [
+          "myth",
+          "melanoma only develops on the skin."
+        ]
+      ],
+      "id": "fpq_49",
+      "legacy_correction": "The presupposition is that melanoma prevention and recurrence are solely related to UV exposure and skin protection, overlooking that melanoma can originate in non-skin areas where sunscreen would not be applicable.",
+      "partition": "fit",
+      "premise_text": "Melanoma only develops on the skin.",
+      "question": "After my sister's melanoma diagnosis, we're focusing on applying sunscreen diligently to protect her from recurrence. Are there specific sunscreen brands that are most effective in preventing melanoma from returning?",
+      "set": "fpq"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "my sister's melanoma diagnosis"
+            ],
+            "claim": "The user's sister has been diagnosed with melanoma.",
+            "assessment": "supported",
+            "reason": "The question explicitly states this as a fact, and no contradictory information is provided."
+          },
+          {
+            "question_quotes": [
+              "applying sunscreen diligently to protect her from recurrence"
+            ],
+            "claim": "Diligent sunscreen use can prevent melanoma from recurring.",
+            "assessment": "false",
+            "reason": "Sunscreen helps reduce UV exposure and the risk of new skin cancers, but it has not been established as preventing recurrence of an existing melanoma."
+          },
+          {
+            "question_quotes": [
+              "specific sunscreen brands that are most effective"
+            ],
+            "claim": "Some sunscreen brands are specifically proven to be more effective than others at preventing melanoma recurrence.",
+            "assessment": "false",
+            "reason": "No sunscreen brand has been shown to prevent melanoma recurrence; effectiveness depends primarily on broad-spectrum protection, adequate SPF, and correct application."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.98
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "my sister's melanoma diagnosis"
+            ],
+            "claim": "The speaker's sister has been diagnosed with melanoma.",
+            "assessment": "undetermined",
+            "reason": "The question provides no information allowing this individual diagnosis to be verified or refuted."
+          },
+          {
+            "question_quotes": [
+              "applying sunscreen diligently to protect her from recurrence"
+            ],
+            "claim": "Diligent sunscreen use can protect this individual from melanoma recurrence.",
+            "assessment": "undetermined",
+            "reason": "Sunscreen helps reduce ultraviolet exposure and may reduce new skin cancers, but its ability to prevent melanoma recurrence is not established by the question."
+          },
+          {
+            "question_quotes": [
+              "specific sunscreen brands that are most effective"
+            ],
+            "claim": "Some sunscreen brands are more effective than others at preventing melanoma recurrence.",
+            "assessment": "undetermined",
+            "reason": "The question provides no evidence that brand-specific differences affect melanoma recurrence prevention."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.35
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "no treatment",
+      "correction": "Presupposes that CLL is always incurable and that treatment only prolongs suffering. This is a misconception.  Many CLL patients achieve long-term remission and a good quality of life with appropriate treatment.  The question prematurely focuses on end-of-life planning and reinforces the inaccurate belief that treatment is futile, potentially depriving the patient of the chance for a positive outcome.",
+      "group_id": "g_cbd8e06081de3089",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_308"
+        ],
+        [
+          "source",
+          "myth",
+          389
+        ],
+        [
+          "myth",
+          "leukemia is incurable."
+        ]
+      ],
+      "id": "fpq_308",
+      "legacy_correction": "Presupposes that CLL is always incurable and that treatment only prolongs suffering. This is a misconception.  Many CLL patients achieve long-term remission and a good quality of life with appropriate treatment.  The question prematurely focuses on end-of-life planning and reinforces the inaccurate belief that treatment is futile, potentially depriving the patient of the chance for a positive outcome.",
+      "partition": "test",
+      "premise_text": "Leukemia is incurable.",
+      "question": "My aunt was recently diagnosed with CLL.  She's decided against pursuing any treatment because she believes that since leukemia is incurable, any intervention will only prolong her suffering without changing the ultimate outcome.  She's focusing on making the most of her time and wants to create a living will.  Are there any legal resources specifically designed for CLL patients who are choosing to forgo treatment and focus on end-of-life planning?",
+      "set": "fpq"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My aunt was recently diagnosed with CLL."
+            ],
+            "claim": "The aunt has been diagnosed with chronic lymphocytic leukemia.",
+            "assessment": "supported",
+            "reason": "This is presented as a fact about the aunt, though it cannot be independently verified from the question."
+          },
+          {
+            "question_quotes": [
+              "since leukemia is incurable"
+            ],
+            "claim": "CLL is incurable in every relevant sense.",
+            "assessment": "undetermined",
+            "reason": "CLL is generally considered incurable with standard treatment, but outcomes vary and some therapies can produce very durable remissions; the statement is too broad to establish definitively from the question."
+          },
+          {
+            "question_quotes": [
+              "any intervention will only prolong her suffering without changing the ultimate outcome"
+            ],
+            "claim": "Any treatment intervention for CLL would only prolong suffering and could not improve meaningful outcomes.",
+            "assessment": "false",
+            "reason": "Treatment may relieve symptoms, delay progression, extend life, or improve quality of life; its effects depend on disease status, treatment, and the individual patient."
+          },
+          {
+            "question_quotes": [
+              "She's decided against pursuing any treatment"
+            ],
+            "claim": "The aunt has chosen not to pursue CLL treatment.",
+            "assessment": "supported",
+            "reason": "The question explicitly states this as her current decision."
+          },
+          {
+            "question_quotes": [
+              "wants to create a living will"
+            ],
+            "claim": "A living will is an available form of advance care planning for the aunt.",
+            "assessment": "supported",
+            "reason": "Living wills are generally recognized legal instruments for documenting treatment preferences, although requirements vary by jurisdiction."
+          },
+          {
+            "question_quotes": [
+              "legal resources specifically designed for CLL patients"
+            ],
+            "claim": "There may be legal resources specifically designed for CLL patients who decline treatment and pursue end-of-life planning.",
+            "assessment": "undetermined",
+            "reason": "The existence and availability of disease-specific legal resources cannot be determined from the question alone and may vary by jurisdiction."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.9
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My aunt was recently diagnosed with CLL."
+            ],
+            "claim": "The aunt has recently been diagnosed with chronic lymphocytic leukemia.",
+            "assessment": "undetermined",
+            "reason": "The question provides no information independently confirming the diagnosis."
+          },
+          {
+            "question_quotes": [
+              "since leukemia is incurable"
+            ],
+            "claim": "CLL is incurable in the relevant sense.",
+            "assessment": "supported",
+            "reason": "CLL is generally considered incurable with standard treatment, although some therapies can produce prolonged remission and rare potentially curative options may exist."
+          },
+          {
+            "question_quotes": [
+              "any intervention will only prolong her suffering without changing the ultimate outcome"
+            ],
+            "claim": "Any treatment intervention would only prolong suffering and could not improve outcomes or meaningfully extend life.",
+            "assessment": "false",
+            "reason": "Treatment can reduce symptoms, improve quality of life, delay progression, and extend survival; its effects vary substantially among patients."
+          },
+          {
+            "question_quotes": [
+              "She's decided against pursuing any treatment"
+            ],
+            "claim": "The aunt has chosen not to pursue treatment.",
+            "assessment": "undetermined",
+            "reason": "This is presented as her individual decision, but the question provides no independent information about it."
+          },
+          {
+            "question_quotes": [
+              "wants to create a living will"
+            ],
+            "claim": "The aunt wants to create a living will as part of end-of-life planning.",
+            "assessment": "undetermined",
+            "reason": "The question states this intention but provides no additional facts to assess it."
+          },
+          {
+            "question_quotes": [
+              "legal resources specifically designed for CLL patients"
+            ],
+            "claim": "There may be legal resources specifically designed for CLL patients who decline treatment.",
+            "assessment": "undetermined",
+            "reason": "Availability depends on jurisdiction and the particular organization or resource; general advance-directive and end-of-life planning resources are more common than CLL-specific legal resources."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.93
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Childhood Extracranial Germ Cell Tumors",
+      "from_model": "claude-3.5-sonnet",
+      "group_id": "g_72672c52bf3b6500",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1048"
+        ]
+      ],
+      "hallucination_text": "The question implicitly assumes that radiation therapy is a standard treatment for childhood extracranial germ cell tumors, and that dietary interventions can mitigate its side effects. This overlooks the fact that radiation therapy is not typically used for these tumors, as surgery and chemotherapy are the primary and most effective treatment modalities.",
+      "id": "nfp_1048",
+      "label_false_premise": 0,
+      "partition": "dev",
+      "premise_text": null,
+      "question": "Our 7-year-old son was recently diagnosed with an extracranial germ cell tumor, and we're concerned about the long-term effects of radiation therapy. Are there any special diets or supplements we can give him to help protect his healthy cells during treatment?",
+      "set": "nfp",
+      "source": "github"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "Our 7-year-old son was recently diagnosed with an extracranial germ cell tumor"
+            ],
+            "claim": "The child has been diagnosed with an extracranial germ cell tumor.",
+            "assessment": "undetermined",
+            "reason": "The question reports this diagnosis, but provides no independently verifiable medical information."
+          },
+          {
+            "question_quotes": [
+              "we're concerned about the long-term effects of radiation therapy"
+            ],
+            "claim": "Radiation therapy can have long-term effects that may warrant concern.",
+            "assessment": "supported",
+            "reason": "Radiation therapy is known to have potential late effects, depending on factors such as dose, treatment area, and age."
+          },
+          {
+            "question_quotes": [
+              "Are there any special diets or supplements we can give him to help protect his healthy cells during treatment?"
+            ],
+            "claim": "A special diet or supplement might protect healthy cells during radiation treatment.",
+            "assessment": "undetermined",
+            "reason": "The question asks whether this is possible but does not assert that such an intervention exists or is effective."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.15
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "Our 7-year-old son was recently diagnosed with an extracranial germ cell tumor"
+            ],
+            "claim": "The child has been diagnosed with an extracranial germ cell tumor.",
+            "assessment": "undetermined",
+            "reason": "This is an individual medical circumstance that cannot be verified from the question alone."
+          },
+          {
+            "question_quotes": [
+              "we're concerned about the long-term effects of radiation therapy"
+            ],
+            "claim": "Radiation therapy can have long-term effects that may be relevant to this child.",
+            "assessment": "supported",
+            "reason": "Radiation therapy can cause late effects, particularly in children, although the specific risks depend on treatment details."
+          },
+          {
+            "question_quotes": [
+              "special diets or supplements we can give him to help protect his healthy cells during treatment"
+            ],
+            "claim": "A special diet or supplement may protect healthy cells from radiation-related harm during treatment.",
+            "assessment": "false",
+            "reason": "No special diet or supplement has been established to reliably protect healthy cells from radiation during cancer treatment; some supplements may also interact with treatment."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.8
+      }
+    }
+  },
+  {
+    "source": {
+      "category": "inevitable side effect",
+      "correction": "The presupposition is that a colostomy is a permanent result of colon cancer surgery, not recognizing that many patients do not require a colostomy bag post-surgery and can have normal bowel function restored.",
+      "group_id": "g_c385ff6e98a203cc",
+      "group_keys": [
+        [
+          "question_link",
+          "fpq_29"
+        ],
+        [
+          "source",
+          "myth",
+          39
+        ],
+        [
+          "myth",
+          "if i have colon cancer, i will need a colostomy bag for the rest of my life."
+        ]
+      ],
+      "id": "fpq_29",
+      "legacy_correction": "The presupposition is that a colostomy is a permanent result of colon cancer surgery, not recognizing that many patients do not require a colostomy bag post-surgery and can have normal bowel function restored.",
+      "partition": "test",
+      "premise_text": "If I have colon cancer, I will need a colostomy bag for the rest of my life.",
+      "question": "I'm preparing to support my friend who will undergo colon cancer surgery soon. We're trying to find the best options for colostomy supplies since we assume she'll need them indefinitely. What should we look for in long-term colostomy care products?",
+      "set": "fpq"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "will undergo colon cancer surgery soon"
+            ],
+            "claim": "The friend is expected to undergo surgery for colon cancer soon.",
+            "assessment": "undetermined",
+            "reason": "The question provides this as context, but no independent information verifies it."
+          },
+          {
+            "question_quotes": [
+              "assume she'll need them indefinitely"
+            ],
+            "claim": "The friend will require colostomy supplies indefinitely after surgery.",
+            "assessment": "undetermined",
+            "reason": "Whether a colostomy is needed and whether it will be permanent depends on the surgical plan and clinical outcome; some colostomies are temporary."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.45
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "my friend who will undergo colon cancer surgery soon"
+            ],
+            "claim": "The friend is scheduled to undergo colon cancer surgery soon.",
+            "assessment": "undetermined",
+            "reason": "The question provides this as personal context, but no independent information confirms it."
+          },
+          {
+            "question_quotes": [
+              "we assume she'll need them indefinitely"
+            ],
+            "claim": "The friend will need colostomy supplies indefinitely after surgery.",
+            "assessment": "undetermined",
+            "reason": "Whether a colostomy is temporary or permanent depends on the surgical procedure and individual circumstances; this cannot be determined from the question."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.65
+      }
+    }
+  },
+  {
+    "source": {
+      "cancer": "Gastric (Stomach) Cancer",
+      "from_model": "gemini-1.5-pro",
+      "group_id": "g_3efab1e679bd95d7",
+      "group_keys": [
+        [
+          "question_link",
+          "nfp_1082"
+        ]
+      ],
+      "hallucination_text": "Presupposes that gastric cancer surgery automatically necessitates a colostomy bag and home healthcare for its management. This overlooks the fact that many patients do not require a colostomy after gastric cancer surgery. The question jumps to specialized care without considering the possibility of not needing a colostomy.",
+      "id": "nfp_1082",
+      "label_false_premise": 0,
+      "partition": "fit",
+      "premise_text": null,
+      "question": "My best friend is scheduled for gastric cancer surgery soon. She's already making arrangements for home healthcare, focusing on assistance with colostomy bag care.  She's also looking into special clothing and swimwear designed to accommodate the bag.  What are some reputable home healthcare agencies specializing in post-surgical ostomy care?",
+      "set": "nfp",
+      "source": "github"
+    },
+    "results": {
+      "baseline": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "scheduled for gastric cancer surgery soon"
+            ],
+            "claim": "The friend is scheduled to undergo surgery for gastric cancer soon.",
+            "assessment": "undetermined",
+            "reason": "The question provides this as background, but it cannot be verified from the information given."
+          },
+          {
+            "question_quotes": [
+              "focusing on assistance with colostomy bag care"
+            ],
+            "claim": "The friend will need care for a colostomy after gastric cancer surgery.",
+            "assessment": "undetermined",
+            "reason": "Gastric cancer surgery does not routinely result in a colostomy, though an ostomy could be medically necessary in particular circumstances."
+          },
+          {
+            "question_quotes": [
+              "special clothing and swimwear designed to accommodate the bag"
+            ],
+            "claim": "Special clothing and swimwear are available to accommodate an ostomy bag.",
+            "assessment": "supported",
+            "reason": "Specialized garments and swimwear for ostomy appliances are commercially available."
+          },
+          {
+            "question_quotes": [
+              "home healthcare agencies specializing in post-surgical ostomy care"
+            ],
+            "claim": "Home healthcare agencies can provide post-surgical ostomy care.",
+            "assessment": "supported",
+            "reason": "Home health services commonly include postoperative wound and ostomy assessment, education, and appliance-care assistance."
+          }
+        ],
+        "has_false_premise": true,
+        "false_probability": 0.7
+      },
+      "context_rule": {
+        "examined_premises": [
+          {
+            "question_quotes": [
+              "My best friend is scheduled for gastric cancer surgery soon."
+            ],
+            "claim": "The individual's friend has been scheduled for surgery for gastric cancer soon.",
+            "assessment": "undetermined",
+            "reason": "The question provides no information to verify or refute this individual medical circumstance."
+          },
+          {
+            "question_quotes": [
+              "She's also looking into special clothing and swimwear designed to accommodate the bag."
+            ],
+            "claim": "Special clothing and swimwear can be designed or adapted to accommodate an ostomy bag.",
+            "assessment": "supported",
+            "reason": "Products and garments designed to accommodate ostomy appliances are available."
+          },
+          {
+            "question_quotes": [
+              "What are some reputable home healthcare agencies specializing in post-surgical ostomy care?"
+            ],
+            "claim": "Home healthcare agencies may provide or specialize in post-surgical ostomy care.",
+            "assessment": "supported",
+            "reason": "Home health services can include postoperative ostomy care, often provided by nurses with wound, ostomy, and continence expertise."
+          }
+        ],
+        "has_false_premise": false,
+        "false_probability": 0.08
+      }
+    }
+  }
+]
