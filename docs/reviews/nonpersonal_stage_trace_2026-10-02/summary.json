@@ -1,0 +1,28 @@
+{
+  "selection_counts": {
+    "qwen25": 5,
+    "gemma": 1,
+    "luna": 1,
+    "qwen38_off": 23,
+    "qwen38_on": 15
+  },
+  "saved_stage_count": 6,
+  "truncation_metadata": [
+    {
+      "model": "gemma",
+      "truncated": "False",
+      "count": 1
+    },
+    {
+      "model": "qwen38_off",
+      "truncated": "False",
+      "count": 23
+    },
+    {
+      "model": "qwen38_on",
+      "truncated": "False",
+      "count": 15
+    }
+  ],
+  "warning": "Selection uses existing Well and AI codes, not independently established causal failures. All 45 questions were screened; this is not a full reading of all 90 answers."
+}
