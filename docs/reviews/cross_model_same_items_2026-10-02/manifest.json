@@ -1,7 +1,7 @@
 {
   "source": "results/analysis/completed_primary_behavior_20261001_v2/all_primary_pairs.jsonl",
   "source_sha256": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3",
-  "script_sha256": "27d4722956481b7983bc82791e931b9ca06a87ef11fd655a798b6799f5a082f0",
+  "script_sha256": "f834e46e648849c5ce7a77fafbf72000afc1d1c5e9993f775c6d79c8d48166c2",
   "new_model_calls": 0,
   "scope": "Existing 3659 pairs / 7318 answers; main matched comparison 731 questions across four model families. Qwen3.8 ON replaces OFF in sensitivity analysis, not a fifth independent vote.",
   "limitation": "Existing Sonnet behavior codes are provisional, not medical truth; a negative answer to an inquiry is not automatically false-premise challenge. Alternative prompts differ across models. No causal model ranking.",

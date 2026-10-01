@@ -45,6 +45,8 @@ def main():
                 lost_correction=sum(correction(r['plain']) and not correction(r['alternative']) for r in sub) if label=='fpq' else None,
                 plain_challenge=sum(r['plain']['coding']['stance']=='challenge' for r in sub),
                 alternative_challenge=sum(r['alternative']['coding']['stance']=='challenge' for r in sub),
+                plain_challenge_high_well=sum(r['plain']['coding']['stance']=='challenge' and r['plain']['score']>=4 for r in sub),
+                alternative_challenge_high_well=sum(r['alternative']['coding']['stance']=='challenge' and r['alternative']['score']>=4 for r in sub),
                 plain_low_well=sum(r['plain']['score']<4 for r in sub),
                 alternative_low_well=sum(r['alternative']['score']<4 for r in sub)))
     csvwrite('model_condition_counts.csv',model_rows)
