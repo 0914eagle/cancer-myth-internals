@@ -1,0 +1,31 @@
+{
+  "source_sha256": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3",
+  "source_pairs": 3659,
+  "source_answers": 7318,
+  "unique_questions": 732,
+  "common_questions": 731,
+  "common_fpq": 582,
+  "common_nfp": 149,
+  "scope_quote_issues": [],
+  "excluded_from_common": [
+    {
+      "model": "gemma",
+      "id": "fpq_389"
+    },
+    {
+      "model": "luna",
+      "id": "fpq_389"
+    },
+    {
+      "model": "qwen38_off",
+      "id": "fpq_389"
+    },
+    {
+      "model": "qwen38_on",
+      "id": "fpq_389"
+    }
+  ],
+  "new_model_calls": 0,
+  "new_medical_adjudications": 0,
+  "warning": "Existing AI codes are reused, not newly verified for all answers. Feature associations use any claim in a question, not necessarily the annotated target. Exploratory CIs are unadjusted for multiple comparisons."
+}
