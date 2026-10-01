@@ -1,0 +1,43 @@
+{
+  "reviewer": "Codex root assistant, current session; non-blind, post-hoc textual review",
+  "review_n": 128,
+  "control_population_n": 732,
+  "new_model_calls": 0,
+  "gate_model": "gpt-5.6-luna, medium",
+  "gate_conditions": "Direct baseline vs personal-context protection, each repeated twice",
+  "claim_auditor": "existing question-only gpt-5.6-terra; not a component or rationale of Luna Direct",
+  "material_codebook": {
+    "R": "관련 대상 내용이 적어도 하나의 독립 주장에 남음; 원 의미 전체 보존/정답 추출을 뜻하지 않음",
+    "F": "대상 요소가 나뉘어 남지만 주석과 연결되는 관계/배타성은 독립 주장으로 남지 않음",
+    "Q": "목표 관련 내용이 주로 문의로 남거나 문의 요약 과정에서 전제 요소가 약화/축약됨",
+    "O": "핵심 대상 구절이 추출 목록에서 빠짐"
+  },
+  "lexical_patterns": {
+    "clinician_word": "\\b(?:doctors?|oncologists?|surgeons?|physicians?|surgical team)\\b",
+    "absolute_word": "\\b(?:always|never|only|inevitable|inevitably|unavoidable|permanent|permanently|must|cannot|can't|won't)\\b",
+    "belief_word": "\\b(?:think|thinks|believe|believes|assuming|assume|expect|expects|expecting|anticipate|anticipating|understand|seems|hoping|hopeful)\\b"
+  },
+  "control_review": "All 732 existing blind codes and lexical markers aggregated; 256 nearest same-label stable controls retrieved, not all independently semantically reviewed.",
+  "selection": "128 stable Yes/Yes -> No/No cases selected after observing gate outcomes; evidence association, not causal attribution.",
+  "medical_scope": "Reference contents are dataset claims, not endorsed clinical facts. No medical relabeling.",
+  "interpretation": "R is retained material, not faithful full extraction or knowledge of falsity. Q/F can reflect ambiguity or a reference overreach, not necessarily extraction errors.",
+  "retrieval": "Unigram TF-IDF cosine, same label, stable Yes or stable No. Shared controls allowed; not matched causal pairs or independent observations.",
+  "sources": {
+    "selected": {
+      "path": "docs/reviews/boundary_followup_2026-10-01/stable_128_questions_claims_references.csv",
+      "sha256": "5f7e9f3e82dfb86a15b90868feaea8215debc60e014e8ca248e5c6f0983854ab"
+    },
+    "all": {
+      "path": "docs/reviews/boundary_followup_2026-10-01/all_732_claim_gate_links.csv",
+      "sha256": "1ee2e6dd33ebb63da8a9cd1bcf0d9c589c2dee34feb62b9a0d77032346d9d74f"
+    },
+    "repeats": {
+      "path": "docs/reviews/core_failures_2026-10-01/luna_repeat_items.csv",
+      "sha256": "c6039b8adca77abe0e0748d6809b9b391ddc8022b0b6767e59992c15e3b014d2"
+    },
+    "review": {
+      "path": "docs/reviews/luna_stable_switch_review_2026-10-01/item_review.tsv",
+      "sha256": "23e9bcbc721a846a993a602629cfd16e92fdcdcd678abfdac2563d3c340fa807"
+    }
+  }
+}

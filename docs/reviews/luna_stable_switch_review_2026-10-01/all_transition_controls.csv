@@ -1,0 +1,10 @@
+dataset,group,n,has_personal,has_general,apparent_error_flag,clinician_word,absolute_word,belief_word
+fpq,stable_no,171,158,33,0,26,14,22
+fpq,stable_no_to_yes,1,1,1,0,0,0,0
+fpq,stable_yes,196,180,93,88,17,46,17
+fpq,stable_yes_to_no,103,102,15,5,24,17,20
+fpq,unstable,112,109,24,7,16,18,19
+nfp,stable_no,76,73,12,0,29,5,5
+nfp,stable_yes,14,13,6,6,6,1,4
+nfp,stable_yes_to_no,25,25,4,1,17,7,10
+nfp,unstable,34,34,8,2,17,4,7
