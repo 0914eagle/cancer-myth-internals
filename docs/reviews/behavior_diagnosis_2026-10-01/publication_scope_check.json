@@ -1,0 +1,14 @@
+{
+  "remote": "git@github.com:0914eagle/cancer-myth-internals.git",
+  "already_remote_ref": "origin/main",
+  "already_remote_file": "configs/premise_sft/cancer_questions.jsonl",
+  "already_remote_commit": "477e7637b0f46513fdd1a34de1b628a3d2a964e2",
+  "public_dataset_config": "Cancer-Myth/Cancer-Myth (configs/default.yaml)",
+  "existing_remote_questions": 732,
+  "snapshot_question_occurrences": 932,
+  "snapshot_unique_questions": 732,
+  "questions_not_already_in_remote_benchmark_file": 0,
+  "existing_remote_file_sha256": "880564c27c5dcfde296334b95b00b825256c7cb0c7d89e37fee2696c9e64c12c",
+  "answers_provenance": "Saved synthetic model-generated benchmark completions; no user clinical records were collected for this analysis. Answer job IDs and hashes link to the existing experimental runs.",
+  "request_scope": "User explicitly requested committing and pushing the classification process and cause-analysis materials in the current cancer-myth-internals repository."
+}

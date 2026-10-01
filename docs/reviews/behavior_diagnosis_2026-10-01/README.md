@@ -24,6 +24,8 @@
 
 [스냅샷 출처·해시](snapshot_manifest.json), [전수 연결 검증](context_validation.json), [후보 분류 검증](model_validation.json)을 보존했다. 원본 저장 경로는 서버 추적용이며 다른 머신에서 그대로 존재한다는 뜻이 아니다.
 
+[공개 범위 확인](publication_scope_check.json): 포함된 732개 질문 전체가 push 이전부터 동일 원격 main의 `configs/premise_sft/cancer_questions.jsonl`에 있던 벤치마크 문항과 정확히 일치함을 확인했다. 답변은 그 문항들에 대한 저장된 모델 생성 결과다.
+
 재현 스크립트:
 
 - [Direct 변화 및 NFP 점수 경계](../../../scripts/analyze_context_and_nfp_score_boundaries.py)
