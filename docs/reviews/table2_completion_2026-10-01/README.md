@@ -12,7 +12,7 @@
 
 재실행: `python3 -m scripts.complete_table2_routing`
 
-## 새로 생성하는 Luna 두 조건
+## Luna 추가 답변 두 조건
 
 | 항목 | 설정 |
 |---|---|
@@ -42,6 +42,8 @@ nohup python3 -u -m scripts.run_luna_table2_completion run \
   > results/frontier_cli/luna_table2_completion_20261001_v1/run.log 2>&1 < /dev/null &
 ```
 
-스모크 테스트에서 FPQ·NFP 각 1개 × 두 조건의 4개 답변이 정상 생성됐다. 전체 생성은 시작했으며 성능 칸은 채점 완료 전까지 공란이다. 시작 시 Sonnet 접근 확인은 세션 한도로 실패했다(메시지의 Perth 18:20 = 한국시간 19:20 갱신). 생성 완료 뒤에도 접근이 막혀 있으면 Well 단계가 멈추고 기록을 보존한다. 채점 재개 시 실패 원장을 먼저 확인해야 한다.
+**2026-10-02 저장 원장 확인:** 두 조건 각각 732개, 총 1,464개 생성 완료. Sonnet 유효 채점은 857개이며 607개 미완료다. [조건별 중간 수치·분모](luna_answer_progress.md)를 표 2에서 ‡로 구분해 반영했다. 마지막 채점 중단은 세션 한도다. 현재 한도 확인이나 재호출은 하지 않았다.
+
+초기 실행 기록: 스모크 테스트 4개 답변이 정상 생성됐고 전체 생성을 시작했다. 시작 시 Sonnet 접근 확인은 세션 한도로 실패했다(메시지의 Perth 18:20 = 한국시간 19:20 갱신). 생성 완료 뒤에도 접근이 막혀 있으면 Well 단계가 멈추고 기록을 보존한다. 채점 재개 시 실패 원장을 먼저 확인해야 한다.
 
 원래 Direct gate의 저장 답변 선택과 Self-gated FP Identification은 이름만으로 같은 실행으로 취급하지 않는다. 이번 Luna 추가 생성은 일반 CoT·전제 검토 CoT 답변 두 조건이며 별도 Self-gated 답변 실험을 새로 실행한 것은 아니다.

@@ -1,0 +1,109 @@
+{
+  "status": "partial_judging_not_full_evaluation",
+  "generator": "gpt-5.6-luna",
+  "effort": "medium",
+  "judge": "claude-sonnet-5",
+  "generation": {
+    "premise_review_answer": 732,
+    "zero_shot_cot_one_step": 732
+  },
+  "valid_judgments": 857,
+  "expected_judgments": 1464,
+  "remaining_judgments": 607,
+  "groups": [
+    {
+      "method": "premise_review_answer",
+      "label": "fpq",
+      "generated": 583,
+      "judged": 341,
+      "unjudged": 242,
+      "ge4": 275,
+      "ge4_pct_among_judged": 80.64516129032258,
+      "s5": 216,
+      "score_counts": {
+        "0": 0,
+        "1": 29,
+        "2": 29,
+        "3": 8,
+        "4": 59,
+        "5": 216
+      }
+    },
+    {
+      "method": "premise_review_answer",
+      "label": "nfp",
+      "generated": 149,
+      "judged": 87,
+      "unjudged": 62,
+      "ge4": 44,
+      "ge4_pct_among_judged": 50.57471264367816,
+      "s5": 21,
+      "score_counts": {
+        "0": 0,
+        "1": 2,
+        "2": 34,
+        "3": 7,
+        "4": 23,
+        "5": 21
+      }
+    },
+    {
+      "method": "zero_shot_cot_one_step",
+      "label": "fpq",
+      "generated": 583,
+      "judged": 331,
+      "unjudged": 252,
+      "ge4": 166,
+      "ge4_pct_among_judged": 50.151057401812686,
+      "s5": 99,
+      "score_counts": {
+        "0": 0,
+        "1": 96,
+        "2": 62,
+        "3": 7,
+        "4": 67,
+        "5": 99
+      }
+    },
+    {
+      "method": "zero_shot_cot_one_step",
+      "label": "nfp",
+      "generated": 149,
+      "judged": 98,
+      "unjudged": 51,
+      "ge4": 89,
+      "ge4_pct_among_judged": 90.81632653061224,
+      "s5": 58,
+      "score_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 6,
+        "3": 3,
+        "4": 31,
+        "5": 58
+      }
+    }
+  ],
+  "last_saved_judge_status": {
+    "state": "stopped",
+    "valid": 857,
+    "target": 1464,
+    "workers": 5,
+    "generator": "gpt-5.6-luna",
+    "judge": "claude-sonnet-5"
+  },
+  "last_stop_reason": "session quota in saved failed attempts; current quota not probed",
+  "source_files_sha256": {
+    "results/frontier_cli/luna_table2_completion_20261001_v1/well_judge_sonnet_v1/attempts.jsonl": "d771ccb1488041104891014c8241b45e5220e4e5484f08346b7db1a0ee855cc3",
+    "results/frontier_cli/luna_table2_completion_20261001_v1/well_judge_sonnet_v1/judge_plan.json": "df20c39e45ad1bfbf90306deb75ce4d92dc14ffd744430163b082d699491837c",
+    "results/frontier_cli/luna_table2_completion_20261001_v1/well_judge_sonnet_v1/report.json": "ae89d74151d60c712f02b4e2dcf0ac12266dc57ca31b43e06efadc328766a6dc",
+    "results/frontier_cli/luna_table2_completion_20261001_v1/manifest.json": "0d5356067998b3d03ec324167f142ccd6147507f28edfdc847660e79f4377521",
+    "results/frontier_cli/luna_table2_completion_20261001_v1/evaluation_questions.jsonl": "29423db5764d8980c88a498f07aaa484b6567b784dcf0c6016405bfdf31c39cf"
+  },
+  "limitations": [
+    "Percentages use judged subsets, not all 583/149 questions.",
+    "Judged subsets differ between conditions; no paired improvement claim.",
+    "Historical balanced-prompt behavior cohorts are unchanged.",
+    "No new generation, judging, or retries."
+  ]
+}

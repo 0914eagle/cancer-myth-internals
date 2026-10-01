@@ -1,6 +1,6 @@
-# 교수님 공유용: 완료된 탐지·답변 평가 통합표
+# 교수님 공유용: 탐지·답변 평가 통합표
 
-작성: 2026-10-01. 기존 저장 결과를 모은 표이며 새 실험을 실행하지 않았다. 반복 실험의 재집계 결과는 아직 포함하지 않았다.
+2026-10-02 갱신. 기존 완료 결과와 Luna 추가 답변의 채점 중간 결과(‡)를 구분해 모았다. 추가 답변 1,464개 생성 완료, Sonnet 유효 채점 857개다. 이번 갱신은 저장 결과 재집계이며 새 호출은 하지 않았다. 반복 gate 판정 평균은 기존 단일 실행 표에 혼합하지 않았다.
 
 ## 조건과 모델
 
@@ -45,8 +45,8 @@ Text/hidden은 crossfit 기본 classifier 판정이다. Qwen2.5 Direct/CoT는 Ye
 <tbody>
 <tr><th colspan="13">직접 답변 생성</th></tr>
 <tr><td>Plain</td><td>2.4</td><td>100.0</td><td>44.8</td><td>89.3</td><td>60.7</td><td>67.1</td><td>4.3</td><td>100.0</td><td>49.7</td><td>79.9</td><td>40.7</td><td>88.6</td></tr>
-<tr><td>일반 CoT¹</td><td>0.7</td><td>99.3</td><td>74.6<sup>†</sup></td><td>55.7<sup>†</sup></td><td>77.5<sup>†</sup></td><td>38.9<sup>†</sup></td><td>3.4</td><td>99.3</td><td>54.7</td><td>71.1</td><td>43.1</td><td>87.9</td></tr>
-<tr><td>전제 검토 CoT · 2-step</td><td>10.5</td><td>94.6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>41.2</td><td>78.5</td><td>61.4</td><td>55.0</td><td>66.7</td><td>57.0</td></tr>
+<tr><td>일반 CoT¹</td><td>0.7</td><td>99.3</td><td>50.2<sup>‡</sup></td><td>90.8<sup>‡</sup></td><td>77.5<sup>†</sup></td><td>38.9<sup>†</sup></td><td>3.4</td><td>99.3</td><td>54.7</td><td>71.1</td><td>43.1</td><td>87.9</td></tr>
+<tr><td>전제 검토 CoT · 2-step</td><td>10.5</td><td>94.6</td><td>80.6<sup>‡</sup></td><td>50.6<sup>‡</sup></td><td>—</td><td>—</td><td>41.2</td><td>78.5</td><td>61.4</td><td>55.0</td><td>66.7</td><td>57.0</td></tr>
 <tr><td>무조건 교정</td><td>56.9</td><td>21.5</td><td>86.6</td><td>17.4</td><td>89.5</td><td>1.3</td><td>72.0</td><td>2.0</td><td>71.0</td><td>28.9</td><td>83.4</td><td>5.4</td></tr>
 <tr><td>Self-gated FP Identification</td><td>7.0</td><td>89.9</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
 <tr><th colspan="13">Gate로 저장 답변 선택</th></tr>
@@ -59,10 +59,13 @@ Text/hidden은 crossfit 기본 classifier 판정이다. Qwen2.5 Direct/CoT는 Ye
 
 수치는 **Well ≥4 비율(%)**이며 FPQ·NFP 모두 높을수록 좋다. S5와 문항별 분모는 [상세 수치 원장](reviews/advisor_2026-10-02/tables.md)에 보존했다. `—`는 보고할 해당 조합의 결과가 없다는 뜻이다. Label oracle은 본문 표에서 제외했다.
 
-Text gate는 모든 답변 모델에 **동일한 crossfit 텍스트 판정**을 적용했다. Qwen2.5 Direct·전제 검토 CoT gate 선택 행도 저장된 판정과 답변 점수를 연결한 값이다. [추가 선택 결과·원장](reviews/table2_completion_2026-10-01/routing_tables.md). Luna의 실제 일반 CoT·전제 검토 CoT 답변은 추가 생성·채점 중이다. 일반 CoT 행의 Luna·Claude 값은 아래 각주에 명시한 기존 균형 지시 결과이며, 새 일반 CoT 실험 결과가 아니다.
+Text gate는 모든 답변 모델에 **동일한 crossfit 텍스트 판정**을 적용했다. Qwen2.5 Direct·전제 검토 CoT gate 선택 행도 저장된 판정과 답변 점수를 연결한 값이다. [추가 선택 결과·원장](reviews/table2_completion_2026-10-01/routing_tables.md).
 
-¹ 일반 CoT는 Qwen2.5에서 2-step, Gemma·Qwen3.8에서 1-step이다. † 일반 CoT 행의 GPT-Luna·Claude 값은 **균형 지시**(전제가 틀리면 고치고 타당하면 존중하라)의 기존 결과다. 표를 간결하게 배치하기 위해 같은 행에 넣었으며, 다른 모델의 일반 CoT와 동일한 프롬프트 조건이 아니다. 전제 검토 CoT는 질문의 전제를 먼저 검토한 뒤 질문+검토문으로 답변을 생성한다.
+**‡ Luna 추가 답변의 채점 중간 결과.** 일반 CoT와 전제 검토 후 답변은 각각 732개씩 생성 완료했으며, Sonnet 채점은 총 **857/1,464개** 유효하다. 일반 CoT는 FPQ **166/331 (50.2%)**, NFP **89/98 (90.8%)**가 ≥4이고, 전제 검토 후 답변은 FPQ **275/341 (80.6%)**, NFP **44/87 (50.6%)**가 ≥4다. 각 칸은 **채점된 문항만의 비율**이며 미채점 607개를 실패로 처리하지 않았다. 다른 행 및 두 추가 조건 사이에도 평가 문항이 달라 완결된 성능 비교로 해석하지 않는다. 마지막 저장 중단 사유는 Sonnet 세션 한도다. [생성·채점 검증과 문항별 근거](reviews/table2_completion_2026-10-01/luna_answer_progress.md).
 
-Qwen2.5의 Plain·일반 CoT·Self-gated 및 모든 gate 선택 행은 FPQ 582개, 그 외 표시된 조건은 583개이며 NFP는 모두 149개다. 모델 간 프롬프트·절차 차이가 있으므로 순수한 모델 능력 비교로 해석하지 않는다. Sonnet 답변도 Sonnet으로 채점한 기존 결과다. NFP ≥4의 감소는 Table 1의 gate 오탐률과 같은 수치가 아니다.
+¹ 일반 CoT는 Qwen2.5에서 2-step, Luna·Gemma·Qwen3.8에서 1-step이다. † Claude 값 77.5/38.9만 기존 **균형 지시** 결과이며 일반 CoT와 다른 프롬프트다. Luna의 기존 임시 균형 지시 값 74.6/55.7은 실제 일반 CoT 중간 결과로 교체했다. 균형 지시 자체의 결과와 기존 3,659쌍·299쌍 분석은 그대로 유지한다. 전제 검토 CoT는 질문의 전제를 먼저 검토한 뒤 질문+검토문으로 답변을 생성한다.
+
+
+Qwen2.5의 Plain·일반 CoT·Self-gated 및 모든 gate 선택 행은 FPQ 582개, 그 외 완료 조건은 FPQ 583/NFP 149개다. **‡ Luna 추가 조건은 위의 채점 부분집합 분모를 사용한다.** 모델 간 프롬프트·절차 차이가 있으므로 순수한 모델 능력 비교로 해석하지 않는다. Sonnet 답변도 Sonnet으로 채점한 기존 결과다. NFP ≥4의 감소는 Table 1의 gate 오탐률과 같은 수치가 아니다.
 
 근거: [동결 수치표](reviews/advisor_2026-10-02/tables.md), [원장과 출처](reviews/advisor_2026-10-02/snapshot.json), [개인 상황 보호 실험](41_behavior_diagnosis_and_classification_2026-10-01.md#4-개인-상황-보호-direct-분석).
