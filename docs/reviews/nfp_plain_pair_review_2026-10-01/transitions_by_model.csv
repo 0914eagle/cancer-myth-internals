@@ -1,0 +1,7 @@
+model,n,new_challenge,both_challenge,alternative_not_challenge,same_substantive_caveat,new_flagged_challenge,retained_flagged_challenge,removed_flagged_challenge
+qwen25,8,7,0,1,0,3,0,0
+gemma,32,27,5,0,3,11,1,0
+luna,54,19,34,1,28,21,11,1
+qwen38_off,23,12,10,1,13,6,3,1
+qwen38_on,4,0,4,0,3,0,1,1
+ALL,121,65,53,3,47,41,16,3

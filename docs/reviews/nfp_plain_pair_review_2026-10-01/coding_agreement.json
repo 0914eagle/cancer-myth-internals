@@ -1,0 +1,27 @@
+{
+  "n": 121,
+  "terra_solo_to_paired_alternative": {
+    "challenge -> challenge": 112,
+    "qualification -> challenge": 5,
+    "qualification -> qualification": 2,
+    "none -> qualification": 1,
+    "none -> challenge": 1
+  },
+  "sonnet_to_paired_plain": {
+    "none -> none": 10,
+    "qualification -> challenge": 38,
+    "qualification -> qualification": 29,
+    "none -> qualification": 25,
+    "challenge -> challenge": 14,
+    "challenge -> qualification": 3,
+    "qualification -> none": 1,
+    "none -> challenge": 1
+  },
+  "sonnet_to_paired_alternative": {
+    "challenge -> challenge": 91,
+    "qualification -> challenge": 25,
+    "qualification -> qualification": 3,
+    "none -> challenge": 2
+  },
+  "warning": "Different auditor prompts and single/paired contexts. This is coding disagreement, not a change in generated answers."
+}

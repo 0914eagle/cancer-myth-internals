@@ -1,0 +1,174 @@
+[
+  {
+    "model": "qwen25",
+    "n": 8,
+    "stance_transitions": {
+      "none -> challenge": 3,
+      "qualification -> challenge": 4,
+      "qualification -> qualification": 1
+    },
+    "plain_scope": {
+      "not_applicable": 3,
+      "faithful": 5
+    },
+    "alternative_scope": {
+      "faithful": 4,
+      "strengthened": 2,
+      "unclear": 1,
+      "different_target": 1
+    },
+    "new_scope_flag": 3,
+    "retained_scope_flag": 0,
+    "scope_flag_removed": 0,
+    "new_challenge": 7,
+    "same_caveat": {
+      "no": 8
+    },
+    "same_caveat_new_challenge": 0
+  },
+  {
+    "model": "gemma",
+    "n": 32,
+    "stance_transitions": {
+      "challenge -> challenge": 5,
+      "qualification -> challenge": 22,
+      "none -> challenge": 5
+    },
+    "plain_scope": {
+      "faithful": 25,
+      "not_applicable": 5,
+      "different_target": 1,
+      "strengthened": 1
+    },
+    "alternative_scope": {
+      "faithful": 20,
+      "strengthened": 7,
+      "different_target": 5
+    },
+    "new_scope_flag": 10,
+    "retained_scope_flag": 2,
+    "scope_flag_removed": 0,
+    "new_challenge": 27,
+    "same_caveat": {
+      "yes": 3,
+      "no": 29
+    },
+    "same_caveat_new_challenge": 0
+  },
+  {
+    "model": "luna",
+    "n": 54,
+    "stance_transitions": {
+      "challenge -> challenge": 34,
+      "qualification -> qualification": 1,
+      "qualification -> challenge": 17,
+      "none -> challenge": 2
+    },
+    "plain_scope": {
+      "faithful": 36,
+      "strengthened": 7,
+      "different_target": 9,
+      "not_applicable": 2
+    },
+    "alternative_scope": {
+      "faithful": 21,
+      "strengthened": 22,
+      "different_target": 11
+    },
+    "new_scope_flag": 18,
+    "retained_scope_flag": 15,
+    "scope_flag_removed": 1,
+    "new_challenge": 19,
+    "same_caveat": {
+      "yes": 28,
+      "no": 26
+    },
+    "same_caveat_new_challenge": 2
+  },
+  {
+    "model": "qwen38_off",
+    "n": 23,
+    "stance_transitions": {
+      "challenge -> challenge": 10,
+      "qualification -> challenge": 11,
+      "qualification -> qualification": 1,
+      "none -> challenge": 1
+    },
+    "plain_scope": {
+      "different_target": 3,
+      "faithful": 17,
+      "not_applicable": 1,
+      "strengthened": 2
+    },
+    "alternative_scope": {
+      "different_target": 2,
+      "faithful": 14,
+      "strengthened": 7
+    },
+    "new_scope_flag": 6,
+    "retained_scope_flag": 3,
+    "scope_flag_removed": 2,
+    "new_challenge": 12,
+    "same_caveat": {
+      "no": 10,
+      "yes": 13
+    },
+    "same_caveat_new_challenge": 5
+  },
+  {
+    "model": "qwen38_on",
+    "n": 4,
+    "stance_transitions": {
+      "challenge -> challenge": 4
+    },
+    "plain_scope": {
+      "strengthened": 1,
+      "different_target": 1,
+      "faithful": 2
+    },
+    "alternative_scope": {
+      "faithful": 3,
+      "different_target": 1
+    },
+    "new_scope_flag": 0,
+    "retained_scope_flag": 1,
+    "scope_flag_removed": 1,
+    "new_challenge": 0,
+    "same_caveat": {
+      "no": 1,
+      "yes": 3
+    },
+    "same_caveat_new_challenge": 0
+  },
+  {
+    "model": "ALL",
+    "n": 121,
+    "stance_transitions": {
+      "none -> challenge": 11,
+      "challenge -> challenge": 53,
+      "qualification -> challenge": 54,
+      "qualification -> qualification": 3
+    },
+    "plain_scope": {
+      "not_applicable": 11,
+      "faithful": 85,
+      "different_target": 14,
+      "strengthened": 11
+    },
+    "alternative_scope": {
+      "faithful": 62,
+      "different_target": 20,
+      "strengthened": 38,
+      "unclear": 1
+    },
+    "new_scope_flag": 37,
+    "retained_scope_flag": 21,
+    "scope_flag_removed": 4,
+    "new_challenge": 65,
+    "same_caveat": {
+      "no": 74,
+      "yes": 47
+    },
+    "same_caveat_new_challenge": 7
+  }
+]
