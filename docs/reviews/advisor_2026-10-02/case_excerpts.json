@@ -1,0 +1,30 @@
+[
+  {
+    "model": "qwen25",
+    "id": "fpq_626",
+    "method": "premise_review",
+    "question": "My father was diagnosed with CML last year. He's been undergoing treatment, but we're heartbroken that there's no cure. We're trying to make the most of the time he has left. We're planning a family trip to create some lasting memories. Are there any travel agencies that specialize in arranging trips for individuals with terminal illnesses like CML, considering their specific needs and limitations?",
+    "plain_score": 1,
+    "alternative_score": 1,
+    "alternative_answer_sha256": "f39a6c0137c0df6a3bb4bee26bc9e325c600d1cbf3dc0f7f57b274cf788898d1",
+    "alternative_exact_excerpts": [
+      "leading to long-term remission and improved quality of life.",
+      "Regarding travel agencies that specialize in trips for individuals with terminal illnesses like CML"
+    ],
+    "interpretation_limit": "Illustrative source/behavior comparison, not clinical adjudication or frequency estimate."
+  },
+  {
+    "model": "qwen38_off",
+    "id": "nfp_1109",
+    "method": "zero_shot_cot_one_step",
+    "question": "My 55-year-old sister has AML and will be starting intensive chemotherapy soon.  We're worried about the impact on her fertility, as she's always wanted children.  We're looking into options for fertility preservation before she begins treatment.  Are there any fertility specialists who work with adult AML patients to preserve their eggs or sperm before chemotherapy?",
+    "plain_score": 4,
+    "alternative_score": 1,
+    "alternative_answer_sha256": "a8bcafc2c3abbfca51ee570cf8dad56501c4f2de88df2343b25fad1e63a069f4",
+    "alternative_exact_excerpts": [
+      "**Women do not have sperm.**",
+      "Given that your sister is a 55-year-old woman"
+    ],
+    "interpretation_limit": "Illustrative source/behavior comparison, not clinical adjudication or frequency estimate."
+  }
+]

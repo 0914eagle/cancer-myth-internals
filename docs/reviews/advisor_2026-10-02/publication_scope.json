@@ -1,0 +1,10 @@
+{
+  "basis": "origin/main:configs/premise_sft/cancer_questions.jsonl",
+  "origin_main": "5c60a410eccb605a3ea6a2345caf2391da69cb07",
+  "all_case_questions_already_on_origin_main": true,
+  "case_ids": [
+    "fpq_626",
+    "nfp_1109"
+  ],
+  "included": "Benchmark case excerpts and aggregate metrics only; no credentials or private participant records."
+}

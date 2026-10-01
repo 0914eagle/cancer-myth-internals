@@ -1,0 +1,599 @@
+{
+  "captured_at_kst": "2026-10-01T15:44:11.809597+09:00",
+  "gates": [
+    [
+      "TF-IDF text",
+      "0.755",
+      "502/583 (86.1%)",
+      "76/149 (51.0%)"
+    ],
+    [
+      "Qwen2.5 hidden probe",
+      "0.693",
+      "437/583 (75.0%)",
+      "71/149 (47.7%)"
+    ],
+    [
+      "Qwen2.5 Direct",
+      "0.466",
+      "41/583 (7.0%)",
+      "16/149 (10.7%)"
+    ],
+    [
+      "Qwen2.5 Review gate",
+      "0.587",
+      "172/583 (29.5%)",
+      "24/149 (16.1%)"
+    ],
+    [
+      "Luna Direct",
+      "—",
+      "365/583 (62.6%)",
+      "59/149 (39.6%)"
+    ],
+    [
+      "Luna Review gate",
+      "—",
+      "487/583 (83.5%)",
+      "97/149 (65.1%)"
+    ],
+    [
+      "Gemma 4 12B Direct",
+      "—",
+      "236/583 (40.5%)",
+      "24/149 (16.1%)"
+    ],
+    [
+      "Gemma 4 12B Review gate",
+      "—",
+      "299/583 (51.3%)",
+      "49/149 (32.9%)"
+    ],
+    [
+      "Qwen3.8 OFF Direct",
+      "—",
+      "152/583 (26.1%)",
+      "24/149 (16.1%)"
+    ],
+    [
+      "Qwen3.8 OFF Review gate",
+      "—",
+      "335/583 (57.5%)",
+      "53/149 (35.6%)"
+    ],
+    [
+      "Qwen3.8 ON Direct",
+      "—",
+      "257/583 (44.1%)",
+      "32/149 (21.5%)"
+    ],
+    [
+      "Qwen3.8 ON Review gate",
+      "—",
+      "358/583 (61.4%)",
+      "57/149 (38.3%)"
+    ]
+  ],
+  "answers": [
+    [
+      "Qwen2.5",
+      "plain",
+      "14/582 (2.4%)",
+      "149/149 (100.0%)",
+      "1/582 (0.2%)",
+      "134/149 (89.9%)"
+    ],
+    [
+      "Qwen2.5",
+      "premise_review",
+      "61/583 (10.5%)",
+      "141/149 (94.6%)",
+      "14/583 (2.4%)",
+      "102/149 (68.5%)"
+    ],
+    [
+      "Qwen2.5",
+      "zero_shot_cot",
+      "4/582 (0.7%)",
+      "148/149 (99.3%)",
+      "3/582 (0.5%)",
+      "140/149 (94.0%)"
+    ],
+    [
+      "Qwen2.5",
+      "fp_identification",
+      "41/582 (7.0%)",
+      "134/149 (89.9%)",
+      "14/582 (2.4%)",
+      "119/149 (79.9%)"
+    ],
+    [
+      "Qwen2.5",
+      "fp_unconditional",
+      "332/583 (56.9%)",
+      "32/149 (21.5%)",
+      "143/583 (24.5%)",
+      "7/149 (4.7%)"
+    ],
+    [
+      "Luna",
+      "plain",
+      "261/583 (44.8%)",
+      "133/149 (89.3%)",
+      "152/583 (26.1%)",
+      "97/149 (65.1%)"
+    ],
+    [
+      "Luna",
+      "balanced",
+      "435/583 (74.6%)",
+      "83/149 (55.7%)",
+      "280/583 (48.0%)",
+      "32/149 (21.5%)"
+    ],
+    [
+      "Luna",
+      "fp_unconditional",
+      "505/583 (86.6%)",
+      "26/149 (17.4%)",
+      "407/583 (69.8%)",
+      "3/149 (2.0%)"
+    ],
+    [
+      "Sonnet",
+      "plain",
+      "354/583 (60.7%)",
+      "100/149 (67.1%)",
+      "311/583 (53.3%)",
+      "76/149 (51.0%)"
+    ],
+    [
+      "Sonnet",
+      "balanced",
+      "452/583 (77.5%)",
+      "58/149 (38.9%)",
+      "430/583 (73.8%)",
+      "8/149 (5.4%)"
+    ],
+    [
+      "Sonnet",
+      "fp_unconditional",
+      "522/583 (89.5%)",
+      "2/149 (1.3%)",
+      "494/583 (84.7%)",
+      "0/149 (0.0%)"
+    ],
+    [
+      "Qwen2.5",
+      "text_routed",
+      "295/582 (50.7%)",
+      "90/149 (60.4%)",
+      "135/582 (23.2%)",
+      "66/149 (44.3%)"
+    ],
+    [
+      "Qwen2.5",
+      "hidden_routed",
+      "261/582 (44.8%)",
+      "96/149 (64.4%)",
+      "124/582 (21.3%)",
+      "75/149 (50.3%)"
+    ],
+    [
+      "Qwen2.5",
+      "oracle_routed",
+      "332/582 (57.0%)",
+      "149/149 (100.0%)",
+      "143/582 (24.6%)",
+      "134/149 (89.9%)"
+    ],
+    [
+      "Luna",
+      "direct_routed",
+      "377/583 (64.7%)",
+      "92/149 (61.7%)",
+      "310/583 (53.2%)",
+      "83/149 (55.7%)"
+    ],
+    [
+      "Luna",
+      "cot_routed",
+      "458/583 (78.6%)",
+      "63/149 (42.3%)",
+      "375/583 (64.3%)",
+      "51/149 (34.2%)"
+    ],
+    [
+      "Gemma 4 12B",
+      "plain",
+      "25/583 (4.3%)",
+      "149/149 (100.0%)",
+      "2/583 (0.3%)",
+      "122/149 (81.9%)"
+    ],
+    [
+      "Gemma 4 12B",
+      "zero_shot_cot_one_step",
+      "20/583 (3.4%)",
+      "148/149 (99.3%)",
+      "3/583 (0.5%)",
+      "122/149 (81.9%)"
+    ],
+    [
+      "Gemma 4 12B",
+      "premise_review_answer",
+      "240/583 (41.2%)",
+      "117/149 (78.5%)",
+      "34/583 (5.8%)",
+      "94/149 (63.1%)"
+    ],
+    [
+      "Gemma 4 12B",
+      "fp_unconditional",
+      "420/583 (72.0%)",
+      "3/149 (2.0%)",
+      "84/583 (14.4%)",
+      "0/149 (0.0%)"
+    ],
+    [
+      "Gemma 4 12B",
+      "direct_routed",
+      "217/583 (37.2%)",
+      "125/149 (83.9%)",
+      "59/583 (10.1%)",
+      "103/149 (69.1%)"
+    ],
+    [
+      "Gemma 4 12B",
+      "cot_routed",
+      "253/583 (43.4%)",
+      "100/149 (67.1%)",
+      "60/583 (10.3%)",
+      "86/149 (57.7%)"
+    ],
+    [
+      "Qwen3.8 OFF",
+      "plain",
+      "290/583 (49.7%)",
+      "119/149 (79.9%)",
+      "228/583 (39.1%)",
+      "61/149 (40.9%)"
+    ],
+    [
+      "Qwen3.8 OFF",
+      "zero_shot_cot_one_step",
+      "319/583 (54.7%)",
+      "106/149 (71.1%)",
+      "253/583 (43.4%)",
+      "55/149 (36.9%)"
+    ],
+    [
+      "Qwen3.8 OFF",
+      "premise_review_answer",
+      "358/583 (61.4%)",
+      "82/149 (55.0%)",
+      "325/583 (55.7%)",
+      "52/149 (34.9%)"
+    ],
+    [
+      "Qwen3.8 OFF",
+      "fp_unconditional",
+      "414/583 (71.0%)",
+      "43/149 (28.9%)",
+      "368/583 (63.1%)",
+      "10/149 (6.7%)"
+    ],
+    [
+      "Qwen3.8 OFF",
+      "direct_routed",
+      "309/583 (53.0%)",
+      "108/149 (72.5%)",
+      "255/583 (43.7%)",
+      "58/149 (38.9%)"
+    ],
+    [
+      "Qwen3.8 OFF",
+      "cot_routed",
+      "362/583 (62.1%)",
+      "89/149 (59.7%)",
+      "318/583 (54.5%)",
+      "51/149 (34.2%)"
+    ],
+    [
+      "Qwen3.8 ON",
+      "plain",
+      "237/583 (40.7%)",
+      "132/149 (88.6%)",
+      "193/583 (33.1%)",
+      "100/149 (67.1%)"
+    ],
+    [
+      "Qwen3.8 ON",
+      "zero_shot_cot_one_step",
+      "251/583 (43.1%)",
+      "131/149 (87.9%)",
+      "189/583 (32.4%)",
+      "95/149 (63.8%)"
+    ],
+    [
+      "Qwen3.8 ON",
+      "premise_review_answer",
+      "389/583 (66.7%)",
+      "85/149 (57.0%)",
+      "361/583 (61.9%)",
+      "51/149 (34.2%)"
+    ],
+    [
+      "Qwen3.8 ON",
+      "fp_unconditional",
+      "486/583 (83.4%)",
+      "8/149 (5.4%)",
+      "448/583 (76.8%)",
+      "0/149 (0.0%)"
+    ],
+    [
+      "Qwen3.8 ON",
+      "direct_routed",
+      "312/583 (53.5%)",
+      "113/149 (75.8%)",
+      "285/583 (48.9%)",
+      "92/149 (61.7%)"
+    ],
+    [
+      "Qwen3.8 ON",
+      "cot_routed",
+      "362/583 (62.1%)",
+      "90/149 (60.4%)",
+      "336/583 (57.6%)",
+      "76/149 (51.0%)"
+    ]
+  ],
+  "paired_behavior": {
+    "qwen25": {
+      "gain": 56,
+      "already": 15,
+      "new": 41,
+      "nfp_loss": 8
+    },
+    "gemma": {
+      "gain": 219,
+      "new": 181,
+      "already": 38,
+      "nfp_loss": 32
+    },
+    "luna": {
+      "gain": 179,
+      "already": 76,
+      "new": 102,
+      "unclear": 1,
+      "nfp_loss": 54
+    },
+    "qwen38_off": {
+      "gain": 73,
+      "new": 46,
+      "already": 27,
+      "nfp_loss": 23
+    },
+    "qwen38_on": {
+      "gain": 43,
+      "new": 21,
+      "already": 22,
+      "nfp_loss": 4
+    }
+  },
+  "qwen_default_routing": {
+    "common_n": 731,
+    "excluded_ids": [
+      "fpq_389"
+    ],
+    "results": {
+      "plain": {
+        "interventions": 0,
+        "fpq": {
+          "n": 582,
+          "ge4": 14,
+          "s5": 1,
+          "rescue_ge4": 0,
+          "harm_ge4": 0
+        },
+        "nfp": {
+          "n": 149,
+          "ge4": 149,
+          "s5": 134,
+          "rescue_ge4": 0,
+          "harm_ge4": 0
+        }
+      },
+      "always_correct": {
+        "interventions": 731,
+        "fpq": {
+          "n": 582,
+          "ge4": 332,
+          "s5": 143,
+          "rescue_ge4": 318,
+          "harm_ge4": 0
+        },
+        "nfp": {
+          "n": 149,
+          "ge4": 32,
+          "s5": 7,
+          "rescue_ge4": 0,
+          "harm_ge4": 117
+        }
+      },
+      "text": {
+        "interventions": 577,
+        "fpq": {
+          "n": 582,
+          "ge4": 295,
+          "s5": 135,
+          "rescue_ge4": 281,
+          "harm_ge4": 0
+        },
+        "nfp": {
+          "n": 149,
+          "ge4": 90,
+          "s5": 66,
+          "rescue_ge4": 0,
+          "harm_ge4": 59
+        }
+      },
+      "hidden": {
+        "interventions": 507,
+        "fpq": {
+          "n": 582,
+          "ge4": 261,
+          "s5": 124,
+          "rescue_ge4": 247,
+          "harm_ge4": 0
+        },
+        "nfp": {
+          "n": 149,
+          "ge4": 96,
+          "s5": 75,
+          "rescue_ge4": 0,
+          "harm_ge4": 53
+        }
+      },
+      "label_oracle": {
+        "interventions": 582,
+        "fpq": {
+          "n": 582,
+          "ge4": 332,
+          "s5": 143,
+          "rescue_ge4": 318,
+          "harm_ge4": 0
+        },
+        "nfp": {
+          "n": 149,
+          "ge4": 149,
+          "s5": 134,
+          "rescue_ge4": 0,
+          "harm_ge4": 0
+        }
+      },
+      "random_expected_text": {
+        "interventions": 577,
+        "n": 731,
+        "fpq": {
+          "ge4_fraction": 0.45533821296439614,
+          "s5_fraction": 0.19430380639429115
+        },
+        "nfp": {
+          "ge4_fraction": 0.38019078397708367,
+          "s5_fraction": 0.2265444963688611
+        }
+      },
+      "random_expected_hidden": {
+        "interventions": 507,
+        "n": 731,
+        "fpq": {
+          "ge4_fraction": 0.40301615731403945,
+          "s5_fraction": 0.170939869594445
+        },
+        "nfp": {
+          "ge4_fraction": 0.455384276388877,
+          "s5_fraction": 0.30816478300388384
+        }
+      }
+    },
+    "original_score_file": "docs/reviews/advisor_presentation_2026-09-23/routing_scores.csv",
+    "original_score_sha256": "9b3c4d3947b2703bb71889053b1f55d3d6c6b5fda1be1babe46763f03bff278e",
+    "decisions_sha256": "b03e381c48b61585e9d3bbc865bd16e0277e9b752a27ecfdcb9029ef53d09622",
+    "note": "Retrospective selection of unchanged stored answers and Well scores using default classifier decisions."
+  },
+  "luna_routing_recomputed": {
+    "direct": {
+      "fpq": {
+        "n": 583,
+        "ge4": 377,
+        "s5": 310,
+        "gate_positive": 365,
+        "positive_new_loss": 2,
+        "positive_both_low": 26,
+        "positive_both_high": 219,
+        "positive_gain": 118
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 92,
+        "s5": 83,
+        "gate_positive": 59,
+        "positive_new_loss": 41,
+        "positive_both_low": 13,
+        "positive_both_high": 5,
+        "positive_gain": 0
+      }
+    },
+    "cot": {
+      "fpq": {
+        "n": 583,
+        "ge4": 458,
+        "s5": 375,
+        "gate_positive": 487,
+        "positive_new_loss": 2,
+        "positive_both_low": 40,
+        "positive_both_high": 246,
+        "positive_gain": 199
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 63,
+        "s5": 51,
+        "gate_positive": 97,
+        "positive_new_loss": 70,
+        "positive_both_low": 16,
+        "positive_both_high": 11,
+        "positive_gain": 0
+      }
+    }
+  },
+  "new_runs_snapshot_not_live": {
+    "questions": {
+      "state": "running",
+      "updated_unix": 1790837041.53945,
+      "expected_jobs": 183,
+      "selected_jobs": 183,
+      "completed_jobs": 100,
+      "failed_jobs": 0,
+      "workers": 4
+    },
+    "luna_repeats": {
+      "state": "running",
+      "updated_unix": 1790837048.9940062,
+      "expected_jobs": 2928,
+      "selected_jobs": 2928,
+      "completed_jobs": 1187,
+      "failed_jobs": 0,
+      "workers": 8
+    }
+  },
+  "source_sha256": {
+    "docs/reviews/default_gate_decisions_2026-09-23/summary.json": "8fc02b7322b2189f9bb0e4ebe447a8b2fbba2cdb046e572abe61d1953664a931",
+    "docs/reviews/advisor_presentation_2026-09-23/gate_summary.json": "434199cf6d3cb8d00a6b74ec6a0f52e01f1f7673e7c8b3302f59cb732e0b3071",
+    "docs/reviews/advisor_presentation_2026-09-23/answer_summary.json": "85c8236555741b29b100d24e40a39dc98f1d404a628d1fbffef0a1f5a320656d",
+    "docs/reviews/default_gate_decisions_2026-09-23/routing_summary.json": "4bb1947c420555efc4da97fe5fbb6c701654df61e9e1b014855f4a54315e2dd7",
+    "results/gemma4/full_20260926_v2/analysis/summary.json": "a1d607b035794a61dd2790c85eb687b0373374f12020521cead78ab293abd962",
+    "results/gemma4/full_20260926_v2/well/plain/report.json": "5f80b82d2db481f73cc8749a1045a002bb16521b3c57166d6501d23a42c75a35",
+    "results/gemma4/full_20260926_v2/well/zero_shot_cot_one_step/report.json": "3b970845248c6850e6feb9ecc8583995691c5fea77a37fd640407141ddbdbaf9",
+    "results/gemma4/full_20260926_v2/well/premise_review_answer/report.json": "dadbae8462e5dde0dd6fd0a617cfb48b5ee3393fe97bb730c2c7a81aba390591",
+    "results/gemma4/full_20260926_v2/well/fp_unconditional/report.json": "b9fd5479415c2cf2994128f04404d7fcadcb57cf29163a8b7c46582ed274da7c",
+    "results/qwen38/full_transformers_20260926_v1/thinking_off/analysis/summary.json": "dad082fa3227b37d1ba8ac543fc13fe616a512596f68e44d70bb5ad3fb126ec0",
+    "results/qwen38/full_transformers_20260926_v1/thinking_off/well/plain/report.json": "6ac52dfb4cdafe1b0c6d633f99417d70349e646f2b6f4afc1d1bbb518b7357e3",
+    "results/qwen38/full_transformers_20260926_v1/thinking_off/well/zero_shot_cot_one_step/report.json": "ca2b06a85950542ce7c7fd771fb00f416991a88970ef0fd4df4fcd8242c74b13",
+    "results/qwen38/full_transformers_20260926_v1/thinking_off/well/premise_review_answer/report.json": "b5786dd6b63d74eb778484d2f5b8e759c7353e944e88c533910fb99653c346ba",
+    "results/qwen38/full_transformers_20260926_v1/thinking_off/well/fp_unconditional/report.json": "7a830433712c75a8f9464edf2c03011a72141775e2a6d5d26d67b2f58d10735c",
+    "results/qwen38/full_transformers_20260926_v1/thinking_on/analysis/summary.json": "82f5df9808817ff7800e97e6d829c45698a8088ace9e8e3b04f585f12010133d",
+    "results/qwen38/full_transformers_20260926_v1/thinking_on/well/plain/report.json": "5c0201dff9537652836cb1dc41bffb9940d8f17e85da892684c1b7b704f764e3",
+    "results/qwen38/full_transformers_20260926_v1/thinking_on/well/zero_shot_cot_one_step/report.json": "b2dc56ccabf8d269a4f3a63aa6333780826becdbb02d0b0fd0a98ab3a5e3a788",
+    "results/qwen38/full_transformers_20260926_v1/thinking_on/well/premise_review_answer/report.json": "ff6b7abe2bd3b6d977e8645293740092b53493a145fefcd54030f8b1f81e56c8",
+    "results/qwen38/full_transformers_20260926_v1/thinking_on/well/fp_unconditional/report.json": "be3a25e949631c0a29ca7d92dae75da50c5fc0f34f6a655b12eb2ad72e981eed",
+    "docs/reviews/advisor_presentation_2026-09-23/answer_scores.csv": "aa014f7b360865965b28a3b72550ba5d39ae8d6390792b0b7b2fadbd7226872c",
+    "luna_direct_record_hash_manifest": "1782da1def26059d39f8ba373183f12bd0f25f2047604857094f377db45897eb",
+    "luna_cot_record_hash_manifest": "52afe45418b6bb99c589e568d2a0e78315fd45049c2d0e8b9bb638c659633e19",
+    "results/analysis/completed_primary_behavior_20261001_v2/all_primary_pairs.jsonl": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3",
+    "results/audits/measurement_validity_20261001_v1/questions/status.json": "b68917241e861055cb56a7c5243e79178adf37232017c5eeb5c5254c87f2fe07",
+    "results/audits/measurement_validity_20261001_v1/luna_repeats/status.json": "ecdab46b86d7e5167c6b9ffd9105c2fcf2d00753be70a5cd2cb004376d7924ba"
+  },
+  "validation": "New gate counts checked against individual boolean records; answer distributions checked against Well reports; 3659 paired rows recomputed."
+}
