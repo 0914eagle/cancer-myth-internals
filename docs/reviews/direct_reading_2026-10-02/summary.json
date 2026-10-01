@@ -1,0 +1,81 @@
+{
+  "status": "partial_direct_reading_not_full_cohort_result",
+  "planned_pairs": 299,
+  "read_pairs": 62,
+  "read_complete_answers": 124,
+  "pending_pairs": 237,
+  "delegated_review_calls": 0,
+  "new_answer_generation_calls": 0,
+  "new_well_judging_calls": 0,
+  "quote_validation": "both evidence quotes match original answers for every read pair",
+  "coverage": [
+    {
+      "model": "gemma",
+      "cohort": "fpq_disagreement",
+      "read": 18,
+      "total": 38
+    },
+    {
+      "model": "gemma",
+      "cohort": "nfp_loss",
+      "read": 3,
+      "total": 32
+    },
+    {
+      "model": "luna",
+      "cohort": "fpq_disagreement",
+      "read": 7,
+      "total": 76
+    },
+    {
+      "model": "luna",
+      "cohort": "nfp_loss",
+      "read": 4,
+      "total": 54
+    },
+    {
+      "model": "qwen25",
+      "cohort": "fpq_disagreement",
+      "read": 15,
+      "total": 15
+    },
+    {
+      "model": "qwen25",
+      "cohort": "nfp_loss",
+      "read": 8,
+      "total": 8
+    },
+    {
+      "model": "qwen38_off",
+      "cohort": "fpq_disagreement",
+      "read": 1,
+      "total": 27
+    },
+    {
+      "model": "qwen38_off",
+      "cohort": "nfp_loss",
+      "read": 1,
+      "total": 23
+    },
+    {
+      "model": "qwen38_on",
+      "cohort": "fpq_disagreement",
+      "read": 1,
+      "total": 22
+    },
+    {
+      "model": "qwen38_on",
+      "cohort": "nfp_loss",
+      "read": 4,
+      "total": 4
+    }
+  ],
+  "source_sha256": "61a25b8328c43d514dfdc704436a23d3f36e86f6a2bf0c754bfcb7aa6ff0fa3b",
+  "limitations": [
+    "Selected score-transition cohorts, not all failures or population rates.",
+    "Direct AI textual review by the current assistant, not independent expert clinical adjudication.",
+    "Scores/codes omitted from current first-pass packets, but prior conversation and selection reveal outcomes: not a blinded study.",
+    "Different model-specific alternative prompts; cannot isolate model effects.",
+    "No medical facts or product claims validated solely by this reading."
+  ]
+}
