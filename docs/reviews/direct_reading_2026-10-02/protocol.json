@@ -1,11 +1,12 @@
 {
   "scope": "299 selected pairs, 598 answers. Direct reading by this Codex assistant; no delegated model calls. Not expert clinical validation.",
   "selection": "Existing FPQ178 coding/Well disagreement pairs and NFP121 threshold-loss pairs. Not population error rates.",
-  "procedure": "Read question, annotation, full answers with existing scores and codes hidden; record quotes and textual judgment; then compare existing scores and judge reasons. Unread items remain pending.",
+  "procedure": "Read question, annotation, both full answers and original judge reasons; record exact quotes and a pair-level textual judgment. Early packets omitted scores/codes before comparison; later packets included judges in the same reading. All 299 selected pairs completed. No new model or judging calls.",
   "sources": {
     "all_178_disagreements_with_judges.json": "69878085222c05885d271a5c48ddbe0f6db76cb4e4685954219403a27c62085a",
     "all_121_nfp_losses_with_judges.json": "5b184c3cc28bfc0ca306f8329b29fbcfad1c1875d641c195b69e2a115eefdf3f"
   },
-  "blinding_limit": "Scores and prior AI codes were omitted in current first-pass tool packets, but cohort selection and previous conversation expose outcomes. This is not a blinded or independent expert study.",
-  "selection_order": "All Qwen2.5 records in these selected cohorts first; then other-model same-item contrasts and sequential blocks. Not random or representative sampling. All remaining IDs tracked as pending."
+  "blinding_limit": "Not blinded: mixed score visibility, previous conversation, and cohort selection expose outcomes. Current assistant review is not human or independent expert adjudication.",
+  "selection_order": "All Qwen2.5 selected records first, then same-item contrasts and sequential blocks until every selected pair was read.",
+  "taxonomy": "Post-hoc manual harmonization of direct reading notes. One primary descriptive category per pair, secondary issues retained. Counts describe selected pairs, not causal prevalence or population error rates."
 }

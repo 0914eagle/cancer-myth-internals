@@ -27,9 +27,18 @@ def main():
     assert len(comparison_index) == len(comparisons), 'Duplicate scoring records'
     assert set(by_index) == set(comparison_index), 'Each read pair needs a score comparison'
     assert all(i == r['review_index'] for i, r in enumerate(source))
+    taxonomy = json.loads((OUT / 'taxonomy.json').read_text())
+    assignments = {r['review_index']: r for r in taxonomy['assignments']}
+    assert len(assignments) == len(taxonomy['assignments']), 'Duplicate taxonomy records'
+    assert set(assignments) == set(by_index), 'Taxonomy must cover exactly the read pairs'
     for i, note in by_index.items():
+        category = assignments[i]['category']
+        assert category in taxonomy['categories']
+        assert category.startswith('F' if source[i]['cohort'] == 'fpq_disagreement' else 'N')
         for condition in ('plain', 'alternative'):
             assert note[condition + '_quote'] in source[i][condition]['answer'], (i, condition)
+            answer = source[i][condition]
+            assert hashlib.sha256(answer['answer'].encode()).hexdigest() == answer['answer_sha256']
 
     packed = []
     with (OUT / 'coverage.csv').open('w', newline='') as handle:
@@ -49,12 +58,14 @@ def main():
             item['original_well_reasons'] = r['well_reasons']
             item['assistant_direct_reading'] = by_index[i]
             item['assistant_score_comparison'] = comparison_index[i]
+            item['primary_descriptive_category'] = assignments[i]['category']
             packed.append(item)
     (OUT / 'reviewed_evidence.json').write_text(json.dumps(packed, ensure_ascii=False, indent=2) + '\n')
     total = Counter((r['model'], r['cohort']) for r in source)
     read = Counter((r['model'], r['cohort']) for r in packed)
     summary = {
-        'status': 'partial_direct_reading_not_full_cohort_result',
+        'status': ('complete_selected_cohorts_not_population_census' if len(packed) == len(source)
+                   else 'partial_direct_reading_not_full_cohort_result'),
         'planned_pairs': len(source), 'read_pairs': len(packed),
         'read_complete_answers': 2 * len(packed), 'pending_pairs': len(source) - len(packed),
         'delegated_review_calls': 0, 'new_answer_generation_calls': 0, 'new_well_judging_calls': 0,
@@ -62,9 +73,15 @@ def main():
         'coverage': [{'model': m, 'cohort': c, 'read': read[(m, c)], 'total': total[(m, c)]}
                      for m, c in sorted(total)],
         'source_sha256': hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
+        'descriptive_counts': dict(sorted(Counter(r['category'] for r in assignments.values()).items())),
+        'descriptive_counts_by_model': {
+            m: dict(sorted(Counter(assignments[r['review_index']]['category']
+                                   for r in packed if r['model'] == m).items()))
+            for m in sorted({r['model'] for r in packed})},
         'limitations': ['Selected score-transition cohorts, not all failures or population rates.',
                        'Direct AI textual review by the current assistant, not independent expert clinical adjudication.',
-                       'Scores/codes omitted from current first-pass packets, but prior conversation and selection reveal outcomes: not a blinded study.',
+                       'Mixed reading procedure: early packets omitted scores/codes; later packets included judge reasons. Selection and prior conversation also expose outcomes. Not blinded.',
+                       'Post-hoc primary descriptive categories are not causal labels; secondary issues remain in the reading notes.',
                        'Different model-specific alternative prompts; cannot isolate model effects.',
                        'No medical facts or product claims validated solely by this reading.'],
     }

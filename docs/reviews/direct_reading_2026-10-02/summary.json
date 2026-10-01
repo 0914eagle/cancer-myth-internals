@@ -1,9 +1,9 @@
 {
-  "status": "partial_direct_reading_not_full_cohort_result",
+  "status": "complete_selected_cohorts_not_population_census",
   "planned_pairs": 299,
-  "read_pairs": 62,
-  "read_complete_answers": 124,
-  "pending_pairs": 237,
+  "read_pairs": 299,
+  "read_complete_answers": 598,
+  "pending_pairs": 0,
   "delegated_review_calls": 0,
   "new_answer_generation_calls": 0,
   "new_well_judging_calls": 0,
@@ -12,25 +12,25 @@
     {
       "model": "gemma",
       "cohort": "fpq_disagreement",
-      "read": 18,
+      "read": 38,
       "total": 38
     },
     {
       "model": "gemma",
       "cohort": "nfp_loss",
-      "read": 3,
+      "read": 32,
       "total": 32
     },
     {
       "model": "luna",
       "cohort": "fpq_disagreement",
-      "read": 7,
+      "read": 76,
       "total": 76
     },
     {
       "model": "luna",
       "cohort": "nfp_loss",
-      "read": 4,
+      "read": 54,
       "total": 54
     },
     {
@@ -48,19 +48,19 @@
     {
       "model": "qwen38_off",
       "cohort": "fpq_disagreement",
-      "read": 1,
+      "read": 27,
       "total": 27
     },
     {
       "model": "qwen38_off",
       "cohort": "nfp_loss",
-      "read": 1,
+      "read": 23,
       "total": 23
     },
     {
       "model": "qwen38_on",
       "cohort": "fpq_disagreement",
-      "read": 1,
+      "read": 22,
       "total": 22
     },
     {
@@ -71,10 +71,76 @@
     }
   ],
   "source_sha256": "61a25b8328c43d514dfdc704436a23d3f36e86f6a2bf0c754bfcb7aa6ff0fa3b",
+  "descriptive_counts": {
+    "F1": 73,
+    "F2": 63,
+    "F3": 25,
+    "F4": 15,
+    "F5": 2,
+    "N1": 57,
+    "N2": 20,
+    "N3": 33,
+    "N4": 6,
+    "N5": 3,
+    "N6": 2
+  },
+  "descriptive_counts_by_model": {
+    "gemma": {
+      "F1": 17,
+      "F2": 10,
+      "F3": 5,
+      "F4": 6,
+      "N1": 17,
+      "N2": 11,
+      "N3": 2,
+      "N5": 1,
+      "N6": 1
+    },
+    "luna": {
+      "F1": 38,
+      "F2": 24,
+      "F3": 12,
+      "F4": 2,
+      "N1": 24,
+      "N2": 4,
+      "N3": 25,
+      "N4": 1
+    },
+    "qwen25": {
+      "F1": 5,
+      "F2": 6,
+      "F4": 2,
+      "F5": 2,
+      "N1": 5,
+      "N2": 2,
+      "N6": 1
+    },
+    "qwen38_off": {
+      "F1": 8,
+      "F2": 11,
+      "F3": 5,
+      "F4": 3,
+      "N1": 10,
+      "N2": 3,
+      "N3": 4,
+      "N4": 4,
+      "N5": 2
+    },
+    "qwen38_on": {
+      "F1": 5,
+      "F2": 12,
+      "F3": 3,
+      "F4": 2,
+      "N1": 1,
+      "N3": 2,
+      "N4": 1
+    }
+  },
   "limitations": [
     "Selected score-transition cohorts, not all failures or population rates.",
     "Direct AI textual review by the current assistant, not independent expert clinical adjudication.",
-    "Scores/codes omitted from current first-pass packets, but prior conversation and selection reveal outcomes: not a blinded study.",
+    "Mixed reading procedure: early packets omitted scores/codes; later packets included judge reasons. Selection and prior conversation also expose outcomes. Not blinded.",
+    "Post-hoc primary descriptive categories are not causal labels; secondary issues remain in the reading notes.",
     "Different model-specific alternative prompts; cannot isolate model effects.",
     "No medical facts or product claims validated solely by this reading."
   ]
