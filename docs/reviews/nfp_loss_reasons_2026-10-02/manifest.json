@@ -1,0 +1,18 @@
+{
+  "sources": {
+    "results/analysis/core_failures_20261001_v1/all_121_nfp_losses_with_judges.json": "5b184c3cc28bfc0ca306f8329b29fbcfad1c1875d641c195b69e2a115eefdf3f",
+    "docs/reviews/nfp_plain_pair_review_2026-10-01/paired_review_full.json": "da3c341df0ea2ab4ef1a3ef1cd46c5f30d667a811bc710fb5235b4842ddc3143",
+    "results/analysis/completed_primary_behavior_20261001_v2/all_primary_pairs.jsonl": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3"
+  },
+  "script_sha256": "3aebcca66e53cdcd1efd0cbc18ed32c1d40bf505453e8fc996be42bff2336be6",
+  "new_model_calls": 0,
+  "changed_well_scores": 0,
+  "original_pairs": 121,
+  "unique_questions": 79,
+  "all_rows_reading": "Question plus saved target and answer quotes screened for all 121 rows. This is not a new full-answer semantic annotation of all 242 answers.",
+  "focused_reading": {
+    "both_full": 9,
+    "alternative_full": 7
+  },
+  "limitations": "16 focused textual checks are not representative prevalence estimates or clinical truth judgments. Original Well and Sonnet/Terra codes are retained. Conditions differ by model. Qwen3.8 ON/OFF are settings of one family."
+}

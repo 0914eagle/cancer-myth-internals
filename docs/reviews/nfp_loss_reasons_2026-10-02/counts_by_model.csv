@@ -1,0 +1,6 @@
+model,method,nfp_total,threshold_losses,unique_questions,previous_terra_same_caveat,focused_resource_inquiry,focused_deferral_examples
+qwen25,premise_review,149,8,8,0,0,0
+gemma,premise_review_answer,149,32,32,3,0,1
+luna,balanced,149,54,54,28,0,0
+qwen38_off,zero_shot_cot_one_step,149,23,23,13,5,2
+qwen38_on,zero_shot_cot_one_step,149,4,4,3,0,0
