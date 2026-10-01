@@ -1,0 +1,313 @@
+{
+  "fpq": {
+    "gemma": {
+      "n_pairs": 38,
+      "plain_relations": {
+        "related_only": 4,
+        "direct_correction": 21,
+        "endorses_error": 1,
+        "omits_target": 5,
+        "partial_correction": 7
+      },
+      "alternative_relations": {
+        "direct_correction": 32,
+        "related_only": 3,
+        "partial_correction": 2,
+        "omits_target": 1
+      },
+      "transitions": {
+        "related_only -> direct_correction": 4,
+        "direct_correction -> direct_correction": 17,
+        "direct_correction -> related_only": 2,
+        "endorses_error -> related_only": 1,
+        "omits_target -> direct_correction": 4,
+        "direct_correction -> partial_correction": 2,
+        "partial_correction -> direct_correction": 7,
+        "omits_target -> omits_target": 1
+      },
+      "plain_reacceptance": {
+        "no": 37,
+        "yes": 1
+      },
+      "alternative_reacceptance": {
+        "no": 38
+      }
+    },
+    "luna": {
+      "n_pairs": 76,
+      "plain_relations": {
+        "direct_correction": 37,
+        "partial_correction": 23,
+        "omits_target": 8,
+        "related_only": 7,
+        "ambiguous": 1
+      },
+      "alternative_relations": {
+        "direct_correction": 59,
+        "omits_target": 5,
+        "partial_correction": 5,
+        "related_only": 7
+      },
+      "transitions": {
+        "direct_correction -> direct_correction": 34,
+        "partial_correction -> direct_correction": 19,
+        "omits_target -> omits_target": 4,
+        "partial_correction -> partial_correction": 3,
+        "related_only -> omits_target": 1,
+        "omits_target -> direct_correction": 3,
+        "related_only -> related_only": 3,
+        "ambiguous -> direct_correction": 1,
+        "direct_correction -> related_only": 2,
+        "related_only -> partial_correction": 1,
+        "related_only -> direct_correction": 2,
+        "omits_target -> related_only": 1,
+        "direct_correction -> partial_correction": 1,
+        "partial_correction -> related_only": 1
+      },
+      "plain_reacceptance": {
+        "no": 76
+      },
+      "alternative_reacceptance": {
+        "no": 76
+      }
+    },
+    "qwen25": {
+      "n_pairs": 15,
+      "plain_relations": {
+        "direct_correction": 13,
+        "omits_target": 1,
+        "partial_correction": 1
+      },
+      "alternative_relations": {
+        "direct_correction": 14,
+        "omits_target": 1
+      },
+      "transitions": {
+        "direct_correction -> direct_correction": 13,
+        "omits_target -> omits_target": 1,
+        "partial_correction -> direct_correction": 1
+      },
+      "plain_reacceptance": {
+        "no": 14,
+        "unclear": 1
+      },
+      "alternative_reacceptance": {
+        "no": 15
+      }
+    },
+    "qwen38_off": {
+      "n_pairs": 27,
+      "plain_relations": {
+        "direct_correction": 14,
+        "partial_correction": 5,
+        "related_only": 4,
+        "omits_target": 4
+      },
+      "alternative_relations": {
+        "direct_correction": 20,
+        "partial_correction": 5,
+        "omits_target": 2
+      },
+      "transitions": {
+        "direct_correction -> direct_correction": 11,
+        "partial_correction -> direct_correction": 4,
+        "direct_correction -> partial_correction": 3,
+        "related_only -> omits_target": 1,
+        "omits_target -> omits_target": 1,
+        "omits_target -> direct_correction": 2,
+        "related_only -> direct_correction": 3,
+        "omits_target -> partial_correction": 1,
+        "partial_correction -> partial_correction": 1
+      },
+      "plain_reacceptance": {
+        "no": 27
+      },
+      "alternative_reacceptance": {
+        "no": 26,
+        "yes": 1
+      }
+    },
+    "qwen38_on": {
+      "n_pairs": 22,
+      "plain_relations": {
+        "omits_target": 2,
+        "partial_correction": 4,
+        "related_only": 2,
+        "direct_correction": 13,
+        "endorses_error": 1
+      },
+      "alternative_relations": {
+        "partial_correction": 5,
+        "direct_correction": 15,
+        "related_only": 1,
+        "omits_target": 1
+      },
+      "transitions": {
+        "omits_target -> partial_correction": 2,
+        "partial_correction -> partial_correction": 3,
+        "related_only -> direct_correction": 2,
+        "direct_correction -> direct_correction": 12,
+        "partial_correction -> related_only": 1,
+        "endorses_error -> direct_correction": 1,
+        "direct_correction -> omits_target": 1
+      },
+      "plain_reacceptance": {
+        "no": 22
+      },
+      "alternative_reacceptance": {
+        "no": 22
+      }
+    }
+  },
+  "nfp": [
+    {
+      "model": "gemma",
+      "cohort": "loss",
+      "n": 32,
+      "stance": {
+        "challenge": 30,
+        "qualification": 2
+      },
+      "scope": {
+        "different_target": 10,
+        "faithful": 21,
+        "strengthened": 1
+      }
+    },
+    {
+      "model": "gemma",
+      "cohort": "stable_high_control",
+      "n": 32,
+      "stance": {
+        "none": 21,
+        "qualification": 6,
+        "challenge": 5
+      },
+      "scope": {
+        "not_applicable": 21,
+        "faithful": 10,
+        "strengthened": 1
+      }
+    },
+    {
+      "model": "luna",
+      "cohort": "loss",
+      "n": 54,
+      "stance": {
+        "challenge": 52,
+        "qualification": 2
+      },
+      "scope": {
+        "strengthened": 11,
+        "faithful": 25,
+        "different_target": 18
+      }
+    },
+    {
+      "model": "luna",
+      "cohort": "stable_high_control",
+      "n": 54,
+      "stance": {
+        "qualification": 15,
+        "challenge": 34,
+        "none": 5
+      },
+      "scope": {
+        "different_target": 21,
+        "unclear": 1,
+        "faithful": 25,
+        "not_applicable": 5,
+        "strengthened": 2
+      }
+    },
+    {
+      "model": "qwen25",
+      "cohort": "loss",
+      "n": 8,
+      "stance": {
+        "none": 1,
+        "qualification": 1,
+        "challenge": 6
+      },
+      "scope": {
+        "not_applicable": 1,
+        "faithful": 5,
+        "different_target": 1,
+        "strengthened": 1
+      }
+    },
+    {
+      "model": "qwen25",
+      "cohort": "stable_high_control",
+      "n": 8,
+      "stance": {
+        "none": 6,
+        "qualification": 1,
+        "challenge": 1
+      },
+      "scope": {
+        "not_applicable": 6,
+        "faithful": 1,
+        "different_target": 1
+      }
+    },
+    {
+      "model": "qwen38_off",
+      "cohort": "loss",
+      "n": 23,
+      "stance": {
+        "challenge": 20,
+        "qualification": 2,
+        "none": 1
+      },
+      "scope": {
+        "different_target": 13,
+        "faithful": 9,
+        "not_applicable": 1
+      }
+    },
+    {
+      "model": "qwen38_off",
+      "cohort": "stable_high_control",
+      "n": 23,
+      "stance": {
+        "none": 13,
+        "qualification": 6,
+        "challenge": 4
+      },
+      "scope": {
+        "not_applicable": 13,
+        "faithful": 5,
+        "different_target": 5
+      }
+    },
+    {
+      "model": "qwen38_on",
+      "cohort": "loss",
+      "n": 4,
+      "stance": {
+        "challenge": 4
+      },
+      "scope": {
+        "faithful": 3,
+        "different_target": 1
+      }
+    },
+    {
+      "model": "qwen38_on",
+      "cohort": "stable_high_control",
+      "n": 4,
+      "stance": {
+        "qualification": 1,
+        "challenge": 2,
+        "none": 1
+      },
+      "scope": {
+        "faithful": 3,
+        "not_applicable": 1
+      }
+    }
+  ],
+  "n_answers": 598,
+  "warning": "Independent AI text audit; no clinical gold validation or Well relabeling."
+}

@@ -1,0 +1,175 @@
+{
+  "n": 28,
+  "new_model_calls": 0,
+  "changes": [
+    {
+      "job": "item_0022",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0025",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0060",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0070",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0110",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0116",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0151",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0174",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0230",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0232",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0236",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0262",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0265",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0307",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0325",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0348",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0351",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0355",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0380",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0402",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0414",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0432",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0437",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0455",
+      "kind": "restore_parenthesis_and_full_name_in_verbatim_quote",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0464",
+      "kind": "restore_parenthesis_and_full_name_in_verbatim_quote",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0479",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0524",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    },
+    {
+      "job": "item_0597",
+      "kind": "select_assigned_task_schema",
+      "source": "answer.txt",
+      "judgment_unchanged": true
+    }
+  ],
+  "script_sha256": "b088fba7880c1c5f552068ed82582fe35cb29a182f4f2556c3fd5d98d6707bc7"
+}
