@@ -1,0 +1,92 @@
+[
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "group": "FPQ score gains",
+    "n": 56,
+    "new_coded_correction": 41,
+    "already_coded_correction": 15,
+    "new_challenge": 48
+  },
+  {
+    "model": "qwen25",
+    "method": "premise_review",
+    "group": "NFP score losses",
+    "n": 8,
+    "still_substantive": 6,
+    "withheld": 0,
+    "new_challenge": 5
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "group": "FPQ score gains",
+    "n": 219,
+    "new_coded_correction": 181,
+    "already_coded_correction": 38,
+    "new_challenge": 190
+  },
+  {
+    "model": "gemma",
+    "method": "premise_review_answer",
+    "group": "NFP score losses",
+    "n": 32,
+    "still_substantive": 24,
+    "withheld": 0,
+    "new_challenge": 27
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "group": "FPQ score gains",
+    "n": 179,
+    "new_coded_correction": 102,
+    "already_coded_correction": 76,
+    "new_challenge": 118
+  },
+  {
+    "model": "luna",
+    "method": "balanced",
+    "group": "NFP score losses",
+    "n": 54,
+    "still_substantive": 54,
+    "withheld": 0,
+    "new_challenge": 25
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "group": "FPQ score gains",
+    "n": 73,
+    "new_coded_correction": 46,
+    "already_coded_correction": 27,
+    "new_challenge": 46
+  },
+  {
+    "model": "qwen38_off",
+    "method": "zero_shot_cot_one_step",
+    "group": "NFP score losses",
+    "n": 23,
+    "still_substantive": 20,
+    "withheld": 0,
+    "new_challenge": 14
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "group": "FPQ score gains",
+    "n": 43,
+    "new_coded_correction": 21,
+    "already_coded_correction": 22,
+    "new_challenge": 25
+  },
+  {
+    "model": "qwen38_on",
+    "method": "zero_shot_cot_one_step",
+    "group": "NFP score losses",
+    "n": 4,
+    "still_substantive": 4,
+    "withheld": 0,
+    "new_challenge": 3
+  }
+]

@@ -1,0 +1,6 @@
+model,method,NFP_pairs,NFP_new_low,broad_X_candidates,explicit_substitutions_in_X,conditional_alternative_in_X,scope_strength_or_clinical_dispute_in_X
+qwen25,premise_review,149,8,1,1,0,0
+gemma,premise_review_answer,149,32,4,0,0,4
+luna,balanced,149,54,8,0,0,8
+qwen38_off,zero_shot_cot_one_step,149,23,5,3,0,2
+qwen38_on,zero_shot_cot_one_step,149,4,1,0,1,0

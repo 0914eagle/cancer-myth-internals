@@ -1,0 +1,102 @@
+{
+  "copied": [
+    {
+      "source": "results/analysis/context_and_nfp_boundaries_20261001_v1/summary.json",
+      "snapshot": "context_analysis_summary.json",
+      "source_sha256": "a26dba87d7909f61e13d345a4fb29ed44c1bdb1a6972b7344e78db78af20001f",
+      "snapshot_sha256": "a26dba87d7909f61e13d345a4fb29ed44c1bdb1a6972b7344e78db78af20001f"
+    },
+    {
+      "source": "results/analysis/context_and_nfp_boundaries_20261001_v1/context_feature_controls.csv",
+      "snapshot": "context_feature_controls.csv",
+      "source_sha256": "4bde67dc693283ec805e9b88a699ff50e7d638f9a9f26b18f663e64a23d1c1ed",
+      "transformation": "CRLF normalized to LF; CSV fields unchanged",
+      "snapshot_sha256": "190c30396c1e52aecb408ad2ed39f489d4609b528e2422c1cfde670818582eff"
+    },
+    {
+      "source": "results/analysis/context_and_nfp_boundaries_20261001_v1/manual_review_notes.json",
+      "snapshot": "context_manual_review_notes.json",
+      "source_sha256": "4279ec8641e4e38460adb675f572e8ce4a3acc39ded25b32e3c5514c60ba71a5",
+      "snapshot_sha256": "4279ec8641e4e38460adb675f572e8ce4a3acc39ded25b32e3c5514c60ba71a5"
+    },
+    {
+      "source": "results/analysis/context_and_nfp_boundaries_20261001_v1/nfp_121_loss_index.csv",
+      "snapshot": "nfp_121_loss_index.csv",
+      "source_sha256": "f48c9bd70e225fd4bd478eca39caa805e91534604d5fa6808950146a578ca1a9",
+      "transformation": "CRLF normalized to LF; CSV fields unchanged",
+      "snapshot_sha256": "1f24d7b44e2c0fa4c508cdf3a4dcdfdf53c258af1b897c60ef897524ae0aa65a"
+    },
+    {
+      "source": "results/analysis/context_and_nfp_boundaries_20261001_v1/validation.json",
+      "snapshot": "context_validation.json",
+      "source_sha256": "f253d71f874794e7fa36715bd13effe0a18b7432925702f05467905239a6e4d7",
+      "snapshot_sha256": "f253d71f874794e7fa36715bd13effe0a18b7432925702f05467905239a6e4d7"
+    },
+    {
+      "source": "results/analysis/context_shift_models_20261001_v1/summary.json",
+      "snapshot": "model_analysis_summary.json",
+      "source_sha256": "73521a279456d2a56af8427a3e4798f4e9ebbc08a4247a155bdd9fdf376dc88e",
+      "snapshot_sha256": "73521a279456d2a56af8427a3e4798f4e9ebbc08a4247a155bdd9fdf376dc88e"
+    },
+    {
+      "source": "results/analysis/context_shift_models_20261001_v1/candidate_classification_by_model.csv",
+      "snapshot": "candidate_classification_by_model.csv",
+      "source_sha256": "5c827e0336597371f5ce679e2ed03d9da146123f5c7c5dfd40d0b404cfdcaa41",
+      "transformation": "CRLF normalized to LF; CSV fields unchanged",
+      "snapshot_sha256": "d4b299a389e8c9320d37487e4dc54af9d09e5c2ac32aff037034c873208fdedc"
+    },
+    {
+      "source": "results/analysis/context_shift_models_20261001_v1/full_primary_broad_AI_tags_NOT_error_rates.csv",
+      "snapshot": "broad_AI_tags_NOT_error_rates.csv",
+      "source_sha256": "2a02962239cc6070d810adc1d1a07dda7a698f9c3009b08dc3d781952113dad0",
+      "transformation": "CRLF normalized to LF; CSV fields unchanged",
+      "snapshot_sha256": "9c898ad20311ceb1c5775cf6bf52c7683ebcb88e450287f457ebca1b7b7a35f9"
+    },
+    {
+      "source": "results/analysis/context_shift_models_20261001_v1/all_19_X_candidates_reviewed.json",
+      "snapshot": "all_19_X_candidates_reviewed.json",
+      "source_sha256": "d0c757fa908eb120b4110f0a3d83830ba65e217c3c28933efd86f9119cb537af",
+      "snapshot_sha256": "d0c757fa908eb120b4110f0a3d83830ba65e217c3c28933efd86f9119cb537af"
+    },
+    {
+      "source": "results/analysis/context_shift_models_20261001_v1/same_question_all_10_full_answers_checked.json",
+      "snapshot": "same_question_10_answers.json",
+      "source_sha256": "c25e958aeb62e0c39cc6d81e2f5e44608b233737186af461b9ebe51b9f19e894",
+      "snapshot_sha256": "c25e958aeb62e0c39cc6d81e2f5e44608b233737186af461b9ebe51b9f19e894"
+    },
+    {
+      "source": "results/analysis/context_shift_models_20261001_v1/validation.json",
+      "snapshot": "model_validation.json",
+      "source_sha256": "42e9364acda2f390eae8c9e1866554922123454035140a78f0f9e2b00d6fbef8",
+      "snapshot_sha256": "42e9364acda2f390eae8c9e1866554922123454035140a78f0f9e2b00d6fbef8"
+    },
+    {
+      "source": "results/analysis/completed_primary_behavior_20261001_v2/key_comparisons.json",
+      "snapshot": "primary_key_comparisons.json",
+      "source_sha256": "c90e021cd02793d955359541983052f486e9b3f184921bc1bb5f580a61a814b3",
+      "snapshot_sha256": "c90e021cd02793d955359541983052f486e9b3f184921bc1bb5f580a61a814b3"
+    },
+    {
+      "source": "results/analysis/completed_primary_behavior_20261001_v2/findings_ko.json",
+      "snapshot": "primary_findings_snapshot.json",
+      "source_sha256": "0455d696d4a908a855011df3f93d3c28bbb57041737d035afea4b1dd398809aa",
+      "snapshot_sha256": "0455d696d4a908a855011df3f93d3c28bbb57041737d035afea4b1dd398809aa"
+    }
+  ],
+  "derived": [
+    {
+      "source": "results/analysis/context_and_nfp_boundaries_20261001_v1/all_732_context_items.json",
+      "snapshot": "context_732_items.jsonl",
+      "source_sha256": "7ad5ca4bcfaf52d08cd4a54e914087205384612f73eed6c351345f6966e50b7a"
+    },
+    {
+      "source": "results/analysis/context_and_nfp_boundaries_20261001_v1/all_121_nfp_losses_with_judges.json",
+      "snapshots": [
+        "nfp_121_evidence.jsonl",
+        "six_rating_boundary_full_cases.json"
+      ],
+      "source_sha256": "93df58d1ba488bd46443638e46c4af36e212d3aca154fe29a732904a9c77194a"
+    }
+  ],
+  "note": "Snapshot of completed analyses; embedded old audit status is historical, not a live task status."
+}

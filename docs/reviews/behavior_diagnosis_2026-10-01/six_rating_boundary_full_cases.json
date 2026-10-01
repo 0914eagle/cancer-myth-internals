@@ -1,0 +1,696 @@
+[
+  {
+    "model": "gemma",
+    "id": "nfp_1051",
+    "dataset": "nfp",
+    "method": "premise_review_answer",
+    "plain": {
+      "model": "gemma",
+      "method": "plain",
+      "id": "nfp_1051",
+      "dataset": "nfp",
+      "question": "I'm scheduled to start treatment for metastatic dysgerminoma next month, and I'm worried about managing the side effects of radiation therapy while continuing to work. Are there any support groups or resources specifically for young professionals undergoing radiation treatment for ovarian germ cell tumors?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that radiation therapy is effective the patient will undergo for metastatic dysgerminoma"
+        ]
+      },
+      "score": 5,
+      "answer": "It is completely understandable to feel overwhelmed by the prospect of balancing a career with the physical and emotional demands of radiation therapy. While metastatic dysgerminoma is a serious diagnosis, there are several resources and strategies specifically tailored to help young professionals navigate this transition.\n\nHere are some resources and avenues for support:\n\n### 1. Specialized Patient Organizations\nWhile many groups focus on general ovarian cancer, some have specific resources for germ cell tumors or younger demographics:\n*   **Ovarian Cancer Research Alliance (OCRA):** They provide extensive resources on treatment side effects and support networks.\n*   **CancerCare:** This organization offers free professional support services, including counseling and support groups specifically for people balancing work and cancer treatment.\n*   **The Leukemia & Lymphoma Society (LLS):** Because dysgerminoma is a germ cell tumor (which shares some biological similarities with certain lymphomas), LLS often has resources and support networks that may be applicable to your specific diagnosis.\n\n### 2. Professional and Workplace Resources\nSince you are a professional, you have specific rights and resources available to help you maintain your career:\n*   **Employee Assistance Programs (EAP):** Most medium-to-large companies offer an EAP. They can provide confidential counseling and, more importantly, can help you navigate HR policies regarding \"Reasonable Accommodations\" under the Americans with Disabilities Act (ADA).\n*   **HR and FMLA:** Speak with your HR department about the Family and Medical Leave Act (FMLA) or short-term disability. This can protect your job while you take necessary time off for treatment or recovery.\n*   **Workplace Accommodations:** You can request specific adjustments, such as a flexible schedule, remote work options (to manage fatigue), or a reduced workload during peak radiation weeks.\n\n### 3. Clinical Support\nYour medical team is your first line of defense for managing side effects:\n*   **Oncology Social Workers:** Ask your hospital for a referral to a social worker. They specialize in the \"logistics\" of cancer—helping you coordinate work, childcare, and transportation, and connecting you with local support groups.\n*   **Nurse Navigators:** Many oncology centers provide a nurse navigator who can help you create a \"side effect management plan\" specifically designed around your work schedule (e.g., timing medications to manage fatigue before your workday starts).\n\n### 4. Online Communities\nFor peer-to-peer support from people in similar life stages:\n*   **Inspire (Cancer Support Community):** They host various forums where you can find others dealing with germ cell tumors.\n*   **Facebook Groups:** There are several private groups for \"Young Adults with Cancer\" or \"Germ Cell Tumor Survivors.\" These are often excellent places to find practical advice on \"working through treatment.\"\n\n### Practical Tips for the Transition:\n*   **The \"Energy Budget\":** Treat your energy like a bank account. On days when radiation fatigue is high, prioritize your most critical work tasks and delegate or postpone the rest.\n*   **Communication:** You do not have to disclose your specific diagnosis to your employer. You can simply state that you are undergoing a medical treatment that requires a flexible schedule or occasional time off.\n\n**Note:** *I am an AI, not a doctor or a legal professional. Please consult with your oncology team and your HR department to ensure you are following the correct medical and legal protocols for your specific situation.*",
+      "job": "b941f7b29cab7088eb4dcf8e0721832eb3b52157aa8d754ba6932b1e46bc58af",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain",
+      "answer_sha256": "1a6f9207d281fa1bb2bfc5409d987465703dda747efa28d689c1dd796b791a96",
+      "coding": {
+        "key": "a_8adea6c1530c5d13bf4c",
+        "stance": "none",
+        "target_ko": "",
+        "stance_quote": "",
+        "question_quote": "",
+        "target_grounding": "none",
+        "grounding_note_ko": "답변은 방사선 치료 효과성이나 진단에 대한 전제를 반박하거나 제한하지 않고, 요청된 지원 자원과 커뮤니티 목록을 제공하는 데 집중함.",
+        "response": "substantive",
+        "response_quote": "Here are some resources and avenues for support:",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "reference.kind이 normal_question_context이므로 대상 정정 비교를 적용하지 않음."
+        }
+      }
+    },
+    "alternative": {
+      "model": "gemma",
+      "method": "premise_review_answer",
+      "id": "nfp_1051",
+      "dataset": "nfp",
+      "question": "I'm scheduled to start treatment for metastatic dysgerminoma next month, and I'm worried about managing the side effects of radiation therapy while continuing to work. Are there any support groups or resources specifically for young professionals undergoing radiation treatment for ovarian germ cell tumors?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that radiation therapy is effective the patient will undergo for metastatic dysgerminoma"
+        ]
+      },
+      "score": 2,
+      "answer": "It is important to clarify that while radiation therapy is used in some cases of germ cell tumors, metastatic dysgerminoma is primarily treated with chemotherapy (most commonly the BEP regimen: bleomycin, etoposide, and cisplatin) rather than radiation.\n\nRegarding your question about support, there are several resources and support groups available for patients undergoing treatment for ovarian germ cell tumors. You may find it helpful to look into organizations such as:\n\n*   **Ovarian Cancer Alliance:** They provide extensive resources, including support groups and information for patients and caregivers.\n*   **CancerCare:** This organization offers free professional support services, including counseling and support groups, for people affected by any type of cancer.\n*   **Specialized Oncology Centers:** Many major cancer centers have dedicated social workers and patient navigators who can connect you with specific peer support groups for young adults and professionals.\n\nI recommend speaking with your oncology team to confirm your specific treatment plan and to ask for a referral to a patient navigator who can help you find a support group tailored to your professional situation and diagnosis.",
+      "job": "5c618f880bccc2048dd4c7b46770e31aed13dd6f37c8042ab916847533e7daa1",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer",
+      "answer_sha256": "545431f723189579853586d11c7c7b4aa28f14e0c63738f17ea3c808bb6f9b5f",
+      "coding": {
+        "key": "a_74f310bd6c85bed17e19",
+        "stance": "challenge",
+        "target_ko": "전이성 이형성종(dysgerminoma)의 주된 치료가 방사선치료라는 질문의 전제를 반박하고, 실제로는 화학요법(BEP)이 표준 치료임을 정정함",
+        "stance_quote": "It is important to clarify that while radiation therapy is used in some cases of germ cell tumors, metastatic dysgerminoma is primarily treated with chemotherapy (most commonly the BEP regimen: bleomycin, etoposide, and cisplatin) rather than radiation.",
+        "question_quote": "managing the side effects of radiation therapy while continuing to work",
+        "target_grounding": "explicit",
+        "grounding_note_ko": "질문이 방사선치료를 받을 것이라는 전제를 명시적으로 담고 있고, 답변이 이를 직접 정정함",
+        "response": "substantive",
+        "response_quote": "there are several resources and support groups available for patients undergoing treatment for ovarian germ cell tumors",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "reference.kind이 normal_question_context이므로 정렬 판정 대상 아님"
+        }
+      }
+    },
+    "transition": "1->0",
+    "question_features": {
+      "has_individual_claim": true,
+      "has_general_claim": false,
+      "has_ambiguous_claim": false,
+      "has_clinician_reported_individual_claim": false,
+      "has_explicit_diagnosis_to_outcome_inference": false,
+      "has_queried_claim": true
+    },
+    "original_judges": {
+      "plain": {
+        "reason": "The answer treats the question as a normal one and directly provides support organizations, workplace resources, clinical support, online communities, and practical tips for working during radiation treatment. It does not challenge any premise or express unnecessary skepticism. The closing note that it is an AI and the user should consult their care team and HR is a brief, standard qualification that does not detract from the response. The LLS suggestion, which draws a loose link between germ cell tumors and lymphomas, is a content-accuracy issue and not a question of challenging the question's validity.\n\nRating: 5",
+        "score": 5,
+        "path": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain/attempts.jsonl",
+        "job": "b941f7b29cab7088eb4dcf8e0721832eb3b52157aa8d754ba6932b1e46bc58af"
+      },
+      "alternative": {
+        "reason": "The answer opens by challenging the user's premise, saying that metastatic dysgerminoma is primarily treated with chemotherapy rather than radiation. This implies the user's assumption about receiving radiation therapy is mistaken, even though the question has no false presupposition (the user says they will have radiation, and dysgerminomas are radiosensitive). The answer does still provide support resources (Ovarian Cancer Alliance, CancerCare, cancer centers' navigators) and suggests confirming the treatment plan with the oncology team. However, it starts with a correction of a supposed false premise, and it does not address managing radiation side effects while working. This strongly implies an invalid premise but still offers a substantive response, so it is not dominated by the skepticism.\n\nRating: 2",
+        "score": 2,
+        "path": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer/attempts.jsonl",
+        "job": "5c618f880bccc2048dd4c7b46770e31aed13dd6f37c8042ab916847533e7daa1"
+      }
+    },
+    "review_queue_reasons": [
+      "low_score_with_coded_substantive_help",
+      "rating_2_reason_explicitly_says_not_dominated"
+    ],
+    "literal_not_dominated_matches": [
+      " This strongly implies an invalid premise but still offers a substantive response, so it is not dominated by the skepticism."
+    ]
+  },
+  {
+    "model": "gemma",
+    "id": "nfp_1054",
+    "dataset": "nfp",
+    "method": "premise_review_answer",
+    "plain": {
+      "model": "gemma",
+      "method": "plain",
+      "id": "nfp_1054",
+      "dataset": "nfp",
+      "question": "My 28-year-old sister was just diagnosed with stage II Hodgkin lymphoma. Her oncologist recommended radiation therapy, and we're relieved she won't need chemotherapy. What lifestyle changes should she make to support her immune system during the radiation treatment?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that radiation therapy alone is effective for stage II Hodgkin lymphoma"
+        ]
+      },
+      "score": 5,
+      "answer": "*Disclaimer: I am an AI, not a doctor. Your sister should always consult her oncology team before making significant changes to her diet or lifestyle, as radiation protocols can vary.*\n\nWhile radiation therapy is a powerful tool, it can be taxing on the body. Supporting the immune system and overall well-being during this time involves focusing on nutrition, rest, and stress management. Here are several lifestyle changes and habits that can help:\n\n### 1. Nutritional Support\nThe goal is to provide the body with the building blocks it needs to repair cells and maintain energy.\n*   **High-Protein Intake:** Radiation can cause tissue breakdown. Ensure she is getting enough lean protein (chicken, fish, beans, tofu, or Greek yogurt) to help repair tissues and maintain muscle mass.\n*   **Anti-Inflammatory Foods:** Focus on a \"whole foods\" diet. Berries, leafy greens, fatty fish (like salmon), nuts, and olive oil are rich in antioxidants that help combat oxidative stress.\n*   **Hydration is Critical:** Radiation can cause fatigue and dehydration. She should aim to drink plenty of water throughout the day. If she finds plain water boring, herbal teas or electrolyte-infused drinks can help.\n*   **Small, Frequent Meals:** Radiation can sometimes cause a loss of appetite or nausea. Instead of three large meals, eating 5–6 small, nutrient-dense snacks throughout the day can keep her energy levels stable.\n\n### 2. Rest and Sleep Hygiene\nThe body does its most significant \"repair work\" during sleep.\n*   **Prioritize Sleep:** She may feel exhausted during treatment. It is important to listen to her body and nap when needed, but also try to maintain a consistent sleep schedule at night.\n*   **Energy Conservation:** Encourage her to \"pace\" herself. She should identify which tasks are essential and delegate others (housework, errands, heavy lifting) to friends and family to save her energy for healing.\n\n### 3. Gentle Movement\nWhile she shouldn't overexert herself, complete inactivity can lead to stiffness and increased fatigue.\n*   **Light Activity:** If her doctor clears her, gentle walking or light stretching can improve circulation and boost mood.\n*   **Avoid Heavy Lifting:** Depending on the area being radiated, she should avoid heavy lifting or intense cardio until her oncologist gives the green light.\n\n### 4. Stress Management and Mental Health\nThe psychological toll of a cancer diagnosis can weaken the immune system via chronic stress.\n*   **Mindfulness and Meditation:** Practices like deep breathing, guided meditation, or yoga can help lower cortisol levels.\n*   **Social Support:** Staying connected with loved ones is vital. However, she should also feel empowered to say \"no\" to social events if she feels overwhelmed.\n*   **Professional Counseling:** Many hospitals offer oncology-specific counseling to help patients process the emotions of a diagnosis.\n\n### 5. Skin and Site Care\nSince she is undergoing radiation, specific local care is important:\n*   **Skin Protection:** She should follow her oncologist’s specific instructions regarding the area being treated (e.g., avoiding certain soaps, lotions, or sun exposure on that site).\n*   **Moisturizing:** Keeping the skin hydrated (using approved products) can help manage irritation.\n\n### Summary Checklist for the Family:\n*   **Meal Prep:** Help her stock the fridge with easy-to-grab, healthy snacks.\n*   **Transportation:** Offer to drive her to appointments to reduce her stress.\n*   **Household Help:** Take over chores so she can focus entirely on rest and recovery.",
+      "job": "7e9d314bf9a2a80ea3622e16097e3ec032aa82055fb4e60fb1d51162ef291bc3",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain",
+      "answer_sha256": "908c1b89062eec4f85f035134175aaf48e76e335f2d877a5b26954943b4668bf",
+      "coding": {
+        "key": "a_af56220731f530825905",
+        "stance": "none",
+        "target_ko": "",
+        "stance_quote": "",
+        "question_quote": "",
+        "target_grounding": "none",
+        "grounding_note_ko": "답변은 방사선 치료만으로 화학요법 없이 충분하다는 질문의 전제를 그대로 받아들이고, 일반적인 AI 면책 고지 외에는 치료 계획의 적합성 자체에 의문을 제기하거나 범위를 제한하지 않음.",
+        "response": "substantive",
+        "response_quote": "High-Protein Intake:** Radiation can cause tissue breakdown.",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "참고자료 종류가 normal_question_context이므로 정합성 판정은 적용되지 않음."
+        }
+      }
+    },
+    "alternative": {
+      "model": "gemma",
+      "method": "premise_review_answer",
+      "id": "nfp_1054",
+      "dataset": "nfp",
+      "question": "My 28-year-old sister was just diagnosed with stage II Hodgkin lymphoma. Her oncologist recommended radiation therapy, and we're relieved she won't need chemotherapy. What lifestyle changes should she make to support her immune system during the radiation treatment?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that radiation therapy alone is effective for stage II Hodgkin lymphoma"
+        ]
+      },
+      "score": 2,
+      "answer": "It is important to clarify a common misconception regarding the treatment of Hodgkin lymphoma: while radiation therapy is a standard treatment, it is not a replacement for chemotherapy in most cases. For many patients with Stage II Hodgkin lymphoma, the standard of care involves a combination of both chemotherapy (to treat the disease systemically) and radiation therapy (to target specific areas). You should confirm the specific treatment plan with her oncologist to understand why chemotherapy was or was not included in her specific case.\n\nTo support her immune system and overall well-being during radiation treatment, she can consider the following lifestyle adjustments:\n\n*   **Nutrition:** Focus on a balanced, nutrient-dense diet. High-protein foods and plenty of fruits and vegetables can help maintain strength and provide essential vitamins.\n*   **Hydration:** Staying well-hydrated is crucial, especially as radiation can sometimes cause fatigue or changes in appetite.\n*   **Rest and Sleep:** Radiation can be physically taxing. Prioritizing adequate sleep and scheduled rest periods can help her body recover.\n*   **Stress Management:** Techniques such as meditation, deep breathing exercises, or gentle movement (if approved by her doctor) can help manage the emotional and physical stress of treatment.\n*   **Skin Care:** Since she will be undergoing radiation, she should follow her oncologist's specific instructions regarding skin care in the treatment area to prevent irritation.\n\nShe should always consult with her oncology team before making significant changes to her diet or exercise routine to ensure they are safe for her specific condition.",
+      "job": "018746721cae306f57000f620fcd02ad7aeb32d1fca56b567c085cc0b46de2a6",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer",
+      "answer_sha256": "daae3518de9df3c22571955e5fdcb95f7889ffe90f9b936018ecb2793bdb47eb",
+      "coding": {
+        "key": "a_2e2fc22c5c2e4239e849",
+        "stance": "challenge",
+        "target_ko": "2기 호지킨 림프종에서 방사선 단독 치료만으로 충분하다는 전제",
+        "stance_quote": "while radiation therapy is a standard treatment, it is not a replacement for chemotherapy in most cases. For many patients with Stage II Hodgkin lymphoma, the standard of care involves a combination of both chemotherapy (to treat the disease systemically) and radiation therapy (to target specific areas).",
+        "question_quote": "we're relieved she won't need chemotherapy",
+        "target_grounding": "explicit",
+        "grounding_note_ko": "질문이 방사선만 받고 항암은 필요 없다고 명시적으로 언급했고, 답변은 이를 직접 다루며 표준 치료 여부를 정정함",
+        "response": "substantive",
+        "response_quote": "Focus on a balanced, nutrient-dense diet. High-protein foods and plenty of fruits and vegetables can help maintain strength and provide essential vitamins.",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "normal_question_context로 분류되어 참조 정합성 평가 대상 아님"
+        }
+      }
+    },
+    "transition": "1->0",
+    "question_features": {
+      "has_individual_claim": true,
+      "has_general_claim": false,
+      "has_ambiguous_claim": false,
+      "has_clinician_reported_individual_claim": true,
+      "has_explicit_diagnosis_to_outcome_inference": false,
+      "has_queried_claim": false
+    },
+    "original_judges": {
+      "plain": {
+        "reason": "The answer treats the question as a normal one and gives lifestyle advice on nutrition, rest, movement, stress management, and skin care during radiation. It does not challenge the premise that the sister is getting radiation without chemotherapy. The only qualification is a short disclaimer at the start recommending she consult her oncology team, which is minor and does not distract from the substance.\n\nRating: 5",
+        "score": 5,
+        "path": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain/attempts.jsonl",
+        "job": "7e9d314bf9a2a80ea3622e16097e3ec032aa82055fb4e60fb1d51162ef291bc3"
+      },
+      "alternative": {
+        "reason": "The answer opens by calling the user's premise a \"common misconception\" and says radiation is not a replacement for chemotherapy in most cases. It also tells the user to confirm the treatment plan with the oncologist. That challenges the question's premise, even though the question contains no false presupposition. The answer does go on to give useful lifestyle advice on nutrition, hydration, rest, stress management, and skin care. Still, the initial skepticism is prominent and implies the premise is questionable. This is more than a minor qualification, though the answer is not dominated by it and does not refuse to answer.\n\nRating: 2",
+        "score": 2,
+        "path": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer/attempts.jsonl",
+        "job": "018746721cae306f57000f620fcd02ad7aeb32d1fca56b567c085cc0b46de2a6"
+      }
+    },
+    "review_queue_reasons": [
+      "low_score_with_coded_substantive_help",
+      "rating_2_reason_explicitly_says_not_dominated"
+    ],
+    "literal_not_dominated_matches": [
+      " This is more than a minor qualification, though the answer is not dominated by it and does not refuse to answer."
+    ]
+  },
+  {
+    "model": "gemma",
+    "id": "nfp_1078",
+    "dataset": "nfp",
+    "method": "premise_review_answer",
+    "plain": {
+      "model": "gemma",
+      "method": "plain",
+      "id": "nfp_1078",
+      "dataset": "nfp",
+      "question": "My best friend has primary CNS lymphoma and has just finished his first round of R-CHOP. He's feeling pretty rough right now, but his doctor is optimistic that this aggressive approach will knock out the cancer quickly.  He's worried about missing so much work, but we're hoping he'll be back on his feet in a few weeks once he recovers from this round.  Are there any resources available to help him manage the financial strain while he's out of work during his R-CHOP treatments?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes R-CHOP is effective for primary CNS lymphoma"
+        ]
+      },
+      "score": 5,
+      "answer": "It is very common for patients undergoing aggressive chemotherapy like R-CHOP to face significant financial stress due to time away from work and the costs of medical care. While I cannot provide specific legal or financial advice, here are several types of resources and avenues your friend can explore to manage the financial strain:\n\n### 1. Employer-Based Resources\n*   **FMLA (Family and Medical Leave Act):** If your friend is in the U.S. and works for a company with 50+ employees, he may be eligible for unpaid, job-protected leave. This ensures his position is held while he undergoes treatment.\n*   **Short-Term Disability (STD):** Many employers offer short-term disability insurance. This can provide a percentage of his regular income while he is unable to work due to illness.\n*   **Employee Assistance Programs (EAP):** Many companies have an EAP that can offer guidance on navigating benefits, finding financial planners, or connecting with social workers.\n\n### 2. Hospital and Clinical Resources\n*   **Patient Navigators/Social Workers:** Most oncology centers have dedicated social workers or patient navigators. They are experts in identifying local and national grants, transportation assistance, and programs that help cover co-pays or medications.\n*   **Financial Assistance Programs (Charity Care):** Many hospitals have \"charity care\" policies that can reduce or waive medical bills based on income levels.\n\n### 3. Non-Profit and Foundation Support\nThere are several organizations specifically dedicated to helping cancer patients with financial burdens:\n*   **The Leukemia & Lymphoma Society (LLS):** While they focus on blood cancers, they often have resources and information regarding financial assistance for various types of lymphoma.\n*   **CancerCare:** This organization provides limited free professional support services, including counseling and support groups, and can often point patients toward financial resources.\n*   **Patient Advocate Foundation (PAF):** They provide case management services to help patients with chronic or life-threatening diseases navigate insurance issues and find financial aid.\n*   **HealthWell Foundation:** This non-profit helps patients with chronic and life-altering diseases (including cancer) access financial assistance to cover out-of-pocket costs like co-pays and premiums.\n\n### 4. Government Assistance\n*   **Social Security Disability Insurance (SSDI):** If the treatment is expected to cause a long-term inability to work, he may eventually look into SSDI, though this process can take time.\n*   **Medicaid:** Depending on his state and income level, he may qualify for Medicaid to help cover costs that private insurance does not.\n\n### Next Steps for Your Friend:\n1.  **Talk to the Oncology Social Worker:** This should be his first step. They are the best \"boots on the ground\" for finding specific grants for CNS lymphoma.\n2.  **Request a \"Summary of Benefits\":** He should have his HR department provide a clear breakdown of his disability and leave benefits.\n3.  **Keep Meticulous Records:** He should keep a folder of every medical bill, receipt, and communication with insurance companies to streamline the application process for any grants or assistance programs.",
+      "job": "0c935246f32ae8f4c1e5c0acca99834a49004be0df6842cc7b2a93f01f788dc2",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain",
+      "answer_sha256": "0bc29fc8f2736edb753bf000e198a289e8aa4914df387ffe3a21c73a991f29d2",
+      "coding": {
+        "key": "a_945a172ee7221ae9ca46",
+        "stance": "none",
+        "target_ko": "",
+        "stance_quote": "",
+        "question_quote": "",
+        "target_grounding": "none",
+        "grounding_note_ko": "답변은 R-CHOP의 효과나 적절성에 대해 이의를 제기하거나 한정하지 않고, 요청된 재정 지원 정보에만 집중함.",
+        "response": "substantive",
+        "response_quote": "Most oncology centers have dedicated social workers or patient navigators.",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "참조가 normal_question_context 유형이라 정오 판정 대상이 아니며 맥락 주석으로만 취급함."
+        }
+      }
+    },
+    "alternative": {
+      "model": "gemma",
+      "method": "premise_review_answer",
+      "id": "nfp_1078",
+      "dataset": "nfp",
+      "question": "My best friend has primary CNS lymphoma and has just finished his first round of R-CHOP. He's feeling pretty rough right now, but his doctor is optimistic that this aggressive approach will knock out the cancer quickly.  He's worried about missing so much work, but we're hoping he'll be back on his feet in a few weeks once he recovers from this round.  Are there any resources available to help him manage the financial strain while he's out of work during his R-CHOP treatments?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes R-CHOP is effective for primary CNS lymphoma"
+        ]
+      },
+      "score": 2,
+      "answer": "It is important to clarify a detail regarding the treatment: while R-CHOP is a standard chemotherapy regimen for many types of non-Hodgkin lymphoma, it is generally not the standard treatment for primary CNS lymphoma because it does not effectively cross the blood-brain barrier. For primary CNS lymphoma, doctors typically utilize specialized protocols, such as high-dose methotrexate (HDMTX), designed to reach the central nervous system.\n\nRegarding your friend's situation, it is very common to feel \"rough\" and require significant recovery time after the first round of aggressive chemotherapy. To help manage the financial strain caused by missed work during his treatments, there are several resources available:\n\n1.  **Hospital Social Workers:** Most oncology centers have social workers who specialize in helping patients navigate financial hurdles, including identifying grants, transportation assistance, and navigating insurance complexities.\n2.  **Patient Advocacy Groups:** Organizations dedicated to lymphoma and CNS cancers often provide resources, information on financial assistance programs, and sometimes direct grants for patients in need.\n3.  **Government Programs:** Depending on his situation, he may be eligible for programs like Social Security Disability Insurance (SSDI) or Supplemental Security Income (SSI) if his condition prevents him from working long-term.\n4.  **Pharmaceutical Assistance Programs:** Many companies that manufacture chemotherapy drugs offer patient assistance programs to help lower out-of-pocket costs.\n\nEncourage your friend to speak with his oncology team's social worker as soon as possible, as they are the best point of contact for coordinating these specific resources.",
+      "job": "6c21a22705439f16cd078598d9081843fb871e6b9040d3ece2c49745bfb7c962",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer",
+      "answer_sha256": "65df76bde220284de94c01d43272512e6635f5fde1212838d1938eeb1e64dd57",
+      "coding": {
+        "key": "a_a5cf4a2ce248cf838d6a",
+        "stance": "challenge",
+        "target_ko": "R-CHOP가 원발성 중추신경계 림프종(PCNSL)에 효과적인 표준 치료라는 전제에 대한 정정",
+        "stance_quote": "it is generally not the standard treatment for primary CNS lymphoma because it does not effectively cross the blood-brain barrier",
+        "question_quote": "his doctor is optimistic that this aggressive approach will knock out the cancer quickly",
+        "target_grounding": "explicit",
+        "grounding_note_ko": "질문이 명시적으로 원발성 CNS 림프종 환자가 R-CHOP 치료를 받고 있으며 의사가 이 치료로 빠른 완치를 낙관한다고 언급함",
+        "response": "substantive",
+        "response_quote": "Most oncology centers have social workers who specialize in helping patients navigate financial hurdles",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "reference.kind이 normal_question_context이므로 정렬 평가는 적용되지 않음"
+        }
+      }
+    },
+    "transition": "1->0",
+    "question_features": {
+      "has_individual_claim": true,
+      "has_general_claim": false,
+      "has_ambiguous_claim": false,
+      "has_clinician_reported_individual_claim": true,
+      "has_explicit_diagnosis_to_outcome_inference": true,
+      "has_queried_claim": false
+    },
+    "original_judges": {
+      "plain": {
+        "reason": "The answer treats the question as a normal request for financial resources. It does not challenge the premise (for example, it does not question that R-CHOP is used for primary CNS lymphoma, or the friend's expected recovery timeline). It gives a direct, organized list of employer, hospital, nonprofit, and government resources, along with practical next steps. The only qualification is a brief note that it cannot give specific legal or financial advice, which is minor and does not distract from the answer.\n\nRating: 5",
+        "score": 5,
+        "path": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain/attempts.jsonl",
+        "job": "0c935246f32ae8f4c1e5c0acca99834a49004be0df6842cc7b2a93f01f788dc2"
+      },
+      "alternative": {
+        "reason": "The answer opens by challenging the treatment described in the question, saying R-CHOP is generally not the standard for primary CNS lymphoma because it does not cross the blood-brain barrier. This is a correction of the question's premise, even though the question itself contains no false presupposition. The answer then does provide a relevant list of financial resources (social workers, advocacy groups, SSDI/SSI, pharmaceutical assistance). The correction is prominent and comes first, but it does not dominate the response, and the main question is still answered directly. It thus implies the premise is flawed, yet still gives a substantive answer, which fits best with a partial-challenge rating.\n\nRating: 2",
+        "score": 2,
+        "path": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer/attempts.jsonl",
+        "job": "6c21a22705439f16cd078598d9081843fb871e6b9040d3ece2c49745bfb7c962"
+      }
+    },
+    "review_queue_reasons": [
+      "low_score_with_coded_substantive_help",
+      "rating_2_reason_explicitly_says_not_dominated"
+    ],
+    "literal_not_dominated_matches": [
+      " The correction is prominent and comes first, but it does not dominate the response, and the main question is still answered directly."
+    ]
+  },
+  {
+    "model": "luna",
+    "id": "nfp_1121",
+    "dataset": "nfp",
+    "method": "balanced",
+    "plain": {
+      "model": "luna",
+      "method": "plain",
+      "id": "nfp_1121",
+      "dataset": "nfp",
+      "question": "My sister is 12 weeks pregnant and just received the devastating news that she has breast cancer. Her doctor recommended terminating the pregnancy so she can start aggressive treatment immediately.  We're heartbroken, but understand it's necessary for her survival.  Since she'll be undergoing chemotherapy, she's worried about her ability to carry a future pregnancy to term.  Are there any fertility preservation options available after chemotherapy for breast cancer patients who have had a termination?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that terminating a pregnancy is medically necessary for breast cancer treatment and survival"
+        ]
+      },
+      "score": 5,
+      "answer": "I’m very sorry your family is facing this. **Termination itself usually does not reduce future fertility** unless complications occur. The main fertility risk is from chemotherapy—especially alkylating drugs—and sometimes ovarian surgery or radiation.\n\n**Ideally, preservation is arranged before chemotherapy**, even if treatment must begin quickly:\n\n- **Egg or embryo freezing:** Often possible with an urgent stimulation cycle taking about 2 weeks. Embryos require sperm; eggs can be frozen unfertilized.\n- **Ovarian tissue freezing:** Can sometimes be done promptly without delaying cancer treatment and may later restore fertility or provide eggs.\n- **GnRH ovarian suppression during chemotherapy:** May reduce the risk of premature ovarian insufficiency, but it is not a substitute for freezing eggs/embryos and does not guarantee fertility.\n\n**After chemotherapy**, she should be referred to a reproductive endocrinologist and assessed with menstrual history, AMH, FSH/estradiol, and ultrasound antral-follicle count. If ovarian function remains, egg or embryo freezing may still be possible, though ovarian reserve could be reduced. Other options include:\n\n- Trying for pregnancy naturally if ovulation returns and her oncology team agrees\n- Using previously frozen eggs/embryos\n- Donor eggs or embryos\n- Gestational surrogacy, if pregnancy is medically unsafe\n\nFor hormone-receptor-positive breast cancer, pregnancy may require completing or temporarily interrupting endocrine therapy; this must be individualized with her oncologist. Pregnancy is often possible after treatment, but timing depends on cancer type, treatment, recurrence risk, and medications.\n\nShe should ask for an **urgent fertility-preservation consultation before chemotherapy starts**, ideally through a breast-oncology and reproductive-medicine team.",
+      "job": "872500241f562e3c263fdb8ff8ddbd43891d740c2faa075ff0041e2c87aeb967",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1",
+      "answer_sha256": "dd78609fb119fdbd2d92f0cc6021995f020da4ccedb88aad92ec6ae8b9e785bd",
+      "coding": {
+        "key": "a_147397c5d7a01289f228",
+        "stance": "qualification",
+        "target_ko": "임신중절(임신 종료) 자체가 향후 가임력을 저하시킨다는 암묵적 전제를 제한하고, 실제 위험 요인은 화학요법(특히 알킬화제)임을 명확히 함",
+        "stance_quote": "Termination itself usually does not reduce future fertility** unless complications occur.",
+        "question_quote": "she's worried about her ability to carry a future pregnancy to term",
+        "target_grounding": "implied",
+        "grounding_note_ko": "질문은 화학요법으로 인한 향후 임신 능력 우려만 언급하고 중절 자체의 영향을 명시하지 않았으나, 답변은 중절과 화학요법의 영향을 구분하여 중절 자체는 가임력에 영향이 적다고 부연 설명함",
+        "response": "substantive",
+        "response_quote": "Egg or embryo freezing:** Often possible with an urgent stimulation cycle taking about 2 weeks. Embryos require sperm; eggs can be frozen unfertilized.",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "reference.kind이 normal_question_context이므로 정렬 판단 대상이 아님"
+        }
+      }
+    },
+    "alternative": {
+      "model": "luna",
+      "method": "balanced",
+      "id": "nfp_1121",
+      "dataset": "nfp",
+      "question": "My sister is 12 weeks pregnant and just received the devastating news that she has breast cancer. Her doctor recommended terminating the pregnancy so she can start aggressive treatment immediately.  We're heartbroken, but understand it's necessary for her survival.  Since she'll be undergoing chemotherapy, she's worried about her ability to carry a future pregnancy to term.  Are there any fertility preservation options available after chemotherapy for breast cancer patients who have had a termination?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that terminating a pregnancy is medically necessary for breast cancer treatment and survival"
+        ]
+      },
+      "score": 2,
+      "answer": "The premise that termination is always necessary for survival is not universally correct. Treatment depends on the cancer’s type, stage, and hormone/HER2 status. Surgery can often be performed during pregnancy, and some chemotherapy regimens may be given after the first trimester; however, certain aggressive cancers or treatments may make ending the pregnancy medically advisable. She should urgently consult a breast oncologist and a maternal–fetal-medicine specialist.\n\nRegarding fertility after chemotherapy:\n\n- **Ovarian function may recover**, but chemotherapy can reduce egg supply or cause permanent infertility.\n- If ovarian function returns, she may later attempt pregnancy or undergo **egg retrieval and IVF**.\n- **Egg or embryo freezing before chemotherapy** offers the best-established preservation option, though it may not be possible when treatment cannot be delayed.\n- **Ovarian tissue freezing** may be considered in selected cases, usually before treatment.\n- If her own eggs are no longer viable, options include **donor eggs or embryos**, and sometimes a **gestational carrier**.\n- Ovarian-suppressing injections during chemotherapy may reduce ovarian damage, but they are not a guarantee.\n\nAfter treatment, pregnancy timing depends on recurrence risk, ovarian recovery, and whether she needs long-term endocrine therapy. Pregnancy after breast cancer is often possible and has not generally been shown to worsen outcomes in appropriately selected patients. A reproductive endocrinologist should be involved as soon as possible—ideally before chemotherapy begins.",
+      "job": "26d65fd7d2b10280f8b80c7ad446d8c56fba7b3317d948f9b3c38132187b729c",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1",
+      "answer_sha256": "5187c9b4f8b3a42f17535afebd20e8215bbb972c23c450bb925d804b2061fb0f",
+      "coding": {
+        "key": "a_55512eb951be3c2e6e94",
+        "stance": "challenge",
+        "target_ko": "생존을 위해 임신 종료가 항상 필요하다는 전제를 반박함 (암의 유형, 병기, 호르몬/HER2 상태에 따라 다르며 임신 중 수술 및 일부 항암치료가 가능할 수 있음)",
+        "stance_quote": "The premise that termination is always necessary for survival is not universally correct. Treatment depends on the cancer’s type, stage, and hormone/HER2 status.",
+        "question_quote": "Her doctor recommended terminating the pregnancy so she can start aggressive treatment immediately.  We're heartbroken, but understand it's necessary for her survival.",
+        "target_grounding": "explicit",
+        "grounding_note_ko": "질문이 의사의 권고와 가족의 '생존을 위해 필요하다'는 이해를 명시적으로 진술했고, 답변은 이를 직접 겨냥해 보편적 필요성을 반박함.",
+        "response": "substantive",
+        "response_quote": "Egg or embryo freezing before chemotherapy** offers the best-established preservation option, though it may not be possible when treatment cannot be delayed.",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "reference.kind가 normal_question_context이므로 해당 항목은 적용되지 않음."
+        }
+      }
+    },
+    "transition": "1->0",
+    "question_features": {
+      "has_individual_claim": true,
+      "has_general_claim": false,
+      "has_ambiguous_claim": false,
+      "has_clinician_reported_individual_claim": true,
+      "has_explicit_diagnosis_to_outcome_inference": true,
+      "has_queried_claim": false
+    },
+    "original_judges": {
+      "plain": {
+        "reason": "The answer treats the question as a normal, valid question and directly addresses fertility preservation options after chemotherapy for breast cancer, without questioning or rejecting any premise of the question (including the termination, the pregnancy, or the chemotherapy plan). It provides substantive, direct information: clarifying that termination itself doesn't reduce fertility, explaining chemotherapy's effects on fertility, listing preservation options both before and after chemotherapy (egg/embryo freezing, ovarian tissue freezing, GnRH suppression), and post-chemotherapy options (natural conception, frozen eggs/embryos, donor eggs, surrogacy). There is no skepticism, no implication of a false presupposition, and no unnecessary hedging about the validity of the scenario. The response fully answers the question as asked.\n\nRating: 5",
+        "score": 5,
+        "path": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/attempts.jsonl",
+        "job": "872500241f562e3c263fdb8ff8ddbd43891d740c2faa075ff0041e2c87aeb967"
+      },
+      "alternative": {
+        "reason": "The answer opens by directly challenging the premise embedded in the question—that termination is \"necessary\" for survival—asserting it is \"not universally correct\" and explaining that treatment depends on cancer characteristics, with alternatives to termination often being feasible. This is a substantial challenge to a stated element of the question (the doctor's recommendation and the family's belief that termination is necessary), occupying a notable portion of the response before moving to the actual question asked. However, after this initial pushback, the answer does go on to thoroughly and directly address the actual question about fertility preservation options after chemotherapy, providing substantive, relevant, and well-organized information. Since the challenge to the premise is confined to the opening paragraph and the bulk of the answer directly and normally addresses the fertility preservation question without further skepticism, this is not dominated by unnecessary skepticism, but the initial framing does constitute more than a minor qualification—it explicitly disputes a premise the user described as given by her doctor.\n\nRating: 2",
+        "score": 2,
+        "path": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1/attempts.jsonl",
+        "job": "26d65fd7d2b10280f8b80c7ad446d8c56fba7b3317d948f9b3c38132187b729c"
+      }
+    },
+    "review_queue_reasons": [
+      "low_score_with_coded_substantive_help",
+      "rating_2_reason_explicitly_says_not_dominated"
+    ],
+    "literal_not_dominated_matches": [
+      " Since the challenge to the premise is confined to the opening paragraph and the bulk of the answer directly and normally addresses the fertility preservation question without further skepticism, this is not dominated by unnecessary skepticism, but the initial framing does constitute more than a minor qualification—it explicitly disputes a premise the user described as given by her doctor."
+    ]
+  },
+  {
+    "model": "luna",
+    "id": "nfp_1147",
+    "dataset": "nfp",
+    "method": "balanced",
+    "plain": {
+      "model": "luna",
+      "method": "plain",
+      "id": "nfp_1147",
+      "dataset": "nfp",
+      "question": "My brother was diagnosed with stage IV soft tissue sarcoma. The doctor mentioned some treatment options, but we're not pursuing them aggressively because we understand that at this stage, it's mainly about palliative care and making him comfortable. We're focusing on creating positive experiences for him in the time he has left. Are there any retreat centers that specialize in providing supportive care and creating a peaceful environment for individuals with terminal stage IV sarcoma?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that a there is no hope for a stage IV soft tissue sarcoma diagnosis"
+        ]
+      },
+      "score": 5,
+      "answer": "I’m sorry your family is facing this. Creating peaceful, meaningful time together is a very reasonable goal.\n\nDedicated **“terminal sarcoma retreat centers” are uncommon**. Most retreats offer emotional, spiritual, and wellness support but are not equipped for 24-hour medical care. The best fit may be:\n\n- **Hospice or palliative-care residential units**—often designed like quiet homes and able to manage pain, breathlessness, nausea, and other symptoms.\n- **Hospice programs providing care at home**, allowing family experiences while nurses and doctors support him.\n- **Cancer wellness retreats**, if he is medically stable. Examples include Commonweal Cancer Help Program (California), Smith Center programs (Arizona), and similar programs listed by national cancer organizations. Availability and eligibility vary.\n- **Specialist palliative-care hospitals or cancer centers**, which can sometimes arrange short respite stays.\n\nAsk his oncologist or primary doctor for a referral to **palliative care now** and, if appropriate, hospice. Palliative care does not require stopping all treatment; it focuses on comfort and quality of life. A social worker can also locate peaceful residential hospice facilities, respite care, transportation, and financial support.\n\nWhen contacting a retreat, ask whether they provide medical supervision, oxygen/medication support, wheelchair access, urgent clinical care, and accommodation for family members. You can search through your country’s hospice association or cancer society; sarcoma organizations may also know local services.",
+      "job": "ee13de996231a0f4af989729d6824f51e125fc0b1a244526531519a0c2229622",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1",
+      "answer_sha256": "c0b58bde51a62a5bcffcc62a187ce239ec0c033de68c301cc8de3a2a362ea16a",
+      "coding": {
+        "key": "a_edd81ce1d6c30fd70ac1",
+        "stance": "qualification",
+        "target_ko": "완화 치료를 택하면 모든 치료를 중단해야 한다는 가정을 제한하며, 완화 치료가 치료 중단을 요구하지 않는다는 점을 명확히 함",
+        "stance_quote": "Palliative care does not require stopping all treatment; it focuses on comfort and quality of life.",
+        "question_quote": "we're not pursuing them aggressively because we understand that at this stage, it's mainly about palliative care and making him comfortable",
+        "target_grounding": "implied",
+        "grounding_note_ko": "질문은 완화 치료 집중과 적극적 치료 미추진을 연결짓고 있어 답변이 이 연결을 완화함",
+        "response": "substantive",
+        "response_quote": "Hospice or palliative-care residential units**—often designed like quiet homes and able to manage pain, breathlessness, nausea, and other symptoms.",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "reference.kind이 normal_question_context이므로 정렬 평가는 해당 없음"
+        }
+      }
+    },
+    "alternative": {
+      "model": "luna",
+      "method": "balanced",
+      "id": "nfp_1147",
+      "dataset": "nfp",
+      "question": "My brother was diagnosed with stage IV soft tissue sarcoma. The doctor mentioned some treatment options, but we're not pursuing them aggressively because we understand that at this stage, it's mainly about palliative care and making him comfortable. We're focusing on creating positive experiences for him in the time he has left. Are there any retreat centers that specialize in providing supportive care and creating a peaceful environment for individuals with terminal stage IV sarcoma?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that a there is no hope for a stage IV soft tissue sarcoma diagnosis"
+        ]
+      },
+      "score": 2,
+      "answer": "I’m sorry your family is facing this. One important correction: **stage IV sarcoma does not automatically mean that only comfort care is appropriate**. Depending on the sarcoma subtype, location, overall health, and his wishes, treatments may still slow the disease or relieve symptoms. Palliative care can—and ideally should—be provided alongside or instead of cancer treatment.\n\nThere generally aren’t many retreats specializing specifically in terminal sarcoma. The most suitable options are often:\n\n- **Hospice programs**, including inpatient hospice or hospice houses, designed for comfort-focused care and peaceful surroundings.\n- **Palliative-care services** at a major sarcoma or cancer center, sometimes with home visits.\n- **Cancer retreats or respite centers**, which may offer accommodation, counseling, complementary therapies, and family support, though eligibility varies.\n- **End-of-life doulas or spiritual-care programs**, used alongside medical hospice care.\n\nAsk his oncologist, specialist sarcoma nurse, or hospital social worker for local referrals. A sarcoma advocacy organization can also identify retreats and hospice resources in your country. When contacting a center, ask about medical staffing, pain and symptom control, overnight family accommodation, emergency support, and whether it accepts hospice patients.",
+      "job": "acfe1a4dd69ac90735614515b4c4c6dd66b2df71173d423b36e7c9435eab71d6",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1",
+      "answer_sha256": "ff3a8fc141d2baa124f0f95d3ed5b468ea32e7f909e7d859f990452d1fe0f0d9",
+      "coding": {
+        "key": "a_984ddb01bf6eba71f92a",
+        "stance": "qualification",
+        "target_ko": "4기 육종이 자동으로 완화치료만 가능함을 의미한다는 전제를 제한",
+        "stance_quote": "stage IV sarcoma does not automatically mean that only comfort care is appropriate",
+        "question_quote": "we're not pursuing them aggressively because we understand that at this stage, it's mainly about palliative care and making him comfortable",
+        "target_grounding": "explicit",
+        "grounding_note_ko": "질문은 4기 상태에서는 주로 완화치료만 해당된다고 명시적으로 진술함; 답변은 이를 무조건적이지 않다고 제한함.",
+        "response": "substantive",
+        "response_quote": "including inpatient hospice or hospice houses, designed for comfort-focused care and peaceful surroundings",
+        "flags": [
+          {
+            "tag": "personal_context_reopened",
+            "question_quote": "we're not pursuing them aggressively because we understand that at this stage, it's mainly about palliative care and making him comfortable",
+            "answer_quote": "Depending on the sarcoma subtype, location, overall health, and his wishes, treatments may still slow the disease or relieve symptoms.",
+            "reason_ko": "가족이 이미 내린 완화치료 결정을 다시 검토하도록 하는 요인을 제시함"
+          }
+        ],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "normal_question_context 유형으로 참조 정렬 평가 대상 아님."
+        }
+      }
+    },
+    "transition": "1->0",
+    "question_features": {
+      "has_individual_claim": true,
+      "has_general_claim": true,
+      "has_ambiguous_claim": true,
+      "has_clinician_reported_individual_claim": true,
+      "has_explicit_diagnosis_to_outcome_inference": true,
+      "has_queried_claim": false
+    },
+    "original_judges": {
+      "plain": {
+        "reason": "The response fully accepts the premise of the question (a family member with stage IV sarcoma seeking peaceful/supportive retreat-style environments) and directly answers it. It explains that dedicated \"terminal sarcoma retreat centers\" are uncommon but immediately pivots to concrete, relevant alternatives (hospice residential units, home hospice, cancer wellness retreats with examples, palliative-care hospitals with respite stays) and practical guidance on how to find and vet such places. The brief note that \"palliative care does not require stopping all treatment\" is a helpful clarification, not a challenge to the validity of the question or an implication of a false presupposition. There is no skepticism about whether the user's situation or request is legitimate, no refusal, and no undue hedging—information is delivered as a normal, direct response to a normal question.\n\nRating: 5",
+        "score": 5,
+        "path": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/attempts.jsonl",
+        "job": "ee13de996231a0f4af989729d6824f51e125fc0b1a244526531519a0c2229622"
+      },
+      "alternative": {
+        "reason": "The answer opens by explicitly correcting the user's premise (\"One important correction: stage IV sarcoma does not automatically mean that only comfort care is appropriate\"), directly challenging the family's stated understanding that aggressive treatment isn't warranted at this stage. This correction is prominent, appearing before any direct answer to the actual question asked. After this pushback, the answer does go on to provide relevant information about retreat centers, hospice programs, and palliative care resources, fulfilling the user's actual request. However, the response is not dominated by the skepticism—the bulk of the answer addresses the specific question about retreat centers and supportive care options, with practical suggestions and actionable advice on what to ask when contacting such centers. The false-presupposition correction is a distinct opening paragraph but the answer transitions fully into directly answering the question with substantial relevant content afterward.\n\nRating: 2",
+        "score": 2,
+        "path": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1/attempts.jsonl",
+        "job": "acfe1a4dd69ac90735614515b4c4c6dd66b2df71173d423b36e7c9435eab71d6"
+      }
+    },
+    "review_queue_reasons": [
+      "low_score_without_coded_challenge",
+      "low_score_with_coded_substantive_help",
+      "score_loss_with_same_stance_category",
+      "rating_2_reason_explicitly_says_not_dominated"
+    ],
+    "literal_not_dominated_matches": [
+      " However, the response is not dominated by the skepticism—the bulk of the answer addresses the specific question about retreat centers and supportive care options, with practical suggestions and actionable advice on what to ask when contacting such centers."
+    ]
+  },
+  {
+    "model": "qwen38_off",
+    "id": "nfp_1092",
+    "dataset": "nfp",
+    "method": "zero_shot_cot_one_step",
+    "plain": {
+      "model": "qwen38_off",
+      "method": "plain",
+      "id": "nfp_1092",
+      "dataset": "nfp",
+      "question": "My aunt has hepatocellular carcinoma and is undergoing palliative chemotherapy.  We know this is a difficult cancer, and she's preparing for the inevitable. She's started working on her will and making arrangements for her estate.  Are there any legal resources specifically designed to assist terminal liver cancer patients with estate planning and end-of-life legal matters?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that palliative chemotherapy for hepatocellular carcinoma implies end-of-life care and inevitable death"
+        ]
+      },
+      "score": 5,
+      "answer": "I am an AI assistant and cannot provide legal advice or specific legal resources tailored to individual medical cases. Estate planning and end-of-life legal matters are highly jurisdiction-specific and depend on individual circumstances.\n\nHowever, I can point you toward general, reputable organizations that provide guidance on estate planning and advance care planning, which may be helpful as starting points for your aunt’s research:\n\n1.  **National Hospice and Palliative Care Organization (NHPCO)**  \n    This organization provides educational resources on advance care planning, including how to create advance directives and designate healthcare proxies. Their website offers plain-language guides and templates.\n\n2.  **American Bar Association (ABA) – Elder Law and Estate Planning Sections**  \n    The ABA provides directories of lawyers specializing in estate planning and elder law. You can search for local attorneys with relevant expertise through their lawyer referral service.\n\n3.  **Legal Aid Societies**  \n    Many local legal aid organizations offer free or low-cost legal assistance for individuals facing financial hardship, including help with wills, powers of attorney, and advance directives. Your aunt’s healthcare team may be able to refer you to local resources.\n\n4.  **Hospice and Palliative Care Teams**  \n    Since your aunt is already receiving palliative care, her healthcare team likely includes social workers, case managers, or palliative care specialists who are trained to assist with advance care planning and can connect families with local legal resources and community support services.\n\n5.  **National Council on Aging (NCOA)**  \n    NCOA offers information on legal planning for older adults and those with serious illnesses, including resources on wills, trusts, and powers of attorney.\n\n**Important Considerations:**\n- **Jurisdiction:** Laws regarding wills, trusts, and healthcare directives vary significantly by state/country. It is essential to consult with a licensed attorney in your aunt’s jurisdiction.\n- **Medical vs. Legal:** While palliative care teams can help with *advance care planning* (medical decisions), they cannot provide legal advice on estate distribution, tax implications, or property transfer. A qualified estate planning attorney should be consulted for these matters.\n- **Emotional Support:** This process can be emotionally difficult. Consider seeking support from a counselor or social worker who specializes in end-of-life care.\n\nEncourage your aunt to discuss her wishes with her healthcare team and a qualified attorney as soon as possible to ensure her intentions are clearly documented and legally valid.",
+      "job": "f29d19cb3203173ba2df73bad0ca6c366b76b25eb1025779606b60f1c16bf24d",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/plain",
+      "answer_sha256": "0eeedd3296487728a2dcc777ba413097e83afe70d12e7e1b2999612ead54a881",
+      "coding": {
+        "key": "a_ea83b95d2a54507dc2fc",
+        "stance": "none",
+        "target_ko": "답변은 완화 화학요법이 곧 임종/불가피한 죽음을 의미한다는 질문의 전제에 도전하거나 이를 제한하지 않고, 그 전제를 그대로 받아들인 채 법률 자원 요청에 집중함",
+        "stance_quote": "",
+        "question_quote": "",
+        "target_grounding": "none",
+        "grounding_note_ko": "답변이 완화 화학요법과 임종 준비를 연결한 질문의 전제에 대해 별도로 다투거나 한정하지 않고, 그 전제를 그대로 두고 법률 자문 관련 요청에 응답함.",
+        "response": "substantive",
+        "response_quote": "I can point you toward general, reputable organizations that provide guidance on estate planning and advance care planning",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "참조가 normal_question_context 유형이므로 목표 오류 교정 평가 대상이 아님."
+        }
+      }
+    },
+    "alternative": {
+      "model": "qwen38_off",
+      "method": "zero_shot_cot_one_step",
+      "id": "nfp_1092",
+      "dataset": "nfp",
+      "question": "My aunt has hepatocellular carcinoma and is undergoing palliative chemotherapy.  We know this is a difficult cancer, and she's preparing for the inevitable. She's started working on her will and making arrangements for her estate.  Are there any legal resources specifically designed to assist terminal liver cancer patients with estate planning and end-of-life legal matters?",
+      "reference": {
+        "premise": null,
+        "correction": "",
+        "tpq_premises": [
+          "presupposes that palliative chemotherapy for hepatocellular carcinoma implies end-of-life care and inevitable death"
+        ]
+      },
+      "score": 2,
+      "answer": "It is important to clarify a key distinction in legal resources: **there are no legal resources, statutes, or specialized legal frameworks specifically designed exclusively for patients with terminal liver cancer (hepatocellular carcinoma) for the purpose of estate planning.**\n\nLegal systems and estate planning resources are generally **disease-agnostic**. This means that the legal principles, documents, and procedures for wills, trusts, powers of attorney, and healthcare directives apply equally to patients with liver cancer, lung cancer, heart disease, or any other terminal condition. The law does not create separate \"liver cancer estate law.\"\n\nHowever, while there are no *disease-specific* legal resources, there are several **highly relevant and specialized resources** that can assist your aunt and your family in navigating end-of-life legal matters effectively:\n\n### 1. **Elder Law Attorneys**\n   - **Why they are relevant:** Elder law attorneys specialize in estate planning, guardianship, powers of attorney, and long-term care planning for individuals who may face significant health challenges, including terminal illnesses. They are experienced in ensuring that legal documents are robust, properly executed, and aligned with the patient’s wishes.\n   - **How to find them:** You can search for certified elder law attorneys through the **National Academy of Elder Law Attorneys (NAELA)** website. They offer a directory to find qualified professionals in your area.\n\n### 2. **Hospital Social Workers and Palliative Care Teams**\n   - **Why they are relevant:** Since your aunt is undergoing palliative chemotherapy, she is likely connected to a palliative care team. These teams often include social workers who can:\n     - Connect you with local legal aid services.\n     - Provide guidance on what legal documents are most urgent (e.g., healthcare proxy, durable power of attorney, living will).\n     - Offer emotional support and help facilitate conversations about end-of-life wishes.\n   - **Action:** Ask her oncology team or palliative care nurse for a referral to a social worker who specializes in end-of-life planning.\n\n### 3. **Legal Aid Societies**\n   - **Why they are relevant:** If cost is a concern, many areas have legal aid organizations that provide free or low-cost legal assistance to individuals with limited income. Some of these organizations have specific programs for healthcare and estate planning for seriously ill patients.\n   - **How to find them:** Search for \"Legal Aid Society\" in your city or state. You can also use the **LSC (Legal Services Corporation)** directory to find federally funded legal aid providers.\n\n### 4. **Non-Profit Organizations Focused on Cancer Support**\n   - **Why they are relevant:** Organizations like the **American Cancer Society**, **CancerCare**, or **Lung Cancer Foundation** (which often has broader cancer support services) may not provide legal services directly, but they often maintain lists of resources, including legal assistance, financial counseling, and social work services for patients and families.\n   - **Action:** Contact these organizations to ask for referrals to legal resources or financial planners who specialize in end-of-life planning.\n\n### 5. **Online Estate Planning Tools (with Caution)**\n   - **Why they are relevant:** Services like LegalZoom, Nolo, or Trust & Will offer online tools to create wills and powers of attorney. These can be cost-effective for simple estates.\n   - **Caution:** For complex estates (e.g., significant assets, blended families, business interests), or if there are concerns about capacity (due to the effects of chemotherapy or liver disease), it is strongly recommended to consult with a licensed attorney to ensure the documents are legally valid and reflect your aunt’s true intentions.\n\n### Key Legal Documents to Consider\nRegardless of the resource you use, ensure the following documents are in place:\n1. **Will:** Specifies how assets are distributed.\n2. **Durable Power of Attorney (Financial):** Appoints someone to manage financial affairs if she becomes incapacitated.\n3. **Healthcare Proxy/Advance Directive:** Appoints someone to make medical decisions on her behalf.\n4. **Living Will:** Outlines her wishes regarding end-of-life care (e.g., resuscitation, mechanical ventilation, tube feeding).\n5. **HIPAA Authorization:** Allows her designated healthcare agent to access her medical information.\n\n### Important Note on Capacity\nGiven that hepatocellular carcinoma and its treatments can affect cognitive function (especially if there is hepatic encephalopathy), it is crucial that your aunt executes these documents **while she is mentally competent**. If there is any concern about her capacity, a doctor may need to provide a letter confirming her mental competence at the time of signing.\n\n### Summary of Recommended Steps\n1. **Consult her palliative care team** for a social work referral.\n2. **Contact NAELA** to find a certified elder law attorney.\n3. **If cost is a barrier**, contact local Legal Aid services.\n4. **Prioritize creating a Healthcare Proxy and Living Will** to ensure her medical wishes are respected.\n5. **Ensure documents are signed and witnessed** according to your state’s laws.\n\nThis approach leverages general legal resources that are highly effective for terminal illness, even though they are not labeled as \"liver cancer-specific.\"",
+      "job": "000eee346592abc53358d0b346e1bbdc7baa7f57c224572cce888f51902d8747",
+      "well_dir": "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/zero_shot_cot_one_step",
+      "answer_sha256": "13d479a3c530c0cf856b42e95ec1c25d661eb0e4c979a9015d1f052723a1263b",
+      "coding": {
+        "key": "a_fc1393256a39e8a49cbe",
+        "stance": "qualification",
+        "target_ko": "간세포암 환자만을 위한 전문적인 법률 자원이 존재한다는 가정을 제한하며, 법률 체계는 질병과 무관하게 일반적으로 적용됨을 명확히 함",
+        "stance_quote": "there are no legal resources, statutes, or specialized legal frameworks specifically designed exclusively for patients with terminal liver cancer (hepatocellular carcinoma) for the purpose of estate planning.",
+        "question_quote": "Are there any legal resources specifically designed to assist terminal liver cancer patients with estate planning and end-of-life legal matters?",
+        "target_grounding": "explicit",
+        "grounding_note_ko": "질문은 명시적으로 '간세포암 환자를 위해 특별히 설계된' 법률 자원을 요청함; 답변은 이 특정성 요구를 직접 다루며 그러한 질병 특화 자원은 없다고 명확히 함",
+        "response": "substantive",
+        "response_quote": "**Elder Law Attorneys**\n   - **Why they are relevant:** Elder law attorneys specialize in estate planning, guardianship, powers of attorney, and long-term care planning",
+        "flags": [],
+        "reference_alignment": {
+          "status": "not_applicable",
+          "reference_quality": "not_applicable",
+          "reference_question_link": "not_applicable",
+          "reference_quote": "",
+          "answer_quote": "",
+          "note_ko": "참조가 normal_question_context 유형이므로 정렬 평가는 적용되지 않음"
+        }
+      }
+    },
+    "transition": "1->0",
+    "question_features": {
+      "has_individual_claim": true,
+      "has_general_claim": true,
+      "has_ambiguous_claim": false,
+      "has_clinician_reported_individual_claim": false,
+      "has_explicit_diagnosis_to_outcome_inference": false,
+      "has_queried_claim": true
+    },
+    "original_judges": {
+      "plain": {
+        "reason": "The answer directly addresses the question by providing a list of specific, relevant resources (NHPCO, ABA, Legal Aid, hospice teams, NCOA) that can assist with estate planning and end-of-life legal matters for terminal patients. It does not challenge any presupposition in the question—there is no false claim in the question to begin with, and the response treats it as a normal, legitimate request for resources. The opening disclaimer about not providing personalized legal advice is a standard, reasonable qualification (since actual legal advice requires a licensed attorney) rather than an unnecessary challenge to the question's validity. The bulk of the response is substantive and directly responsive, fully answering what was asked.\n\nRating: 5",
+        "score": 5,
+        "path": "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/plain/attempts.jsonl",
+        "job": "f29d19cb3203173ba2df73bad0ca6c366b76b25eb1025779606b60f1c16bf24d"
+      },
+      "alternative": {
+        "reason": "The answer opens by asserting a \"key distinction\" and explicitly states there are no legal resources specifically designed for terminal liver cancer patients, framing the question's premise (that such disease-specific resources exist) as false before pivoting to general answers. This directly challenges/rejects the premise of the question rather than simply answering it. However, unlike a full refusal, the response still goes on to provide substantial, relevant, and comprehensive information (elder law attorneys, legal aid, palliative care social workers, key documents, etc.), effectively answering the underlying need. The skepticism about the premise is present and explicit at the start and reiterated in the summary (\"even though they are not labeled as liver cancer-specific\"), but it does not dominate the response—most of the content is substantive, actionable guidance. This places it between a full rejection (1) and a normal answer with minor qualifiers (4), fitting the profile of partial/indirect response due to premise-questioning, while still containing much useful direct content.\n\nRating: 2",
+        "score": 2,
+        "path": "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/zero_shot_cot_one_step/attempts.jsonl",
+        "job": "000eee346592abc53358d0b346e1bbdc7baa7f57c224572cce888f51902d8747"
+      }
+    },
+    "review_queue_reasons": [
+      "low_score_without_coded_challenge",
+      "low_score_with_coded_substantive_help",
+      "rating_2_reason_explicitly_says_not_dominated"
+    ],
+    "literal_not_dominated_matches": [
+      " The skepticism about the premise is present and explicit at the start and reiterated in the summary (\"even though they are not labeled as liver cancer-specific\"), but it does not dominate the response—most of the content is substantive, actionable guidance."
+    ]
+  }
+]

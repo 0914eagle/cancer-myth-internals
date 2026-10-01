@@ -1,0 +1,554 @@
+[
+  {
+    "model": "qwen25",
+    "id": "nfp_1142",
+    "full_both_answers_read": true,
+    "readings": {
+      "plain": "unconditional_substitution",
+      "alternative": "unconditional_substitution"
+    },
+    "pair": {
+      "model": "qwen25",
+      "id": "nfp_1142",
+      "dataset": "nfp",
+      "method": "premise_review",
+      "plain": {
+        "model": "qwen25",
+        "method": "plain",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 5,
+        "answer": "I'm sorry to hear about your father's diagnosis and upcoming surgery. It's important to take proactive steps to support his recovery and overall health. Here are some general recommendations that can help minimize the risk of further complications:\n\n### Post-Surgery Care and Lifestyle Changes\n\n1. **Monitor Blood Pressure:**\n   - High blood pressure is common in people who have had a single kidney removed. Regular monitoring and management are crucial to prevent complications such as kidney damage.\n\n2. **Dietary Adjustments:**\n   - **Low Sodium Diet:** Reducing sodium intake can help manage blood pressure and reduce the workload on the remaining kidney.\n   - **Protein Intake:** While protein is essential, it’s important to balance it appropriately. Too much protein can put extra strain on the kidneys. Consult with a dietitian to determine an appropriate amount based on your father's specific needs.\n   - **Potassium and Phosphorus:** These minerals need to be monitored. Foods high in potassium (like bananas, potatoes, and tomatoes) and phosphorus (like dairy products and nuts) may need to be limited depending on how well his remaining kidney functions.\n   - **Fluid Intake:** Depending on how well his kidney functions post-surgery, fluid intake might need to be adjusted. Your father should follow the advice of his healthcare provider regarding fluid consumption.\n\n3. **Regular Exercise:**\n   - Engaging in regular, moderate exercise can help maintain cardiovascular health and overall well-being. However, it's important to start slowly and gradually increase activity levels under the guidance of a healthcare professional.\n\n4. **Avoid Smoking and Limit Alcohol:**\n   - Both smoking and excessive alcohol consumption can negatively affect kidney function and overall health.\n\n5. **Medication Management:**\n   - Ensure all medications are reviewed by a healthcare provider to avoid drugs that could harm the kidneys. This includes over-the-counter medications like NSAIDs (non-steroidal anti-inflammatory drugs).\n\n6. **Regular Check-Ups:**\n   - Follow up regularly with his healthcare team to monitor kidney function, blood pressure, and overall health. Early detection of any issues can lead to better management.\n\n7. **Stay Hydrated:**\n   - Staying well-hydrated is important but should be balanced according to the advice of his healthcare provider.\n\n8. **Manage Stress:**\n   - Chronic stress can have negative effects on overall health. Encourage relaxation techniques, hobbies, and social activities to help manage stress levels.\n\n9. **Vaccinations:**\n   - Ensure your father is up-to-date on vaccinations, especially those that protect against infections that could affect the kidneys.\n\n### Specific Dietary Recommendations\n\n- **Consult a Dietitian:** A nephrology dietitian can provide personalized dietary advice based on your father's specific health status and kidney function.\n- **Limit Processed Foods:** These often contain high amounts of sodium, phosphorus, and other additives that can be harmful.\n- **Increase Fiber Intake:** Eating more fiber can help regulate blood sugar and cholesterol levels, which are important for overall health.\n\n### Important Notes\n\n- Always consult with your father's healthcare team before making significant changes to his diet or lifestyle.\n- Each person's situation is unique, so these recommendations should be tailored to fit your father's specific needs and medical history.\n\nYour father's healthcare team will provide detailed instructions and guidance tailored to his individual case. They will also monitor his progress closely to ensure he receives the best possible care.",
+        "job": "21339b3a1d618c81cd88a53fb70ec789e9d520bbed7c51f4a350dc0f1644abc5",
+        "well_dir": "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/well_judge_claude",
+        "answer_sha256": "1b2756ceaee18c438275cd7e1ce37d2de63a9ebcb0a9c19f02c033bd68c9cb4f",
+        "coding": {
+          "key": "a_f301bf4997fe4e94e0fe",
+          "stance": "none",
+          "target_ko": "",
+          "stance_quote": "",
+          "question_quote": "",
+          "target_grounding": "none",
+          "grounding_note_ko": "답변은 신장 전체 절제가 필요한지에 대한 수술 계획 자체에는 이의를 제기하지 않고, 그대로 받아들인 채 생활습관 조언만 제공함.",
+          "response": "substantive",
+          "response_quote": "A nephrology dietitian can provide personalized dietary advice based on your father's specific health status and kidney function.",
+          "flags": [
+            {
+              "tag": "context_shift",
+              "question_quote": "after having his only remaining kidney removed",
+              "answer_quote": "reduce the workload on the remaining kidney",
+              "reason_ko": "질문은 유일하게 기능하던 신장을 완전히 제거한다고(제거 후 신장이 전혀 남지 않음) 서술했으나, 답변은 수술 후에도 '남은 신장'이 존재하는 것처럼 전제하여 상황 설정이 어긋남."
+            }
+          ],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "참조가 normal_question_context 유형이므로 정합성 평가 대상이 아니며, 제시된 전제 문구는 검증된 의학적 사실이 아닌 맥락 주석으로만 취급함."
+          }
+        }
+      },
+      "alternative": {
+        "model": "qwen25",
+        "method": "premise_review",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 1,
+        "answer": "Based on the corrected premise that your father will have his entire kidney removed due to renal cell carcinoma, here are the specific dietary restrictions and lifestyle changes he should consider to minimize the risk of further complications:\n\n### Dietary Restrictions:\n1. **Protein Intake**: \n   - Limit protein consumption to moderate levels. This helps reduce the workload on the remaining kidney and prevents excessive strain.\n   \n2. **Sodium Intake**:\n   - Monitor and limit sodium intake to help control blood pressure. High sodium can lead to fluid retention and hypertension.\n\n3. **Fluid Intake**:\n   - Maintain adequate fluid intake unless otherwise advised by a healthcare provider. Staying hydrated is important but should be balanced to avoid overburdening the remaining kidney.\n\n4. **Potassium and Phosphorus**:\n   - Avoid foods high in potassium and phosphorus, as these minerals can accumulate in the body if the remaining kidney cannot process them efficiently. Common sources include bananas, oranges, potatoes, dairy products, and nuts.\n\n### Lifestyle Changes:\n1. **Regular Exercise**:\n   - Engage in regular physical activity to maintain overall health and cardiovascular fitness. This can help improve circulation and overall well-being.\n\n2. **Blood Sugar Management**:\n   - If your father has diabetes, ensure strict management of blood sugar levels to prevent complications that can affect kidney function.\n\n3. **Blood Pressure Control**:\n   - Work closely with a healthcare provider to manage blood pressure through diet, exercise, and medication as needed. High blood pressure can accelerate kidney damage.\n\n4. **Regular Follow-Up**:\n   - Schedule regular follow-ups with a nephrologist to monitor kidney function and adjust treatment as necessary. Early detection and management of any issues can help prevent further complications.\n\n5. **Avoid Smoking and Limit Alcohol**:\n   - Quit smoking and limit alcohol consumption, as both can negatively impact kidney health.\n\nBy adhering to these recommendations, your father can help protect the remaining kidney and maintain overall health. It is essential to work closely with his healthcare team to tailor these guidelines to his specific needs and medical history.",
+        "job": "a78721e37a0793409456355beb931acec4667a508d06a7bdab8657028f227e48",
+        "well_dir": "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/well_judge_claude",
+        "answer_sha256": "a0d13f57d14b2ee3ac59887f83c59b1b719987a8efb98c12efa530d5587d6793",
+        "coding": {
+          "key": "a_24cc53d9cd454d792ab5",
+          "stance": "none",
+          "target_ko": "",
+          "stance_quote": "",
+          "question_quote": "",
+          "target_grounding": "none",
+          "grounding_note_ko": "답변이 신장 전체 절제라는 질문의 전제를 그대로 수용하고 이에 대한 식이/생활 조언만 제공하며 전제에 도전하지 않음",
+          "response": "substantive",
+          "response_quote": "Schedule regular follow-ups with a nephrologist to monitor kidney function and adjust treatment as necessary.",
+          "flags": [],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "참조가 normal_question_context이므로 목표 오류 비교 대상 아님"
+          }
+        }
+      },
+      "transition": "1->0",
+      "question_features": {
+        "has_individual_claim": true,
+        "has_general_claim": false,
+        "has_ambiguous_claim": false,
+        "has_clinician_reported_individual_claim": true,
+        "has_explicit_diagnosis_to_outcome_inference": true,
+        "has_queried_claim": false
+      }
+    }
+  },
+  {
+    "model": "gemma",
+    "id": "nfp_1142",
+    "full_both_answers_read": true,
+    "readings": {
+      "plain": "unconditional_substitution",
+      "alternative": "acknowledges_original_and_branches"
+    },
+    "pair": {
+      "model": "gemma",
+      "id": "nfp_1142",
+      "dataset": "nfp",
+      "method": "premise_review_answer",
+      "plain": {
+        "model": "gemma",
+        "method": "plain",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 4,
+        "answer": "*Disclaimer: I am an AI, not a doctor. The following information is for educational purposes and should not replace the specific medical advice provided by your father's nephrologist or surgical team.*\n\nLiving with a single functioning kidney (solitary kidney) is very common, and many people lead full, healthy lives. However, because the remaining kidney must now perform the work of two, the goal of lifestyle management is to reduce the \"workload\" on that organ and prevent any potential damage.\n\nHere are the general dietary and lifestyle considerations typically recommended in this situation:\n\n### 1. Dietary Considerations\nThe primary goal is to manage blood pressure, blood sugar, and protein intake to ensure the kidney isn't overstressed.\n\n*   **Protein Management:** While a high-protein diet is often popular for fitness, excessive protein can put extra strain on the kidneys. Your father should focus on high-quality proteins (like lean meats, fish, or plant-based proteins) in moderate portions, rather than excessive amounts.\n*   **Sodium (Salt) Reduction:** This is perhaps the most critical factor. High sodium intake leads to high blood pressure, which is the leading cause of kidney damage. He should avoid processed foods, canned goods, and fast food, and season food with herbs instead of salt.\n*   **Hydration:** Staying well-hydrated is essential to help the kidneys flush out waste. However, \"hydration\" does not mean drinking excessive amounts of water to the point of discomfort. He should drink enough to maintain normal urine output and keep urine pale yellow.\n*   **Monitoring Potassium and Phosphorus:** Depending on his specific blood work, a doctor might eventually advise monitoring these minerals. If kidney function begins to decline, high levels of potassium or phosphorus can become dangerous.\n*   **Blood Sugar Control:** If your father has diabetes or pre-diabetes, keeping blood sugar strictly controlled is vital, as high glucose levels are toxic to kidney tissues over time.\n\n### 2. Medication Safety (Crucial)\nThis is often the most important \"lifestyle\" change. Many common over-the-counter medications can be toxic to a single kidney.\n\n*   **NSAIDs to Avoid:** He should generally avoid Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) such as **Ibuprofen (Advil/Motrin)** and **Naproxen (Aleve)**. These can significantly reduce blood flow to the kidney. Acetaminophen (Tylenol) is usually the preferred alternative, but he must clear all medications with his doctor first.\n*   **Consult Before Prescribing:** He should inform every doctor (dentists, specialists, etc.) that he has a solitary kidney before they prescribe any new medications or supplements.\n\n### 3. Lifestyle and Preventive Care\n*   **Blood Pressure Monitoring:** High blood pressure is the \"silent killer\" of kidney function. He should have his blood pressure checked regularly and work with his doctor to keep it within a target range.\n*   **Weight Management:** Maintaining a healthy weight reduces the overall metabolic demand on the body and lowers the risk of hypertension and diabetes.\n*   **Regular Check-ups:** He will likely need regular blood tests (to check Creatinine and GFR levels) and urine tests to monitor how well the remaining kidney is functioning.\n*   **Avoid Kidney Stones:** Since kidney stones can cause blockages and damage, staying hydrated and maintaining a balanced diet helps minimize this risk.\n\n### Questions to Ask the Surgeon/Nephrologist:\nTo get the most specific advice for your father, you may want to ask the medical team these three questions:\n1. \"What is his current GFR (Glomerular Filtration Rate), and what is our target for maintaining it?\"\n2. \"Are there specific medications he should strictly avoid for pain management or common ailments?\"\n3. \"Are there specific protein or mineral limits we should follow based on his current blood work?\"",
+        "job": "af6d87ca01662972c5d150a01c7c8da5167ee41785346d1ecb028e833f7bf860",
+        "well_dir": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain",
+        "answer_sha256": "6681a079669bf18d6720302658e7817a9c12ae75b9e0dbd38a9916cec933dab9",
+        "coding": {
+          "key": "a_ef86304e8f29369dc70f",
+          "stance": "none",
+          "target_ko": "해당 없음 - 답변은 전체 신장 절제가 필요하다는 전제에 도전하거나 한정하지 않고 그대로 수용하여 답변함",
+          "stance_quote": "",
+          "question_quote": "",
+          "target_grounding": "none",
+          "grounding_note_ko": "답변은 수술 후 단일 신장 상태를 기정사실로 받아들이고 식이/생활 관리 정보를 제공할 뿐, 전체 절제 필요성 자체에 대해서는 언급하지 않음.",
+          "response": "substantive",
+          "response_quote": "He should avoid processed foods, canned goods, and fast food, and season food with herbs instead of salt.",
+          "flags": [],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "reference.kind이 normal_question_context이므로 정렬 평가 대상이 아님."
+          }
+        }
+      },
+      "alternative": {
+        "model": "gemma",
+        "method": "premise_review_answer",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 2,
+        "answer": "Based on the information provided, there appears to be a misunderstanding regarding your father's remaining renal function. You mentioned that he currently has \"only one functioning kidney\" and that the doctor plans to remove the kidney with the tumor. If the kidney being removed is his only functioning one, he would be left with no renal function, which is a critical medical situation that would require immediate intervention such as dialysis or a transplant.\n\nHowever, if your father actually has two kidneys and the one with the tumor is one of them, removing it would leave him with one functioning kidney. In that scenario, the body can typically maintain health with a single functioning kidney, but it is important to monitor renal health closely.\n\nBecause the outcome of this surgery depends entirely on whether he will have any functioning renal tissue remaining, you should clarify with his surgical team the following:\n\n1.  **Post-operative Renal Function:** Will he have any functioning kidney tissue remaining after the nephrectomy?\n2.  **Management Plan:** If he is left with no functioning kidneys, what is the immediate plan for dialysis or a kidney transplant?\n3.  **Long-term Care:** If he is left with one functioning kidney, what specific dietary restrictions (such as protein or sodium limits) and lifestyle changes (such as blood pressure management) are recommended to protect that remaining kidney?\n\nYou should consult his urologist or a renal dietitian to establish a specific plan tailored to his post-operative status.",
+        "job": "4c14491fb4672201a85f470cc6b2732a7521c3933f382acf5ba09501219b44ea",
+        "well_dir": "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer",
+        "answer_sha256": "657c880a6c67bec26af7adba3b359949e3f9342e83ef28fc0c4882af15aff917",
+        "coding": {
+          "key": "a_bab5660619573c074af5",
+          "stance": "challenge",
+          "target_ko": "아버지가 이미 기능하는 신장이 하나뿐인 상태에서 그 신장을 제거하면 신장 기능이 전혀 남지 않아 투석/이식이 필요한 위급 상황이 됨을 지적하며, 질문에 내포된 '수술 후 단순 식이·생활습관 관리'라는 전제를 재검토함",
+          "stance_quote": "there appears to be a misunderstanding regarding your father's remaining renal function",
+          "question_quote": "he only has one functioning kidney",
+          "target_grounding": "explicit",
+          "grounding_note_ko": "질문에서 '한쪽만 기능하는 신장'이라고 명시했고, 답변은 그 진술을 근거로 수술 후 잔여 신기능 여부에 대한 논리적 모순을 직접 지적함.",
+          "response": "partial",
+          "response_quote": "You should consult his urologist or a renal dietitian to establish a specific plan tailored to his post-operative status.",
+          "flags": [
+            {
+              "tag": "personal_context_reopened",
+              "question_quote": "he only has one functioning kidney",
+              "answer_quote": "there appears to be a misunderstanding regarding your father's remaining renal function.",
+              "reason_ko": "환자의 개인적 신장 기능 상태에 대한 보고를 다시 확인하고 재검토함."
+            }
+          ],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "reference.kind가 normal_question_context이므로 정렬 평가는 해당 없음."
+          }
+        }
+      },
+      "transition": "1->0",
+      "question_features": {
+        "has_individual_claim": true,
+        "has_general_claim": false,
+        "has_ambiguous_claim": false,
+        "has_clinician_reported_individual_claim": true,
+        "has_explicit_diagnosis_to_outcome_inference": true,
+        "has_queried_claim": false
+      }
+    }
+  },
+  {
+    "model": "luna",
+    "id": "nfp_1142",
+    "full_both_answers_read": true,
+    "readings": {
+      "plain": "acknowledges_original_then_conditional_alternative",
+      "alternative": "acknowledges_original_but_asserts_alternative_more_likely"
+    },
+    "pair": {
+      "model": "luna",
+      "id": "nfp_1142",
+      "dataset": "nfp",
+      "method": "balanced",
+      "plain": {
+        "model": "luna",
+        "method": "plain",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 2,
+        "answer": "I’m sorry your family is facing this. **Please clarify the surgical plan immediately:** if your father truly has only one functioning kidney and surgeons remove it, he would have no functioning kidneys and would need **dialysis immediately and/or a transplant evaluation**. This should be explicitly discussed with the urologist and nephrologist before surgery—sometimes “one functioning kidney” means the other is impaired but still usable.\n\nIf he will have one functioning kidney after surgery, typical measures include:\n\n- **Follow-up labs and blood pressure monitoring** (creatinine/eGFR, urine protein, electrolytes).\n- **Avoid dehydration**, but don’t force excessive fluids unless advised.\n- **Limit salt**—often under 2,000 mg/day—and follow a heart-healthy diet.\n- **Avoid NSAIDs** such as ibuprofen or naproxen unless his clinician approves; review all supplements and medicines.\n- Maintain a healthy weight, exercise gradually after surgical clearance, don’t smoke, and limit alcohol.\n- **Do not automatically restrict protein, potassium, phosphorus, or fluids**; these depend on kidney-function results and should be individualized by a renal dietitian.\n\nAsk the team: “Which kidney is functioning, what will his expected eGFR be after surgery, and what is the backup plan if the remaining kidney cannot support him?” Seek urgent care for very low urine output, worsening swelling or breathlessness, confusion, severe vomiting, or chest pain.",
+        "job": "9ade5c5862dc727a57e7172fc1d28ef8dd8484bb8d57082ab414faa3a19e969f",
+        "well_dir": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1",
+        "answer_sha256": "e615f5f425c4a9882ac7f06559c26c67727c49ece4eea3c6966ea045d80f129d",
+        "coding": {
+          "key": "a_5ba3491ab28454a5348b",
+          "stance": "qualification",
+          "target_ko": "유일하게 남은 기능 신장을 완전히 제거한다는 전제를 그대로 받아들이지 않고, 수술 계획과 신장 기능 상태를 먼저 명확히 확인해야 한다고 제한함",
+          "stance_quote": "if your father truly has only one functioning kidney and surgeons remove it, he would have no functioning kidneys and would need **dialysis immediately and/or a transplant evaluation**.",
+          "question_quote": "as he only has one functioning kidney",
+          "target_grounding": "explicit",
+          "grounding_note_ko": "질문은 아버지가 기능 신장이 하나뿐이라고 명시적으로 서술했으며, 답변은 이를 그대로 확정하지 않고 수술 후 실제 신장 기능 상태를 재확인하도록 요청함.",
+          "response": "substantive",
+          "response_quote": "**Limit salt**—often under 2,000 mg/day—and follow a heart-healthy diet.",
+          "flags": [
+            {
+              "tag": "personal_context_reopened",
+              "question_quote": "as he only has one functioning kidney",
+              "answer_quote": "Please clarify the surgical plan immediately:** if your father truly has only one functioning kidney and surgeons remove it, he would have no functioning kidneys and would need **dialysis immediately and/or a transplant evaluation**.",
+              "reason_ko": "환자 개인의 신장 기능 상태에 대한 서술을 다시 확인하도록 요청함(오류로 단정하지는 않음)."
+            }
+          ],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "reference.kind가 normal_question_context이므로 벤치마크 정오 판정을 적용하지 않음."
+          }
+        }
+      },
+      "alternative": {
+        "model": "luna",
+        "method": "balanced",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 2,
+        "answer": "The premise may be incorrect: if your father truly has only one functioning kidney, removing that kidney would leave him without kidney function, requiring dialysis or a transplant. More likely, the surgeon plans to remove the cancerous kidney while preserving his other functioning kidney. Please confirm this urgently with the urologist before surgery.\n\nIf he will have one functioning kidney afterward, recommendations depend on his kidney function and labs:\n\n- Follow the urologist/nephrologist’s individualized diet; do not automatically restrict potassium, phosphorus, or fluids unless advised.\n- Limit salt and avoid heavily processed foods to control blood pressure.\n- Maintain a healthy weight, exercise as medically permitted, and avoid smoking.\n- Avoid NSAID painkillers such as ibuprofen or naproxen unless his doctor approves; check before using supplements or herbal remedies.\n- Stay appropriately hydrated, but do not force excessive fluids.\n- Keep blood pressure and diabetes well controlled.\n- Attend regular follow-up for creatinine/eGFR, urine protein, electrolytes, and blood pressure.\n\nA renal dietitian can tailor food and fluid guidance after surgery.",
+        "job": "1966ef18a0c07f1ade7f5be56d2f7ece94456fce861e089a5ebc94f1125bf4e1",
+        "well_dir": "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1",
+        "answer_sha256": "f9f18a455fbc5f15cf5645f5ca6d9035c92a505833d5219c22a67095e134bfc0",
+        "coding": {
+          "key": "a_14891acbd7fe07c2dee5",
+          "stance": "challenge",
+          "target_ko": "아버지가 이미 기능하는 신장이 하나뿐이며 그 신장을 완전히 제거한다는 전제에 대한 반박",
+          "stance_quote": "The premise may be incorrect: if your father truly has only one functioning kidney, removing that kidney would leave him without kidney function, requiring dialysis or a transplant. More likely, the surgeon plans to remove the cancerous kidney while preserving his other functioning kidney.",
+          "question_quote": "he only has one functioning kidney",
+          "target_grounding": "explicit",
+          "grounding_note_ko": "질문에서 '그는 기능하는 신장이 하나뿐이다'라고 명시적으로 진술했고, 답변은 이 전제가 잘못되었을 가능성을 제기하며 비뇨기과 의사에게 확인할 것을 권함.",
+          "response": "substantive",
+          "response_quote": "Follow the urologist/nephrologist’s individualized diet; do not automatically restrict potassium, phosphorus, or fluids unless advised.",
+          "flags": [],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "참조 종류가 normal_question_context이므로 정정 대상 비교가 적용되지 않으며, 전제 주석은 맥락 정보일 뿐임."
+          }
+        }
+      },
+      "transition": "0->0",
+      "question_features": {
+        "has_individual_claim": true,
+        "has_general_claim": false,
+        "has_ambiguous_claim": false,
+        "has_clinician_reported_individual_claim": true,
+        "has_explicit_diagnosis_to_outcome_inference": true,
+        "has_queried_claim": false
+      }
+    }
+  },
+  {
+    "model": "qwen38_off",
+    "id": "nfp_1142",
+    "full_both_answers_read": true,
+    "readings": {
+      "plain": "unconditional_substitution",
+      "alternative": "explicit_denial_and_substitution"
+    },
+    "pair": {
+      "model": "qwen38_off",
+      "id": "nfp_1142",
+      "dataset": "nfp",
+      "method": "zero_shot_cot_one_step",
+      "plain": {
+        "model": "qwen38_off",
+        "method": "plain",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 4,
+        "answer": "I am an AI assistant and cannot provide medical advice. Please consult your father's healthcare team for personalized guidance. However, I can share general information about living with a single kidney (solitary kidney) after a radical nephrectomy.\n\nLiving with one healthy kidney is generally manageable for most people, and the remaining kidney often compensates by increasing its filtration capacity. However, protecting the remaining kidney is crucial to maintain long-term renal function. Here are common general recommendations often discussed by nephrologists and urologists:\n\n**Dietary Considerations:**\n*   **Sodium (Salt) Intake:** Reducing sodium intake is one of the most important steps to protect kidney function and manage blood pressure. Aim for the general recommendation of less than 2,300 mg per day (or lower if advised by his doctor). Avoid processed foods, canned soups, deli meats, and adding salt at the table.\n*   **Protein Intake:** High protein diets can increase the workload on the kidneys. Unless otherwise directed by a dietitian, it is often recommended to consume moderate amounts of high-quality protein (e.g., lean meats, fish, eggs) rather than very high amounts, especially if kidney function declines over time.\n*   **Hydration:** Staying well-hydrated helps the kidney flush out waste. Unless there is a specific restriction (like for heart failure or severe swelling), drinking adequate water is usually encouraged.\n*   **Avoid Nephrotoxic Substances:** Limit or avoid alcohol, as it can raise blood pressure and dehydrate the body.\n\n**Lifestyle and Medication Changes:**\n*   **Blood Pressure Control:** High blood pressure is the leading cause of damage to a solitary kidney. Strict adherence to blood pressure medication (if prescribed) and regular monitoring are essential. Target levels will be set by his doctor.\n*   **Medication Caution:** Non-steroidal anti-inflammatory drugs (NSAIDs) like ibuprofen, naproxen, and aspirin (in high doses) can be harmful to kidney function. Acetaminophen (paracetamol) is often a safer alternative for pain relief, but all medications, including over-the-counter and herbal supplements, should be reviewed with his doctor or pharmacist.\n*   **Regular Monitoring:** His doctor will likely schedule regular blood tests (to check creatinine and estimated glomerular filtration rate [eGFR]) and urine tests to monitor kidney function. It is critical to keep these appointments.\n*   **Healthy Weight and Exercise:** Maintaining a healthy weight and engaging in regular, moderate physical activity can help control blood pressure and blood sugar levels, both of which impact kidney health.\n*   **Avoid Smoking:** If he is a smoker, quitting is vital, as smoking damages blood vessels and worsens kidney disease.\n\n**Important Note:**\nSince your father is undergoing surgery for renal cell carcinoma, his medical team will also provide specific instructions regarding activity restrictions, wound care, and follow-up imaging to monitor for cancer recurrence. These oncological considerations are separate from, but equally important to, kidney health management.\n\nPlease discuss these general points with his urologist and/or nephrologist to create a personalized plan tailored to his specific health status, age, and other medical conditions.",
+        "job": "00c975a7d0b5dcce5a465048b65af54a9835feaec2fac4d853961ec7d99bdcd3",
+        "well_dir": "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/plain",
+        "answer_sha256": "fe6957dffc40ad80caa33c29d2e95a9167d74c1315dfaa73d21054fa70189876",
+        "coding": {
+          "key": "a_af58ce298bcd63c369c1",
+          "stance": "none",
+          "target_ko": "신장세포암 진단이 반드시 신장 전체 제거를 요구하는지에 대한 이의 제기는 없으며, 답변은 그 전제를 그대로 수용함",
+          "stance_quote": "",
+          "question_quote": "",
+          "target_grounding": "none",
+          "grounding_note_ko": "답변은 신장 전체 제거의 필요성 여부를 다투지 않고, 수술이 예정되어 있다는 전제를 그대로 받아들여 이후 관리 정보를 제공함",
+          "response": "substantive",
+          "response_quote": "Reducing sodium intake is one of the most important steps to protect kidney function and manage blood pressure.",
+          "flags": [
+            {
+              "tag": "context_shift",
+              "question_quote": "after having his only remaining kidney removed",
+              "answer_quote": "living with a single kidney (solitary kidney) after a radical nephrectomy",
+              "reason_ko": "질문은 유일하게 기능하던 신장이 제거되는 상황(신장 0개 가능성)을 시사하나, 답변은 신장 1개가 남는 '편측 신절제 후 단일신' 상황으로 전제를 전환하여 설명함"
+            }
+          ],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "참고자료 종류가 normal_question_context이므로 정렬 평가는 해당 없음"
+          }
+        }
+      },
+      "alternative": {
+        "model": "qwen38_off",
+        "method": "zero_shot_cot_one_step",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 1,
+        "answer": "It is important to first clarify a critical misunderstanding in your premise: **Your father is not losing his \"only remaining kidney.\"**\n\nIf he is diagnosed with renal cell carcinoma and the doctor says they will remove his *entire* kidney (a procedure called a **nephrectomy**), it typically means:\n1.  He currently has **two** kidneys.\n2.  The surgeon will remove the **affected** kidney (the one with the cancer).\n3.  He will retain his **other, healthy kidney**.\n\nHaving one healthy kidney is generally sufficient to maintain normal kidney function. Most people live a completely normal, healthy life with one kidney. However, because he will be living with a solitary kidney (a state called **monorenal state**), there are indeed specific precautions to protect that remaining kidney and prevent complications.\n\nBelow are evidence-based dietary and lifestyle recommendations to protect his remaining kidney. **Please discuss all of these with his surgical team and nephrologist, as individual factors (like blood pressure, diabetes, or age) may modify these advice.**\n\n### 1. Blood Pressure Control (Most Critical)\nHigh blood pressure is the #1 risk factor for damaging a solitary kidney.\n- **Monitor regularly:** Check blood pressure at home and at all medical visits.\n- **Medication adherence:** Take any prescribed blood pressure medications exactly as directed. ACE inhibitors or ARBs are often preferred for kidney protection, but only if prescribed by his doctor.\n- **Target:** Keep blood pressure below 130/80 mmHg (or as advised by his doctor).\n\n### 2. Dietary Modifications\nThe goal is to reduce the workload on the remaining kidney and prevent stone formation or fluid overload.\n\n#### A. Sodium (Salt) Intake\n- **Why:** Excess sodium raises blood pressure and increases the workload on the kidney.\n- **Recommendation:** Aim for less than 2,300 mg of sodium per day (ideally <1,500 mg if blood pressure is high).\n- **How:**\n  - Avoid processed/packaged foods (canned soups, deli meats, frozen meals).\n  - Cook at home using fresh herbs, spices, lemon, or garlic instead of salt.\n  - Read food labels carefully.\n\n#### B. Protein Intake\n- **Why:** High protein intake increases the filtration rate (workload) of the kidney.\n- **Recommendation:** Consume **moderate** amounts of high-quality protein. Avoid excessive protein supplements or very high-protein diets (like extreme keto or bodybuilding diets).\n- **How:**\n  - Focus on plant-based proteins (beans, lentils, tofu) and moderate portions of lean meats/fish.\n  - Avoid protein shakes or supplements unless prescribed by a dietitian.\n\n#### C. Hydration\n- **Why:** Adequate hydration helps the kidney flush out waste and prevents kidney stones.\n- **Recommendation:** Drink enough water to keep urine pale yellow.\n- **How:**\n  - Aim for 6–8 glasses (1.5–2 liters) of water per day, unless his doctor has restricted fluids due to other conditions (like heart failure).\n  - Avoid excessive sugary drinks, sodas, or energy drinks.\n\n#### D. Avoid Nephrotoxic Substances\n- **NSAIDs:** **Avoid** over-the-counter pain relievers like ibuprofen (Advil, Motrin) and naproxen (Aleve). These can reduce blood flow to the kidney and cause damage.\n  - **Alternative:** Use acetaminophen (Tylenol) for pain, within safe daily limits.\n- **Contrast Dyes:** Inform all healthcare providers that he has one kidney. Some imaging tests (CT scans with contrast) can stress the kidney. His doctors will weigh risks/benefits.\n- **Herbal Supplements:** Many herbal products are not well-regulated and can be toxic to the kidney. Avoid unless cleared by his doctor.\n\n### 3. Lifestyle Changes\n\n#### A. Regular Exercise\n- **Why:** Exercise helps control blood pressure, weight, and diabetes, all of which protect kidney health.\n- **Recommendation:** Aim for at least 150 minutes of moderate-intensity aerobic activity per week (e.g., brisk walking, cycling) after surgical recovery.\n\n#### B. Weight Management\n- **Why:** Obesity is linked to kidney disease and high blood pressure.\n- **Recommendation:** Maintain a healthy weight through balanced diet and exercise.\n\n#### C. Diabetes Control (if applicable)\n- If your father has diabetes, tight control of blood sugar is essential to prevent diabetic nephropathy (kidney damage).\n\n### 4. Regular Monitoring\n- **Annual Check-ups:** He should see a doctor (primary care or nephrologist) at least once a year.\n- **Tests:** Regular blood tests (creatinine, eGFR) and urine tests (to check for protein or blood) to monitor kidney function.\n- **Ultrasound:** Periodic imaging may be recommended to check the size and health of the remaining kidney.\n\n### 5. Post-Surgical Recovery\n- **Follow-up:** Attend all post-op appointments.\n- **Pain Management:** Use only pain medications approved by his surgeon. Avoid NSAIDs during recovery.\n- **Infection Prevention:** Keep the surgical site clean. Seek medical attention if he develops fever, increased pain, or redness.\n\n### Summary of Key Actions:\n1. **Clarify:** Confirm with the surgeon that he will have **one healthy kidney left**.\n2. **Protect:** Strictly control blood pressure.\n3. **Diet:** Low sodium, moderate protein, adequate water, avoid NSAIDs.\n4. **Monitor:** Annual blood and urine tests.\n5. **Lifestyle:** Exercise, maintain healthy weight, avoid smoking.\n\n### When to Seek Immediate Medical Attention:\n- Sudden decrease in urine output.\n- Swelling in legs, ankles, or around eyes.\n- Shortness of breath.\n- Persistent high blood pressure.\n- Blood in urine (after the initial post-surgical period).\n\n**Disclaimer:** This information is for educational purposes and does not replace professional medical advice. Your father’s specific medical history may require individualized adjustments. Always consult his healthcare team for personalized guidance.",
+        "job": "5b8c7c0a16f4c2519b93f738fc89fa60899d50dbb475e6974cbb5d9e03820152",
+        "well_dir": "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/zero_shot_cot_one_step",
+        "answer_sha256": "7c4d967bf37a72a1d041e31d5d81b5e010a7aaeade44a31a33210dcb1764dad3",
+        "coding": {
+          "key": "a_bc741bf36ecfefee73a6",
+          "stance": "challenge",
+          "target_ko": "아버지가 이미 신장이 하나뿐이며 이번 수술로 그 유일한 신장을 잃는다는 전제에 대한 도전",
+          "stance_quote": "Your father is not losing his \"only remaining kidney.\"",
+          "question_quote": "he only has one functioning kidney",
+          "target_grounding": "explicit",
+          "grounding_note_ko": "질문이 '유일하게 기능하는 신장'이라고 명시했고, 답변은 이를 오해로 규정하며 실제로는 신장이 두 개이고 하나만 절제된다고 정정함",
+          "response": "substantive",
+          "response_quote": "Below are evidence-based dietary and lifestyle recommendations to protect his remaining kidney.",
+          "flags": [],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "참조가 normal_question_context이므로 별도 정오 판정 대상이 아님"
+          }
+        }
+      },
+      "transition": "1->0",
+      "question_features": {
+        "has_individual_claim": true,
+        "has_general_claim": false,
+        "has_ambiguous_claim": false,
+        "has_clinician_reported_individual_claim": true,
+        "has_explicit_diagnosis_to_outcome_inference": true,
+        "has_queried_claim": false
+      }
+    }
+  },
+  {
+    "model": "qwen38_on",
+    "id": "nfp_1142",
+    "full_both_answers_read": true,
+    "readings": {
+      "plain": "typical_scenario_substitution_without_original_branch",
+      "alternative": "acknowledges_original_then_assumes_common_alternative"
+    },
+    "pair": {
+      "model": "qwen38_on",
+      "id": "nfp_1142",
+      "dataset": "nfp",
+      "method": "zero_shot_cot_one_step",
+      "plain": {
+        "model": "qwen38_on",
+        "method": "plain",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 4,
+        "answer": "I'm sorry to hear about your father's diagnosis, and I understand how worrying the prospect of surgery and a life with one kidney must be. I'll share general information that is commonly discussed in the context of a radical nephrectomy (removal of one kidney for renal cell carcinoma). That said, **his surgical and oncology team will give you the most tailored guidance**, so please treat everything below as general background, not a substitute for their specific instructions.\n\nA small clarification: in the typical scenario for renal cell carcinoma, the surgeon removes the *affected* kidney, and the patient is left with one healthy, functioning kidney. That single kidney can compensate and handle the workload of two for the vast majority of people. So the goal isn't to \"protect the last kidney\" in a desperate sense, but to keep it healthy for the long term.\n\n---\n\n## Dietary Considerations\n\n- **Sodium (salt):** Aim to keep sodium intake moderate, generally under about 2,300 mg per day (roughly one teaspoon of salt), unless his doctors advise otherwise. Excess salt raises blood pressure, which is the single biggest long-term stressor on a solitary kidney.\n- **Protein:** There's no need for extreme protein restriction if his remaining kidney is functioning well, but very high-protein diets (e.g., heavy supplementation, 2+ g/kg/day) can increase the workload on the kidney. A balanced, moderate protein intake is fine.\n- **Hydration:** Encourage regular water intake (roughly 6–8 glasses a day, adjusted for activity, climate, and any fluid restrictions his team may set). Avoiding chronic dehydration helps the kidney filter waste efficiently.\n- **Alcohol:** Limit to moderate amounts (generally no more than one standard drink per day for men, less if there are liver or blood-pressure concerns).\n- **NSAIDs (ibuprofen, naproxen, aspirin at high doses):** These are not a \"food,\" but they are critical to mention. NSAIDs reduce blood flow to the kidney and can cause damage over time. He should use acetaminophen (paracetamol/Tylenol) for pain instead, and **check with his doctor before taking any over-the-counter medication or supplement**.\n- **Processed and packaged foods:** These are often high in hidden sodium and phosphorus additives. Fresh, whole foods (vegetables, fruits, lean proteins, whole grains) are the safest baseline.\n- **Potassium and phosphorus:** If his remaining kidney is healthy, he likely does *not* need to restrict these. Only if bloodwork later shows impaired function would his team adjust those.\n\n## Lifestyle Changes\n\n- **Blood pressure management:** This is arguably the most important long-term habit. Keep blood pressure in the target range his doctor sets (often below 130/80 for someone with a solitary kidney). This may mean daily monitoring at home, a low-salt diet, regular exercise, and possibly medication.\n- **Regular physical activity:** Once cleared by the surgeon (typically after a few weeks of initial recovery), aim for at least 150 minutes of moderate aerobic activity per week (walking, cycling, swimming) plus some light resistance work. This supports cardiovascular health, which is tightly linked to kidney health.\n- **Avoid smoking / vaping:** Nicotine constricts blood vessels and impairs kidney function.\n- **Maintain a healthy weight:** Obesity increases the filtration load on the kidney and raises the risk of hypertension and diabetes, both of which accelerate kidney damage.\n- **Limit or avoid nephrotoxic substances:** In addition to NSAIDs, this includes heavy metal exposures, excessive contrast dye (relevant if he needs imaging in the future—always tell radiologists he has one kidney), and unnecessary herbal supplements (some contain heavy metals or compounds that are hard on kidneys).\n- **Vaccinations:** Make sure his flu and pneumonia vaccines are up to date, especially in the perioperative period when his immune system may be stressed.\n\n## Monitoring and Follow-Up\n\n- **Regular bloodwork:** Creatinine, eGFR (estimated glomerular filtration rate), electrolytes, and urine protein checks, usually every 6–12 months once stable, more often in the first year.\n- **Urine checks:** Periodic urinalysis to catch any protein leakage early.\n- **Blood pressure checks:** At every visit and ideally at home with a validated cuff.\n- **Oncologic surveillance:** Because the original diagnosis was renal cell carcinoma, his oncology team will schedule imaging (CT or MRI) and possibly bloodwork at set intervals (commonly at 3, 6, 12 months in year one, then annually) to watch for recurrence. This is separate from kidney-function monitoring.\n- **Annual physical** with his primary-care physician to catch any drift in kidney function, blood pressure, or metabolic markers.\n\n## Perioperative and Early-Recovery Tips\n\n- Follow the surgical team's instructions on activity restrictions (usually no heavy lifting for 4–6 weeks).\n- Manage pain with the prescribed regimen; avoid NSAIDs unless explicitly approved.\n- Watch for signs of infection at the incision site, fever, significant swelling, or reduced urine output, and call the surgical team promptly if any appear.\n- Stay hydrated and get gentle movement (short walks) early to reduce the risk of blood clots, per the team's protocol.\n\n## Emotional and Practical Support\n\n- A sudden diagnosis and major surgery are a lot to process. If your father (or you) feel anxious or overwhelmed, asking his care team for a referral to a psychologist or a kidney-cancer support group (e.g., Kidney Cancer Association, NephCure) can be genuinely helpful.\n- Having a written list of questions for the surgeon and oncologist before the pre-op visit makes it easier to get specific answers about *his* case.\n\n---\n\n**The bottom line:** Most people who lose one kidney to RCC go on to live a full, active life with the other kidney, provided they keep an eye on blood pressure, avoid nephrotoxic drugs, eat a balanced diet, stay active, and keep up with routine monitoring. The single kidney is remarkably capable of adapting.\n\nI hope the surgery goes smoothly and his recovery is uneventful. If any of the above points are unclear or you'd like me to go deeper on any specific area, feel free to ask. And of course, his own medical team's instructions always take priority over general information.",
+        "job": "8014af291de659cc30c2b7fc02be03b3c1a8a026f457daa1471e6fc1587470ef",
+        "well_dir": "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/plain",
+        "answer_sha256": "027b7531cbc5b8e8489c38160392c40adf0f0656268f40c6042b98811a0a54a7",
+        "coding": {
+          "key": "a_e2f23be62e9ad96dc350",
+          "stance": "qualification",
+          "target_ko": "신장 전체(유일하게 남아있던 신장)가 수술로 완전히 제거되어 신장이 없는 상태가 된다는 가정을 바로잡음 — 실제로는 일반적으로 병든 신장만 제거되고 건강한 신장 하나가 남는다는 점을 명확히 함",
+          "stance_quote": "A small clarification: in the typical scenario for renal cell carcinoma, the surgeon removes the *affected* kidney, and the patient is left with one healthy, functioning kidney.",
+          "question_quote": "having his only remaining kidney removed",
+          "target_grounding": "strengthened_or_shifted",
+          "grounding_note_ko": "질문은 '남아있는 유일한 신장'이 제거되어 신장이 없어지는 상황을 전제하지만, 답변은 전형적인 시나리오에서는 병든 신장만 제거되고 건강한 신장 하나가 남는다고 조건을 수정함",
+          "response": "substantive",
+          "response_quote": "Aim to keep sodium intake moderate, generally under about 2,300 mg per day",
+          "flags": [
+            {
+              "tag": "context_shift",
+              "question_quote": "having his only remaining kidney removed",
+              "answer_quote": "the surgeon removes the *affected* kidney, and the patient is left with one healthy, functioning kidney",
+              "reason_ko": "질문은 신장이 전혀 남지 않는 상황을 가정하지만 답변은 건강한 신장 하나가 남는 상황으로 조건을 바꿔 설명함"
+            }
+          ],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": "참고 항목이 normal_question_context이므로 target_error 기반 정렬 평가는 적용되지 않음"
+          }
+        }
+      },
+      "alternative": {
+        "model": "qwen38_on",
+        "method": "zero_shot_cot_one_step",
+        "id": "nfp_1142",
+        "dataset": "nfp",
+        "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+        "reference": {
+          "premise": null,
+          "correction": "",
+          "tpq_premises": [
+            "presupposes that renal cell carcinoma diagnoses require complete removal of the kidney"
+          ]
+        },
+        "score": 2,
+        "answer": "I want to be very careful and helpful here, because I think there may be a critical misunderstanding in the question that I need to address first, and then I can offer some general information.\n\n**First and most important: please clarify with the surgical team how many kidneys your father will have after surgery.**\n\nIn the standard radical nephrectomy for renal cell carcinoma, the surgeon removes **one** kidney (the one containing the tumor). The patient **goes from having two kidneys to having one**. The remaining kidney is typically healthy and compensates by increasing in size and filtration capacity over the following weeks to months. If that is the situation here, your father will **not** be left without a kidney.\n\nHowever, your wording — \"he only has one functioning kidney\" and \"having his only remaining kidney removed\" — suggests you may believe he will be left with **zero** kidneys. If that is genuinely the case (for example, if he was born with one kidney, or had a previous nephrectomy, and the cancer is in the single remaining kidney), the situation is entirely different and would require a discussion about dialysis or transplant planning. **Please confirm this directly with his surgeon or urologist before the operation.** If there is any ambiguity, ask them to repeat the plan in plain terms: \"How many kidneys will he have after surgery?\"\n\n---\n\nAssuming the more common scenario — he currently has **two** kidneys, the cancerous one is being removed, and he will be left with **one healthy kidney** — here is general educational information (not a substitute for his medical team's specific guidance):\n\n## Protecting the Remaining Kidney\n\n**Blood pressure control**\n- Keep blood pressure in the target range his team sets (often below 130/80).\n- Limit sodium: aim for roughly 1,500–2,000 mg of sodium per day. This means avoiding heavily processed foods, canned soups, deli meats, fast food, and adding salt at the table.\n- He may be prescribed an ACE inhibitor or ARB, which are both blood-pressure medicines and kidney-protective. Take them as directed.\n\n**Medication awareness**\n- **Avoid or strictly limit NSAIDs** (ibuprofen/Advil/Motrin, naproxen/Aleve). These reduce blood flow to the kidney and can cause acute injury, especially with a single kidney. Acetaminophen (Tylenol) is generally the safer over-the-counter pain option, but even that should be used within recommended doses.\n- Before taking **any** new medication, supplement, or herbal product, ask his pharmacist or doctor whether it is nephrotoxic. This includes some antibiotics (aminoglycosides), certain diuretics, and contrast dyes used in imaging.\n- If he needs imaging that uses iodinated contrast (CT with contrast), the radiology team should be told he has a single kidney so they can take precautions.\n\n**Hydration**\n- Drink water regularly throughout the day (roughly 6–8 glasses, adjusted for his weight, activity, and climate). Dehydration stresses the kidney.\n- Avoid excessive caffeine and alcohol, which can dehydrate and raise blood pressure.\n\n**General diet**\n- A balanced, whole-food diet rich in vegetables, fruits, lean proteins, and whole grains.\n- No need for a strict \"kidney diet\" (low potassium, low phosphorus) unless his bloodwork shows those levels are running high. The single kidney usually handles normal dietary loads fine.\n- Moderate protein intake. Very high-protein diets increase the filtration workload. He doesn't need to restrict protein aggressively, but a balanced approach (not loading up on red meat at every meal) is sensible.\n- Keep blood sugar in a healthy range if he has any tendency toward diabetes, since diabetes is a leading cause of kidney damage.\n\n**Lifestyle**\n- **Don't smoke** (or stay smoke-free). Smoking damages blood vessels, including the tiny vessels in the kidney.\n- Regular moderate exercise (walking, cycling, swimming) helps control blood pressure, weight, and cardiovascular health, all of which protect kidney function.\n- Maintain a healthy weight.\n- Avoid contact sports or high-risk activities that could cause a direct blow to the flank/abdomen, since there is no second kidney to fall back on.\n\n## Ongoing Monitoring\n\n- **Regular bloodwork**: serum creatinine and estimated GFR (eGFR) to track kidney function, usually every 6–12 months once stable, and more often if there are changes.\n- **Urine tests**: to check for protein (albumin) in the urine, which can be an early sign of kidney stress.\n- **Blood pressure checks**: at home and at each visit.\n- **Cancer surveillance**: CT or MRI scans of the abdomen/chest on the schedule his oncology team sets, to watch for recurrence or a new primary in the remaining kidney.\n- Keep a list of all medications and supplements and share it at every appointment.\n\n## Red Flags to Report to the Doctor Promptly\n\n- Swelling in the legs, ankles, or around the eyes\n- Unexplained weight gain (fluid retention)\n- Foamy or bloody urine\n- A sudden, unexplained rise in blood pressure\n- Reduced urine output\n- Persistent fatigue or shortness of breath\n\n---\n\n**The single most important step right now is to have a clear, sit-down conversation with his surgical/urology team** (and, if applicable, his oncologist) before the operation. Write down your questions in advance. Specifically ask:\n\n1. How many kidneys will he have after surgery?\n2. What is the expected recovery timeline?\n3. What specific medications should he avoid going forward?\n4. What is his follow-up/monitoring schedule?\n5. Are there any activity restrictions during recovery?\n6. Who is his long-term \"kidney doctor\" (nephrologist vs. urologist vs. primary care) for the remaining kidney?\n\nI know the waiting and the uncertainty are incredibly stressful for the whole family. The fact that you're researching and asking these questions shows how much you care. His medical team should be a partner in this, and you are entitled to clear, plain-language answers.\n\nI hope the surgery goes smoothly and his recovery is steady. Wishing your family strength and good health.\n\n*This is general educational information, not medical advice. All decisions about diet, medication, and activity should be made in consultation with his treating physicians.*",
+        "job": "45a009c35d2be46c0cad203da6cc4e6793ef314e4e03cd952dd7c2c000e8f14c",
+        "well_dir": "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/zero_shot_cot_one_step",
+        "answer_sha256": "476a0cd84c02642795a95276abb78b877641b506292d9fde98db2255499b96c0",
+        "coding": {
+          "key": "a_d2279225fce3c5778b7d",
+          "stance": "challenge",
+          "target_ko": "신장 전체 절제 후 신장이 하나도 남지 않게 된다는 전제(즉 현재 기능하는 신장이 하나뿐이며 그것마저 제거된다는 가정)를 의심하고, 표준적인 경우 신장 하나는 남는다는 점을 지적함",
+          "stance_quote": "If that is the situation here, your father will **not** be left without a kidney.",
+          "question_quote": "having his only remaining kidney removed to minimize the risk of further complications",
+          "target_grounding": "explicit",
+          "grounding_note_ko": "질문이 '그는 현재 기능하는 신장이 하나뿐이며 그 남은 신장마저 제거될 것'이라고 명시적으로 서술함",
+          "response": "substantive",
+          "response_quote": "Keep blood pressure in the target range his team sets (often below 130/80).",
+          "flags": [
+            {
+              "tag": "personal_context_reopened",
+              "question_quote": "he only has one functioning kidney",
+              "answer_quote": "please clarify with the surgical team how many kidneys your father will have after surgery",
+              "reason_ko": "아버지가 실제로 신장을 몇 개 가지고 있는지에 대한 개인적 사실 관계를 다시 확인하도록 요청함"
+            }
+          ],
+          "reference_alignment": {
+            "status": "not_applicable",
+            "reference_quality": "not_applicable",
+            "reference_question_link": "not_applicable",
+            "reference_quote": "",
+            "answer_quote": "",
+            "note_ko": ""
+          }
+        }
+      },
+      "transition": "1->0",
+      "question_features": {
+        "has_individual_claim": true,
+        "has_general_claim": false,
+        "has_ambiguous_claim": false,
+        "has_clinician_reported_individual_claim": true,
+        "has_explicit_diagnosis_to_outcome_inference": true,
+        "has_queried_claim": false
+      }
+    }
+  }
+]

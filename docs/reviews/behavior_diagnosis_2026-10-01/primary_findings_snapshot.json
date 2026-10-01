@@ -1,0 +1,116 @@
+{
+  "scope": {
+    "answers": 7318,
+    "pairs": 3659,
+    "original_questions": 732,
+    "source": "Complete original Sonnet audit; additional conditions excluded until complete."
+  },
+  "who_did_what": {
+    "sonnet": "Full per-answer coding and blind question-scope coding.",
+    "assistant": "All-row aggregation; original full questions for 136 positive and 23 lexical-negative attribution cases; all 37 baseline-positive FPQ target links in that stratum; full reading of six defined exception answers.",
+    "not_claimed": "Assistant did not independently read every one of the 7318 full answers."
+  },
+  "findings": [
+    {
+      "topic": "NFP 점수 하락과 답변 회피",
+      "evidence": {
+        "loss_instances": 121,
+        "substantive_after": 108,
+        "partial_after": 13,
+        "withheld_after": 0
+      },
+      "interpretation_ko": "현재 Sonnet 분류에서 새 NFP 저점은 대부분 답변 거부가 아니라 요청에 답하면서 나타났다. 안전 가드레일의 내부 관여 여부는 이 결과로 판단하지 않는다."
+    },
+    {
+      "topic": "FPQ 개선의 서로 다른 경로",
+      "evidence": {
+        "gain_instances": 570,
+        "new_coded_target_correction": 391,
+        "already_coded_target_correction": 178,
+        "unclear_target": 1
+      },
+      "interpretation_ko": "점수 상승을 모두 새 목표 오류 발견으로 세지 않는다. 새로 목표 교정으로 분류된 변화와 기존에도 목표 교정으로 분류됐으나 점수가 낮던 변화가 함께 있다."
+    },
+    {
+      "topic": "개인 상황 보호 지시의 영향 범위",
+      "evidence": {
+        "full_questions_coded": 732,
+        "fpq_yes_to_no": 147,
+        "fpq_no_to_yes": 7,
+        "nfp_yes_to_no": 36,
+        "nfp_no_to_yes": 0,
+        "checked_clinician_positive_questions": 136,
+        "unsupported_attribution_questions": 9
+      },
+      "interpretation_ko": "NFP의 개인 상황 보호와 FPQ 탐지 감소가 동시에 발생했다. 오류 주장을 의사에게 직접 귀속한 경우만의 변화인지 구분해야 한다."
+    },
+    {
+      "topic": "의사 설명과 사용자 추론의 구분",
+      "evidence": {
+        "all_baseline_positive_fpq_in_original_clinician_stratum": 37,
+        "separate_user_inference_cases": 20,
+        "lost_among_separate_user_inference_cases": 10
+      },
+      "interpretation_ko": "원문상 의사의 권고와 주석이 지적한 사용자 추론이 별개인 문항에서도 탐지가 사라졌다. 의사의 말을 존중한 효과만으로 모든 감소를 설명할 수 없다."
+    },
+    {
+      "topic": "불확실함을 거짓으로 판단한다는 가설",
+      "evidence": {
+        "strict_ai_flags": 2,
+        "unique_questions": 1,
+        "nfp_low_score_flags": 0,
+        "question_id": "fpq_269"
+      },
+      "interpretation_ko": "현재 태그는 같은 CUP 약어 문항의 Qwen3.8 두 Plain 답변에 한정된다. 특히 ON 답변은 인식 불가를 말할 뿐 진단이 거짓이라고 명시하지 않아 해석이 약하다. 정상 질문 답변 손상의 보편 원인이라는 근거는 아직 없다. 태그 누락 가능성 때문에 부재를 증명한 것은 아니다."
+    },
+    {
+      "topic": "잘 설명되지 않는 사례 보존",
+      "evidence": {
+        "rows_flagged_for_recheck": 692,
+        "coded_correction_but_low_well": 589,
+        "high_well_without_coded_correction": 9,
+        "reference_boundary": 102,
+        "categories_overlap": true
+      },
+      "interpretation_ko": "자동 코딩과 Well의 불일치 및 주석 연결이 모호한 행을 제외하거나 억지로 원인에 배정하지 않고 별도 목록으로 남겼다."
+    }
+  ],
+  "hypothesis_status": [
+    {
+      "hypothesis": "필요한 목표 오류를 다루지 않음",
+      "status": "행동상 반복 관찰; 지식 부재와 활용 실패는 미분리"
+    },
+    {
+      "hypothesis": "개인 상황/범위/출처를 잘못 읽음",
+      "status": "원문 근거 있음; 전체 실패를 설명하는 단일 원인은 아님"
+    },
+    {
+      "hypothesis": "거부/답변 유보가 NFP 손상의 주원인",
+      "status": "현재 완료된 비교 조건의 새 저점에서는 지지 약함"
+    },
+    {
+      "hypothesis": "모르겠음을 거짓으로 처리하는 것이 공통 원인",
+      "status": "현재 전수 코딩에서 지지 약함"
+    },
+    {
+      "hypothesis": "일반적 반박 성향만 증가",
+      "status": "FPQ 목표 교정 증가도 있어 단독 설명 불충분; 판별과 응답 성향 분리는 추가 인과 실험 필요"
+    },
+    {
+      "hypothesis": "내부 판단이 덮임",
+      "status": "이번 분석은 내부 인과 증거를 제공하지 않음"
+    }
+  ],
+  "next_work": {
+    "running": "Remaining 6588-condition extension audit; same schema, no duplicate primary answers.",
+    "prepared": "All eligible diagnostic cohorts with preserved controls and IDs, plus threshold/reference sensitivity tables.",
+    "new_gpu_experiments_started": false,
+    "new_answer_generation_started": false
+  },
+  "limits": [
+    "Counts across settings are model-question instances, not independent unique patients/questions.",
+    "Qwen2.5/Gemma use premise review, Luna balanced, Qwen3.8 CoT; do not conflate as one identical intervention.",
+    "Original labels, Well scores and Sonnet codes are not overwritten.",
+    "Question-level clinician feature is not proof the challenged target came from the clinician."
+  ]
+}

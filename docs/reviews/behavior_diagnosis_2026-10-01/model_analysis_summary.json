@@ -1,0 +1,79 @@
+{
+  "primary_pairs": 3659,
+  "primary_answers": 7318,
+  "five_settings_four_model_families": true,
+  "all_methods_combined": false,
+  "broad_X_new_loss_candidates": 19,
+  "manual_subclassification": {
+    "claim_scope_or_strength": 13,
+    "clinical_claim_dispute": 1,
+    "explicit_context_substitution": 4,
+    "conditional_alternative_focus": 1
+  },
+  "model_table": [
+    {
+      "model": "qwen25",
+      "method": "premise_review",
+      "NFP_pairs": 149,
+      "NFP_new_low": 8,
+      "broad_X_candidates": 1,
+      "explicit_substitutions_in_X": 1,
+      "conditional_alternative_in_X": 0,
+      "scope_strength_or_clinical_dispute_in_X": 0
+    },
+    {
+      "model": "gemma",
+      "method": "premise_review_answer",
+      "NFP_pairs": 149,
+      "NFP_new_low": 32,
+      "broad_X_candidates": 4,
+      "explicit_substitutions_in_X": 0,
+      "conditional_alternative_in_X": 0,
+      "scope_strength_or_clinical_dispute_in_X": 4
+    },
+    {
+      "model": "luna",
+      "method": "balanced",
+      "NFP_pairs": 149,
+      "NFP_new_low": 54,
+      "broad_X_candidates": 8,
+      "explicit_substitutions_in_X": 0,
+      "conditional_alternative_in_X": 0,
+      "scope_strength_or_clinical_dispute_in_X": 8
+    },
+    {
+      "model": "qwen38_off",
+      "method": "zero_shot_cot_one_step",
+      "NFP_pairs": 149,
+      "NFP_new_low": 23,
+      "broad_X_candidates": 5,
+      "explicit_substitutions_in_X": 3,
+      "conditional_alternative_in_X": 0,
+      "scope_strength_or_clinical_dispute_in_X": 2
+    },
+    {
+      "model": "qwen38_on",
+      "method": "zero_shot_cot_one_step",
+      "NFP_pairs": 149,
+      "NFP_new_low": 4,
+      "broad_X_candidates": 1,
+      "explicit_substitutions_in_X": 0,
+      "conditional_alternative_in_X": 1,
+      "scope_strength_or_clinical_dispute_in_X": 0
+    }
+  ],
+  "interpretation_ko": "작은 모델에만 상황 변경이 집중된다는 결론은 현재 자료로 지지되지 않는다. 다만 목적 후보 검토이므로 모델별 실제 발생률이나 일반 능력과의 상관관계도 추정하지 않는다.",
+  "limits": [
+    "Broad context_shift flags include useful alternatives and legitimate corrections; NOT hallucination rates.",
+    "X candidates were selected within 121 score-loss instances and cover only the dominant target in earlier evidence review; no exhaustive narrow-error recall.",
+    "Zero means no confirmed instance in this X candidate stratum, not absence in a model.",
+    "Different prompts/conditions, no independent general-capability ranking, Qwen OFF/ON not separate models.",
+    "Manual classes describe output text, not medical truth or internal cause; original scores/codes untouched.",
+    "19 candidate questions/quotes reviewed; full current reading for 5 narrow/boundary candidates and all ten kidney answers; do not claim full reread of all 7318 answers."
+  ],
+  "sources": {
+    "/home/eagle0914/cancer-myth-internals/results/analysis/completed_primary_behavior_20261001_v2/all_primary_pairs.jsonl": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3",
+    "/home/eagle0914/cancer-myth-internals/docs/reviews/detection_plain_link_2026-09-28/answer_target_conditions/readings.json": "9bff0c1684969f9885d0ee6e9bf48415b5aebe2b72c33d1990c0b53f8a87bff2",
+    "scripts/summarize_context_shift_by_model.py": "d8eaadf2e577f0c01f44a92313e414aa8af8e095bfcadb4676daddc55dce8502"
+  }
+}

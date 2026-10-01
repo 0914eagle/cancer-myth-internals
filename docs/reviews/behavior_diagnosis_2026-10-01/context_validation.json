@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "all_732_context_joined": true,
+  "all_745_nfp_pairs_have_both_original_judge_reasons": true,
+  "original_judge_scores_match_saved_scores": true,
+  "all_121_losses_included": true,
+  "original_artifacts_unchanged": true,
+  "manual_nfp_ids_exactly_all_59_baseline_positive": true,
+  "manual_rating_checks_exactly_all_6_literal_tension_cases": true
+}

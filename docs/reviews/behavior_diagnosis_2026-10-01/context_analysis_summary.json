@@ -1,0 +1,54 @@
+{
+  "questions": 732,
+  "fpq": 583,
+  "nfp": 149,
+  "original_pairs": 3659,
+  "nfp_pairs": 745,
+  "nfp_score_losses": 121,
+  "nfp_loss_unique_questions": 79,
+  "nfp_loss_responses": {
+    "substantive": 108,
+    "partial": 13
+  },
+  "score_loss_review_queues": {
+    "low_score_with_coded_substantive_help": 108,
+    "low_score_without_coded_challenge": 30,
+    "score_loss_with_same_stance_category": 38,
+    "rating_2_reason_explicitly_says_not_dominated": 6
+  },
+  "nfp_score_loss_stance_pairs": {
+    "none -> challenge": 25,
+    "qualification -> qualification": 19,
+    "qualification -> challenge": 49,
+    "none -> none": 2,
+    "challenge -> challenge": 17,
+    "none -> qualification": 9
+  },
+  "sources": {
+    "/home/eagle0914/cancer-myth-internals/results/analysis/full_behavior_census_20261001_v1/context_all_items.json": "7b729181b812b3847eb10338a182444d121c76f6068fad3ca0c9fcce8f35b498",
+    "/home/eagle0914/cancer-myth-internals/results/analysis/full_behavior_completion_20260930_v1/question_scope_items.json": "30eb5ef6e04a22ce279be08a376ea3172b0d50c8a27adc5f020459e9d6b5975e",
+    "/home/eagle0914/cancer-myth-internals/results/analysis/completed_primary_behavior_20261001_v2/all_primary_pairs.jsonl": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3",
+    "/home/eagle0914/cancer-myth-internals/results/analysis/completed_primary_behavior_20261001_v2/clinician_scope_manual_check.json": "a130d677e40d986d0ee618c77782a41f51a7e02776fc433c68bbd36c2bb7f001",
+    "/home/eagle0914/cancer-myth-internals/prompts/well/nfp_user.txt": "9deaaa4129bbb0cb15a6dcc1e8f3ae6d3be48e91edc12c9d388470aaeaee5076",
+    "scripts/analyze_context_and_nfp_score_boundaries.py": "d5e65ba3ed8bdc5ef1c6bd83dd966d3348b7cf6c078988f22b76927a62459f87",
+    "/data1/heejae/cancer_myth_internals/results/baselines/qwen25_7b_final1024_v1/well_judge_claude/attempts.jsonl": "e78f57dfc78cc658c7b86d59bc117f39be7f05028080a19484f349258c0f7741",
+    "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain/attempts.jsonl": "7762199ac758717609e6cf4e269ae0292bce9c1eda2e56f9cb2257b917a0ba60",
+    "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/premise_review_answer/attempts.jsonl": "9e7604dd6200c2b0a8a1f49ae705897c6e224507dcfe1fdde8ab12f670188cae",
+    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_plain_20260922_v1/well_judge_sonnet_v1/attempts.jsonl": "b71b55c18f5c07555f54ae2f0f3d80075a4d1fde56b42096efd19505be2e746e",
+    "/home/eagle0914/cancer-myth-internals/results/frontier_cli/luna_corrections_20260922_v1/well_judge_sonnet_v1/attempts.jsonl": "23224b047781328cb8f84657875eeb419a7ba9bfc9f2c192530ae0e072d7a5e1",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/plain/attempts.jsonl": "60fdb6f406794ad19a67c3943f71f478630d5b0f5c55b7ac19a50beccf186412",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/zero_shot_cot_one_step/attempts.jsonl": "c63fe2237a4d818b48dda53cf4cc622b23de6d2470ee529ef2bf7ce2bd57d6bf",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/plain/attempts.jsonl": "e1f1a76b2d961cbfe93f63629d8709ff1b4d692f27005628f110d0651de447a7",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/zero_shot_cot_one_step/attempts.jsonl": "40ec184889558eb53b430f20e151fffabf7b469e101f77cc0de434a09285dafd"
+  },
+  "limitations": [
+    "Frozen historical run; not repeated, randomized or contemporaneous causal measurement.",
+    "Direct has no rationale; independent Review codes are not Direct reasons.",
+    "All scope and answer codes are existing AI annotations, not clinical adjudication.",
+    "Question feature may refer to a different claim from the error target.",
+    "Flags can overlap or miss errors; absence is not proof of a correct answer.",
+    "Text-pattern queues and stance mismatches are review signals, not corrected Well scores.",
+    "Model-question instances share questions; model settings and prompts differ.",
+    "No new answers, scores, clinical labels, or gate thresholds are generated or changed."
+  ]
+}
