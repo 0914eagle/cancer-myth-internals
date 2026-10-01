@@ -57,7 +57,7 @@ def main():
                            plain_score=x['plain']['score'], final_score=x['alternative']['score'],
                            generation_metadata=record.get('details', {k: record.get(k) for k in ['truncated', 'output_tokens', 'max_new_tokens']})))
     with (OUT / 'regression45_index.csv').open('w') as f:
-        writer = csv.DictWriter(f, fieldnames=rows[0].keys()); writer.writeheader(); writer.writerows(rows)
+        writer = csv.DictWriter(f, fieldnames=rows[0].keys(), lineterminator='\n'); writer.writeheader(); writer.writerows(rows)
     with (OUT / 'two_step_six.jsonl').open('w') as f:
         for x in stages:
             f.write(json.dumps(x, ensure_ascii=False) + '\n')
