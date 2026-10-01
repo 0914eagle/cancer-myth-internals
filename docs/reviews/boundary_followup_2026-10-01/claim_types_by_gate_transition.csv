@@ -1,0 +1,10 @@
+dataset,group,n,has_general,has_personal,has_inquiry,has_ambiguous,apparent_error_flag
+fpq,stable_no,171,33,158,134,8,0
+fpq,stable_no_to_yes,1,1,1,1,0,0
+fpq,stable_yes,196,93,180,132,22,88
+fpq,stable_yes_to_no,103,15,102,72,7,5
+fpq,unstable,112,24,109,75,6,7
+nfp,stable_no,76,12,73,63,2,0
+nfp,stable_yes,14,6,13,13,1,6
+nfp,stable_yes_to_no,25,4,25,20,1,1
+nfp,unstable,34,8,34,29,4,2
