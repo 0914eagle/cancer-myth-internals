@@ -1,0 +1,452 @@
+{
+  "AML": {
+    "title": "NCI SEER: Acute Myeloid Leukemia statistics",
+    "url": "https://seer.cancer.gov/statfacts/html/amyl.html",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "AML_CHILD": {
+    "title": "NCI: Childhood AML Treatment PDQ",
+    "url": "https://www.cancer.gov/types/leukemia/hp/child-aml-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "ALL_ADULT": {
+    "title": "NCI: Adult ALL Treatment PDQ",
+    "url": "https://www.cancer.gov/types/leukemia/hp/adult-all-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PNET": {
+    "title": "NCI: What Are Neuroendocrine Pancreas Tumors?",
+    "url": "https://www.cancer.gov/types/pancreatic/neuroendocrine-tumors",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PNET_REGISTRY": {
+    "title": "SEER Inquiry 20120063: pancreatic NET reportability",
+    "url": "https://seer.cancer.gov/seer-inquiry/inquiry-detail/20120063/",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PITUITARY": {
+    "title": "NIDDK: Cushing's Syndrome, imaging limitations",
+    "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/cushings-syndrome",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PITUITARY_VISION": {
+    "title": "NANOS: Pituitary Tumor",
+    "url": "https://www.nanosweb.org/files/PituitaryTumor.pdf",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PENILE_STAGE": {
+    "title": "EAU: Penile Cancer diagnostic evaluation and staging",
+    "url": "https://uroweb.org/guidelines/penile-cancer/chapter/diagnostic-evaluation-and-staging",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "GIST": {
+    "title": "NCI: GIST Treatment PDQ",
+    "url": "https://www.cancer.gov/types/soft-tissue-sarcoma/hp/gist-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "RCHOP": {
+    "title": "NCI: R-CHOP",
+    "url": "https://www.cancer.gov/about-cancer/treatment/drugs/r-chop",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "NHL": {
+    "title": "NCI: Non-Hodgkin Lymphoma Treatment PDQ",
+    "url": "https://www.cancer.gov/types/lymphoma/patient/adult-nhl-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "BLADDER": {
+    "title": "NCI: Bladder Cancer Treatment PDQ",
+    "url": "https://www.cancer.gov/types/bladder/hp/bladder-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "CRC_SCREEN": {
+    "title": "NCI: Colorectal Cancer Screening",
+    "url": "https://www.cancer.gov/types/colorectal/screening-fact-sheet",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "RECTAL": {
+    "title": "NCI: Rectal Cancer Treatment PDQ",
+    "url": "https://www.cancer.gov/types/colorectal/hp/rectal-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "CLL": {
+    "title": "NCI: CLL Treatment PDQ",
+    "url": "https://www.cancer.gov/types/leukemia/patient/cll-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "UTERINE": {
+    "title": "NCI: Endometrial Cancer Screening PDQ",
+    "url": "https://www.cancer.gov/types/uterine/hp/endometrial-screening-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "UTERINE_AGE": {
+    "title": "SEER: Uterine Cancer statistics",
+    "url": "https://seer.cancer.gov/statfacts/html/corp.html",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "VULVAR": {
+    "title": "CDC: Symptoms of Vaginal and Vulvar Cancers",
+    "url": "https://www.cdc.gov/vaginal-vulvar-cancers/symptoms/index.html",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "LIVER": {
+    "title": "NCI: Liver Cancer Diagnosis",
+    "url": "https://www.cancer.gov/types/liver/what-is-liver-cancer/diagnosis",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PAIN": {
+    "title": "NCI: Cancer Pain PDQ",
+    "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/pain/pain-hp-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "LUNG": {
+    "title": "NCI: Non-Small Cell Lung Cancer Treatment PDQ",
+    "url": "https://www.cancer.gov/types/lung/patient/non-small-cell-lung-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "OVARIAN": {
+    "title": "NCI: Ovarian Epithelial Cancer Treatment PDQ",
+    "url": "https://www.cancer.gov/types/ovarian/patient/ovarian-epithelial-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "HYSTERECTOMY": {
+    "title": "Mayo Clinic: Ovarian cancer after hysterectomy",
+    "url": "https://www.mayoclinic.org/diseases-conditions/ovarian-cancer/expert-answers/ovarian-cancer/faq-20057780?p=1",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "HEAD_NECK": {
+    "title": "NCI: Head and Neck Cancers",
+    "url": "https://www.cancer.gov/types/head-and-neck/head-neck-fact-sheet",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "OROPHARYNX": {
+    "title": "NCI: Oropharyngeal Cancer Treatment PDQ",
+    "url": "https://www.cancer.gov/types/head-and-neck/patient/adult/oropharyngeal-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "SIDE_EFFECTS": {
+    "title": "NCI: Side Effects of Cancer Treatment",
+    "url": "https://www.cancer.gov/about-cancer/treatment/side-effects",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "NAIL": {
+    "title": "American Academy of Dermatology: Melanoma causes",
+    "url": "https://www.aad.org/public/diseases/skin-cancer/types/common/melanoma/causes",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "ALL": {
+    "title": "NCI: Childhood ALL Treatment PDQ",
+    "url": "https://www.cancer.gov/types/leukemia/hp/child-all-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "EWING": {
+    "title": "NCI: Ewing Sarcoma Treatment PDQ",
+    "url": "https://www.cancer.gov/types/bone/hp/ewing-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "OSTEOSARCOMA": {
+    "title": "NCI: Osteosarcoma Treatment PDQ",
+    "url": "https://www.cancer.gov/types/bone/hp/osteosarcoma-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PHONE": {
+    "title": "NCI: Cell Phones and Cancer Risk",
+    "url": "https://www.cancer.gov/about-cancer/causes-prevention/risk/radiation/cell-phones-fact-sheet",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "BURKITT": {
+    "title": "NCI: Burkitt lymphoma adult trial, 2020",
+    "url": "https://www.cancer.gov/news-events/press-releases/2020/burkitt-lymphoma-adult",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "NHL_PREGNANCY": {
+    "title": "NCI: Non-Hodgkin Lymphoma Treatment During Pregnancy PDQ",
+    "url": "https://www.cancer.gov/types/lymphoma/hp/non-hodgkin-lymphoma-treatment-during-pregnancy-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "CUP": {
+    "title": "NCI: Cancer of Unknown Primary Treatment PDQ",
+    "url": "https://www.cancer.gov/types/unknown-primary/hp/unknown-primary-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PROGNOSIS": {
+    "title": "NCI: Cancer Prognosis, cure and remission",
+    "url": "https://www.cancer.gov/about-cancer/diagnosis-staging/prognosis",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "BRAIN_AGE": {
+    "title": "CBTRUS: 2025 Statistical Report",
+    "url": "https://cbtrus.org/2025-cbtrus-statistical-report/",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PCNSL": {
+    "title": "NCI: Primary CNS Lymphoma Treatment PDQ",
+    "url": "https://www.cancer.gov/types/lymphoma/hp/primary-cns-lymphoma-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PCNSL_TRIAL": {
+    "title": "IELSG32: seven-year follow-up, 2022",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/35562406/",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "HAIR": {
+    "title": "NCI: Hair Loss",
+    "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/hair-loss",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "LATE_EFFECTS": {
+    "title": "NCI: Late Effects of Treatment for Childhood Cancer PDQ",
+    "url": "https://www.cancer.gov/types/childhood-cancers/late-effects-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MYTHS": {
+    "title": "NCI: Common Cancer Myths and Misconceptions",
+    "url": "https://www.cancer.gov/about-cancer/causes-prevention/risk/myths",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "GCT": {
+    "title": "NCI: Childhood Extracranial Germ Cell Tumors Treatment PDQ",
+    "url": "https://www.cancer.gov/types/extracranial-germ-cell/hp/germ-cell-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "ADULT_GCT": {
+    "title": "NCI: Extragonadal Germ Cell Tumors Treatment PDQ",
+    "url": "https://www.cancer.gov/types/extragonadal-germ-cell/patient/extragonadal-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "OVARIAN_GCT": {
+    "title": "NCI: Ovarian Germ Cell Tumors Treatment",
+    "url": "https://www.cancer.gov/types/ovarian/patient/ovarian-germ-cell-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "EYE": {
+    "title": "NCI: Intraocular Melanoma Treatment PDQ",
+    "url": "https://www.cancer.gov/types/eye/hp/intraocular-melanoma-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "ENUCLEATION": {
+    "title": "NHS Northern Care Alliance: Removal of an Eye",
+    "url": "https://www.northerncarealliance.nhs.uk/patient-information/patient-leaflets/ophthalmology-removal-eye-enucleation",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PORCELAIN": {
+    "title": "Stephen and Berger 2001: carcinoma and gallbladder calcification",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/11391368/",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "GI_NET": {
+    "title": "NCI: Gastrointestinal Neuroendocrine Tumors Treatment PDQ",
+    "url": "https://www.cancer.gov/types/gi-neuroendocrine-tumors/hp/gi-neuroendocrine-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "HPV_SEX": {
+    "title": "CDC: HPV surveillance manual, oropharyngeal incidence by sex",
+    "url": "https://www.cdc.gov/surv-manual/php/table-of-contents/chapter-5-human-papillomavirus.html",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "HPV": {
+    "title": "CDC: HPV and Oropharyngeal Cancer",
+    "url": "https://www.cdc.gov/cancer/hpv/oropharyngeal-cancer.html",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MALE_BREAST": {
+    "title": "NCI: Male Breast Cancer Treatment PDQ",
+    "url": "https://www.cancer.gov/types/breast/hp/male-breast-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MERKEL": {
+    "title": "NCI: Merkel Cell Carcinoma Treatment PDQ",
+    "url": "https://www.cancer.gov/types/skin/patient/merkel-cell-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "ASBESTOS": {
+    "title": "EPA: Protect Your Family from Exposures to Asbestos",
+    "url": "https://www.epa.gov/asbestos/protect-your-family-exposures-asbestos",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MEN1": {
+    "title": "NIDDK: Multiple Endocrine Neoplasia Type 1",
+    "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/multiple-endocrine-neoplasia-type-1",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MF": {
+    "title": "NCI: Mycosis Fungoides Treatment PDQ",
+    "url": "https://www.cancer.gov/types/lymphoma/patient/mycosis-fungoides-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MYELOFIBROSIS": {
+    "title": "Leukemia and Lymphoma Society: Myelofibrosis complications",
+    "url": "https://www.lls.org/myeloproliferative-neoplasms/myelofibrosis/disease-complications",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MDS_MPN": {
+    "title": "NCI: Myelodysplastic/Myeloproliferative Neoplasms PDQ",
+    "url": "https://www.cancer.gov/types/myeloproliferative/hp/mds-mpd-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MDS_ADVANCE": {
+    "title": "FDA: imetelstat approval, June 2024",
+    "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-imetelstat-low-intermediate-1-risk-myelodysplastic-syndromes-transfusion-dependent",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "CML": {
+    "title": "NCI: CML Treatment PDQ",
+    "url": "https://www.cancer.gov/types/leukemia/hp/cml-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "RRP": {
+    "title": "NIDCD: Recurrent Respiratory Papillomatosis",
+    "url": "https://www.nidcd.nih.gov/health/recurrent-respiratory-papillomatosis",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "RRP_VACCINE": {
+    "title": "Nonrandomized trial of HPV vaccination in RRP, 2022",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/35653138/",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PARANASAL": {
+    "title": "NCI: Paranasal Sinus and Nasal Cavity Cancer Treatment PDQ",
+    "url": "https://www.cancer.gov/types/head-and-neck/hp/adult/paranasal-sinus-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PENILE_TREAT": {
+    "title": "EAU: Penile Cancer disease management",
+    "url": "https://uroweb.org/guidelines/penile-cancer/chapter/disease-management",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "MYELOMA": {
+    "title": "Primary study: response depth and plateau duration in myeloma",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/29659048/",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PPB": {
+    "title": "NCI: Childhood Pleuropulmonary Blastoma Treatment PDQ",
+    "url": "https://www.cancer.gov/types/lung/hp/child-pleuropulmonary-blastoma-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "REPRODUCTIVE": {
+    "title": "NCI: Reproductive History and Cancer Risk",
+    "url": "https://www.cancer.gov/about-cancer/causes-prevention/risk/hormones/reproductive-history-fact-sheet",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "ANTIPERSPIRANT": {
+    "title": "NCI: Antiperspirants/Deodorants and Breast Cancer",
+    "url": "https://www.cancer.gov/about-cancer/causes-prevention/risk/myths/antiperspirants-fact-sheet",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "HL_RELAPSE": {
+    "title": "Weibull et al.: Pregnancy and relapse after Hodgkin lymphoma",
+    "url": "https://ascopubs.org/doi/10.1200/JCO.2015.63.3446",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "HL_PREGNANCY": {
+    "title": "NCI: Hodgkin Lymphoma Treatment During Pregnancy PDQ",
+    "url": "https://www.cancer.gov/types/lymphoma/hp/hodgkin-lymphoma-treatment-during-pregnancy-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "LACTATION": {
+    "title": "LactMed: Doxorubicin",
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK501911/",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "IMT": {
+    "title": "NCI: Inflammatory Myofibroblastic Tumor",
+    "url": "https://www.cancer.gov/pediatric-adult-rare-tumor/rare-soft-tissue-tumors/inflammatory-myofibroblastic-tumor",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "URETHRAL": {
+    "title": "NCI: Urethral Cancer Treatment PDQ",
+    "url": "https://www.cancer.gov/types/urethral/hp/urethral-treatment-pdq",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "VAGINAL_RISK": {
+    "title": "American Cancer Society: Vaginal Cancer Risk Factors",
+    "url": "https://www.cancer.org/cancer/types/vaginal-cancer/causes-risks-prevention/risk-factors.html",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "PELVIC_EFFECTS": {
+    "title": "NCI: Sexual Health Issues in Women with Cancer",
+    "url": "https://www.cancer.gov/about-cancer/treatment/side-effects/sexuality-women",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  },
+  "TAMPON": {
+    "title": "FDA: Menstrual Product Options, Facts and Safe Use",
+    "url": "https://www.fda.gov/medical-devices/products-and-medical-procedures/menstrual-product-options-facts-and-safe-use",
+    "accessed": "2026-10-01",
+    "retrieval": "web search and/or page reader; source supports the stated scope, not an individual diagnosis"
+  }
+}

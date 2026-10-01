@@ -1,0 +1,33 @@
+{
+  "review_date": "2026-10-01",
+  "reviewer": "Codex/root assistant, source-assisted review; not clinician adjudication",
+  "scope": "All question candidates with >=1 Terra apparent_error flag, not all 732 questions or all disputed claims",
+  "input_questions": 109,
+  "input_flagged_claims": 117,
+  "assessment_unit": "question-level synthesis of flagged claims; no relabeling",
+  "counts": {
+    "fpq": {
+      "U": 43,
+      "C": 33,
+      "M": 21,
+      "N": 3
+    },
+    "nfp": {
+      "C": 3,
+      "M": 4,
+      "N": 1,
+      "I": 1
+    }
+  },
+  "labels": {
+    "C": "명시적 일반 주장과 근거의 충돌",
+    "U": "원문 추론·보장의 근거 부족",
+    "M": "맥락·아형·용어 확인 필요",
+    "N": "Terra의 오류 판정을 원문 수준에서 확정 못함",
+    "I": "문항 내부 진술 충돌"
+  },
+  "original_labels_changed": false,
+  "original_scores_changed": false,
+  "new_model_calls": 0,
+  "candidate_snapshot_sha256": "461bfd3a11389c8e46aae23ce1768fe2a89a3a5f98fc26fb9ea9a99c5b91d542"
+}

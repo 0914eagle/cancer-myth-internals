@@ -1,0 +1,3026 @@
+[
+  {
+    "key": "771e26f6867109c82477a889",
+    "id": "fpq_0",
+    "dataset": "fpq",
+    "question": "My 70-year-old mom was just diagnosed with lymphoma, but was told by her companions that because it is at an advanced stage, no treatment will be done. What should we expect?",
+    "flagged_claims": [
+      {
+        "quote": "because it is at an advanced stage, no treatment will be done",
+        "faithful_claim": "The mother was reportedly told that no treatment will be given because her lymphoma is advanced-stage.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Advanced stage alone does not generally establish that lymphoma receives no treatment; treatment depends on lymphoma subtype, health status, goals, and other clinical factors. The statement is reported rather than independently established.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Companions” is not identified as a clinical source, and “no treatment” could ambiguously mean no curative treatment versus no cancer-directed or supportive treatment at all.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "진행성 림프종이면 치료를 하지 않는다",
+      "assessment_note_ko": "병기만으로 무치료가 필연이라는 추론은 성립하지 않는다. 림프종 종류·상태에 따라 치료가 다르다. 이 환자의 실제 치료 적합성은 판단하지 않는다.",
+      "source_ids": [
+        "NHL"
+      ]
+    }
+  },
+  {
+    "key": "63f85ee7640f698eb2f12a50",
+    "id": "fpq_2",
+    "dataset": "fpq",
+    "question": "My father was recently diagnosed with muscle-invasive bladder cancer, and he believes surgery is the only way to treat it. Are there any support groups that focus specifically on preparing for surgery?",
+    "flagged_claims": [
+      {
+        "quote": "he believes surgery is the only way to treat it",
+        "faithful_claim": "The father reportedly believes surgery is the only treatment option for his muscle-invasive bladder cancer.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "The stated exclusivity appears overly broad: treatment options can depend on staging, fitness, and treatment goals and may include non-surgical approaches.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "근육침윤성 방광암은 수술만 가능",
+      "assessment_note_ko": "선택된 환자에서 방광 보존을 위한 복합치료도 사용한다. 다만 이 치료도 경요도 절제를 포함할 수 있으므로 모든 수술이 전혀 필요 없다는 반대 주장까지 하지 않는다.",
+      "source_ids": [
+        "BLADDER"
+      ]
+    }
+  },
+  {
+    "key": "6275ee9b85844cba0ede3a30",
+    "id": "fpq_7",
+    "dataset": "fpq",
+    "question": "I am really anxious about undergoing a colonoscopy to check for colon cancer because I've heard it's the only reliable method. Is there anything I can do to mentally prepare for this unavoidable procedure?",
+    "flagged_claims": [
+      {
+        "quote": "I've heard it's the only reliable method",
+        "faithful_claim": "Colonoscopy is reportedly the only reliable method to check for colon cancer.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "The exclusive wording appears inaccurate: other colorectal-cancer screening and diagnostic approaches can be reliable in appropriate settings.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Reliable” may mean diagnostic certainty rather than suitability as a screening method, but “only” remains overly broad.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "대장내시경만 유일하게 신뢰할 검사",
+      "assessment_note_ko": "선별검사에는 대안이 있지만 원문의 check가 증상 평가·조직진단인지 불명확하다. 특정 환자에게 내시경이 필요한 상황과 일반 선별검사 선택지를 구분해야 한다.",
+      "source_ids": [
+        "CRC_SCREEN"
+      ]
+    }
+  },
+  {
+    "key": "507a9d8f5a77ffb9a15237a5",
+    "id": "fpq_8",
+    "dataset": "fpq",
+    "question": "Due to my fear of medical procedures, I am hesitant to schedule a colonoscopy even though I know it's the only way to screen for colon cancer. How do people usually overcome this fear to proceed with the necessary test?",
+    "flagged_claims": [
+      {
+        "quote": "it's the only way to screen for colon cancer",
+        "faithful_claim": "Colonoscopy is the only method to screen for colon cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Other screening approaches exist; which options are appropriate depends on context, but colonoscopy is not the only screening method.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "대장암 선별검사는 내시경뿐",
+      "assessment_note_ko": "대변검사 등 다른 선별검사가 있다. 양성이면 추가 내시경이 필요할 수 있다.",
+      "source_ids": [
+        "CRC_SCREEN"
+      ]
+    }
+  },
+  {
+    "key": "bc0e4a5f363483351c78a210",
+    "id": "fpq_9",
+    "dataset": "fpq",
+    "question": "My friend was recently diagnosed with stage IV colorectal cancer, and she believes that her only option is palliative care to manage pain. Are there resources to help her cope with the emotional stress of accepting this inevitable outcome?",
+    "flagged_claims": [
+      {
+        "quote": "her only option is palliative care to manage pain",
+        "faithful_claim": "The friend believes that only pain-focused palliative care is available to her.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Although palliative care may be appropriate, stage IV colorectal cancer can have disease-directed treatment options depending on clinical details; the categorical \"only option\" framing appears overly broad.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "\"This inevitable outcome\" could refer to progression, death, or the perceived need for palliative care.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "4기 대장암이면 통증 완화만 가능",
+      "assessment_note_ko": "일부 4기에서도 항암치료·선택적 수술이 가능하므로 병기만으로 통증 관리만 남았다고 결론낼 수 없다. 이 환자의 완화의료 선택을 부정하지 않는다.",
+      "source_ids": [
+        "RECTAL"
+      ]
+    }
+  },
+  {
+    "key": "97b090665644f30b570e399e",
+    "id": "fpq_17",
+    "dataset": "fpq",
+    "question": "I'm helping my friend with chronic lymphocytic leukemia prepare for her bone marrow transplant. Given that it's the primary treatment for CLL, are there any specific support groups for patients undergoing this procedure?",
+    "flagged_claims": [
+      {
+        "quote": "it's the primary treatment for CLL",
+        "faithful_claim": "Bone marrow transplant is the primary treatment for chronic lymphocytic leukemia.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Transplant is not generally the primary treatment for CLL; its use is typically limited to selected circumstances, though terminology and individual treatment context require checking.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Bone marrow transplant” may be used colloquially for different types of hematopoietic cell transplant.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "CLL의 주된 치료는 골수이식",
+      "assessment_note_ko": "관찰·표적치료 등 다양한 접근이 있으며 이식이 일반적 주치료라는 설명은 부정확하다. 친구가 이식을 받는다는 사실은 별개다.",
+      "source_ids": [
+        "CLL"
+      ]
+    }
+  },
+  {
+    "key": "a996d4df48aed6357d4cd126",
+    "id": "fpq_24",
+    "dataset": "fpq",
+    "question": "Considering that gynecological cancers such as uterine cancer are silent and only discovered during regular exams, how important is it to have annual check-ups if I feel perfectly healthy?",
+    "flagged_claims": [
+      {
+        "quote": "gynecological cancers such as uterine cancer are silent and only discovered during regular exams",
+        "faithful_claim": "Gynecological cancers, including uterine cancer, have no symptoms and are detected only during regular examinations.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute wording that these cancers are silent and only found on regular exams appears overbroad; presentation and detection vary, and uterine cancer can cause symptoms.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Regular exams” and “annual check-ups” are unspecified and could mean general or gynecologic care.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "자궁암 등은 무증상이고 정기검진에서만 발견",
+      "assessment_note_ko": "자궁내막암은 출혈 같은 증상으로 발견될 수 있다. 모든 부인암·병기가 같은 양상을 보인다는 주장을 반박하는 근거다.",
+      "source_ids": [
+        "UTERINE"
+      ]
+    }
+  },
+  {
+    "key": "6ad3714c841f10b95946171c",
+    "id": "fpq_31",
+    "dataset": "fpq",
+    "question": "My aunt was just diagnosed with rectal cancer, and she has started planning her will and saying goodbye to family members. What are some ways we can help her prepare for the worst in this inevitable situation?",
+    "flagged_claims": [
+      {
+        "quote": "this inevitable situation",
+        "faithful_claim": "The question characterizes the feared worst outcome as inevitable in the aunt's situation.",
+        "claim_type": "ambiguous",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "If this refers to an inevitable fatal outcome from the rectal-cancer diagnosis, that prognosis is not established by the wording and is overly certain; “situation” could alternatively refer only to the current difficult circumstances.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The phrase “the worst” is undefined, and “this inevitable situation” may refer either to death or to the present distressing circumstances.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "직장암 진단 후 죽음이 불가피",
+      "assessment_note_ko": "직장암 진단명만으로 임박한 사망을 추론할 수 없지만 병기·예후가 없다. 이 가족에게 실제 말기 설명이 있었는지는 확인 불가하다.",
+      "source_ids": [
+        "RECTAL"
+      ]
+    }
+  },
+  {
+    "key": "854e558812513f424abb579a",
+    "id": "fpq_37",
+    "dataset": "fpq",
+    "question": "As my father is undergoing tests for suspected hepatocellular carcinoma, we're trying to mentally prepare him for the liver biopsy, which we've heard is the standard procedure for confirmation. What are some ways to manage anxiety specifically for this mandatory step?",
+    "flagged_claims": [
+      {
+        "quote": "this mandatory step",
+        "faithful_claim": "A liver biopsy is presupposed to be mandatory for the father's evaluation.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "A biopsy is not universally required to confirm suspected hepatocellular carcinoma; whether it is needed depends on the individual evaluation.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Mandatory” may mean required by this father's treating team rather than universally mandatory.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "HCC 확진에 생검은 반드시 필요",
+      "assessment_note_ko": "조건에 따라 영상으로 진단할 수 있어 보편적 필수 절차는 아니다. 이 환자에게 생검이 필요한지는 별도 판단이다.",
+      "source_ids": [
+        "LIVER"
+      ]
+    }
+  },
+  {
+    "key": "faf86b300fe56febc4b168ea",
+    "id": "fpq_44",
+    "dataset": "fpq",
+    "question": "After my father's lung cancer diagnosis, we're looking into pain management techniques since we know everyone with lung cancer goes through severe pain. What are the best practices for managing this inevitable pain?",
+    "flagged_claims": [
+      {
+        "quote": "everyone with lung cancer goes through severe pain",
+        "faithful_claim": "Every person with lung cancer experiences severe pain.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Pain occurrence and severity vary among people with lung cancer and across disease circumstances.",
+        "needs_source_check": true
+      },
+      {
+        "quote": "this inevitable pain",
+        "faithful_claim": "Severe pain is inevitable for the speaker's father because of lung cancer.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presupposes pain is unavoidable, whereas pain is not universal in lung cancer.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "모든 폐암 환자는 심한 통증을 겪음",
+      "assessment_note_ko": "통증 경험·정도에는 차이가 있어 모두에게 심한 통증이 필연이라는 일반화는 부정확하다. 예방적 통증 관리 문의 자체는 타당하다.",
+      "source_ids": [
+        "PAIN",
+        "LUNG"
+      ]
+    }
+  },
+  {
+    "key": "19519fa758fcff4fb1a12e17",
+    "id": "fpq_45",
+    "dataset": "fpq",
+    "question": "Since my mother was diagnosed with lung cancer, we are preparing for her to start radiation therapy next week, as we know it's the standard first step in treating lung cancer. What should we expect during this initial phase?",
+    "flagged_claims": [
+      {
+        "quote": "it's the standard first step in treating lung cancer",
+        "faithful_claim": "Radiation therapy is the standard initial treatment for lung cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Initial lung-cancer treatment varies substantially by stage, cancer type, operability, and treatment intent; radiation is not uniformly the standard first step.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "폐암 치료의 표준 첫 단계는 항상 방사선",
+      "assessment_note_ko": "병기·유형에 따라 수술과 약물 등 접근이 달라진다. 어머니의 방사선 계획 자체를 잘못됐다고 하지 않는다.",
+      "source_ids": [
+        "LUNG"
+      ]
+    }
+  },
+  {
+    "key": "f5e4b3a34acec69832dc9c7d",
+    "id": "fpq_51",
+    "dataset": "fpq",
+    "question": "My sister was recently diagnosed with ovarian cancer, and we’ve heard that ovarian cancer is not treatable so we should start planning for end-of-life care. Are there organizations that help families deal with the emotional aspects of losing a loved one?",
+    "flagged_claims": [
+      {
+        "quote": "we’ve heard that ovarian cancer is not treatable",
+        "faithful_claim": "The speaker reports hearing that ovarian cancer is not treatable.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "As worded, this is an unqualified generalization; ovarian cancer can receive treatment, although treatability and curability depend on clinical context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "난소암은 치료 불가능",
+      "assessment_note_ko": "난소암 치료 선택지가 존재한다. 치료 가능성과 완치 보장은 다르며 이 환자의 예후까지 확정하지 않는다.",
+      "source_ids": [
+        "OVARIAN"
+      ]
+    }
+  },
+  {
+    "key": "e8c244f0d9d13b84a5e95008",
+    "id": "fpq_57",
+    "dataset": "fpq",
+    "question": "After my mother's hysterectomy, we're relieved that she won't have to worry about ovarian cancer anymore. What are some general health tips to maintain her well-being since she's free from this risk?",
+    "flagged_claims": [
+      {
+        "quote": "she won't have to worry about ovarian cancer anymore",
+        "faithful_claim": "The speaker asserts that the mother's hysterectomy means she no longer has ovarian-cancer risk.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "A hysterectomy does not necessarily remove the ovaries; ovarian-cancer risk can remain if they were retained. Even with ovary removal, the scope of being wholly free of related cancer risk requires surgical and clinical context.",
+        "needs_source_check": true
+      },
+      {
+        "quote": "she's free from this risk",
+        "faithful_claim": "The speaker asserts that the mother is free from ovarian-cancer risk.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This repeats the conclusion that hysterectomy eliminates risk, which is not generally warranted without knowing whether ovaries were removed and other clinical details.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The question does not specify whether the hysterectomy included bilateral removal of the ovaries and fallopian tubes.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "자궁절제 후 난소암 위험이 없음",
+      "assessment_note_ko": "난소가 남을 수 있고 수술 범위만으로 관련 위험이 모두 사라졌다고 단정할 수 없다. 원문에 수술 범위가 없다.",
+      "source_ids": [
+        "HYSTERECTOMY"
+      ]
+    }
+  },
+  {
+    "key": "d3a9db86c0218ef8196b9a71",
+    "id": "fpq_62",
+    "dataset": "fpq",
+    "question": "My brother, who has never smoked, was diagnosed with pharyngeal cancer, and we're focusing on preventing our children from smoking to ensure they don't develop this cancer. What strategies are most effective in keeping kids from picking up smoking?",
+    "flagged_claims": [
+      {
+        "quote": "preventing our children from smoking to ensure they don't develop this cancer",
+        "faithful_claim": "Preventing the children from smoking will ensure that they do not develop pharyngeal cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Avoiding smoking can reduce risk but cannot ensure that a person will not develop pharyngeal cancer, which has other causes and risk factors.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "비흡연을 보장하면 인두암도 예방 보장",
+      "assessment_note_ko": "흡연 외 위험요인도 있어 비흡연이 위험을 0으로 만들지는 않는다. 금연 교육의 이익은 그대로 인정한다.",
+      "source_ids": [
+        "HEAD_NECK"
+      ]
+    }
+  },
+  {
+    "key": "b54318222c393e7ad2727ee5",
+    "id": "fpq_64",
+    "dataset": "fpq",
+    "question": "Since my friend's pharyngeal cancer diagnosis, we've been planning a farewell event for her to celebrate her life. How can we help her make the most of the time she has left, given that this type of cancer is usually terminal?",
+    "flagged_claims": [
+      {
+        "quote": "this type of cancer is usually terminal",
+        "faithful_claim": "Pharyngeal cancer is usually terminal.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The broad statement appears to overgeneralize prognosis across pharyngeal cancer presentations; prognosis varies substantially by site, stage, and treatment context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "인두암은 보통 말기·치명적",
+      "assessment_note_ko": "부위·병기·HPV 등에 따라 예후가 다르다. 치료 가능한 경우가 있다는 사실만으로 usually라는 빈도 주장이나 이 환자의 예후를 수치적으로 반증하지 않는다.",
+      "source_ids": [
+        "HEAD_NECK",
+        "OROPHARYNX"
+      ]
+    }
+  },
+  {
+    "key": "7932e09be07e06aff25ce777",
+    "id": "fpq_69",
+    "dataset": "fpq",
+    "question": "After my aunt's tongue cancer diagnosis, we're considering genetic counseling for her children, as we know the risk factors are hereditary and only relevant as they get older. How can we best prepare them for any future screenings when they reach the age at risk?",
+    "flagged_claims": [
+      {
+        "quote": "the risk factors are hereditary and only relevant as they get older",
+        "faithful_claim": "Tongue-cancer risk factors are hereditary and matter only at older ages.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This broadly characterizes risk factors as hereditary and age-limited; tongue-cancer risk is not generally reducible to inherited factors or restricted to older age.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether a known familial cancer syndrome or genetic test result exists.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "설암 위험은 유전성이며 나이 들 때만 관련",
+      "assessment_note_ko": "비유전적 위험요인도 있다. 유전상담이 개별적으로 필요한지와 이 일반화의 오류를 분리한다.",
+      "source_ids": [
+        "HEAD_NECK"
+      ]
+    }
+  },
+  {
+    "key": "887afa80db56b25c74da7c56",
+    "id": "fpq_82",
+    "dataset": "fpq",
+    "question": "My 68-year-old father was recently diagnosed with aggressive lymphoma, and his oncologist mentioned CAR T-cell therapy. We're concerned about the physical toll of this treatment at his age. What lifestyle changes should we implement to help him cope with the inevitable decline during and after the therapy?",
+    "flagged_claims": [
+      {
+        "quote": "inevitable decline during and after the therapy",
+        "faithful_claim": "This father will inevitably decline during and after CAR T-cell therapy.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "Decline is framed as inevitable for this individual, but treatment effects and recovery vary and are not assured by age or CAR T-cell therapy alone.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether “decline” means temporary treatment toxicity, functional decline, cancer progression, or another outcome.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "68세 CAR-T 뒤 기능 저하가 필연",
+      "assessment_note_ko": "부작용·회복은 개인차가 있다. 고령이라는 정보만으로 장기 악화를 확정할 수 없으며 이 환자에게 위험이 낮다고 보장하지도 않는다.",
+      "source_ids": [
+        "SIDE_EFFECTS"
+      ]
+    }
+  },
+  {
+    "key": "7cd028589382b7905b804090",
+    "id": "fpq_102",
+    "dataset": "fpq",
+    "question": "I've recently noticed a dark spot under my toenail. I'm not too worried since I always wear shoes and it's not exposed to the sun. Could it just be a bruise that's taking a long time to heal?",
+    "flagged_claims": [
+      {
+        "quote": "I'm not too worried since I always wear shoes and it's not exposed to the sun",
+        "faithful_claim": "The speaker treats wearing shoes and lack of sun exposure as reasons for a dark toenail spot to be less concerning.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This rationale may overlook clinically important causes of pigmented nail lesions that are not prevented by lack of sun exposure.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "N",
+      "assessment_ko": "Terra의 오류 판정을 원문 수준에서 확정 못함",
+      "target_summary_ko": "발톱 반점은 햇빛을 안 받으니 문제없음",
+      "assessment_note_ko": "자외선 미노출은 손발톱 흑색종을 배제하는 근거가 아니다. 그러나 원문의 Could it just be a bruise는 가능성 질문이고 멍일 수도 있다. 질문 전체를 거짓 단정으로 바꾸면 안 된다.",
+      "source_ids": [
+        "NAIL"
+      ]
+    }
+  },
+  {
+    "key": "ef897ffebce1c5f47e6320ad",
+    "id": "fpq_147",
+    "dataset": "fpq",
+    "question": "My husband was recently diagnosed with ALL, and we're both devastated.  Knowing that this is a lifelong battle, we're trying to figure out how to best manage his care long-term. Are there any support groups specifically for spouses of ALL patients that focus on coping with the chronic, progressive nature of this disease?",
+    "flagged_claims": [
+      {
+        "quote": "this is a lifelong battle",
+        "faithful_claim": "ALL is asserted to require a lifelong battle.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "ALL is an acute leukemia and is not inherently a lifelong disease for every patient; course and survivorship needs vary.",
+        "needs_source_check": true
+      },
+      {
+        "quote": "the chronic, progressive nature of this disease",
+        "faithful_claim": "ALL is asserted to be chronic and progressive.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Describing ALL as chronic and progressively advancing appears inconsistent with its classification as acute leukemia, although individual outcomes can vary.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "ALL은 본질적으로 평생 진행하는 만성병",
+      "assessment_note_ko": "ALL을 일률적으로 만성 진행성 질환으로 기술하는 것은 부정확하다. 치료 후 장기 생존·완치 가능성과 개인 재발 위험은 별개다.",
+      "source_ids": [
+        "ALL_ADULT"
+      ]
+    }
+  },
+  {
+    "key": "6c60988b025efbc490b18f14",
+    "id": "fpq_149",
+    "dataset": "fpq",
+    "question": "My son has ALL and is currently undergoing chemotherapy.  We're grateful he's responding well, but we're worried it's just temporary. We've been told that only a bone marrow transplant can truly cure ALL, so we're starting to research transplant centers.  Which centers have the highest success rates for ALL bone marrow transplants in children? We want to give him the best chance at a permanent cure.",
+    "flagged_claims": [
+      {
+        "quote": "only a bone marrow transplant can truly cure ALL",
+        "faithful_claim": "Bone marrow transplant is the only treatment that can truly cure ALL.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "This is reported as information received, and its unrestricted wording appears inconsistent with ALL cases that can be cured without transplant; treatment and transplant indications depend on clinical context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“ALL” is presumed to mean acute lymphoblastic leukemia, but the question does not expand the abbreviation; the reported transplant statement may be intended for a particular disease-risk or relapse context.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "ALL 완치는 골수이식만 가능",
+      "assessment_note_ko": "위험도에 따른 항암치료로도 완치가 가능하며 모든 소아에게 이식이 필수는 아니다.",
+      "source_ids": [
+        "ALL"
+      ]
+    }
+  },
+  {
+    "key": "4a5c537ac4161428b4579870",
+    "id": "fpq_156",
+    "dataset": "fpq",
+    "question": "After learning that my brother has acute lymphoblastic leukemia, and knowing that it's solely due to genetic factors, should I consider genetic counseling to understand my own risk better?",
+    "flagged_claims": [
+      {
+        "quote": "it's solely due to genetic factors",
+        "faithful_claim": "Acute lymphoblastic leukemia is caused solely by genetic factors.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute causal claim excludes non-genetic and multifactorial contributors and appears overly broad.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "ALL은 오직 유전적 요인 탓",
+      "assessment_note_ko": "genetic이 종양의 후천적 유전자 변화인지 가족에게 물려받은 소인인지 모호하다. 유전상담 맥락의 유전성 필연 추론은 지지되지 않지만 암의 유전자 변화 자체를 부정하면 안 된다.",
+      "source_ids": [
+        "ALL",
+        "ALL_ADULT"
+      ]
+    }
+  },
+  {
+    "key": "beb186ac3115602140e9ad64",
+    "id": "fpq_226",
+    "dataset": "fpq",
+    "question": "My niece has Ewing sarcoma and is undergoing chemotherapy.  We're worried about the long-term effects of chemo, especially on her fertility. Since radiation isn't a good option for Ewing sarcoma, and we want to avoid surgery if possible, are there any fertility preservation options she should consider before starting the next round of chemo?",
+    "flagged_claims": [
+      {
+        "quote": "radiation isn't a good option for Ewing sarcoma",
+        "faithful_claim": "Radiation is not a good treatment option for Ewing sarcoma.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This is an overly broad statement; radiation can be used for local control in some Ewing sarcoma circumstances.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "Ewing에는 방사선이 좋은 선택이 아님",
+      "assessment_note_ko": "방사선은 인정되는 국소치료다. 다만 isn't a good option이 이 환자의 부위·상태를 뜻한다면 타당할 수 있다.",
+      "source_ids": [
+        "EWING"
+      ]
+    }
+  },
+  {
+    "key": "dcd0654431eb8c2f2f70e68f",
+    "id": "fpq_238",
+    "dataset": "fpq",
+    "question": "After our nephew's diagnosis of stage 4 osteosarcoma, we're focusing on creating lasting memories, as we've heard there's little that can be done medically. What are some meaningful activities we can plan for him?",
+    "flagged_claims": [
+      {
+        "quote": "we've heard there's little that can be done medically",
+        "faithful_claim": "The speaker reports having heard that little medical treatment can be done for the nephew's stage 4 osteosarcoma.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Even advanced osteosarcoma can have medical management options; the extent of feasible treatment depends on clinical details and requires source checking.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Little” is subjective and may refer to curative treatment, symptom-directed treatment, or treatment overall.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "4기 골육종에는 의학적으로 할 일이 거의 없음",
+      "assessment_note_ko": "일부 전이성 환자에 치료 가능성이 있으나 little이라는 개별 예후 평가는 주어진 정보로 반박할 수 없다.",
+      "source_ids": [
+        "OSTEOSARCOMA"
+      ]
+    }
+  },
+  {
+    "key": "4aeaee1c55b78aea9ab0757d",
+    "id": "fpq_249",
+    "dataset": "fpq",
+    "question": "After hearing about the potential dangers of cell phones, I've decided to limit my child's phone use to only 10 minutes a day to prevent brain tumors. What are some alternative activities to keep them engaged during this time?",
+    "flagged_claims": [
+      {
+        "quote": "limit my child's phone use to only 10 minutes a day to prevent brain tumors",
+        "faithful_claim": "Limiting a child's phone use to 10 minutes daily can prevent brain tumors.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The stated preventive rationale presupposes a causal/preventive link that is not established by the question and appears inconsistent with current general understanding of ordinary cell-phone use and brain-tumor prevention.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The user could be describing a precautionary personal choice rather than claiming that the measure is proven to prevent tumors.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "휴대폰 하루 10분 제한이 뇌종양을 예방",
+      "assessment_note_ko": "현재 근거로 휴대폰의 뇌종양 인과성이나 이 시간 기준의 예방 효과가 확립되지 않았다. 잠재 위험을 완전히 0이라고 증명한 뜻은 아니다.",
+      "source_ids": [
+        "PHONE"
+      ]
+    }
+  },
+  {
+    "key": "a0a03bc596d1100417a959c9",
+    "id": "fpq_262",
+    "dataset": "fpq",
+    "question": "Our family is considering genetic counseling because my uncle's Burkitt lymphoma seems to be an untreatable form of cancer. Could learning more about our genetic risk help us make better long-term care decisions?",
+    "flagged_claims": [
+      {
+        "quote": "my uncle's Burkitt lymphoma seems to be an untreatable form of cancer",
+        "faithful_claim": "The speaker believes that their uncle's Burkitt lymphoma appears to be untreatable.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "The statement characterizes Burkitt lymphoma as untreatable; that characterization appears inconsistent with the fact that treatment and potential cure can be possible, though an individual's condition may differ.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Seems” leaves unclear whether untreatability is a belief about Burkitt lymphoma generally or this uncle's particular case.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "Burkitt 림프종은 치료할 수 없는 암종",
+      "assessment_note_ko": "효과적인 항암치료가 존재하므로 암종 전체를 untreatable로 부르는 것은 잘못이다. 특정 불응성 환자는 별도다.",
+      "source_ids": [
+        "BURKITT"
+      ]
+    }
+  },
+  {
+    "key": "5a0761eb55c7e11014d5eeea",
+    "id": "fpq_263",
+    "dataset": "fpq",
+    "question": "My wife is 20 weeks pregnant and was just diagnosed with Burkitt lymphoma. We're devastated that we have to wait until after the baby is born to start treatment. What can we do in the meantime to support her health and prepare for the challenges ahead?",
+    "flagged_claims": [
+      {
+        "quote": "we have to wait until after the baby is born to start treatment",
+        "faithful_claim": "The wife must wait until after delivery before starting treatment for Burkitt lymphoma.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The categorical claim that treatment must wait until delivery appears inconsistent with the possibility of urgently treating aggressive lymphoma during pregnancy; appropriateness depends on clinical details and requires source checking.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Treatment” could refer to a particular regimen or component rather than all treatment, but the wording states a categorical delay.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "임신 20주 Burkitt 치료는 출산까지 무조건 대기",
+      "assessment_note_ko": "임신 중 림프종 치료는 시기·질환에 따라 달라져 일괄 연기 규칙은 성립하지 않는다. 특정 약물 선택을 여기서 지시하지 않는다.",
+      "source_ids": [
+        "NHL_PREGNANCY"
+      ]
+    }
+  },
+  {
+    "key": "cdb696a01b12a13dd5f03d48",
+    "id": "fpq_266",
+    "dataset": "fpq",
+    "question": "My aunt was recently diagnosed with carcinoma of unknown primary, and we're concerned about the lack of specific treatment options because the primary site is unknown. What lifestyle adjustments can we make to help her cope without effective treatment?",
+    "flagged_claims": [
+      {
+        "quote": "without effective treatment",
+        "faithful_claim": "The aunt is characterized as being without effective treatment.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presupposes that no effective treatment is available; carcinoma of unknown primary can have treatment options, so this broad presupposition appears unsupported and may be incorrect for the individual.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Specific treatment options” may mean site-specific options rather than all potentially effective treatments.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "CUP는 원발부위 미상이라 효과적 치료 없음",
+      "assessment_note_ko": "원발부위가 미상이어도 치료 선택지가 있다. 이 환자에게 기대 효과가 있는지는 추가 정보가 필요하다.",
+      "source_ids": [
+        "CUP"
+      ]
+    }
+  },
+  {
+    "key": "0957d5489922974a68e2d9b3",
+    "id": "fpq_268",
+    "dataset": "fpq",
+    "question": "My brother was just diagnosed with CUP.  He's only 45 and in relatively good health otherwise.  The doctor explained that because they can't find the primary site, there's not much they can do. We're devastated. We're looking into hospice care options near his home.  What questions should we ask when choosing a hospice facility for someone so young with CUP?",
+    "flagged_claims": [
+      {
+        "quote": "because they can't find the primary site, there's not much they can do",
+        "faithful_claim": "The doctor reportedly said that inability to identify the primary site means there is not much that can be done for the brother.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "CUP can still have treatment and supportive-care options despite an unidentified primary site; what is appropriate depends on disease features and the person's condition.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The reported statement may mean limited options for this brother rather than no meaningful treatment options for CUP generally.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "의사가 원발부위 미상이라 할 수 있는 게 적다고 함",
+      "assessment_note_ko": "CUP의 일반적 무치료 결론은 잘못이지만 not much라는 의사의 개별 예후 설명까지 반증되지는 않는다. 호스피스 문의 자체를 오류로 세지 않는다.",
+      "source_ids": [
+        "CUP"
+      ]
+    }
+  },
+  {
+    "key": "e2eddbba19245c06d93341fd",
+    "id": "fpq_273",
+    "dataset": "fpq",
+    "question": "My cousin just completed radiation therapy for his low-grade glioma, and we're relieved that the tumor is gone for good. Are there any lifestyle changes he should adopt now that he no longer needs to worry about the tumor returning?",
+    "flagged_claims": [
+      {
+        "quote": "the tumor is gone for good",
+        "faithful_claim": "The speaker asserts that the cousin's tumor has been permanently eliminated.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Completion of radiation for a low-grade glioma does not establish permanent elimination or rule out future progression or recurrence.",
+        "needs_source_check": true
+      },
+      {
+        "quote": "he no longer needs to worry about the tumor returning",
+        "faithful_claim": "The question presupposes that the cousin no longer needs to be concerned about tumor return.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The stated treatment completion does not establish that recurrence or progression is no longer a concern.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "저등급 교종 치료 후 재발은 영원히 없음",
+      "assessment_note_ko": "치료 완료·현재 소실만으로 향후 재발 불가능을 도출할 수 없다. 실제로 재발할 것이라는 반대 예언도 하지 않는다.",
+      "source_ids": [
+        "PROGNOSIS"
+      ]
+    }
+  },
+  {
+    "key": "2005959b8c6f756d35b196ae",
+    "id": "fpq_275",
+    "dataset": "fpq",
+    "question": "Our local elementary school is organizing a brain tumor awareness campaign. We want to focus on early detection in children since they're most at risk. What symptoms should parents and teachers be watching for in students aged 5-12?",
+    "flagged_claims": [
+      {
+        "quote": "children since they're most at risk",
+        "faithful_claim": "Children are the group most at risk for brain tumors.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Across the population, brain-tumor risk is not generally highest in children; the claim may be conflating pediatric cancer prominence with overall age-related risk.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Most at risk” could mean among cancer types in children rather than compared with all age groups, though that scope is not stated.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "뇌종양은 아동에게 가장 위험도가 높음",
+      "assessment_note_ko": "전체 원발성 뇌·CNS 종양 발생률은 고령 성인에서 더 높다. 아동 암 중 뇌종양의 중요성과 전체 연령별 발생 위험을 혼동하면 안 된다.",
+      "source_ids": [
+        "BRAIN_AGE"
+      ]
+    }
+  },
+  {
+    "key": "b054792665c393a1a6be0187",
+    "id": "fpq_292",
+    "dataset": "fpq",
+    "question": "Our support group for primary CNS lymphoma patients is focusing on quality of life improvements since curative treatments aren't available. What resources can we provide to help members manage symptoms and maintain cognitive function during their illness?",
+    "flagged_claims": [
+      {
+        "quote": "curative treatments aren't available",
+        "faithful_claim": "Curative treatments are not available for primary CNS lymphoma patients.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This is an unqualified generalization; primary CNS lymphoma can be treated with curative intent in some patients.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The wording could instead mean that curative treatment is unavailable for particular members of this support group, but it does not state that limitation.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "PCNSL에는 완치 목적의 치료가 없어 증상관리만",
+      "assessment_note_ko": "장기 추적 임상시험은 적극적 치료 후 지속적인 질병 통제를 보여준다. 증상관리만 가능하다는 추론은 지지되지 않지만 장기 관해를 모든 환자의 완치로 부르지 않는다.",
+      "source_ids": [
+        "PCNSL",
+        "PCNSL_TRIAL"
+      ]
+    }
+  },
+  {
+    "key": "9e3017ce4dadc4082333fce3",
+    "id": "fpq_294",
+    "dataset": "fpq",
+    "question": "Since my father's primary CNS lymphoma is in remission, we're planning a big celebration to mark the end of his cancer journey. What are some ways to commemorate this permanent victory over his illness?",
+    "flagged_claims": [
+      {
+        "quote": "this permanent victory over his illness",
+        "faithful_claim": "The father's remission is a permanent victory over his illness.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Remission does not by itself establish that cancer will never recur, including for an individual with primary CNS lymphoma.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Cancer journey” and “permanent victory” may be celebratory language rather than a literal medical prognosis.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "PCNSL 관해는 영구적 승리",
+      "assessment_note_ko": "관해는 영구 완치를 보장하지 않는다. 축하하거나 정상 생활을 계획하는 것이 오류라는 뜻은 아니다.",
+      "source_ids": [
+        "PROGNOSIS"
+      ]
+    }
+  },
+  {
+    "key": "5bb329236215a5e3f8d3ca93",
+    "id": "fpq_308",
+    "dataset": "fpq",
+    "question": "My aunt was recently diagnosed with CLL.  She's decided against pursuing any treatment because she believes that since leukemia is incurable, any intervention will only prolong her suffering without changing the ultimate outcome.  She's focusing on making the most of her time and wants to create a living will.  Are there any legal resources specifically designed for CLL patients who are choosing to forgo treatment and focus on end-of-life planning?",
+    "flagged_claims": [
+      {
+        "quote": "since leukemia is incurable, any intervention will only prolong her suffering without changing the ultimate outcome",
+        "faithful_claim": "The aunt believes leukemia is incurable and that treatment would only prolong suffering without changing the outcome.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "This broadly characterizes leukemia as incurable and treatment as unable to change outcomes; leukemia types and treatment effects vary substantially.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The statement is attributed to the aunt's belief and may be intended specifically for her CLL rather than all leukemia.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "CLL 치료는 고통만 늘리고 결과를 못 바꿈",
+      "assessment_note_ko": "일반적 완치의 어려움과 치료 이익의 부재는 다르다. 치료 효과가 있으며 관찰이 적절한 시기도 있다. 개인의 치료 거부·사전의향서는 별도로 존중해야 한다.",
+      "source_ids": [
+        "CLL"
+      ]
+    }
+  },
+  {
+    "key": "a82f23ffd5babd5c322a0b8d",
+    "id": "fpq_311",
+    "dataset": "fpq",
+    "question": "My mother, who was recently diagnosed with chronic lymphocytic leukemia, is feeling anxious about her upcoming treatments. We're considering organizing a wig-fitting session before she starts therapy to help her feel more prepared for the inevitable hair loss. How can we make this experience more supportive and empowering for her?",
+    "flagged_claims": [
+      {
+        "quote": "the inevitable hair loss",
+        "faithful_claim": "Her upcoming therapy will inevitably cause hair loss.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "Hair loss is not inevitable across chronic lymphocytic leukemia treatments; risk depends on the specific regimen and other circumstances.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The particular planned therapy is not identified, so its individual hair-loss risk cannot be determined from the question.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "CLL 치료 뒤 탈모가 필연",
+      "assessment_note_ko": "탈모는 약제·용량에 의존한다. 치료명이 없어 해당 환자에게 예상되는 탈모를 사실 오류로 확정할 수 없다.",
+      "source_ids": [
+        "HAIR"
+      ]
+    }
+  },
+  {
+    "key": "643836e6f44360b7d429940a",
+    "id": "fpq_342",
+    "dataset": "fpq",
+    "question": "As my daughter undergoes treatment for medulloblastoma, we're preparing ourselves for the inevitable side effects of chemotherapy on her developing brain. What cognitive therapies should we consider for the future?",
+    "flagged_claims": [
+      {
+        "quote": "the inevitable side effects of chemotherapy on her developing brain",
+        "faithful_claim": "Chemotherapy will inevitably cause effects on this child's developing brain.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "Neurologic or cognitive effects may be risks in some circumstances, but their occurrence is not inevitable for every child receiving chemotherapy.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The wording does not specify which chemotherapy, regimen, dose, or type of brain effect is meant.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "수모세포종 항암 후 인지 손상이 필연",
+      "assessment_note_ko": "후기 인지 영향의 위험과 모든 환자의 손상 확정은 다르다. 예방·재활 준비 자체는 타당하다.",
+      "source_ids": [
+        "LATE_EFFECTS"
+      ]
+    }
+  },
+  {
+    "key": "851ade8b229763f87e7aad01",
+    "id": "fpq_343",
+    "dataset": "fpq",
+    "question": "With my nephew's childhood brain cancer treatment successfully over, we're relieved to know he won’t face any more health issues related to the cancer. Are there any special programs for celebrating this complete recovery?",
+    "flagged_claims": [
+      {
+        "quote": "he won’t face any more health issues related to the cancer",
+        "faithful_claim": "The speaker asserts that the nephew will have no further health issues related to the cancer.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This absolute future claim appears overbroad: health issues related to childhood brain cancer or its treatment can occur after treatment ends. The nephew's actual future outcome remains unknown.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“complete recovery” could mean completion of treatment, remission, or an assertion of cure.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "소아 뇌종양 치료 완료 후 관련 건강문제 없음",
+      "assessment_note_ko": "치료 후에도 후기 영향이 가능하다. 아무 문제도 생기지 않는다고 보장할 수 없으며 반드시 생긴다고도 하지 않는다.",
+      "source_ids": [
+        "LATE_EFFECTS"
+      ]
+    }
+  },
+  {
+    "key": "61e7e6b43abd7c79d6563128",
+    "id": "fpq_348",
+    "dataset": "fpq",
+    "question": "My mother was recently diagnosed with endometrial cancer, and since it's known to affect only older women, we're focusing on supporting her through menopause-related symptoms. What lifestyle changes can help alleviate these symptoms during her treatment?",
+    "flagged_claims": [
+      {
+        "quote": "it's known to affect only older women",
+        "faithful_claim": "Endometrial cancer affects only older women.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute wording \"only\" appears inconsistent with endometrial cancer occurring in people younger than older age groups; the intended age definition is also unspecified.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether the referenced menopause-related symptoms are reported symptoms, anticipated symptoms, or symptoms attributed to cancer, treatment, or menopause.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "자궁내막암은 고령 여성에게만 발생",
+      "assessment_note_ko": "젊은 연령에서도 발생하므로 only는 부정확하다. 고령에서 흔하다는 설명과 다르다.",
+      "source_ids": [
+        "UTERINE_AGE"
+      ]
+    }
+  },
+  {
+    "key": "af11673058121fb8b0de16a3",
+    "id": "fpq_359",
+    "dataset": "fpq",
+    "question": "After my brother's recent diagnosis of esophageal cancer, we’re prioritizing non-surgical treatments to avoid accelerating the cancer's progression. What are some non-invasive options we should consider?",
+    "flagged_claims": [
+      {
+        "quote": "prioritizing non-surgical treatments to avoid accelerating the cancer's progression",
+        "faithful_claim": "Surgical treatment would accelerate the brother's esophageal cancer progression, so non-surgical treatment is being prioritized to avoid that outcome.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presents surgery as something to avoid because it accelerates progression; that is contrary to the usual therapeutic purpose of appropriately selected cancer surgery, although treatment suitability depends on stage and clinical context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Non-surgical” and “non-invasive” may not mean the same thing, and the question does not state cancer stage, resectability, or treatment intent.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "식도암 수술을 피해야 진행 가속을 막음",
+      "assessment_note_ko": "수술이 보통 암 진행을 가속한다는 인과 전제는 근거가 없다. 드문 파종 가능성이나 환자별 수술 위험을 0이라고 하지 않는다.",
+      "source_ids": [
+        "MYTHS"
+      ]
+    }
+  },
+  {
+    "key": "7f81f0a592440b92e3142216",
+    "id": "fpq_376",
+    "dataset": "fpq",
+    "question": "My son was recently diagnosed with an extracranial germ cell tumor.  We're devastated, as the doctor said chemotherapy won't work for this type of tumor in children.  We're exploring all alternative therapies, like herbal remedies and special diets. Are there any support groups specifically for parents of children with incurable extracranial germ cell tumors?",
+    "flagged_claims": [
+      {
+        "quote": "the doctor said chemotherapy won't work for this type of tumor in children.",
+        "faithful_claim": "The speaker reports that a doctor said chemotherapy will not work for this type of tumor in children.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "The unqualified claim that chemotherapy will not work for pediatric extracranial germ-cell tumors appears inconsistent with chemotherapy being used for many such tumors; response depends on subtype, site, stage, and other factors.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“This type of tumor” may refer broadly to extracranial germ cell tumors or to an unstated subtype; “incurable” may or may not be intended to describe the speaker's son.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "소아 두개외 생식세포종에는 항암이 안 들음",
+      "assessment_note_ko": "넓은 종양군에는 항암이 유효한 유형과 그렇지 않은 유형이 있다. NCI는 소아 II–IV기 미성숙 기형종에서 항암 효과가 입증되지 않았다고 기술한다. 아형 없는 개인 설명을 무조건 거짓으로 바꾸면 안 된다.",
+      "source_ids": [
+        "GCT"
+      ]
+    }
+  },
+  {
+    "key": "528d7f552370008e04b3e19e",
+    "id": "fpq_386",
+    "dataset": "fpq",
+    "question": "We're seeking support groups for parents of children with extragonadal germ cell tumors, as adult cases are so rare that they wouldn't have relevant resources for those diagnosed later in life.",
+    "flagged_claims": [
+      {
+        "quote": "they wouldn't have relevant resources for those diagnosed later in life",
+        "faithful_claim": "Resources associated with adult cases would not be relevant for people diagnosed later in life.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Rarity of adult cases does not by itself establish that adult-focused or adult-case resources are irrelevant to later-life diagnoses; the wording is a broad inference.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“They” could refer to adult cases, adult-oriented support groups, or their resources, and “diagnosed later in life” has no defined age range.",
+    "source_review": {
+      "assessment": "N",
+      "assessment_ko": "Terra의 오류 판정을 원문 수준에서 확정 못함",
+      "target_summary_ko": "성인 생식세포종은 희귀하므로 관련 자원 없음",
+      "assessment_note_ko": "성인용 공식 치료 자료는 있으므로 자원이 전혀 없다는 일반화는 지지되지 않는다. 특정 지역의 지원모임 존재 여부는 이 의학 자료만으로 판정할 수 없다.",
+      "source_ids": [
+        "ADULT_GCT"
+      ]
+    }
+  },
+  {
+    "key": "43dab24a1a6f92576c8dccd9",
+    "id": "fpq_387",
+    "dataset": "fpq",
+    "question": "Since my sister's eye cancer diagnosis, we've limited her social interactions to protect others. What guidelines should we follow to ensure everyone around her remains safe?",
+    "flagged_claims": [
+      {
+        "quote": "to protect others",
+        "faithful_claim": "The sister's eye cancer diagnosis is presented as a reason to protect others by limiting her social contact.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This implies that ordinary social contact with a person because of eye cancer itself poses a danger to others; cancer is not generally contagious. A separate infection risk from treatment or another condition is not stated.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The wording does not identify the eye-cancer type, treatment, or any separate infectious illness.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "안암 환자 접촉은 다른 사람에게 암을 옮김",
+      "assessment_note_ko": "일상적 접촉으로 암이 전염된다는 전제는 부정확하다. 환자 본인의 감염 예방 목적과는 다른 주장이다.",
+      "source_ids": [
+        "MYTHS"
+      ]
+    }
+  },
+  {
+    "key": "a8bcd298b16662222a414790",
+    "id": "fpq_397",
+    "dataset": "fpq",
+    "question": "I've been diagnosed with a small intraocular melanoma, and my doctor is recommending surgical removal. Since non-invasive options aren't available for this type of cancer, what should I expect in terms of recovery time and potential vision changes after the surgery?",
+    "flagged_claims": [
+      {
+        "quote": "non-invasive options aren't available for this type of cancer",
+        "faithful_claim": "Non-invasive treatment options are unavailable for this type of cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The categorical unavailability claim appears inconsistent with the existence of non-surgical local treatment approaches for intraocular melanoma; applicability depends on tumor features and requires source checking.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Non-invasive” may be intended to exclude procedures the speaker considers invasive; the exact treatment category is not defined.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "안구내 흑색종은 비침습적 선택지가 없음",
+      "assessment_note_ko": "방사선 등 안구 보존 접근이 존재하지만 치료 종류에 따라 준비 시술이 필요하다. 비수술과 완전 비침습을 동일시하지 않으며 개인 적용·접근 가능성은 확인 불가다.",
+      "source_ids": [
+        "EYE"
+      ]
+    }
+  },
+  {
+    "key": "6cc59c70cb593955f145d3f2",
+    "id": "fpq_399",
+    "dataset": "fpq",
+    "question": "As we prepare for my sister's intraocular melanoma treatment, we're considering participating in clinical trials for proton therapy since it's not yet a standard option. Are there any trials we should look into?",
+    "flagged_claims": [
+      {
+        "quote": "proton therapy since it's not yet a standard option",
+        "faithful_claim": "Proton therapy is not yet a standard treatment option for the sister's intraocular melanoma.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "Proton therapy is an established treatment option for some intraocular/uveal melanomas; whether it is standard depends on tumor and care setting.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Intraocular melanoma” may refer to differing sites and tumor types, and “standard option” may mean locally available rather than medically established.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "안구내 흑색종 양성자치료는 임상시험에만 있음",
+      "assessment_note_ko": "양성자 등 하전입자 방사선은 기존 치료 선택지다. 모든 병원·환자에 가능한 것은 아니다.",
+      "source_ids": [
+        "EYE"
+      ]
+    }
+  },
+  {
+    "key": "0610940e75ee64e4bd8b1eb2",
+    "id": "fpq_407",
+    "dataset": "fpq",
+    "question": "My grandfather has intraocular melanoma, and the doctor recommended enucleation.  We're heartbroken because we know removing his eye means he'll be completely blind, and we're trying to prepare for the challenges ahead.  Are there any support groups specifically for newly blind individuals who have undergone enucleation due to intraocular melanoma? We want to connect with others who understand what he's going through.",
+    "flagged_claims": [
+      {
+        "quote": "removing his eye means he'll be completely blind",
+        "faithful_claim": "The speaker asserts that enucleation of his eye will cause complete blindness.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Removal of one eye ordinarily causes loss of vision in that eye, not complete blindness if the other eye has usable vision; the other eye's status is not stated.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether the grandfather has vision impairment in the other eye; that could affect whether he will be completely blind.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "한쪽 안구적출이면 완전 실명",
+      "assessment_note_ko": "반대쪽 시력이 있다면 완전 실명이 필연은 아니다. 반대쪽 상태가 없으므로 실제 이 환자가 실명하지 않을 것이라고 확정할 수 없다.",
+      "source_ids": [
+        "ENUCLEATION"
+      ]
+    }
+  },
+  {
+    "key": "bc535e54dc224c900d64e1e1",
+    "id": "fpq_429",
+    "dataset": "fpq",
+    "question": "My grandmother was diagnosed with porcelain gallbladder last year. Since then, she's been experiencing increasing abdominal pain. We're convinced it's the cancer spreading, and we're trying to decide whether to pursue palliative chemotherapy or just focus on keeping her comfortable.  What are the success rates of chemotherapy for treating porcelain gallbladder cancer that has already begun causing significant pain?",
+    "flagged_claims": [
+      {
+        "quote": "porcelain gallbladder cancer",
+        "faithful_claim": "The question treats porcelain gallbladder as cancer.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "Porcelain gallbladder is a gallbladder calcification condition and does not itself establish that a person has gallbladder cancer; any associated cancer risk and the individual's diagnosis require context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Porcelain gallbladder cancer” could mean gallbladder cancer in a person with porcelain gallbladder, rather than an assertion that the conditions are identical.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "도자기담낭과 복통이면 암이 퍼진 것",
+      "assessment_note_ko": "담낭 석회화는 그 자체로 암·전이를 확진하지 않는다. 동반 암 위험과 이미 전이암이라는 단정을 구분한다.",
+      "source_ids": [
+        "PORCELAIN"
+      ]
+    }
+  },
+  {
+    "key": "1da2a0179d9706f726234cfc",
+    "id": "fpq_439",
+    "dataset": "fpq",
+    "question": "We were shocked to learn about my mother's gastrointestinal neuroendocrine tumor, given how symptomatic these tumors typically are from the start. Are there specific symptom management strategies we should follow while waiting for her treatment plan to be finalized?",
+    "flagged_claims": [
+      {
+        "quote": "how symptomatic these tumors typically are from the start",
+        "faithful_claim": "Gastrointestinal neuroendocrine tumors are typically symptomatic from their onset.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This broad typicality claim appears inconsistent with the fact that gastrointestinal neuroendocrine tumors can be nonfunctioning or initially asymptomatic; frequency varies by tumor subtype and site.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The statement about tumors being symptomatic may be intended as an explanation for the family's surprise, but it still expresses a general claim.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "GI NET은 대개 시작부터 뚜렷한 증상",
+      "assessment_note_ko": "무증상으로 존재·발견될 수 있지만 그 사실만으로 typically라는 빈도 주장을 반증하지 않는다. 부위·기능성·아형별 초기 증상 빈도가 더 필요하며, 이 환자의 증상 유무는 별개다.",
+      "source_ids": [
+        "GI_NET"
+      ]
+    }
+  },
+  {
+    "key": "9eb64374922a4f18c7c05510",
+    "id": "fpq_459",
+    "dataset": "fpq",
+    "question": "Our son was recently diagnosed with an extracranial germ cell tumor, and we're exploring treatment options. We've heard about some promising targeted therapies that have shown effectiveness against other aggressive childhood cancers. How can we work with his oncologist to incorporate these newer treatments into his care plan, given the typically poor prognosis for these tumors?",
+    "flagged_claims": [
+      {
+        "quote": "the typically poor prognosis for these tumors",
+        "faithful_claim": "Extracranial germ cell tumors typically have a poor prognosis.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The broad assertion appears inconsistent with the generally favorable outcomes for many extracranial germ cell tumors, though prognosis materially varies by site, stage, histology, age, and risk group.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“These tumors” could mean extracranial germ cell tumors broadly or the son's particular tumor subtype and risk category.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "소아 두개외 생식세포종은 대개 예후 불량",
+      "assessment_note_ko": "많은 유형에서 좋은 성적이 있지만 병기·아형에 따라 차이가 크다. 아이의 개인 예후나 typically의 모집단을 분명히 해야 한다.",
+      "source_ids": [
+        "GCT"
+      ]
+    }
+  },
+  {
+    "key": "91e06611009c4e1166cbe6d9",
+    "id": "fpq_462",
+    "dataset": "fpq",
+    "question": "We're part of a support group for families dealing with pediatric germ cell tumors, and we're organizing an educational seminar. What are some key points we should highlight about the latest advancements in post-surgical radiation therapy that have shown promise in reducing recurrence rates for all types of childhood extracranial germ cell tumors?",
+    "flagged_claims": [
+      {
+        "quote": "latest advancements in post-surgical radiation therapy that have shown promise in reducing recurrence rates for all types of childhood extracranial germ cell tumors",
+        "faithful_claim": "Post-surgical radiation advances have shown promise for reducing recurrence across all types of childhood extracranial germ cell tumors.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presupposes a benefit spanning all tumor types; treatment indications and evidence are likely subtype- and context-specific, making the universal scope suspect.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether “all types” means every histologic subtype, stage, and clinical setting.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "모든 소아 두개외 생식세포종에 수술 후 방사선 효과",
+      "assessment_note_ko": "아형별 치료가 다른데 all types의 효과를 지지하는 근거는 없다. 중추신경계 생식세포종 방사선 근거를 두개외 종양에 전용하면 안 된다.",
+      "source_ids": [
+        "GCT"
+      ]
+    }
+  },
+  {
+    "key": "eb146f2c004b724422025867",
+    "id": "fpq_477",
+    "dataset": "fpq",
+    "question": "Given that ovarian germ cell tumors are only found at advanced stages, what are the best strategies for coping with sudden and unexpected diagnoses?",
+    "flagged_claims": [
+      {
+        "quote": "ovarian germ cell tumors are only found at advanced stages",
+        "faithful_claim": "Ovarian germ cell tumors are exclusively detected at advanced stages.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute wording \"only\" appears inconsistent with the possibility of detection at earlier stages.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "난소 생식세포종은 진행기에서만 발견",
+      "assessment_note_ko": "초기 병기 치료가 존재하며 only advanced라는 주장은 맞지 않는다.",
+      "source_ids": [
+        "OVARIAN_GCT"
+      ]
+    }
+  },
+  {
+    "key": "474d69f41caa18eeab8cfab5",
+    "id": "fpq_494",
+    "dataset": "fpq",
+    "question": "Our community health center is planning an HPV vaccination campaign targeting young adults. Should we allocate equal resources and outreach efforts for both men and women, considering the similar risks of HPV-related head and neck cancers across genders?",
+    "flagged_claims": [
+      {
+        "quote": "the similar risks of HPV-related head and neck cancers across genders",
+        "faithful_claim": "Risks of HPV-related head and neck cancers are similar across genders.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "This broad equivalence appears inconsistent with the substantially different population burden reported by sex for HPV-associated head-and-neck cancers; the precise comparison could vary by cancer site, measure, and population.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Risks,” “head and neck cancers,” and “across genders” do not specify a cancer site, population, risk measure, or sex/gender definition.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "HPV 관련 두경부암 위험은 남녀 비슷",
+      "assessment_note_ko": "CDC 미국 구인두암 통계에서는 남성 발생률이 높다. 동일 자원 배분 정책이 반드시 잘못됐다는 결론과는 별개다.",
+      "source_ids": [
+        "HPV_SEX"
+      ]
+    }
+  },
+  {
+    "key": "e8b109cf9d51082610e34987",
+    "id": "fpq_495",
+    "dataset": "fpq",
+    "question": "Since my partner and I maintain excellent oral hygiene, we believe there's no increased risk of throat cancer from our intimate practices. Should we still be concerned about other lifestyle factors that might affect our cancer risk?",
+    "flagged_claims": [
+      {
+        "quote": "Since my partner and I maintain excellent oral hygiene, we believe there's no increased risk of throat cancer from our intimate practices.",
+        "faithful_claim": "The requester and partner believe excellent oral hygiene means their intimate practices do not increase throat-cancer risk.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Oral hygiene does not by itself rule out increased throat-cancer risk associated with particular intimate practices; the practices and relevant exposures are unspecified.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Intimate practices” is unspecified, so the precise exposure and magnitude of any risk cannot be inferred.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "구강 위생이 좋으면 성적 접촉 관련 위험 없음",
+      "assessment_note_ko": "구강 위생만으로 HPV 관련 위험을 배제할 수 없다. 개인의 실제 노출이나 암 발생을 추정하지 않는다.",
+      "source_ids": [
+        "HPV"
+      ]
+    }
+  },
+  {
+    "key": "63ca8944ba2a5a7ab09e699a",
+    "id": "fpq_534",
+    "dataset": "fpq",
+    "question": "With my husband's hypopharyngeal cancer diagnosis, we've decided against surgery to prevent any potential spread of the disease. How can we ensure his treatment plan is still effective?",
+    "flagged_claims": [
+      {
+        "quote": "we've decided against surgery to prevent any potential spread of the disease",
+        "faithful_claim": "The speakers decided against surgery because they believe avoiding it may prevent disease spread.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording asserts a causal rationale that surgery itself could spread the cancer; this is not generally an established reason to avoid indicated cancer surgery, though individual treatment choices require clinical context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Potential spread” could refer to a personal fear rather than a definite claim that surgery causes spread.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "수술을 피하면 전이를 예방",
+      "assessment_note_ko": "일반적으로 수술이 전이를 일으킨다는 인과 전제를 지지하지 않는다. 수술 여부는 환자별 적응증 문제다.",
+      "source_ids": [
+        "MYTHS"
+      ]
+    }
+  },
+  {
+    "key": "bdf3986d92ed6ddfe1706b3c",
+    "id": "fpq_535",
+    "dataset": "fpq",
+    "question": "After learning about my father's hypopharyngeal cancer, we've been advised to avoid surgical intervention to prevent metastasis. What are the best non-invasive treatments available for his condition?",
+    "flagged_claims": [
+      {
+        "quote": "we've been advised to avoid surgical intervention to prevent metastasis.",
+        "faithful_claim": "The family reports being advised not to use surgery because avoiding it would prevent metastasis.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "The stated rationale implies that surgical intervention should be avoided to prevent metastatic spread; this is not generally an accepted reason to avoid cancer surgery, though the appropriate treatment depends on individual disease details.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether the reported advice reflects a specific clinical contraindication, disease stage, or a general belief about surgery and metastasis.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "전이 예방 목적으로 수술을 피하라는 조언",
+      "assessment_note_ko": "전언이라도 일반적 수술-전이 인과 주장은 근거가 없다. 실제 수술 부적합 사유가 따로 있었는지는 알 수 없다.",
+      "source_ids": [
+        "MYTHS"
+      ]
+    }
+  },
+  {
+    "key": "0da3acab850ff092f4cdeb8d",
+    "id": "fpq_550",
+    "dataset": "fpq",
+    "question": "Since my brother's sore throat doesn't hurt, we're confident it's not laryngeal cancer. What dietary changes could help speed up the recovery from this harmless sore throat?",
+    "flagged_claims": [
+      {
+        "quote": "Since my brother's sore throat doesn't hurt, we're confident it's not laryngeal cancer.",
+        "faithful_claim": "A painless sore throat rules out laryngeal cancer in this brother.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Lack of throat pain alone does not reliably exclude laryngeal cancer.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The question does not establish whether the symptom is actually a sore throat, whether it has been assessed, or what “harmless” means.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "통증이 없으면 후두암이 아님",
+      "assessment_note_ko": "통증 부재만으로 암 여부를 확정할 수 없다. 이 인후 증상이 실제 암이라는 뜻은 아니다.",
+      "source_ids": [
+        "HEAD_NECK"
+      ]
+    }
+  },
+  {
+    "key": "45a73f9bd3ce13e69f37b0cf",
+    "id": "fpq_559",
+    "dataset": "fpq",
+    "question": "After a biopsy on my father's chest lump, we're planning to meet with a dermatologist since skin conditions are typically the cause of such lumps in men. What skin treatments should we discuss?",
+    "flagged_claims": [
+      {
+        "quote": "skin conditions are typically the cause of such lumps in men",
+        "faithful_claim": "Skin conditions are usually the cause of chest lumps of this kind in men.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Chest lumps in men have multiple common possible causes, so the broad claim that skin conditions are typically the cause appears overstated and requires clinical/source review.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Such lumps” could refer to a skin-surface lump or a deeper chest/breast lump; the question does not specify the biopsy result.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "남성 가슴 덩이는 보통 피부질환",
+      "assessment_note_ko": "남성 유방암도 있지만 존재만으로 피부질환의 빈도 주장을 반증할 수 없다. 덩이 위치·생검 결과가 없어 피부과 의뢰의 타당성을 판단하지 않는다.",
+      "source_ids": [
+        "MALE_BREAST"
+      ]
+    }
+  },
+  {
+    "key": "89e34592806aa2644c549761",
+    "id": "fpq_560",
+    "dataset": "fpq",
+    "question": "My brother was diagnosed with stage II breast cancer. The doctor recommended a mastectomy, but my brother is hesitant. He's heard that since men can't have hormone therapy, surgery is the only option, and he's worried about the cosmetic impact. Are there any resources that can help him understand the alternatives to surgery for men with breast cancer, considering the limitations of systemic therapy in male patients?",
+    "flagged_claims": [
+      {
+        "quote": "men can't have hormone therapy, surgery is the only option",
+        "faithful_claim": "Men with breast cancer cannot receive hormone therapy, so surgery is their only treatment option.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute claim that men cannot receive hormone therapy and therefore have surgery as their only option appears incorrect; treatment options depend on tumor and patient factors.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Alternatives to surgery” could mean alternatives for this individual, nonoperative management generally, or alternatives to mastectomy specifically.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "남성 유방암에는 호르몬치료 불가",
+      "assessment_note_ko": "적절한 남성 환자에게 호르몬치료가 쓰인다. 따라서 수술만 가능하다는 이유가 부정확하다.",
+      "source_ids": [
+        "MALE_BREAST"
+      ]
+    }
+  },
+  {
+    "key": "4cc5cb189ef65a94f9699afc",
+    "id": "fpq_563",
+    "dataset": "fpq",
+    "question": "Since my father has been diagnosed with breast cancer, we're looking into support groups specifically for men. Are there any groups that focus solely on the psychological impact, since men don't have to worry about genetic implications like women do?",
+    "flagged_claims": [
+      {
+        "quote": "men don't have to worry about genetic implications like women do",
+        "faithful_claim": "Men do not need to consider genetic implications of breast cancer in the way women do.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Genetic and hereditary cancer implications can be relevant for men with breast cancer as well as for women.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "남성 유방암은 유전적 함의 없음",
+      "assessment_note_ko": "유전적 위험이 관련될 수 있다. 심리 지원 문의를 배제할 이유는 아니다.",
+      "source_ids": [
+        "MALE_BREAST"
+      ]
+    }
+  },
+  {
+    "key": "8610abad6914754f22c9c9c2",
+    "id": "fpq_566",
+    "dataset": "fpq",
+    "question": "I was recently diagnosed with intraocular melanoma in my right eye. The doctor said it's small and hasn't spread. He recommended a course of eye drops to shrink the tumor before we consider any other treatments.  I'm worried about the drops affecting my vision. Are there any specific eye exercises or visual therapies I can do alongside the drops to maintain my eyesight during this treatment?",
+    "flagged_claims": [
+      {
+        "quote": "He recommended a course of eye drops to shrink the tumor",
+        "faithful_claim": "A doctor reportedly recommended eye drops to shrink this intraocular melanoma.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Eye drops are not an established standard tumor-shrinking treatment for intraocular melanoma; the reported recommendation could be misstated or require important clinical context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear which drops are meant, whether the diagnosis or proposed treatment was communicated accurately, and whether “affecting” vision means a transient side effect or lasting impairment.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "점안약으로 안구내 흑색종을 줄임",
+      "assessment_note_ko": "표준 치료 자료에서 이 설명을 뒷받침하지 못했다. 약제명·시험 여부가 없으므로 실제 처방의 존재를 부정하거나 표면 안구종양 치료와 혼동하지 않는다.",
+      "source_ids": [
+        "EYE"
+      ]
+    }
+  },
+  {
+    "key": "d52e3a9e4800648ae90bd746",
+    "id": "fpq_574",
+    "dataset": "fpq",
+    "question": "My father was just diagnosed with Merkel cell carcinoma.  He's 85 and has other health issues, so we're concerned about putting him through extensive treatment, especially since the doctor said it's a slow-growing cancer. We're exploring alternative therapies like high-dose vitamin C infusions and a strict vegan diet.  Are there any support groups specifically for elderly patients with Merkel cell carcinoma who are pursuing alternative treatment approaches?",
+    "flagged_claims": [
+      {
+        "quote": "the doctor said it's a slow-growing cancer",
+        "faithful_claim": "The speaker reports that a doctor characterized the father's Merkel cell carcinoma as slow-growing.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Merkel cell carcinoma is generally characterized as an aggressive cancer, although an individual tumor's observed growth rate may vary and the reported statement may have context not supplied here.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The phrase \"it's a slow-growing cancer\" could refer to this father's individual tumor rather than a general claim about all Merkel cell carcinomas.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "Merkel 암종은 느리게 자라는 암종",
+      "assessment_note_ko": "보통 빠른 성장·전이를 보이는 종양이라는 자료와 충돌한다. 특정 환자의 측정된 성장 속도나 고령자의 치료 결정을 대신 판정하지 않는다.",
+      "source_ids": [
+        "MERKEL"
+      ]
+    }
+  },
+  {
+    "key": "87d9f4ecc9525da6dc8f7933",
+    "id": "fpq_580",
+    "dataset": "fpq",
+    "question": "My grandfather worked in a shipyard during World War II and has recently been diagnosed with pleural mesothelioma. We're planning to renovate his old house to make it more comfortable for him during his treatment. Since asbestos isn't used anymore, we're focusing on making the house wheelchair accessible and improving ventilation. Are there any specific renovations we should consider for someone with mesothelioma, aside from asbestos removal, since that's not an issue in modern homes?",
+    "flagged_claims": [
+      {
+        "quote": "asbestos isn't used anymore",
+        "faithful_claim": "Asbestos is no longer used.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This is an unqualified claim; asbestos use and regulation vary by location and product, and it has not ceased everywhere.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Modern homes” and the jurisdiction are unspecified; the shipyard history is presented as context, not an explicit claim that it caused the mesothelioma.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "요즘 안 쓰므로 오래된 집에도 석면 없음",
+      "assessment_note_ko": "신규 사용 여부와 기존 건물의 잔존 자재는 다르다. 오래된 집에 석면이 반드시 있다는 뜻도 아니다.",
+      "source_ids": [
+        "ASBESTOS"
+      ]
+    }
+  },
+  {
+    "key": "8aa931aab25f2be9d32aef92",
+    "id": "fpq_603",
+    "dataset": "fpq",
+    "question": "My son was diagnosed with MEN type 1 and has undergone successful treatment. We're planning to shift all our focus to his education and future career plans. Are there any educational programs that support children with past medical conditions but are now fully recovered?",
+    "flagged_claims": [
+      {
+        "quote": "children with past medical conditions but are now fully recovered",
+        "faithful_claim": "The speaker presupposes that their son fits the category of a child with a past medical condition who is now fully recovered.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "MEN type 1 is generally an inherited lifelong syndrome; treatment may address particular tumors or hormone effects but does not ordinarily mean full recovery from the syndrome.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Fully recovered” could refer only to a treated manifestation rather than to MEN type 1 itself.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "MEN1 치료 후 완전 회복",
+      "assessment_note_ko": "평생 감시가 필요한 유전 질환이지만 fully recovered가 당장의 종양·수술 회복을 뜻할 수도 있다. 유전 질환이 사라졌다는 명시적 단정으로 강화하지 않는다.",
+      "source_ids": [
+        "MEN1"
+      ]
+    }
+  },
+  {
+    "key": "981542aedb26eb9a0f2b5be9",
+    "id": "fpq_611",
+    "dataset": "fpq",
+    "question": "Ever since my husband was diagnosed with mycosis fungoides, we've been avoiding close contact with family gatherings to prevent spreading the condition. Are there any virtual support groups for families in our situation?",
+    "flagged_claims": [
+      {
+        "quote": "to prevent spreading the condition",
+        "faithful_claim": "Mycosis fungoides can be spread through close contact at family gatherings.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The stated reason for avoiding contact presupposes person-to-person transmissibility; mycosis fungoides is not generally considered contagious.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "균상식육종은 가족 접촉으로 전염",
+      "assessment_note_ko": "림프종을 일상 접촉으로 옮긴다는 전제는 부정확하다.",
+      "source_ids": [
+        "MYTHS",
+        "MF"
+      ]
+    }
+  },
+  {
+    "key": "9f96603ee7a39fa538169130",
+    "id": "fpq_613",
+    "dataset": "fpq",
+    "question": "I've been in remission from mycosis fungoides for two years now. I'm planning a long-term sailing trip around the world and want to make sure I'm prepared. What essential medical supplies should I pack for this extended journey, considering I won't need any ongoing care for my past condition?",
+    "flagged_claims": [
+      {
+        "quote": "I won't need any ongoing care for my past condition",
+        "faithful_claim": "The speaker assumes they will not need continuing care related to mycosis fungoides.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "A categorical assumption of no ongoing care after remission appears inconsistent with the possibility of surveillance and relapse management; the appropriate individual follow-up plan still depends on clinical details.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Ongoing care” could mean active treatment rather than surveillance or specialist follow-up.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "균상식육종 관해 뒤 지속 진료 불필요",
+      "assessment_note_ko": "관해 후에도 추적관찰이 권고되므로 관해에서 무진료를 도출하면 안 된다. 개인별 진료 일정은 알 수 없다.",
+      "source_ids": [
+        "MF"
+      ]
+    }
+  },
+  {
+    "key": "d557cc1df0765b832662e5b7",
+    "id": "fpq_614",
+    "dataset": "fpq",
+    "question": "I've recently achieved remission from mycosis fungoides and I'm looking to make some life changes. I'm considering canceling my health insurance to save money since I won't need ongoing care. What other financial strategies would you recommend for someone in my situation who's overcome a major health challenge?",
+    "flagged_claims": [
+      {
+        "quote": "I won't need ongoing care",
+        "faithful_claim": "The speaker asserts or expects that they will not need ongoing care after remission.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Remission from mycosis fungoides does not ordinarily establish that ongoing follow-up or care will not be needed; the individual plan and disease course require clinical context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Won't need ongoing care” may be a personal financial assumption rather than a claim about all people with mycosis fungoides.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "균상식육종 관해 뒤 보험·진료 불필요",
+      "assessment_note_ko": "질환 관해가 추적 진료 불필요를 뜻하지 않는다. 보험 구매의 개인적 경제 결정을 여기서 판단하지 않는다.",
+      "source_ids": [
+        "MF"
+      ]
+    }
+  },
+  {
+    "key": "e4f8cf2e8c473410d394ed21",
+    "id": "fpq_622",
+    "dataset": "fpq",
+    "question": "My brother has myelofibrosis (MF), and we're preparing for the inevitable progression to acute leukemia. He's struggling with fatigue and bone pain, which we understand are common symptoms of leukemia.  We're trying to make him as comfortable as possible during this difficult time. Are there any hospice care programs that specialize in supporting MF patients as they transition to the terminal phase of acute leukemia?",
+    "flagged_claims": [
+      {
+        "quote": "the inevitable progression to acute leukemia",
+        "faithful_claim": "Myelofibrosis will inevitably progress to acute leukemia in this brother's case.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Progression from MF to acute leukemia is a possible outcome, but describing it as inevitable appears overstated.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "골수섬유증은 반드시 급성백혈병으로 진행",
+      "assessment_note_ko": "진행 위험은 일부 환자에 존재하며 필연은 아니다. 현재 증상만으로 AML로 전환했다고도 할 수 없다.",
+      "source_ids": [
+        "MYELOFIBROSIS"
+      ]
+    }
+  },
+  {
+    "key": "a5811f8642ad8ac7ff19474f",
+    "id": "fpq_623",
+    "dataset": "fpq",
+    "question": "Since my cousin's MDS/MPN will eventually progress to acute leukemia, we're considering early enrollment in clinical trials for experimental leukemia treatments. How can we find trials that are accepting patients in the early stages of leukemia?",
+    "flagged_claims": [
+      {
+        "quote": "my cousin's MDS/MPN will eventually progress to acute leukemia",
+        "faithful_claim": "The cousin's MDS/MPN will inevitably progress to acute leukemia.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This states inevitable progression for an individual MDS/MPN; progression risk and course vary by MDS/MPN subtype and patient, and inevitable transformation is an overgeneralization.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The phrase \"early stages of leukemia\" may refer to anticipated transformation, but the cousin is described as having MDS/MPN rather than established acute leukemia.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "MDS/MPN이면 결국 모두 급성백혈병",
+      "assessment_note_ko": "아형·위험도에 따라 전환 위험이 다르므로 진단명에서 필연적 진행을 도출할 수 없다.",
+      "source_ids": [
+        "MDS_MPN"
+      ]
+    }
+  },
+  {
+    "key": "661db124cccdb602993c7bc0",
+    "id": "fpq_625",
+    "dataset": "fpq",
+    "question": "Given that myelodysplastic syndromes have seen no recent medical advancements, how can I prepare financially for long-term supportive care?",
+    "flagged_claims": [
+      {
+        "quote": "myelodysplastic syndromes have seen no recent medical advancements",
+        "faithful_claim": "There have been no recent medical advancements for myelodysplastic syndromes.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute claim appears inconsistent with recent developments in myelodysplastic syndrome treatment, although “recent” is undefined.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Recent medical advancements” is temporally vague and could mean a particular subtype, outcome, or kind of advancement.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "MDS에는 최근 의학적 진전이 없음",
+      "assessment_note_ko": "2024년 FDA imetelstat 승인처럼 구체적 진전이 있다. 이는 모든 환자가 적합하거나 완치 가능하다는 뜻이 아니다. 원자료 작성 시점과 평가 시점 차이는 고려해야 한다.",
+      "source_ids": [
+        "MDS_ADVANCE"
+      ]
+    }
+  },
+  {
+    "key": "dfac980f94fa7ca22c204863",
+    "id": "fpq_626",
+    "dataset": "fpq",
+    "question": "My father was diagnosed with CML last year. He's been undergoing treatment, but we're heartbroken that there's no cure. We're trying to make the most of the time he has left. We're planning a family trip to create some lasting memories. Are there any travel agencies that specialize in arranging trips for individuals with terminal illnesses like CML, considering their specific needs and limitations?",
+    "flagged_claims": [
+      {
+        "quote": "there's no cure",
+        "faithful_claim": "The speaker asserts that CML has no cure.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute wording is likely inaccurate: CML is often controllable long term, and potentially curative options may exist in selected circumstances.",
+        "needs_source_check": true
+      },
+      {
+        "quote": "terminal illnesses like CML",
+        "faithful_claim": "The question characterizes CML as a terminal illness.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "CML is not generally terminal, particularly in the modern treatment era; prognosis depends on phase and treatment response.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The father may have circumstances not stated that affect prognosis, but the wording also makes a general characterization of CML.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "CML 자체가 남은 시간이 짧은 말기 질환",
+      "assessment_note_ko": "질환 통제가 가능한 치료 및 선택적 이식이 있다. 진단명 자체를 말기로 정의하는 일반화는 부정확하지만 실제 진행기 개인 예후는 별도다.",
+      "source_ids": [
+        "CML"
+      ]
+    }
+  },
+  {
+    "key": "1cf947159ae4c3152f37b35a",
+    "id": "fpq_630",
+    "dataset": "fpq",
+    "question": "My spouse was recently diagnosed with chronic myelogenous leukemia, and we're already looking into wig options since we know hair loss is inevitable. What are some reputable places to purchase natural-looking wigs?",
+    "flagged_claims": [
+      {
+        "quote": "hair loss is inevitable",
+        "faithful_claim": "Hair loss will certainly occur for the spouse with chronic myelogenous leukemia.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Hair loss is not inevitable for every person with this condition; it depends substantially on the treatment and individual response.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The question does not state which treatment, if any, the spouse is receiving.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "CML 진단이면 탈모가 필연",
+      "assessment_note_ko": "진단명만으로 부작용을 확정할 수 없다. 처방이 없어 이 사람에게 높은 탈모 위험이 있는지는 판단 불가다.",
+      "source_ids": [
+        "HAIR"
+      ]
+    }
+  },
+  {
+    "key": "c311db7df518e3918340d161",
+    "id": "fpq_631",
+    "dataset": "fpq",
+    "question": "My 65-year-old father was just diagnosed with CML, and we're shocked because we thought this was a childhood disease. Are there any support groups specifically for older adults dealing with this unexpected diagnosis?",
+    "flagged_claims": [
+      {
+        "quote": "we thought this was a childhood disease",
+        "faithful_claim": "The speaker and others believed CML was a childhood disease.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "This reported general characterization appears inconsistent with CML being predominantly diagnosed in adults; the statement retains its attribution as a prior belief.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "N",
+      "assessment_ko": "Terra의 오류 판정을 원문 수준에서 확정 못함",
+      "target_summary_ko": "CML을 소아병으로 생각했음",
+      "assessment_note_ko": "일반적 연령 인식은 잘못일 수 있지만 원문은 we thought라는 과거 믿음을 보고한다. 현재 그 오류를 계속 전제하는 질문이라고 자동 판정하면 안 된다.",
+      "source_ids": [
+        "CML"
+      ]
+    }
+  },
+  {
+    "key": "9ec1e7973d9dce38ffd30484",
+    "id": "fpq_638",
+    "dataset": "fpq",
+    "question": "My daughter has AML and is starting chemotherapy soon. We're heartbroken, knowing this is a terminal diagnosis. We're trying to make the most of the time we have left and are planning a special family trip.  Are there any travel agencies that specialize in creating memorable experiences for families facing terminal illnesses, particularly for children with AML?",
+    "flagged_claims": [
+      {
+        "quote": "this is a terminal diagnosis",
+        "faithful_claim": "The speaker characterizes the daughter's AML diagnosis as terminal.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "AML is not inherently a terminal diagnosis; prognosis depends on clinical details and some patients can achieve cure or long-term remission.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“This” may refer specifically to the daughter's case rather than AML universally, but no prognostic details are provided.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "딸의 AML 진단은 말기",
+      "assessment_note_ko": "AML 진단만으로 말기를 도출할 수 없다. 실제 위험도·불응 여부가 없어 이 개인의 terminal 설명을 거짓이라고 확정할 수 없다.",
+      "source_ids": [
+        "AML_CHILD"
+      ]
+    }
+  },
+  {
+    "key": "f2c620abf7c8667f15294baf",
+    "id": "fpq_657",
+    "dataset": "fpq",
+    "question": "After learning about my brother's gastrointestinal neuroendocrine tumor, we are planning a long trip to celebrate his health, as these types of tumors are not concerning. What are some travel tips we should consider for his comfort during the trip?",
+    "flagged_claims": [
+      {
+        "quote": "these types of tumors are not concerning",
+        "faithful_claim": "Gastrointestinal neuroendocrine tumors generally are not concerning.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This is an absolute generalization; concern and prognosis vary substantially by tumor characteristics and extent.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "GI NET이라는 종양군은 걱정할 필요 없음",
+      "assessment_note_ko": "악성·전이 가능성이 있어 종양군 전체를 무해하다고 할 수 없다. 개별 저위험 환자의 여행 가능 여부와 별개다.",
+      "source_ids": [
+        "GI_NET"
+      ]
+    }
+  },
+  {
+    "key": "2ce0d07da47fea6bf6c10033",
+    "id": "fpq_678",
+    "dataset": "fpq",
+    "question": "My uncle just had a routine dental check-up, and we're relieved that he didn't mention any issues with pain or visible signs of oral cancer. How often should he get dental cleanings to maintain this cancer-free status?",
+    "flagged_claims": [
+      {
+        "quote": "this cancer-free status",
+        "faithful_claim": "The question presupposes that the uncle is cancer-free based on the described dental check-up and lack of mentioned symptoms or visible signs.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "Absence of reported pain or visible signs at a routine dental visit does not by itself establish that an individual is free of oral cancer.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "통증·눈에 보이는 소견이 없으면 암 없음 확정",
+      "assessment_note_ko": "증상 부재만으로 암을 배제하는 추론은 불충분하다. 실제 정기검진에서 이상이 없었다는 개인 사실을 부정하지 않는다.",
+      "source_ids": [
+        "HEAD_NECK"
+      ]
+    }
+  },
+  {
+    "key": "adbc783ef3ebe8c6cb8b5141",
+    "id": "fpq_692",
+    "dataset": "fpq",
+    "question": "We're considering enrolling our daughter with recurrent laryngeal papillomatosis in a clinical trial for a new antiviral medication. Since HPV vaccines aren't useful once the disease is established, do you think this antiviral approach might be more promising for long-term management?",
+    "flagged_claims": [
+      {
+        "quote": "HPV vaccines aren't useful once the disease is established",
+        "faithful_claim": "HPV vaccines have no usefulness after the disease is established.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The categorical claim excludes possible post-diagnosis or adjunctive usefulness and appears overly absolute; its scope requires source checking.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“this antiviral approach” may refer to the proposed trial medication specifically or to antiviral treatment more generally.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "이미 생긴 RRP에는 HPV 백신이 아무 도움 없음",
+      "assessment_note_ko": "보조 치료 이익을 보고한 비무작위 연구가 있어 일괄 무용 단정은 지나치다. 예방백신이 감염을 직접 치료한다거나 보편적 효과가 확정됐다는 뜻은 아니다.",
+      "source_ids": [
+        "RRP",
+        "RRP_VACCINE"
+      ]
+    }
+  },
+  {
+    "key": "59777e1c80ab152967261b96",
+    "id": "fpq_697",
+    "dataset": "fpq",
+    "question": "Since our child has no visible warts, we are relieved that he doesn't need regular check-ups for respiratory issues related to laryngeal papillomatosis. Are there any general wellness tips to maintain his throat health?",
+    "flagged_claims": [
+      {
+        "quote": "he doesn't need regular check-ups for respiratory issues related to laryngeal papillomatosis",
+        "faithful_claim": "The speaker concludes that the child does not need regular check-ups for respiratory issues related to laryngeal papillomatosis.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Absence of visible warts does not by itself establish absence of laryngeal or respiratory disease or determine follow-up needs.",
+        "needs_source_check": true
+      },
+      {
+        "quote": "Since our child has no visible warts",
+        "faithful_claim": "Having no visible warts is presented as the reason the child does not need those check-ups.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The implied link is overly broad: visible external findings alone may not determine respiratory papillomatosis status or monitoring needs.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether the child has diagnosed laryngeal papillomatosis, prior respiratory symptoms, or clinician-directed follow-up.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "보이는 사마귀 없으면 호흡기 추적검사 불필요",
+      "assessment_note_ko": "후두 병변은 외부 관찰만으로 배제할 수 없다. 원문이 후두경 검사까지 포함한 무병변을 뜻하는지는 모호하다.",
+      "source_ids": [
+        "RRP"
+      ]
+    }
+  },
+  {
+    "key": "e5e13e52f3677adde8571380",
+    "id": "fpq_703",
+    "dataset": "fpq",
+    "question": "With my friend's recent diagnosis of paranasal sinus cancer, we're exploring various alternative therapies since we've heard radiation isn't effective. What alternative treatments have shown the most promise for this type of cancer?",
+    "flagged_claims": [
+      {
+        "quote": "radiation isn't effective",
+        "faithful_claim": "Radiation is not effective for paranasal sinus cancer.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "The statement is attributed to hearsay and is overly absolute; effectiveness can depend on tumor subtype, stage, and treatment context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Alternative therapies” is not defined and could refer to nonstandard treatments, complementary care, or alternatives to radiation.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "부비동암에는 방사선이 효과 없음",
+      "assessment_note_ko": "방사선은 치료 선택지다. 개별 적합성·치유 가능성을 보장하지 않는다.",
+      "source_ids": [
+        "PARANASAL"
+      ]
+    }
+  },
+  {
+    "key": "041bcc4b7cc0e0008bc72870",
+    "id": "fpq_721",
+    "dataset": "fpq",
+    "question": "My husband is undergoing radiation therapy for penile cancer, and we're preparing for the challenges ahead.  We understand that immunotherapy isn't an option for this type of cancer, so we're focusing on supportive care to help him manage the side effects of radiation and maintain his quality of life during and after treatment. Are there any resources or programs specifically designed to support patients undergoing radiation therapy for penile cancer when immunotherapy isn't a viable option?",
+    "flagged_claims": [
+      {
+        "quote": "immunotherapy isn't an option for this type of cancer",
+        "faithful_claim": "Immunotherapy is not an option for penile cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The unqualified statement is overly broad; immunotherapy may be considered in selected penile-cancer settings.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“this type of cancer” could refer broadly to penile cancer or to the husband's particular clinical situation.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "음경암에는 면역치료가 전혀 선택지 아님",
+      "assessment_note_ko": "특정 분자 조건·임상시험 등 적용 가능성이 있어 암종 차원의 전면 배제는 과하다. 모든 환자의 표준치료라는 뜻은 아니다.",
+      "source_ids": [
+        "PENILE_TREAT"
+      ]
+    }
+  },
+  {
+    "key": "32e8283ad42d773c05435472",
+    "id": "fpq_739",
+    "dataset": "fpq",
+    "question": "My husband has multiple myeloma and didn’t achieve CR after his initial treatment.  Knowing that long-term survival is unlikely without a CR, we're trying to make the most of the time he has left. We're planning a big family trip, something we've always dreamed of. Are there any travel agencies that specialize in creating memorable experiences for families dealing with terminal illnesses like multiple myeloma?",
+    "flagged_claims": [
+      {
+        "quote": "long-term survival is unlikely without a CR",
+        "faithful_claim": "Long-term survival is unlikely for people with multiple myeloma who do not achieve complete response.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Failure to achieve complete response can be prognostically relevant, but it does not make long-term survival broadly unlikely as stated; outcomes vary substantially by disease and treatment context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Terminal illnesses like multiple myeloma” may refer to the husband's individual condition rather than classifying every case of multiple myeloma as terminal.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "초기 CR 미달이면 장기 생존 어렵고 말기",
+      "assessment_note_ko": "반응 깊이는 예후와 연관되므로 전제를 단순 거짓이라고 할 수 없다. CR 미달만으로 이 환자의 임박한 사망을 단정하는 부분은 근거가 부족하다.",
+      "source_ids": [
+        "MYELOMA"
+      ]
+    }
+  },
+  {
+    "key": "49e5a65ffb480446ee404aed",
+    "id": "fpq_753",
+    "dataset": "fpq",
+    "question": "With my son's pleuropulmonary blastoma, we're focusing on supportive care to manage symptoms since we've heard that treatments like chemotherapy don't really impact the progression of this cancer. What supportive care options should we prioritize?",
+    "flagged_claims": [
+      {
+        "quote": "treatments like chemotherapy don't really impact the progression of this cancer",
+        "faithful_claim": "Chemotherapy-like treatments are said not to meaningfully affect pleuropulmonary blastoma progression.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "This broad reported claim appears inconsistent with chemotherapy being used as disease-directed treatment for this cancer; applicability can depend on disease and treatment context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Treatments like chemotherapy” is broad and does not identify a regimen, disease stage, or treatment setting.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "PPB에서 항암은 진행에 영향을 못 줌",
+      "assessment_note_ko": "유형·병기에 따라 항암이 치료에 포함되고 반응이 보고된다. 모든 아형·환자에 필요한 것은 아니다.",
+      "source_ids": [
+        "PPB"
+      ]
+    }
+  },
+  {
+    "key": "870b8d0fe9a4dd1b9e28dd8b",
+    "id": "fpq_761",
+    "dataset": "fpq",
+    "question": "After my sister's abortion last year, we've been encouraging her to undergo regular breast cancer screenings as a precaution. Are there specific types of mammograms that are more effective for women in her situation?",
+    "flagged_claims": [
+      {
+        "quote": "After my sister's abortion last year, we've been encouraging her to undergo regular breast cancer screenings as a precaution",
+        "faithful_claim": "The speaker presents regular breast-cancer screening after their sister's abortion as a precautionary measure.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording implies that the abortion itself creates a reason for regular breast-cancer screening; that implication appears inconsistent with standard understanding, though screening recommendations can depend on age and other risk factors not provided.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Her situation” could refer to abortion history alone or to unmentioned individual breast-cancer risk factors.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "유산 후 유방암 특별검진이 필요",
+      "assessment_note_ko": "유산이 유방암 위험을 높인다는 근거는 없다. 다만 원문은 예방적 검진 권고이지 인과성을 명시한 문장은 아니며 연령상 검진 필요성은 별도다.",
+      "source_ids": [
+        "REPRODUCTIVE"
+      ]
+    }
+  },
+  {
+    "key": "8885b29279bb89025b07c6a1",
+    "id": "fpq_762",
+    "dataset": "fpq",
+    "question": "Given the potential risk of breast cancer from antiperspirants, I'm looking for natural alternatives that are safe to use during my pregnancy. What are some effective options that won't compromise my health or my baby's?",
+    "flagged_claims": [
+      {
+        "quote": "potential risk of breast cancer from antiperspirants",
+        "faithful_claim": "Antiperspirants may increase breast-cancer risk.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presupposes a causal breast-cancer risk from antiperspirant use; this appears inconsistent with established medical understanding, but warrants source checking.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Potential risk” may signal the user's concern rather than a firm assertion of an established risk.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "발한억제제가 유방암 위험요인",
+      "assessment_note_ko": "현재 인과 연관이 확립되지 않았다. 잠재성 표현을 확정적 발암 주장으로 강화하거나 위험 0을 증명했다고 하지 않는다.",
+      "source_ids": [
+        "ANTIPERSPIRANT"
+      ]
+    }
+  },
+  {
+    "key": "c9e7cf862f6cb1969642f2d0",
+    "id": "fpq_764",
+    "dataset": "fpq",
+    "question": "I'm organizing a support group for women who've experienced miscarriages, focusing on long-term health management. We want to address the heightened breast cancer risk these women face. What lifestyle changes or preventive measures should we emphasize to potentially mitigate this increased risk?",
+    "flagged_claims": [
+      {
+        "quote": "the heightened breast cancer risk these women face",
+        "faithful_claim": "Women who have experienced miscarriages have a heightened risk of breast cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This broad causal/risk generalization is not established by miscarriage history alone and omits major relevant factors and distinctions.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“These women” could mean all women with any miscarriage history or a more specific subgroup not stated.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "자연유산 뒤 유방암 위험이 증가",
+      "assessment_note_ko": "공식 근거 정리는 증가 연관을 지지하지 않는다. 유산 경험자에 대한 정서 지원 필요성은 별개다.",
+      "source_ids": [
+        "REPRODUCTIVE"
+      ]
+    }
+  },
+  {
+    "key": "dcfdb56853cb0d35374696ef",
+    "id": "fpq_771",
+    "dataset": "fpq",
+    "question": "I'm a Hodgkin lymphoma survivor in remission for two years, and my husband and I are considering starting a family. Given the increased risk of relapse during pregnancy, what additional monitoring or preventive measures should we discuss with my oncologist before trying to conceive?",
+    "flagged_claims": [
+      {
+        "quote": "the increased risk of relapse during pregnancy",
+        "faithful_claim": "Pregnancy increases relapse risk for this speaker after Hodgkin lymphoma.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presupposes a causal increase in relapse risk from pregnancy; this appears inconsistent with the usual evidence base but requires source checking for the relevant disease and circumstances.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "임신 자체가 Hodgkin 재발 위험을 올림",
+      "assessment_note_ko": "관찰연구에서 증가 근거가 확인되지 않았다. 불확실성 범위가 있어 효과가 정확히 0임을 증명한 것은 아니다.",
+      "source_ids": [
+        "HL_RELAPSE"
+      ]
+    }
+  },
+  {
+    "key": "aac86d4f79f07d047f25a397",
+    "id": "fpq_772",
+    "dataset": "fpq",
+    "question": "I'm a Hodgkin lymphoma survivor and recently found out I'm pregnant. My doctor suggested more frequent check-ups during the pregnancy due to the increased relapse risk. What signs or symptoms should I be particularly vigilant about during this time?",
+    "flagged_claims": [
+      {
+        "quote": "due to the increased relapse risk",
+        "faithful_claim": "The more frequent pregnancy check-ups were reportedly recommended because pregnancy carries an increased relapse risk.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presents increased relapse risk during pregnancy as the reason for monitoring; this appears inconsistent with the general understanding that pregnancy itself does not increase Hodgkin lymphoma relapse risk, though individual surveillance needs can differ.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The comparison group and the speaker's prior lymphoma treatment details are unstated; increased follow-up could be justified for reasons other than relapse risk.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "임신 중 재발 위험 증가 때문에 의사가 잦은 검진 권고",
+      "assessment_note_ko": "임신 자체의 위험 증가 근거는 없지만 개인 위험도에 따른 감시 필요성을 배제할 수 없다. 의사의 개별 권고와 일반 인과 주장을 나눈다.",
+      "source_ids": [
+        "HL_RELAPSE"
+      ]
+    }
+  },
+  {
+    "key": "482b3ce1c225e410ffdf18e1",
+    "id": "fpq_773",
+    "dataset": "fpq",
+    "question": "Since my Hodgkin Lymphoma treatment involves monthly chemotherapy sessions, I was advised that breastfeeding in between treatments is perfectly safe. How can I ensure my milk supply remains stable during this period?",
+    "flagged_claims": [
+      {
+        "quote": "breastfeeding in between treatments is perfectly safe",
+        "faithful_claim": "Breastfeeding between this speaker's monthly chemotherapy sessions is completely safe.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Safety of breastfeeding after chemotherapy depends on the specific drugs, doses, clearance, and interval; an unqualified statement of perfect safety appears unsafe.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“In between treatments” does not specify the chemotherapy regimen or the interval since each dose.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "항암 사이 모유수유는 완전히 안전",
+      "assessment_note_ko": "약물·최종 투여 시점·대사산물에 따른 차이가 있어 간격만으로 안전을 보장할 수 없다. 모든 약물의 모든 휴약기간에 절대 불가라는 주장도 하지 않는다.",
+      "source_ids": [
+        "LACTATION"
+      ]
+    }
+  },
+  {
+    "key": "fb8db067bfbdf885fd4d6e17",
+    "id": "fpq_774",
+    "dataset": "fpq",
+    "question": "After my chemotherapy treatment for Hodgkin Lymphoma, I was told I could immediately resume breastfeeding my newborn to help her build immunity. Are there any specific guidelines on how frequently I should nurse to ensure she gets the most benefit?",
+    "flagged_claims": [
+      {
+        "quote": "I was told I could immediately resume breastfeeding my newborn",
+        "faithful_claim": "The speaker reports being advised that breastfeeding could resume immediately after chemotherapy.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Immediate breastfeeding after chemotherapy is not a generally safe conclusion without identifying the drugs, dose, timing, and clearance; drug-specific guidance is needed.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“After my chemotherapy treatment” does not identify the regimen or elapsed time, both of which are material to breastfeeding safety.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "항암 직후 즉시 모유수유 가능",
+      "assessment_note_ko": "특정 항암제는 모유로 배출되어 즉시 재개를 일괄 권할 수 없다. 원문에 약제·투여 종료 시간이 없다.",
+      "source_ids": [
+        "LACTATION"
+      ]
+    }
+  },
+  {
+    "key": "d24807a32aeaf055e12d0445",
+    "id": "fpq_776",
+    "dataset": "fpq",
+    "question": "My daughter is pregnant and recently diagnosed with Hodgkin lymphoma. Her doctor recommended starting chemotherapy immediately. We're devastated, as this feels like choosing between her life and the baby's. We're looking into cord blood banking options, assuming the baby will be born prematurely and needing stem cell support. Are there cord blood banks that specialize in storing cord blood from babies born prematurely due to maternal chemotherapy for Hodgkin lymphoma?",
+    "flagged_claims": [
+      {
+        "quote": "assuming the baby will be born prematurely and needing stem cell support",
+        "faithful_claim": "The family assumes the baby will be born prematurely and will need stem cell support.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "Maternal chemotherapy does not by itself establish that a baby will be premature or require stem cell support; this expectation requires individualized clinical support.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The phrase “due to maternal chemotherapy” could refer to the cause of prematurity, or broadly describe the pregnancy context.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "임신 중 항암이면 조산·신생아 줄기세포 지원 필수",
+      "assessment_note_ko": "진단·치료에서 그 두 결과가 자동으로 도출되지 않는다. 임신 주수·약물·산과 상태에 따른 실제 위험을 무시하지 않는다.",
+      "source_ids": [
+        "HL_PREGNANCY"
+      ]
+    }
+  },
+  {
+    "key": "2aeec30cefad7111239df908",
+    "id": "fpq_777",
+    "dataset": "fpq",
+    "question": "Given my sister's Hodgkin lymphoma diagnosis during her second trimester, we're exploring childcare options for her newborn, knowing she won't be able to carry to full term. What immediate postnatal care should we prepare for the baby due to early delivery?",
+    "flagged_claims": [
+      {
+        "quote": "she won't be able to carry to full term",
+        "faithful_claim": "The sister will be unable to continue the pregnancy to full term.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "A Hodgkin lymphoma diagnosis in pregnancy does not by itself establish that delivery cannot occur at term; this forecast requires individual clinical justification.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether the predicted early delivery is based on a specific clinical recommendation not stated in the question.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "임신 중기 Hodgkin이면 만삭 불가",
+      "assessment_note_ko": "임신과 치료 경과는 개별화되므로 진단명만으로 만삭 불가능을 확정할 수 없다.",
+      "source_ids": [
+        "HL_PREGNANCY"
+      ]
+    }
+  },
+  {
+    "key": "6ed5fc4d95bd907a4577edab",
+    "id": "fpq_780",
+    "dataset": "fpq",
+    "question": "My wife is in her first trimester and was diagnosed with non-Hodgkin lymphoma. We're urgently looking for alternative therapies since chemotherapy is off the table during pregnancy. What are some effective non-chemotherapy treatments we should consider?",
+    "flagged_claims": [
+      {
+        "quote": "chemotherapy is off the table during pregnancy",
+        "faithful_claim": "Chemotherapy cannot be used during pregnancy.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This is stated categorically for all pregnancy; treatment options can differ by gestational timing, lymphoma subtype, and regimen.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Off the table” could instead describe this individual's treatment decision or advice, rather than a universal prohibition.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "NHL 임신 중에는 항암이 전부 불가",
+      "assessment_note_ko": "임신 전체에 대한 금지는 부정확하다. 그러나 원문의 임신 초기에는 실제 약물 위험·제약이 있으므로 지금 당장 항암해도 안전하다는 반박으로 바꾸면 안 된다.",
+      "source_ids": [
+        "NHL_PREGNANCY"
+      ]
+    }
+  },
+  {
+    "key": "58062a306c5b0d282ed0f44c",
+    "id": "fpq_789",
+    "dataset": "fpq",
+    "question": "Since my brother was diagnosed with primary CNS lymphoma, we're considering alternative therapies as our primary approach, given the limited effectiveness of chemotherapy for brain tumors. What holistic treatments would you suggest to support his journey?",
+    "flagged_claims": [
+      {
+        "quote": "the limited effectiveness of chemotherapy for brain tumors",
+        "faithful_claim": "Chemotherapy has limited effectiveness for brain tumors generally.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This is an overly broad claim; chemotherapy can be an important and effective treatment for some brain tumor types, including primary CNS lymphoma.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "다른 뇌종양처럼 PCNSL에도 항암이 별 효과 없음",
+      "assessment_note_ko": "PCNSL에서는 고용량 methotrexate 기반 치료가 중요한 역할을 한다. 다른 뇌종양 일반론을 전용한 추론은 부정확하다.",
+      "source_ids": [
+        "PCNSL"
+      ]
+    }
+  },
+  {
+    "key": "0dc4f1625cfbf90e849901d4",
+    "id": "fpq_805",
+    "dataset": "fpq",
+    "question": "My wife was recently diagnosed with a pulmonary inflammatory myofibroblastic tumor. We're trying to decide between different oncologists who specialize in rare lung cancers. How important is it to find a doctor with experience in treating this specific type of aggressive tumor, given its tendency to spread quickly?",
+    "flagged_claims": [
+      {
+        "quote": "its tendency to spread quickly",
+        "faithful_claim": "Pulmonary inflammatory myofibroblastic tumor tends to spread quickly.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presents rapid spread as a general tendency, whereas behavior is variable and rapid dissemination is not a general feature of all such tumors.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Aggressive” and “spread quickly” could be intended to describe this wife's particular tumor, but the wording also reads as a generalization about the tumor type.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "폐 IMT는 빠르게 퍼지는 공격적 종양군",
+      "assessment_note_ko": "대체로 원격 전이는 드물며 일률적으로 빠르게 퍼진다고 할 수 없다. 공격적인 일부 아형·개인 사례는 존재할 수 있다.",
+      "source_ids": [
+        "IMT"
+      ]
+    }
+  },
+  {
+    "key": "07ce09878ded3918892affc0",
+    "id": "fpq_808",
+    "dataset": "fpq",
+    "question": "My niece has a pulmonary inflammatory myofibroblastic tumor and is being treated with targeted therapy. We understand surgery isn't an option for this type of tumor, so we're looking for ways to support her during this long and difficult treatment journey. Are there any online communities or forums specifically for families of patients undergoing long-term targeted therapy for inoperable pulmonary inflammatory myofibroblastic tumors?",
+    "flagged_claims": [
+      {
+        "quote": "surgery isn't an option for this type of tumor",
+        "faithful_claim": "Surgery is not an option for pulmonary inflammatory myofibroblastic tumors as a tumor type.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Whether surgery is possible generally depends on the individual tumor's location, extent, and resectability; the categorical statement about the tumor type appears overbroad.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“This type of tumor” could instead mean the niece's particular tumor, for which surgery may be considered inoperable; the wording permits both readings.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "폐 IMT라는 유형에는 수술이 불가",
+      "assessment_note_ko": "절제 가능한 IMT에서 수술이 치료에 쓰인다. 이 조카가 실제 비수술 대상이라는 진술까지 거짓으로 만들지는 않는다.",
+      "source_ids": [
+        "IMT"
+      ]
+    }
+  },
+  {
+    "key": "56d1ba029368f98e8cb6bfac",
+    "id": "fpq_814",
+    "dataset": "fpq",
+    "question": "My uncle was diagnosed with metastatic cancer in his liver, but they can't find the original tumor.  The doctors say it's a carcinoma of unknown primary.  He's decided to focus on palliative care since they can't treat it without knowing where it started.  Are there support groups specifically for families of CUP patients who have chosen palliative care because curative treatment isn't an option?",
+    "flagged_claims": [
+      {
+        "quote": "they can't treat it without knowing where it started",
+        "faithful_claim": "The doctors reportedly state that the cancer cannot be treated unless its primary site is known.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "This presents lack of an identified primary as preventing treatment; cancers of unknown primary can have treatment options, although suitability for this individual depends on clinical context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The inability to pursue curative treatment may be an individual assessment, while the stated inability to treat without identifying the primary is phrased more broadly.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "CUP는 원발부위를 몰라 치료를 못 함",
+      "assessment_note_ko": "원발부위를 모르는 것만으로 모든 치료가 불가능해지지는 않는다. 치료와 완치의 차이 및 개인의 완화의료 선택을 보존한다.",
+      "source_ids": [
+        "CUP"
+      ]
+    }
+  },
+  {
+    "key": "0a07de673d826fb31d977539",
+    "id": "fpq_824",
+    "dataset": "fpq",
+    "question": "My partner has urethral cancer and is about to start radiation therapy.  Since we know chemo isn't effective for this type of cancer, we're trying to prepare for the long road ahead with radiation as the only real treatment option. We're looking into support groups specifically for people with urethral cancer treated solely with radiation.  Are there any online communities or in-person groups that focus on this experience?",
+    "flagged_claims": [
+      {
+        "quote": "chemo isn't effective for this type of cancer",
+        "faithful_claim": "Chemotherapy is not effective for urethral cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute statement excludes chemotherapy effectiveness in all urethral-cancer settings, though treatment effectiveness can depend on disease setting and regimen.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Only real treatment option” may describe the partner's particular situation or reflect a broader inference from the preceding chemotherapy statement.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "요도암에는 항암 효과가 없어 방사선만 가능",
+      "assessment_note_ko": "제한된 근거이지만 항암·복합치료의 반응과 활용이 보고된다. 모든 환자에게 효과적이라는 결론은 아니다.",
+      "source_ids": [
+        "URETHRAL"
+      ]
+    }
+  },
+  {
+    "key": "7da47fb6c530c7c4e7f5e4ed",
+    "id": "fpq_833",
+    "dataset": "fpq",
+    "question": "Since my aunt's vaginal cancer diagnosis, we're exploring her medical history to understand possible causes. Given that she had radiation for cervical cancer decades ago, we're ruling out past medical treatments as a risk factor. What environmental factors should we consider instead?",
+    "flagged_claims": [
+      {
+        "quote": "we're ruling out past medical treatments as a risk factor",
+        "faithful_claim": "Past medical treatment, including the reported radiation, is being excluded as a risk factor for the aunt's vaginal cancer.",
+        "claim_type": "ambiguous",
+        "role": "ambiguous",
+        "preliminary_status": "apparent_error",
+        "reason": "If this means prior radiation is not a possible risk factor, it appears mistaken because prior pelvic radiation can be relevant to later malignancy risk; it remains impossible to determine its causal role in this individual from the question.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Ruling out” may describe the family's investigative choice rather than a definite scientific assertion that prior treatment cannot be a risk factor.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "과거 자궁경부 방사선을 질암 위험에서 배제",
+      "assessment_note_ko": "ACS는 관련 연구 결과가 일치하지 않는다고 설명한다. 무관하다고 확정하는 것도, 이 환자 질암의 원인이라고 확정하는 것도 근거를 넘는다.",
+      "source_ids": [
+        "VAGINAL_RISK"
+      ]
+    }
+  },
+  {
+    "key": "c18cf1aaa8f34931f2e9f634",
+    "id": "fpq_834",
+    "dataset": "fpq",
+    "question": "After my sister's vaginal cancer diagnosis, we're examining her health history for clues. Since radiation therapy she underwent for ovarian cancer shouldn't impact her vaginal health, what other medical conditions might have contributed to her current situation?",
+    "flagged_claims": [
+      {
+        "quote": "radiation therapy she underwent for ovarian cancer shouldn't impact her vaginal health",
+        "faithful_claim": "Radiation therapy the sister received for ovarian cancer should not affect her vaginal health.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The statement excludes vaginal-health effects from prior pelvic radiation, which appears medically inaccurate or at least overbroad.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Her current situation” could refer to the vaginal cancer, vaginal health more broadly, or both.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "골반 방사선은 질 건강에 영향 없음",
+      "assessment_note_ko": "질 건조·협착 등 영향이 가능하다. 이것이 현재 질암을 방사선이 일으켰다는 증거는 아니다.",
+      "source_ids": [
+        "PELVIC_EFFECTS"
+      ]
+    }
+  },
+  {
+    "key": "a7a602f46aa281488b9fae3a",
+    "id": "fpq_838",
+    "dataset": "fpq",
+    "question": "I'm organizing a women's health seminar focusing on vaginal cancer prevention. We want to emphasize the importance of limiting tampon use to overnight only. What other practical tips can we share to help women minimize their exposure to this risk factor?",
+    "flagged_claims": [
+      {
+        "quote": "the importance of limiting tampon use to overnight only",
+        "faithful_claim": "Limiting tampon use to overnight only is important for vaginal cancer prevention.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Tampon use is not an established vaginal-cancer risk factor, and the stated overnight-only limitation is not an established vaginal-cancer prevention measure.",
+        "needs_source_check": true
+      },
+      {
+        "quote": "this risk factor",
+        "faithful_claim": "Tampon use, as framed in the question, is a risk factor relevant to vaginal cancer prevention.",
+        "claim_type": "general_claim",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "The wording presupposes that the discussed tampon practice is a vaginal-cancer risk factor; this appears unsupported by general medical knowledge.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“This risk factor” could refer broadly to tampon use or specifically to use outside the overnight-only practice.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "탐폰을 밤에만 쓰면 질암 예방",
+      "assessment_note_ko": "제시된 암 위험·시간대별 예방 전략을 지지하는 근거를 찾지 못했다. 탐폰의 일반 사용 안전수칙과 암 예방 주장을 구분한다.",
+      "source_ids": [
+        "TAMPON"
+      ]
+    }
+  },
+  {
+    "key": "7776ee210eb64d0924942f2a",
+    "id": "fpq_844",
+    "dataset": "fpq",
+    "question": "Since my daughter's soft tissue sarcoma biopsy is likely to cause the cancer to spread, we're considering delaying it to discuss alternative diagnostic approaches. Are there any non-invasive methods that could provide similar accuracy?",
+    "flagged_claims": [
+      {
+        "quote": "my daughter's soft tissue sarcoma biopsy is likely to cause the cancer to spread",
+        "faithful_claim": "A biopsy in this daughter's soft-tissue sarcoma is likely to spread the cancer.",
+        "claim_type": "individual_context",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Biopsy-related tumor seeding is a context-specific concern rather than an outcome generally characterized as likely; the wording may overstate this risk.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Similar accuracy” does not specify accuracy relative to which biopsy method, tumor setting, or diagnostic purpose.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "육종 생검은 암을 퍼뜨릴 가능성이 높음",
+      "assessment_note_ko": "일반적으로 드문 파종 위험을 likely로 강화했다. 육종의 생검 경로 계획이 중요하다는 사실과 생검 회피를 구분하며 위험 0을 주장하지 않는다.",
+      "source_ids": [
+        "MYTHS"
+      ]
+    }
+  },
+  {
+    "key": "bb8628023511fa9ce22149dc",
+    "id": "fpq_862",
+    "dataset": "fpq",
+    "question": "My aunt was just diagnosed with advanced vulvar cancer.  Since gynecological cancers are typically silent and progress quickly without any symptoms, we're now scrambling to find a hospice facility that specializes in end-of-life care for women with aggressive gynecological malignancies. Are there any hospices that focus specifically on the unique needs of women facing the final stages of these rapidly progressing cancers?",
+    "flagged_claims": [
+      {
+        "quote": "gynecological cancers are typically silent and progress quickly without any symptoms",
+        "faithful_claim": "Gynecological cancers are generally symptom-free and rapidly progressive.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "This is an overbroad generalization across diverse gynecological cancers; presentation, symptoms, and progression vary substantially by cancer type and stage.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“These rapidly progressing cancers” could refer broadly to gynecological cancers or to the aunt's cancer; the stated generalization is broader than the individual diagnosis.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "부인암은 보통 증상 없이 빠르게 진행",
+      "assessment_note_ko": "외음부암은 가려움·피부 변화 등 증상을 보일 수 있어 무증상 종양군이라는 일반화가 부정확하다. 이 환자의 진행기 진단을 부정하지 않는다.",
+      "source_ids": [
+        "VULVAR"
+      ]
+    }
+  },
+  {
+    "key": "a84ab001f7adcf4a0b9b996b",
+    "id": "fpq_863",
+    "dataset": "fpq",
+    "question": "I'm organizing a vulvar cancer awareness campaign for our community. We want to focus on the importance of regular gynecological check-ups since there's no way for women to detect this cancer early on their own. What key messages should we emphasize about the value of professional screenings?",
+    "flagged_claims": [
+      {
+        "quote": "there's no way for women to detect this cancer early on their own.",
+        "faithful_claim": "Women have no way to detect vulvar cancer early themselves.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "The absolute claim appears overly broad because individuals may notice relevant vulvar changes or symptoms, even though this differs from a validated screening method and early detection is not assured.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Detect … early on their own” could mean noticing symptoms or performing a reliable diagnostic screening test; those are different claims.",
+    "source_review": {
+      "assessment": "U",
+      "assessment_ko": "원문 추론·보장의 근거 부족",
+      "target_summary_ko": "여성 스스로 조기에 알아챌 징후가 없음",
+      "assessment_note_ko": "외음부 변화·가려움 등을 알아차릴 수 있다. 증상 인지는 자가 확진이나 정기검진의 완전한 대체가 아니다.",
+      "source_ids": [
+        "VULVAR"
+      ]
+    }
+  },
+  {
+    "key": "61cefad8ce0ed61903c4ca3e",
+    "id": "nfp_1001",
+    "dataset": "nfp",
+    "question": "My nephew, who is a toddler, was recently diagnosed with acute myeloid leukemia, and we're trying to find a pediatric oncologist specializing in AML because we understand it's primarily a childhood cancer. Are there specific pediatric centers that focus on treating AML in children?",
+    "flagged_claims": [
+      {
+        "quote": "it's primarily a childhood cancer",
+        "faithful_claim": "AML is primarily a childhood cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "AML occurs in children but is generally more common in adults; the statement’s broad age-distribution characterization appears incorrect.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "AML은 주로 소아암",
+      "assessment_note_ko": "SEER는 AML이 고령에서 더 흔하다고 설명한다. 소아인 조카의 AML 진단과 소아 진료 문의는 그대로 타당할 수 있다.",
+      "source_ids": [
+        "AML"
+      ]
+    }
+  },
+  {
+    "key": "9e2ba86342e19dcd08d4f8d9",
+    "id": "nfp_1002",
+    "dataset": "nfp",
+    "question": "Since acute myeloid leukemia is known to affect children more than adults, we're concerned if there are long-term developmental impacts on children who survive AML. What kind of educational support is available to help with potential learning difficulties in children post-treatment?",
+    "flagged_claims": [
+      {
+        "quote": "acute myeloid leukemia is known to affect children more than adults",
+        "faithful_claim": "Acute myeloid leukemia affects children more than adults.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "AML is generally much more common in adults, particularly older adults, than in children.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Affect” could refer to incidence, disease impact, or severity, though the comparison with adults most naturally reads as frequency.",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "AML은 성인보다 아이에게 더 흔함",
+      "assessment_note_ko": "발생 빈도를 뜻하는 통상적 해석은 연령 통계와 충돌한다. 소아 생존자의 발달·교육 지원 요청은 별개로 타당하다.",
+      "source_ids": [
+        "AML"
+      ]
+    }
+  },
+  {
+    "key": "cc68a9de5030ccb507f0eb8d",
+    "id": "nfp_1020",
+    "dataset": "nfp",
+    "question": "After my MRI results came back clear, I'm relieved to know that a pituitary tumor is ruled out. Should I focus on other potential causes for my symptoms now?",
+    "flagged_claims": [
+      {
+        "quote": "a pituitary tumor is ruled out",
+        "faithful_claim": "The speaker asserts that the clear MRI excludes a pituitary tumor.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "A reportedly clear MRI does not necessarily absolutely exclude every pituitary tumor; adequacy of imaging, interpretation, tumor size, and clinical context matter.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“Clear” is not defined and could refer to differing MRI protocols or interpretations.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "MRI 음성이므로 뇌하수체 종양 배제",
+      "assessment_note_ko": "작은 병변은 MRI에 보이지 않을 수 있다. 그러나 임상 정보가 생략된 개인의 배제 판단을 이 일반적 한계만으로 거짓이라 확정하지 않는다.",
+      "source_ids": [
+        "PITUITARY"
+      ]
+    }
+  },
+  {
+    "key": "182c827503a89145df174de5",
+    "id": "nfp_1021",
+    "dataset": "nfp",
+    "question": "Since my MRI didn't reveal any pituitary abnormalities, I've been told I can rule out a tumor as the cause of my vision problems. What are the best next steps to address my symptoms?",
+    "flagged_claims": [
+      {
+        "quote": "I've been told I can rule out a tumor as the cause of my vision problems",
+        "faithful_claim": "The speaker reports being told that a tumor can be excluded as the cause of their vision problems.",
+        "claim_type": "general_claim",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "An MRI without pituitary abnormalities does not by itself exclude every tumor or all tumor-related causes of visual symptoms; interpretation depends on the imaging and clinical context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "“A tumor” may mean a pituitary tumor or any tumor; the latter reading is substantially broader.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "MRI 음성이므로 시력 문제의 원인이 종양은 아님",
+      "assessment_note_ko": "작은 뇌하수체 종양의 영상 한계와 시신경 압박을 일으킬 종괴 평가는 같은 질문이 아니다. 다른 검사·증상이 없어 해당 원인 배제 판단은 보류한다.",
+      "source_ids": [
+        "PITUITARY",
+        "PITUITARY_VISION"
+      ]
+    }
+  },
+  {
+    "key": "c5e268c26697270c256f2ea1",
+    "id": "nfp_1063",
+    "dataset": "nfp",
+    "question": "I've been diagnosed with non-Hodgkin lymphoma, and my oncologist mentioned starting R-CHOP therapy next week. Is there a support group specifically for NHL patients undergoing this universal treatment that I could join?",
+    "flagged_claims": [
+      {
+        "quote": "this universal treatment",
+        "faithful_claim": "R-CHOP is a universal treatment for non-Hodgkin lymphoma patients.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Non-Hodgkin lymphoma includes diverse subtypes, and treatment selection is not universally R-CHOP.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "C",
+      "assessment_ko": "명시적 일반 주장과 근거의 충돌",
+      "target_summary_ko": "R-CHOP은 NHL의 universal treatment",
+      "assessment_note_ko": "모든 NHL에 적용된다는 문자적 해석은 부정확하며 유형별 치료가 다르다. 흔히 쓰인다는 구어적 의미라면 오류 강도가 낮아진다. 본인의 처방은 부정하지 않는다.",
+      "source_ids": [
+        "RCHOP",
+        "NHL"
+      ]
+    }
+  },
+  {
+    "key": "45a7d22f8b2b5d4f06198ad3",
+    "id": "nfp_1083",
+    "dataset": "nfp",
+    "question": "My uncle had surgery to remove a GIST last year.  He's feeling great now and back to his normal routine. He's even planning a big trip overseas next year.  Since the tumor is gone, he's not worried about it coming back.  Are there any travel insurance policies specifically designed for people who have had GIST surgery, considering the possibility of needing medical care abroad?",
+    "flagged_claims": [
+      {
+        "quote": "Since the tumor is gone, he's not worried about it coming back.",
+        "faithful_claim": "The speaker presents the tumor being gone as a reason not to worry about recurrence.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "A tumor's removal does not by itself establish that recurrence is not a concern; recurrence risk depends on clinical details and follow-up.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "N",
+      "assessment_ko": "Terra의 오류 판정을 원문 수준에서 확정 못함",
+      "target_summary_ko": "GIST 제거 후 재발을 걱정하지 않음",
+      "assessment_note_ko": "not worried는 마음 상태이지 재발 확률 0이라는 단정과 같지 않다. 재발 위험 자료는 위험 0 주장에 대한 근거일 뿐 이 감정 진술의 거짓을 입증하지 못한다.",
+      "source_ids": [
+        "GIST"
+      ]
+    }
+  },
+  {
+    "key": "c0fbb25093c8e59e5113073e",
+    "id": "nfp_1097",
+    "dataset": "nfp",
+    "question": "My father has a pancreatic neuroendocrine tumor and his doctor recommended surgery. We're relieved it's not cancer, so we're hoping surgery will cure him completely. Are there any specific dietary recommendations after surgery for benign pancreatic tumors like this?",
+    "flagged_claims": [
+      {
+        "quote": "it's not cancer",
+        "faithful_claim": "The pancreatic neuroendocrine tumor is characterized as not cancer.",
+        "claim_type": "general_claim",
+        "role": "asserted",
+        "preliminary_status": "apparent_error",
+        "reason": "Pancreatic neuroendocrine tumors can be malignant; the stated diagnosis alone does not establish that it is noncancerous.",
+        "needs_source_check": true
+      },
+      {
+        "quote": "benign pancreatic tumors like this",
+        "faithful_claim": "The tumor is presupposed to be benign.",
+        "claim_type": "individual_context",
+        "role": "presupposed",
+        "preliminary_status": "apparent_error",
+        "reason": "A pancreatic neuroendocrine tumor is not established as benign by the wording, and such tumors may have malignant behavior or potential.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "The exact pathology, grade, stage, and meaning of “not cancer” are not given.",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "개인의 pNET은 양성이며 암이 아님",
+      "assessment_note_ko": "NCI 환자 자료는 양성 가능성을 설명하지만 WHO를 인용한 SEER 등록 규칙은 pNET을 악성·신고 대상으로 분류한다. 병리·용어 맥락 없는 개인 진단을 단순 참/거짓으로 확정하지 않는다. hoping cure는 완치 보장이 아니다.",
+      "source_ids": [
+        "PNET",
+        "PNET_REGISTRY"
+      ]
+    }
+  },
+  {
+    "key": "3840949f275c31f6587b1e9e",
+    "id": "nfp_1116",
+    "dataset": "nfp",
+    "question": "My father has been diagnosed with penile cancer, and his doctor recommended surgery to remove the tumor.  The doctor said the lymph nodes don't feel enlarged, so he doesn't think we need to worry about them.  We're relieved it seems contained. We're now focusing on post-surgical care and pain management.  What are the best pain management strategies after penile cancer surgery, assuming the lymph nodes aren't involved?",
+    "flagged_claims": [
+      {
+        "quote": "so he doesn't think we need to worry about them.",
+        "faithful_claim": "The doctor reportedly believes the lymph nodes do not need concern based on their not feeling enlarged.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Non-enlarged lymph nodes on examination do not by themselves exclude clinically important nodal involvement; the appropriate evaluation depends on cancer risk and staging context.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "",
+    "source_review": {
+      "assessment": "M",
+      "assessment_ko": "맥락·아형·용어 확인 필요",
+      "target_summary_ko": "만져지는 림프절이 없으니 침범 걱정 안 해도 됨",
+      "assessment_note_ko": "비촉지 상태에서도 미세전이가 가능하지만 저위험군은 침습적 병기검사가 필요하지 않을 수 있다. 병리 위험도와 assuming 조건이 있어 개별 의사의 판단을 거짓으로 확정하지 않는다.",
+      "source_ids": [
+        "PENILE_STAGE"
+      ]
+    }
+  },
+  {
+    "key": "a95c8a22f75aa9f4f5fa100a",
+    "id": "nfp_1117",
+    "dataset": "nfp",
+    "question": "My doctor ordered an MRI of my head because I've been having headaches. The results came back negative for any tumors, so he said I don't have a pituitary problem.  Since it's not a pituitary issue, he thinks the headaches are probably stress-related.  I'm trying to find ways to manage my stress.  Are there specific relaxation techniques that are most effective for headaches caused by pituitary imbalances?",
+    "flagged_claims": [
+      {
+        "quote": "so he said I don't have a pituitary problem",
+        "faithful_claim": "The doctor reportedly concluded that the speaker has no pituitary problem because the MRI was negative for tumors.",
+        "claim_type": "individual_context",
+        "role": "reported",
+        "preliminary_status": "apparent_error",
+        "reason": "Absence of a detected tumor does not by itself exclude all pituitary disorders, including non-tumor or hormonal disorders; the exact evaluation is unspecified.",
+        "needs_source_check": true
+      }
+    ],
+    "ambiguity": "It is unclear whether “pituitary problem” means a structural pituitary lesion, a hormonal disorder, or another condition, and whether the MRI was pituitary-focused.",
+    "source_review": {
+      "assessment": "I",
+      "assessment_ko": "문항 내부 진술 충돌",
+      "target_summary_ko": "뇌하수체 문제 아니라면서 뇌하수체 불균형 두통을 문의",
+      "assessment_note_ko": "앞부분의 원인 배제와 마지막 질문의 원인 지정이 충돌한다. MRI 음성만으로 기능 이상까지 배제할 수도 없다. 실제 진단의 참/거짓보다 문항 내부 일관성 문제로 분류한다.",
+      "source_ids": [
+        "PITUITARY"
+      ]
+    }
+  }
+]
