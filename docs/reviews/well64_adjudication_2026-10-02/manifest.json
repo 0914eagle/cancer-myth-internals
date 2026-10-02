@@ -1,0 +1,25 @@
+{
+  "pairs": 64,
+  "full_answers_read": 128,
+  "new_model_calls": 0,
+  "applied_corrections": 16,
+  "alternative_low_to_high": 14,
+  "plain_high_to_low": 1,
+  "alternative_2_to_3": 1,
+  "alternative_dispositions": {
+    "low_retained": 33,
+    "borderline_raise_not_applied": 17,
+    "applied_raise": 14
+  },
+  "selection": "64 previously N2–N6 pairs within 121 original Plain>=4 to alternative<4 NFP pairs",
+  "not_population_error_rate": true,
+  "applied_scope": "versioned audit overlay only; original automatic scores immutable",
+  "not_clinical_ground_truth": true,
+  "unresolved": "17 proposed increases and two Plain re-ratings remain unapplied; precise 1/2 boundaries in retained low scores not normalized",
+  "source_sha256": {
+    "docs/reviews/direct_reading_2026-10-02/reviewed_evidence.json": "608d7aff22a253327e06c5c133d9cca998f25e178c72c000caefb6c364d56963",
+    "docs/reviews/direct_reading_2026-10-02/taxonomy.json": "728616311522e1c3377a56fee3ec1c9bc1f5b0b2c49394db1d81a292c7bcde8a",
+    "docs/reviews/well64_adjudication_2026-10-02/manual_decisions.tsv": "cd32d2f694a85d8be59ceaf63ef83ef1152206c7480cd85b110b93d75ebfadfd",
+    "prompts/well/nfp_user.txt": "9deaaa4129bbb0cb15a6dcc1e8f3ae6d3be48e91edc12c9d388470aaeaee5076"
+  }
+}
