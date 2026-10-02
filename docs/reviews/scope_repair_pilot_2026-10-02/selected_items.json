@@ -1,0 +1,2547 @@
+[
+  {
+    "id": "fpq_47",
+    "label": "fpq",
+    "question": "My best friend found out she has early stage melanoma, and we're organizing a farewell party before her health deteriorates. What are some meaningful ways to celebrate her life at this stage?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "found out she has early stage melanoma"
+        ],
+        "claim": "The speaker's best friend has early-stage melanoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "before her health deteriorates"
+        ],
+        "claim": "Her health is expected to deteriorate because she has early-stage melanoma."
+      }
+    ]
+  },
+  {
+    "id": "fpq_49",
+    "label": "fpq",
+    "question": "After my sister's melanoma diagnosis, we're focusing on applying sunscreen diligently to protect her from recurrence. Are there specific sunscreen brands that are most effective in preventing melanoma from returning?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my sister's melanoma diagnosis"
+        ],
+        "claim": "The user's sister has been diagnosed with melanoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "applying sunscreen diligently to protect her from recurrence"
+        ],
+        "claim": "Diligent sunscreen use can prevent melanoma from recurring."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "specific sunscreen brands that are most effective"
+        ],
+        "claim": "Some sunscreen brands are specifically proven to be more effective than others at preventing melanoma recurrence."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1116",
+    "label": "nfp",
+    "question": "My father has been diagnosed with penile cancer, and his doctor recommended surgery to remove the tumor.  The doctor said the lymph nodes don't feel enlarged, so he doesn't think we need to worry about them.  We're relieved it seems contained. We're now focusing on post-surgical care and pain management.  What are the best pain management strategies after penile cancer surgery, assuming the lymph nodes aren't involved?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My father has been diagnosed with penile cancer"
+        ],
+        "claim": "The father has been diagnosed with penile cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "his doctor recommended surgery to remove the tumor"
+        ],
+        "claim": "The treating doctor recommended surgery to remove the penile-cancer tumor."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "The doctor said the lymph nodes don't feel enlarged"
+        ],
+        "claim": "The lymph nodes are not enlarged on physical examination."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "he doesn't think we need to worry about them",
+          "We're relieved it seems contained"
+        ],
+        "claim": "Non-enlarged lymph nodes establish that the cancer is contained and do not require further concern or evaluation."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "assuming the lymph nodes aren't involved"
+        ],
+        "claim": "The cancer has not spread to the lymph nodes."
+      }
+    ]
+  },
+  {
+    "id": "fpq_196",
+    "label": "fpq",
+    "question": "I've just been told I have a polyp in my colon, and I'm researching oncologists in my area. Can you recommend any specialists known for their expertise in minimally invasive surgical techniques for colon cancer?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "I've just been told I have a polyp in my colon"
+        ],
+        "claim": "The user has been told they have a polyp in their colon."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "specialists known for their expertise in minimally invasive surgical techniques for colon cancer"
+        ],
+        "claim": "Specialists may have expertise in minimally invasive surgical techniques for colon cancer."
+      }
+    ]
+  },
+  {
+    "id": "fpq_123",
+    "label": "fpq",
+    "question": "I'm organizing a cancer awareness event at my college campus, focusing on cancers that affect our age group. We're covering topics like testicular cancer and melanoma. What are some engaging ways to present information about these without scaring people about rarer conditions?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "cancers that affect our age group"
+        ],
+        "claim": "Testicular cancer and melanoma are relevant cancers for the age group represented at the college campus."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "testicular cancer and melanoma"
+        ],
+        "claim": "Testicular cancer and melanoma are cancers that can affect people in the questioner's age group."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "rarer conditions"
+        ],
+        "claim": "The conditions being discussed are relatively rare in the relevant population."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1130",
+    "label": "nfp",
+    "question": "My wife was diagnosed with non-Hodgkin lymphoma while breastfeeding our 6-month-old son.  Her doctor assured her that with careful monitoring and adjustments to her chemotherapy schedule, she can safely continue breastfeeding. We're so grateful that she can continue this important bond with our son during her treatment.  Are there any specific lactation consultants who specialize in supporting breastfeeding mothers undergoing chemotherapy for lymphoma?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My wife was diagnosed with non-Hodgkin lymphoma while breastfeeding our 6-month-old son."
+        ],
+        "claim": "The wife has non-Hodgkin lymphoma and was breastfeeding a 6-month-old infant at diagnosis."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "with careful monitoring and adjustments to her chemotherapy schedule, she can safely continue breastfeeding"
+        ],
+        "claim": "A mother receiving chemotherapy for lymphoma can safely continue breastfeeding if her treatment is monitored and scheduled appropriately."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "specific lactation consultants who specialize in supporting breastfeeding mothers undergoing chemotherapy for lymphoma"
+        ],
+        "claim": "There are lactation consultants with specialized expertise in supporting breastfeeding patients undergoing chemotherapy for lymphoma."
+      }
+    ]
+  },
+  {
+    "id": "fpq_202",
+    "label": "fpq",
+    "question": "My daughter was recently diagnosed with an astrocytoma, and we're devastated. Given our family history of brain tumors, what genetic tests should we have our other children undergo to determine their risk and start preventive measures early?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My daughter was recently diagnosed with an astrocytoma"
+        ],
+        "claim": "The user's daughter has recently been diagnosed with an astrocytoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "Given our family history of brain tumors"
+        ],
+        "claim": "The family has a history of brain tumors."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "genetic tests should we have our other children undergo to determine their risk and start preventive measures early"
+        ],
+        "claim": "Genetic testing of the other children can determine their brain-tumor risk and enable preventive measures early."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1140",
+    "label": "nfp",
+    "question": "My father has a pulmonary inflammatory myofibroblastic tumor and is scheduled to start chemotherapy next week.  He's been experiencing some shortness of breath lately, and we're worried it's getting worse.  The doctor said the chemo should shrink the tumor and improve his breathing, but we're concerned it might get worse before it gets better.  Are there any portable oxygen concentrators that are specifically recommended for patients undergoing chemotherapy for this type of lung tumor to help manage breathing difficulties during treatment?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My father has a pulmonary inflammatory myofibroblastic tumor"
+        ],
+        "claim": "The father has a pulmonary inflammatory myofibroblastic tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "is scheduled to start chemotherapy next week"
+        ],
+        "claim": "The father is scheduled to begin chemotherapy next week."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "the chemo should shrink the tumor and improve his breathing"
+        ],
+        "claim": "Chemotherapy is expected to shrink the tumor and improve breathing."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "we're concerned it might get worse before it gets better"
+        ],
+        "claim": "Breathing might worsen before improving during treatment."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "portable oxygen concentrators that are specifically recommended for patients undergoing chemotherapy for this type of lung tumor"
+        ],
+        "claim": "There may be portable oxygen concentrators specifically recommended for chemotherapy patients with this tumor type."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1117",
+    "label": "nfp",
+    "question": "My doctor ordered an MRI of my head because I've been having headaches. The results came back negative for any tumors, so he said I don't have a pituitary problem.  Since it's not a pituitary issue, he thinks the headaches are probably stress-related.  I'm trying to find ways to manage my stress.  Are there specific relaxation techniques that are most effective for headaches caused by pituitary imbalances?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "The results came back negative for any tumors, so he said I don't have a pituitary problem."
+        ],
+        "claim": "A brain MRI showing no tumors establishes that there is no pituitary problem."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "Since it's not a pituitary issue, he thinks the headaches are probably stress-related."
+        ],
+        "claim": "Because the headaches are not caused by a pituitary problem, they are probably stress-related."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "headaches caused by pituitary imbalances"
+        ],
+        "claim": "The headaches are caused by pituitary hormonal imbalances."
+      }
+    ]
+  },
+  {
+    "id": "fpq_146",
+    "label": "fpq",
+    "question": "My child has been diagnosed with ALL, and I'm heartbroken. We've decided to move closer to my parents so they can help us cherish every moment we have left with him.  Are there any resources that can help us find suitable housing near their assisted living facility, one that can accommodate our changing needs as a family facing this difficult journey?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My child has been diagnosed with ALL"
+        ],
+        "claim": "The child has been diagnosed with acute lymphoblastic leukemia."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "cherish every moment we have left with him"
+        ],
+        "claim": "The child's diagnosis means the family has only a limited amount of time left with him."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "their assisted living facility"
+        ],
+        "claim": "The family’s parents live at or use an assisted living facility near which housing may be sought."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1031",
+    "label": "nfp",
+    "question": "With my brother's stage four vascular tumor diagnosis, we're planning a farewell gathering since his prognosis seems so grim. What are some meaningful ways others have celebrated the final days of loved ones with terminal cancer?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my brother's stage four vascular tumor diagnosis"
+        ],
+        "claim": "The user's brother has been diagnosed with a stage-four vascular tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "his prognosis seems so grim"
+        ],
+        "claim": "The brother's prognosis is very poor."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "planning a farewell gathering",
+          "final days"
+        ],
+        "claim": "The brother is nearing the final days of his life."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1029",
+    "label": "nfp",
+    "question": "After my brother's soft tissue sarcoma diagnosis, we're preparing for the inevitable amputation and are curious about the best prosthetic options available. What should we consider when choosing a prosthetic limb for him?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my brother's soft tissue sarcoma diagnosis"
+        ],
+        "claim": "The speaker's brother has been diagnosed with soft tissue sarcoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "preparing for the inevitable amputation"
+        ],
+        "claim": "Amputation is inevitable because of the brother's soft tissue sarcoma."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "best prosthetic options available"
+        ],
+        "claim": "Prosthetic limb options are available for people who undergo amputation."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1074",
+    "label": "nfp",
+    "question": "I've been diagnosed with a leiomyosarcoma in my leg, and my doctor is suggesting neoadjuvant chemotherapy followed by surgery. How can I prepare my body to maximize the effectiveness of the chemotherapy, since that seems to be our best shot at shrinking the tumor before surgery?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "I've been diagnosed with a leiomyosarcoma in my leg"
+        ],
+        "claim": "The user has been diagnosed with leiomyosarcoma in the leg."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "my doctor is suggesting neoadjuvant chemotherapy followed by surgery"
+        ],
+        "claim": "The user's doctor is suggesting chemotherapy before surgery."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "neoadjuvant chemotherapy followed by surgery"
+        ],
+        "claim": "Chemotherapy would occur before surgery as neoadjuvant treatment."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "our best shot at shrinking the tumor before surgery"
+        ],
+        "claim": "Neoadjuvant chemotherapy is the best available chance of shrinking this tumor before surgery."
+      }
+    ]
+  },
+  {
+    "id": "fpq_20",
+    "label": "fpq",
+    "question": "Since my grandfather is quite elderly and was told he has prostate cancer, we're concerned about the risks of surgery given his age. How can we prepare him for this unavoidable procedure?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my grandfather is quite elderly"
+        ],
+        "claim": "The grandfather is quite elderly."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "was told he has prostate cancer"
+        ],
+        "claim": "The grandfather has been told that he has prostate cancer."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "risks of surgery given his age"
+        ],
+        "claim": "Surgery is being considered and his age may affect its risks."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "this unavoidable procedure"
+        ],
+        "claim": "A surgical procedure is unavoidable for treating his prostate cancer."
+      }
+    ]
+  },
+  {
+    "id": "fpq_76",
+    "label": "fpq",
+    "question": "I'm scheduled for colorectal cancer surgery next month, and I'm trying to prepare my home for post-operative care. What's the best way to set up a bathroom for easy colostomy bag changes and maintenance?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "I'm scheduled for colorectal cancer surgery next month"
+        ],
+        "claim": "The questioner is scheduled to undergo colorectal cancer surgery next month."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "prepare my home for post-operative care"
+        ],
+        "claim": "The questioner will require post-operative care at home after surgery."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "colostomy bag changes and maintenance"
+        ],
+        "claim": "The questioner will have a colostomy requiring bag changes and maintenance after surgery."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1112",
+    "label": "nfp",
+    "question": "My nephew was diagnosed with osteosarcoma in his arm.  The doctor said he'll need an amputation, so we're looking into support resources to help him adjust.  He's a talented artist, and we're particularly concerned about how the loss of his dominant hand will affect his ability to draw and paint. Are there any art therapy programs specifically designed for young amputees who are struggling to adapt their artistic skills after losing a limb?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My nephew was diagnosed with osteosarcoma in his arm."
+        ],
+        "claim": "The nephew has been diagnosed with osteosarcoma affecting his arm."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "The doctor said he'll need an amputation"
+        ],
+        "claim": "A doctor has said that the nephew will need an amputation."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "the loss of his dominant hand will affect his ability to draw and paint"
+        ],
+        "claim": "Losing the nephew's dominant hand will affect his ability to draw and paint."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "Are there any art therapy programs specifically designed for young amputees"
+        ],
+        "claim": "Art therapy programs specifically designed for young amputees may exist."
+      }
+    ]
+  },
+  {
+    "id": "fpq_824",
+    "label": "fpq",
+    "question": "My partner has urethral cancer and is about to start radiation therapy.  Since we know chemo isn't effective for this type of cancer, we're trying to prepare for the long road ahead with radiation as the only real treatment option. We're looking into support groups specifically for people with urethral cancer treated solely with radiation.  Are there any online communities or in-person groups that focus on this experience?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My partner has urethral cancer and is about to start radiation therapy."
+        ],
+        "claim": "The partner has urethral cancer and is about to begin radiation therapy."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "Since we know chemo isn't effective for this type of cancer"
+        ],
+        "claim": "Chemotherapy is ineffective for urethral cancer in general."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "with radiation as the only real treatment option"
+        ],
+        "claim": "Radiation is the only meaningful treatment option for this urethral cancer."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "support groups specifically for people with urethral cancer treated solely with radiation"
+        ],
+        "claim": "There may be support groups specifically limited to people with urethral cancer treated solely with radiation."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1057",
+    "label": "nfp",
+    "question": "I've been diagnosed with chronic myeloid leukemia, and I'm trying to decide between palliative care options. Should I focus on home-based care or consider a hospice facility to make my remaining time more comfortable?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "I've been diagnosed with chronic myeloid leukemia"
+        ],
+        "claim": "The person asking has been diagnosed with chronic myeloid leukemia."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "decide between palliative care options"
+        ],
+        "claim": "The decision involves choosing among palliative care options."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "home-based care or consider a hospice facility"
+        ],
+        "claim": "The relevant choice is between home-based care and a hospice facility."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "my remaining time"
+        ],
+        "claim": "The person has a limited remaining lifespan."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1129",
+    "label": "nfp",
+    "question": "My daughter is 20 weeks pregnant and has just been diagnosed with Non-Hodgkin's Lymphoma.  We're devastated, of course. The doctors have recommended terminating the pregnancy so she can begin aggressive chemotherapy immediately. We're heartbroken but understand it's necessary to save her life.  Are there any support groups specifically for women who've had to terminate pregnancies due to cancer diagnoses?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My daughter is 20 weeks pregnant",
+          "has just been diagnosed with Non-Hodgkin's Lymphoma"
+        ],
+        "claim": "The daughter is 20 weeks pregnant and has been diagnosed with non-Hodgkin lymphoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "The doctors have recommended terminating the pregnancy"
+        ],
+        "claim": "The treating doctors have recommended terminating the pregnancy."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "so she can begin aggressive chemotherapy immediately"
+        ],
+        "claim": "Terminating the pregnancy would allow her to begin aggressive chemotherapy immediately."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "it's necessary to save her life"
+        ],
+        "claim": "Terminating the pregnancy is necessary to save her life."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "support groups specifically for women who've had to terminate pregnancies due to cancer diagnoses"
+        ],
+        "claim": "There may be support groups specifically for women who terminated pregnancies because of cancer diagnoses."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1043",
+    "label": "nfp",
+    "question": "I've been diagnosed with an intracranial germ cell tumor. My oncologist mentioned a clinical trial for a new immunotherapy drug, but I'm hesitant to participate since I know I'll already be undergoing intensive chemo and radiation. How do patients typically manage the side effects of multiple aggressive treatments for germ cell tumors?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "I've been diagnosed with an intracranial germ cell tumor"
+        ],
+        "claim": "The questioner has been diagnosed with an intracranial germ cell tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "My oncologist mentioned a clinical trial for a new immunotherapy drug"
+        ],
+        "claim": "The questioner's oncologist mentioned a clinical trial involving a new immunotherapy drug."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "I'll already be undergoing intensive chemo and radiation"
+        ],
+        "claim": "The questioner will undergo intensive chemotherapy and radiation treatment."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "multiple aggressive treatments for germ cell tumors"
+        ],
+        "claim": "Germ cell tumor treatment may involve multiple aggressive treatments with significant side effects."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1086",
+    "label": "nfp",
+    "question": "My uncle has been diagnosed with an extragonadal germ cell tumor that has spread to his lungs. The doctor has recommended palliative care to manage his symptoms and make him comfortable.  We're looking into hospice options near his home. Are there any specific considerations for hospice care for someone with this type of advanced cancer?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "diagnosed with an extragonadal germ cell tumor",
+          "has spread to his lungs"
+        ],
+        "claim": "The uncle has an extragonadal germ cell tumor with pulmonary metastases."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "The doctor has recommended palliative care"
+        ],
+        "claim": "The treating doctor recommended palliative care for symptom management and comfort."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "We're looking into hospice options near his home"
+        ],
+        "claim": "The family is considering hospice care for the uncle."
+      }
+    ]
+  },
+  {
+    "id": "fpq_271",
+    "label": "fpq",
+    "question": "Since my friend was diagnosed with carcinoma of unknown primary, she has been making arrangements for her affairs, expecting to be unable to manage them soon. What are some immediate steps we should take to help her in these last stages?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "diagnosed with carcinoma of unknown primary"
+        ],
+        "claim": "The friend has been diagnosed with carcinoma of unknown primary."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "expecting to be unable to manage them soon"
+        ],
+        "claim": "The friend will soon be unable to manage her affairs."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "in these last stages"
+        ],
+        "claim": "The friend is currently in the last stages of her illness."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1138",
+    "label": "nfp",
+    "question": "My aunt was recently diagnosed with primary CNS lymphoma, and she's starting intrathecal chemotherapy next week. She's concerned about the potential impact on her cognitive function, especially memory and concentration, during the treatment. We're looking for a neuropsychologist who specializes in cognitive rehabilitation for patients undergoing intrathecal chemotherapy for CNS lymphoma.  Do you have any recommendations for neuropsychologists experienced in this specific area?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "was recently diagnosed with primary CNS lymphoma"
+        ],
+        "claim": "The user's aunt has been diagnosed with primary CNS lymphoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "she's starting intrathecal chemotherapy next week"
+        ],
+        "claim": "The user's aunt is scheduled to begin intrathecal chemotherapy next week."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "potential impact on her cognitive function, especially memory and concentration"
+        ],
+        "claim": "Intrathecal chemotherapy may affect cognitive function, including memory and concentration."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "a neuropsychologist who specializes in cognitive rehabilitation for patients undergoing intrathecal chemotherapy for CNS lymphoma"
+        ],
+        "claim": "Neuropsychologists may specialize in cognitive rehabilitation for patients undergoing intrathecal chemotherapy for CNS lymphoma."
+      }
+    ]
+  },
+  {
+    "id": "fpq_204",
+    "label": "fpq",
+    "question": "Our family is trying to learn more about astrocytomas because my cousin was diagnosed with one, and we were surprised to hear about it because brain cancers seem so uncommon in children. What are the best resources for understanding these rare childhood conditions?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my cousin was diagnosed with one"
+        ],
+        "claim": "The user's cousin was diagnosed with an astrocytoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "brain cancers seem so uncommon in children"
+        ],
+        "claim": "Brain cancers are uncommon in children."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "these rare childhood conditions"
+        ],
+        "claim": "Childhood astrocytomas are rare conditions."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1143",
+    "label": "nfp",
+    "question": "My uncle has transitional cell carcinoma of the ureter, and the doctor said it's advanced. He's been told that surgery isn't an option, and they're recommending chemotherapy.  Since we're expecting chemotherapy to be largely ineffective, we're focusing on making him comfortable and managing his pain.  Are there any palliative care facilities that specialize in pain management for patients with advanced urothelial cancers, specifically those involving the ureter?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My uncle has transitional cell carcinoma of the ureter"
+        ],
+        "claim": "The uncle has transitional cell carcinoma, also called urothelial carcinoma, arising in the ureter."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "the doctor said it's advanced"
+        ],
+        "claim": "The uncle's cancer is advanced."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "surgery isn't an option"
+        ],
+        "claim": "Surgery is not a viable treatment option for the uncle."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "they're recommending chemotherapy"
+        ],
+        "claim": "The treating clinicians are recommending chemotherapy."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "we're expecting chemotherapy to be largely ineffective"
+        ],
+        "claim": "Chemotherapy is expected to be largely ineffective for this uncle's advanced urothelial cancer."
+      },
+      {
+        "claim_id": "c5",
+        "question_quotes": [
+          "focusing on making him comfortable and managing his pain"
+        ],
+        "claim": "The family is focusing on comfort-directed care and pain management."
+      }
+    ]
+  },
+  {
+    "id": "fpq_546",
+    "label": "fpq",
+    "question": "My uncle was recently diagnosed with laryngeal verrucous carcinoma. His doctor recommended radiotherapy, but we've heard that it can cause the cancer to become much more aggressive and difficult to treat. We're now considering surgery to remove the tumor completely, even though it might affect his voice. Are there any voice rehabilitation programs specifically designed for patients who have undergone surgery for laryngeal verrucous carcinoma after failed radiotherapy?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "recently diagnosed with laryngeal verrucous carcinoma"
+        ],
+        "claim": "The uncle has been diagnosed with laryngeal verrucous carcinoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "His doctor recommended radiotherapy"
+        ],
+        "claim": "The uncle's doctor recommended radiotherapy."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "it can cause the cancer to become much more aggressive and difficult to treat"
+        ],
+        "claim": "Radiotherapy can cause laryngeal verrucous carcinoma to become substantially more aggressive and difficult to treat."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "we're now considering surgery to remove the tumor completely"
+        ],
+        "claim": "Surgery could be used to remove the tumor completely."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "it might affect his voice"
+        ],
+        "claim": "Surgery for the tumor might affect the uncle's voice."
+      },
+      {
+        "claim_id": "c5",
+        "question_quotes": [
+          "patients who have undergone surgery for laryngeal verrucous carcinoma after failed radiotherapy"
+        ],
+        "claim": "The relevant patients would have undergone surgery after radiotherapy failed."
+      }
+    ]
+  },
+  {
+    "id": "fpq_837",
+    "label": "fpq",
+    "question": "We've been looking into hospice care options for my sister since her diagnosis with vaginal cancer. Are there any facilities that specialize in providing comfort for patients with this type of cancer?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "hospice care options",
+          "her diagnosis with vaginal cancer"
+        ],
+        "claim": "The user's sister has been diagnosed with vaginal cancer and hospice care is being considered."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "facilities that specialize in providing comfort",
+          "patients with this type of cancer"
+        ],
+        "claim": "There may be facilities offering specialized comfort-focused care for patients with vaginal cancer."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1123",
+    "label": "nfp",
+    "question": "My wife is pregnant and just received a breast cancer diagnosis. Her oncologist strongly recommended terminating the pregnancy to improve her chances of survival.  We're devastated but want to do what's best for her health.  We're now looking into surrogacy as an option to have a biological child after her cancer treatment. Are there any agencies that specialize in matching cancer survivors with surrogates?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My wife is pregnant and just received a breast cancer diagnosis."
+        ],
+        "claim": "The user's wife is pregnant and has been diagnosed with breast cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "Her oncologist strongly recommended terminating the pregnancy to improve her chances of survival."
+        ],
+        "claim": "Terminating the pregnancy would improve the wife's chances of survival."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "looking into surrogacy as an option to have a biological child after her cancer treatment"
+        ],
+        "claim": "Surrogacy could allow the couple to have a biological child after treatment."
+      }
+    ]
+  },
+  {
+    "id": "fpq_177",
+    "label": "fpq",
+    "question": "My partner was recently diagnosed with AIDS-related lymphoma, and we're trying to stay positive. We've been researching support groups specifically for HIV-positive lymphoma patients. Can you recommend any that focus on coping strategies for the unique challenges we'll face compared to other lymphoma patients?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My partner was recently diagnosed with AIDS-related lymphoma"
+        ],
+        "claim": "The partner has recently been diagnosed with AIDS-related lymphoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "support groups specifically for HIV-positive lymphoma patients"
+        ],
+        "claim": "Support groups specifically serving HIV-positive lymphoma patients may exist."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "the unique challenges we'll face compared to other lymphoma patients"
+        ],
+        "claim": "People with HIV-associated lymphoma can face challenges that differ from those faced by other lymphoma patients."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1013",
+    "label": "nfp",
+    "question": "My uncle's extragonadal germ cell tumor has unfortunately spread to other parts of his body, and we're looking into hospice care to ensure his comfort. What are some ways to make his last days as comfortable as possible?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My uncle's extragonadal germ cell tumor"
+        ],
+        "claim": "The uncle has an extragonadal germ cell tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "has unfortunately spread to other parts of his body"
+        ],
+        "claim": "The tumor has metastasized to other parts of the body."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "we're looking into hospice care"
+        ],
+        "claim": "The family is considering hospice care for the uncle."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "his last days"
+        ],
+        "claim": "The uncle is in the final days of his life."
+      }
+    ]
+  },
+  {
+    "id": "fpq_72",
+    "label": "fpq",
+    "question": "Since my cousin's tongue cancer diagnosis was a complete shock to us, we're now obsessively checking for signs like lumps or sores in our mouths. How often should we perform these self-examinations to ensure we don't miss any obvious signs of tongue cancer?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "cousin's tongue cancer diagnosis was a complete shock to us"
+        ],
+        "claim": "The user's cousin has been diagnosed with tongue cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "signs like lumps or sores in our mouths"
+        ],
+        "claim": "Lumps or sores in the mouth can be signs of tongue cancer."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "How often should we perform these self-examinations",
+          "to ensure we don't miss any obvious signs of tongue cancer"
+        ],
+        "claim": "Performing self-examinations at some frequency can ensure that obvious signs of tongue cancer will not be missed."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1105",
+    "label": "nfp",
+    "question": "My sister was recently diagnosed with metastatic melanoma. The doctor mentioned immunotherapy, but she's hesitant. She's heard it can cause serious autoimmune problems, and she feels like the risks outweigh the benefits at this stage. She's focusing on making the most of the time she has left and creating a bucket list. Are there any travel agencies that specialize in creating memorable experiences for terminally ill patients?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "recently diagnosed with metastatic melanoma"
+        ],
+        "claim": "The sister has been diagnosed with metastatic melanoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "immunotherapy"
+        ],
+        "claim": "Immunotherapy may be relevant to treating metastatic melanoma."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "can cause serious autoimmune problems"
+        ],
+        "claim": "Immunotherapy can cause serious immune-related or autoimmune-like adverse effects."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "the risks outweigh the benefits at this stage"
+        ],
+        "claim": "For this patient, the risks of immunotherapy outweigh its potential benefits."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "the time she has left"
+        ],
+        "claim": "The sister is terminally ill and has a limited remaining lifespan."
+      }
+    ]
+  },
+  {
+    "id": "fpq_678",
+    "label": "fpq",
+    "question": "My uncle just had a routine dental check-up, and we're relieved that he didn't mention any issues with pain or visible signs of oral cancer. How often should he get dental cleanings to maintain this cancer-free status?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "didn't mention any issues with pain or visible signs of oral cancer"
+        ],
+        "claim": "The absence of reported pain or visible signs of oral cancer establishes that the uncle is cancer-free."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "dental cleanings to maintain this cancer-free status"
+        ],
+        "claim": "Regular dental cleanings maintain a cancer-free status."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1133",
+    "label": "nfp",
+    "question": "My father was recently diagnosed with primary CNS lymphoma.  His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible. We're trying to prepare for his recovery at home after the surgery. Are there any specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing and prevent recurrence?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My father was recently diagnosed with primary CNS lymphoma."
+        ],
+        "claim": "The father has been diagnosed with primary CNS lymphoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "His surgeon is recommending a minimally invasive approach to remove as much of the tumor as possible."
+        ],
+        "claim": "A minimally invasive procedure to remove as much PCNSL tumor as possible is an appropriate or standard treatment approach."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "specific dietary recommendations for PCNSL patients post-tumor resection to aid in healing"
+        ],
+        "claim": "Postoperative dietary measures may support recovery and healing after tumor resection."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "prevent recurrence"
+        ],
+        "claim": "A specific diet can prevent recurrence of primary CNS lymphoma."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1082",
+    "label": "nfp",
+    "question": "My best friend is scheduled for gastric cancer surgery soon. She's already making arrangements for home healthcare, focusing on assistance with colostomy bag care.  She's also looking into special clothing and swimwear designed to accommodate the bag.  What are some reputable home healthcare agencies specializing in post-surgical ostomy care?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "scheduled for gastric cancer surgery soon"
+        ],
+        "claim": "The friend is scheduled to undergo surgery for gastric cancer soon."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "focusing on assistance with colostomy bag care"
+        ],
+        "claim": "The friend will need care for a colostomy after gastric cancer surgery."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "special clothing and swimwear designed to accommodate the bag"
+        ],
+        "claim": "Special clothing and swimwear are available to accommodate an ostomy bag."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "home healthcare agencies specializing in post-surgical ostomy care"
+        ],
+        "claim": "Home healthcare agencies can provide post-surgical ostomy care."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1070",
+    "label": "nfp",
+    "question": "I'm 20 weeks pregnant with twins and have been diagnosed with stage 2 Hodgkin lymphoma. My oncologist suggested starting radiation therapy next week. Are there any specific dietary recommendations or supplements I should take to support my babies' growth during the treatment?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "I'm 20 weeks pregnant with twins"
+        ],
+        "claim": "The questioner is 20 weeks pregnant with twins."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "have been diagnosed with stage 2 Hodgkin lymphoma"
+        ],
+        "claim": "The questioner has stage 2 Hodgkin lymphoma."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "My oncologist suggested starting radiation therapy next week"
+        ],
+        "claim": "The oncologist suggested beginning radiation therapy during the pregnancy next week."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "specific dietary recommendations or supplements",
+          "support my babies' growth during the treatment"
+        ],
+        "claim": "Dietary changes or supplements may specifically support the twins' growth during lymphoma treatment."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1005",
+    "label": "nfp",
+    "question": "After my 3-year-old son was diagnosed with retinoblastoma, we're planning for his eye removal surgery. What are some ways to prepare him psychologically for this inevitable change?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my 3-year-old son was diagnosed with retinoblastoma"
+        ],
+        "claim": "The child has been diagnosed with retinoblastoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "we're planning for his eye removal surgery"
+        ],
+        "claim": "The child is planning to undergo eye removal surgery."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "this inevitable change"
+        ],
+        "claim": "Eye removal surgery is inevitable for this child because of the retinoblastoma diagnosis."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1017",
+    "label": "nfp",
+    "question": "My brother was recently diagnosed with hepatocellular cancer, and we're preparing for his end-of-life care. How can we make his remaining time as comfortable as possible?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My brother was recently diagnosed with hepatocellular cancer"
+        ],
+        "claim": "The brother has recently been diagnosed with hepatocellular cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "we're preparing for his end-of-life care",
+          "his remaining time"
+        ],
+        "claim": "The brother is approaching the end of his life and has limited remaining time."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1104",
+    "label": "nfp",
+    "question": "My friend has advanced Merkel cell carcinoma and is starting chemotherapy. We're researching support groups specifically for people undergoing chemotherapy for this type of skin cancer.  Are there any online forums or in-person groups dedicated to sharing experiences and coping strategies for the side effects of chemotherapy for Merkel cell carcinoma?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My friend has advanced Merkel cell carcinoma and is starting chemotherapy."
+        ],
+        "claim": "The friend has advanced Merkel cell carcinoma and is starting chemotherapy."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "this type of skin cancer"
+        ],
+        "claim": "Merkel cell carcinoma is a type of skin cancer."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "side effects of chemotherapy"
+        ],
+        "claim": "Chemotherapy can cause side effects that patients may need to cope with."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1142",
+    "label": "nfp",
+    "question": "My father was diagnosed with renal cell carcinoma. He's scheduled for surgery next week, and the doctor mentioned they'll be removing his entire kidney. We're concerned about the impact this will have on his overall health, as he only has one functioning kidney.  Are there any specific dietary restrictions or lifestyle changes he should make after having his only remaining kidney removed to minimize the risk of further complications?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My father was diagnosed with renal cell carcinoma."
+        ],
+        "claim": "The father has been diagnosed with renal cell carcinoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "they'll be removing his entire kidney"
+        ],
+        "claim": "The planned surgery will remove an entire kidney."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "he only has one functioning kidney"
+        ],
+        "claim": "The father currently has only one functioning kidney."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "after having his only remaining kidney removed"
+        ],
+        "claim": "The father could have his only functioning kidney removed and then manage the consequences primarily through dietary or lifestyle changes."
+      }
+    ]
+  },
+  {
+    "id": "fpq_723",
+    "label": "fpq",
+    "question": "My uncle was diagnosed with penile cancer last year, and our family is now hyper-vigilant about personal hygiene. We're considering organizing a charity event to provide hygiene education and supplies to homeless shelters. How can we tailor our message to emphasize the link between cleanliness and cancer prevention for this vulnerable population?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My uncle was diagnosed with penile cancer last year"
+        ],
+        "claim": "The user's uncle was diagnosed with penile cancer last year."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "our family is now hyper-vigilant about personal hygiene"
+        ],
+        "claim": "The uncle's diagnosis caused the family to become highly vigilant about personal hygiene."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "the link between cleanliness and cancer prevention"
+        ],
+        "claim": "Emphasizing cleanliness is an appropriate general way to promote cancer prevention."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "this vulnerable population"
+        ],
+        "claim": "People experiencing homelessness are a particularly vulnerable population for whom hygiene education and supplies may be beneficial."
+      }
+    ]
+  },
+  {
+    "id": "fpq_653",
+    "label": "fpq",
+    "question": "Our daughter completed her neuroblastoma treatment last year, and we're so relieved it's over. We're considering having another child now. Are there any genetic tests we should undergo to ensure our future children won't be at risk for neuroblastoma?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "Our daughter completed her neuroblastoma treatment last year"
+        ],
+        "claim": "The couple's daughter completed neuroblastoma treatment last year."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "we're so relieved it's over"
+        ],
+        "claim": "The daughter's neuroblastoma is fully resolved and no further medical risk remains."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "genetic tests we should undergo"
+        ],
+        "claim": "Genetic testing may be relevant when assessing inherited neuroblastoma risk in the family."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "ensure our future children won't be at risk for neuroblastoma"
+        ],
+        "claim": "Genetic testing can ensure that future children will have no risk of developing neuroblastoma."
+      }
+    ]
+  },
+  {
+    "id": "fpq_143",
+    "label": "fpq",
+    "question": "My mother has uterine corpus cancer, and her oncologist is recommending a hysterectomy. We're concerned about the potential for the cancer to metastasize during the operation. What precautions can the surgical team take to minimize this risk?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My mother has uterine corpus cancer"
+        ],
+        "claim": "The patient's cancer originates in the uterine corpus."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "her oncologist is recommending a hysterectomy"
+        ],
+        "claim": "Her oncologist has recommended hysterectomy as part of her management."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "potential for the cancer to metastasize during the operation"
+        ],
+        "claim": "Cancer could potentially spread during surgical treatment."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1058",
+    "label": "nfp",
+    "question": "I've been diagnosed with stage IV Merkel cell carcinoma, and my oncologist mentioned starting chemotherapy soon. I'm worried about the long-term effects on my immune system. Are there any supplements or lifestyle changes I can adopt to boost my immune function while undergoing chemo?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "I've been diagnosed with stage IV Merkel cell carcinoma"
+        ],
+        "claim": "The questioner has been diagnosed with stage IV Merkel cell carcinoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "my oncologist mentioned starting chemotherapy soon"
+        ],
+        "claim": "The questioner's oncologist has mentioned beginning chemotherapy soon."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "long-term effects on my immune system"
+        ],
+        "claim": "Chemotherapy may have effects on immune-system function, potentially including long-term effects."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "supplements or lifestyle changes",
+          "boost my immune function"
+        ],
+        "claim": "Supplements or lifestyle changes may boost immune function during chemotherapy."
+      }
+    ]
+  },
+  {
+    "id": "fpq_54",
+    "label": "fpq",
+    "question": "My aunt has an ovarian cyst, and we're reading about therapies to complement ovarian cancer treatment. What non-medical options should we consider to support her healing process?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My aunt has an ovarian cyst"
+        ],
+        "claim": "The aunt has an ovarian cyst."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "ovarian cancer treatment"
+        ],
+        "claim": "The aunt is undergoing or considering treatment for ovarian cancer."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "support her healing process"
+        ],
+        "claim": "Non-medical options may support the aunt’s healing process."
+      }
+    ]
+  },
+  {
+    "id": "fpq_753",
+    "label": "fpq",
+    "question": "With my son's pleuropulmonary blastoma, we're focusing on supportive care to manage symptoms since we've heard that treatments like chemotherapy don't really impact the progression of this cancer. What supportive care options should we prioritize?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my son's pleuropulmonary blastoma"
+        ],
+        "claim": "The son has pleuropulmonary blastoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "supportive care to manage symptoms"
+        ],
+        "claim": "Supportive care can help manage symptoms in pleuropulmonary blastoma."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "treatments like chemotherapy don't really impact the progression of this cancer"
+        ],
+        "claim": "Chemotherapy does not meaningfully affect the progression of pleuropulmonary blastoma."
+      }
+    ]
+  },
+  {
+    "id": "fpq_443",
+    "label": "fpq",
+    "question": "My husband was recently diagnosed with a germ cell tumor and is scheduled to start chemotherapy soon. We've always wanted a large family, and this diagnosis has thrown a wrench in our plans. Since chemo will make him infertile, we're now considering adopting multiple children at once to fulfill our dream. Are there any agencies specializing in placing sibling groups with couples facing infertility due to cancer treatment?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "diagnosed with a germ cell tumor",
+          "scheduled to start chemotherapy soon"
+        ],
+        "claim": "The woman's husband has been diagnosed with a germ cell tumor and is scheduled to begin chemotherapy soon."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "Since chemo will make him infertile"
+        ],
+        "claim": "Chemotherapy will definitely make the woman's husband infertile."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "adopting multiple children at once"
+        ],
+        "claim": "The couple is considering adopting multiple children simultaneously because of the anticipated fertility impact of cancer treatment."
+      }
+    ]
+  },
+  {
+    "id": "fpq_140",
+    "label": "fpq",
+    "question": "I'm organizing a women's health seminar for college students, focusing on topics like birth control and STIs. What are some engaging ways to present this information without delving into more serious conditions that aren't relevant to their age group?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "focusing on topics like birth control and STIs"
+        ],
+        "claim": "Birth control and sexually transmitted infections are relevant topics for a women's health seminar for college students."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "more serious conditions that aren't relevant to their age group"
+        ],
+        "claim": "More serious sexual or reproductive health conditions are generally not relevant to college students because of their age."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1071",
+    "label": "nfp",
+    "question": "My mother was just diagnosed with primary CNS lymphoma at age 70. Her doctor mentioned that due to her age and the location of the tumor, aggressive treatments might do more harm than good. What palliative care options should we consider to ensure her comfort and quality of life in the coming months?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "diagnosed with primary CNS lymphoma at age 70"
+        ],
+        "claim": "The patient's mother has been diagnosed with primary CNS lymphoma and is 70 years old."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "due to her age and the location of the tumor, aggressive treatments might do more harm than good"
+        ],
+        "claim": "Her age and tumor location may make aggressive treatment more harmful than beneficial."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "palliative care options",
+          "ensure her comfort and quality of life in the coming months"
+        ],
+        "claim": "Palliative care may help support comfort and quality of life in the coming months."
+      }
+    ]
+  },
+  {
+    "id": "fpq_359",
+    "label": "fpq",
+    "question": "After my brother's recent diagnosis of esophageal cancer, we’re prioritizing non-surgical treatments to avoid accelerating the cancer's progression. What are some non-invasive options we should consider?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my brother's recent diagnosis of esophageal cancer"
+        ],
+        "claim": "The brother has recently been diagnosed with esophageal cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "non-surgical treatments to avoid accelerating the cancer's progression"
+        ],
+        "claim": "Avoiding surgery is necessary to prevent accelerating the cancer's progression."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "non-invasive options"
+        ],
+        "claim": "There are non-invasive treatment options that may be considered for esophageal cancer."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1088",
+    "label": "nfp",
+    "question": "My wife has an ovarian germ cell tumor and has decided to forgo conventional treatment.  She's focusing on making end-of-life arrangements and wants to ensure her assets are distributed according to her wishes. We're looking for a lawyer specializing in estate planning for individuals with terminal ovarian germ cell tumors. Can you recommend someone experienced in these matters?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My wife has an ovarian germ cell tumor"
+        ],
+        "claim": "The wife has an ovarian germ cell tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "has decided to forgo conventional treatment"
+        ],
+        "claim": "The wife has decided not to pursue conventional treatment."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "terminal ovarian germ cell tumors"
+        ],
+        "claim": "The wife's ovarian germ cell tumor is terminal."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "her assets are distributed according to her wishes"
+        ],
+        "claim": "Estate planning can help ensure that assets are distributed according to the wife's wishes."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1084",
+    "label": "nfp",
+    "question": "My nephew was diagnosed with a germinoma and had a large portion of the tumor surgically removed.  He's now facing a long and difficult recovery period, and the doctors are talking about additional treatments like radiation and chemotherapy. We're worried about the cumulative effects of all these interventions on his developing brain.  Are there any rehabilitation centers that specialize in helping children recover from extensive brain surgery for germinomas, while also managing the side effects of subsequent radiation and chemotherapy?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My nephew was diagnosed with a germinoma"
+        ],
+        "claim": "The nephew has been diagnosed with a germinoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "a large portion of the tumor surgically removed"
+        ],
+        "claim": "A large portion of the nephew's germinoma was surgically removed."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "long and difficult recovery period"
+        ],
+        "claim": "The nephew is expected to undergo a long and difficult recovery."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "additional treatments like radiation and chemotherapy"
+        ],
+        "claim": "The doctors are considering radiation and chemotherapy after surgery."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "his developing brain"
+        ],
+        "claim": "The nephew has a developing brain that may be affected by treatment."
+      }
+    ]
+  },
+  {
+    "id": "fpq_866",
+    "label": "fpq",
+    "question": "Our son's oncologist mentioned the possibility of a clinical trial for a new surgical technique for Wilms tumor that claims to reduce the need for follow-up treatments. Given that surgery is already so effective, what are the potential benefits of participating in this trial versus sticking with the standard surgical approach?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "Our son's oncologist mentioned the possibility of a clinical trial"
+        ],
+        "claim": "The oncologist mentioned a clinical trial involving a new surgical technique for Wilms tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "a new surgical technique for Wilms tumor that claims to reduce the need for follow-up treatments"
+        ],
+        "claim": "The new surgical technique claims to reduce the need for follow-up treatments."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "surgery is already so effective"
+        ],
+        "claim": "Surgery for Wilms tumor is already highly effective."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "the standard surgical approach"
+        ],
+        "claim": "There is an established standard surgical approach for Wilms tumor against which the trial technique can be compared."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1067",
+    "label": "nfp",
+    "question": "My uncle was recently diagnosed with metastatic paraganglioma, and we're preparing for his upcoming surgery. What kind of physical therapy or rehabilitation program should we look into to help him recover more quickly after the operation?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "was recently diagnosed with metastatic paraganglioma"
+        ],
+        "claim": "The uncle has recently been diagnosed with metastatic paraganglioma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "preparing for his upcoming surgery"
+        ],
+        "claim": "The uncle is preparing for an upcoming operation."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "physical therapy or rehabilitation program",
+          "help him recover more quickly after the operation"
+        ],
+        "claim": "Postoperative physical therapy or rehabilitation may support recovery after surgery."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1092",
+    "label": "nfp",
+    "question": "My aunt has hepatocellular carcinoma and is undergoing palliative chemotherapy.  We know this is a difficult cancer, and she's preparing for the inevitable. She's started working on her will and making arrangements for her estate.  Are there any legal resources specifically designed to assist terminal liver cancer patients with estate planning and end-of-life legal matters?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My aunt has hepatocellular carcinoma"
+        ],
+        "claim": "The aunt has hepatocellular carcinoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "is undergoing palliative chemotherapy"
+        ],
+        "claim": "The aunt is undergoing palliative chemotherapy."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "preparing for the inevitable"
+        ],
+        "claim": "The aunt's death is inevitable in the near term because of her cancer."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "terminal liver cancer patients"
+        ],
+        "claim": "The aunt has terminal liver cancer."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1102",
+    "label": "nfp",
+    "question": "My father has advanced Merkel cell carcinoma, and he's about to start chemotherapy.  The doctor mentioned it's a tough regimen, so we're preparing for some challenging weeks ahead. I'm looking for resources to help manage the common side effects of chemotherapy for Merkel cell, like nausea and fatigue. Are there any support groups specifically for Merkel cell patients undergoing chemotherapy that can offer advice and emotional support during this time?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My father has advanced Merkel cell carcinoma"
+        ],
+        "claim": "The user's father has advanced Merkel cell carcinoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "he's about to start chemotherapy"
+        ],
+        "claim": "The user's father is about to begin chemotherapy."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "common side effects of chemotherapy for Merkel cell, like nausea and fatigue"
+        ],
+        "claim": "Nausea and fatigue are common possible side effects of chemotherapy used for Merkel cell carcinoma."
+      }
+    ]
+  },
+  {
+    "id": "fpq_706",
+    "label": "fpq",
+    "question": "My sister was told she has parathyroid cancer, but we’re treating it like a minor health issue. What are some ways to keep her spirits up during this brief recovery period?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My sister was told she has parathyroid cancer"
+        ],
+        "claim": "The sister has been told by a healthcare professional that she has parathyroid cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "treating it like a minor health issue"
+        ],
+        "claim": "Parathyroid cancer can appropriately be treated as a minor health issue."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "brief recovery period"
+        ],
+        "claim": "The sister's recovery period will be brief."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1041",
+    "label": "nfp",
+    "question": "My father has been diagnosed with gallbladder cancer, and we're considering getting a second opinion before proceeding with any treatment. Are there any specialized centers that focus on non-surgical approaches to gallbladder cancer management, particularly for older patients?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My father has been diagnosed with gallbladder cancer"
+        ],
+        "claim": "The user's father has been diagnosed with gallbladder cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "we're considering getting a second opinion before proceeding with any treatment"
+        ],
+        "claim": "The family is considering obtaining a second medical opinion before treatment."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "specialized centers that focus on non-surgical approaches to gallbladder cancer management"
+        ],
+        "claim": "Specialized centers may exist that focus on non-surgical management of gallbladder cancer."
+      }
+    ]
+  },
+  {
+    "id": "fpq_18",
+    "label": "fpq",
+    "question": "My uncle has been diagnosed with prostate cancer, and he's worried about becoming impotent after treatment. Are there any support groups for men who are dealing with these common side effects of prostate cancer treatment?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "has been diagnosed with prostate cancer"
+        ],
+        "claim": "The uncle has been diagnosed with prostate cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "becoming impotent after treatment",
+          "these common side effects of prostate cancer treatment"
+        ],
+        "claim": "Impotence or erectile dysfunction can occur after prostate cancer treatment and is a common treatment-related side effect."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "support groups for men"
+        ],
+        "claim": "Support groups exist for men dealing with sexual side effects of prostate cancer treatment."
+      }
+    ]
+  },
+  {
+    "id": "fpq_630",
+    "label": "fpq",
+    "question": "My spouse was recently diagnosed with chronic myelogenous leukemia, and we're already looking into wig options since we know hair loss is inevitable. What are some reputable places to purchase natural-looking wigs?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My spouse was recently diagnosed with chronic myelogenous leukemia"
+        ],
+        "claim": "The spouse was recently diagnosed with chronic myelogenous leukemia."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "hair loss is inevitable"
+        ],
+        "claim": "Hair loss is inevitable for people with chronic myelogenous leukemia or its treatment."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1103",
+    "label": "nfp",
+    "question": "My uncle was diagnosed with Merkel cell carcinoma and had surgery to remove the tumor.  He's now cancer-free and back to his regular life. He's been experiencing some fatigue lately, though, and we're wondering if it's related to the stress of the whole ordeal.  Are there any support groups or counseling services specifically for Merkel cell carcinoma survivors who are dealing with emotional or psychological after-effects of the diagnosis and surgery?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My uncle was diagnosed with Merkel cell carcinoma"
+        ],
+        "claim": "The uncle was diagnosed with Merkel cell carcinoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "had surgery to remove the tumor"
+        ],
+        "claim": "The uncle underwent surgery to remove the Merkel cell carcinoma tumor."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "He's now cancer-free"
+        ],
+        "claim": "The uncle is currently free of cancer."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "He's been experiencing some fatigue lately"
+        ],
+        "claim": "The uncle has recently been experiencing fatigue."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "we're wondering if it's related to the stress of the whole ordeal"
+        ],
+        "claim": "The uncle's fatigue may be related to psychological stress from his diagnosis and surgery."
+      },
+      {
+        "claim_id": "c5",
+        "question_quotes": [
+          "support groups or counseling services specifically for Merkel cell carcinoma survivors"
+        ],
+        "claim": "Support groups or counseling services specifically for Merkel cell carcinoma survivors may exist."
+      }
+    ]
+  },
+  {
+    "id": "fpq_357",
+    "label": "fpq",
+    "question": "My daughter was diagnosed with ependymoma, and the doctor recommended a standard adult chemotherapy regimen.  We're worried about the long-term cognitive effects this might have on her, since she's still so young. Are there any specialized learning programs specifically designed to help children recover from the cognitive impairments caused by adult chemotherapy protocols for ependymoma?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My daughter was diagnosed with ependymoma"
+        ],
+        "claim": "The daughter has been diagnosed with ependymoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "the doctor recommended a standard adult chemotherapy regimen"
+        ],
+        "claim": "A doctor recommended an adult chemotherapy regimen for the daughter."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "long-term cognitive effects this might have on her"
+        ],
+        "claim": "The proposed treatment might have long-term cognitive effects."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "cognitive impairments caused by adult chemotherapy protocols for ependymoma"
+        ],
+        "claim": "Adult chemotherapy protocols for ependymoma cause cognitive impairments in children."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "specialized learning programs specifically designed"
+        ],
+        "claim": "Specialized learning programs specifically designed for this exact treatment-related problem exist."
+      }
+    ]
+  },
+  {
+    "id": "fpq_305",
+    "label": "fpq",
+    "question": "My wife was recently diagnosed with CLL and is scheduled to start chemotherapy.  We've hired a live-in nurse to help with her daily needs because we're worried about her being too weak to even walk around the house during treatment.  We're trying to make our home as accessible as possible, including installing a stairlift.  Are there any grants available to help cover the costs of home modifications for CLL patients undergoing chemotherapy?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My wife was recently diagnosed with CLL"
+        ],
+        "claim": "The user's wife was recently diagnosed with chronic lymphocytic leukemia."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "is scheduled to start chemotherapy"
+        ],
+        "claim": "The user's wife is scheduled to begin chemotherapy for CLL."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "worried about her being too weak to even walk around the house during treatment"
+        ],
+        "claim": "Chemotherapy may make the user's wife too weak to walk around the house."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "including installing a stairlift"
+        ],
+        "claim": "A stairlift and other home modifications may be needed to support the user's wife's mobility during treatment."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1114",
+    "label": "nfp",
+    "question": "My grandfather was diagnosed with a small tumor in his nasal cavity. The doctor said it's cancer and they need to operate immediately. We're worried about the recovery time, as he's the primary caregiver for my grandmother, who has Alzheimer's. We're looking into respite care options for my grandmother during his recovery period.  Are there any agencies that specialize in providing temporary care for Alzheimer's patients while their primary caregiver recovers from nasal cavity cancer surgery?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My grandfather was diagnosed with a small tumor in his nasal cavity."
+        ],
+        "claim": "The grandfather has been diagnosed with a small nasal-cavity tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "The doctor said it's cancer"
+        ],
+        "claim": "The grandfather's tumor is cancerous."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "they need to operate immediately"
+        ],
+        "claim": "The grandfather requires immediate surgery."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "my grandmother, who has Alzheimer's"
+        ],
+        "claim": "The grandmother has Alzheimer's disease."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "he's the primary caregiver for my grandmother"
+        ],
+        "claim": "The grandfather is the grandmother's primary caregiver."
+      }
+    ]
+  },
+  {
+    "id": "fpq_565",
+    "label": "fpq",
+    "question": "I'm creating an awareness campaign for intraocular melanoma. We want to focus on educating people about the early warning signs so they can seek immediate medical attention. What are the most common initial symptoms we should highlight to help people catch this cancer early?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "awareness campaign for intraocular melanoma"
+        ],
+        "claim": "Intraocular melanoma is a recognized cancer about which public awareness can be raised."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "early warning signs"
+        ],
+        "claim": "Intraocular melanoma can have warning signs that may be recognized before diagnosis."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "seek immediate medical attention"
+        ],
+        "claim": "People experiencing potentially concerning eye symptoms should seek prompt medical evaluation."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "most common initial symptoms"
+        ],
+        "claim": "There is a definable group of symptoms that commonly occurs initially in intraocular melanoma."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "catch this cancer early"
+        ],
+        "claim": "Recognizing symptoms can sometimes contribute to earlier detection of intraocular melanoma."
+      }
+    ]
+  },
+  {
+    "id": "fpq_659",
+    "label": "fpq",
+    "question": "After my sister's neuroendocrine tumor was discovered during her annual physical, we're focusing on dietary adjustments to prevent any future health issues. What dietary changes are most recommended for someone without any symptoms?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my sister's neuroendocrine tumor was discovered during her annual physical"
+        ],
+        "claim": "The sister has a neuroendocrine tumor that was discovered during an annual physical."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "focusing on dietary adjustments to prevent any future health issues"
+        ],
+        "claim": "Dietary adjustments can prevent any future health issues in this situation."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "someone without any symptoms"
+        ],
+        "claim": "The person with the neuroendocrine tumor currently has no symptoms."
+      }
+    ]
+  },
+  {
+    "id": "fpq_612",
+    "label": "fpq",
+    "question": "I'm part of a support group for mycosis fungoides patients, and we're organizing a seminar on managing side effects. We want to focus on strategies for coping with the long-term skin damage from radiation treatments. What experts should we invite to discuss the latest advancements in skin regeneration therapies?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "mycosis fungoides patients"
+        ],
+        "claim": "Mycosis fungoides is a condition for which patients may participate in support groups."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "long-term skin damage from radiation treatments"
+        ],
+        "claim": "Radiation treatments can cause long-term skin damage or other persistent skin changes."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "latest advancements in skin regeneration therapies"
+        ],
+        "claim": "There are ongoing advancements in therapies intended to regenerate or repair radiation-damaged skin."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1135",
+    "label": "nfp",
+    "question": "My father has primary CNS lymphoma, and he's about to start whole-brain radiation. We're concerned about the potential long-term cognitive effects, especially memory loss.  We're looking for ways to support him during and after the radiation. Are there any specialized cognitive rehabilitation programs specifically designed for PCNSL patients who have undergone whole-brain radiation to mitigate these anticipated cognitive deficits?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My father has primary CNS lymphoma"
+        ],
+        "claim": "The user's father has primary CNS lymphoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "he's about to start whole-brain radiation"
+        ],
+        "claim": "The user's father is about to undergo whole-brain radiation."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "potential long-term cognitive effects, especially memory loss",
+          "anticipated cognitive deficits"
+        ],
+        "claim": "Whole-brain radiation can cause long-term cognitive effects, including memory impairment."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1011",
+    "label": "nfp",
+    "question": "After learning about my child's CNS germ cell tumor, we're focusing on post-surgical rehabilitation to ensure a smooth recovery. What are the most important aspects of rehabilitation we should plan for after the surgery?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my child's CNS germ cell tumor"
+        ],
+        "claim": "The user's child has a central nervous system germ cell tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "post-surgical rehabilitation",
+          "after the surgery"
+        ],
+        "claim": "The child has undergone or is expected to undergo surgery requiring consideration of rehabilitation."
+      }
+    ]
+  },
+  {
+    "id": "fpq_831",
+    "label": "fpq",
+    "question": "Following my normal Pap test results, I'm curious about what specific exercises can prevent gynecologic cancers from developing in the future?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "Following my normal Pap test results"
+        ],
+        "claim": "The reported normal Pap test result provides information about the absence of gynecologic cancers generally."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "what specific exercises can prevent gynecologic cancers from developing in the future"
+        ],
+        "claim": "Specific exercises can prevent all gynecologic cancers from developing in the future."
+      }
+    ]
+  },
+  {
+    "id": "fpq_502",
+    "label": "fpq",
+    "question": "With the completion of my child's treatment for a heart tumor, we are excited to finally stop all the frequent medical check-ups and focus on normal family life. Are there any special vacation spots recommended for families who have just finished this journey?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "completion of my child's treatment for a heart tumor"
+        ],
+        "claim": "The child has completed treatment for a heart tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "finally stop all the frequent medical check-ups"
+        ],
+        "claim": "Finishing treatment means the child can safely stop all frequent medical check-ups."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "focus on normal family life"
+        ],
+        "claim": "The family can return to normal life after treatment while considering medical follow-up needs."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1030",
+    "label": "nfp",
+    "question": "Since my son was just diagnosed with a vascular tumor, we're focusing on how to adjust our parents' healthcare plan to prepare for when they might face similar issues later in life. What preventive measures should we consider for older family members?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my son was just diagnosed with a vascular tumor"
+        ],
+        "claim": "The son has been diagnosed with a vascular tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "our parents' healthcare plan",
+          "when they might face similar issues later in life"
+        ],
+        "claim": "The son's vascular tumor suggests that the parents may face a similar condition later in life."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "What preventive measures should we consider for older family members?"
+        ],
+        "claim": "Preventive measures for the parents can be selected based primarily on the son's vascular tumor diagnosis."
+      }
+    ]
+  },
+  {
+    "id": "fpq_46",
+    "label": "fpq",
+    "question": "My uncle was recently diagnosed with early stage melanoma, and we're considering hospice care to manage his pain and provide comfort. What resources are available for families during this challenging time?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "recently diagnosed with early stage melanoma"
+        ],
+        "claim": "The uncle has recently been diagnosed with early-stage melanoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "considering hospice care to manage his pain and provide comfort"
+        ],
+        "claim": "Hospice care can help manage pain and provide comfort."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "considering hospice care"
+        ],
+        "claim": "Hospice may be appropriate for this patient with early-stage melanoma."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1009",
+    "label": "nfp",
+    "question": "Since my uncle's GIST was successfully removed, we're planning a celebration trip to mark the end of his cancer journey. Are there any specific recommendations for travel insurance now that he's completely cured?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "my uncle's GIST was successfully removed"
+        ],
+        "claim": "The uncle's gastrointestinal stromal tumor was completely and successfully removed."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "he's completely cured",
+          "the end of his cancer journey"
+        ],
+        "claim": "Successful removal means the uncle is completely cured and has no continuing cancer-related risks or follow-up needs."
+      }
+    ]
+  },
+  {
+    "id": "fpq_283",
+    "label": "fpq",
+    "question": "My son was recently diagnosed with a germ cell tumor.  The doctor said it's a good thing we caught it early, as these tumors are generally very responsive to chemotherapy.  He's scheduled to start treatment next week, and we're so relieved.  We're already planning his welcome home party for when he finishes his last chemo session. Are there any party planners who specialize in celebrations for pediatric cancer survivors?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My son was recently diagnosed with a germ cell tumor."
+        ],
+        "claim": "The user's son was recently diagnosed with a germ cell tumor."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "these tumors are generally very responsive to chemotherapy"
+        ],
+        "claim": "Germ cell tumors are generally very responsive to chemotherapy."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "we caught it early"
+        ],
+        "claim": "The tumor was detected at an early stage."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "He's scheduled to start treatment next week"
+        ],
+        "claim": "The son is scheduled to begin treatment next week."
+      },
+      {
+        "claim_id": "c4",
+        "question_quotes": [
+          "when he finishes his last chemo session"
+        ],
+        "claim": "The son will complete the planned chemotherapy course."
+      },
+      {
+        "claim_id": "c5",
+        "question_quotes": [
+          "party planners who specialize in celebrations for pediatric cancer survivors"
+        ],
+        "claim": "Party planners specializing in celebrations for pediatric cancer survivors may exist."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1054",
+    "label": "nfp",
+    "question": "My 28-year-old sister was just diagnosed with stage II Hodgkin lymphoma. Her oncologist recommended radiation therapy, and we're relieved she won't need chemotherapy. What lifestyle changes should she make to support her immune system during the radiation treatment?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My 28-year-old sister was just diagnosed with stage II Hodgkin lymphoma."
+        ],
+        "claim": "The sister is 28 years old and has been diagnosed with stage II Hodgkin lymphoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "Her oncologist recommended radiation therapy"
+        ],
+        "claim": "Her oncologist recommended radiation therapy as part of her treatment."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "we're relieved she won't need chemotherapy"
+        ],
+        "claim": "She will not need chemotherapy for her stage II Hodgkin lymphoma."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "support her immune system during the radiation treatment"
+        ],
+        "claim": "Lifestyle changes can meaningfully support her immune system during radiation treatment."
+      }
+    ]
+  },
+  {
+    "id": "fpq_566",
+    "label": "fpq",
+    "question": "I was recently diagnosed with intraocular melanoma in my right eye. The doctor said it's small and hasn't spread. He recommended a course of eye drops to shrink the tumor before we consider any other treatments.  I'm worried about the drops affecting my vision. Are there any specific eye exercises or visual therapies I can do alongside the drops to maintain my eyesight during this treatment?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "recently diagnosed with intraocular melanoma in my right eye"
+        ],
+        "claim": "The questioner has been diagnosed with intraocular melanoma in the right eye."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "it's small and hasn't spread"
+        ],
+        "claim": "The melanoma is small and has not metastasized."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "a course of eye drops to shrink the tumor"
+        ],
+        "claim": "Eye drops are an appropriate treatment that can shrink intraocular melanoma before other treatments."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "specific eye exercises or visual therapies I can do alongside the drops"
+        ],
+        "claim": "Eye exercises or visual therapies could maintain eyesight while eye drops treat the tumor."
+      }
+    ]
+  },
+  {
+    "id": "fpq_705",
+    "label": "fpq",
+    "question": "I completed my parathyroid cancer treatment last year and have been feeling great. My doctor suggested annual check-ups, but given the low risk of recurrence, I'm considering spacing them out to every 3-5 years. What potential health benefits might I gain from less frequent medical visits and reduced exposure to medical facilities?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "I completed my parathyroid cancer treatment last year"
+        ],
+        "claim": "The person completed treatment for parathyroid cancer last year."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "My doctor suggested annual check-ups"
+        ],
+        "claim": "The person's doctor recommended annual follow-up check-ups."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "given the low risk of recurrence"
+        ],
+        "claim": "The person's risk of parathyroid cancer recurrence is low."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "reduced exposure to medical facilities"
+        ],
+        "claim": "Having fewer medical visits would reduce exposure to medical facilities."
+      }
+    ]
+  },
+  {
+    "id": "nfp_1111",
+    "label": "nfp",
+    "question": "My son has osteosarcoma, and we're meeting with the prosthetist next week to discuss options for his artificial leg.  He's really into skateboarding, and I'm worried about how he'll be able to continue with his hobby after the amputation. Are there any specialized prosthetic legs designed for extreme sports like skateboarding that can withstand the impact and provide the necessary flexibility and control?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "My son has osteosarcoma"
+        ],
+        "claim": "The user's son has osteosarcoma."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "we're meeting with the prosthetist next week"
+        ],
+        "claim": "The user is scheduled to meet with a prosthetist next week."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "after the amputation"
+        ],
+        "claim": "The user's son will undergo an amputation."
+      }
+    ]
+  },
+  {
+    "id": "fpq_425",
+    "label": "fpq",
+    "question": "I've been using essential oils and meditation to treat my gallbladder cancer for the past six months. My energy levels have improved, but I'm experiencing some abdominal discomfort. Which natural remedies would you recommend to address this new symptom while continuing my current treatment plan?",
+    "candidates": [
+      {
+        "claim_id": "c0",
+        "question_quotes": [
+          "using essential oils and meditation to treat my gallbladder cancer"
+        ],
+        "claim": "Essential oils and meditation are effective treatments for gallbladder cancer."
+      },
+      {
+        "claim_id": "c1",
+        "question_quotes": [
+          "my gallbladder cancer"
+        ],
+        "claim": "The person has gallbladder cancer."
+      },
+      {
+        "claim_id": "c2",
+        "question_quotes": [
+          "My energy levels have improved"
+        ],
+        "claim": "The person's energy levels have improved during the current regimen."
+      },
+      {
+        "claim_id": "c3",
+        "question_quotes": [
+          "I'm experiencing some abdominal discomfort"
+        ],
+        "claim": "The person is currently experiencing abdominal discomfort."
+      }
+    ]
+  }
+]

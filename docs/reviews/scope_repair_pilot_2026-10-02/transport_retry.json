@@ -1,0 +1,17 @@
+{
+  "reason": "Selected model is at capacity",
+  "previous_workers": 8,
+  "retry_workers": 4,
+  "completed_preserved": 14,
+  "archived": [
+    "transport_attempts/capacity_abort_1/original/fpq_146",
+    "transport_attempts/capacity_abort_1/original/nfp_1031",
+    "transport_attempts/capacity_abort_1/original/nfp_1117",
+    "transport_attempts/capacity_abort_1/repair/fpq_146",
+    "transport_attempts/capacity_abort_1/repair/nfp_1031",
+    "transport_attempts/capacity_abort_1/repair/nfp_1117",
+    "transport_attempts/capacity_abort_1/repair/nfp_1130",
+    "transport_attempts/capacity_abort_1/repair/nfp_1140"
+  ],
+  "unix": 1790902971.5839005
+}

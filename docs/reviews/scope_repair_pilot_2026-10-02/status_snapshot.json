@@ -1,0 +1,9 @@
+{
+  "state": "running",
+  "expected": 240,
+  "counts": {
+    "complete": 27
+  },
+  "updated_unix": 1790903042.7678304,
+  "snapshot_time_kst": "2026-10-02T10:04:05.164358+09:00"
+}
