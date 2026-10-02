@@ -1,0 +1,17 @@
+{
+  "scope": "All 57 N1 pairs, themselves selected from 121 Plain>=4 to alternative<4 NFP pairs.",
+  "new_calls": 0,
+  "clinically_adjudicated": false,
+  "definitions": {
+    "personal_to_population": "Individual report/plan re-evaluated via typicality, other cases or universal necessity.",
+    "relation_or_scope_change": "Added exclusivity/certainty/independent efficacy, relative-to-absolute comparison, temporal-to-causal link, or changed request/action; not just person-to-population.",
+    "mixed_or_ambiguous": "Multiple transformations or original scope is ambiguous; do not force into nonpersonal category.",
+    "referent_time_or_scenario_change": "Past belief treated as current, future child changed to current pregnancy, or stated renal scenario changed."
+  },
+  "limitations": [
+    "Original N1 is one main change per selected pair, not an exhaustive multi-label audit.",
+    "Counts do not certify that objections were medically wrong or caused the Well score.",
+    "These are a post-hoc manual partition. No model/score blinding.",
+    "Non-N1 answers are not automatically free of these transformations."
+  ]
+}

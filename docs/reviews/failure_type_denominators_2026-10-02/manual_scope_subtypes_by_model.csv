@@ -1,0 +1,6 @@
+model,all_alternative_low,reviewed_plain_high_to_alt_low,outside_selected_cohort,n1_total,personal_to_population,relation_or_scope_change,mixed_or_ambiguous,referent_time_or_scenario_change,note
+qwen25,8,8,0,5,4,1,0,0,"Subtype counts are within selected N1 pairs, not exhaustive nonpersonal error counts. Other original primary categories may have secondary scope changes."
+gemma,32,32,0,17,11,4,2,0,"Subtype counts are within selected N1 pairs, not exhaustive nonpersonal error counts. Other original primary categories may have secondary scope changes."
+luna,66,54,12,24,14,7,2,1,"Subtype counts are within selected N1 pairs, not exhaustive nonpersonal error counts. Other original primary categories may have secondary scope changes."
+qwen38_off,43,23,20,10,4,2,2,2,"Subtype counts are within selected N1 pairs, not exhaustive nonpersonal error counts. Other original primary categories may have secondary scope changes."
+qwen38_on,18,4,14,1,0,0,0,1,"Subtype counts are within selected N1 pairs, not exhaustive nonpersonal error counts. Other original primary categories may have secondary scope changes."

@@ -1,0 +1,19 @@
+{
+  "source": "results/analysis/completed_primary_behavior_20261001_v2/all_primary_pairs.jsonl",
+  "source_sha256": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3",
+  "pairs": 3659,
+  "answers": 7318,
+  "fpq_low": 3695,
+  "nfp_low": 230,
+  "new_model_calls": 0,
+  "new_semantic_population_audit": false,
+  "source_coder": "Existing reference-assisted Sonnet per-answer audit; labels implied by references; model/condition/Well scores hidden during coding.",
+  "limitations": [
+    "Well<4 is an outcome grouping, not a proof of medical error or gate failure.",
+    "corrects_target with Well<4 is an evaluation disagreement, not proof of adequate correction.",
+    "Optional flags are overlapping and incomplete for the new proposed taxonomy.",
+    "Different alternative instructions prevent isolating model effects.",
+    "Qwen2.5 lacks fpq_389; retain original per-model denominators.",
+    "Qwen3.8 OFF and ON are two settings of one model family."
+  ]
+}

@@ -1,0 +1,6 @@
+model,n,plain_challenge,alternative_challenge,new_challenge,new_challenge_alternative_low,ceased_challenge
+qwen25,149,0,9,9,5,0
+gemma,149,2,35,33,27,0
+luna,149,30,65,38,26,3
+qwen38_off,149,38,49,22,15,11
+qwen38_on,149,24,31,11,3,4
