@@ -1,0 +1,29 @@
+{
+  "task_model": {
+    "backend": "local_http",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "base_url_env": "FPQA_LOCAL_BASE_URL",
+    "temperature": 0,
+    "max_tokens": 8192,
+    "timeout_seconds": 240,
+    "extra_body": {},
+    "deployment_status": "not started or validated; use the prior pinned checkpoint/runtime"
+  },
+  "judge_model": {
+    "backend": "claude",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "timeout_seconds": 240
+  },
+  "reflection_model": {
+    "backend": "claude",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "timeout_seconds": 240
+  },
+  "max_metric_calls": 500,
+  "seed": 42,
+  "workers": 5,
+  "protocol": "shared_question_only_cli_v1",
+  "note": "Shared messages/data/rubric. CLI temperature and token cap are provider defaults; medium effort is not equal compute across providers. No model fallback. Local model conditions are separate runtime settings."
+}

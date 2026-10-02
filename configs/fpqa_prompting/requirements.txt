@@ -1,0 +1,5 @@
+# CPU-only environment. Do not install the repository's GPU dependencies here.
+# GEPA version matches Well's checked-in uv.lock at 6c9770f.
+gepa==0.1.1
+pytest==8.4.2
+ruff==0.13.2

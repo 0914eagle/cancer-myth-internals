@@ -1,0 +1,121 @@
+{
+  "purpose": "transport and protocol validation only, not a performance estimate",
+  "date": "2026-10-02",
+  "cli_versions": {
+    "codex": "codex-cli 0.155.1",
+    "claude": "2.1.287 (Claude Code)"
+  },
+  "models": {
+    "task:luna6_sonnet55": "gpt-6-luna",
+    "judge:luna6_sonnet55": "claude-sonnet-5-5",
+    "task:sonnet55": "claude-sonnet-5-5",
+    "judge:sonnet55": "claude-sonnet-5-5"
+  },
+  "runs": [
+    {
+      "model_config": "luna6_sonnet55",
+      "method": "direct",
+      "ids": [
+        "crepe:2019_a-09033",
+        "crepe:2019_a-11409"
+      ],
+      "labels": [
+        1,
+        0
+      ],
+      "completed_records": 2,
+      "recorded_calls": 2,
+      "tool_validation_passed": true
+    },
+    {
+      "model_config": "luna6_sonnet55",
+      "method": "cot_2step",
+      "ids": [
+        "crepe:2019_a-09033",
+        "crepe:2019_a-11409"
+      ],
+      "labels": [
+        1,
+        0
+      ],
+      "completed_records": 2,
+      "recorded_calls": 4,
+      "tool_validation_passed": true
+    },
+    {
+      "model_config": "luna6_sonnet55",
+      "method": "plain",
+      "ids": [
+        "crepe:2019_a-09033",
+        "crepe:2019_a-11409"
+      ],
+      "labels": [
+        1,
+        0
+      ],
+      "completed_records": 2,
+      "recorded_calls": 4,
+      "tool_validation_passed": true
+    },
+    {
+      "model_config": "sonnet55",
+      "method": "direct",
+      "ids": [
+        "crepe:2019_a-09033",
+        "crepe:2019_a-11409"
+      ],
+      "labels": [
+        1,
+        0
+      ],
+      "completed_records": 2,
+      "recorded_calls": 2,
+      "tool_validation_passed": true
+    },
+    {
+      "model_config": "sonnet55",
+      "method": "cot_2step",
+      "ids": [
+        "crepe:2019_a-09033",
+        "crepe:2019_a-11409"
+      ],
+      "labels": [
+        1,
+        0
+      ],
+      "completed_records": 2,
+      "recorded_calls": 4,
+      "tool_validation_passed": true
+    },
+    {
+      "model_config": "sonnet55",
+      "method": "plain",
+      "ids": [
+        "crepe:2019_a-09033",
+        "crepe:2019_a-11409"
+      ],
+      "labels": [
+        1,
+        0
+      ],
+      "completed_records": 2,
+      "recorded_calls": 4,
+      "tool_validation_passed": true
+    }
+  ],
+  "common_payload_checks": {
+    "direct": {
+      "byte_equal": true,
+      "sha256": "7ac6a1fb33b2e4e31ccadb1e48f9ca0662483a9b0485054d05ec504d11542b20"
+    },
+    "plain": {
+      "byte_equal": true,
+      "sha256": "d556e73fc40df5e88e8f7b7bee359b596d4b32324845f71fa2eb6bd47cb9f32e"
+    },
+    "cot_review": {
+      "byte_equal": true,
+      "final_step_note": "shared template, model-generated review naturally differs"
+    }
+  },
+  "tests_passed": 21
+}

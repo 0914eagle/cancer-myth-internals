@@ -1,0 +1,25 @@
+{
+  "task_model": {
+    "backend": "claude",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "timeout_seconds": 240
+  },
+  "judge_model": {
+    "backend": "claude",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "timeout_seconds": 240
+  },
+  "reflection_model": {
+    "backend": "claude",
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "timeout_seconds": 240
+  },
+  "max_metric_calls": 500,
+  "seed": 42,
+  "workers": 5,
+  "protocol": "shared_question_only_cli_v1",
+  "note": "Shared messages/data/rubric. CLI temperature and token cap are provider defaults; medium effort is not equal compute across providers. No model fallback. Local model conditions are separate runtime settings."
+}
