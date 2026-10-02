@@ -1,0 +1,11 @@
+model,dataset,n,both_low,low_to_high,high_to_low,both_high
+qwen25,fpq,582,512,56,9,5
+qwen25,nfp,149,0,0,8,141
+gemma,fpq,583,339,219,4,21
+gemma,nfp,149,0,0,32,117
+luna,fpq,583,143,179,5,256
+luna,nfp,149,12,4,54,79
+qwen38_off,fpq,583,220,73,44,246
+qwen38_off,nfp,149,20,10,23,96
+qwen38_on,fpq,583,303,43,29,208
+qwen38_on,nfp,149,14,3,4,128

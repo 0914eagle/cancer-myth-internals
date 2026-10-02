@@ -1,0 +1,23 @@
+{
+  "pairs": 3659,
+  "answers": 7318,
+  "original_low": {
+    "fpq": 3695,
+    "nfp": 230
+  },
+  "manual_pairs": 299,
+  "manual_n1": 57,
+  "audit_changes_applied": 16,
+  "manual_scope_auto_overlap": 3,
+  "optional_signal_quote_warnings": 0,
+  "new_model_calls": 0,
+  "new_semantic_population_coding": false,
+  "source_hashes": {
+    "results/analysis/completed_primary_behavior_20261001_v2/all_primary_pairs.jsonl": "4e9edd24ae455bfac403238fef67293638ff9250f15905ce0fa746a516c060c3",
+    "docs/reviews/failure_type_denominators_2026-10-02/manual_scope_subtypes57.json": "dd0849742d6f391a67a1c63246daeb6aaa3fbd88572cb609516fdafac7672234",
+    "docs/reviews/well64_adjudication_2026-10-02/score_corrections.csv": "8ad23fbc2e4902afaee7465bb6052290f134f4b16258bdbecc8389262f2eb5ef",
+    "docs/reviews/direct_reading_2026-10-02/reviewed_evidence.json": "608d7aff22a253327e06c5c133d9cca998f25e178c72c000caefb6c364d56963",
+    "docs/reviews/luna_claim_gate_recheck_2026-10-02.json": "80eb2940d4d215fbdc2c4b2a13bfb9e3e2bc28707ec9f886f44c263f7cf44818",
+    "scripts/build_integrated_failure_census_20261002.py": "16760b0279c89549bc9a16e3520146601423186be60b960ea1dd63f6a01b93a9"
+  }
+}

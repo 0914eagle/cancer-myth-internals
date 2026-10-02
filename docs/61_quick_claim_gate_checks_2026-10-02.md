@@ -1,6 +1,6 @@
 # 빠른 검증: 저장 판정 규칙 재집계와 주장 범위 수정 파일럿
 
-2026-10-02. **실제 의료 답변 생성이 아니라 Luna의 별도 gate 과제를 점검한다.** 기존 721문항의 규칙 재집계는 완료했고, 새로운 80문항 범위 수정 파일럿은 실행 기록에 따라 아래 상태를 갱신한다. 학습·GPU·Well 채점은 사용하지 않는다.
+2026-10-02. **실제 의료 답변 생성이 아니라 Luna의 별도 gate 과제를 점검한다.** 기존 721문항의 규칙 재집계와 새로운 80문항 범위 수정 파일럿 모두 완료했다. 결과는 아래에 분리해 보고한다. 학습·GPU·Well 채점은 사용하지 않는다.
 
 ## 1. 새 호출 없이 완료한 것: 기존 판정 규칙 비교
 
@@ -45,11 +45,27 @@ nohup python3 -u scripts/run_luna_scope_repair_pilot_20261002.py --workers 8 > r
 python3 scripts/run_luna_scope_repair_pilot_20261002.py --analyze-only
 ```
 
-STOP 파일 또는 인증·할당량·전송 오류가 발생하면 이 실험을 멈추고 원문을 보존한다. 실패 응답을 자동으로 고치거나 다른 모델로 대체하지 않는다. 완료 후 결과와 실패 수를 이 문서에 추가한다.
+STOP 파일 또는 인증·할당량·전송 오류가 발생하면 이 실험을 멈추고 원문을 보존한다. 실패 응답을 자동으로 고치거나 다른 모델로 대체하지 않는다. 완료 결과와 전송 재시도는 아래에 보존한다.
 
 
 ## 3. 실행 기록
 
 Luna preflight는 요청 모델 `gpt-5.6-luna`로 통과했다. 최초 8개 병렬에서 14호출 완료 후 `Selected model is at capacity` 오류로 해당 실행을 중단했다. 실패·취소된 8기록은 별도 보존하고 완료된 14기록을 재사용해 **같은 모델·같은 프롬프트, 4개 병렬로 한 번 재시도**했다. 이는 형식 답변을 선택적으로 고친 것이 아니라 전송 실패 재시도이며 원 로그를 유지했다.
 
-[공개 프로토콜](reviews/scope_repair_pilot_2026-10-02/protocol.json), [사전 고정한 80문항·후보](reviews/scope_repair_pilot_2026-10-02/selected_items.json), [시각이 포함된 상태 스냅샷](reviews/scope_repair_pilot_2026-10-02/status_snapshot.json), [재시도 기록](reviews/scope_repair_pilot_2026-10-02/transport_retry.json)을 저장했다. 상태 스냅샷은 실시간 모니터가 아니며 전체 완료 후 집계가 필요하다.
+[공개 프로토콜](reviews/scope_repair_pilot_2026-10-02/protocol.json), [사전 고정한 80문항·후보](reviews/scope_repair_pilot_2026-10-02/selected_items.json), [시각이 포함된 상태 스냅샷](reviews/scope_repair_pilot_2026-10-02/status_snapshot.json), [재시도 기록](reviews/scope_repair_pilot_2026-10-02/transport_retry.json)을 저장했다. 상태 스냅샷은 전체240개 유효 출력이 완료된 시점의 기록이며 실시간 모니터는 아니다.
+
+
+## 4. 완료 결과 — 80문항, 240개 유효 출력
+
+원 목록과 수정 목록 모두 같은 판정 지시를 사용했다. 원래 Direct gate와는 입력·지시가 다르므로 그 탐지율과 바로 비교하지 않는다.
+
+| 라벨 | 원 목록 Yes | 수정 목록 Yes | No→Yes | Yes→No |
+|---|---:|---:|---:|---:|
+| FPQ40개 | 5/40 (12.5%) | 7/40 (17.5%) | 2 | 0 |
+| NFP40개 | 3/40 (7.5%) | 2/40 (5.0%) | 1 | 2 |
+
+FPQ는2개 더 탐지하고 NFP는 순1개 덜 오탐했다. **소규모·각 조건1회 생성의 탐색 결과이며, 범위 수정의 개선 효과나 원인을 확정하지 않는다.** 최종 답변과 Well 점수는 만들지 않았다. 총79문항에서 주장 문자열이 하나 이상 바뀌었고, 바뀌지 않은1문항은 판정도 같았다. 불변1개만으로 생성 무작위성을 추정할 수 없다. 수정된 문장이 실제로 원문 의미를 더 잘 보존했는지도 별도 원문 검토 대상이다.
+
+실패·취소된 최초8개 기록은 별도 보존했으며, 이들을 포함해 여러 판정 중 좋은 결과를 선택한 것이 아니다. 재시도 후 수정80/원 목록 판정80/수정 목록 판정80 모두 유효했다.
+
+[최종 요약](reviews/scope_repair_pilot_2026-10-02/summary.json) · [80문항 주장 목록·판정 원문](reviews/scope_repair_pilot_2026-10-02/paired_results.json) · [완료 스냅샷](reviews/scope_repair_pilot_2026-10-02/status_snapshot.json)

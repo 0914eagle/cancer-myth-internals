@@ -1,0 +1,6 @@
+model,all_alternative_low,selected_loss_pairs,both_low_outside_selection,personal_to_population,other_relation_scope,mixed,referent_time_scenario,non_n1_selected
+qwen25,8,8,0,4,1,0,0,3
+gemma,32,32,0,11,4,2,0,15
+luna,66,54,12,14,7,2,1,30
+qwen38_off,43,23,20,4,2,2,2,13
+qwen38_on,18,4,14,0,0,0,1,3

@@ -1,0 +1,6 @@
+model,manual_n1,auto_scope_signal,auto_personal_reopened,auto_grounding_strong_or_absent
+qwen25,5,0,2,0
+gemma,17,0,5,0
+luna,24,2,3,1
+qwen38_off,10,1,1,1
+qwen38_on,1,0,1,0

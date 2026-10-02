@@ -1,0 +1,18 @@
+{
+  "selected_review_answer_cases": 6,
+  "models": {
+    "qwen25": 5,
+    "gemma": 1
+  },
+  "directly_documented_omission": [
+    {
+      "model": "qwen25",
+      "id": "fpq_762"
+    },
+    {
+      "model": "qwen25",
+      "id": "fpq_839"
+    }
+  ],
+  "limitation": "Two documented cases among 5 Qwen/1 Gemma selected regressions, not a population screen; unassigned cases not negative labels."
+}

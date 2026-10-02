@@ -39,7 +39,5 @@
   "unchanged_claims": {
     "n": 1,
     "gate_flips": 0
-  },
-  "state": "complete",
-  "snapshot_time_kst": "2026-10-02T10:36:10.333091+09:00"
+  }
 }

@@ -1,0 +1,113 @@
+{
+  "structured": {
+    "fpq": {
+      "n": 576,
+      "transitions": {
+        "1->0": 110,
+        "0->0": 301,
+        "1->1": 158,
+        "0->1": 7
+      },
+      "conditions": {
+        "baseline": {
+          "yes": 268,
+          "all_undetermined": 80,
+          "all_undetermined_yes": 5,
+          "no_with_false": 0
+        },
+        "context_rule": {
+          "yes": 165,
+          "all_undetermined": 137,
+          "all_undetermined_yes": 7,
+          "no_with_false": 0
+        }
+      }
+    },
+    "nfp": {
+      "n": 147,
+      "transitions": {
+        "1->1": 11,
+        "0->0": 111,
+        "1->0": 22,
+        "0->1": 3
+      },
+      "conditions": {
+        "baseline": {
+          "yes": 33,
+          "all_undetermined": 24,
+          "all_undetermined_yes": 0,
+          "no_with_false": 0
+        },
+        "context_rule": {
+          "yes": 14,
+          "all_undetermined": 46,
+          "all_undetermined_yes": 0,
+          "no_with_false": 0
+        }
+      }
+    }
+  },
+  "matched_quotes": {
+    "claim_pair_rows": 58,
+    "items_by_label": {
+      "fpq": 47,
+      "nfp": 9
+    },
+    "exact_claim_text_rows": [
+      "fpq_148"
+    ],
+    "warning": "Exact quote/claim string matching is not semantic equivalence or target-error verification."
+  },
+  "fixed_claims": {
+    "fpq": {
+      "n": 575,
+      "conditions": {
+        "control": {
+          "yes": 87,
+          "no": 488,
+          "no_with_false": 41
+        },
+        "content": {
+          "yes": 122,
+          "no": 453,
+          "no_with_false": 35
+        },
+        "criterion": {
+          "yes": 132,
+          "no": 443,
+          "no_with_false": 34
+        },
+        "both": {
+          "yes": 131,
+          "no": 444,
+          "no_with_false": 41
+        }
+      }
+    },
+    "nfp": {
+      "n": 146,
+      "conditions": {
+        "control": {
+          "yes": 8,
+          "no": 138,
+          "no_with_false": 6
+        },
+        "content": {
+          "yes": 9,
+          "no": 137,
+          "no_with_false": 5
+        },
+        "criterion": {
+          "yes": 12,
+          "no": 134,
+          "no_with_false": 5
+        },
+        "both": {
+          "yes": 11,
+          "no": 135,
+          "no_with_false": 9
+        }
+      }
+    }
+  }
+}
