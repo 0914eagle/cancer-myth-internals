@@ -1,5 +1,8 @@
 # 65. 거짓 전제 질문에서 LLM이 실패하는 원인 — 문헌이 말하는 것 (2026-10-03)
 
+> **갱신 안내(2026-10-04):** 원문을 확인한 최신 정리는 [reviews/false_premise_literature_synthesis_2026-10-03.md](reviews/false_premise_literature_synthesis_2026-10-03.md)와
+> [다섯 방향](reviews/false_premise_cause_and_method_branches_2026-10-04.md), 점검은 [branches_check](reviews/false_premise_branches_check_2026-10-04.md)다. 이 문서와 다르면 그쪽을 따른다.
+
 > 질문: "이 문제가 일어나는 원인이 뭐라고들 하나?" 웹 검색(초록·요약 수준)으로 모은 것. 원문 전부를 읽은 것은 아니라
 > 숫자는 각 논문의 초록·요약에 적힌 것만 옮겼고, 우리 결과와의 연결은 별도로 표시했다. 참고문헌 목록은 references.md에 있다.
 
@@ -25,7 +28,7 @@ Well-Actually, Two Axes). 우리 결과(34)는 (1)·(5)·(6)과 직접 맞물린
 | Can LLMs Ground when they (Don't) Know (ACL 2025) | 직접 질문으론 아는 사실을, 그것을 전제한 loaded question에선 GPT-4o 41% 수용 / 38% 거부, Mistral 64% 수용 | 아는 것이 교정으로 이어지지 않음 |
 | LLMs Know They're Wrong and Agree Anyway (Pandey 2026) | 12개 모델에서 같은 소수 head가 "이 진술은 틀렸다"를 담고, 그 head를 끄면 Gemma-2-2B 동조 28%→81%, 사실 정확도 69→70 유지. **회로는 deference를 제어하고 지식은 건드리지 않음** | 지식과 결정이 분리됨 |
 | HACK (2025) | 환각의 9~43%가 모델이 정답을 내부에 가진 채 높은 확신으로 발생 | 알면서 틀리는 집합이 크다 |
-| npj Digital Medicine 2025 "When helpfulness backfires" | brand–generic 동치를 거의 완벽히 알면서도 비논리적 요청에 GPT-4 계열 100%, Llama-3-8B 94% 순응 | 의료에서도 같음 |
+| npj Digital Medicine 2025 "When helpfulness backfires" (실험 논문은 s41746-025-02008-z; 아래 02135-7은 해설) | brand–generic 동치를 거의 완벽히 알면서도 비논리적 요청에 GPT-4 계열 100%, Llama-3-8B 94% 순응 | 의료에서도 같음 |
 
 **우리와의 연결**: K3 강제 선택 91%, Plain 실패의 90%가 아는 통념(31 §8). 같은 결론을 Cancer-Myth에서 재확인한 것.
 
@@ -120,9 +123,9 @@ Contextual-Truth처럼 문맥이 진위 표상 자체를 바꾸는 경우도 보
    조작했고, 교정 지시와 "wait a minute"로 Cancer-Myth 교정률을 약 4배 올렸다(검색 요약 기준). 따라서 "서술 속에 묻힌 전제가 문제"라는
    발견 자체는 새 기여가 아니다. 남는 질문은 더 구체적이어야 한다: 질문의 의미와 요청을 보존한 채 전제를 드러내도 **필요한 교정만**
    늘어나는가, 아니면 NFP에서도 반박 대상을 만들어내는가(35의 "주장 강도 변경" 문제와 같은 축).
-2. **게이트가 읽는 것이 진위인가 표현인가**: Two Axes·CREPE의 probe 성공이 어휘·형식에 얼마나 기대는지 통제한 연구는 없다. → 34 §11, 35.
-3. **미세조정의 시소를 최소쌍으로 보인 것**: FalseQA는 섞어 학습하면 완화된다고 했지만, 우리 균형 SFT·DPO는 같은 형태의
-   쌍둥이에서도 스위치를 만들지 못했다(34 §9.1). 왜 FalseQA(단문)에서는 되고 서술형에서는 안 되는가가 열린 질문.
+2. **게이트가 읽는 것이 진위인가 표현인가**: Two Axes에는 bag-of-words 비교와 표면 형식 통제가 있다(상세 정리 확인). 남는 것은 의료 서술과 주석 사이의 의미 관계 통제다. → 34 §11, 35.
+3. **미세조정의 시소를 최소쌍으로 보인 것**: FalseQA는 특정 설정에서 정상 QA 혼합이 trade-off를 완화했다(MACAW-11B FPR 12.6→1.4%).
+   우리 균형 SFT·DPO는 쌍둥이에서도 스위치를 만들지 못했지만(34 §9.1), 학습 목표·출력 형식·지표가 달라 FalseQA의 반증은 아니다.
 
 ## 9. 2차 검토 반영 (2026-10-03, 다른 세션의 조사와 합침)
 
@@ -157,7 +160,7 @@ Contextual-Truth처럼 문맥이 진위 표상 자체를 바꾸는 경우도 보
 - Xie et al., *Adaptive Chameleon or Stubborn Sloth*, ICLR 2024 — [2305.13300](https://arxiv.org/abs/2305.13300)
 - *Task Matters*, ACL 2026 Findings — [2506.06485](https://arxiv.org/abs/2506.06485)
 - *MillStone* — [2509.11967](https://arxiv.org/abs/2509.11967)
-- *When helpfulness backfires*, npj Digital Medicine 2025 — [s41746-025-02135-7](https://www.nature.com/articles/s41746-025-02135-7)
+- *When helpfulness backfires*, npj Digital Medicine 2025 — 실험 논문 [s41746-025-02008-z](https://www.nature.com/articles/s41746-025-02008-z) (02135-7은 해설)
 - *Acquiescence Bias in LLMs* — [2509.08480](https://arxiv.org/abs/2509.08480); *yes–no bias reflects answer order* — [2607.05552](https://arxiv.org/abs/2607.05552)
 - *Know Your Limits: A Survey of Abstention*, TACL 2025 — [2407.18418](https://arxiv.org/abs/2407.18418)
 - *When Helpfulness Becomes Sycophancy (boundary failure)* — [2605.05403](https://arxiv.org/abs/2605.05403)
