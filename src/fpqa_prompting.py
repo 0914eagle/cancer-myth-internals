@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 import threading
 import time
+from src import prewome
 from src.fpqa_cli_backend import CLIBackend
 
 PLAIN = "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
@@ -21,7 +22,7 @@ REVIEW = "Review the premises of the user's question. Explain which, if any, are
 BALANCED = "Answer the user's question. If it contains a false premise, clearly correct it and explain why. If its premises are sound, answer normally without inventing an error."
 COT_ANSWER = "Review the premises of the user's question, then provide your final answer. Correct any false premise you find; otherwise answer the question normally."
 METHODS = {"detection": ("direct", "cot_2step", "gepa"),
-           "response": ("plain", "balanced", "cot_answer", "gepa")}
+           "response": ("plain", "balanced", "cot_answer", "gepa", "prewome")}
 
 
 def digest(value):
@@ -174,6 +175,16 @@ class Evaluator:
             review = self.call("task", task_messages(REVIEW, example))
             messages = [{"role": "system", "content": DIRECT},
                         {"role": "user", "content": json.dumps({"question": example["question"], "premise_review": review}, ensure_ascii=False)}]
+        if self.method == "prewome":
+            if self.task != "response":
+                raise ValueError("prewome is a response method")
+            q = example["question"]
+            listed = self.call("task", task_messages(PLAIN, {"question": prewome.PRESUPPOSITIONS.format(question=q)}))
+            feedback = self.call("task", task_messages(PLAIN, {"question": prewome.FEEDBACK_ACTION.format(
+                question=q, presuppositions=listed.strip())}))
+            review = {"presuppositions": listed, "feedback": feedback}
+            messages = task_messages(prompt, {"question": prewome.ANSWER.format(
+                question=q, presuppositions=listed.strip(), feedback=feedback.strip())})
         answer = self.call("task", messages)
         record = {"id": example["id"], "label": example["label"], "question": example["question"],
                   "answer": answer, "review": review}
@@ -190,4 +201,4 @@ class Evaluator:
 def seed_prompt(task, method):
     if task == "detection":
         return DIRECT
-    return {"plain": PLAIN, "balanced": BALANCED, "cot_answer": COT_ANSWER, "gepa": PLAIN}[method]
+    return {"plain": PLAIN, "balanced": BALANCED, "cot_answer": COT_ANSWER, "gepa": PLAIN, "prewome": PLAIN}[method]

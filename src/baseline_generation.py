@@ -15,14 +15,18 @@ import tempfile
 
 import numpy as np
 
+from . import prewome
 from .pilot import COT_ANSWER, COT_REVIEW, digest, file_digest, output_lock
 
 VERSION = "medical-baseline-generation-v1"
 METHODS = ("plain", "zero_shot_cot", "fp_identification", "extract_verify", "premise_review",
-           "fp_unconditional")
+           "fp_unconditional", "extract_verify_plain", "prewome")
 # fp_identification = Self-gated FP Identification (own Yes/No detection, then the correction
 # instruction only on a positive). fp_unconditional = Well's FP Identification: the correction
 # instruction on EVERY question (FPQ ceiling and NFP harm row; 33 §4).
+# extract_verify carries OUR scope-preservation clause in EXTRACT; extract_verify_plain is the
+# same pipeline without it (closer to the existing atomic-assumption method, no retrieval).
+# prewome = PreWoMe-style presuppositions -> feedback/action -> answer (src/prewome.py).
 DIRECT = "Does the following question rest on a false premise? Answer only Yes or No.\n\nQuestion: {question}"
 REVIEW_DETECT = (
     "Decide whether the question rests on a false premise, considering the premise review below. "
@@ -44,6 +48,11 @@ EXTRACT = (
     '{{"premises": ["one atomic premise", "another atomic premise"]}}. '
     "Use an empty list when no factual premise is asserted.\n\nQuestion: {question}"
 )
+EXTRACT_PLAIN = (
+    "Extract the factual premises assumed by the following question. Output only JSON of the form "
+    '{{"premises": ["one atomic premise", "another atomic premise"]}}. '
+    "Use an empty list when no factual premise is asserted.\n\nQuestion: {question}"
+)
 VERIFY = (
     "Is the following premise true in the context of the question? Use your existing knowledge. "
     "Answer only True or False.\n\nQuestion: {question}\n\nPremise: {premise}"
@@ -56,8 +65,9 @@ VERIFY_ANSWER = (
 PROMPTS = {
     "direct": DIRECT, "review_detect": REVIEW_DETECT, "cot_reason": COT_REASON,
     "cot_final": COT_FINAL, "fp_answer": FP_ANSWER, "extract": EXTRACT,
-    "verify": VERIFY, "verify_answer": VERIFY_ANSWER,
+    "extract_plain": EXTRACT_PLAIN, "verify": VERIFY, "verify_answer": VERIFY_ANSWER,
     "premise_review": COT_REVIEW, "premise_answer": COT_ANSWER,
+    **prewome.PROMPTS,
 }
 
 
@@ -362,8 +372,9 @@ def _answer_one(runtime, out, q, method, final_tokens, review_tokens, extraction
                        decision_threshold=.5, decision_rule="score >= threshold")
         if decision:
             final_prompt = FP_ANSWER.format(question=question)
-    elif method == "extract_verify":
-        extraction = _shared_generate(runtime, out, EXTRACT.format(question=question), extraction_tokens)
+    elif method in ("extract_verify", "extract_verify_plain"):
+        template = EXTRACT if method == "extract_verify" else EXTRACT_PLAIN
+        extraction = _shared_generate(runtime, out, template.format(question=question), extraction_tokens)
         details["extraction"] = extraction
         if extraction.get("cap_hit"):
             raise ValueError("Premise extraction reached token cap; truncated extraction is not a valid normal decision")
@@ -377,6 +388,17 @@ def _answer_one(runtime, out, q, method, final_tokens, review_tokens, extraction
         if checked:
             feedback = "\n".join(f"- {'True' if r['predicted_true'] else 'False'}: {r['premise']}" for r in checked)
             final_prompt = VERIFY_ANSWER.format(question=question, verification=feedback)
+    elif method == "prewome":
+        listed = _shared_generate(runtime, out, prewome.PRESUPPOSITIONS.format(question=question), extraction_tokens)
+        if listed.get("cap_hit"):
+            raise ValueError("Presupposition listing reached token cap")
+        feedback = _shared_generate(runtime, out, prewome.FEEDBACK_ACTION.format(
+            question=question, presuppositions=listed["text"].strip()), review_tokens)
+        if feedback.get("cap_hit"):
+            raise ValueError("Feedback/action reached token cap")
+        details.update(presuppositions=listed, feedback=feedback)
+        final_prompt = prewome.ANSWER.format(question=question, presuppositions=listed["text"].strip(),
+                                             feedback=feedback["text"].strip())
     elif method != "plain":
         raise ValueError(f"Unknown generation method: {method}")
     answer = _shared_generate(runtime, out, final_prompt, final_tokens)

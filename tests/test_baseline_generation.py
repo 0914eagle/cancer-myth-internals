@@ -307,3 +307,16 @@ def test_shared_identity_tolerates_implementation_hash_but_not_prompts(runtime, 
     monkeypatch.setitem(bg.PROMPTS, "direct", "changed")
     with pytest.raises(ValueError, match="identity.json"):
         bg.run_generation(ROWS, {}, tmp_path, ["plain"], final_tokens=20, review_tokens=30, extraction_tokens=40)
+
+
+def test_prewome_three_steps_and_plain_extraction_has_no_scope_clause(runtime, tmp_path):
+    bg.run_generation(ROWS, {}, tmp_path, ["prewome", "extract_verify_plain"], final_tokens=20, review_tokens=30,
+                      extraction_tokens=40)
+    rec = bg.load_generation_records(tmp_path, "prewome")
+    assert all(r["status"] == "complete" and "presuppositions" in r["details"] and "feedback" in r["details"] for r in rec)
+    prompts = [c[1] for c in runtime.calls if c[0] == "generate"]
+    assert any(p.startswith("List the presuppositions") for p in prompts)
+    assert any(p.startswith("Answer the question. Use the working memory") for p in prompts)
+    plain_extract = [p for p in prompts if p.startswith("Extract the factual premises")]
+    assert plain_extract and all("individual" not in p for p in plain_extract)
+    assert "GOLD_SECRET" not in str(runtime.calls)

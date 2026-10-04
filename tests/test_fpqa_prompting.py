@@ -9,7 +9,7 @@ from scripts.prepare_fpqa_prompt_data import balanced, crepe_rows, remove_overla
 from scripts.run_fpqa_prompt_experiment import optimize
 from src.fpqa_prompting import (
     DIRECT, Evaluator, detection_metrics, freeze, parse_detection, parse_rating,
-    response_metrics, task_messages, validate_splits, well_crepe_judge,
+    response_metrics, seed_prompt, task_messages, validate_splits, well_crepe_judge,
 )
 from src.fpqa_cli_backend import CLIBackend, envelope, parse_claude, parse_codex
 
@@ -202,3 +202,29 @@ def test_real_gepa_loop_with_mock_models(tmp_path):
     assert calls and reflections
     assert "IMPROVED" in saved["system_prompt"]
     assert saved["validation_score"] == 1
+
+
+def test_prewome_three_calls_working_memory_and_no_gold():
+    calls = []
+    def call(role, messages):
+        calls.append((role, messages))
+        if len(calls) == 1:
+            return "- X is true"
+        if len(calls) == 2:
+            return "Feedback:\n- X is true: false - reason\nAction: correct X"
+        if role == "task":
+            return "Final answer."
+        return "Rating: 4"
+    ev = Evaluator("response", "prewome", call, None)
+    import src.fpqa_prompting as fp
+    orig = fp.well_crepe_judge
+    fp.well_crepe_judge = lambda root, ex, ans: [{"role": "user", "content": ans}]
+    try:
+        score, record = ev(seed_prompt("response", "prewome"), row(1))
+    finally:
+        fp.well_crepe_judge = orig
+    assert [r for r, _ in calls] == ["task", "task", "task", "judge"]
+    assert "Action: correct X" in calls[2][1][1]["content"] and "- X is true" in calls[2][1][1]["content"]
+    assert record["review"]["feedback"].startswith("Feedback")
+    assert "GOLD" not in json.dumps([m for r, m in calls if r == "task"])
+    assert score == 0.8
