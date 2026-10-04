@@ -140,8 +140,20 @@ FPQ와 NFP가 같은 방향으로 움직이는 개입은 선택적 교정의 설
 Qwen2.5는 어느 방법으로도 FPQ 교정이 크게 회복되지 않는다. 그래서 "회복할 때 무엇을 잘못 반박하나"를 보려면 교정이 실제로 움직이는 모델
 (Gemma 전제 검토 FPQ 개선 219쌍, Luna, Qwen3.8)이 필요하다. Qwen2.5는 CDS·DPA 같은 내부 개입의 대상으로 남긴다.
 
-**실행 순서.** (1) Qwen2.5에서 `prewome`·`extract_verify_plain` 생성·판정(`scripts/run_method_compare_1004.sh`). (2) 같은 두 방법을
-교정이 움직이는 모델과 CREPE에 붙인다(`run_fpqa_prompt_experiment.py --method prewome`). (3) 그 뒤 검색 검증판, 학습, 내부 개입 순.
+**실행 순서 (2026-10-04 갱신).** 첫 비교는 **GPT-6 Luna 하나**에서 같은 문항·같은 판정기로 Plain, GEPA, PreWoMe식, 원자적 추출·검증을 비교한다.
+모두 최종 답변까지 생성해 FPQ 교정과 NFP 보존을 함께 평가한다(Yes/No gate 비교가 아님). 범위 보존 지시를 더한 판은 그다음 대조다.
+질문: GEPA보다 구조화된 검토가 더 도움이 되는가? 그래도 실패하면 추출·검증·답변 반영 중 어디서 생기는가?
+
+실행 전에 정할 것:
+1. **GEPA는 Luna·Cancer-Myth에서 아직 없다.** 현재 GEPA 실행기는 CREPE 판정만 지원한다. Cancer-Myth 판정 연결이 필요하고,
+   GEPA는 fit/dev에서만 최적화하며 네 방법을 **같은 held-out test 문항**에서 비교한다. 학습 없는 세 방법의 732문항 전체 결과는 별도 표로 둔다.
+   최적화 목표는 FPQ+NFP 균형을 주 조건으로 한다(Well Actually의 Cancer-Myth GEPA: FPQ만 최적화 97/25, FPQ+TPQ 50/97, Gemini-3-flash).
+2. **단계 진단 지표를 미리 정하고 중간 산출물을 저장한다.** 추출: FPQ 목표 전제가 목록에 있는가(gold 전제 대조 판정). 검증: 목표가 거짓으로 판정됐는가,
+   NFP에서 거짓으로 판정된 전제가 있는가. 반영: 거짓 판정인데 답이 교정하지 않음 / 참 판정인데 답이 반박함. PreWoMe식 피드백은 자유 서술이라 파싱 또는 판정이 필요하다.
+3. **Luna용 실행기가 필요하다.** `prewome`·`extract_verify_plain`은 로컬 모델 실행기(검증을 로짓으로 읽음)에만 있다. Luna는 codex CLI라 검증도 생성 텍스트로 받는다.
+4. **표기.** "PreWoMe식"(zero-shot, 우리 문구), "원자적 추출·검증"(검색 근거 없이 모델 지식만; Wang & Blanco는 검색 근거 사용). 방법별 호출 수·토큰을 함께 보고한다.
+
+Qwen2.5 행(`scripts/run_method_compare_1004.sh`)은 내부 개입 비교를 위한 보조 기록으로 둔다.
 
 ### 4-2. FPQ와 NFP를 함께 평가
 
