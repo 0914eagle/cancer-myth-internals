@@ -155,17 +155,25 @@ Qwen2.5는 어느 방법으로도 FPQ 교정이 크게 회복되지 않는다. �
 
 Qwen2.5 행(`scripts/run_method_compare_1004.sh`)은 내부 개입 비교를 위한 보조 기록으로 둔다.
 
-### 4-1 결과: GPT-6 Luna, Cancer-Myth 부분집합 (2026-10-04, 다른 세션 실행)
+### 4-1 결과: GPT-6 Luna, Cancer-Myth와 CREPE test (2026-10-04, 다른 세션 실행)
 
-FPQ 99·NFP 100(예시와 겹친 1문항 제외), 같은 Sonnet Well 판정, 400답변 생성·채점 완료, 실행 오류 없음. 결과 파일은 서버
-`results/fpqa_prompting/well_pipelines_luna6_20261004/`(아직 push 전). 구간은 이 세션에서 계산한 Wilson 95%.
+**GEPA 설정.** Well 공식 balanced GEPA 실행기를 GPT-6 Luna에 연결했다. 최적화 목표는 FPQ 교정과 정상 질문 응답을 함께 높이는 것이고,
+평가는 최적화에 쓰지 않은 test 문항이다. 최적화 `scripts/run_well_upstream_cli.py`, 평가 `scripts/evaluate_well_upstream_test.py`(둘 다 아직 미추적).
+결과는 서버의 `results/`(Git 제외)에 있다: 최적화 `results/fpqa_prompting/well_upstream_cli_v3_20261003/{cancer_myth,crepe}/`
+(`run.json`, `best_system_prompt.txt`, `gepa_result_summary.json`), test `results/fpqa_prompting/well_upstream_test_v1_20261003_run/metrics.json`.
+test 기록의 해시가 v3 최적화 결과와 연결되는 것을 실행 세션에서 확인했다. PreWoMe식·원자적 추출·검증은
+`results/fpqa_prompting/well_pipelines_luna6_20261004/`이며, 예시와 겹친 1문항을 빼 FPQ 99·NFP 100이다(GEPA·Plain test는 100·100).
 
-| 방법 | FPQ Well ≥4 | NFP Well ≥4 |
-|---|---:|---:|
-| Plain | 54.5% (45–64) | 91% (84–95) |
-| GEPA | 78.8% (70–86) | 72% (63–80) |
-| PreWoMe식 | 88.9% (81–94) | 59% (49–68) |
-| 원자적 추출·검증 | 87.9% (80–93) | 48% (38–58) |
+구간은 이 세션에서 계산한 Wilson 95%.
+
+| 데이터 | 방법 | FPQ Well ≥4 | NFP Well ≥4 |
+|---|---|---:|---:|
+| Cancer-Myth | Plain | 55% (100문항 기준) / 54.5% (99문항, 45–64) | 91% (84–95) |
+| Cancer-Myth | GEPA (balanced) | 79% / 78.8% (70–86) | 72% (63–80) |
+| Cancer-Myth | PreWoMe식 | 88.9% (81–94) | 59% (49–68) |
+| Cancer-Myth | 원자적 추출·검증 | 87.9% (80–93) | 48% (38–58) |
+| CREPE (751/2,253) | Plain | 72.7% (69.4–75.8) | 98.9% (98.4–99.2) |
+| CREPE | GEPA (balanced) | 74.7% (71.5–77.7) | 98.0% (97.3–98.5) |
 
 **읽을 수 있는 것.**
 - 세 방법 모두 교정을 회복하면서 NFP 보존을 잃었다. 단계 분리 방법에서도 trade-off가 남았다.
@@ -174,7 +182,13 @@ FPQ 99·NFP 100(예시와 겹친 1문항 제외), 같은 Sonnet Well 판정, 400
 - GEPA와 PreWoMe식은 어느 쪽도 다른 쪽을 지배하지 않는다(GEPA는 NFP, PreWoMe식은 FPQ가 높음). "GEPA보다 구조화 검토가 낫다"는 아직 말할 수 없다.
 - 참고(같은 문항 아님): 62번 원장의 Luna 전체 732문항에서 Plain 44.8%/89.3%, 균형 지시 74.6%/55.7%. 문항이 달라 직접 비교할 수 없으므로,
   **같은 199문항에서 균형 지시와 전제 검토를 돌려 다이얼 곡선을 만든다**(E5). 그래야 각 방법이 곡선 위의 이동인지 바깥의 개선인지 판정된다.
-- 확인 필요: GEPA의 최적화 목표(balanced/fpq_only)와 최적화 문항이 이 199문항과 겹치지 않는지.
+- **같은 balanced GEPA가 두 데이터에서 다르게 움직인다.** CREPE에서는 FPQ +2점, NFP −0.9점으로 거의 제자리이고, Cancer-Myth에서는
+  FPQ +24점, NFP −19점으로 곡선을 따라 크게 이동했다. 같은 모델·같은 최적화 목표에서 "교정 회복이 정상 질문 손상을 동반하는 정도"가
+  데이터에 따라 다르다는 관찰이다. 원인(서술형·개인 상황, 두 데이터의 기본 FPQ 수준 차이, 판정 템플릿 차이)은 아직 가르지 않았다.
+- 참고: Well Actually의 Gemini-3-flash Cancer-Myth balanced GEPA는 29→50 / 100→97이었다. 모델이 다르므로 우리 Luna 결과(55→79 / 91→72)와 수치로 비교하지 않는다.
+- **다음 생성**: (a) 같은 Cancer-Myth 199문항에 균형 지시·전제 검토를 돌려 다이얼 곡선. (b) PreWoMe식·원자적 추출·검증을 CREPE test(또는 층화 부분집합)에 돌린다.
+  CREPE에서 두 방법이 NFP를 유지하면서 FPQ를 올리면, 선택성 문제는 Cancer-Myth 쪽 조건에서 생긴다는 근거가 된다.
+- **재현 기록**: 실행기 두 개와 `best_system_prompt.txt`·`metrics.json`은 작아서 저장소에 올릴 수 있다(`results/`는 Git 제외이므로 `docs/reviews/` 아래 사본).
 
 **다음 분석 (저장된 중간 출력 사용, 새 생성 없음).**
 1. NFP 쌍대 전환: Plain ≥4 → 방법 <4인 문항을 방법별로 뽑고 겹침을 본다. 세 방법이 같은 문항에서 무너지면 문항 성질(경계 문항, 판정 경계)이 의심된다.
