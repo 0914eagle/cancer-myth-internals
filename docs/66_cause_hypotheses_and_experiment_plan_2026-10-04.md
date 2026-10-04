@@ -50,6 +50,31 @@ K3 × 행동 교차와 NFP 109답변 독해(다른 세션, 2026-10-04; 보고서
 효과가 작으면 원문에 충실한 전제도 False로 판정되는 경우로 중심을 옮긴다. 어느 쪽이든 검색 기반·내부 개입 방향은 기존 방법 비교 트랙에 남겨 둔다.
 "세 방법이 안 됐으니 우리 복원 방법을 만든다"가 아니라, 시험한 방법의 실패를 구체적으로 검증하고 그 결과로 다음에 적용할 해결책을 고른다.
 
+## 채택 원인: Well Actually의 약한 검증기 (원문 확인, 2026-10-04)
+
+교수님 지시: 원인은 문헌을 그대로 따르고 해결책을 개선한다. trade-off 자체를 설명하는 문헌 원인으로 Well Actually(arXiv 2608.06539v1)를 채택한다.
+
+**원문에서 확인한 것.**
+- 원인 문장(초록·서론·결론): 추출 후 검증하는 FPQA 방법에서 FPQ 성능이 오를수록 TPQ 성능이 떨어지며, 원인은 검증 단계가
+  "증명(검증)할 수 없는 전제를 과도하게 거부"하기 때문이다. 모델 계열·크기·벤치마크·외부 근거 양에 걸쳐 나타난다.
+- 비교한 방법: Direct QA, Self-Dual-Critique, FP Identification, GEPA(FPQ / FPQ+TPQ), PreWoMe, Question to Statement(Wang & Blanco),
+  FAITH(head 비활성화), FalseQA식 LoRA 미세조정(Qwen2.5-7B; Cancer-Myth FPQ + ARC-DA TPQ로 학습). 미세조정 수치는 PDF 표 추출이 깨져 확인하지 못했다.
+- **Cancer-Myth 근거(표 1)**: 사람이 단 gold 전제로 검증 정확도만 쟀다(추출 오류 제거). FPQ 전제는 93–100% 맞히지만 TPQ 전제는 7–43%.
+  Gemini-3-flash도 13–33%(웹 검색 포함), MiniCheck 10–11%, 의료 특화 Llama3-Med42 21–33%, Qwen2.5 7–16%.
+- 판정기는 Gemini-3-flash, TPQ도 1–5 대칭 기준. WildChat 100문항 수동 주석으로 실제 FPQ 비율을 약 13%로 추정.
+
+**해석에 중요한 세부.** Cancer-Myth TPQ의 gold 전제는 저자 한 명이 "presupposes that ..." 형식의 **일반 진술**로 적었다.
+예: "islet cell tumors are incurable"(원문: 담당의가 이 환자의 종양은 완치 불가라고 함), "radiation therapy is the standard treatment for metastatic dysgerminoma",
+"surgery is not an option for advanced transitional cell carcinoma of the ureter". 각 전제가 의사 발언에 근거하는지 표시(doctor-suggested)도 달았지만,
+표 1은 이 표시로 나눠 보고하지 않았다. 따라서 Cancer-Myth에서 "검증기가 참 전제를 거부한다"에는 **개인 상황이 일반 진술로 바뀐 전제를
+일반 지식으로 판정하는 경우**가 섞여 있을 수 있다. 원인은 그대로 받아들이되, 이 세부가 개선할 지점을 가리킨다.
+
+**개선할 해결책(가설).** 검증 대상을 원문의 범위로 둔다. 사용자·의사가 전한 개인 상황은 주어진 문맥으로 받아들이고, 일반 주장과 인과 추론만 검증한다.
+판정은 거짓 / 증명 불가 / 참으로 나누고 명확한 모순에만 교정한다.
+
+**바로 할 수 있는 확인(생성 없음 또는 판정만).** Well Actually가 공개한 TPQ 전제 주석의 doctor-suggested 표시로, 검증 거부가 그 전제들에 몰리는지 본다.
+같은 전제를 "이 환자의 담당의가 ~라고 했다" 범위로 다시 써서 검증 정확도가 회복되는지 본다. 회복되면 개선의 직접 근거가 된다.
+
 ## 교수님께 보고한 기존 원인 후보와 검토 방식 (2026-10-04)
 
 검토 질문은 "왜 Cancer-Myth에 안 맞나"가 아니라 "각 원인이 trade-off의 어느 쪽을 얼마나 설명하나"다.
