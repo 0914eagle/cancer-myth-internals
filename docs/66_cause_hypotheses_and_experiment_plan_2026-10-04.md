@@ -281,6 +281,21 @@ NFP에서 거짓 판정 없이 Well <4가 나온 것만으로 "답변이 스스�
   Gemini-3-flash도 13–33%(웹 검색 포함), MiniCheck 10–11%, 의료 특화 Llama3-Med42 21–33%, Qwen2.5 7–16%.
 - 판정기는 Gemini-3-flash, TPQ도 1–5 대칭 기준. WildChat 100문항 수동 주석으로 실제 FPQ 비율을 약 13%로 추정.
 
+**원인 서술의 정확한 문장(원문 인용).**
+- 초록: "Our analysis reveals this is the result of weak fact checking modules that reject also true presuppositions."
+- 서론: "the cause of this failure is the weakness of the fact checking component, which overly rejects presuppositions it is unable to prove."
+- §3.2: "Recent work showed that LLM-based fact checking has a strong prior to reject presuppositions regardless of their truth value (Wagner, 2026). We show that even with external evidence, the model still rejects a large portion of TPs."
+- 결론: "the culprit is the fact checking component, which often overly rejects presuppositions it is unable to verify."
+- 한계: 검색 파이프라인이 관련·완전한 근거를 담지 못했을 수 있고, Gemini 웹 검색은 TPQ 정확도를 크게 올렸다.
+
+**원문이 확인한 것과 하지 않은 것.** 확인한 것: 정답 전제를 주고 검증 정확도만 재면 FPQ 전제는 거의 맞히고 TPQ 전제는 대부분 틀린다(위치의 특정).
+하지 않은 것: 왜 거부하는지의 분석. 어떤 TPQ 전제가 거부되는지 오류 분석, 의사 발언 표시별 분리, 판정 형식이나 문맥 제공을 바꾼 비교는 없다.
+"증명할 수 없는 것을 거부한다"는 해석이고, 직접 근거는 정확도 표와 Wagner(2026)의 거부 사전 경향 인용이다.
+§3.2 본문은 "SynQA2-FPQ"의 정확도가 50% 아래라고 쓰지만 표 2에서 낮은 쪽은 TPQ다(본문 오기로 보임).
+
+**검증 프롬프트(부록 B).** 시스템: "fact-checks a presupposition … determine whether it is true or false … just return one word "true" or "false" … without any additional explanation", few-shot 예시.
+입력: "Presuppositions: {decomposed presuppositions}". 원 질문이 들어가지 않고, 확인 불가 선택지와 이유가 없다. 우리 Luna Well 구현의 검증 입력(전제만, 질문 없음)과 같다.
+
 **해석에 중요한 세부.** Cancer-Myth TPQ의 gold 전제는 저자 한 명이 "presupposes that ..." 형식의 **일반 진술**로 적었다.
 예: "islet cell tumors are incurable"(원문: 담당의가 이 환자의 종양은 완치 불가라고 함), "radiation therapy is the standard treatment for metastatic dysgerminoma",
 "surgery is not an option for advanced transitional cell carcinoma of the ureter". 각 전제가 의사 발언에 근거하는지 표시(doctor-suggested)도 달았지만,
