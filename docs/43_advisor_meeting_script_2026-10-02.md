@@ -89,6 +89,29 @@ Gemma는 Direct에서 FPQ 40.5%, NFP 오탐 16.1%였고, 검토 후에는 각각
 
 ### Table 1. 거짓 전제 탐지 성능 — 완료 결과 통합
 
+<table>
+<thead>
+<tr><th rowspan="2">방법</th><th colspan="2">Qwen2.5</th><th colspan="2">GPT-Luna</th><th colspan="2">Claude Sonnet</th><th colspan="2">Gemma</th><th colspan="2">Qwen3.8 OFF</th><th colspan="2">Qwen3.8 ON</th></tr>
+<tr><th>FPQ 탐지 ↑</th><th>NFP 오탐 ↓</th><th>FPQ 탐지 ↑</th><th>NFP 오탐 ↓</th><th>FPQ 탐지 ↑</th><th>NFP 오탐 ↓</th><th>FPQ 탐지 ↑</th><th>NFP 오탐 ↓</th><th>FPQ 탐지 ↑</th><th>NFP 오탐 ↓</th><th>FPQ 탐지 ↑</th><th>NFP 오탐 ↓</th></tr>
+</thead>
+<tbody>
+<tr><th colspan="13">LLM으로 판정</th></tr>
+<tr><td>Direct gate</td><td>7.0</td><td>10.7</td><td>62.6</td><td>39.6</td><td>—</td><td>—</td><td>40.5</td><td>16.1</td><td>26.1</td><td>16.1</td><td>44.1</td><td>21.5</td></tr>
+<tr><td>Direct gate + 개인 상황 보호 지시</td><td>—</td><td>—</td><td>38.6</td><td>15.4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>전제 검토 CoT gate · 2-step</td><td>29.5</td><td>16.1</td><td>83.5</td><td>65.1</td><td>—</td><td>—</td><td>51.3</td><td>32.9</td><td>57.5</td><td>35.6</td><td>61.4</td><td>38.3</td></tr>
+<tr><th colspan="13">학습한 분류기로 판정</th></tr>
+<tr><td>Hidden probe</td><td>75.0</td><td>47.7</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>TF-IDF text</td><td colspan="12">공통 판정: FPQ 탐지 86.1% · NFP 오탐 51.0%</td></tr>
+</tbody>
+</table>
+
+수치는 **비율(%)**이며 FPQ 탐지는 높을수록, NFP 오탐은 낮을수록 좋다. 분모는 FPQ 583개·NFP 149개다. 모델 열 순서는 Table 2와 같으며, 이 표의 GPT-Luna는 GPT-5.6-Luna, Gemma는 Gemma 4 12B다. `—`는 보고할 해당 조합의 결과가 없다는 뜻이다. TF-IDF는 답변 모델과 독립적인 공통 판정이므로 모델별 결과로 반복하지 않았다.
+
+**AUROC:** TF-IDF text 0.755, Qwen2.5 hidden probe 0.693, Qwen2.5 Direct 0.466, Qwen2.5 전제 검토 CoT gate 0.587. 나머지는 미보고다.
+
+<details>
+<summary>세부 건수와 AUROC 원표</summary>
+
 | 방법 | AUROC | FPQ 탐지 | NFP 오탐 |
 |---|---:|---:|---:|
 | TF-IDF text | 0.755 | 502/583 (86.1%) | 76/149 (51.0%) |
@@ -104,6 +127,8 @@ Gemma는 Direct에서 FPQ 40.5%, NFP 오탐 16.1%였고, 검토 후에는 각각
 | Qwen3.8 OFF 전제 검토 CoT (2-step) gate | — | 335/583 (57.5%) | 53/149 (35.6%) |
 | Qwen3.8 ON Direct | — | 257/583 (44.1%) | 32/149 (21.5%) |
 | Qwen3.8 ON 전제 검토 CoT (2-step) gate | — | 358/583 (61.4%) | 57/149 (38.3%) |
+
+</details>
 
 **전제 검토 CoT (2-step)**는 기존 Review다. 첫 호출에서 검토문을 만들고 두 번째 호출에서 질문+검토문으로 오류 있음/없음을 판정한다. 일반적인 단계별 사고 지시인 일반 CoT와 구분한다. FPQ 탐지는 높을수록, NFP 오탐은 낮을수록 좋다. 분모는 FPQ 583/NFP 149개다.
 
