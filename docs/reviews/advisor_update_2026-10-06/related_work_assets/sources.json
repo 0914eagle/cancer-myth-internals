@@ -1,0 +1,253 @@
+[
+  {
+    "key": "accommodation",
+    "paper": "https://arxiv.org/html/2601.04435v1",
+    "figure_id": "S4.F1",
+    "asset_url": "https://arxiv.org/html/2601.04435v1/104_cancer_main_atissue_vs_not.svg",
+    "path": "accommodation.svg",
+    "sha256": "2fda4b7b34df8b8959c12cf7bec2b5a18005e243a5adc82eb9923c624f80c524",
+    "rendered_path": "accommodation.png",
+    "rendering": "Original SVG rendered to PNG with librsvg; no data changes.",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "2fda4b7b34df8b8959c12cf7bec2b5a18005e243a5adc82eb9923c624f80c524",
+    "rendered_path_sha256": "770ef4a9a72475566cb3937246d653daae9627996f31b177f4041e55b9ff73e9"
+  },
+  {
+    "key": "knowing",
+    "paper": "https://arxiv.org/html/2605.05957v2",
+    "figure_id": "S4.F3",
+    "asset_url": "https://arxiv.org/html/2605.05957v2/fig4_attention.svg",
+    "path": "knowing.svg",
+    "sha256": "75da1308b37af1b14a2fd15de8683712c7fa608722e0c35727a84db3f491595b",
+    "rendered_path": "knowing.png",
+    "rendering": "Original SVG rendered to PNG with librsvg; no data changes.",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "75da1308b37af1b14a2fd15de8683712c7fa608722e0c35727a84db3f491595b",
+    "rendered_path_sha256": "2799b1144361878b6d7724e24223d70340e38582ff8b64ece011a5e9081e5cac"
+  },
+  {
+    "key": "sycophancy",
+    "paper": "https://arxiv.org/html/2310.13548",
+    "figure_id": "S4.F6",
+    "asset_url": "https://arxiv.org/html/2310.13548v4/rl.svg",
+    "path": "sycophancy.svg",
+    "sha256": "e73d7301eb5d02545c1aee686455203d79641eb99034507babb28070b80c5241",
+    "rendered_path": "sycophancy.png",
+    "rendering": "Original SVG rendered to PNG with librsvg; no data changes.",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "e73d7301eb5d02545c1aee686455203d79641eb99034507babb28070b80c5241",
+    "rendered_path_sha256": "3bb5bee406e0257371712b270b41173af48eaaeed22d8d382eade82c1e575c18"
+  },
+  {
+    "key": "antidote",
+    "paper": "https://arxiv.org/html/2504.20468",
+    "figure_id": "S3.F5",
+    "asset_url": "https://arxiv.org/html/2504.20468v2/Antidote.png",
+    "path": "antidote.png",
+    "sha256": "c23faf43775f7eeefae9a82dd3c353903ffac3b2c4e450891e947664aadd5a0b",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "c23faf43775f7eeefae9a82dd3c353903ffac3b2c4e450891e947664aadd5a0b"
+  },
+  {
+    "key": "dual_stance",
+    "paper": "https://arxiv.org/html/2606.11205",
+    "figure_id": "A6.F9",
+    "asset_url": "https://arxiv.org/html/2606.11205v1/figA2_projection.svg",
+    "path": "dual_stance.svg",
+    "sha256": "80644e76a8ce94713226f9724048436e8a021b800b64e59baca9bb77c94048aa",
+    "rendered_path": "dual_stance.png",
+    "rendering": "Original SVG rendered to PNG with librsvg; no data changes.",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "80644e76a8ce94713226f9724048436e8a021b800b64e59baca9bb77c94048aa",
+    "rendered_path_sha256": "84fde7010133a2a6f92f58237028a980779d6c714eeebdfafb98e75594a52970"
+  },
+  {
+    "key": "suppression",
+    "paper": "https://arxiv.org/html/2608.26511v1",
+    "figure_id": "S5.F3",
+    "asset_url": "https://arxiv.org/html/2608.26511v1/popqa_yielding_recovery.svg",
+    "path": "suppression.svg",
+    "sha256": "72ccde3884a614b6814ada6eda3960d0362c46f7964d992865d73c806985a546",
+    "rendered_path": "suppression.png",
+    "rendering": "Original SVG rendered to PNG with librsvg; no data changes.",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "72ccde3884a614b6814ada6eda3960d0362c46f7964d992865d73c806985a546",
+    "rendered_path_sha256": "ecd8223f31f8a15703c8913db7a87780e374839126c143e47900988549c8ce66"
+  },
+  {
+    "key": "well",
+    "paper": "https://arxiv.org/html/2608.06539",
+    "figure_id": "S2.F1",
+    "asset_url": "https://arxiv.org/html/2608.06539v1/figures/CancerMyth_SynQA2.png",
+    "path": "well.png",
+    "sha256": "9cedd065189f95f860dc20e106c79d62fa3fb77970d3590694bd241971f58609",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "9cedd065189f95f860dc20e106c79d62fa3fb77970d3590694bd241971f58609"
+  },
+  {
+    "key": "dnd",
+    "paper": "https://arxiv.org/html/2412.13175",
+    "figure_id": "S1.F1",
+    "asset_url": "https://arxiv.org/html/2412.13175v1/motivation.png",
+    "path": "dnd.png",
+    "sha256": "f1ef80112a1dc3a2a8a81f910389df039411e2182beba78f0bcedd8822ada9ca",
+    "rendered_path": "dnd_trimmed.png",
+    "rendering": "White outer margin trimmed only; complete original figure retained.",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "f1ef80112a1dc3a2a8a81f910389df039411e2182beba78f0bcedd8822ada9ca",
+    "rendered_path_sha256": "083815392b4d8a1b716d0bb228309707643c393832b334d170d10111dd3ac3ed"
+  },
+  {
+    "key": "calibrate",
+    "paper": "https://arxiv.org/html/2102.09690",
+    "figure_id": "S3.F4",
+    "asset_url": "https://arxiv.org/html/2102.09690v2/label_permutations_full.svg",
+    "path": "calibrate.svg",
+    "sha256": "4fc9eeeac6acad66a2a132ffdb73cd7e3594a3f36c8650c20420750a3aa94720",
+    "rendered_path": "calibrate.png",
+    "rendering": "Original SVG rendered to PNG with librsvg; no data changes.",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "4fc9eeeac6acad66a2a132ffdb73cd7e3594a3f36c8650c20420750a3aa94720",
+    "rendered_path_sha256": "90cf00e81abe0eb28b68d78ba984c4e1e64aa9904315f23044d00969a7d736c3"
+  },
+  {
+    "key": "abstention",
+    "paper": "https://arxiv.org/html/2507.16199",
+    "figure_id": "S1.F1",
+    "asset_url": "https://arxiv.org/html/2507.16199v9/IB_Formulation.png",
+    "path": "abstention.png",
+    "sha256": "bc55ef5a3045f3109399b3dfde3f9073d5bcf30153b905fa8bd68d91bc7e159a",
+    "rendered_path": "abstention_trimmed.png",
+    "rendering": "White outer margin trimmed only; complete original figure retained.",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "bc55ef5a3045f3109399b3dfde3f9073d5bcf30153b905fa8bd68d91bc7e159a",
+    "rendered_path_sha256": "0af3cb4f113db038c89ac99bdc48e8f38c12f8a4861a5c0dcd6fdcd39ec24aab"
+  },
+  {
+    "key": "kim2021",
+    "paper": "https://arxiv.org/pdf/2101.00391",
+    "figure_id": "Figure 1",
+    "pdf_page_1based": 2,
+    "crop_box_on_1600px_page": [
+      145,
+      130,
+      950,
+      512
+    ],
+    "render_scale_to": 3200,
+    "path": "kim2021.png",
+    "sha256": "6228bac2f7668d8979c13a2338908d5ea843fe7e223016d672ff869a9941deb4",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "6228bac2f7668d8979c13a2338908d5ea843fe7e223016d672ff869a9941deb4"
+  },
+  {
+    "key": "prewome",
+    "paper": "https://aclanthology.org/2023.emnlp-main.517.pdf",
+    "figure_id": "Figure 2",
+    "pdf_page_1based": 2,
+    "crop_box_on_1600px_page": [
+      667,
+      130,
+      1002,
+      413
+    ],
+    "render_scale_to": 3200,
+    "path": "prewome.png",
+    "sha256": "2994c0a9869b797ebf02bc8689403a2178946949c4be413387c757662697755d",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "2994c0a9869b797ebf02bc8689403a2178946949c4be413387c757662697755d"
+  },
+  {
+    "key": "wang",
+    "paper": "https://aclanthology.org/2025.emnlp-main.1228.pdf",
+    "figure_id": "Figure 2",
+    "pdf_page_1based": 3,
+    "crop_box_on_1600px_page": [
+      130,
+      130,
+      1004,
+      530
+    ],
+    "render_scale_to": 3200,
+    "path": "wang.png",
+    "sha256": "905fb946ee71ab9b43f648dda29cebdcb6511545a4932f66852b5934b7f13de8",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "905fb946ee71ab9b43f648dda29cebdcb6511545a4932f66852b5934b7f13de8"
+  },
+  {
+    "key": "overkill_system_prompt",
+    "paper": "https://arxiv.org/html/2401.17633v1",
+    "figure_id": "Figure 2(c)",
+    "asset_url": "https://arxiv.org/html/2401.17633v1/factor_3.png",
+    "path": "overkill_system_prompt.png",
+    "sha256": "120390ca15c53328c04119ec1a7cdab530ffefb4432db6e0caa2367fdf4513a8",
+    "retrieved_on": "2026-10-06",
+    "path_sha256": "120390ca15c53328c04119ec1a7cdab530ffefb4432db6e0caa2367fdf4513a8"
+  },
+  {
+    "key": "falseqa_table9",
+    "paper": "https://aclanthology.org/2023.acl-long.309.pdf",
+    "table": "Table 9",
+    "pdf_page_1based": 8,
+    "selection": "MACAW-11B + FPQ (Full), + Data Replay; Recall, ARC-DA FPR, ARC-DA F1; means only",
+    "values": [
+      [
+        88.8,
+        12.6,
+        32.3
+      ],
+      [
+        85.6,
+        1.4,
+        49.1
+      ]
+    ],
+    "retrieved_on": "2026-10-06"
+  },
+  {
+    "key": "suppression_tables8_9",
+    "paper": "https://arxiv.org/html/2608.26511v1",
+    "table": "Tables 8 and 9",
+    "selection": "TruthfulQA only; MLP overlap k=50 and mean residual-stream cosine",
+    "values": [
+      [
+        70,
+        0.58
+      ],
+      [
+        78,
+        0.54
+      ],
+      [
+        90,
+        0.71
+      ],
+      [
+        64,
+        0.66
+      ]
+    ],
+    "retrieved_on": "2026-10-06"
+  },
+  {
+    "key": "well_table1",
+    "paper": "https://arxiv.org/html/2608.06539v1",
+    "table": "Table 1",
+    "selection": "None (no RAG), Llama-3-8B-Instruct, Qwen2.5-7B-Instruct, gemini-3-flash; denominators 100/116",
+    "numerators": [
+      [
+        97,
+        26
+      ],
+      [
+        96,
+        18
+      ],
+      [
+        93,
+        38
+      ]
+    ],
+    "retrieved_on": "2026-10-06"
+  }
+]
