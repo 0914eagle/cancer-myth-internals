@@ -91,9 +91,23 @@
 
 문헌은 **FPQ 교정의 어려움 → 교정을 강화할 때 생기는 부작용 → 전제 검토 방법과 남은 문제** 순서로 설명합니다. 이는 방법 개발에 필요한 선행 근거이며, 모든 원인을 새로 검증하는 별도의 연구 목표가 아닙니다.
 
+**Related Work 구간 안내**
+
+| 구간 | 슬라이드 | 이 구간에서 설명할 것 |
+|---|---|---|
+| ① FPQ 교정의 어려움 | **4–6** | 왜 잘못된 전제를 받아들이거나, 오류를 구별할 수 있어도 답변에서 교정하지 않는가 |
+| ② 교정을 강화할 때 생기는 부작용 | **7–11** | 특정 실패를 줄이는 개입이 왜 유지해야 할 정상 행동까지 손상시킬 수 있는가 |
+| ③ 전제 검토 방법과 남은 문제 | **12–18** | **12–14:** 기존 방법의 검토·답변 구조 / **15–18:** 검증 병목과 절차상 한계 |
+
+이 구간 제목은 발표 흐름을 안내하기 위한 것이며 별도의 슬라이드를 추가하지 않습니다. 슬라이드 번호는 그대로 유지합니다.
+
 아래는 논문별 한 장씩의 슬라이드 원고입니다. 각 장의 그림·표는 **해당 저자의 결과**이고, 우리 실험 결과는 Experimental Results에만 둡니다. 그림은 원본에서 발췌했으며 표의 일부 행·열을 옮긴 경우 그 범위를 명시했습니다. 원문 위치와 이미지 출처는 [발췌 자료 목록](reviews/advisor_update_2026-10-06/related_work_assets/README.md)에도 남겼습니다. 발표 시에는 맨 위 문장·그림/표·핵심 불릿을 띄우고, ‘발표 설명’은 읽을 원고로 사용합니다.
 
-### 슬라이드 4 Accommodation — 같은 내용도 배경에 놓이면 덜 교정한다
+### 2.1 FPQ 교정의 어려움 — 슬라이드 4–6
+
+**핵심 질문: 모델은 왜 잘못된 전제를 교정하지 않는가?** 배경 수용, 요청 수행 문맥, 사용자 동의를 선호하는 학습 신호에 관한 설명을 차례로 봅니다.
+
+#### 슬라이드 4 Accommodation — 같은 내용도 배경에 놓이면 덜 교정한다
 
 **논문:** [Accommodation and Epistemic Vigilance: A Pragmatic Account of Why LLMs Fail to Challenge Harmful Beliefs](https://arxiv.org/html/2601.04435v1)
 
@@ -111,7 +125,7 @@
 
 > 이 논문은 질문 속 주장을 직접 물을 때와 배경으로 둘 때를 비교했습니다. 배경에 놓이면 교정이 줄어들어, 대화상 역할이 교정을 방해할 수 있다는 설명을 제시합니다. 따라서 전제를 별도로 검토하게 하는 접근에는 선행 근거가 있습니다. 다만 그 접근이 정상 질문까지 보존하는지는 따로 확인해야 합니다. 이 논문의 교정률은 우리 Well≥4와 다른 지표입니다.
 
-### 슬라이드 5 Knowing but Not Correcting — 요청 수행 문맥이 교정 선택을 억제한다
+#### 슬라이드 5 Knowing but Not Correcting — 요청 수행 문맥이 교정 선택을 억제한다
 
 **논문:** [Knowing but Not Correcting: Routine Task Requests Suppress Factual Correction in LLMs](https://arxiv.org/html/2605.05957v2)
 
@@ -129,7 +143,7 @@
 
 > 앞 논문이 대화에서 주장이 맡은 역할을 바꿨다면, 이 논문은 요청 문맥에서 모델 내부 처리가 어떻게 달라지는지 봅니다. 저자들은 사실을 표현하는 것과 실제로 교정 답변을 선택하는 것을 구분합니다. 내부 개입은 우리 공개 모델 비교의 후보지만, 가져올 때에는 FPQ 회복뿐 아니라 NFP 보존도 함께 평가해야 합니다.
 
-### 슬라이드 6 Sycophancy — 사용자 동의를 선호하는 학습 신호
+#### 슬라이드 6 Sycophancy — 사용자 동의를 선호하는 학습 신호
 
 **논문:** [Towards Understanding Sycophancy in Language Models](https://arxiv.org/html/2310.13548v4)
 
@@ -147,7 +161,11 @@
 
 > 이 연구는 모델이 왜 사용자의 틀린 말에도 맞춰 줄 수 있는지를 학습 신호에서 설명합니다. 동의를 선호하는 데이터와 보상 최적화가 일부 동조 행동을 키웠습니다. 우리가 선호 학습을 한다면 필요한 교정과 타당한 수용을 함께 가르쳐야 한다는 동기가 되지만, 이 그림은 거짓 전제 질문의 교정–보존 곡선은 아닙니다.
 
-### 슬라이드 7 FalseQA — 교정 학습과 일반 QA를 함께 유지해야 한다
+### 2.2 교정을 강화할 때 생기는 부작용 — 슬라이드 7–11
+
+**핵심 질문: 실패를 줄이는 개입은 왜 정상 행동까지 바꿀 수 있는가?** 슬라이드 **7–8은 텍스트·시각 거짓 전제 연구**, **9–11은 안전 거절·동조 분야에서 가져오는 설명**입니다. 이 다섯 논문이 모두 FPQ–NFP trade-off를 직접 연구한 것은 아닙니다.
+
+#### 슬라이드 7 FalseQA — 교정 학습과 일반 QA를 함께 유지해야 한다
 
 **논문:** [Won’t Get Fooled Again: Answering Questions with False Premises](https://aclanthology.org/2023.acl-long.309/)
 
@@ -170,7 +188,7 @@
 
 > 거짓 전제 분야에서도 정상 질문의 손상을 고려한 선행 연구가 있습니다. 이 연구는 추가 학습 후 일반 질문을 잘못 거부하는 문제를 보고, 일반 QA를 함께 학습해 완화했습니다. 따라서 정상 질문 보존을 우리가 처음 제시한다고 쓰지는 않습니다. 학습 방법을 비교할 때 이런 혼합 학습을 기준선으로 고려할 수 있습니다.
 
-### 슬라이드 8 Antidote — 시각적 거짓 전제의 DPO에도 참 전제 자료가 필요하다
+#### 슬라이드 8 Antidote — 시각적 거짓 전제의 DPO에도 참 전제 자료가 필요하다
 
 **논문:** [Antidote: A Unified Framework for Mitigating LVLM Hallucinations in Counterfactual Presupposition and Object Perception](https://arxiv.org/html/2504.20468v2)
 
@@ -188,7 +206,7 @@
 
 > DPO를 거짓 전제에 적용한 연구는 시각 영역에도 있습니다. Antidote는 사실 단서로 자기 교정 답을 얻어 학습합니다. 특히 거짓 전제만 다루면 너무 조심하는 행동이 생겼다는 이유로 참 전제 질문을 추가했습니다. 우리는 이 학습 구성과 보존 평가를 참고할 수 있지만, 시각 실험의 개선 수치를 의료 텍스트 성능으로 읽을 수는 없습니다.
 
-### 슬라이드 9 OverKill — 지시가 의미보다 표면 단어에 대한 반응을 키울 수 있다
+#### 슬라이드 9 OverKill — 지시가 의미보다 표면 단어에 대한 반응을 키울 수 있다
 
 **논문:** [Navigating the OverKill in Large Language Models](https://arxiv.org/html/2401.17633v1)
 
@@ -206,7 +224,7 @@
 
 > ‘주의하라’는 지시가 반드시 더 정확한 판단으로 이어지지는 않습니다. 이 논문은 위험해 보이는 단어에 과도하게 반응하는 경로를 분석했습니다. 우리에게는 지시를 강화했을 때 오류 자체에 더 민감해진 것인지, 오류와 함께 나타나던 표현에 더 반응한 것인지 구분하는 설계 근거가 됩니다.
 
-### 슬라이드 10 Dual-Stance — 잘못 겨냥한 개입이 타당한 동의도 억제한다
+#### 슬라이드 10 Dual-Stance — 잘못 겨냥한 개입이 타당한 동의도 억제한다
 
 **논문:** [Dual-Stance Evaluation of Sycophancy: The Structure of Agreement and the Limits of Intervention](https://arxiv.org/html/2606.11205v1)
 
@@ -224,7 +242,7 @@
 
 > 이 연구의 요점은 두 행동이 구별 불가능해서 실패한다는 것이 아닙니다. 둘을 구별할 수 있어도 우리가 만든 steering 방향이 양쪽에 모두 작용할 수 있다는 것입니다. 따라서 우리 목표에서도 교정 수만 늘리는 개입보다, 타당한 수용은 유지하면서 오류에만 작용하는 개입을 설계해야 합니다.
 
-### 슬라이드 11 Sycophancy Suppression — 억제하려는 행동과 지켜야 할 행동의 구성요소가 겹친다
+#### 슬라이드 11 Sycophancy Suppression — 억제하려는 행동과 지켜야 할 행동의 구성요소가 겹친다
 
 **논문:** [Sycophancy Suppression Can Impair Rational Updating: Anti-Sycophancy Should Preserve the Ability to Update](https://arxiv.org/html/2608.26511v1)
 
@@ -253,7 +271,15 @@
 
 > 앞 논문이 개입 방향의 구성 문제를 강조했다면, 이 논문은 두 행동에 관여하는 구성요소의 겹침을 분석합니다. 둘 다 선택성 개선의 동기가 되지만 설명은 같지 않습니다. 우리에게는 기존 개입이 무엇을 함께 바꾸는지 살펴볼 근거이며, 우리 과제에서도 같은 회로를 쓴다고 이미 결론 낼 수는 없습니다.
 
-### 슬라이드 12 Presupposition Verification — 답하기 전에 질문의 성립 조건을 확인한다
+### 2.3 전제 검토 방법과 남은 문제 — 슬라이드 12–18
+
+**핵심 질문: 기존 방법의 무엇을 가져오고, 어떤 한계를 고려해 개선할 것인가?** 먼저 실제 검토·답변 구조를 설명한 뒤, 그 구조를 사용할 때 남는 문제를 구분합니다.
+
+#### 2.3.1 기존 전제 검토 방법 — 슬라이드 12–14
+
+전제 검증 QA, PreWoMe, 원자적 추출·검증이 **무엇을 중간 결과로 만들고 이를 최종 답변에 어떻게 사용하는지** 비교합니다.
+
+##### 슬라이드 12 Presupposition Verification — 답하기 전에 질문의 성립 조건을 확인한다
 
 **논문:** [Which Linguist Invented the Lightbulb? Presupposition Verification for Question-Answering](https://arxiv.org/abs/2101.00391)
 
@@ -271,7 +297,7 @@
 
 > 검증기라는 접근은 질문이 성립하는 조건을 따로 확인하자는 초기 QA 연구에서부터 나옵니다. 우리 방법의 뼈대가 새로운 것은 아닙니다. 가져올 것은 이 분리 구조이고, 우리는 그 구조를 사용했을 때 필요한 교정과 정상 응답을 함께 유지할 수 있는지를 개선해야 합니다.
 
-### 슬라이드 13 PreWoMe — 전제 검토로 답변 방침을 만든 뒤 실제 답변한다
+##### 슬라이드 13 PreWoMe — 전제 검토로 답변 방침을 만든 뒤 실제 답변한다
 
 **논문:** [PreWoMe: Exploiting Presuppositions as Working Memory for Long Form Question Answering](https://aclanthology.org/2023.emnlp-main.517/)
 
@@ -289,7 +315,7 @@
 
 > PreWoMe의 중간 산출물은 단순한 Yes/No가 아니라 답변을 어떻게 쓸지에 대한 피드백입니다. 다음 원자적 추출·검증과 달리 전체 전제 검토에서 답변 방침을 만드는 구조입니다. 두 방법이 우리 실행에서 같은 추출 목록을 사용한 것은 비교 구현의 선택이며, 원 논문 두 편이 원래 같은 목록을 썼다는 뜻은 아닙니다.
 
-### 슬라이드 14 Atomic Assumptions — 잘못된 가정을 하나씩 지목하고 근거로 검증한다
+##### 슬라이드 14 Atomic Assumptions — 잘못된 가정을 하나씩 지목하고 근거로 검증한다
 
 **논문:** [Identifying and Answering Questions with False Assumptions: An Interpretable Approach](https://aclanthology.org/2025.emnlp-main.1228/)
 
@@ -307,7 +333,11 @@
 
 > 여기서 가져오는 것은 ‘무엇이 틀렸는가’를 원자적 가정 단위로 드러내는 방법입니다. 다만 더 잘게 나누었다고 더 정확하게 검증한다는 보장은 없습니다. 원 연구의 근거 검색 조건과 우리 실행 조건을 구별하고, 정상 질문의 가정까지 잘못 반박하지 않는지를 함께 평가해야 합니다.
 
-### 슬라이드 15 Well Actually — 검토를 강화해도 정상 전제 검증이 병목으로 남는다
+#### 2.3.2 검증 병목과 절차상 한계 — 슬라이드 15–18
+
+Well Actually의 검증 병목을 출발점으로, **주장과 문맥의 분리(DnDScore), 예시·라벨 편향(Calibrate Before Use), 선택지 형식 효과(Abstention)**를 살펴봅니다. 뒤의 세 연구는 특정 검증 절차를 설계할 때 참고하는 근거이며, FPQ–NFP 전체의 공통 원인을 확정한 연구로 소개하지 않습니다.
+
+##### 슬라이드 15 Well Actually — 검토를 강화해도 정상 전제 검증이 병목으로 남는다
 
 **논문:** [Don’t ‘Well, Actually’ Me Unless You Know What You’re Talking About: Weak Presupposition Verification Degrades General QA Performance](https://arxiv.org/html/2608.06539v1)
 
@@ -334,7 +364,7 @@
 
 > 이 논문이 우리에게 직접 주는 출발점은 FPQ만 올려서는 충분하지 않다는 결과와 검증 단계의 병목입니다. 우리가 같은 현상을 다시 보았다는 것 자체가 새로운 기여는 아닙니다. 이 병목을 고려해, 필요한 교정을 유지하면서 정상 질문의 손상을 줄이는 방법을 만드는 것이 목표입니다.
 
-### 슬라이드 16 DnDScore — 검증할 주장과 해석에 필요한 문맥을 구분한다
+##### 슬라이드 16 DnDScore — 검증할 주장과 해석에 필요한 문맥을 구분한다
 
 **논문:** [DnDScore: Decontextualization and Decomposition for Factuality Verification in Long-Form Text Generation](https://arxiv.org/html/2412.13175v1)
 
@@ -352,7 +382,7 @@
 
 > 원자적 검증이 실패할 수 있는 구체적인 경로를 참고할 수 있습니다. 짧은 문장으로 만들면서 필요한 문맥을 잃는 문제와, 문맥을 복원하다 판단할 내용이 늘어나는 문제는 다릅니다. 우리에게는 원문 범위와 검증 대상을 분리해 보존하는 설계의 근거가 됩니다.
 
-### 슬라이드 17 Calibrate Before Use — 예시 구성만으로 라벨 선호가 바뀐다
+##### 슬라이드 17 Calibrate Before Use — 예시 구성만으로 라벨 선호가 바뀐다
 
 **논문:** [Calibrate Before Use: Improving Few-Shot Performance of Language Models](https://arxiv.org/html/2102.09690v2)
 
@@ -370,7 +400,7 @@
 
 > ‘판정 형식이 응답을 치우치게 한다’는 말의 구체적인 예입니다. 새로운 사실을 주지 않았는데도 예시의 배치만으로 특정 답이 늘어납니다. 우리 검증기에서 거짓 판정이 많다는 결과를 모두 지식 부족으로 읽기 전에, 이런 프롬프트 요인이 섞일 수 있음을 고려해야 합니다.
 
-### 슬라이드 18 Abstention — 확인 불가 선택 자체가 불확실성의 증거는 아니다
+##### 슬라이드 18 Abstention — 확인 불가 선택 자체가 불확실성의 증거는 아니다
 
 **논문:** [LLM Abstention Can Be a Prompt Artifact, in Addition to Genuine Uncertainty](https://arxiv.org/html/2507.16199v9)
 
