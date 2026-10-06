@@ -14,6 +14,9 @@
 
 ![Table 1](table1.png)
 
+
+상세 방법 계획: [GEPA SAE 데이터·특징·피드백·대조 실험 프로토콜](../gepa_sae_detailed_protocol_2026-10-06.md).
+
 ## 모델과 표 배치
 
 본표 모델은 `Qwen/Qwen2.5-7B-Instruct`, `gpt-6-luna`, `google/gemma-4-12B-it`, `Qwen/Qwen3.8-27B-FP8` thinking OFF/ON이다. Qwen의 OFF/ON은 동일 가중치의 두 추론 조건이지 독립적인 두 backbone이 아니다. 정확한 실행 버전·추론 설정은 실험 manifest에 남긴다. 예전 GPT-5.6 결과를 GPT-6 칸에 옮기지 않는다. Claude는 추가하지 않는다.
