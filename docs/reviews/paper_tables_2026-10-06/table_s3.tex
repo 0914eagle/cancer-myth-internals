@@ -1,0 +1,31 @@
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\toprule
+\multirow{2}{*}{Model} & \multirow{2}{*}{Method} & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+ &  & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Qwen2.5\\7B}} & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Hidden probe & \textemdash & \textemdash & \textemdash & \textemdash \\
+\midrule
+\multirow{1}{*}{\shortstack[l]{GPT-6\\Luna}} & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Gemma 4\\12B}} & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Hidden probe & \textemdash & \textemdash & \textemdash & \textemdash \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Qwen3.8\\27B OFF}} & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Hidden probe & \textemdash & \textemdash & \textemdash & \textemdash \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Qwen3.8\\27B ON}} & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Hidden probe & \textemdash & \textemdash & \textemdash & \textemdash \\
+\midrule
+\multirow{1}{*}{\shortstack[l]{Model-\\independent}} & TF-IDF text & \textemdash & \textemdash & \textemdash & \textemdash \\
+\bottomrule
+\end{tabular}}
+\caption{Table S3. Additional detection baselines. Unmeasured plan. Hidden probes require available activations; classifier splits must be fixed. TF-IDF is model-independent, not a separate model-specific measurement. TPR: false-premise detection rate. FPR: false positives on normal questions.}
+\label{tab:table_s3_plan}
+\end{table*}

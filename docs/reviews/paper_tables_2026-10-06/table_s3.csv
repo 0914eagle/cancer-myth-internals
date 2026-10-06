@@ -1,0 +1,11 @@
+model,model_id,method,status,split_manifest,repeat_id,cancer_fpq_tpr_pct,cancer_nfp_fpr_pct,crepe_fpq_tpr_pct,crepe_normal_fpr_pct
+Qwen2.5 7B,Qwen/Qwen2.5-7B-Instruct,direct_protect,planned,,,,,,
+Qwen2.5 7B,Qwen/Qwen2.5-7B-Instruct,hidden_probe,planned,,,,,,
+GPT-6 Luna,gpt-6-luna,direct_protect,planned,,,,,,
+Gemma 4 12B,google/gemma-4-12B-it,direct_protect,planned,,,,,,
+Gemma 4 12B,google/gemma-4-12B-it,hidden_probe,planned,,,,,,
+Qwen3.8 27B OFF,Qwen/Qwen3.8-27B-FP8:off,direct_protect,planned,,,,,,
+Qwen3.8 27B OFF,Qwen/Qwen3.8-27B-FP8:off,hidden_probe,planned,,,,,,
+Qwen3.8 27B ON,Qwen/Qwen3.8-27B-FP8:on,direct_protect,planned,,,,,,
+Qwen3.8 27B ON,Qwen/Qwen3.8-27B-FP8:on,hidden_probe,planned,,,,,,
+Model- independent,model_independent,tfidf,planned,,,,,,

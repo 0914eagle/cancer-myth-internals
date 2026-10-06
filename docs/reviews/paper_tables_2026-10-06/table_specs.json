@@ -1,0 +1,555 @@
+{
+  "table1": {
+    "title": "Table 1. False-premise detection across models and datasets",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "gpt-6-luna",
+        "display": "GPT-6\nLuna"
+      },
+      {
+        "id": "google/gemma-4-12B-it",
+        "display": "Gemma 4\n12B"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:off",
+        "display": "Qwen3.8\n27B OFF"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:on",
+        "display": "Qwen3.8\n27B ON"
+      }
+    ],
+    "groups": [
+      {
+        "label": "Cancer-Myth",
+        "columns": [
+          {
+            "key": "cancer_fpq_tpr_pct",
+            "label": "TPR ↑"
+          },
+          {
+            "key": "cancer_nfp_fpr_pct",
+            "label": "FPR ↓"
+          }
+        ]
+      },
+      {
+        "label": "CREPE",
+        "columns": [
+          {
+            "key": "crepe_fpq_tpr_pct",
+            "label": "TPR ↑"
+          },
+          {
+            "key": "crepe_normal_fpr_pct",
+            "label": "FPR ↓"
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "direct_gate",
+        "label": "Direct gate",
+        "proposed": false
+      },
+      {
+        "key": "premise_review_cot",
+        "label": "Premise-review CoT gate",
+        "proposed": false
+      },
+      {
+        "key": "gepa_detection",
+        "label": "GEPA",
+        "proposed": false
+      },
+      {
+        "key": "gepa_text_feedback",
+        "label": "GEPA + text feedback",
+        "proposed": false
+      },
+      {
+        "key": "gepa_sae_feedback",
+        "label": "GEPA + SAE feedback",
+        "proposed": true
+      }
+    ],
+    "notes": [
+      "Unmeasured plan: — is not a measured score. All metrics are percentages.",
+      "TPR: false-premise detection rate. FPR: false positives on normal questions.",
+      "Feature feedback for detection is evaluated separately from response optimization."
+    ]
+  },
+  "table2": {
+    "title": "Table 2. Response quality and preservation of general QA performance",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "gpt-6-luna",
+        "display": "GPT-6\nLuna"
+      },
+      {
+        "id": "google/gemma-4-12B-it",
+        "display": "Gemma 4\n12B"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:off",
+        "display": "Qwen3.8\n27B OFF"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:on",
+        "display": "Qwen3.8\n27B ON"
+      }
+    ],
+    "groups": [
+      {
+        "label": "Cancer-Myth",
+        "columns": [
+          {
+            "key": "cancer_fpq_well_ge4_pct",
+            "label": "FPQ ↑"
+          },
+          {
+            "key": "cancer_nfp_well_ge4_pct",
+            "label": "NFP ↑"
+          }
+        ]
+      },
+      {
+        "label": "CREPE",
+        "columns": [
+          {
+            "key": "crepe_fpq_well_ge4_pct",
+            "label": "FPQ ↑"
+          },
+          {
+            "key": "crepe_normal_well_ge4_pct",
+            "label": "TPQ ↑"
+          }
+        ]
+      },
+      {
+        "label": "Medical QA",
+        "columns": [
+          {
+            "key": "medqa_accuracy_pct",
+            "label": "MQ ↑"
+          },
+          {
+            "key": "pubmedqa_accuracy_pct",
+            "label": "PQ ↑"
+          },
+          {
+            "key": "medbullets_accuracy_pct",
+            "label": "MB ↑"
+          }
+        ]
+      },
+      {
+        "label": "General QA",
+        "columns": [
+          {
+            "key": "mmlu_accuracy_pct",
+            "label": "MMLU ↑"
+          },
+          {
+            "key": "gsm8k_em_pct",
+            "label": "GSM ↑"
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "plain",
+        "label": "Plain",
+        "proposed": false
+      },
+      {
+        "key": "premise_review_cot",
+        "label": "Premise-review CoT",
+        "proposed": false
+      },
+      {
+        "key": "prewome_style",
+        "label": "PreWoMe-style",
+        "proposed": false
+      },
+      {
+        "key": "extract_verify",
+        "label": "Extract + Verify",
+        "proposed": false
+      },
+      {
+        "key": "gepa",
+        "label": "GEPA",
+        "proposed": false
+      },
+      {
+        "key": "gepa_text_feedback",
+        "label": "GEPA + text feedback",
+        "proposed": false
+      },
+      {
+        "key": "gepa_sae_feedback",
+        "label": "GEPA + SAE feedback",
+        "proposed": true
+      }
+    ],
+    "notes": [
+      "Unmeasured plan: — is not a measured score. All metrics are percentages.",
+      "FPQ: correction; NFP/TPQ: normal-question preservation (Well ≥ 4).",
+      "MQ: MedQA; PQ: PubMedQA; MB: Medbullets; GSM: GSM8K. No cross-dataset average.",
+      "General QA: MMLU accuracy and GSM8K final-answer exact match; models use the same test protocol."
+    ]
+  },
+  "table_s1": {
+    "title": "Table S1. Training and internal-description ablations",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "google/gemma-3-12b-it",
+        "display": "Gemma-3\n12B"
+      },
+      {
+        "id": "google/gemma-2-9b-it",
+        "display": "Gemma-2\n9B"
+      }
+    ],
+    "groups": [
+      {
+        "label": "Cancer-Myth",
+        "columns": [
+          {
+            "key": "cancer_fpq_well_ge4_pct",
+            "label": "FPQ ↑"
+          },
+          {
+            "key": "cancer_nfp_well_ge4_pct",
+            "label": "NFP ↑"
+          }
+        ]
+      },
+      {
+        "label": "CREPE",
+        "columns": [
+          {
+            "key": "crepe_fpq_well_ge4_pct",
+            "label": "FPQ ↑"
+          },
+          {
+            "key": "crepe_normal_well_ge4_pct",
+            "label": "TPQ ↑"
+          }
+        ]
+      },
+      {
+        "label": "Medical QA",
+        "columns": [
+          {
+            "key": "medqa_accuracy_pct",
+            "label": "MQ ↑"
+          },
+          {
+            "key": "pubmedqa_accuracy_pct",
+            "label": "PQ ↑"
+          },
+          {
+            "key": "medbullets_accuracy_pct",
+            "label": "MB ↑"
+          }
+        ]
+      },
+      {
+        "label": "General QA",
+        "columns": [
+          {
+            "key": "mmlu_accuracy_pct",
+            "label": "MMLU ↑"
+          },
+          {
+            "key": "gsm8k_em_pct",
+            "label": "GSM ↑"
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "plain",
+        "label": "Plain",
+        "proposed": false
+      },
+      {
+        "key": "sft_same_chosen",
+        "label": "SFT (same chosen)",
+        "proposed": false
+      },
+      {
+        "key": "dpo_balanced",
+        "label": "DPO (FPQ + NFP)",
+        "proposed": false
+      },
+      {
+        "key": "dpo_feature_curated",
+        "label": "Feature-curated DPO",
+        "proposed": true
+      },
+      {
+        "key": "gepa_sae_feedback",
+        "label": "GEPA + SAE feedback",
+        "proposed": true
+      },
+      {
+        "key": "gepa_sae_nla",
+        "label": "GEPA + SAE + NLA",
+        "proposed": true,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "google/gemma-3-12b-it"
+        ]
+      },
+      {
+        "key": "gepa_sae_ao",
+        "label": "GEPA + SAE + AO",
+        "proposed": true,
+        "models": [
+          "google/gemma-2-9b-it"
+        ]
+      }
+    ],
+    "notes": [
+      "Unmeasured plan: — is not a measured score. All metrics are percentages.",
+      "FPQ: correction; NFP/TPQ: normal-question preservation (Well ≥ 4).",
+      "MQ: MedQA; PQ: PubMedQA; MB: Medbullets; GSM: GSM8K. No cross-dataset average.",
+      "General QA: MMLU accuracy and GSM8K final-answer exact match; models use the same test protocol.",
+      "NLA/AO rows require compatible checkpoints; runtime and resources remain to be checked."
+    ]
+  },
+  "table_s2": {
+    "title": "Table S2. Additional response baselines",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "gpt-6-luna",
+        "display": "GPT-6\nLuna"
+      },
+      {
+        "id": "google/gemma-4-12B-it",
+        "display": "Gemma 4\n12B"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:off",
+        "display": "Qwen3.8\n27B OFF"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:on",
+        "display": "Qwen3.8\n27B ON"
+      }
+    ],
+    "groups": [
+      {
+        "label": "Cancer-Myth",
+        "columns": [
+          {
+            "key": "cancer_fpq_well_ge4_pct",
+            "label": "FPQ ↑"
+          },
+          {
+            "key": "cancer_nfp_well_ge4_pct",
+            "label": "NFP ↑"
+          }
+        ]
+      },
+      {
+        "label": "CREPE",
+        "columns": [
+          {
+            "key": "crepe_fpq_well_ge4_pct",
+            "label": "FPQ ↑"
+          },
+          {
+            "key": "crepe_normal_well_ge4_pct",
+            "label": "TPQ ↑"
+          }
+        ]
+      },
+      {
+        "label": "Medical QA",
+        "columns": [
+          {
+            "key": "medqa_accuracy_pct",
+            "label": "MQ ↑"
+          },
+          {
+            "key": "pubmedqa_accuracy_pct",
+            "label": "PQ ↑"
+          },
+          {
+            "key": "medbullets_accuracy_pct",
+            "label": "MB ↑"
+          }
+        ]
+      },
+      {
+        "label": "General QA",
+        "columns": [
+          {
+            "key": "mmlu_accuracy_pct",
+            "label": "MMLU ↑"
+          },
+          {
+            "key": "gsm8k_em_pct",
+            "label": "GSM ↑"
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "cot",
+        "label": "CoT",
+        "proposed": false
+      },
+      {
+        "key": "balanced",
+        "label": "Balanced instruction",
+        "proposed": false
+      },
+      {
+        "key": "always_correct",
+        "label": "Always correct",
+        "proposed": false
+      },
+      {
+        "key": "direct_gate_response",
+        "label": "Direct-gated response",
+        "proposed": false
+      },
+      {
+        "key": "cot_gate_response",
+        "label": "CoT-gated response",
+        "proposed": false
+      },
+      {
+        "key": "text_gate_response",
+        "label": "Text-gated response",
+        "proposed": false
+      }
+    ],
+    "notes": [
+      "Unmeasured plan: — is not a measured score. All metrics are percentages.",
+      "FPQ: correction; NFP/TPQ: normal-question preservation (Well ≥ 4).",
+      "MQ: MedQA; PQ: PubMedQA; MB: Medbullets; GSM: GSM8K. No cross-dataset average.",
+      "General QA: MMLU accuracy and GSM8K final-answer exact match; models use the same test protocol."
+    ]
+  },
+  "table_s3": {
+    "title": "Table S3. Additional detection baselines",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "gpt-6-luna",
+        "display": "GPT-6\nLuna"
+      },
+      {
+        "id": "google/gemma-4-12B-it",
+        "display": "Gemma 4\n12B"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:off",
+        "display": "Qwen3.8\n27B OFF"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:on",
+        "display": "Qwen3.8\n27B ON"
+      },
+      {
+        "id": "model_independent",
+        "display": "Model-\nindependent"
+      }
+    ],
+    "groups": [
+      {
+        "label": "Cancer-Myth",
+        "columns": [
+          {
+            "key": "cancer_fpq_tpr_pct",
+            "label": "TPR ↑"
+          },
+          {
+            "key": "cancer_nfp_fpr_pct",
+            "label": "FPR ↓"
+          }
+        ]
+      },
+      {
+        "label": "CREPE",
+        "columns": [
+          {
+            "key": "crepe_fpq_tpr_pct",
+            "label": "TPR ↑"
+          },
+          {
+            "key": "crepe_normal_fpr_pct",
+            "label": "FPR ↓"
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "direct_protect",
+        "label": "Direct + scope protection",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "gpt-6-luna",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
+      },
+      {
+        "key": "hidden_probe",
+        "label": "Hidden probe",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
+      },
+      {
+        "key": "tfidf",
+        "label": "TF-IDF text",
+        "proposed": false,
+        "models": [
+          "model_independent"
+        ]
+      }
+    ],
+    "notes": [
+      "Unmeasured plan. Hidden probes require available activations; classifier splits must be fixed.",
+      "TF-IDF is model-independent, not a separate model-specific measurement.",
+      "TPR: false-premise detection rate. FPR: false positives on normal questions."
+    ]
+  }
+}
