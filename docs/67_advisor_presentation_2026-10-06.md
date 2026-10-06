@@ -101,6 +101,8 @@
 
 이 구간 제목은 발표 흐름을 안내하기 위한 것이며 별도의 슬라이드를 추가하지 않습니다. 슬라이드 번호는 그대로 유지합니다.
 
+**맨 위 문장의 기준:** 각 논문이 제시한 원인 설명을 먼저 적습니다. 원인을 분리해 밝히지 않은 논문은 **원인 가설·설계 가설·방법 설계의 근거·병목 진단**으로 표시합니다. 특히 Well Actually의 과도한 거부를 그보다 아래의 원인까지 밝혀진 결과로 소개하지 않습니다.
+
 아래는 논문별 한 장씩의 슬라이드 원고입니다. 각 장의 그림·표는 **해당 저자의 결과**이고, 우리 실험 결과는 Experimental Results에만 둡니다. 그림은 원본에서 발췌했으며 표의 일부 행·열을 옮긴 경우 그 범위를 명시했습니다. 원문 위치와 이미지 출처는 [발췌 자료 목록](reviews/advisor_update_2026-10-06/related_work_assets/README.md)에도 남겼습니다. 발표 시에는 맨 위 문장·그림/표·핵심 불릿을 띄우고, ‘발표 설명’은 읽을 원고로 사용합니다.
 
 ### 2.1 FPQ 교정의 어려움 — 슬라이드 4–6
@@ -111,7 +113,7 @@
 
 **논문:** [Accommodation and Epistemic Vigilance: A Pragmatic Account of Why LLMs Fail to Challenge Harmful Beliefs](https://arxiv.org/html/2601.04435v1)
 
-**슬라이드 맨 위 문장: 주장 자체를 묻는 경우보다, 그 주장을 배경으로 다른 도움을 요청할 때 교정이 줄어듭니다.**
+**슬라이드 맨 위 문장 — 저자의 원인 설명: 모델이 사용자의 가정을 받아들여 대화를 이어가는 수용(accommodation)을 기본값으로 삼고, 필요한 경우 그 가정을 의심하는 경계(epistemic vigilance)가 충분히 작동하지 않는다는 화용론적 설명입니다.**
 
 ![Accommodation Figure 1 중 Cancer-Myth의 쟁점 여부별 교정률](reviews/advisor_update_2026-10-06/related_work_assets/accommodation.png)
 
@@ -129,7 +131,7 @@
 
 **논문:** [Knowing but Not Correcting: Routine Task Requests Suppress Factual Correction in LLMs](https://arxiv.org/html/2605.05957v2)
 
-**슬라이드 맨 위 문장: 오류를 따로 제시하면 고치던 모델도, 같은 오류가 작업 요청 안에 들어가면 교정 대신 요청 수행을 선택할 수 있습니다.**
+**슬라이드 맨 위 문장 — 저자의 기전 설명: 과제 지시가 초기층의 주의를 오류 구절에서 분산시키고, 중간층에서 응답 방향이 교정보다 요청 수행 쪽으로 형성되어, 오류 정보를 표현하고도 교정 답변을 선택하지 못한다는 설명입니다.**
 
 ![Knowing but Not Correcting Figure 3(c): 층별 오류 구절 주의](reviews/advisor_update_2026-10-06/related_work_assets/knowing.png)
 
@@ -147,7 +149,7 @@
 
 **논문:** [Towards Understanding Sycophancy in Language Models](https://arxiv.org/html/2310.13548v4)
 
-**슬라이드 맨 위 문장: 사용자에게 맞춰 주는 답변이 보상받으면, 사실과 별개로 동조하는 행동이 강화될 수 있습니다.**
+**슬라이드 맨 위 문장 — 저자의 원인 설명: 사용자 믿음에 맞는 답변을 선호하는 학습 신호가 보상 최적화를 통해 일부 동조 행동을 강화하므로, 사실과 다르더라도 사용자에게 동의할 수 있습니다.**
 
 <img src="reviews/advisor_update_2026-10-06/related_work_assets/sycophancy.png" alt="Towards Understanding Sycophancy Figure 6(b): RL 진행과 동조 지표" width="430">
 
@@ -169,7 +171,7 @@
 
 **논문:** [Won’t Get Fooled Again: Answering Questions with False Premises](https://aclanthology.org/2023.acl-long.309/)
 
-**슬라이드 맨 위 문장: 거짓 전제 대응을 학습하면 일반 질문도 잘못 거부할 수 있어, 일반 QA를 함께 학습하는 방법을 사용했습니다.**
+**슬라이드 맨 위 문장 — 저자의 원인 가설: FalseQA와 일반 QA의 학습 분포가 다르므로 FalseQA만 추가 학습하면 일반 QA 능력의 망각이 생길 수 있다고 봅니다. 망각과 반박 경향의 강화를 분리해 입증한 것은 아닙니다.**
 
 **원문 Table 9 발췌 — MACAW-11B, 평균값만 표시**
 
@@ -192,13 +194,14 @@
 
 **논문:** [Antidote: A Unified Framework for Mitigating LVLM Hallucinations in Counterfactual Presupposition and Object Perception](https://arxiv.org/html/2504.20468v2)
 
-**슬라이드 맨 위 문장: 거짓 전제에 동의하지 않도록 학습하되, 실제로 맞는 질문에는 답하도록 참 전제 자료도 포함합니다.**
+**슬라이드 맨 위 문장 — 저자의 FPQ 실패 설명: 질문 지시를 무비판적으로 따르는 행동과 유사한 장면의 QA 패턴에 대한 과적합 때문에, 이미지에 없는 대상도 있다고 가정해 답한다는 설명입니다. CPQ 학습 후 과잉 주의가 생기는 내부 원인은 별도로 규명하지 않았습니다.**
 
 ![Antidote Figure 5: 사실 단서를 이용한 자기 교정과 선호 학습](reviews/advisor_update_2026-10-06/related_work_assets/antidote.png)
 
 *원문 발췌: Figure 5. 이미지의 사실 정보를 추가해 얻은 자기 교정 답변과 기존 답변으로 선호 학습을 구성하는 과정입니다.*
 
 - **그림에서 볼 것:** 없는 차를 묻는 질문에 사실 단서를 주면 모델이 답을 바로잡습니다. 그 답을 선호 답변, 기존 환각 답변을 비선호 답변으로 사용합니다.
+- **원인 설명의 근거:** §3.1과 Figure 3의 사례에서 지시 순응과 유사 장면 QA 패턴에 대한 과적합을 제시합니다. 위 Figure 5는 그에 대응한 방법 도식이며 원인 검증 결과 자체는 아닙니다.
 - **본문에서 가져올 설명:** §3.3은 CPQ만으로 학습한 초기 실험에서 과도하게 조심하는 행동이 생겨 TPQ를 추가했다고 설명합니다.
 - **우리에게 참고할 점:** FPQ 교정 답변뿐 아니라 NFP의 적절한 응답도 학습에 넣는 설계입니다. 이 그림은 학습 절차이며, 과잉 주의의 내부 원인을 증명한 그림은 아닙니다. 이미지 기반 사실 확인과 의료 개인 상황도 구별해야 합니다.
 
@@ -210,7 +213,7 @@
 
 **논문:** [Navigating the OverKill in Large Language Models](https://arxiv.org/html/2401.17633v1)
 
-**슬라이드 맨 위 문장: 안전을 강조하는 지시는 위험한 의미뿐 아니라 위험해 보이는 단어에 대한 반응도 강화할 수 있습니다.**
+**슬라이드 맨 위 문장 — 저자의 원인 설명: 모델이 문장 전체의 의미보다 위험해 보이는 단어에 의존하는 shortcut을 사용하고, 안전 지시가 그 의존을 강화하여 정상 요청까지 거절한다는 설명입니다.**
 
 <img src="reviews/advisor_update_2026-10-06/related_work_assets/overkill_system_prompt.png" alt="OverKill Figure 2(c): 안전 지시 유무별 focus word의 정보 흐름" width="600">
 
@@ -228,7 +231,7 @@
 
 **논문:** [Dual-Stance Evaluation of Sycophancy: The Structure of Agreement and the Limits of Intervention](https://arxiv.org/html/2606.11205v1)
 
-**슬라이드 맨 위 문장: 부당한 동조와 타당한 동의가 구분되어 있어도, 개입 방향이 둘 모두에 걸리면 함께 손상됩니다.**
+**슬라이드 맨 위 문장 — 저자의 개입 실패 설명: 동의·비동의로 구성한 steering 방향이 부당한 동조와 타당한 동의의 부분공간 모두에 걸리기 때문에, 동조를 줄이는 개입이 사실에 맞는 동의까지 억제할 수 있습니다.**
 
 <img src="reviews/advisor_update_2026-10-06/related_work_assets/dual_stance.png" alt="Dual-Stance Figure 9: 두 동의 부분공간에 대한 steering 방향 투영" width="560">
 
@@ -246,7 +249,7 @@
 
 **논문:** [Sycophancy Suppression Can Impair Rational Updating: Anti-Sycophancy Should Preserve the Ability to Update](https://arxiv.org/html/2608.26511v1)
 
-**슬라이드 맨 위 문장: 근거 없는 압력에 굴복하는 행동을 억제하면, 타당한 근거를 받아들이는 행동까지 줄 수 있습니다.**
+**슬라이드 맨 위 문장 — 저자의 trade-off 설명: 근거 없는 압력에 굴복하는 행동과 타당한 근거로 판단을 갱신하는 행동에 관여하는 구성요소·활성 방향이 겹쳐, 한쪽을 억제하는 개입이 다른 쪽도 손상시킬 수 있다는 설명입니다.**
 
 **원문 Tables 8–9 발췌 — TruthfulQA 조건**
 
@@ -283,7 +286,7 @@
 
 **논문:** [Which Linguist Invented the Lightbulb? Presupposition Verification for Question-Answering](https://arxiv.org/abs/2101.00391)
 
-**슬라이드 맨 위 문장: 질문에 곧바로 답하는 대신, 그 질문이 성립하려면 맞아야 하는 전제를 먼저 확인합니다.**
+**슬라이드 맨 위 문장 — 방법 설계의 근거 — 내부 원인 규명은 아님: 질문이 요구하는 답을 찾는 것만으로는 실패한 전제를 설명하기 어려우므로, 질문의 전제를 생성·검증하고 그 결과를 답변에 연결하는 구조를 제안합니다.**
 
 ![Kim 등 Figure 1: 기존 QA와 전제 검증을 추가한 파이프라인](reviews/advisor_update_2026-10-06/related_work_assets/kim2021.png)
 
@@ -301,7 +304,7 @@
 
 **논문:** [PreWoMe: Exploiting Presuppositions as Working Memory for Long Form Question Answering](https://aclanthology.org/2023.emnlp-main.517/)
 
-**슬라이드 맨 위 문장: 전제 목록을 그대로 판정하는 데서 끝내지 않고, 문제점과 답변 방침을 작업 기억으로 만들어 답변에 사용합니다.**
+**슬라이드 맨 위 문장 — 저자의 설계 가설 — 실패 원인 확정은 아님: 바로 정확한 답을 생성하는 것보다 생성한 전제를 먼저 검증하고 답변 방침으로 활용하는 편이 유리할 수 있다는 가정에서, 전제를 작업 기억으로 사용하는 방법을 제안합니다.**
 
 <img src="reviews/advisor_update_2026-10-06/related_work_assets/prewome.png" alt="PreWoMe Figure 2: 전제 추출, 피드백 및 행동 방침, 답변 생성" width="430">
 
@@ -319,7 +322,7 @@
 
 **논문:** [Identifying and Answering Questions with False Assumptions: An Interpretable Approach](https://aclanthology.org/2025.emnlp-main.1228/)
 
-**슬라이드 맨 위 문장: 질문 전체의 정오만 고르지 않고, 어떤 원자적 가정이 틀렸는지 판정해 답변의 근거로 사용합니다.**
+**슬라이드 맨 위 문장 — 방법 설계의 근거 — trade-off 원인 규명은 아님: 질문을 바꾼 진술문의 사실성을 확인하는 것과 질문 속 잘못된 가정을 찾는 것은 다른 과제이므로, 원자적 가정을 따로 생성·검증해 어떤 가정이 틀렸는지 지목하도록 합니다.**
 
 ![Wang과 Blanco Figure 2: 검색 근거 및 원자적 가정 검증](reviews/advisor_update_2026-10-06/related_work_assets/wang.png)
 
@@ -341,7 +344,7 @@ Well Actually의 검증 병목을 출발점으로, **주장과 문맥의 분리(
 
 **논문:** [Don’t ‘Well, Actually’ Me Unless You Know What You’re Talking About: Weak Presupposition Verification Degrades General QA Performance](https://arxiv.org/html/2608.06539v1)
 
-**슬라이드 맨 위 문장: 전제 검토로 FPQ를 개선하더라도 정상 질문이 손상될 수 있으며, 정답 전제를 주어도 검증 오류가 남았습니다.**
+**슬라이드 맨 위 문장 — 병목 진단 — 그 아래 원인은 미분리: 정답 전제를 주어도 검증기가 참인 전제를 많이 거부하며, 저자는 이를 확인하지 못한 전제의 과도한 거부로 해석합니다. 무엇이 그 거부를 만드는지는 개별 원인으로 분리해 검증하지 않았습니다.**
 
 ![Well Actually Figure 1: FPQ와 TPQ 답변 성능의 관계](reviews/advisor_update_2026-10-06/related_work_assets/well.png)
 
@@ -368,7 +371,7 @@ Well Actually의 검증 병목을 출발점으로, **주장과 문맥의 분리(
 
 **논문:** [DnDScore: Decontextualization and Decomposition for Factuality Verification in Long-Form Text Generation](https://arxiv.org/html/2412.13175v1)
 
-**슬라이드 맨 위 문장: 주장을 잘게 나누면 문맥이 빠질 수 있고, 문맥을 문장에 다시 붙이면 다른 주장까지 함께 검증할 수 있습니다.**
+**슬라이드 맨 위 문장 — 저자의 검증 오류 설명: 주장을 분해하면 지시 대상 등 필요한 문맥이 빠지고, 문맥을 다시 붙이면 다른 주장이나 반복 내용까지 검증에 섞여 원래 주장의 사실성 평가가 왜곡될 수 있습니다.**
 
 ![DnDScore Figure 1: 분해와 문맥 복원의 순서에서 생기는 문제](reviews/advisor_update_2026-10-06/related_work_assets/dnd_trimmed.png)
 
@@ -386,7 +389,7 @@ Well Actually의 검증 병목을 출발점으로, **주장과 문맥의 분리(
 
 **논문:** [Calibrate Before Use: Improving Few-Shot Performance of Language Models](https://arxiv.org/html/2102.09690v2)
 
-**슬라이드 맨 위 문장: 같은 평가 문항에도 프롬프트 예시의 라벨 비율과 순서가 달라지면 답변 분포가 달라질 수 있습니다.**
+**슬라이드 맨 위 문장 — 저자의 판정 편향 설명: few-shot 예시에서 많이 등장하거나 뒤에 반복된 라벨을 선호하는 편향 때문에, 같은 평가 문항에도 예시의 라벨 구성·순서만 바꾸면 예측 분포가 달라집니다.**
 
 ![Calibrate Before Use Figure 4: 예시 라벨 구성과 Positive 예측 비율](reviews/advisor_update_2026-10-06/related_work_assets/calibrate.png)
 
@@ -404,7 +407,7 @@ Well Actually의 검증 병목을 출발점으로, **주장과 문맥의 분리(
 
 **논문:** [LLM Abstention Can Be a Prompt Artifact, in Addition to Genuine Uncertainty](https://arxiv.org/html/2507.16199v9)
 
-**슬라이드 맨 위 문장: ‘확인 불가’를 선택했다는 사실만으로 모델이 실제 지식 부족을 감지했다고 결론 낼 수 없습니다.**
+**슬라이드 맨 위 문장 — 저자의 보류 행동 설명: 불확실성을 뜻하지 않는 단어도 추가 선택지로 주면 일부 과제의 출력 분포가 치우치므로, 보류 행동의 일부는 지식 부족이 아니라 선택지 형식에서 생길 수 있습니다.**
 
 ![Abstention 논문 Figure 1: Unknown과 무관한 추가 선택지를 비교하는 설계](reviews/advisor_update_2026-10-06/related_work_assets/abstention_trimmed.png)
 
