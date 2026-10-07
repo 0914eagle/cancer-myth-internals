@@ -13,14 +13,14 @@
 Plain & 2.4\textsuperscript{H} & 100.0\textsuperscript{H} & 54.5\textsuperscript{L} & 91.0\textsuperscript{L} & 4.3\textsuperscript{H} & 100.0\textsuperscript{H} & 49.7\textsuperscript{H} & 79.9\textsuperscript{H} & 40.7\textsuperscript{H} & 88.6\textsuperscript{H} \\
 CoT & 0.7\textsuperscript{H} & 99.3\textsuperscript{H} & \textemdash & \textemdash & 3.4\textsuperscript{H} & 99.3\textsuperscript{H} & 54.7\textsuperscript{H} & 71.1\textsuperscript{H} & 43.1\textsuperscript{H} & 87.9\textsuperscript{H} \\
 Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-Review CoT (2-step) & 10.5\textsuperscript{H} & 94.6\textsuperscript{H} & \textemdash & \textemdash & 41.2\textsuperscript{H} & 78.5\textsuperscript{H} & 61.4\textsuperscript{H} & 55.0\textsuperscript{H} & 66.7\textsuperscript{H} & 57.0\textsuperscript{H} \\
+Premise-review CoT (2-step) & 10.5\textsuperscript{H} & 94.6\textsuperscript{H} & \textemdash & \textemdash & 41.2\textsuperscript{H} & 78.5\textsuperscript{H} & 61.4\textsuperscript{H} & 55.0\textsuperscript{H} & 66.7\textsuperscript{H} & 57.0\textsuperscript{H} \\
 Always correct & 56.9\textsuperscript{H} & 21.5\textsuperscript{H} & \textemdash & \textemdash & 72.0\textsuperscript{H} & 2.0\textsuperscript{H} & 71.0\textsuperscript{H} & 28.9\textsuperscript{H} & 83.4\textsuperscript{H} & 5.4\textsuperscript{H} \\
 PreWoMe-style & \textemdash & \textemdash & 88.9\textsuperscript{L} & 59.0\textsuperscript{L} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 Extract + Verify & \textemdash & \textemdash & 87.9\textsuperscript{L} & 48.0\textsuperscript{L} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-Extract+Verify (scope) & 5.7\textsuperscript{H} & 99.3\textsuperscript{H} & n/a & n/a & n/a & n/a & n/a & n/a & n/a & n/a \\
-Self-gated FP identification & 7.0\textsuperscript{H} & 89.9\textsuperscript{H} & n/a & n/a & n/a & n/a & n/a & n/a & n/a & n/a \\
+Extract+Verify (scope) & 5.7\textsuperscript{H} & 99.3\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Self-gated FP identification (legacy) & 7.0\textsuperscript{H} & 89.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 Direct-gated response & 6.9\textsuperscript{H} & 90.6\textsuperscript{H} & \textemdash & \textemdash & 37.2\textsuperscript{H} & 83.9\textsuperscript{H} & 53.0\textsuperscript{H} & 72.5\textsuperscript{H} & 53.5\textsuperscript{H} & 75.8\textsuperscript{H} \\
-CoT-gated response & 21.3\textsuperscript{H} & 85.9\textsuperscript{H} & \textemdash & \textemdash & 43.4\textsuperscript{H} & 67.1\textsuperscript{H} & 62.1\textsuperscript{H} & 59.7\textsuperscript{H} & 62.1\textsuperscript{H} & 60.4\textsuperscript{H} \\
+Premise-review gated response & 21.3\textsuperscript{H} & 85.9\textsuperscript{H} & \textemdash & \textemdash & 43.4\textsuperscript{H} & 67.1\textsuperscript{H} & 62.1\textsuperscript{H} & 59.7\textsuperscript{H} & 62.1\textsuperscript{H} & 60.4\textsuperscript{H} \\
 TF-IDF text gate & 50.7\textsuperscript{H} & 60.4\textsuperscript{H} & \textemdash & \textemdash & 63.8\textsuperscript{H} & 50.3\textsuperscript{H} & 68.3\textsuperscript{H} & 49.0\textsuperscript{H} & 78.2\textsuperscript{H} & 48.3\textsuperscript{H} \\
 Probe-gated response & 44.8\textsuperscript{H} & 64.4\textsuperscript{H} & n/a & n/a & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 GEPA & \textemdash & \textemdash & 78.8\textsuperscript{L} & 72.0\textsuperscript{L} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
@@ -30,25 +30,25 @@ GEPA & \textemdash & \textemdash & 78.8\textsuperscript{L} & 72.0\textsuperscrip
 Plain & \textemdash & \textemdash & 72.7\textsuperscript{R} & 98.9\textsuperscript{R} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 CoT & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-Review CoT (2-step) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Premise-review CoT (2-step) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 Always correct & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-Extract+Verify (scope) & \textemdash & \textemdash & n/a & n/a & n/a & n/a & n/a & n/a & n/a & n/a \\
-Self-gated FP identification & \textemdash & \textemdash & n/a & n/a & n/a & n/a & n/a & n/a & n/a & n/a \\
+Extract+Verify (scope) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Self-gated FP identification (legacy) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 Direct-gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-CoT-gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Premise-review gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 TF-IDF text gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 Probe-gated response & \textemdash & \textemdash & n/a & n/a & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 GEPA & \textemdash & \textemdash & 74.7\textsuperscript{R} & 98.0\textsuperscript{R} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multicolumn{11}{l}{\textbf{Medical / general QA: accuracy (\%) or GSM8K EM; all methods pending}} \\
-MedQA (all methods pending) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
-PubMedQA (all methods pending) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
-Medbullets (all methods pending) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
-MMLU (all methods pending) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
-GSM8K (all methods pending) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
+\multicolumn{11}{l}{\textbf{Medical / general QA: accuracy (\%) or GSM8K EM; no completed results}} \\
+MedQA (no completed results) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
+PubMedQA (no completed results) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
+Medbullets (no completed results) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
+MMLU (no completed results) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
+GSM8K (no completed results) & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} & \multicolumn{2}{c}{\textemdash} \\
 \bottomrule
 \end{tabular}}
 \caption{Table 2. Response quality and preservation of general QA performance. Stored results; \textemdash: not measured/comparable; n/a: outside the defined implementation. Percentages, one run. H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger. FPQ / NFP / TPQ: Well $\geq$ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets. L: Luna matched 99 FPQ / 100 NFP, exposed test; R: CREPE 751 FPQ / 2253 TPQ. Gate rows route saved Plain/correction answers; not exact Two Axes reproduction. Ours is not fixed to SAE. Source counts and comparison limits: result\_sources.md. QA rows with no measurements are compressed across methods; full planned cells remain in CSV.}

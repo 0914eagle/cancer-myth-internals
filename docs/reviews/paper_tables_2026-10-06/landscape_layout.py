@@ -20,14 +20,14 @@ def render_landscape(root, name, spec, measurements):
     if not detection:
         qa_keys={c['key'] for g in spec['groups'][2:] for c in g['columns']}
         pending=not any(k[0]==name and k[3] in qa_keys for k in measurements)
-        qa_title='Medical / general QA: accuracy (%) or GSM8K EM' + ('; all methods pending' if pending else '')
+        qa_title='Medical / general QA: accuracy (%) or GSM8K EM' + ('; no completed results' if pending else '')
         entries.append(('band',qa_title,None,None))
         labels={'medqa_accuracy_pct':'MedQA','pubmedqa_accuracy_pct':'PubMedQA','medbullets_accuracy_pct':'Medbullets','mmlu_accuracy_pct':'MMLU','gsm8k_em_pct':'GSM8K'}
         for group in spec['groups'][2:]:
             for col in group['columns']:
                 has_any=any(k[0]==name and k[3]==col['key'] for k in measurements)
                 if not has_any:
-                    entries.append(('qa',labels[col['key']]+' (all methods pending)',None,[col]))
+                    entries.append(('qa',labels[col['key']]+' (no completed results)',None,[col]))
                 else:
                     # Expand automatically when actual per-method QA results become available.
                     entries.append(('band',labels[col['key']],None,None))

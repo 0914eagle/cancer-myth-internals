@@ -70,7 +70,7 @@
       },
       {
         "key": "premise_review_cot",
-        "label": "Review CoT gate (2-step)",
+        "label": "Premise-review CoT gate",
         "proposed": false,
         "models": [
           "Qwen/Qwen2.5-7B-Instruct",
@@ -245,7 +245,7 @@
       },
       {
         "key": "premise_review_cot",
-        "label": "Review CoT (2-step)",
+        "label": "Premise-review CoT (2-step)",
         "proposed": false
       },
       {
@@ -266,18 +266,12 @@
       {
         "key": "extract_verify_scope",
         "label": "Extract+Verify (scope)",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct"
-        ]
+        "proposed": false
       },
       {
         "key": "fp_identification",
-        "label": "Self-gated FP identification",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct"
-        ]
+        "label": "Self-gated FP identification (legacy)",
+        "proposed": false
       },
       {
         "key": "direct_gate_response",
@@ -286,7 +280,7 @@
       },
       {
         "key": "cot_gate_response",
-        "label": "CoT-gated response",
+        "label": "Premise-review gated response",
         "proposed": false
       },
       {
