@@ -12,7 +12,7 @@ Table 2·3은 합의한 방법 순서로 갱신했다: Plain, Balanced instructi
 - Balanced instruction의 호환되는 현재 모델·평가 조건 수치는 원장에 없어 공란이다. GPT-5.6-Luna 과거 값을 GPT-6-Luna 칸에 옮기지 않았다. Balanced는 FP Identification의 재현으로 표시하지 않는다.
 - 과거 `Premise-review CoT (2-step)`와 `Always correct`의 16칸은 현재 축약한 방법 목록에서 제외하고 `excluded_review_control_results.json`에 보존했다. 기존 주석·원장 링크는 과거 방법의 설명으로 남긴다.
 
-**Table 2의 최종 평가 계획은 공통 grouped K-fold의 out-of-fold 예측 합산이다(K 미정).** 고정 방법의 답변과 채점은 규약에 맞으면 재사용한다. TF-IDF·Probe의 학습·설정·임계값 선택, GEPA 및 Ours의 학습형 특징 발견·선택·최적화는 각 평가 fold를 제외한 자료에서 수행한다. 각 문항의 held-out 성공 여부를 한 번씩 합산한다. few-shot 예시와 겹친 문항은 공통 평가 대상에서 제외한다. 이미 자료를 보고 방법을 설계한 이력은 fold 분할로 없어지지 않으므로 탐색 평가로 밝힌다.
+**Table 2의 Cancer-Myth 최종 평가 계획은 공통 grouped 3-fold의 out-of-fold 예측 합산이다. CREPE는 기존 고정 train/dev/test를 유지한다.** 3-fold 선택은 확정했지만 실제 적격 ID·그룹 감사와 split manifest 생성은 아직 완료하지 않았다. 각 외부 학습 영역을 다시 opt_train/opt_dev로 나누고 모든 모델·방법이 같은 배정을 사용한다. 최초 비교는 fold당 seed 하나이며 fold 간 변동을 최적화 seed 반복으로 간주하지 않는다. 고정 방법의 답변과 채점은 규약에 맞으면 재사용한다. TF-IDF·Probe의 학습·설정·임계값 선택, GEPA 및 Ours의 학습형 특징 발견·선택·최적화는 각 평가 fold를 제외한 자료에서 수행한다. 각 문항의 held-out 성공 여부를 한 번씩 합산한다. few-shot 예시와 겹친 문항은 공통 평가 대상에서 제외한다. 이미 자료를 보고 방법을 설계한 이력은 fold 분할로 없어지지 않으므로 탐색 평가로 밝힌다.
 
 Table 3은 Table 2에서 학습한 방법을 동결해 일반·의료 QA에 적용한다. 여러 fold checkpoint 중 어느 것을 평가하거나 평균할지는 사전에 정하고 QA test로 고르지 않는다.
 
@@ -31,6 +31,33 @@ Table 3은 Table 2에서 학습한 방법을 동결해 일반·의료 QA에 적�
 
 ![Table 3](table3.png)
 
+## Table 1 해석과 실행 범위
+
+Table 1에서는 직접 답변형 Ours를 제외한다. 탐지 프롬프트 최적화는 Table 1·2 모두 `GEPA-gate`이며, Table 2의 `GEPA`는 직접 답변 최적화다. 이름을 맞춘 것이며 새 측정은 아니다.
+
+현재 TPR/FPR은 각 방법의 저장된 운영점을 함께 보여 준다. 임계값이 다르다는 이유만으로 비교가 불가능한 것은 아니다. 같은 평가 자료에서 한 방법의 TPR이 높고 FPR도 낮으면 관찰값 기준으로 우세하지만, 둘 다 높으면 선호하는 오류 비용이나 제약 없이는 단일 순위를 매길 수 없다. 표본 불확실성·서로 다른 프로토콜도 함께 고려한다.
+
+연속 탐지 점수가 확보되면 AUROC를 별도 분석으로 보고하고, 선택한 임계값의 TPR/FPR을 현재 표에 유지한다. 목표 FPR 조건의 임계값은 내부 dev에서 정하고 외부 평가에서는 실제 달성한 FPR과 TPR을 보고한다. test FPR을 맞추려고 임계값을 재선택하지 않는다. 이 변경으로 표의 열을 지금 추가하지는 않는다.
+
+Yes/No만으로도 수학적으로 AUROC를 계산할 수 있으나, 0/1 점수의 AUROC는 `(TPR + 1 - FPR) / 2`로 balanced accuracy와 같다. 이를 연속 점수의 순위 성능과 혼동하지 않는다. 연속 점수가 없는 행의 순위 AUROC는 '연속 점수 미제공'으로 구분한다. 공개 모델 Direct의 토큰 점수 방식과 Luna CLI의 이진 출력은 별도 구현이며, 기존 판정 비율에서 연속 점수를 복원하지 않는다.
+
+현재 모델·데이터셋 열은 유지한다. 빈칸은 모든 조합의 실행 확약이 아니다. 실행 우선순위는 Luna의 두 데이터셋 비교와 공개 모델의 저장 Cancer-Myth 결과 활용이며, 일반화 주장을 여러 모델에 확장하려면 선택한 공개 모델에서도 공통 방법을 일반 도메인에 평가해야 한다. 공개 모델 CREPE를 일괄 삭제하거나 Probe만 실행하기로 확정하지 않았다. Luna의 native hidden probe는 계속 해당 없음이다.
+
+## Always correct: 저장된 gate의 분석용 대조
+
+Always correct는 모든 문항을 교정 경로로 보내는 조건이다. **FPQ 성능의 상한은 아니다.** 어떤 FPQ에서는 저장 Plain 답변이 성공하고 교정 답변이 실패할 수 있어, 문항별 경로 선택은 Always correct보다 높아질 수 있다. 고정된 두 답변 중 점수가 좋은 답변을 선택하는 best-answer oracle이 이 저장 답변 풀에 대한 상한이다. 정답 라벨 gate(FPQ→교정, NFP→Plain)는 이 oracle과 다르다. 두 진단값은 문항별 공통 ID·채점 규약을 맞춘 뒤 계산해야 하며 여기서는 새로 계산하지 않았다.
+
+아래는 제외 원장에서 가져온 Always correct 대조값이다. 새 3-fold 결과가 아니며, 위 Table 2의 gate가 사용한 교정 경로를 설명한다.
+
+| 모델 | FPQ 교정 (%) | NFP 보존 (%) |
+|---|---:|---:|
+| Qwen2.5 7B | 56.9 (332/583) | 21.5 (32/149) |
+| Gemma 4 12B | 72.0 (420/583) | 2.0 (3/149) |
+| Qwen3.8 27B OFF | 71.0 (414/583) | 28.9 (43/149) |
+| Qwen3.8 27B ON | 83.4 (486/583) | 5.4 (8/149) |
+
+출처: [제외 대조 원장](excluded_review_control_results.json). GPT-6 Luna의 호환 측정은 없어 추가하지 않았다. 메인 Table 2·3의 합의한 13개 행은 유지한다.
+
 ## GEPA와 삭제한 text features의 차이
 
 기존 GEPA도 실행한 질문·답변·점수와 자연어 채점 이유를 이용해 프롬프트를 수정한다. 이전에 제안한 `GEPA + text features`는 여러 학습 답변을 별도로 비교해 공통 특징을 요약하고, 그 설명을 기존 GEPA 피드백에 추가하는 **우리가 설계한 대조 조건**이었다. 독립적인 기존 논문 방법이나 공식 GEPA 변형 이름이 아니다. 최적화 알고리즘과 점수는 같고 추가 입력만 달라지는 조건이므로 주 결과표의 기존 방법에서 제외했다.
@@ -44,13 +71,13 @@ Table 1은 TF-IDF를 첫 번째 행에, Table 2·3은 Extract + Verify 다음 �
 | 방법군 | Table 1: Detection | Table 2: Response | 역할 |
 |---|---|---|---|
 | 직접 판정 | Direct gate | Direct gate | 명시적인 LLM 판단으로 답변 경로 선택 |
-| 전제 검토 | Premise-review CoT gate | Premise-review CoT (2-step), CoT gate | 검토 후 판단하거나 답변 |
+| 검토 기반 판정 | CoT gate | CoT gate | 검토 후 판정하여 답변 경로 선택; 현재 수치는 과거 구현 |
 | 내부 분류기 | **Probe gate (hidden states)** | **Probe gate** | 내부 표현을 학습한 분류기로 선택적 교정 |
 | 텍스트 분류기 | TF-IDF text (모델 독립 공통 행) | TF-IDF text gate | 내부 접근 없이 질문 텍스트로 판정 |
 | 구조화 파이프라인 | 별도 성능 대입 없음 | PreWoMe, Extract + Verify | 전제 추출·검토·답변 |
-| 프롬프트 최적화 | GEPA | GEPA | 최적화한 지시의 성능 |
-| 단순 지시 대조 | — | Plain, CoT, Balanced instruction, Always correct | 구조화 방법·gate의 효과를 읽기 위한 대조 |
-| 제안 방법 | Ours | Ours | 구체 방법과 측정 결과는 아직 미정 |
+| 프롬프트 최적화 | GEPA-gate | GEPA-gate, GEPA, GEPA (both stages) | 각각 탐지 / 직접 답변 / 탐지·후속 답변 최적화 |
+| 단순 지시 대조 | — | Plain, CoT, Balanced instruction | 고정 답변 지시; Always correct는 아래 분석용 대조에 보존 |
+| 제안 방법 | 해당 없음 | Ours | 첫 버전은 직접 답변형; 특징 구성과 성능은 아직 미정 |
 
 [Two Axes of LLM Abstention: Answer Correctness and Question Answerability](https://arxiv.org/html/2607.08456v1)의 §6은 내부 probe로 일반 답변과 전제 검토 지시를 선택하는 비교를 제공한다. **Probe gate를 넣을 직접적인 선행 연구 근거**다. 다만 현재 저장된 우리 response gate 값은 Plain/무조건 교정의 저장 답변을 선택한 값이다. 그 논문의 지시·학습 분할·threshold·평가까지 그대로 재현한 수치라고 부르지 않는다. 앞으로 선행 방법을 재현할 때에는 gate별로 같은 답변 경로를 쓰고 분할·threshold 선택을 통제한다.
 
@@ -62,9 +89,9 @@ Probe는 해당 모델의 내부 상태가 필요하다. 공개 모델 Qwen/Gemm
 
 | 방법군 | 현재 행 | 답변을 만드는 방식 |
 |---|---|---|
-| 고정 답변 지시 | Plain, CoT, Balanced instruction, Always correct | 고정 지시로 답변. Always correct는 모든 질문에 거짓 전제가 있다고 지시하는 대조 조건 |
-| 전제 검토 파이프라인 | Premise-review CoT, PreWoMe, Extract + Verify | 중간 검토 내용 또는 주장별 판정을 최종 답변 입력으로 전달 |
-| 선택적 경로 | TF-IDF, Direct, Premise-review, Probe의 gated response | gate 판정으로 Plain/무조건 교정 경로를 선택 |
+| 고정 답변 지시 | Plain, CoT, Balanced instruction | 고정 지시로 답변 |
+| 전제 검토 파이프라인 | PreWoMe, Extract + Verify | 중간 검토 내용 또는 주장별 판정을 최종 답변 입력으로 전달 |
+| 선택적 경로 | TF-IDF text gate, Direct gate, CoT gate, Probe gate | gate 판정으로 Plain/무조건 교정 경로를 선택 |
 | 최적화·제안 방법 | GEPA, Ours | GEPA 행은 최적화한 답변 프롬프트. Ours의 구현은 미정 |
 
 ### Extract + Verify의 정확한 정의
@@ -91,12 +118,12 @@ PreWoMe는 동일한 추출 목록을 받지만 질문·목록 전체를 보고 
 
 공정한 gate 비교는 답변 경로를 고정하고 gate 신호만 바꾼다. 학습·임계값 선택에는 test를 쓰지 않고 AUROC와 선택한 임계값의 TPR/FPR, 최종 답변의 FPQ 교정·NFP 보존, 추가 호출 비용을 함께 보고한다. 판정 정확도와 최종 답변의 교정 성공률은 서로 대체할 수 없다. 새로운 gate 행이나 수치는 이 정의를 확정해 실행한 뒤 추가한다.
 
-## Premise-review CoT gate가 하는 일
+## 현재 CoT gate 수치의 과거 구현: Premise-review CoT gate
 
 1. 원 질문에서 사실적 전제를 검토하는 글을 생성한다. 잘못된 전제와 교정 정보를 찾고 타당한 전제에서는 오류를 만들지 않도록 지시한다.
 2. **질문 + 검토문**으로 오류 있음/없음을 판정한다. Qwen2.5는 Yes/No 토큰 점수 비교, Gemma/Qwen3.8은 생성 JSON이라 판정 출력 절차는 다르다.
 
-Table 1은 이 판정 결과다. Table 2의 `Premise-review CoT (2-step)`는 2단계에서 판정 대신 실제 답변을 생성한다. `CoT gate`는 gate 판정으로 저장된 Plain/무조건 교정 답변을 선택한다. 2-step gate가 최종 답변 생성까지 두 번 호출했다는 뜻은 아니다. **비-gate 조건에서는 검토문의 내용이 최종 답변 입력으로 들어가지만, 현재 gate 조건에서는 검토문이 판정에만 쓰이고 최종 선택에는 이진 판정만 사용된다.** 따라서 둘은 중간 검토를 공유해도 최종 답변을 만드는 방식이 다르다.
+현재 Table 1의 CoT gate 수치는 이 과거 판정 결과다. 메인 표에서 제외한 과거 `Premise-review CoT (2-step)` 대조는 2단계에서 판정 대신 실제 답변을 생성한다. `CoT gate`는 gate 판정으로 저장된 Plain/무조건 교정 답변을 선택한다. 2-step gate가 최종 답변 생성까지 두 번 호출했다는 뜻은 아니다. **비-gate 조건에서는 검토문의 내용이 최종 답변 입력으로 들어가지만, 현재 gate 조건에서는 검토문이 판정에만 쓰이고 최종 선택에는 이진 판정만 사용된다.** 따라서 둘은 중간 검토를 공유해도 최종 답변을 만드는 방식이 다르다.
 
 ## Gate와 추출·검토 파이프라인의 구분
 
@@ -104,9 +131,9 @@ Table 1은 이 판정 결과다. Table 2의 `Premise-review CoT (2-step)`는 2�
 
 | 표의 방법 | 실제 과정 | 구분 |
 |---|---|---|
-| Premise-review CoT gate (Table 1) | 질문 → 전제 검토문 → 오류 있음/없음 | 탐지기 |
+| CoT gate (Table 1, 과거 구현) | 질문 → 전제 검토문 → 오류 있음/없음 | 탐지기 |
 | CoT gate (Table 2) | 위 gate 판정 → 저장된 Plain/무조건 교정 답변 중 선택 | 같은 gate를 사용한 답변 평가 |
-| Premise-review CoT (2-step) | 질문 → 전제 검토문 → 이를 참고해 새 답변 생성 | 이진 경로 선택 없는 답변 파이프라인 |
+| Premise-review CoT (2-step, 메인 표 제외) | 질문 → 전제 검토문 → 이를 참고해 새 답변 생성 | 이진 경로 선택 없는 답변 파이프라인 |
 | PreWoMe | 전제 목록 → 질문·목록을 보고 문제점과 대응 방침 → 새 답변 | 구조화 검토 파이프라인 |
 | Extract + Verify | 전제 목록 → 전제마다 true/false → 거짓 전제에 관한 피드백으로 새 답변 | 주장별 검증 파이프라인 |
 
