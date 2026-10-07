@@ -58,7 +58,6 @@ def render_landscape(root, name, spec, measurements):
             return
         label = f"{cell['value_pct']:.1f}"
         text(label, x - 1, y, center=True)
-        text(cell['cohort'], x + pdfmetrics.stringWidth(label, 'Paper', 9) / 2, y + 3, 5.5)
 
     def esc(s):
         for a, b in [('&', r'\&'), ('_', r'\_'), ('%', r'\%'), ('↑', r'$\uparrow$'),
@@ -70,7 +69,7 @@ def render_landscape(root, name, spec, measurements):
         return ' & '.join(cells) + r' \\'
 
     def texval(cell):
-        return (f"{cell['value_pct']:.1f}" + r'\textsuperscript{' + cell['cohort'] + '}') if cell else r'\textemdash'
+        return f"{cell['value_pct']:.1f}" if cell else r'\textemdash'
 
     text(spec['title'], left, height - 20, 12, True)
     top = height - 34
@@ -121,7 +120,7 @@ def render_landscape(root, name, spec, measurements):
                 parts = []
                 for col in group['columns']:
                     cell = find('model_independent', method['key'], col)
-                    val = f"{cell['value_pct']:.1f}% ({cell['cohort']})" if cell else '—'
+                    val = f"{cell['value_pct']:.1f}%" if cell else '—'
                     parts.append(col['label'] + ' ' + val)
                 descriptions.append(group['label'] + ': ' + ', '.join(parts))
             shared = 'Shared across models — ' + ';  '.join(descriptions)

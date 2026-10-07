@@ -134,8 +134,6 @@ def render(name, spec, data, measurements):
                 if cell:
                     value = f"{cell['value_pct']:.1f}"
                     text(value, xx-1, yy, 8, center=True)
-                    offset = pdfmetrics.stringWidth(value, 'Paper', 8)/2
-                    text(cell['cohort'], xx+offset, yy+3, 4.8)
                 else:
                     text('—', xx, yy, 8, center=True)
         row_offset += len(block)
@@ -181,7 +179,7 @@ def render(name, spec, data, measurements):
             vals=[]
             for col in columns:
                 cell=cell_for(model, method, col)
-                vals.append(f"{cell['value_pct']:.1f}" + r'\textsuperscript{' + cell['cohort'] + '}' if cell else r'\textemdash')
+                vals.append(f"{cell['value_pct']:.1f}" if cell else r'\textemdash')
             lines.append(tr([mcell,label]+vals))
     lines.extend([r'\bottomrule',r'\end{tabular}}',r'\caption{'+esc(spec['title'])+'. '+esc(' '.join(spec['notes']))+'}',rf'\label{{tab:{name}_plan}}',r'\end{table*}'])
     (ROOT/f'{name}.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8')

@@ -83,6 +83,9 @@ for key,path in [('luna_test','results/fpqa_prompting/well_upstream_test_v1_2026
 (O/'sources/runtime_provenance.json').write_text(json.dumps(runtimes,ensure_ascii=False,indent=2)+'\n')
 # Presentation notes and row layout are maintained in table_specs.json.
 (O/'table_specs.json').write_text(json.dumps(specs,ensure_ascii=False,indent=2)+'\n')
+excluded_controls=[c for c in cells if c['table']=='table2' and c['method'] in ('premise_review_cot','always_correct')]
+(O/'excluded_review_control_results.json').write_text(json.dumps({'note':'Historical two-step review and always-correct controls omitted from the agreed compact method roster. Values are preserved, not relabeled as the new CoT pipeline.','cells':excluded_controls},ensure_ascii=False,indent=2)+'\n')
+cells=[c for c in cells if c not in excluded_controls]
 result={'updated':'2026-10-07','metric_definition':'100 * numerator / valid denominator; display rounded to one decimal; no new inference','cohorts':cohorts,'sources':sources,'cells':cells}
 (O/'measured_results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
 print('populated',len(cells),'cells')

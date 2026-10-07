@@ -1,3 +1,5 @@
+> 2026-10-07: 표의 숫자 위첨자는 제거했다. 아래 H/L/R은 추적용 원장 코드이며, 표의 분할·judge 차이는 README와 표 아래에 표시한다. 아래 목록 중 `premise_review_cot`와 `always_correct`의 Table 2 항목 16개는 현재 `excluded_review_control_results.json`에 보존된 과거 대조 조건이다. 현재 주 표 측정값은 Table 1 20칸, Table 2 54칸, Table 3 0칸이다.
+
 # Paper tables 수치 원장 — 2026-10-07
 
 **새 실험 없이 저장된 결과 90칸을 표에 표시했다. 학습 비교용 6칸은 `excluded_training_results.json`에 보존하고 표에서는 제외했다. 개인 상황 보존 변형 2칸도 `excluded_scope_results.json`에 보존하고 메인 표에서 제외했다. 중복 Direct gate 실행 2칸은 `excluded_duplicate_gate_results.json`에 보존했다.** 아래 분자/분모로 비율을 재계산하며, 표에는 소수 첫째 자리까지 표시한다. 탐지는 양성 판정 수, 답변은 Well 4·5점 답변 수다. 점수 보존과 gate 오탐은 다른 지표다.

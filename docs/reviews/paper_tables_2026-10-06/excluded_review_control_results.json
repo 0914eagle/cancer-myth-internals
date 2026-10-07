@@ -1,0 +1,321 @@
+{
+  "note": "Historical two-step review and always-correct controls omitted from the agreed compact method roster. Values are preserved, not relabeled as the new CoT pipeline.",
+  "cells": [
+    {
+      "table": "table2",
+      "model_id": "google/gemma-4-12B-it",
+      "method": "premise_review_cot",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 240,
+      "denominator": 583,
+      "value_pct": 41.1663807890223,
+      "cohort": "H",
+      "source": "gemma",
+      "pointer": [
+        "answers",
+        "premise_review_answer",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "google/gemma-4-12B-it",
+      "method": "premise_review_cot",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 117,
+      "denominator": 149,
+      "value_pct": 78.52348993288591,
+      "cohort": "H",
+      "source": "gemma",
+      "pointer": [
+        "answers",
+        "premise_review_answer",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "google/gemma-4-12B-it",
+      "method": "always_correct",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 420,
+      "denominator": 583,
+      "value_pct": 72.04116638078902,
+      "cohort": "H",
+      "source": "gemma",
+      "pointer": [
+        "answers",
+        "fp_unconditional",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "google/gemma-4-12B-it",
+      "method": "always_correct",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 3,
+      "denominator": 149,
+      "value_pct": 2.0134228187919465,
+      "cohort": "H",
+      "source": "gemma",
+      "pointer": [
+        "answers",
+        "fp_unconditional",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen3.8-27B-FP8:off",
+      "method": "premise_review_cot",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 358,
+      "denominator": 583,
+      "value_pct": 61.40651801029159,
+      "cohort": "H",
+      "source": "qwen38_off",
+      "pointer": [
+        "answers",
+        "premise_review_answer",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen3.8-27B-FP8:off",
+      "method": "premise_review_cot",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 82,
+      "denominator": 149,
+      "value_pct": 55.033557046979865,
+      "cohort": "H",
+      "source": "qwen38_off",
+      "pointer": [
+        "answers",
+        "premise_review_answer",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen3.8-27B-FP8:off",
+      "method": "always_correct",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 414,
+      "denominator": 583,
+      "value_pct": 71.01200686106347,
+      "cohort": "H",
+      "source": "qwen38_off",
+      "pointer": [
+        "answers",
+        "fp_unconditional",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen3.8-27B-FP8:off",
+      "method": "always_correct",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 43,
+      "denominator": 149,
+      "value_pct": 28.859060402684563,
+      "cohort": "H",
+      "source": "qwen38_off",
+      "pointer": [
+        "answers",
+        "fp_unconditional",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen3.8-27B-FP8:on",
+      "method": "premise_review_cot",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 389,
+      "denominator": 583,
+      "value_pct": 66.72384219554031,
+      "cohort": "H",
+      "source": "qwen38_on",
+      "pointer": [
+        "answers",
+        "premise_review_answer",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen3.8-27B-FP8:on",
+      "method": "premise_review_cot",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 85,
+      "denominator": 149,
+      "value_pct": 57.04697986577181,
+      "cohort": "H",
+      "source": "qwen38_on",
+      "pointer": [
+        "answers",
+        "premise_review_answer",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen3.8-27B-FP8:on",
+      "method": "always_correct",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 486,
+      "denominator": 583,
+      "value_pct": 83.36192109777015,
+      "cohort": "H",
+      "source": "qwen38_on",
+      "pointer": [
+        "answers",
+        "fp_unconditional",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen3.8-27B-FP8:on",
+      "method": "always_correct",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 8,
+      "denominator": 149,
+      "value_pct": 5.369127516778524,
+      "cohort": "H",
+      "source": "qwen38_on",
+      "pointer": [
+        "answers",
+        "fp_unconditional",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "premise_review_cot",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 61,
+      "denominator": 583,
+      "value_pct": 10.4631217838765,
+      "cohort": "H",
+      "source": "qwen_answers",
+      "pointer": [
+        "qwen/premise_review",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 0,
+      "note": "Original valid-score denominator; absent score is not silently counted as failure."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "premise_review_cot",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 141,
+      "denominator": 149,
+      "value_pct": 94.63087248322148,
+      "cohort": "H",
+      "source": "qwen_answers",
+      "pointer": [
+        "qwen/premise_review",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Original valid-score denominator; absent score is not silently counted as failure."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "always_correct",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 332,
+      "denominator": 583,
+      "value_pct": 56.946826758147516,
+      "cohort": "H",
+      "source": "qwen_answers",
+      "pointer": [
+        "qwen/fp_unconditional",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 0,
+      "note": "Original valid-score denominator; absent score is not silently counted as failure."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "always_correct",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 32,
+      "denominator": 149,
+      "value_pct": 21.476510067114095,
+      "cohort": "H",
+      "source": "qwen_answers",
+      "pointer": [
+        "qwen/fp_unconditional",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Original valid-score denominator; absent score is not silently counted as failure."
+    }
+  ]
+}

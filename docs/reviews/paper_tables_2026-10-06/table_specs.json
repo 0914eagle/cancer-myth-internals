@@ -187,18 +187,8 @@
     ],
     "methods": [
       {
-        "key": "text_gate_response",
-        "label": "TF-IDF text gate",
-        "proposed": false
-      },
-      {
         "key": "plain",
         "label": "Plain",
-        "proposed": false
-      },
-      {
-        "key": "cot",
-        "label": "CoT",
         "proposed": false
       },
       {
@@ -207,13 +197,8 @@
         "proposed": false
       },
       {
-        "key": "premise_review_cot",
-        "label": "Premise-review CoT (2-step)",
-        "proposed": false
-      },
-      {
-        "key": "always_correct",
-        "label": "Always correct",
+        "key": "cot",
+        "label": "CoT",
         "proposed": false
       },
       {
@@ -227,18 +212,23 @@
         "proposed": false
       },
       {
+        "key": "text_gate_response",
+        "label": "TF-IDF text gate",
+        "proposed": false
+      },
+      {
         "key": "direct_gate_response",
-        "label": "Direct-gated response",
+        "label": "Direct gate",
         "proposed": false
       },
       {
         "key": "cot_gate_response",
-        "label": "Premise-review gated response",
+        "label": "CoT gate",
         "proposed": false
       },
       {
         "key": "hidden_gate_response",
-        "label": "Probe-gated response",
+        "label": "Probe gate",
         "proposed": false,
         "models": [
           "Qwen/Qwen2.5-7B-Instruct",
@@ -248,9 +238,19 @@
         ]
       },
       {
+        "key": "gepa_gate",
+        "proposed": false,
+        "label": "GEPA-gate"
+      },
+      {
         "key": "gepa",
         "label": "GEPA",
         "proposed": false
+      },
+      {
+        "key": "gepa_both",
+        "proposed": false,
+        "label": "GEPA (both stages)"
       },
       {
         "key": "ours",
@@ -259,12 +259,12 @@
       }
     ],
     "notes": [
-      "Stored results; —: not measured/comparable; n/a: outside the defined implementation. Percentages, one run.",
-      "H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger.",
-      "FPQ / NFP / TPQ: Well ≥ 4 (%). Medical and general QA preservation is reported in Table 3.",
-      "L: Luna matched 99 FPQ / 100 NFP, exposed test; R: CREPE 751 FPQ / 2253 TPQ.",
-      "Gate rows route saved Plain/correction answers; not exact Two Axes reproduction.",
-      "Ours is not fixed to SAE. Source counts and comparison limits: result_sources.md."
+      "Stored measurements, not completed common-fold results. Planned evaluation pools held-out predictions from common grouped folds.",
+      "Cancer-Myth: public-model entries use the historical full corpus (up to 583 FPQ / 149 NFP); Luna entries use 99 FPQ / 100 NFP.",
+      "CREPE: Luna uses 751 FPQ / 2,253 TPQ. Public-model and Luna runs use different judges; see README and result_sources.md.",
+      "Direct / CoT gate values use historical label-only routing. They do not measure the newly proposed token-score / review-passing protocol.",
+      "GEPA values are stored direct-answer test results, not fold reruns. GEPA-gate, both-stage GEPA and Ours remain unmeasured here.",
+      "All values are score >= 4 (%), from single runs. Dash = no compatible measurement; n/a = native hidden probe unavailable."
     ]
   },
   "table3": {
@@ -325,18 +325,8 @@
     ],
     "methods": [
       {
-        "key": "text_gate_response",
-        "label": "TF-IDF text gate",
-        "proposed": false
-      },
-      {
         "key": "plain",
         "label": "Plain",
-        "proposed": false
-      },
-      {
-        "key": "cot",
-        "label": "CoT",
         "proposed": false
       },
       {
@@ -345,13 +335,8 @@
         "proposed": false
       },
       {
-        "key": "premise_review_cot",
-        "label": "Premise-review CoT (2-step)",
-        "proposed": false
-      },
-      {
-        "key": "always_correct",
-        "label": "Always correct",
+        "key": "cot",
+        "label": "CoT",
         "proposed": false
       },
       {
@@ -365,18 +350,23 @@
         "proposed": false
       },
       {
+        "key": "text_gate_response",
+        "label": "TF-IDF text gate",
+        "proposed": false
+      },
+      {
         "key": "direct_gate_response",
-        "label": "Direct-gated response",
+        "label": "Direct gate",
         "proposed": false
       },
       {
         "key": "cot_gate_response",
-        "label": "Premise-review gated response",
+        "label": "CoT gate",
         "proposed": false
       },
       {
         "key": "hidden_gate_response",
-        "label": "Probe-gated response",
+        "label": "Probe gate",
         "proposed": false,
         "models": [
           "Qwen/Qwen2.5-7B-Instruct",
@@ -386,9 +376,19 @@
         ]
       },
       {
+        "key": "gepa_gate",
+        "proposed": false,
+        "label": "GEPA-gate"
+      },
+      {
         "key": "gepa",
         "label": "GEPA",
         "proposed": false
+      },
+      {
+        "key": "gepa_both",
+        "proposed": false,
+        "label": "GEPA (both stages)"
       },
       {
         "key": "ours",
@@ -397,12 +397,10 @@
       }
     ],
     "notes": [
-      "All entries are unmeasured; — means no completed comparable result, not zero. n/a: native probe unavailable.",
-      "Acc.: accuracy (%); GSM8K EM: final-answer exact match (%). Datasets are reported separately.",
-      "Evaluate the frozen response methods from Table 2; do not retune them on these QA test sets.",
-      "Use identical question IDs and scoring rules across methods within each dataset and model.",
-      "Report performance relative to the same-model Plain baseline; Ours implementation remains unspecified.",
-      "Gate vocabulary, classifier, and threshold are frozen from the declared FPQA training source; no QA-test fitting."
+      "No compatible completed QA measurements are available; all result cells remain blank.",
+      "Freeze the Table 2 response methods, prompts and gates before evaluation. Acc. = accuracy; EM = final-answer exact match.",
+      "GEPA-gate optimizes detection; GEPA optimizes direct answering; GEPA (both stages) optimizes detection and downstream answering.",
+      "Use identical questions and scoring rules within each model/dataset. Dash = unmeasured; n/a = native hidden probe unavailable."
     ]
   }
 }

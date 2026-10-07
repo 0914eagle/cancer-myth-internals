@@ -1,6 +1,22 @@
 # 논문 비교표 — Detection / Response / QA Preservation
 
-2026-10-07 갱신. **평가 과제에 따라 Table 1(탐지), Table 2(교정·정상 질문 보존), Table 3(일반 QA 보존)으로 나눴다.** 학습 비교용 SFT·DPO·`Plain (LoRA cohort)`를 제외하고 개인 상황 보존 변형과 중복되는 과거 Direct gate 실행도 메인 표에서 제외해 저장 결과 90칸을 표시했다(Table 1: 20칸, Table 2: 70칸, Table 3: 미측정). 일반 `Plain`은 유지했다. 학습 비교 6칸은 `excluded_training_results.json`, 개인 상황 보존 변형 2칸은 `excluded_scope_results.json`과 출처 스냅샷에 보존했다. 중복 Direct gate 실행 2칸은 `excluded_duplicate_gate_results.json`에 보존했다. 새 생성·채점·학습은 하지 않았다.
+## 현재 표와 fold 평가 계획 (2026-10-07)
+
+Table 2·3은 합의한 방법 순서로 갱신했다: Plain, Balanced instruction, CoT, PreWoMe, Extract + Verify, TF-IDF text gate, Direct gate, CoT gate, Probe gate, GEPA-gate, GEPA, GEPA (both stages), Ours. TF-IDF text gate는 Extract + Verify 바로 아래에 놓았다. Gate 이름의 `response`를 제거했으며 Table 2·3에서는 모두 최종 답변 방법을 뜻한다. Table 1의 판정 성능과 구분한다.
+
+**숫자 오른쪽 위의 출처 위첨자는 제거했다. 분모·평가 집단·judge·원본 위치는 result_sources.md와 measured_results.json/CSV에 그대로 보존한다.** 현재 Table 2는 재사용 가능한 과거 측정 54칸을 채운 진행표이며, 아직 공통 fold로 평가를 완료한 표가 아니다. Table 3은 호환되는 완료 결과가 없어 공란이다. 새 수치를 생성하거나 재채점하지 않았다.
+
+- 공개 모델 Cancer-Myth는 전체 자료 대상의 과거 집계(최대 FPQ 583 / NFP 149), Luna Cancer-Myth는 공통 FPQ 99 / NFP 100, Luna CREPE는 FPQ 751 / TPQ 2,253이다. 공개 모델과 Luna의 judge도 다르다. 분할과 judge 차이는 위첨자 대신 표 아래에 표시했다.
+- **현재 Direct gate·CoT gate 값은 과거 이진 판정에 따라 Plain/무조건 교정 답변을 선택한 결과다.** Two Axes식 점수로 새로 측정한 Direct와 검토문까지 답변에 전달하는 새 CoT 결과가 아니다. 새 방식 결과가 확보되면 교체한다. 이름만 바꿔 동일한 실험이라고 주장하지 않는다.
+- `GEPA`는 저장된 직접 답변 최적화 결과다. `GEPA-gate`(탐지 지시만 최적화), `GEPA (both stages)`(탐지·후속 답변 지시 최적화)는 아직 수치를 넣지 않았다. 과거 100/100 계열 GEPA를 fold GEPA로 재분류하지 않는다.
+- Balanced instruction의 호환되는 현재 모델·평가 조건 수치는 원장에 없어 공란이다. GPT-5.6-Luna 과거 값을 GPT-6-Luna 칸에 옮기지 않았다. Balanced는 FP Identification의 재현으로 표시하지 않는다.
+- 과거 `Premise-review CoT (2-step)`와 `Always correct`의 16칸은 현재 축약한 방법 목록에서 제외하고 `excluded_review_control_results.json`에 보존했다. 기존 주석·원장 링크는 과거 방법의 설명으로 남긴다.
+
+**Table 2의 최종 평가 계획은 공통 grouped K-fold의 out-of-fold 예측 합산이다(K 미정).** 고정 방법의 답변과 채점은 규약에 맞으면 재사용한다. TF-IDF·Probe의 학습·설정·임계값 선택, GEPA 및 Ours의 학습형 특징 발견·선택·최적화는 각 평가 fold를 제외한 자료에서 수행한다. 각 문항의 held-out 성공 여부를 한 번씩 합산한다. few-shot 예시와 겹친 문항은 공통 평가 대상에서 제외한다. 이미 자료를 보고 방법을 설계한 이력은 fold 분할로 없어지지 않으므로 탐색 평가로 밝힌다.
+
+Table 3은 Table 2에서 학습한 방법을 동결해 일반·의료 QA에 적용한다. 여러 fold checkpoint 중 어느 것을 평가하거나 평균할지는 사전에 정하고 QA test로 고르지 않는다.
+
+2026-10-07 갱신. **평가 과제에 따라 Table 1(탐지), Table 2(교정·정상 질문 보존), Table 3(일반 QA 보존)으로 나눴다.** 학습 비교용 SFT·DPO·`Plain (LoRA cohort)`를 제외하고 개인 상황 보존 변형과 중복되는 과거 Direct gate 실행도 메인 표에서 제외해 저장 결과 74칸을 표시했다(Table 1: 20칸, Table 2: 54칸, Table 3: 미측정). 일반 `Plain`은 유지했다. 추가로 2-step 검토·무조건 교정 대조 16칸은 `excluded_review_control_results.json`에 보존했다. 학습 비교 6칸은 `excluded_training_results.json`, 개인 상황 보존 변형 2칸은 `excluded_scope_results.json`과 출처 스냅샷에 보존했다. 중복 Direct gate 실행 2칸은 `excluded_duplicate_gate_results.json`에 보존했다. 새 생성·채점·학습은 하지 않았다.
 
 - [Table 1 PDF](table1.pdf) · [PNG](table1.png) · [LaTeX](table1.tex) · [CSV](table1.csv): 거짓 전제 탐지.
 - [Table 2 PDF](table2.pdf) · [PNG](table2.png) · [LaTeX](table2.tex) · [CSV](table2.csv): Cancer-Myth·CREPE 답변의 FPQ 교정·NFP/TPQ 보존.
@@ -23,13 +39,13 @@ Ours의 구체 구현은 미정이다. [GEPA·SAE 상세 계획](../gepa_sae_det
 
 ## 기존 비교 방법과 배치
 
-세 표 모두 TF-IDF를 첫 번째 방법 행에 둔다. 질문을 바로 주고 거짓 전제 유무만 묻는 판정은 `Direct gate`, 그 판정으로 답변 경로를 선택한 결과는 `Direct-gated response`로 표기한다. `Plain`은 별도 교정 지시 없이 답변하는 조건이므로 `Plain gate`라는 이름은 쓰지 않는다.
+Table 1은 TF-IDF를 첫 번째 행에, Table 2·3은 Extract + Verify 다음 행에 둔다. 질문을 바로 주고 거짓 전제 유무만 묻는 판정은 `Direct gate`, 그 판정으로 답변 경로를 선택한 결과는 `Direct gate`로 표기한다. `Plain`은 별도 교정 지시 없이 답변하는 조건이므로 `Plain gate`라는 이름은 쓰지 않는다.
 
 | 방법군 | Table 1: Detection | Table 2: Response | 역할 |
 |---|---|---|---|
-| 직접 판정 | Direct gate | Direct-gated response | 명시적인 LLM 판단으로 답변 경로 선택 |
-| 전제 검토 | Premise-review CoT gate | Premise-review CoT (2-step), Premise-review gated response | 검토 후 판단하거나 답변 |
-| 내부 분류기 | **Probe gate (hidden states)** | **Probe-gated response** | 내부 표현을 학습한 분류기로 선택적 교정 |
+| 직접 판정 | Direct gate | Direct gate | 명시적인 LLM 판단으로 답변 경로 선택 |
+| 전제 검토 | Premise-review CoT gate | Premise-review CoT (2-step), CoT gate | 검토 후 판단하거나 답변 |
+| 내부 분류기 | **Probe gate (hidden states)** | **Probe gate** | 내부 표현을 학습한 분류기로 선택적 교정 |
 | 텍스트 분류기 | TF-IDF text (모델 독립 공통 행) | TF-IDF text gate | 내부 접근 없이 질문 텍스트로 판정 |
 | 구조화 파이프라인 | 별도 성능 대입 없음 | PreWoMe, Extract + Verify | 전제 추출·검토·답변 |
 | 프롬프트 최적화 | GEPA | GEPA | 최적화한 지시의 성능 |
@@ -80,7 +96,7 @@ PreWoMe는 동일한 추출 목록을 받지만 질문·목록 전체를 보고 
 1. 원 질문에서 사실적 전제를 검토하는 글을 생성한다. 잘못된 전제와 교정 정보를 찾고 타당한 전제에서는 오류를 만들지 않도록 지시한다.
 2. **질문 + 검토문**으로 오류 있음/없음을 판정한다. Qwen2.5는 Yes/No 토큰 점수 비교, Gemma/Qwen3.8은 생성 JSON이라 판정 출력 절차는 다르다.
 
-Table 1은 이 판정 결과다. Table 2의 `Premise-review CoT (2-step)`는 2단계에서 판정 대신 실제 답변을 생성한다. `Premise-review gated response`는 gate 판정으로 저장된 Plain/무조건 교정 답변을 선택한다. 2-step gate가 최종 답변 생성까지 두 번 호출했다는 뜻은 아니다. **비-gate 조건에서는 검토문의 내용이 최종 답변 입력으로 들어가지만, 현재 gate 조건에서는 검토문이 판정에만 쓰이고 최종 선택에는 이진 판정만 사용된다.** 따라서 둘은 중간 검토를 공유해도 최종 답변을 만드는 방식이 다르다.
+Table 1은 이 판정 결과다. Table 2의 `Premise-review CoT (2-step)`는 2단계에서 판정 대신 실제 답변을 생성한다. `CoT gate`는 gate 판정으로 저장된 Plain/무조건 교정 답변을 선택한다. 2-step gate가 최종 답변 생성까지 두 번 호출했다는 뜻은 아니다. **비-gate 조건에서는 검토문의 내용이 최종 답변 입력으로 들어가지만, 현재 gate 조건에서는 검토문이 판정에만 쓰이고 최종 선택에는 이진 판정만 사용된다.** 따라서 둘은 중간 검토를 공유해도 최종 답변을 만드는 방식이 다르다.
 
 ## Gate와 추출·검토 파이프라인의 구분
 
@@ -89,7 +105,7 @@ Table 1은 이 판정 결과다. Table 2의 `Premise-review CoT (2-step)`는 2�
 | 표의 방법 | 실제 과정 | 구분 |
 |---|---|---|
 | Premise-review CoT gate (Table 1) | 질문 → 전제 검토문 → 오류 있음/없음 | 탐지기 |
-| Premise-review gated response (Table 2) | 위 gate 판정 → 저장된 Plain/무조건 교정 답변 중 선택 | 같은 gate를 사용한 답변 평가 |
+| CoT gate (Table 2) | 위 gate 판정 → 저장된 Plain/무조건 교정 답변 중 선택 | 같은 gate를 사용한 답변 평가 |
 | Premise-review CoT (2-step) | 질문 → 전제 검토문 → 이를 참고해 새 답변 생성 | 이진 경로 선택 없는 답변 파이프라인 |
 | PreWoMe | 전제 목록 → 질문·목록을 보고 문제점과 대응 방침 → 새 답변 | 구조화 검토 파이프라인 |
 | Extract + Verify | 전제 목록 → 전제마다 true/false → 거짓 전제에 관한 피드백으로 새 답변 | 주장별 검증 파이프라인 |
@@ -98,7 +114,7 @@ PreWoMe과 Extract + Verify의 현재 Luna 값은 Well 공개 템플릿·few-sho
 
 메인 표에서 제외한 `Extract+Verify (scope)`는 이전 자체 구현이다. 추출할 때 주체·조건·불확실성·개인 상황을 보존하라는 지시를 넣고, 빈 목록을 허용하며, 검증에 원 질문도 함께 준다. 현재 Well 버전과는 few-shot·출력 파서 등도 달라 **scope 문구 하나의 효과를 분리한 ablation이 아니다.** 독립적인 기존 논문 방법명도 아니다.
 
-메인 표에서 제외한 `Self-gated FP identification`은 모델이 질문의 거짓 전제 유무를 먼저 판정하고, Yes이면 무조건 교정 지시로, No이면 Plain으로 답을 생성한 과거 실행이다. **설계상 Direct gate 계열이며 별개의 핵심 방법이 아니다.** 현재 Direct-gated response는 저장된 판정과 두 답변을 사후 결합한 결과다. 이전 생성 실행과 현재 routing 집계는 원장과 실행 조건이 다르므로 두 값을 합치지 않았다. 예를 들어 자체 생성 코드의 임계값은 `>= 0.5`이고 기존 Qwen Direct 판정 원장은 동점 음성 규칙이다. 실제 점수 차이의 원인을 이 차이 하나로 단정하지 않는다. `legacy`는 과거 실행임을 표시하기 위해 우리가 붙였던 이름으로, 원 논문의 공식 방법명이 아니다. 메인 표에서는 해당 중복 행을 제거하고 Direct-gated response를 남겼다. 통일된 본 실험에서는 하나의 Direct gate 조건으로 평가한다.
+메인 표에서 제외한 `Self-gated FP identification`은 모델이 질문의 거짓 전제 유무를 먼저 판정하고, Yes이면 무조건 교정 지시로, No이면 Plain으로 답을 생성한 과거 실행이다. **설계상 Direct gate 계열이며 별개의 핵심 방법이 아니다.** 현재 Direct gate는 저장된 판정과 두 답변을 사후 결합한 결과다. 이전 생성 실행과 현재 routing 집계는 원장과 실행 조건이 다르므로 두 값을 합치지 않았다. 예를 들어 자체 생성 코드의 임계값은 `>= 0.5`이고 기존 Qwen Direct 판정 원장은 동점 음성 규칙이다. 실제 점수 차이의 원인을 이 차이 하나로 단정하지 않는다. `legacy`는 과거 실행임을 표시하기 위해 우리가 붙였던 이름으로, 원 논문의 공식 방법명이 아니다. 메인 표에서는 해당 중복 행을 제거하고 Direct gate를 남겼다. 통일된 본 실험에서는 하나의 Direct gate 조건으로 평가한다.
 
 측정이 없는 방법·모델 조합은 `—`다. `n/a`는 현재 정의한 native hidden-state probe를 쓸 수 없는 Luna 조합에만 남겼다.
 
@@ -144,7 +160,7 @@ Plain을 전체 문항에 실행하는 것은 가능하다. 하지만 **GEPA와 
 
 ## 데이터·모델·측정 범위
 
-| 위첨자 | 평가 자료 | 주의점 |
+| 원장 내부 코드(표에는 표시하지 않음) | 평가 자료 | 주의점 |
 |---|---|---|
 | H | Cancer-Myth 전체 583 FPQ / 149 NFP 대상 | 일부 Qwen 행은 유효 점수 분모가 작음. 모델별 지시·실행 조건 차이 있음 |
 | L | GPT-6 Luna Cancer-Myth 99 FPQ / 100 NFP | few-shot 중복 fpq_291을 네 방법 모두에서 제외. 이미 분석에 노출된 문항 |
@@ -153,7 +169,7 @@ Plain을 전체 문항에 실행하는 것은 가능하다. 하지만 **GEPA와 
 - 수치 단위는 %다. 탐지는 TPR↑/FPR↓, 답변은 FPQ/NFP/TPQ 각각 Well≥4↑다. 답변 보존과 gate 오탐은 같은 지표가 아니다.
 - 모든 값은 과거 한 번 실행한 결과이며 반복 평균이 아니다. 모델 간 평가 문항·judge·지시 차이가 있으므로 통일 조건의 backbone 순위로 읽지 않는다. 유효 점수 분모와 누락 수를 원장에 보존했다.
 - Luna Cancer-Myth Plain 54.5/91.0, GEPA 78.8/72.0은 공통 199문항 기준이다. 예전 100/100 결과 55.0/91.0, 79.0/72.0과 차이는 한 문항 제외 때문이다.
-- 이전 첨부 표의 공개 모델 4조건 및 TF-IDF **76칸은 모두 유지**했다. GPT-5.6-Luna 값을 GPT-6 칸에 넣지 않았고 Claude는 제외 요청을 유지한다. 이전 값은 [45번 표](../../45_complete_performance_tables_2026-10-01.md)에 있다.
+- 이전 첨부 표의 공개 모델 4조건 및 TF-IDF **76칸은 현재 표와 제외 원장에 모두 보존**했다. GPT-5.6-Luna 값을 GPT-6 칸에 넣지 않았고 Claude는 제외 요청을 유지한다. 이전 값은 [45번 표](../../45_complete_performance_tables_2026-10-01.md)에 있다.
 - `Extract+Verify (scope)`의 과거 5.7/99.3은 별도 수동 지시 실험 기록으로 보존했다. Well 공식 Extract+Verify나 GEPA 수치로 합치지 않는다.
 - `—`는 호환되는 측정 결과가 없는 칸이다. `n/a`는 현재 정의한 구현 범위 밖의 조합(예: Luna의 native hidden probe)이다. 새 독립 평가나 비교의 완료를 뜻하지 않는다.
 
