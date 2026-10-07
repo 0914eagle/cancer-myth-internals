@@ -313,7 +313,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "cot",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -333,7 +333,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "cot",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -353,7 +353,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "always_correct",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -373,7 +373,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "always_correct",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -393,7 +393,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "direct_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -413,7 +413,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "direct_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -433,7 +433,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "cot_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -453,7 +453,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "cot_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -633,7 +633,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "cot",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -653,7 +653,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "cot",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -673,7 +673,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "always_correct",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -693,7 +693,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "always_correct",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -713,7 +713,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "direct_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -733,7 +733,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "direct_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -753,7 +753,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "cot_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -773,7 +773,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "cot_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -953,7 +953,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "cot",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -973,7 +973,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "cot",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -993,7 +993,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "always_correct",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1013,7 +1013,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "always_correct",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1033,7 +1033,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "direct_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1053,7 +1053,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "direct_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1073,7 +1073,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "cot_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1093,7 +1093,7 @@
       "note": "Stored Sonnet Well scoring. Routed rows select saved Plain / unconditional-correction answers; no new generation."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "cot_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1189,7 +1189,7 @@
       "note": "Original valid-score denominator; absent score is not silently counted as failure."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "cot",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1208,7 +1208,7 @@
       "note": "Original valid-score denominator; absent score is not silently counted as failure."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "cot",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1227,7 +1227,7 @@
       "note": "Original valid-score denominator; absent score is not silently counted as failure."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "always_correct",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1246,7 +1246,7 @@
       "note": "Original valid-score denominator; absent score is not silently counted as failure."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "always_correct",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1265,7 +1265,7 @@
       "note": "Original valid-score denominator; absent score is not silently counted as failure."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "text_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1285,7 +1285,7 @@
       "note": "Default crossfit text classifier selects stored answers."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "text_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1305,7 +1305,7 @@
       "note": "Default crossfit text classifier selects stored answers."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "text_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1325,7 +1325,7 @@
       "note": "Default crossfit text classifier selects stored answers."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "google/gemma-4-12B-it",
       "method": "text_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1345,7 +1345,7 @@
       "note": "Default crossfit text classifier selects stored answers."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "text_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1365,7 +1365,7 @@
       "note": "Default crossfit text classifier selects stored answers."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:off",
       "method": "text_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1385,7 +1385,7 @@
       "note": "Default crossfit text classifier selects stored answers."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "text_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1405,7 +1405,7 @@
       "note": "Default crossfit text classifier selects stored answers."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen3.8-27B-FP8:on",
       "method": "text_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1425,7 +1425,7 @@
       "note": "Default crossfit text classifier selects stored answers."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "direct_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1445,7 +1445,7 @@
       "note": ""
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "direct_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1465,7 +1465,7 @@
       "note": ""
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "cot_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1485,7 +1485,7 @@
       "note": ""
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "cot_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1505,7 +1505,7 @@
       "note": ""
     },
     {
-      "table": "table_s3",
+      "table": "table1",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "hidden_probe",
       "metric": "cancer_fpq_tpr_pct",
@@ -1523,7 +1523,7 @@
       "note": "Default crossfit classifier decision, not a threshold selected to match FPR."
     },
     {
-      "table": "table_s3",
+      "table": "table1",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "hidden_probe",
       "metric": "cancer_nfp_fpr_pct",
@@ -1541,7 +1541,7 @@
       "note": "Default crossfit classifier decision, not a threshold selected to match FPR."
     },
     {
-      "table": "table_s3",
+      "table": "table1",
       "model_id": "model_independent",
       "method": "tfidf",
       "metric": "cancer_fpq_tpr_pct",
@@ -1559,7 +1559,7 @@
       "note": "Default crossfit classifier decision, not a threshold selected to match FPR."
     },
     {
-      "table": "table_s3",
+      "table": "table1",
       "model_id": "model_independent",
       "method": "tfidf",
       "metric": "cancer_nfp_fpr_pct",
@@ -1833,7 +1833,7 @@
       "note": "Full CREPE test; unrounded counts, not optimization/dev score."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "extract_verify_scope",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1852,7 +1852,7 @@
       "note": "Legacy scope-preserving extraction + question-aware verification. NOT the Well atomic baseline in Table 2."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "extract_verify_scope",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1871,7 +1871,7 @@
       "note": "Legacy scope-preserving extraction + question-aware verification. NOT the Well atomic baseline in Table 2."
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "fp_identification",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1890,7 +1890,7 @@
       "note": ""
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "fp_identification",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1909,7 +1909,7 @@
       "note": ""
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "hidden_gate_response",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1929,7 +1929,7 @@
       "note": ""
     },
     {
-      "table": "table_s2",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "hidden_gate_response",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1949,7 +1949,7 @@
       "note": ""
     },
     {
-      "table": "table_s1",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "legacy_sft_twins",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -1968,7 +1968,7 @@
       "note": "121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains."
     },
     {
-      "table": "table_s1",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "legacy_sft_twins",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -1987,7 +1987,7 @@
       "note": "121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains."
     },
     {
-      "table": "table_s1",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "legacy_dpo_twins",
       "metric": "cancer_fpq_well_ge4_pct",
@@ -2006,7 +2006,7 @@
       "note": "121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains."
     },
     {
-      "table": "table_s1",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
       "method": "legacy_dpo_twins",
       "metric": "cancer_nfp_well_ge4_pct",
@@ -2025,9 +2025,9 @@
       "note": "121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains."
     },
     {
-      "table": "table_s1",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
-      "method": "plain",
+      "method": "plain_lora_cohort",
       "metric": "cancer_fpq_well_ge4_pct",
       "numerator": 4,
       "denominator": 234,
@@ -2044,9 +2044,9 @@
       "note": "Recomputed on the exact legacy LoRA cohort; 234 FPQ +149 natural NFP."
     },
     {
-      "table": "table_s1",
+      "table": "table2",
       "model_id": "Qwen/Qwen2.5-7B-Instruct",
-      "method": "plain",
+      "method": "plain_lora_cohort",
       "metric": "cancer_nfp_well_ge4_pct",
       "numerator": 149,
       "denominator": 149,

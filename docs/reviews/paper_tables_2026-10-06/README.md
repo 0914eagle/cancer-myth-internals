@@ -1,109 +1,75 @@
-# 논문용 Table 1 · Table 2 — 2026-10-06
+# 논문 비교표 — Detection / Response
 
-**2026-10-07: 저장된 실험 결과 100칸을 반영했다.** Table 1은 16칸, Table 2는 28칸, S1/S2/S3는 각각 6/46/4칸이다. 새 생성·채점·학습 호출은 하지 않았다. `—`는 결과가 없거나 현재 모델·방법에 그대로 넣을 수 없는 조합이다.
+2026-10-07 갱신. **본표·보조표를 나누지 않고 Table 1과 Table 2에 기존 방법을 모두 모았다.** 저장 결과 100칸은 그대로 유지했다(Table 1: 20칸, Table 2: 80칸). 새 생성·채점·학습은 하지 않았다.
 
-각 수치의 위첨자 **H/L/R/T는 평가 집단**이다. 기존 공개 모델의 전체 문항 결과와 Luna의 시험 부분집합·다른 채점자를 구분한다. 이 표는 **현재 확보한 결과와 남은 실험을 보여주는 논문 형식의 현황표**이며, 모든 모델을 통일된 조건으로 다시 평가한 최종 비교표는 아니다. [분모·출처·미반영 사유](result_sources.md), [기계 판독 원장](measured_results.json)에 기록했다.
+- [Table 1 PDF](table1.pdf) · [PNG](table1.png) · [LaTeX](table1.tex) · [CSV](table1.csv): 거짓 전제 탐지.
+- [Table 2 PDF](table2.pdf) · [PNG](table2.png) · [LaTeX](table2.tex) · [CSV](table2.csv): 답변의 FPQ 교정·NFP 보존과 의료/일반 QA.
+- [분모·출처·미반영 사유](result_sources.md) · [수치 원장](measured_results.json).
 
-| 위첨자 | 사용한 평가 자료 | 해석 |
-|---|---|---|
-| H | Cancer-Myth 전체 583 FPQ / 149 NFP 대상, 일부 Qwen 행은 유효 점수 분모가 작음 | 기존 자동 Well 채점과 기본 gate 판정. 모델별 지시·실행 조건 차이 있음 |
-| L | GPT-6 Luna Cancer-Myth 공통 99 FPQ / 100 NFP | few-shot 중복 `fpq_291`을 Plain·GEPA·PreWoMe·Extract+Verify 모두에서 제외. 이미 분석에 노출됨 |
-| R | GPT-6 Luna CREPE 751 FPQ / 2,253 TPQ | 저장된 전체 test 평가, dev 최적화 점수가 아님 |
-| T | Qwen LoRA 비교의 234 FPQ / 자연 NFP 149 | 합성 쌍둥이는 학습 자료이며 NFP 평가에 섞지 않음. Plain도 같은 평가 ID로 재집계 |
-
-Luna Cancer-Myth의 Plain **54.5/91.0**, GEPA **78.8/72.0**은 공통 199문항 기준이다. 기존 100/100 표의 **55.0/91.0, 79.0/72.0**과 차이는 재실행 때문이 아니라 한 문항 제외 때문이다.
-
-## 바로 볼 표
-
-- [Table 1 PDF](table1.pdf) · [LaTeX](table1.tex) · [CSV](table1.csv): Detection.
-- [Table 2 PDF](table2.pdf) · [LaTeX](table2.tex) · [CSV](table2.csv): Response + 의료/일반 QA. **a/b/c로 나누지 않은 단일 표**다.
-- [Table S1 PDF](table_s1.pdf) · [LaTeX](table_s1.tex): SFT·DPO 및 NLA/AO 추가 효과.
-- [Table S2 PDF](table_s2.pdf): CoT·균형 지시·무조건 교정·Gate 답변 기준선.
-- [Table S3 PDF](table_s3.pdf): 개인 상황 보호·Hidden probe·TF-IDF 탐지 기준선.
-
-![Table 2](table2.png)
+**제안 방법의 표시명은 `Ours`다. SAE 사용을 확정하지 않는다.** `GEPA + text features` 행은 삭제했다. 과거 S1/S2/S3의 측정값을 옮겼으며, 표를 나눈 이전 버전은 Git 이력에 남아 있다. 모든 모델·방법을 볼 수 있는 통합 현황표라 Table 2는 세로로 길다. 최종 논문 지면 배치는 확정된 실험 구성으로 조정하며 수치를 임의로 줄이지 않는다.
 
 ![Table 1](table1.png)
 
+![Table 2](table2.png)
 
-상세 방법 계획: [GEPA SAE 데이터·특징·피드백·대조 실험 프로토콜](../gepa_sae_detailed_protocol_2026-10-06.md).
+## GEPA와 삭제한 text features의 차이
 
-## 모델과 표 배치
+기존 GEPA도 실행한 질문·답변·점수와 자연어 채점 이유를 이용해 프롬프트를 수정한다. 이전에 제안한 `GEPA + text features`는 여러 학습 답변을 별도로 비교해 공통 특징을 요약하고, 그 설명을 기존 GEPA 피드백에 추가하는 **우리가 설계한 대조 조건**이었다. 독립적인 기존 논문 방법이나 공식 GEPA 변형 이름이 아니다. 최적화 알고리즘과 점수는 같고 추가 입력만 달라지는 조건이므로 주 결과표의 기존 방법에서 제외했다.
 
-본표 모델은 `Qwen/Qwen2.5-7B-Instruct`, `gpt-6-luna`, `google/gemma-4-12B-it`, `Qwen/Qwen3.8-27B-FP8` thinking OFF/ON이다. Qwen의 OFF/ON은 동일 가중치의 두 추론 조건이지 독립적인 두 backbone이 아니다. 정확한 실행 버전·추론 설정은 실험 manifest에 남긴다. 예전 GPT-5.6 결과를 GPT-6 칸에 옮기지 않는다. Claude는 추가하지 않는다.
+Ours의 구체 구현은 미정이다. [GEPA·SAE 상세 계획](../gepa_sae_detailed_protocol_2026-10-06.md)은 가능한 후보와 대조 실험의 기록이며 최종 방법을 확정한 문서가 아니다. 기존 GEPA 수치는 과거 실행 결과이고, Ours 비교에서 조건·예산을 변경하면 GEPA도 같은 조건으로 다시 평가한다.
 
-Gemma-3-12B는 Gemma 4의 대체 모델이 아니라 NLA용 추가 대상이다. Table S1의 Gemma-2-9B는 AO 호환 후보다. 추가 트랙은 체크포인트·가중치·메모리와 예산을 확인한 후 실행한다. 사전학습 설명기가 새 미세조정 모델에서도 그대로 유효하다고 가정하지 않는다.
+## 기존 비교 방법과 배치
 
-모델 5개 × 지표 9개를 가로로 놓으면 45개 수치 열이 생긴다. 논문용 확장판은 **행을 모델·방법으로, 열을 데이터셋·지표로** 배치해 한 페이지 폭에 맞췄다. 모델명은 반복 인쇄하지 않고 세로로 병합했다. 이전 가로 모델 두 개 시안 대신 이 버전을 사용한다.
+| 방법군 | Table 1: Detection | Table 2: Response | 역할 |
+|---|---|---|---|
+| 직접 판정 | Direct gate | Direct-gated response | 명시적인 LLM 판단으로 답변 경로 선택 |
+| 전제 검토 | Review CoT gate (2-step) | Review CoT (2-step), CoT-gated response | 검토 후 판단하거나 답변 |
+| 내부 분류기 | **Probe gate (hidden states)** | **Probe-gated response** | 내부 표현을 학습한 분류기로 선택적 교정 |
+| 텍스트 분류기 | TF-IDF text (모델 독립 공통 행) | Text-gated response | 내부 접근 없이 질문 텍스트로 판정 |
+| 구조화 파이프라인 | 별도 성능 대입 없음 | PreWoMe-style, Extract + Verify | 전제 추출·검토·답변 |
+| 프롬프트 최적화 | GEPA | GEPA | 최적화한 지시의 성능 |
+| 학습 | — | 기존 SFT/DPO (FPQ + twins) | 합성 정상 질문을 함께 학습한 과거 기준선 |
+| 단순 지시 대조 | Direct + scope protection | Plain, CoT, Balanced instruction, Always correct | 구조화 방법·gate의 효과를 읽기 위한 대조 |
+| 제안 방법 | Ours | Ours | 구체 방법과 측정 결과는 아직 미정 |
 
-## 데이터셋과 역할
+[Two Axes of LLM Abstention: Answer Correctness and Question Answerability](https://arxiv.org/html/2607.08456v1)의 §6은 내부 probe로 일반 답변과 전제 검토 지시를 선택하는 비교를 제공한다. **Probe gate를 넣을 직접적인 선행 연구 근거**다. 다만 현재 저장된 우리 response gate 값은 Plain/무조건 교정의 저장 답변을 선택한 값이다. 그 논문의 지시·학습 분할·threshold·평가까지 그대로 재현한 수치라고 부르지 않는다. 앞으로 선행 방법을 재현할 때에는 gate별로 같은 답변 경로를 쓰고 분할·threshold 선택을 통제한다.
 
-| 데이터셋 | 역할 | 지표와 계획 |
+Probe는 해당 모델의 내부 상태가 필요하다. 공개 모델 Qwen/Gemma에 배치했고 GPT-Luna에는 native probe 행을 두지 않았다. 다른 모델의 probe로 Luna를 라우팅한다면 별도의 transfer 조건이다. TF-IDF 판정은 모델 독립적이지만 그 판정으로 고르는 답변의 품질은 모델별로 다르므로 Response에서는 모델별 행이 필요하다.
+
+## Review CoT gate가 하는 일
+
+1. 원 질문에서 사실적 전제를 검토하는 글을 생성한다. 잘못된 전제와 교정 정보를 찾고 타당한 전제에서는 오류를 만들지 않도록 지시한다.
+2. **질문 + 검토문**으로 오류 있음/없음을 판정한다. Qwen2.5는 Yes/No 토큰 점수 비교, Gemma/Qwen3.8은 생성 JSON이라 판정 출력 절차는 다르다.
+
+Table 1은 이 판정 결과다. Table 2의 `Review CoT (2-step)`는 2단계에서 판정 대신 실제 답변을 생성한다. `CoT-gated response`는 gate 판정으로 저장된 Plain/무조건 교정 답변을 선택한다. 2-step gate가 최종 답변 생성까지 두 번 호출했다는 뜻은 아니다.
+
+## 데이터·모델·측정 범위
+
+| 위첨자 | 평가 자료 | 주의점 |
 |---|---|---|
-| Cancer-Myth | 의료 거짓 전제 교정 / 정상 질문 보존 | Detection TPR/FPR; Response Well≥4 각각 보고 |
-| CREPE | 일반 도메인 거짓 전제 교정 / 정상 질문 보존 | 위와 동일; TPQ는 정상 질문 칸 |
-| MedQA | 의료 지식 QA 보존 | USMLE 4-option 정답 정확도 |
-| PubMedQA | 초록을 이용한 의료 QA 보존 | yes/no/maybe 정확도. 입력에서 결론·정답 누출 방지 |
-| Medbullets | 추가 의료 QA 보존 | 고정한 버전·옵션 수·시험 ID의 정확도 |
-| **MMLU (추가)** | 여러 분야의 지식 QA 보존 | 공식 test, 과목별 정확도의 macro 평균. 의료 과목도 포함되는 다분야 평가이며 순수 비의료 부분집합은 아님 |
-| **GSM8K (추가)** | 일반 수학 문장제 해결 능력 보존 | 공식 main/test, 최종 숫자 정답의 정규화 exact match |
+| H | Cancer-Myth 전체 583 FPQ / 149 NFP 대상 | 일부 Qwen 행은 유효 점수 분모가 작음. 모델별 지시·실행 조건 차이 있음 |
+| L | GPT-6 Luna Cancer-Myth 99 FPQ / 100 NFP | few-shot 중복 fpq_291을 네 방법 모두에서 제외. 이미 분석에 노출된 문항 |
+| R | GPT-6 Luna CREPE 751 FPQ / 2,253 TPQ | 저장된 전체 test 평가. dev 최적화 점수가 아님 |
+| T | Qwen 학습 비교의 234 FPQ / 자연 NFP 149 | FPQ+합성 쌍둥이로 학습한 기존 SFT/DPO. 같은 ID의 Plain을 별도 행에 표시 |
 
-MMLU는 [Measuring Massive Multitask Language Understanding 공식 저장소](https://github.com/hendrycks/test), GSM8K는 [Training Verifiers to Solve Math Word Problems 공식 데이터](https://github.com/openai/grade-school-math)를 사용한다. 이 둘은 FPQ/NFP 데이터셋이 아니라 **교정 방법을 적용했을 때 일반 능력이 손상되는지 확인하는 대조 평가**다. 의료와 일반 QA 다섯 열을 서로 평균하지 않는다.
+- 수치 단위는 %다. 탐지는 TPR↑/FPR↓, 답변은 FPQ/NFP/TPQ 각각 Well≥4↑다. 답변 보존과 gate 오탐은 같은 지표가 아니다.
+- 모든 값은 과거 한 번 실행한 결과이며 반복 평균이 아니다. 모델 간 평가 문항·judge·지시 차이가 있으므로 통일 조건의 backbone 순위로 읽지 않는다. 유효 점수 분모와 누락 수를 원장에 보존했다.
+- Luna Cancer-Myth Plain 54.5/91.0, GEPA 78.8/72.0은 공통 199문항 기준이다. 예전 100/100 결과 55.0/91.0, 79.0/72.0과 차이는 한 문항 제외 때문이다.
+- 이전 첨부 표의 공개 모델 4조건 및 TF-IDF **76칸은 모두 유지**했다. GPT-5.6-Luna 값을 GPT-6 칸에 넣지 않았고 Claude는 제외 요청을 유지한다. 이전 값은 [45번 표](../../45_complete_performance_tables_2026-10-01.md)에 있다.
+- `Extract+Verify (scope)`는 예전 Qwen의 범위 보존 지시·문맥 제공 변형이다. Well 공식 Extract+Verify와 합치지 않는다.
+- 기존 SFT/DPO는 자연 NFP가 아닌 합성 쌍둥이로 학습했으며, 쌍둥이 질문 품질 문제에 대한 기존 감사 단서는 유지한다. 새 feature-curated DPO나 확정된 Ours의 성능이 아니다.
+- `—`는 결과가 없거나 현재 모델·방법에 옮길 수 없는 조합이다. 새 독립 평가나 비교의 완료를 뜻하지 않는다.
 
-새 두 데이터의 초기 비교 계획은 zero-shot이며 모든 방법에 같은 데이터·출력 형식·예산을 적용한다. 데이터 revision과 시험 ID 목록, MMLU 과목 집계 규칙, GSM8K 정답 추출기는 실행 전에 동결한다. 전체 시험셋이 부담되어 일부를 쓰면 사전 선정 ID·표본 수를 함께 보고하고 공식 전체 점수로 부르지 않는다. 무응답·파싱 실패도 평가 분모에 포함한다. 일반 QA를 만났다고 교정 방법을 끄지 않는다.
+모델: Qwen2.5-7B, GPT-6 Luna, Gemma 4 12B, Qwen3.8-27B-FP8 OFF/ON. OFF/ON은 같은 가중치의 추론 조건이다. NLA/AO를 위해 검토한 Gemma-3/2 및 미확정 조합은 현재 주 결과표의 고정 방법으로 싣지 않고 상세 계획에 남긴다.
 
-## 방법 추가 및 의미
-
-- 본문: Plain, 전제 검토 CoT, PreWoMe식, Extract+Verify, GEPA, **GEPA + text features**, **Ours (GEPA + SAE)**.
-- `text features` (이전 `text feedback`): 동일 학습 답변 쌍에서 LLM이 텍스트만 보고 특징을 요약해 제공한다. 기존 GEPA도 자연어 피드백을 쓰므로 이 이름은 'GEPA에 처음 텍스트를 준다'는 뜻이 아니다.
-- `SAE feedback`: WIMHF식 답변 쌍 특징을 설명·검증한 후 반성 입력에 제공하는 제안 조건. 탐지와 답변 각각 따로 최적화한다.
-- Table S1: 기존 **SFT/DPO (FPQ + 합성 twins)** 결과 두 행을 별도로 추가했다. 이는 계획 중인 같은 chosen의 SFT, 자연 FPQ+NFP 기본 DPO, 특징 선별 DPO와 다르므로 그 칸을 대신 채우지 않는다. NLA/AO 설명 추가도 계획 상태다. 학습 데이터 수·구성·예산을 맞추며 해당 요소의 추가 효과를 본다.
-- Table S2/S3: 기존 CoT·균형 지시·무조건 교정·Gate·학습 분류기 기준선을 삭제하지 않고 별도 표로 보존했다.
-- 본표에 포함되지 않은 NLA/AO 조합은 미지원 확정이 아니라 현재 계획 범위 밖이다. 모델에 따라 방법을 바꾼 결과를 같은 조건으로 묶지 않는다.
-
-## 방법명과 첨부 기존 표 대조 — 2026-10-07
-
-| 표의 방법명 | 프롬프트 최적화에 주는 정보 | 역할 |
-|---|---|---|
-| GEPA | 실행한 질문·답변, 채점 점수와 채점 이유 등 기존 실행 피드백 | 기존 기준선. 원래부터 자연어 피드백을 사용함 |
-| GEPA + text features | 위 정보 + 같은 학습 답변 풀에서 LLM이 텍스트를 직접 비교해 발견·검증한 공통 특징 | 우리가 설계한 SAE 없는 대조군. 공개 GEPA의 별도 공식 방법 이름이 아님 |
-| **Ours (GEPA + SAE)** | 위 정보 + 답변 임베딩 차이에서 SAE로 발견하고 자연어로 설명·검증한 특징 | GEPA + SAE feedback의 표 표시명. 제안 방법이며 아직 성능 미측정 |
-
-G2와 Ours는 같은 답변 풀·특징 검증·피드백 길이·예산을 맞춰 SAE의 추가 가치를 비교한다. 특징을 평가 점수에 더하지 않으며, 프롬프트를 고치는 반성 모델에게 추가 정보로 준다. 기존 GEPA 실행과 새 특징 실험의 길이 제한 등이 달라질 수 있으므로 최종 공정 비교에서는 G0도 같은 조건으로 다시 돌린다.
-
-**Review CoT gate (2-step)**는 첨부 표의 **전제 검토 CoT gate · 2-step**이다.
-
-1. 원 질문을 주고 사실적 전제를 검토하게 한다. 잘못된 전제와 교정 정보를 찾고, 전제가 타당하면 그렇다고 하며 오류를 만들지 않도록 지시한다.
-2. 원 질문과 검토문을 함께 주고 거짓 전제가 있는지 최종 Yes/No 또는 이진 JSON으로 판정한다. Qwen2.5는 Yes/No 토큰 점수 비교, Gemma/Qwen3.8은 생성 JSON이므로 판정 출력 절차는 다르다.
-
-Table 1은 **2단계의 탐지 성능**이다. Table 2의 `Review CoT (2-step)`는 2단계에서 판정 대신 **실제 질문에 대한 답변**을 생성한다. S2의 `CoT-gated response`는 별도로 gate 양성 시 저장된 무조건 교정 답변, 음성 시 저장된 Plain 답변을 선택한 결과다. gate의 2-step이 최종 답변 생성까지 총 두 번 호출했다는 뜻은 아니다.
-
-**첨부 표의 수치가 전부 들어간 것은 아니다.** 현재 계획 모델과 일치하는 공개 모델 4조건 및 공통 TF-IDF의 **76칸은 대조하여 모두 일치**함을 확인했다. 나머지는 아래 이유로 구분했다.
-
-| 첨부 표 항목 | 현재 위치 / 처리 |
-|---|---|
-| Qwen2.5·Gemma 4·Qwen3.8 OFF/ON Direct 및 CoT 탐지 16칸 | Table 1 |
-| 같은 모델들의 Plain·전제 검토 답변 16칸 | Table 2 |
-| 같은 모델들의 CoT·무조건 교정·Direct/CoT/Text gate 답변 40칸 | Table S2 |
-| Qwen hidden probe 및 공통 TF-IDF 탐지 4칸 | Table S3 |
-| GPT-Luna 탐지 62.6/39.6, 보호 지시 38.6/15.4, CoT 83.5/65.1 등 | **GPT-5.6-Luna** 결과. GPT-6 칸에 대입하지 않음. 기존 [45번 표](../../45_complete_performance_tables_2026-10-01.md)에 유지 |
-| GPT-5.6-Luna 답변 44.8/89.3 등 | 동일하게 현재 GPT-6와 별도. 50.2/90.8과 80.6/50.6은 원래 부분 채점 수치라는 단서도 유지 |
-| Claude-Sonnet | 앞서 요청한 모델 제외를 유지 |
-
-## 공통 평가 규칙
-
-저장 수치를 분자·분모에서 계산했고, 한 번 실행한 결과를 반복 평균으로 표시하지 않았다. 위첨자가 다른 결과를 동일 문항·채점 조건의 모델 순위로 해석하지 않는다. H의 결측 점수는 실패로 바꾸지 않고 유효 분모와 누락 수를 원장에 남겼다. 특히 기존에 반복 노출한 Cancer-Myth 199문항은 새 독립 시험셋이 아니다. 특징 발견·GEPA·DPO 학습에서 최종 평가 문항 및 연결된 질문/통념 그룹을 제외한다. 주석 오류와 채점 불일치를 점검하고, 최종 조건은 반복 생성으로 비교한다. 공식 데이터셋을 쓴다고 사전학습 오염이 없다는 뜻은 아니다.
+의료 QA는 MedQA(MQ)·PubMedQA(PQ)·Medbullets(MB), 일반 QA는 [MMLU](https://github.com/hendrycks/test)와 [GSM8K](https://github.com/openai/grade-school-math)다. MMLU는 의료 과목도 포함하는 다분야 평가이고 GSM8K는 수학 문장제다. 정확도와 최종 숫자 exact match를 각각 쓰며 서로 평균하지 않는다. 현재 이 조건들의 완료 결과는 없어 공란이다. 실행 전 데이터 revision·문항 ID·출력 형식·채점 규칙을 동결하고, 교정 방법을 적용한 채 일반 능력 보존을 평가한다.
 
 ## 수정·재생성
-
-`table_specs.json`에 모델·방법·열을 편집한 뒤 실행한다.
 
 ```bash
 python3 docs/reviews/paper_tables_2026-10-06/render_tables.py
 ```
 
-Python 3, reportlab, DejaVu Serif 폰트, `pdftoppm`(Poppler)이 필요하다. 결과는 PDF·PNG·CSV·LaTeX이다. 생성기는 `measured_results.json`과 `sources/`의 고정 집계를 읽는다. 출처 SHA-256, 원 집계의 분자·분모, 중복 셀, 모델·방법·지표 일치를 검사한 뒤 PDF·PNG·CSV·LaTeX를 갱신한다. **결과를 CSV에 직접 입력하지 않는다.** CSV는 재생성되는 출력물이며 수치는 원장에 보존한다.
+`table_specs.json`은 표의 구조·방법명이고 `measured_results.json`은 값과 출처 원장이다. `sources/`의 고정 집계를 SHA-256과 분자/분모로 검증한 뒤 PDF·PNG·CSV·LaTeX를 생성한다. **CSV는 출력물이므로 직접 수정하지 않는다.** 원 데이터가 있는 환경에서 출처를 다시 모으려면 `collect_results.py`를 사용한다. 새 모델 호출은 하지 않는다.
 
-`collect_results.py`는 로컬 원 실험 파일이 있을 때만 출처를 다시 수집하는 도구다. 일반적인 표 재생성은 `render_tables.py`만으로 가능하며, 대용량 원 답변이나 비공개 서버가 필요하지 않다.
-
-LaTeX 조각은 `booktabs`, `multirow`, `graphicx`가 필요하며 `table*`로 두 단 폭에 들어간다. PDF/PNG는 ReportLab으로 렌더링한 미리보기다. 이 환경에는 TeX 엔진이 없어 LaTeX 컴파일은 하지 않았으며, 괄호·열 수를 정적으로 점검했다.
+ReportLab, DejaVu Serif, pdftoppm이 필요하다. PDF/PNG는 전체 비교를 보여주는 미리보기다. LaTeX는 booktabs·multirow·graphicx를 쓰는 table* 조각이며, 긴 통합표의 최종 페이지 배치는 논문 편집 시 결정한다. 여기서는 TeX 엔진이 없어 컴파일하지 않았고 구조와 수치 일치를 검사했다.

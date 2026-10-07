@@ -21,6 +21,10 @@
       {
         "id": "Qwen/Qwen3.8-27B-FP8:on",
         "display": "Qwen3.8\n27B ON"
+      },
+      {
+        "id": "model_independent",
+        "display": "Shared"
       }
     ],
     "groups": [
@@ -55,34 +59,90 @@
       {
         "key": "direct_gate",
         "label": "Direct gate",
-        "proposed": false
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "gpt-6-luna",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
       },
       {
         "key": "premise_review_cot",
         "label": "Review CoT gate (2-step)",
-        "proposed": false
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "gpt-6-luna",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
+      },
+      {
+        "key": "direct_protect",
+        "label": "Direct + scope protection",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "gpt-6-luna",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
+      },
+      {
+        "key": "hidden_probe",
+        "label": "Probe gate (hidden states)",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
+      },
+      {
+        "key": "tfidf",
+        "label": "TF-IDF text",
+        "proposed": false,
+        "models": [
+          "model_independent"
+        ]
       },
       {
         "key": "gepa_detection",
         "label": "GEPA",
-        "proposed": false
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "gpt-6-luna",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
       },
       {
-        "key": "gepa_text_feedback",
-        "label": "GEPA + text features",
-        "proposed": false
-      },
-      {
-        "key": "gepa_sae_feedback",
-        "label": "Ours (GEPA + SAE)",
-        "proposed": true
+        "key": "ours",
+        "label": "Ours",
+        "proposed": true,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "gpt-6-luna",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
       }
     ],
     "notes": [
       "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger.",
       "TPR ↑: FPQ detection; FPR ↓: false positives on normal questions.",
-      "H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.",
-      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
+      "Probes require hidden states; no native Luna probe. TF-IDF is model-independent.",
+      "Default crossfit probe/TF-IDF decisions; these are not matched-FPR thresholds.",
+      "Ours denotes the proposed method; its implementation is not fixed."
     ]
   },
   "table2": {
@@ -174,6 +234,21 @@
         "proposed": false
       },
       {
+        "key": "always_correct",
+        "label": "Always correct",
+        "proposed": false
+      },
+      {
+        "key": "balanced",
+        "label": "Balanced instruction",
+        "proposed": false
+      },
+      {
+        "key": "cot",
+        "label": "CoT",
+        "proposed": false
+      },
+      {
         "key": "premise_review_cot",
         "label": "Review CoT (2-step)",
         "proposed": false
@@ -186,271 +261,6 @@
       {
         "key": "extract_verify",
         "label": "Extract + Verify",
-        "proposed": false
-      },
-      {
-        "key": "gepa",
-        "label": "GEPA",
-        "proposed": false
-      },
-      {
-        "key": "gepa_text_feedback",
-        "label": "GEPA + text features",
-        "proposed": false
-      },
-      {
-        "key": "gepa_sae_feedback",
-        "label": "Ours (GEPA + SAE)",
-        "proposed": true
-      }
-    ],
-    "notes": [
-      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
-      "FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.",
-      "H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.",
-      "L: Luna matched 99 FPQ / 100 NFP, exposed test; excludes few-shot overlap fpq_291.",
-      "R: Luna CREPE 751 FPQ / 2253 TPQ. Different markers are not controlled comparisons.",
-      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
-    ]
-  },
-  "table_s1": {
-    "title": "Table S1. Training and internal-description ablations",
-    "models": [
-      {
-        "id": "Qwen/Qwen2.5-7B-Instruct",
-        "display": "Qwen2.5\n7B"
-      },
-      {
-        "id": "google/gemma-3-12b-it",
-        "display": "Gemma-3\n12B"
-      },
-      {
-        "id": "google/gemma-2-9b-it",
-        "display": "Gemma-2\n9B"
-      }
-    ],
-    "groups": [
-      {
-        "label": "Cancer-Myth",
-        "columns": [
-          {
-            "key": "cancer_fpq_well_ge4_pct",
-            "label": "FPQ ↑"
-          },
-          {
-            "key": "cancer_nfp_well_ge4_pct",
-            "label": "NFP ↑"
-          }
-        ]
-      },
-      {
-        "label": "CREPE",
-        "columns": [
-          {
-            "key": "crepe_fpq_well_ge4_pct",
-            "label": "FPQ ↑"
-          },
-          {
-            "key": "crepe_normal_well_ge4_pct",
-            "label": "TPQ ↑"
-          }
-        ]
-      },
-      {
-        "label": "Medical QA",
-        "columns": [
-          {
-            "key": "medqa_accuracy_pct",
-            "label": "MQ ↑"
-          },
-          {
-            "key": "pubmedqa_accuracy_pct",
-            "label": "PQ ↑"
-          },
-          {
-            "key": "medbullets_accuracy_pct",
-            "label": "MB ↑"
-          }
-        ]
-      },
-      {
-        "label": "General QA",
-        "columns": [
-          {
-            "key": "mmlu_accuracy_pct",
-            "label": "MMLU ↑"
-          },
-          {
-            "key": "gsm8k_em_pct",
-            "label": "GSM ↑"
-          }
-        ]
-      }
-    ],
-    "methods": [
-      {
-        "key": "plain",
-        "label": "Plain",
-        "proposed": false
-      },
-      {
-        "key": "legacy_dpo_twins",
-        "label": "DPO (FPQ + twins)",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct"
-        ]
-      },
-      {
-        "key": "legacy_sft_twins",
-        "label": "SFT (FPQ + twins)",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct"
-        ]
-      },
-      {
-        "key": "sft_same_chosen",
-        "label": "SFT (same chosen)",
-        "proposed": false
-      },
-      {
-        "key": "dpo_balanced",
-        "label": "DPO (FPQ + NFP)",
-        "proposed": false
-      },
-      {
-        "key": "dpo_feature_curated",
-        "label": "Feature-curated DPO",
-        "proposed": true
-      },
-      {
-        "key": "gepa_sae_feedback",
-        "label": "Ours (GEPA + SAE)",
-        "proposed": true
-      },
-      {
-        "key": "gepa_sae_nla",
-        "label": "GEPA + SAE + NLA",
-        "proposed": true,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct",
-          "google/gemma-3-12b-it"
-        ]
-      },
-      {
-        "key": "gepa_sae_ao",
-        "label": "GEPA + SAE + AO",
-        "proposed": true,
-        "models": [
-          "google/gemma-2-9b-it"
-        ]
-      }
-    ],
-    "notes": [
-      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
-      "FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.",
-      "T: legacy 234 FPQ / 149 natural NFP; twins are synthetic training data, not test NFP.",
-      "Planned same-chosen SFT / natural-NFP DPO / feature feedback remain unmeasured.",
-      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
-    ]
-  },
-  "table_s2": {
-    "title": "Table S2. Additional response baselines",
-    "models": [
-      {
-        "id": "Qwen/Qwen2.5-7B-Instruct",
-        "display": "Qwen2.5\n7B"
-      },
-      {
-        "id": "gpt-6-luna",
-        "display": "GPT-6\nLuna"
-      },
-      {
-        "id": "google/gemma-4-12B-it",
-        "display": "Gemma 4\n12B"
-      },
-      {
-        "id": "Qwen/Qwen3.8-27B-FP8:off",
-        "display": "Qwen3.8\n27B OFF"
-      },
-      {
-        "id": "Qwen/Qwen3.8-27B-FP8:on",
-        "display": "Qwen3.8\n27B ON"
-      }
-    ],
-    "groups": [
-      {
-        "label": "Cancer-Myth",
-        "columns": [
-          {
-            "key": "cancer_fpq_well_ge4_pct",
-            "label": "FPQ ↑"
-          },
-          {
-            "key": "cancer_nfp_well_ge4_pct",
-            "label": "NFP ↑"
-          }
-        ]
-      },
-      {
-        "label": "CREPE",
-        "columns": [
-          {
-            "key": "crepe_fpq_well_ge4_pct",
-            "label": "FPQ ↑"
-          },
-          {
-            "key": "crepe_normal_well_ge4_pct",
-            "label": "TPQ ↑"
-          }
-        ]
-      },
-      {
-        "label": "Medical QA",
-        "columns": [
-          {
-            "key": "medqa_accuracy_pct",
-            "label": "MQ ↑"
-          },
-          {
-            "key": "pubmedqa_accuracy_pct",
-            "label": "PQ ↑"
-          },
-          {
-            "key": "medbullets_accuracy_pct",
-            "label": "MB ↑"
-          }
-        ]
-      },
-      {
-        "label": "General QA",
-        "columns": [
-          {
-            "key": "mmlu_accuracy_pct",
-            "label": "MMLU ↑"
-          },
-          {
-            "key": "gsm8k_em_pct",
-            "label": "GSM ↑"
-          }
-        ]
-      }
-    ],
-    "methods": [
-      {
-        "key": "cot",
-        "label": "CoT",
-        "proposed": false
-      },
-      {
-        "key": "balanced",
-        "label": "Balanced instruction",
-        "proposed": false
-      },
-      {
-        "key": "always_correct",
-        "label": "Always correct",
         "proposed": false
       },
       {
@@ -486,116 +296,58 @@
       },
       {
         "key": "hidden_gate_response",
-        "label": "Hidden-gated response",
+        "label": "Probe-gated response",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
+      },
+      {
+        "key": "plain_lora_cohort",
+        "label": "Plain (LoRA cohort)",
         "proposed": false,
         "models": [
           "Qwen/Qwen2.5-7B-Instruct"
         ]
+      },
+      {
+        "key": "legacy_dpo_twins",
+        "label": "DPO (FPQ + twins)",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct"
+        ]
+      },
+      {
+        "key": "legacy_sft_twins",
+        "label": "SFT (FPQ + twins)",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct"
+        ]
+      },
+      {
+        "key": "gepa",
+        "label": "GEPA",
+        "proposed": false
+      },
+      {
+        "key": "ours",
+        "label": "Ours",
+        "proposed": true
       }
     ],
     "notes": [
       "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger.",
       "FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.",
-      "H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.",
-      "Scope-preserving extraction is a legacy variant, not the Well Extract + Verify baseline.",
-      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
-    ]
-  },
-  "table_s3": {
-    "title": "Table S3. Additional detection baselines",
-    "models": [
-      {
-        "id": "Qwen/Qwen2.5-7B-Instruct",
-        "display": "Qwen2.5\n7B"
-      },
-      {
-        "id": "gpt-6-luna",
-        "display": "GPT-6\nLuna"
-      },
-      {
-        "id": "google/gemma-4-12B-it",
-        "display": "Gemma 4\n12B"
-      },
-      {
-        "id": "Qwen/Qwen3.8-27B-FP8:off",
-        "display": "Qwen3.8\n27B OFF"
-      },
-      {
-        "id": "Qwen/Qwen3.8-27B-FP8:on",
-        "display": "Qwen3.8\n27B ON"
-      },
-      {
-        "id": "model_independent",
-        "display": "Model-\nindependent"
-      }
-    ],
-    "groups": [
-      {
-        "label": "Cancer-Myth",
-        "columns": [
-          {
-            "key": "cancer_fpq_tpr_pct",
-            "label": "TPR ↑"
-          },
-          {
-            "key": "cancer_nfp_fpr_pct",
-            "label": "FPR ↓"
-          }
-        ]
-      },
-      {
-        "label": "CREPE",
-        "columns": [
-          {
-            "key": "crepe_fpq_tpr_pct",
-            "label": "TPR ↑"
-          },
-          {
-            "key": "crepe_normal_fpr_pct",
-            "label": "FPR ↓"
-          }
-        ]
-      }
-    ],
-    "methods": [
-      {
-        "key": "direct_protect",
-        "label": "Direct + scope protection",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct",
-          "gpt-6-luna",
-          "google/gemma-4-12B-it",
-          "Qwen/Qwen3.8-27B-FP8:off",
-          "Qwen/Qwen3.8-27B-FP8:on"
-        ]
-      },
-      {
-        "key": "hidden_probe",
-        "label": "Hidden probe",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct",
-          "google/gemma-4-12B-it",
-          "Qwen/Qwen3.8-27B-FP8:off",
-          "Qwen/Qwen3.8-27B-FP8:on"
-        ]
-      },
-      {
-        "key": "tfidf",
-        "label": "TF-IDF text",
-        "proposed": false,
-        "models": [
-          "model_independent"
-        ]
-      }
-    ],
-    "notes": [
-      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
-      "TPR ↑: FPQ detection; FPR ↓: false positives on normal questions.",
-      "H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.",
-      "Default crossfit decisions for probes / TF-IDF, not matched-FPR thresholds.",
-      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
+      "L: Luna matched 99 FPQ / 100 NFP, exposed test; R: CREPE 751 FPQ / 2253 TPQ.",
+      "T: legacy 234 FPQ / 149 natural NFP; synthetic twins were used in training.",
+      "Gate rows route saved Plain/correction answers; not exact Two Axes reproduction.",
+      "Ours is not fixed to SAE. Source counts and comparison limits: result_sources.md."
     ]
   }
 }

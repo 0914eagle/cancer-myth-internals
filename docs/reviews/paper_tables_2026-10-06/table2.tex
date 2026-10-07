@@ -9,47 +9,81 @@
 \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-9} \cmidrule(lr){10-11}
  &  & FPQ $\uparrow$ & NFP $\uparrow$ & FPQ $\uparrow$ & TPQ $\uparrow$ & MQ $\uparrow$ & PQ $\uparrow$ & MB $\uparrow$ & MMLU $\uparrow$ & GSM $\uparrow$ \\
 \midrule
-\multirow{7}{*}{\shortstack[l]{Qwen2.5\\7B}} & Plain & 2.4\textsuperscript{H} & 100.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\multirow{18}{*}{\shortstack[l]{Qwen2.5\\7B}} & Plain & 2.4\textsuperscript{H} & 100.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Always correct & 56.9\textsuperscript{H} & 21.5\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT & 0.7\textsuperscript{H} & 99.3\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Review CoT (2-step) & 10.5\textsuperscript{H} & 94.6\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Direct-gated response & 6.9\textsuperscript{H} & 90.6\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT-gated response & 21.3\textsuperscript{H} & 85.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Text-gated response & 50.7\textsuperscript{H} & 60.4\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Extract+Verify (scope) & 5.7\textsuperscript{H} & 99.3\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Self-gated FP identification & 7.0\textsuperscript{H} & 89.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Probe-gated response & 44.8\textsuperscript{H} & 64.4\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Plain (LoRA cohort) & 1.7\textsuperscript{T} & 100.0\textsuperscript{T} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & DPO (FPQ + twins) & 2.6\textsuperscript{T} & 100.0\textsuperscript{T} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & SFT (FPQ + twins) & 29.1\textsuperscript{T} & 45.6\textsuperscript{T} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multirow{7}{*}{\shortstack[l]{GPT-6\\Luna}} & Plain & 54.5\textsuperscript{L} & 91.0\textsuperscript{L} & 72.7\textsuperscript{R} & 98.9\textsuperscript{R} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\multirow{12}{*}{\shortstack[l]{GPT-6\\Luna}} & Plain & 54.5\textsuperscript{L} & 91.0\textsuperscript{L} & 72.7\textsuperscript{R} & 98.9\textsuperscript{R} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Always correct & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Review CoT (2-step) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & 88.9\textsuperscript{L} & 59.0\textsuperscript{L} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & 87.9\textsuperscript{L} & 48.0\textsuperscript{L} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Direct-gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT-gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Text-gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & 78.8\textsuperscript{L} & 72.0\textsuperscript{L} & 74.7\textsuperscript{R} & 98.0\textsuperscript{R} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multirow{7}{*}{\shortstack[l]{Gemma 4\\12B}} & Plain & 4.3\textsuperscript{H} & 100.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\multirow{13}{*}{\shortstack[l]{Gemma 4\\12B}} & Plain & 4.3\textsuperscript{H} & 100.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Always correct & 72.0\textsuperscript{H} & 2.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT & 3.4\textsuperscript{H} & 99.3\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Review CoT (2-step) & 41.2\textsuperscript{H} & 78.5\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Direct-gated response & 37.2\textsuperscript{H} & 83.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT-gated response & 43.4\textsuperscript{H} & 67.1\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Text-gated response & 63.8\textsuperscript{H} & 50.3\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Probe-gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multirow{7}{*}{\shortstack[l]{Qwen3.8\\27B OFF}} & Plain & 49.7\textsuperscript{H} & 79.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\multirow{13}{*}{\shortstack[l]{Qwen3.8\\27B OFF}} & Plain & 49.7\textsuperscript{H} & 79.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Always correct & 71.0\textsuperscript{H} & 28.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT & 54.7\textsuperscript{H} & 71.1\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Review CoT (2-step) & 61.4\textsuperscript{H} & 55.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Direct-gated response & 53.0\textsuperscript{H} & 72.5\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT-gated response & 62.1\textsuperscript{H} & 59.7\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Text-gated response & 68.3\textsuperscript{H} & 49.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Probe-gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multirow{7}{*}{\shortstack[l]{Qwen3.8\\27B ON}} & Plain & 40.7\textsuperscript{H} & 88.6\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\multirow{13}{*}{\shortstack[l]{Qwen3.8\\27B ON}} & Plain & 40.7\textsuperscript{H} & 88.6\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Always correct & 83.4\textsuperscript{H} & 5.4\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT & 43.1\textsuperscript{H} & 87.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Review CoT (2-step) & 66.7\textsuperscript{H} & 57.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Direct-gated response & 53.5\textsuperscript{H} & 75.8\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & CoT-gated response & 62.1\textsuperscript{H} & 60.4\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Text-gated response & 78.2\textsuperscript{H} & 48.3\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Probe-gated response & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \bottomrule
 \end{tabular}}
-\caption{Table 2. Response quality and preservation of general QA performance. Stored results; \textemdash means unavailable or not comparable. Values are percentages, one run. FPQ / NFP / TPQ: Well $\geq$ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets. H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger. L: Luna matched 99 FPQ / 100 NFP, exposed test; excludes few-shot overlap fpq\_291. R: Luna CREPE 751 FPQ / 2253 TPQ. Different markers are not controlled comparisons. Model versions, counts, judge/protocol differences and source hashes: result\_sources.md.}
+\caption{Table 2. Response quality and preservation of general QA performance. Stored results; \textemdash means unavailable or not comparable. Values are percentages, one run. H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger. FPQ / NFP / TPQ: Well $\geq$ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets. L: Luna matched 99 FPQ / 100 NFP, exposed test; R: CREPE 751 FPQ / 2253 TPQ. T: legacy 234 FPQ / 149 natural NFP; synthetic twins were used in training. Gate rows route saved Plain/correction answers; not exact Two Axes reproduction. Ours is not fixed to SAE. Source counts and comparison limits: result\_sources.md.}
 \label{tab:table2_plan}
 \end{table*}

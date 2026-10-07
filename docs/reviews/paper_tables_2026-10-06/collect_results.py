@@ -30,6 +30,9 @@ cohorts={
  'T':{'description':'Legacy Qwen LoRA evaluation: same 234 FPQ / 149 natural NFP, excluding synthetic twins from reported NFP. Training used FPQ and synthetic corrected twins, not natural NFP.','judge':'legacy Well scoring (original archived scores)','evaluation_status':'legacy_training_evaluation','repeat':'one checkpoint / single generation; not repeat mean'}
 }
 def add(table,model,method,col,num,den,src,pointer,cohort,note='',expected=None):
+ if table=='table_s1' and method=='plain':method='plain_lora_cohort'
+ if table=='table_s3':table='table1'
+ elif table in ['table_s1','table_s2']:table='table2'
  assert isinstance(num,int) and isinstance(den,int) and 0<=num<=den and den>0
  cells.append(dict(table=table,model_id=model,method=method,metric=col,numerator=num,denominator=den,value_pct=100*num/den,cohort=cohort,source=src,pointer=pointer,status='historical_observed',expected_n=expected if expected is not None else den,missing_n=(expected-den) if expected is not None else 0,note=note))
 def response(table,model,method,d,src,prefix,cohort,count='ge4',den='valid',note=''):
@@ -73,13 +76,13 @@ for m in ['plain','gepa']:
 # Preserve extra measured legacy methods under explicit variant labels instead of silently merging.
 extras=[('extract_verify_scope','Extract+Verify (scope)'),('fp_identification','Self-gated FP identification'),('hidden_gate_response','Hidden-gated response')]
 for k,label in extras:
- if not any(x['key']==k for x in specs['table_s2']['methods']):specs['table_s2']['methods'].append(dict(key=k,label=label,proposed=False,models=[Q]))
+ if not any(x['key']==k for x in specs['table2']['methods']):specs['table2']['methods'].append(dict(key=k,label=label,proposed=False,models=[Q]))
 response('table_s2',Q,'extract_verify_scope',ans['qwen/extract_verify'],'qwen_answers',['qwen/extract_verify'],'H',note='Legacy scope-preserving extraction + question-aware verification. NOT the Well atomic baseline in Table 2.')
 response('table_s2',Q,'fp_identification',ans['qwen/fp_identification'],'qwen_answers',['qwen/fp_identification'],'H')
 response('table_s2',Q,'hidden_gate_response',routes['results']['qwen/hidden'],'routing',['results','qwen/hidden'],'H',den='n')
 # Legacy training rows are separate from planned natural-FPQ/NFP SFT/DPO.
 for k,label,run in [('legacy_sft_twins','SFT (FPQ + twins)','twin_bal_s4'),('legacy_dpo_twins','DPO (FPQ + twins)','twin_dpo_s4')]:
- if not any(x['key']==k for x in specs['table_s1']['methods']):specs['table_s1']['methods'].insert(1,dict(key=k,label=label,proposed=False,models=[Q]))
+ if not any(x['key']==k for x in specs['table2']['methods']):specs['table2']['methods'].insert(1,dict(key=k,label=label,proposed=False,models=[Q]))
  response('table_s1',Q,k,lora[run],'lora',[run],'T',note='121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains.')
 # Plain on exactly the historical LoRA FPQ/NFP IDs, not full-corpus Plain.
 lr=list(csv.DictReader((R/'docs/reviews/advisor_presentation_2026-09-23/lora_scores.csv').open()))
@@ -98,17 +101,7 @@ runtimes={}
 for key,path in [('luna_test','results/fpqa_prompting/well_upstream_test_v1_20261003_run/run.json'),('luna_pipelines','results/fpqa_prompting/well_pipelines_luna6_20261004/run.json'),('gemma','results/gemma4/full_20260926_v2/plan.json'),('qwen38_off','results/qwen38/full_transformers_20260926_v1/thinking_off/plan.json'),('qwen38_on','results/qwen38/full_transformers_20260926_v1/thinking_on/plan.json')]:
  b=(R/path).read_bytes();d=json.loads(b);runtimes[key]={'path':path,'sha256':hashlib.sha256(b).hexdigest(),'fields':{k:v for k,v in d.items() if k in ['model','revision','dtype','thinking_enabled','do_sample','protocol','config','configs','test_ids','fewshot_overlap_ids','n_primary_fpq','n_primary_nfp','provenance']}}
 (O/'sources/runtime_provenance.json').write_text(json.dumps(runtimes,ensure_ascii=False,indent=2)+'\n')
-for name,s in specs.items():
- s['notes']=[
- 'Stored results; — means unavailable or not comparable. Values are percentages, one run.',
- *(['TPR ↑: FPQ detection; FPR ↓: false positives on normal questions.'] if name in ['table1','table_s3'] else ['FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.']),
- *(['H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.'] if name in ['table1','table2','table_s2','table_s3'] else []),
- *(['L: Luna matched 99 FPQ / 100 NFP, exposed test; excludes few-shot overlap fpq_291.', 'R: Luna CREPE 751 FPQ / 2253 TPQ. Different markers are not controlled comparisons.'] if name=='table2' else []),
- *(['T: legacy 234 FPQ / 149 natural NFP; twins are synthetic training data, not test NFP.', 'Planned same-chosen SFT / natural-NFP DPO / feature feedback remain unmeasured.'] if name=='table_s1' else []),
- *(['Scope-preserving extraction is a legacy variant, not the Well Extract + Verify baseline.'] if name=='table_s2' else []),
- *(['Default crossfit decisions for probes / TF-IDF, not matched-FPR thresholds.'] if name=='table_s3' else []),
- 'Model versions, counts, judge/protocol differences and source hashes: result_sources.md.'
- ]
+# Presentation notes and row layout are maintained in table_specs.json.
 (O/'table_specs.json').write_text(json.dumps(specs,ensure_ascii=False,indent=2)+'\n')
 result={'updated':'2026-10-07','metric_definition':'100 * numerator / valid denominator; display rounded to one decimal; no new inference','cohorts':cohorts,'sources':sources,'cells':cells}
 (O/'measured_results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
