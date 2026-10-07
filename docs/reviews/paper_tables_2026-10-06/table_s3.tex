@@ -10,7 +10,7 @@
  &  & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ \\
 \midrule
 \multirow{2}{*}{\shortstack[l]{Qwen2.5\\7B}} & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Hidden probe & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Hidden probe & 75.0\textsuperscript{H} & 47.7\textsuperscript{H} & \textemdash & \textemdash \\
 \midrule
 \multirow{1}{*}{\shortstack[l]{GPT-6\\Luna}} & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
@@ -23,9 +23,9 @@
 \multirow{2}{*}{\shortstack[l]{Qwen3.8\\27B ON}} & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Hidden probe & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multirow{1}{*}{\shortstack[l]{Model-\\independent}} & TF-IDF text & \textemdash & \textemdash & \textemdash & \textemdash \\
+\multirow{1}{*}{\shortstack[l]{Model-\\independent}} & TF-IDF text & 86.1\textsuperscript{H} & 51.0\textsuperscript{H} & \textemdash & \textemdash \\
 \bottomrule
 \end{tabular}}
-\caption{Table S3. Additional detection baselines. Unmeasured plan. Hidden probes require available activations; classifier splits must be fixed. TF-IDF is model-independent, not a separate model-specific measurement. TPR: false-premise detection rate. FPR: false positives on normal questions.}
+\caption{Table S3. Additional detection baselines. Stored results; \textemdash means unavailable or not comparable. Values are percentages, one run. TPR $\uparrow$: FPQ detection; FPR $\downarrow$: false positives on normal questions. H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger. Default crossfit decisions for probes / TF-IDF, not matched-FPR thresholds. Model versions, counts, judge/protocol differences and source hashes: result\_sources.md.}
 \label{tab:table_s3_plan}
 \end{table*}

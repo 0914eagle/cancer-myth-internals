@@ -79,9 +79,10 @@
       }
     ],
     "notes": [
-      "Unmeasured plan: — is not a measured score. All metrics are percentages.",
-      "TPR: false-premise detection rate. FPR: false positives on normal questions.",
-      "Feature feedback for detection is evaluated separately from response optimization."
+      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "TPR ↑: FPQ detection; FPR ↓: false positives on normal questions.",
+      "H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.",
+      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
     ]
   },
   "table2": {
@@ -204,10 +205,12 @@
       }
     ],
     "notes": [
-      "Unmeasured plan: — is not a measured score. All metrics are percentages.",
-      "FPQ: correction; NFP/TPQ: normal-question preservation (Well ≥ 4).",
-      "MQ: MedQA; PQ: PubMedQA; MB: Medbullets; GSM: GSM8K. No cross-dataset average.",
-      "General QA: MMLU accuracy and GSM8K final-answer exact match; models use the same test protocol."
+      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.",
+      "H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.",
+      "L: Luna matched 99 FPQ / 100 NFP, exposed test; excludes few-shot overlap fpq_291.",
+      "R: Luna CREPE 751 FPQ / 2253 TPQ. Different markers are not controlled comparisons.",
+      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
     ]
   },
   "table_s1": {
@@ -291,6 +294,22 @@
         "proposed": false
       },
       {
+        "key": "legacy_dpo_twins",
+        "label": "DPO (FPQ + twins)",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct"
+        ]
+      },
+      {
+        "key": "legacy_sft_twins",
+        "label": "SFT (FPQ + twins)",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct"
+        ]
+      },
+      {
         "key": "sft_same_chosen",
         "label": "SFT (same chosen)",
         "proposed": false
@@ -329,11 +348,11 @@
       }
     ],
     "notes": [
-      "Unmeasured plan: — is not a measured score. All metrics are percentages.",
-      "FPQ: correction; NFP/TPQ: normal-question preservation (Well ≥ 4).",
-      "MQ: MedQA; PQ: PubMedQA; MB: Medbullets; GSM: GSM8K. No cross-dataset average.",
-      "General QA: MMLU accuracy and GSM8K final-answer exact match; models use the same test protocol.",
-      "NLA/AO rows require compatible checkpoints; runtime and resources remain to be checked."
+      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.",
+      "T: legacy 234 FPQ / 149 natural NFP; twins are synthetic training data, not test NFP.",
+      "Planned same-chosen SFT / natural-NFP DPO / feature feedback remain unmeasured.",
+      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
     ]
   },
   "table_s2": {
@@ -448,13 +467,38 @@
         "key": "text_gate_response",
         "label": "Text-gated response",
         "proposed": false
+      },
+      {
+        "key": "extract_verify_scope",
+        "label": "Extract+Verify (scope)",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct"
+        ]
+      },
+      {
+        "key": "fp_identification",
+        "label": "Self-gated FP identification",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct"
+        ]
+      },
+      {
+        "key": "hidden_gate_response",
+        "label": "Hidden-gated response",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct"
+        ]
       }
     ],
     "notes": [
-      "Unmeasured plan: — is not a measured score. All metrics are percentages.",
-      "FPQ: correction; NFP/TPQ: normal-question preservation (Well ≥ 4).",
-      "MQ: MedQA; PQ: PubMedQA; MB: Medbullets; GSM: GSM8K. No cross-dataset average.",
-      "General QA: MMLU accuracy and GSM8K final-answer exact match; models use the same test protocol."
+      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.",
+      "H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.",
+      "Scope-preserving extraction is a legacy variant, not the Well Extract + Verify baseline.",
+      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
     ]
   },
   "table_s3": {
@@ -547,9 +591,11 @@
       }
     ],
     "notes": [
-      "Unmeasured plan. Hidden probes require available activations; classifier splits must be fixed.",
-      "TF-IDF is model-independent, not a separate model-specific measurement.",
-      "TPR: false-premise detection rate. FPR: false positives on normal questions."
+      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "TPR ↑: FPQ detection; FPR ↓: false positives on normal questions.",
+      "H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger.",
+      "Default crossfit decisions for probes / TF-IDF, not matched-FPR thresholds.",
+      "Model versions, counts, judge/protocol differences and source hashes: result_sources.md."
     ]
   }
 }

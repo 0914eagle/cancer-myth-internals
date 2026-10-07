@@ -1,0 +1,412 @@
+{
+  "gate": {
+    "direct": {
+      "auroc": null,
+      "fpq": {
+        "expected": 583,
+        "valid": 583,
+        "positive": 257,
+        "negative": 326,
+        "positive_rate": 0.44082332761578047
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 149,
+        "positive": 32,
+        "negative": 117,
+        "positive_rate": 0.21476510067114093
+      }
+    },
+    "cot": {
+      "auroc": null,
+      "fpq": {
+        "expected": 583,
+        "valid": 583,
+        "positive": 358,
+        "negative": 225,
+        "positive_rate": 0.614065180102916
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 149,
+        "positive": 57,
+        "negative": 92,
+        "positive_rate": 0.3825503355704698
+      }
+    },
+    "verify_extracted": {
+      "auroc": null,
+      "fpq": {
+        "expected": 583,
+        "valid": 0,
+        "positive": 0,
+        "negative": 0,
+        "positive_rate": null
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 0,
+        "positive": 0,
+        "negative": 0,
+        "positive_rate": null
+      }
+    },
+    "verify_annotated": {
+      "auroc": null,
+      "fpq": {
+        "expected": 583,
+        "valid": 0,
+        "positive": 0,
+        "negative": 0,
+        "positive_rate": null
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 0,
+        "positive": 0,
+        "negative": 0,
+        "positive_rate": null
+      }
+    }
+  },
+  "answers": {
+    "plain": {
+      "fpq": {
+        "expected": 583,
+        "valid": 583,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 253,
+          "2": 84,
+          "3": 9,
+          "4": 44,
+          "5": 193
+        },
+        "mean_0_to_5": 2.725557461406518,
+        "mean_1_to_5": 2.725557461406518,
+        "at_least_4_count": 237,
+        "at_least_4_fraction_valid": 0.4065180102915952,
+        "score_5_fraction_valid": 0.33104631217838765,
+        "paired_with_plain": {
+          "n": 583,
+          "rescue_to_at_least_4": 0,
+          "harm_below_4": 0
+        }
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 149,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 0,
+          "2": 16,
+          "3": 1,
+          "4": 32,
+          "5": 100
+        },
+        "mean_0_to_5": 4.449664429530201,
+        "mean_1_to_5": 4.449664429530201,
+        "at_least_4_count": 132,
+        "at_least_4_fraction_valid": 0.8859060402684564,
+        "score_5_fraction_valid": 0.6711409395973155,
+        "paired_with_plain": {
+          "n": 149,
+          "rescue_to_at_least_4": 0,
+          "harm_below_4": 0
+        }
+      }
+    },
+    "zero_shot_cot_one_step": {
+      "fpq": {
+        "expected": 583,
+        "valid": 583,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 244,
+          "2": 77,
+          "3": 11,
+          "4": 62,
+          "5": 189
+        },
+        "mean_0_to_5": 2.7855917667238423,
+        "mean_1_to_5": 2.7855917667238423,
+        "at_least_4_count": 251,
+        "at_least_4_fraction_valid": 0.4305317324185249,
+        "score_5_fraction_valid": 0.3241852487135506,
+        "paired_with_plain": {
+          "n": 583,
+          "rescue_to_at_least_4": 43,
+          "harm_below_4": 29
+        }
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 149,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 2,
+          "2": 15,
+          "3": 1,
+          "4": 36,
+          "5": 95
+        },
+        "mean_0_to_5": 4.389261744966443,
+        "mean_1_to_5": 4.389261744966443,
+        "at_least_4_count": 131,
+        "at_least_4_fraction_valid": 0.8791946308724832,
+        "score_5_fraction_valid": 0.6375838926174496,
+        "paired_with_plain": {
+          "n": 149,
+          "rescue_to_at_least_4": 3,
+          "harm_below_4": 4
+        }
+      }
+    },
+    "premise_review_answer": {
+      "fpq": {
+        "expected": 583,
+        "valid": 583,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 144,
+          "2": 43,
+          "3": 7,
+          "4": 28,
+          "5": 361
+        },
+        "mean_0_to_5": 3.718696397941681,
+        "mean_1_to_5": 3.718696397941681,
+        "at_least_4_count": 389,
+        "at_least_4_fraction_valid": 0.6672384219554031,
+        "score_5_fraction_valid": 0.6192109777015438,
+        "paired_with_plain": {
+          "n": 583,
+          "rescue_to_at_least_4": 164,
+          "harm_below_4": 12
+        }
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 149,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 7,
+          "2": 53,
+          "3": 4,
+          "4": 34,
+          "5": 51
+        },
+        "mean_0_to_5": 3.4630872483221475,
+        "mean_1_to_5": 3.4630872483221475,
+        "at_least_4_count": 85,
+        "at_least_4_fraction_valid": 0.5704697986577181,
+        "score_5_fraction_valid": 0.3422818791946309,
+        "paired_with_plain": {
+          "n": 149,
+          "rescue_to_at_least_4": 1,
+          "harm_below_4": 48
+        }
+      }
+    },
+    "fp_unconditional": {
+      "fpq": {
+        "expected": 583,
+        "valid": 583,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 64,
+          "2": 30,
+          "3": 3,
+          "4": 38,
+          "5": 448
+        },
+        "mean_0_to_5": 4.331046312178388,
+        "mean_1_to_5": 4.331046312178388,
+        "at_least_4_count": 486,
+        "at_least_4_fraction_valid": 0.8336192109777015,
+        "score_5_fraction_valid": 0.7684391080617495,
+        "paired_with_plain": {
+          "n": 583,
+          "rescue_to_at_least_4": 253,
+          "harm_below_4": 4
+        }
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 149,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 55,
+          "2": 85,
+          "3": 1,
+          "4": 8,
+          "5": 0
+        },
+        "mean_0_to_5": 1.74496644295302,
+        "mean_1_to_5": 1.74496644295302,
+        "at_least_4_count": 8,
+        "at_least_4_fraction_valid": 0.053691275167785234,
+        "score_5_fraction_valid": 0.0,
+        "paired_with_plain": {
+          "n": 149,
+          "rescue_to_at_least_4": 0,
+          "harm_below_4": 124
+        }
+      }
+    },
+    "direct_routed": {
+      "fpq": {
+        "expected": 583,
+        "valid": 583,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 213,
+          "2": 55,
+          "3": 3,
+          "4": 27,
+          "5": 285
+        },
+        "mean_0_to_5": 3.1989708404802744,
+        "mean_1_to_5": 3.1989708404802744,
+        "at_least_4_count": 312,
+        "at_least_4_fraction_valid": 0.5351629502572899,
+        "score_5_fraction_valid": 0.4888507718696398,
+        "paired_with_plain": {
+          "n": 583,
+          "rescue_to_at_least_4": 76,
+          "harm_below_4": 1
+        }
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 149,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 18,
+          "2": 17,
+          "3": 1,
+          "4": 21,
+          "5": 92
+        },
+        "mean_0_to_5": 4.02013422818792,
+        "mean_1_to_5": 4.02013422818792,
+        "at_least_4_count": 113,
+        "at_least_4_fraction_valid": 0.7583892617449665,
+        "score_5_fraction_valid": 0.6174496644295302,
+        "paired_with_plain": {
+          "n": 149,
+          "rescue_to_at_least_4": 0,
+          "harm_below_4": 19
+        }
+      }
+    },
+    "cot_routed": {
+      "fpq": {
+        "expected": 583,
+        "valid": 583,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 181,
+          "2": 38,
+          "3": 2,
+          "4": 26,
+          "5": 336
+        },
+        "mean_0_to_5": 3.51114922813036,
+        "mean_1_to_5": 3.51114922813036,
+        "at_least_4_count": 362,
+        "at_least_4_fraction_valid": 0.6209262435677531,
+        "score_5_fraction_valid": 0.5763293310463122,
+        "paired_with_plain": {
+          "n": 583,
+          "rescue_to_at_least_4": 128,
+          "harm_below_4": 3
+        }
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 149,
+        "missing": 0,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 34,
+          "2": 24,
+          "3": 1,
+          "4": 14,
+          "5": 76
+        },
+        "mean_0_to_5": 3.4966442953020134,
+        "mean_1_to_5": 3.4966442953020134,
+        "at_least_4_count": 90,
+        "at_least_4_fraction_valid": 0.6040268456375839,
+        "score_5_fraction_valid": 0.5100671140939598,
+        "paired_with_plain": {
+          "n": 149,
+          "rescue_to_at_least_4": 0,
+          "harm_below_4": 42
+        }
+      }
+    },
+    "verify_extracted_routed": {
+      "fpq": {
+        "expected": 583,
+        "valid": 0,
+        "missing": 583,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        },
+        "mean_0_to_5": null,
+        "mean_1_to_5": null,
+        "at_least_4_count": 0,
+        "at_least_4_fraction_valid": null,
+        "score_5_fraction_valid": null,
+        "paired_with_plain": {
+          "n": 0,
+          "rescue_to_at_least_4": 0,
+          "harm_below_4": 0
+        }
+      },
+      "nfp": {
+        "expected": 149,
+        "valid": 0,
+        "missing": 149,
+        "counts_0_to_5": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        },
+        "mean_0_to_5": null,
+        "mean_1_to_5": null,
+        "at_least_4_count": 0,
+        "at_least_4_fraction_valid": null,
+        "score_5_fraction_valid": null,
+        "paired_with_plain": {
+          "n": 0,
+          "rescue_to_at_least_4": 0,
+          "harm_below_4": 0
+        }
+      }
+    }
+  },
+  "routing_common_plain_correction_n": 732,
+  "interpretation": "Descriptive paired outputs, not proof of a causal mechanism. Missing scores are not failures."
+}

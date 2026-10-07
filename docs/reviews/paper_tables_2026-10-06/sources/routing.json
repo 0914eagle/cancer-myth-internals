@@ -1,0 +1,147 @@
+{
+  "results": {
+    "qwen/text": {
+      "fpq": {
+        "n": 582,
+        "ge4": 295,
+        "s5": 135,
+        "gate_on": 501
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 90,
+        "s5": 66,
+        "gate_on": 76
+      }
+    },
+    "qwen/hidden": {
+      "fpq": {
+        "n": 582,
+        "ge4": 261,
+        "s5": 124,
+        "gate_on": 436
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 96,
+        "s5": 75,
+        "gate_on": 71
+      }
+    },
+    "qwen/direct": {
+      "fpq": {
+        "n": 582,
+        "ge4": 40,
+        "s5": 14,
+        "gate_on": 41
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 135,
+        "s5": 119,
+        "gate_on": 16
+      }
+    },
+    "qwen/review": {
+      "fpq": {
+        "n": 582,
+        "ge4": 124,
+        "s5": 54,
+        "gate_on": 172
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 128,
+        "s5": 113,
+        "gate_on": 24
+      }
+    },
+    "luna/text": {
+      "fpq": {
+        "n": 583,
+        "ge4": 464,
+        "s5": 366,
+        "gate_on": 502
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 80,
+        "s5": 50,
+        "gate_on": 76
+      }
+    },
+    "sonnet/text": {
+      "fpq": {
+        "n": 583,
+        "ge4": 500,
+        "s5": 473,
+        "gate_on": 502
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 53,
+        "s5": 36,
+        "gate_on": 76
+      }
+    },
+    "gemma/text": {
+      "fpq": {
+        "n": 583,
+        "ge4": 372,
+        "s5": 81,
+        "gate_on": 502
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 75,
+        "s5": 58,
+        "gate_on": 76
+      }
+    },
+    "qwen38_off/text": {
+      "fpq": {
+        "n": 583,
+        "ge4": 398,
+        "s5": 353,
+        "gate_on": 502
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 73,
+        "s5": 32,
+        "gate_on": 76
+      }
+    },
+    "qwen38_on/text": {
+      "fpq": {
+        "n": 583,
+        "ge4": 456,
+        "s5": 418,
+        "gate_on": 502
+      },
+      "nfp": {
+        "n": 149,
+        "ge4": 72,
+        "s5": 49,
+        "gate_on": 76
+      }
+    }
+  },
+  "sources": {
+    "docs/reviews/default_gate_decisions_2026-09-23/decisions.csv": "b03e381c48b61585e9d3bbc865bd16e0277e9b752a27ecfdcb9029ef53d09622",
+    "docs/reviews/advisor_presentation_2026-09-23/answer_scores.csv": "aa014f7b360865965b28a3b72550ba5d39ae8d6390792b0b7b2fadbd7226872c",
+    "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain/judge_plan.json": "fb97cd0acebbaa4c3e64381f528cc7db513e4ee2c7b036df636a693acc3878f7",
+    "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/plain/attempts.jsonl": "7762199ac758717609e6cf4e269ae0292bce9c1eda2e56f9cb2257b917a0ba60",
+    "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/fp_unconditional/judge_plan.json": "ad7d29a694f00c5bcb8c9436ff0b007b80f37a1ae13194914b88698bd849e643",
+    "/home/eagle0914/cancer-myth-internals/results/gemma4/full_20260926_v2/well/fp_unconditional/attempts.jsonl": "91cad8d41fe83b33b76c54720c81ab2f38405c10855814f43549c80b39dd88ce",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/plain/judge_plan.json": "67ca6916e42fa28e61eff9df5cb3375521d457fcf43c7d262c81c0dfa303a366",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/plain/attempts.jsonl": "60fdb6f406794ad19a67c3943f71f478630d5b0f5c55b7ac19a50beccf186412",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/fp_unconditional/judge_plan.json": "2d369919d2760fab1725b9438c3879bab2b484c7c82711377fc06a22284871d1",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_off/well/fp_unconditional/attempts.jsonl": "a3d297f0955a160b6c9c4fb52c553d2914d13332a6c03b39e92406c5d2cf9bb3",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/plain/judge_plan.json": "728efa20df164bed2ac632e75e441d84a6da1f75ea93406fdacba694de274a56",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/plain/attempts.jsonl": "e1f1a76b2d961cbfe93f63629d8709ff1b4d692f27005628f110d0651de447a7",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/fp_unconditional/judge_plan.json": "8d73559d49b7d16f24ce9b67f1be528576481f45b2bdb15f55d3d01a921a22e8",
+    "/home/eagle0914/cancer-myth-internals/results/qwen38/full_transformers_20260926_v1/thinking_on/well/fp_unconditional/attempts.jsonl": "d95446cd3473001bea59a87dcfe2731e2abe6676bace34fae475579badb0225a"
+  },
+  "note": "Same frozen crossfit text gate across answer models. Hidden gate remains Qwen2.5-specific. No generation, retraining or new judging."
+}

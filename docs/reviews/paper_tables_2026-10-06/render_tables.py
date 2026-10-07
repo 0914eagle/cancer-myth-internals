@@ -1,9 +1,11 @@
-"""Render unmeasured paper tables. Run from any directory with Python 3.
+"""Render paper tables from an auditable result ledger. Run from any directory.
 Requires reportlab, DejaVu Serif fonts, and pdftoppm for PNG previews.
 No model calls are made. JSON is the editable specification.
 """
 import csv
 import json
+import hashlib
+import math
 import subprocess
 from pathlib import Path
 from reportlab.pdfgen import canvas
@@ -27,8 +29,52 @@ def make_rows(spec):
     return rows
 
 
-def render(name, spec):
+def load_results(specs):
+    data = json.loads((ROOT / 'measured_results.json').read_text())
+    for source in data['sources'].values():
+        actual = hashlib.sha256((ROOT / source['snapshot']).read_bytes()).hexdigest()
+        if actual != source['sha256']:
+            raise ValueError(f"Source snapshot changed: {source['snapshot']}")
+    index = {}
+    for cell in data['cells']:
+        name = cell['table']
+        spec = specs[name]
+        allowed_rows = {(m['id'], method['key']) for m, method in make_rows(spec)}
+        allowed_cols = {c['key'] for g in spec['groups'] for c in g['columns']}
+        key = (name, cell['model_id'], cell['method'], cell['metric'])
+        if key in index:
+            raise ValueError(f'Duplicate measurement: {key}')
+        assert (cell['model_id'], cell['method']) in allowed_rows, key
+        assert cell['metric'] in allowed_cols, key
+        assert cell['cohort'] in data['cohorts'], key
+        assert 0 <= cell['numerator'] <= cell['denominator'], key
+        assert cell['denominator'] > 0, key
+        assert cell['expected_n'] - cell['denominator'] == cell['missing_n'], key
+        assert math.isclose(cell['value_pct'], 100 * cell['numerator'] / cell['denominator']), key
+        snapshot = json.loads((ROOT / data['sources'][cell['source']]['snapshot']).read_text())
+        for part in cell['pointer']:
+            snapshot = snapshot[part]
+        if 'scores' in snapshot:
+            n, d = snapshot['scores']['4'] + snapshot['scores']['5'], snapshot['n']
+        elif 'at_least_4_count' in snapshot:
+            n, d = snapshot['at_least_4_count'], snapshot['valid']
+        elif 'ge4' in snapshot:
+            n, d = snapshot['ge4'], snapshot.get('valid', snapshot.get('n'))
+        elif 'positive' in snapshot:
+            n, d = snapshot['positive'], snapshot['valid']
+        elif cell['metric'].endswith('tpr_pct'):
+            n, d = snapshot['tp'], snapshot['tp'] + snapshot['fn']
+        else:
+            n, d = snapshot['fp'], snapshot['fp'] + snapshot['tn']
+        assert (n, d) == (cell['numerator'], cell['denominator']), key
+        index[key] = cell
+    return data, index
+
+
+def render(name, spec, data, measurements):
     rows = make_rows(spec)
+    def cell_for(model, method, col):
+        return measurements.get((name, model['id'], method['key'], col['key']))
     columns = [col for group in spec['groups'] for col in group['columns']]
     w, left, right = 570, 15, 555
     model_w, method_w = 76, 146
@@ -37,7 +83,7 @@ def render(name, spec):
     row_h = 14
     h = 18 + 44 + row_h * len(rows) + 37 + len(spec['notes']) * 11 + 13
     c = canvas.Canvas(str(ROOT / f'{name}.pdf'), pagesize=(w, h))
-    c.setTitle(spec['title'] + ' - unmeasured experiment plan')
+    c.setTitle(spec['title'] + ' - stored results and planned comparisons')
 
     def text(s, x, y, size=7.8, bold=False, center=False):
         font = 'PaperBold' if bold else 'Paper'
@@ -81,8 +127,16 @@ def render(name, spec):
         for j, (_, method) in enumerate(block):
             yy = y-j*row_h-10
             text(method['label'], left+model_w+3, yy, 7.5, method.get('proposed',False))
-            for k in range(len(columns)):
-                text('—', numeric_start+(k+.5)*cell_w, yy, 8, center=True)
+            for k, col in enumerate(columns):
+                cell = cell_for(model, method, col)
+                xx = numeric_start+(k+.5)*cell_w
+                if cell:
+                    value = f"{cell['value_pct']:.1f}"
+                    text(value, xx-1, yy, 8, center=True)
+                    offset = pdfmetrics.stringWidth(value, 'Paper', 8)/2
+                    text(cell['cohort'], xx+offset, yy+3, 4.8)
+                else:
+                    text('—', xx, yy, 8, center=True)
         row_offset += len(block)
     bottom = top-40-len(rows)*row_h
     line(bottom, 1)
@@ -91,12 +145,19 @@ def render(name, spec):
         text(note, left, bottom-32-i*11, 7)
     c.save()
 
-    fields = ['model','model_id','method','status','split_manifest','repeat_id'] + [col['key'] for col in columns]
+    fields = ['model','model_id','method','status','split_manifest','repeat_id','cell_provenance'] + [col['key'] for col in columns]
     with (ROOT/f'{name}.csv').open('w',encoding='utf-8',newline='') as f:
         writer=csv.DictWriter(f,fieldnames=fields,lineterminator="\n")
         writer.writeheader()
         for model, method in rows:
-            writer.writerow({'model':model['display'].replace('\n',' '),'model_id':model['id'],'method':method['key'],'status':'planned'})
+            found = {col['key']: cell_for(model, method, col) for col in columns if cell_for(model, method, col)}
+            row = {'model':model['display'].replace('\n',' '),'model_id':model['id'],'method':method['key'],
+                   'status':'partially_measured' if found else 'planned',
+                   'split_manifest':';'.join(sorted({c['cohort'] for c in found.values()})),
+                   'repeat_id':'original_single_run' if found else '',
+                   'cell_provenance':json.dumps({k:{f:c[f] for f in ['numerator','denominator','expected_n','missing_n','cohort','source','pointer']} for k,c in found.items()},ensure_ascii=False)}
+            row.update({k:f"{c['value_pct']:.1f}" for k,c in found.items()})
+            writer.writerow(row)
 
     def esc(s):
         return s.replace('_',r'\_').replace('%',r'\%').replace('↑',r'$\uparrow$').replace('↓',r'$\downarrow$').replace('≥',r'$\geq$').replace('—',r'\textemdash')
@@ -116,7 +177,11 @@ def render(name, spec):
             mcell=rf'\multirow{{{len(block)}}}{{*}}{{\shortstack[l]{{'+r'\\'.join(esc(x) for x in model['display'].split('\n'))+'}}' if j==0 else ''
             label=esc(method['label'])
             if method.get('proposed'): label=r'\textbf{'+label+'}'
-            lines.append(tr([mcell,label]+[r'\textemdash']*len(columns)))
+            vals=[]
+            for col in columns:
+                cell=cell_for(model, method, col)
+                vals.append(f"{cell['value_pct']:.1f}" + r'\textsuperscript{' + cell['cohort'] + '}' if cell else r'\textemdash')
+            lines.append(tr([mcell,label]+vals))
     lines.extend([r'\bottomrule',r'\end{tabular}}',r'\caption{'+esc(spec['title'])+'. '+esc(' '.join(spec['notes']))+'}',rf'\label{{tab:{name}_plan}}',r'\end{table*}'])
     (ROOT/f'{name}.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     subprocess.run(['pdftoppm','-png','-r','160','-singlefile',str(ROOT/f'{name}.pdf'),str(ROOT/name)],check=True)
@@ -125,6 +190,8 @@ def render(name, spec):
 
 if __name__ == '__main__':
     specs=json.loads((ROOT/'table_specs.json').read_text())
+    data, measurements=load_results(specs)
     for name,spec in specs.items():
-        count=render(name,spec)
-        print(f'{name}: {count} planned rows')
+        count=render(name,spec,data,measurements)
+        filled=sum(k[0]==name for k in measurements)
+        print(f'{name}: {count} rows, {filled} measured cells')

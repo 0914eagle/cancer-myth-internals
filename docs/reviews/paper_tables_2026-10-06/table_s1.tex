@@ -9,7 +9,9 @@
 \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-9} \cmidrule(lr){10-11}
  &  & FPQ $\uparrow$ & NFP $\uparrow$ & FPQ $\uparrow$ & TPQ $\uparrow$ & MQ $\uparrow$ & PQ $\uparrow$ & MB $\uparrow$ & MMLU $\uparrow$ & GSM $\uparrow$ \\
 \midrule
-\multirow{6}{*}{\shortstack[l]{Qwen2.5\\7B}} & Plain & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\multirow{8}{*}{\shortstack[l]{Qwen2.5\\7B}} & Plain & 1.7\textsuperscript{T} & 100.0\textsuperscript{T} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & DPO (FPQ + twins) & 2.6\textsuperscript{T} & 100.0\textsuperscript{T} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & SFT (FPQ + twins) & 29.1\textsuperscript{T} & 45.6\textsuperscript{T} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & SFT (same chosen) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & DPO (FPQ + NFP) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & \textbf{Feature-curated DPO} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
@@ -31,6 +33,6 @@
  & \textbf{GEPA + SAE + AO} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \bottomrule
 \end{tabular}}
-\caption{Table S1. Training and internal-description ablations. Unmeasured plan: \textemdash is not a measured score. All metrics are percentages. FPQ: correction; NFP/TPQ: normal-question preservation (Well $\geq$ 4). MQ: MedQA; PQ: PubMedQA; MB: Medbullets; GSM: GSM8K. No cross-dataset average. General QA: MMLU accuracy and GSM8K final-answer exact match; models use the same test protocol. NLA/AO rows require compatible checkpoints; runtime and resources remain to be checked.}
+\caption{Table S1. Training and internal-description ablations. Stored results; \textemdash means unavailable or not comparable. Values are percentages, one run. FPQ / NFP / TPQ: Well $\geq$ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets. T: legacy 234 FPQ / 149 natural NFP; twins are synthetic training data, not test NFP. Planned same-chosen SFT / natural-NFP DPO / feature feedback remain unmeasured. Model versions, counts, judge/protocol differences and source hashes: result\_sources.md.}
 \label{tab:table_s1_plan}
 \end{table*}
