@@ -1,0 +1,101 @@
+{
+  "protocol_id": "table2_matched_v2_separate_20261008",
+  "status": "design_fixed_execution_not_started",
+  "training_scope": "per_dataset",
+  "cancer_myth": {
+    "outer_folds": 3,
+    "grouped": true,
+    "split_seed": 20261007,
+    "optimization_seeds": [
+      42
+    ]
+  },
+  "crepe": {
+    "split": "official_train_dev_test",
+    "optimization_seeds": [
+      42
+    ],
+    "repeat_for_cancer_folds": false
+  },
+  "objective": {
+    "fpq_weight": 0.5,
+    "normal_weight": 0.5,
+    "score": "Well score / 5"
+  },
+  "gepa": {
+    "pilot_metric_evaluations": 100,
+    "main_metric_evaluations": 500,
+    "budget_includes": [
+      "train",
+      "validation",
+      "reevaluation"
+    ],
+    "minibatch": {
+      "fpq": 2,
+      "normal": 2
+    },
+    "selection_dev_per_class_max": 16,
+    "max_prompt_tokens_per_component": 512,
+    "pilot_candidate_reuse_in_main": false,
+    "prompt_length_tokenizer": "Qwen/Qwen3-Embedding-0.6B"
+  },
+  "embedding": {
+    "model": "Qwen/Qwen3-Embedding-0.6B",
+    "revision": "resolve_and_pin_at_preflight",
+    "dimension": 1024,
+    "input": "answer_only",
+    "instruction": null,
+    "pooling": "last_non_padding_token",
+    "normalize": true,
+    "difference": "embedding(A)-embedding(B)",
+    "max_tokens": 8192,
+    "overflow": "exclude_pair_and_report",
+    "model_card": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B"
+  },
+  "sae": {
+    "features": 32,
+    "average_active": 4,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "main_requires_useful_features": true,
+    "cross_dataset_feature_transfer": false
+  },
+  "feature_pilot": {
+    "first_model": "gpt-6-luna",
+    "first_dataset": "cancer_myth",
+    "first_outer_fold": 0,
+    "max_questions": 200,
+    "allowed_partition": "opt_train",
+    "answers_per_question": {
+      "plain": 2,
+      "balanced": 1,
+      "cot": 1
+    },
+    "max_answers_before_cache": 800,
+    "fit_check_group_ratio": [
+      0.75,
+      0.25
+    ],
+    "minimum_positive_and_negative_check_questions_per_behavior": 10,
+    "expansion": "once_within_remaining_same_dataset_opt_train",
+    "continuation_requires": [
+      "correction_related_feature",
+      "unwarranted_challenge_related_feature",
+      "positive_group_bootstrap_95_lower_bound_for_description_fidelity",
+      "BH_FDR_0.05_across_32_features",
+      "pattern_consistent_in_at_least_2_of_3_SAE_seeds",
+      "not_only_length_or_style"
+    ]
+  },
+  "table3": {
+    "adaptation_source": "cancer_myth",
+    "all_qa_use_same_source": true,
+    "aggregate": "mean_of_three_fold_system_scores",
+    "fixed_pipeline_fewshot_source": "cancer_myth",
+    "crepe_source_analysis": "optional_followup"
+  },
+  "model_calls_started": false
+}

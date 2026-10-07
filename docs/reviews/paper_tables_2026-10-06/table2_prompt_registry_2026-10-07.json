@@ -1,5 +1,5 @@
 {
-  "protocol_id": "table2_matched_v1_draft_20261007",
+  "protocol_id": "table2_matched_v2_separate_20261008",
   "status": "design_only_not_connected_to_runner",
   "transport_common": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.",
   "composition": "system = transport_common + two newline characters + stage_system; apply exactly once on every backend, including rendered Well stages",
@@ -435,5 +435,6 @@
     "text": "Review the premises of the user's question, then provide your final answer. Correct any false premise you find; otherwise answer the question normally.",
     "reason": "Explicit premise review differs from new generic CoT."
   },
-  "runtime_status": "Backend parity, replicate-aware cache, pooled evaluator, group manifests, and GEPA module optimization require implementation/verification."
+  "runtime_status": "Backend parity, replicate-aware cache, per-dataset balanced evaluator, group manifests, and GEPA module optimization require implementation/verification.",
+  "run_settings": "table2_run_settings_2026-10-08.json"
 }
