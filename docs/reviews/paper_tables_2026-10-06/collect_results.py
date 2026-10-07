@@ -80,22 +80,7 @@ for k,label in extras:
 response('table_s2',Q,'extract_verify_scope',ans['qwen/extract_verify'],'qwen_answers',['qwen/extract_verify'],'H',note='Legacy scope-preserving extraction + question-aware verification. NOT the Well atomic baseline in Table 2.')
 response('table_s2',Q,'fp_identification',ans['qwen/fp_identification'],'qwen_answers',['qwen/fp_identification'],'H')
 response('table_s2',Q,'hidden_gate_response',routes['results']['qwen/hidden'],'routing',['results','qwen/hidden'],'H',den='n')
-# Legacy training rows are separate from planned natural-FPQ/NFP SFT/DPO.
-for k,label,run in [('legacy_sft_twins','SFT (FPQ + twins)','twin_bal_s4'),('legacy_dpo_twins','DPO (FPQ + twins)','twin_dpo_s4')]:
- if not any(x['key']==k for x in specs['table2']['methods']):specs['table2']['methods'].insert(1,dict(key=k,label=label,proposed=False,models=[Q]))
- response('table_s1',Q,k,lora[run],'lora',[run],'T',note='121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains.')
-# Plain on exactly the historical LoRA FPQ/NFP IDs, not full-corpus Plain.
-lr=list(csv.DictReader((R/'docs/reviews/advisor_presentation_2026-09-23/lora_scores.csv').open()))
-ids={(x['id'],x['group']) for x in lr if x['run']=='twin_bal_s4' and x['group'] in ['fpq','nfp']}
-other={(x['id'],x['group']) for x in lr if x['run']=='twin_dpo_s4' and x['group'] in ['fpq','nfp']};assert ids==other
-ar=list(csv.DictReader((R/'docs/reviews/advisor_presentation_2026-09-23/answer_scores.csv').open()))
-matched=[x for x in ar if x['model']=='qwen' and x['method']=='plain' and (x['id'],x['set']) in ids]
-assert len(matched)==len(ids)==383
-matched.sort(key=lambda x:x['id'])
-obj={'source_answer_csv':'docs/reviews/advisor_presentation_2026-09-23/answer_scores.csv','source_answer_sha256':hashlib.sha256((R/'docs/reviews/advisor_presentation_2026-09-23/answer_scores.csv').read_bytes()).hexdigest(),'source_lora_csv':'docs/reviews/advisor_presentation_2026-09-23/lora_scores.csv','source_lora_sha256':hashlib.sha256((R/'docs/reviews/advisor_presentation_2026-09-23/lora_scores.csv').read_bytes()).hexdigest(),'rows':matched,'metrics':{gr:{'valid':sum(x['set']==gr for x in matched),'ge4':sum(x['set']==gr and int(x['score'])>=4 for x in matched)} for gr in ['fpq','nfp']}}
-p=O/'sources/qwen_plain_lora_matched.json';p.write_text(json.dumps(obj,indent=2)+'\n')
-sources['qwen_plain_lora_matched']={'original_path':'derived from archived CSVs; hashes and matched rows in snapshot','snapshot':'sources/qwen_plain_lora_matched.json','sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
-response('table_s1',Q,'plain',obj['metrics'],'qwen_plain_lora_matched',['metrics'],'T',note='Recomputed on the exact legacy LoRA cohort; 234 FPQ +149 natural NFP.')
+# Legacy SFT/DPO and matched Plain are excluded from displayed tables by user request.
 # Source runtime manifest hashes / projections: no credentials or huge response dumps.
 runtimes={}
 for key,path in [('luna_test','results/fpqa_prompting/well_upstream_test_v1_20261003_run/run.json'),('luna_pipelines','results/fpqa_prompting/well_pipelines_luna6_20261004/run.json'),('gemma','results/gemma4/full_20260926_v2/plan.json'),('qwen38_off','results/qwen38/full_transformers_20260926_v1/thinking_off/plan.json'),('qwen38_on','results/qwen38/full_transformers_20260926_v1/thinking_on/plan.json')]:

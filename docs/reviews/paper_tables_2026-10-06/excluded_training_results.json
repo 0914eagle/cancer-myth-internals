@@ -1,0 +1,119 @@
+{
+  "reason": "2026-10-07 user requested removal of SFT/DPO and their matched Plain comparison from displayed tables; original values preserved.",
+  "cells": [
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "legacy_sft_twins",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 68,
+      "denominator": 234,
+      "value_pct": 29.05982905982906,
+      "cohort": "T",
+      "source": "lora",
+      "pointer": [
+        "twin_bal_s4",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 234,
+      "missing_n": 0,
+      "note": "121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "legacy_sft_twins",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 68,
+      "denominator": 149,
+      "value_pct": 45.63758389261745,
+      "cohort": "T",
+      "source": "lora",
+      "pointer": [
+        "twin_bal_s4",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "legacy_dpo_twins",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 6,
+      "denominator": 234,
+      "value_pct": 2.5641025641025643,
+      "cohort": "T",
+      "source": "lora",
+      "pointer": [
+        "twin_dpo_s4",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 234,
+      "missing_n": 0,
+      "note": "121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "legacy_dpo_twins",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 149,
+      "denominator": 149,
+      "value_pct": 100.0,
+      "cohort": "T",
+      "source": "lora",
+      "pointer": [
+        "twin_dpo_s4",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "121 FPQ + 121 synthetic twin training examples. Not the proposed natural-NFP or feature-curated training. Twin quality caveat remains."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "plain_lora_cohort",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 4,
+      "denominator": 234,
+      "value_pct": 1.7094017094017093,
+      "cohort": "T",
+      "source": "qwen_plain_lora_matched",
+      "pointer": [
+        "metrics",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 234,
+      "missing_n": 0,
+      "note": "Recomputed on the exact legacy LoRA cohort; 234 FPQ +149 natural NFP."
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "plain_lora_cohort",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 149,
+      "denominator": 149,
+      "value_pct": 100.0,
+      "cohort": "T",
+      "source": "qwen_plain_lora_matched",
+      "pointer": [
+        "metrics",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": "Recomputed on the exact legacy LoRA cohort; 234 FPQ +149 natural NFP."
+    }
+  ]
+}

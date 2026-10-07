@@ -3,49 +3,31 @@
 \scriptsize
 \setlength{\tabcolsep}{3pt}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{llcccc}
+\begin{tabular}{lcccccccccc}
 \toprule
-\multirow{2}{*}{Model} & \multirow{2}{*}{Method} & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} \\
-\cmidrule(lr){3-4} \cmidrule(lr){5-6}
- &  & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ \\
+\multirow{2}{*}{Method} & \multicolumn{2}{c}{Qwen2.5 7B} & \multicolumn{2}{c}{GPT-6 Luna} & \multicolumn{2}{c}{Gemma 4 12B} & \multicolumn{2}{c}{Qwen3.8 27B OFF} & \multicolumn{2}{c}{Qwen3.8 27B ON} \\
+ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ \\
 \midrule
-\multirow{6}{*}{\shortstack[l]{Qwen2.5\\7B}} & Direct gate & 7.0\textsuperscript{H} & 10.7\textsuperscript{H} & \textemdash & \textemdash \\
- & Review CoT gate (2-step) & 29.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash \\
- & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Probe gate (hidden states) & 75.0\textsuperscript{H} & 47.7\textsuperscript{H} & \textemdash & \textemdash \\
- & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multirow{5}{*}{\shortstack[l]{GPT-6\\Luna}} & Direct gate & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Review CoT gate (2-step) & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash \\
+\multicolumn{11}{l}{\textbf{Cancer-Myth}} \\
+Direct gate & 7.0\textsuperscript{H} & 10.7\textsuperscript{H} & \textemdash & \textemdash & 40.5\textsuperscript{H} & 16.1\textsuperscript{H} & 26.1\textsuperscript{H} & 16.1\textsuperscript{H} & 44.1\textsuperscript{H} & 21.5\textsuperscript{H} \\
+Review CoT gate (2-step) & 29.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash & 51.3\textsuperscript{H} & 32.9\textsuperscript{H} & 57.5\textsuperscript{H} & 35.6\textsuperscript{H} & 61.4\textsuperscript{H} & 38.3\textsuperscript{H} \\
+Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Probe gate (hidden states) & 75.0\textsuperscript{H} & 47.7\textsuperscript{H} & n/a & n/a & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+TF-IDF text & \multicolumn{10}{c}{Shared detector: FPQ 86.1\% / NFP 51.0\% (H)} \\
+GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multirow{6}{*}{\shortstack[l]{Gemma 4\\12B}} & Direct gate & 40.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash \\
- & Review CoT gate (2-step) & 51.3\textsuperscript{H} & 32.9\textsuperscript{H} & \textemdash & \textemdash \\
- & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Probe gate (hidden states) & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash \\
-\midrule
-\multirow{6}{*}{\shortstack[l]{Qwen3.8\\27B OFF}} & Direct gate & 26.1\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash \\
- & Review CoT gate (2-step) & 57.5\textsuperscript{H} & 35.6\textsuperscript{H} & \textemdash & \textemdash \\
- & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Probe gate (hidden states) & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash \\
-\midrule
-\multirow{6}{*}{\shortstack[l]{Qwen3.8\\27B ON}} & Direct gate & 44.1\textsuperscript{H} & 21.5\textsuperscript{H} & \textemdash & \textemdash \\
- & Review CoT gate (2-step) & 61.4\textsuperscript{H} & 38.3\textsuperscript{H} & \textemdash & \textemdash \\
- & Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Probe gate (hidden states) & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash \\
-\midrule
-\multirow{1}{*}{\shortstack[l]{Shared}} & TF-IDF text & 86.1\textsuperscript{H} & 51.0\textsuperscript{H} & \textemdash & \textemdash \\
+\multicolumn{11}{l}{\textbf{CREPE}} \\
+Direct gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Review CoT gate (2-step) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Direct + scope protection & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Probe gate (hidden states) & \textemdash & \textemdash & n/a & n/a & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+TF-IDF text & \multicolumn{10}{c}{Shared detector: not measured} \\
+GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \bottomrule
 \end{tabular}}
-\caption{Table 1. False-premise detection across models and datasets. Stored results; \textemdash means unavailable or not comparable. Values are percentages, one run. H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger. TPR $\uparrow$: FPQ detection; FPR $\downarrow$: false positives on normal questions. Probes require hidden states; no native Luna probe. TF-IDF is model-independent. Default crossfit probe/TF-IDF decisions; these are not matched-FPR thresholds. Ours denotes the proposed method; its implementation is not fixed.}
-\label{tab:table1_plan}
+\caption{Table 1. False-premise detection across models and datasets. Stored results; \textemdash: not measured/comparable; n/a: outside the defined implementation. Percentages, one run. H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger. TPR $\uparrow$: FPQ detection; FPR $\downarrow$: false positives on normal questions. Probes require hidden states; no native Luna probe. TF-IDF is model-independent. Default crossfit probe/TF-IDF decisions; these are not matched-FPR thresholds. Ours denotes the proposed method; its implementation is not fixed.}
+\label{tab:table1}
 \end{table*}

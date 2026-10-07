@@ -137,7 +137,7 @@
       }
     ],
     "notes": [
-      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "Stored results; —: not measured/comparable; n/a: outside the defined implementation. Percentages, one run.",
       "H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger.",
       "TPR ↑: FPQ detection; FPR ↓: false positives on normal questions.",
       "Probes require hidden states; no native Luna probe. TF-IDF is model-independent.",
@@ -234,8 +234,8 @@
         "proposed": false
       },
       {
-        "key": "always_correct",
-        "label": "Always correct",
+        "key": "cot",
+        "label": "CoT",
         "proposed": false
       },
       {
@@ -244,13 +244,13 @@
         "proposed": false
       },
       {
-        "key": "cot",
-        "label": "CoT",
+        "key": "premise_review_cot",
+        "label": "Review CoT (2-step)",
         "proposed": false
       },
       {
-        "key": "premise_review_cot",
-        "label": "Review CoT (2-step)",
+        "key": "always_correct",
+        "label": "Always correct",
         "proposed": false
       },
       {
@@ -261,21 +261,6 @@
       {
         "key": "extract_verify",
         "label": "Extract + Verify",
-        "proposed": false
-      },
-      {
-        "key": "direct_gate_response",
-        "label": "Direct-gated response",
-        "proposed": false
-      },
-      {
-        "key": "cot_gate_response",
-        "label": "CoT-gated response",
-        "proposed": false
-      },
-      {
-        "key": "text_gate_response",
-        "label": "Text-gated response",
         "proposed": false
       },
       {
@@ -295,6 +280,21 @@
         ]
       },
       {
+        "key": "direct_gate_response",
+        "label": "Direct-gated response",
+        "proposed": false
+      },
+      {
+        "key": "cot_gate_response",
+        "label": "CoT-gated response",
+        "proposed": false
+      },
+      {
+        "key": "text_gate_response",
+        "label": "TF-IDF text gate",
+        "proposed": false
+      },
+      {
         "key": "hidden_gate_response",
         "label": "Probe-gated response",
         "proposed": false,
@@ -303,30 +303,6 @@
           "google/gemma-4-12B-it",
           "Qwen/Qwen3.8-27B-FP8:off",
           "Qwen/Qwen3.8-27B-FP8:on"
-        ]
-      },
-      {
-        "key": "plain_lora_cohort",
-        "label": "Plain (LoRA cohort)",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct"
-        ]
-      },
-      {
-        "key": "legacy_dpo_twins",
-        "label": "DPO (FPQ + twins)",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct"
-        ]
-      },
-      {
-        "key": "legacy_sft_twins",
-        "label": "SFT (FPQ + twins)",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct"
         ]
       },
       {
@@ -341,13 +317,13 @@
       }
     ],
     "notes": [
-      "Stored results; — means unavailable or not comparable. Values are percentages, one run.",
+      "Stored results; —: not measured/comparable; n/a: outside the defined implementation. Percentages, one run.",
       "H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger.",
       "FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.",
       "L: Luna matched 99 FPQ / 100 NFP, exposed test; R: CREPE 751 FPQ / 2253 TPQ.",
-      "T: legacy 234 FPQ / 149 natural NFP; synthetic twins were used in training.",
       "Gate rows route saved Plain/correction answers; not exact Two Axes reproduction.",
-      "Ours is not fixed to SAE. Source counts and comparison limits: result_sources.md."
+      "Ours is not fixed to SAE. Source counts and comparison limits: result_sources.md.",
+      "QA rows with no measurements are compressed across methods; full planned cells remain in CSV."
     ]
   }
 }

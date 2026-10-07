@@ -8,6 +8,7 @@ import hashlib
 import math
 import subprocess
 from pathlib import Path
+from landscape_layout import render_landscape
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -194,4 +195,5 @@ if __name__ == '__main__':
     for name,spec in specs.items():
         count=render(name,spec,data,measurements)
         filled=sum(k[0]==name for k in measurements)
-        print(f'{name}: {count} rows, {filled} measured cells')
+        layout=render_landscape(ROOT,name,spec,measurements)
+        print(f'{name}: {count} CSV rows, {filled} measured cells; landscape {layout}')

@@ -1,13 +1,13 @@
 # Paper tables 수치 원장 — 2026-10-07
 
-**새 실험 없이 저장된 결과 100칸을 채웠다.** 아래 분자/분모로 비율을 재계산하며, 표에는 소수 첫째 자리까지 표시한다. 탐지는 양성 판정 수, 답변은 Well 4·5점 답변 수다. 점수 보존과 gate 오탐은 다른 지표다.
+**새 실험 없이 저장된 결과 94칸을 표에 표시했다. 학습 비교용 6칸은 `excluded_training_results.json`에 보존하고 표에서는 제외했다.** 아래 분자/분모로 비율을 재계산하며, 표에는 소수 첫째 자리까지 표시한다. 탐지는 양성 판정 수, 답변은 Well 4·5점 답변 수다. 점수 보존과 gate 오탐은 다른 지표다.
 
 ## 비교 범위와 중요한 차이
 
 - H: 전체 Cancer-Myth 대상의 과거 결과. Qwen Plain/CoT 및 routing은 FPQ 유효 582개인 행이 있다. Qwen 범위 보존 추출 검증은 FPQ 577/NFP 148개다. 누락을 실패로 재분류하지 않았다.
 - L: Luna는 GPT-6이며 task/judge 모두 medium이다. Cancer-Myth는 99 FPQ/100 NFP로 맞췄다. `fpq_291`은 공식 few-shot과 중복되어 네 방법 모두에서 제외했다. Plain/GEPA는 zero-shot, 파이프라인은 Well four-shot·no-RAG이므로 구조 하나만의 효과 비교는 아니다.
 - R: CREPE의 751 FPQ/2253 정상 질문은 전체 test이다. 평균 점수나 GEPA 개발 점수를 성공률로 옮기지 않았다.
-- T: 예전 balanced SFT/DPO는 121 FPQ와 121 합성 쌍둥이로 학습했다. 자연 NFP를 섞은 새 DPO 결과로 표시하지 않는다. 평가 FPQ 234개 및 자연 NFP 149개에서 Plain도 맞춰 집계했다. 합성 쌍둥이의 잔류 전제 문제에 대한 이전 감사 단서는 유지한다.
+- 제외 자료(T): 예전 balanced SFT/DPO는 121 FPQ와 121 합성 쌍둥이로 학습했다. 자연 NFP를 섞은 새 DPO 결과로 표시하지 않는다. 평가 FPQ 234개 및 자연 NFP 149개에서 Plain도 맞춰 집계했으나, 사용자 요청으로 세 조건 모두 현재 표에서 제외했다. 합성 쌍둥이의 잔류 전제 문제에 대한 이전 감사 단서는 유지한다.
 - H와 L/R은 채점 모델·템플릿 revision·프롬프트·문항 집단이 다르다. Gemma/Qwen3.8의 기존 judge는 claude-sonnet-5, Luna는 gpt-6-luna다. 최종 통일 실험이나 순수 backbone 순위로 해석하지 않는다.
 - 모든 표시값은 기존 한 번 실행의 결과다. 부분 재채점/사후 감사나 반복 중 최고값으로 교체하지 않았다.
 
@@ -138,9 +138,3 @@
 | table2 | Qwen2.5 7B | fp_identification | cancer_nfp_well_ge4_pct | 134/149 | 89.9 | H | qwen_answers / `qwen/fp_identification → nfp` |
 | table2 | Qwen2.5 7B | hidden_gate_response | cancer_fpq_well_ge4_pct | 261/582 | 44.8 | H | routing / `results → qwen/hidden → fpq` |
 | table2 | Qwen2.5 7B | hidden_gate_response | cancer_nfp_well_ge4_pct | 96/149 | 64.4 | H | routing / `results → qwen/hidden → nfp` |
-| table2 | Qwen2.5 7B | legacy_sft_twins | cancer_fpq_well_ge4_pct | 68/234 | 29.1 | T | lora / `twin_bal_s4 → fpq` |
-| table2 | Qwen2.5 7B | legacy_sft_twins | cancer_nfp_well_ge4_pct | 68/149 | 45.6 | T | lora / `twin_bal_s4 → nfp` |
-| table2 | Qwen2.5 7B | legacy_dpo_twins | cancer_fpq_well_ge4_pct | 6/234 | 2.6 | T | lora / `twin_dpo_s4 → fpq` |
-| table2 | Qwen2.5 7B | legacy_dpo_twins | cancer_nfp_well_ge4_pct | 149/149 | 100.0 | T | lora / `twin_dpo_s4 → nfp` |
-| table2 | Qwen2.5 7B | plain_lora_cohort | cancer_fpq_well_ge4_pct | 4/234 | 1.7 | T | qwen_plain_lora_matched / `metrics → fpq` |
-| table2 | Qwen2.5 7B | plain_lora_cohort | cancer_nfp_well_ge4_pct | 149/149 | 100.0 | T | qwen_plain_lora_matched / `metrics → nfp` |
