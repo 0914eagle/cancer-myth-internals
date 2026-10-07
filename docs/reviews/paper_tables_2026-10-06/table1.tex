@@ -3,27 +3,20 @@
 \scriptsize
 \setlength{\tabcolsep}{3pt}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{lcccccccccc}
+\begin{tabular}{lcccccccccccccccccccc}
 \toprule
-\multirow{2}{*}{Method} & \multicolumn{2}{c}{Qwen2.5 7B} & \multicolumn{2}{c}{GPT-6 Luna} & \multicolumn{2}{c}{Gemma 4 12B} & \multicolumn{2}{c}{Qwen3.8 27B OFF} & \multicolumn{2}{c}{Qwen3.8 27B ON} \\
- & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ & FPQ TPR $\uparrow$ & NFP FPR $\downarrow$ \\
+\multirow{3}{*}{Method} & \multicolumn{4}{c}{Qwen2.5 7B} & \multicolumn{4}{c}{GPT-6 Luna} & \multicolumn{4}{c}{Gemma 4 12B} & \multicolumn{4}{c}{Qwen3.8 27B OFF} & \multicolumn{4}{c}{Qwen3.8 27B ON} \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-9} \cmidrule(lr){10-13} \cmidrule(lr){14-17} \cmidrule(lr){18-21}
+ & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} \\
+ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ \\
 \midrule
+Direct gate & 7.0\textsuperscript{H} & 10.7\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & 40.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash & 26.1\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash & 44.1\textsuperscript{H} & 21.5\textsuperscript{H} & \textemdash & \textemdash \\
+Premise-review CoT gate & 29.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & 51.3\textsuperscript{H} & 32.9\textsuperscript{H} & \textemdash & \textemdash & 57.5\textsuperscript{H} & 35.6\textsuperscript{H} & \textemdash & \textemdash & 61.4\textsuperscript{H} & 38.3\textsuperscript{H} & \textemdash & \textemdash \\
+Probe gate (hidden states) & 75.0\textsuperscript{H} & 47.7\textsuperscript{H} & \textemdash & \textemdash & n/a & n/a & n/a & n/a & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+TF-IDF text & \multicolumn{20}{c}{Shared across models \textemdash Cancer-Myth: TPR $\uparrow$ 86.1\% (H), FPR $\downarrow$ 51.0\% (H);  CREPE: TPR $\uparrow$ \textemdash, FPR $\downarrow$ \textemdash} \\
+GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
-\multicolumn{11}{l}{\textbf{Cancer-Myth}} \\
-Direct gate & 7.0\textsuperscript{H} & 10.7\textsuperscript{H} & \textemdash & \textemdash & 40.5\textsuperscript{H} & 16.1\textsuperscript{H} & 26.1\textsuperscript{H} & 16.1\textsuperscript{H} & 44.1\textsuperscript{H} & 21.5\textsuperscript{H} \\
-Premise-review CoT gate & 29.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash & 51.3\textsuperscript{H} & 32.9\textsuperscript{H} & 57.5\textsuperscript{H} & 35.6\textsuperscript{H} & 61.4\textsuperscript{H} & 38.3\textsuperscript{H} \\
-Probe gate (hidden states) & 75.0\textsuperscript{H} & 47.7\textsuperscript{H} & n/a & n/a & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-TF-IDF text & \multicolumn{10}{c}{Shared detector: FPQ 86.1\% / NFP 51.0\% (H)} \\
-GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-\textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-\midrule
-\multicolumn{11}{l}{\textbf{CREPE}} \\
-Direct gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-Premise-review CoT gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-Probe gate (hidden states) & \textemdash & \textemdash & n/a & n/a & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-TF-IDF text & \multicolumn{10}{c}{Shared detector: not measured} \\
-GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
-\textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\textbf{Ours} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \bottomrule
 \end{tabular}}
 \caption{Table 1. False-premise detection across models and datasets. Stored results; \textemdash: not measured/comparable; n/a: outside the defined implementation. Percentages, one run. H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger. TPR $\uparrow$: FPQ detection; FPR $\downarrow$: false positives on normal questions. Probes require hidden states; no native Luna probe. TF-IDF is model-independent. Default crossfit probe/TF-IDF decisions; these are not matched-FPR thresholds. Ours denotes the proposed method; its implementation is not fixed.}

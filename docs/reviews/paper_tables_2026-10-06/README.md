@@ -6,7 +6,7 @@
 - [Table 2 PDF](table2.pdf) · [PNG](table2.png) · [LaTeX](table2.tex) · [CSV](table2.csv): 답변의 FPQ 교정·NFP 보존과 의료/일반 QA.
 - [분모·출처·미반영 사유](result_sources.md) · [수치 원장](measured_results.json).
 
-**제안 방법의 표시명은 `Ours`다. SAE 사용을 확정하지 않는다.** `GEPA + text features` 행은 삭제했다. 과거 S1/S2/S3의 측정값을 옮겼으며, 표를 나눈 이전 버전은 Git 이력에 남아 있다. 모델을 가로 열, 방법을 행, 데이터셋을 구역으로 배치해 각각 한 페이지의 가로형 PDF로 만들었다. 의료/일반 QA는 전 방법이 미측정이므로 시각화에서 데이터셋별 한 줄(`no completed results`: 해당 조건의 완료 결과 없음)로 압축했고, CSV에는 모델·방법별 평가 칸을 모두 유지했다. 측정값이 들어오면 해당 QA 데이터셋은 방법별 행으로 펼쳐진다.
+**제안 방법의 표시명은 `Ours`다. SAE 사용을 확정하지 않는다.** `GEPA + text features` 행은 삭제했다. 과거 S1/S2/S3의 측정값을 옮겼으며, 표를 나눈 이전 버전은 Git 이력에 남아 있다. 사용자 스케치에 맞춰 **모델 → 데이터셋 → 지표**의 3단 헤더를 사용한다. 방법은 왼쪽에 한 번씩만 나열한다. Table 1은 모델당 Cancer-Myth·CREPE의 TPR/FPR 4열, Table 2는 두 데이터셋의 FPQ/정상 질문 지표와 MedQA·PubMedQA·Medbullets·MMLU·GSM8K의 Acc./EM을 합쳐 모델당 9열이다. 모델 5개를 모두 유지해 Table 2는 총 45개 지표 열의 넓은 표다. PDF는 글자 크기를 유지한 사용자 지정 가로 용지이며 A4에 강제로 축소하지 않았다. 일반 QA도 방법별 칸을 표시하며, 아직 결과가 없는 곳은 `—`다. TF-IDF 탐지는 모델 독립적인 공통 행으로 한 번만 표시한다.
 
 ![Table 1](table1.png)
 

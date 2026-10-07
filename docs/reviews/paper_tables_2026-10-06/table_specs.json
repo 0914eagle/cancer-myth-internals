@@ -291,11 +291,11 @@
     "notes": [
       "Stored results; —: not measured/comparable; n/a: outside the defined implementation. Percentages, one run.",
       "H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger.",
-      "FPQ / NFP / TPQ: Well ≥ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets.",
+      "FPQ / NFP / TPQ: Well ≥ 4. Acc.: accuracy; EM: exact match.",
       "L: Luna matched 99 FPQ / 100 NFP, exposed test; R: CREPE 751 FPQ / 2253 TPQ.",
       "Gate rows route saved Plain/correction answers; not exact Two Axes reproduction.",
       "Ours is not fixed to SAE. Source counts and comparison limits: result_sources.md.",
-      "QA rows with no measurements are compressed across methods; full planned cells remain in CSV."
+      "Each model contains every dataset; QA entries remain unmeasured (—), not zero."
     ]
   }
 }
