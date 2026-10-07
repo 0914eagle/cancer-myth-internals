@@ -1,16 +1,19 @@
-# 논문 비교표 — Detection / Response
+# 논문 비교표 — Detection / Response / QA Preservation
 
-2026-10-07 갱신. **주요 비교 방법을 Table 1과 Table 2에 모았다.** 학습 비교용 SFT·DPO·`Plain (LoRA cohort)`를 제외하고 개인 상황 보존 변형과 중복되는 과거 Direct gate 실행도 메인 표에서 제외해 저장 결과 90칸을 표시했다(Table 1: 20칸, Table 2: 70칸). 일반 `Plain`은 유지했다. 학습 비교 6칸은 `excluded_training_results.json`, 개인 상황 보존 변형 2칸은 `excluded_scope_results.json`과 출처 스냅샷에 보존했다. 중복 Direct gate 실행 2칸은 `excluded_duplicate_gate_results.json`에 보존했다. 새 생성·채점·학습은 하지 않았다.
+2026-10-07 갱신. **평가 과제에 따라 Table 1(탐지), Table 2(교정·정상 질문 보존), Table 3(일반 QA 보존)으로 나눴다.** 학습 비교용 SFT·DPO·`Plain (LoRA cohort)`를 제외하고 개인 상황 보존 변형과 중복되는 과거 Direct gate 실행도 메인 표에서 제외해 저장 결과 90칸을 표시했다(Table 1: 20칸, Table 2: 70칸, Table 3: 미측정). 일반 `Plain`은 유지했다. 학습 비교 6칸은 `excluded_training_results.json`, 개인 상황 보존 변형 2칸은 `excluded_scope_results.json`과 출처 스냅샷에 보존했다. 중복 Direct gate 실행 2칸은 `excluded_duplicate_gate_results.json`에 보존했다. 새 생성·채점·학습은 하지 않았다.
 
 - [Table 1 PDF](table1.pdf) · [PNG](table1.png) · [LaTeX](table1.tex) · [CSV](table1.csv): 거짓 전제 탐지.
-- [Table 2 PDF](table2.pdf) · [PNG](table2.png) · [LaTeX](table2.tex) · [CSV](table2.csv): 답변의 FPQ 교정·NFP 보존과 의료/일반 QA.
+- [Table 2 PDF](table2.pdf) · [PNG](table2.png) · [LaTeX](table2.tex) · [CSV](table2.csv): Cancer-Myth·CREPE 답변의 FPQ 교정·NFP/TPQ 보존.
+- [Table 3 PDF](table3.pdf) · [PNG](table3.png) · [LaTeX](table3.tex) · [CSV](table3.csv): 의료·일반 QA에서의 답변 능력 보존.
 - [분모·출처·미반영 사유](result_sources.md) · [수치 원장](measured_results.json).
 
-**제안 방법의 표시명은 `Ours`다. SAE 사용을 확정하지 않는다.** `GEPA + text features` 행은 삭제했다. 과거 S1/S2/S3의 측정값을 옮겼으며, 표를 나눈 이전 버전은 Git 이력에 남아 있다. 사용자 스케치에 맞춰 **모델 → 데이터셋 → 지표**의 3단 헤더를 사용한다. 방법은 왼쪽에 한 번씩만 나열한다. Table 1은 모델당 Cancer-Myth·CREPE의 TPR/FPR 4열, Table 2는 두 데이터셋의 FPQ/정상 질문 지표와 MedQA·PubMedQA·Medbullets·MMLU·GSM8K의 Acc./EM을 합쳐 모델당 9열이다. 모델 5개를 모두 유지해 Table 2는 총 45개 지표 열의 넓은 표다. PDF는 글자 크기를 유지한 사용자 지정 가로 용지이며 A4에 강제로 축소하지 않았다. 일반 QA도 방법별 칸을 표시하며, 아직 결과가 없는 곳은 `—`다. TF-IDF 탐지는 모델 독립적인 공통 행으로 한 번만 표시한다.
+**제안 방법의 표시명은 `Ours`다. SAE 사용을 확정하지 않는다.** `GEPA + text features` 행은 삭제했다. 과거 S1/S2/S3의 측정값을 옮겼으며, 표를 나눈 이전 버전은 Git 이력에 남아 있다. 사용자 스케치에 맞춰 **모델 → 데이터셋 → 지표**의 3단 헤더를 사용한다. 방법은 왼쪽에 한 번씩만 나열한다. Table 1과 Table 2는 모델당 Cancer-Myth·CREPE의 지표 4열을 사용한다. Table 3은 MedQA·PubMedQA·Medbullets·MMLU·GSM8K의 Acc./EM 5열을 사용한다. 모델 구성은 그대로 유지해 Table 2는 종전 45열에서 20열로 줄었고, Table 3은 25열이다. PDF는 글자 크기를 유지한 사용자 지정 가로 용지이며 A4에 강제로 축소하지 않았다. 아직 완료 결과가 없는 일반 QA 칸은 `—`다. TF-IDF 탐지는 모델 독립적인 공통 행으로 한 번만 표시한다.
 
 ![Table 1](table1.png)
 
 ![Table 2](table2.png)
+
+![Table 3](table3.png)
 
 ## GEPA와 삭제한 text features의 차이
 
@@ -20,7 +23,7 @@ Ours의 구체 구현은 미정이다. [GEPA·SAE 상세 계획](../gepa_sae_det
 
 ## 기존 비교 방법과 배치
 
-두 표 모두 TF-IDF를 첫 번째 방법 행에 둔다. 질문을 바로 주고 거짓 전제 유무만 묻는 판정은 `Direct gate`, 그 판정으로 답변 경로를 선택한 결과는 `Direct-gated response`로 표기한다. `Plain`은 별도 교정 지시 없이 답변하는 조건이므로 `Plain gate`라는 이름은 쓰지 않는다.
+세 표 모두 TF-IDF를 첫 번째 방법 행에 둔다. 질문을 바로 주고 거짓 전제 유무만 묻는 판정은 `Direct gate`, 그 판정으로 답변 경로를 선택한 결과는 `Direct-gated response`로 표기한다. `Plain`은 별도 교정 지시 없이 답변하는 조건이므로 `Plain gate`라는 이름은 쓰지 않는다.
 
 | 방법군 | Table 1: Detection | Table 2: Response | 역할 |
 |---|---|---|---|
@@ -63,6 +66,16 @@ PreWoMe-style과 Extract + Verify의 현재 Luna 값은 Well 공개 템플릿·f
 메인 표에서 제외한 `Self-gated FP identification`은 모델이 질문의 거짓 전제 유무를 먼저 판정하고, Yes이면 무조건 교정 지시로, No이면 Plain으로 답을 생성한 과거 실행이다. **설계상 Direct gate 계열이며 별개의 핵심 방법이 아니다.** 현재 Direct-gated response는 저장된 판정과 두 답변을 사후 결합한 결과다. 이전 생성 실행과 현재 routing 집계는 원장과 실행 조건이 다르므로 두 값을 합치지 않았다. 예를 들어 자체 생성 코드의 임계값은 `>= 0.5`이고 기존 Qwen Direct 판정 원장은 동점 음성 규칙이다. 실제 점수 차이의 원인을 이 차이 하나로 단정하지 않는다. `legacy`는 과거 실행임을 표시하기 위해 우리가 붙였던 이름으로, 원 논문의 공식 방법명이 아니다. 메인 표에서는 해당 중복 행을 제거하고 Direct-gated response를 남겼다. 통일된 본 실험에서는 하나의 Direct gate 조건으로 평가한다.
 
 측정이 없는 방법·모델 조합은 `—`다. `n/a`는 현재 정의한 native hidden-state probe를 쓸 수 없는 Luna 조합에만 남겼다.
+
+## Table 3의 평가 과제
+
+Table 2는 “거짓 전제는 교정하고 정상 질문에는 적절히 답하는가”를 측정한다. Table 3은 **동일한 답변 방법을 적용해도 의료·일반 QA의 정답률이 유지되는가**를 측정하는 별도 평가다. FPQ/NFP로 나누거나 거짓 전제를 합성하는 데이터셋이 아니다.
+
+- Table 2와 같은 방법 행을 유지한다. 각 방법과 GEPA 프롬프트를 동결한 뒤 QA에 적용한다. QA test에 맞춰 GEPA를 다시 최적화한 결과를 보존 성능으로 보고하지 않는다.
+- 모델·데이터셋 내에서 모든 방법의 평가 ID와 정답 채점 규칙을 동일하게 맞춘다. 데이터셋끼리 문항 수가 같을 필요는 없다.
+- 선택형·단답형 출력 형식은 해당 데이터셋에 맞춰 공통으로 고정한다. 이 어댑터는 방법별로 유리하게 수정하지 않는다.
+- 같은 모델의 Plain을 기준으로 보존 여부를 읽는다. Acc./EM 절대값을 표에 넣고, 필요하면 Plain 대비 변화량을 추가 분석한다.
+- 현재 Table 3은 평가 계획표다. 완료 수치는 아직 없으며, 새 모델 호출은 하지 않았다.
 
 ## GEPA와 고정 프롬프트의 비교 조건
 

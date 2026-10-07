@@ -134,7 +134,7 @@
     ]
   },
   "table2": {
-    "title": "Table 2. Response quality and preservation of general QA performance",
+    "title": "Table 2. False-premise correction and normal-question preservation",
     "models": [
       {
         "id": "Qwen/Qwen2.5-7B-Instruct",
@@ -183,7 +183,115 @@
             "label": "TPQ ↑"
           }
         ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "text_gate_response",
+        "label": "TF-IDF text gate",
+        "proposed": false
       },
+      {
+        "key": "plain",
+        "label": "Plain",
+        "proposed": false
+      },
+      {
+        "key": "cot",
+        "label": "CoT",
+        "proposed": false
+      },
+      {
+        "key": "balanced",
+        "label": "Balanced instruction",
+        "proposed": false
+      },
+      {
+        "key": "premise_review_cot",
+        "label": "Premise-review CoT (2-step)",
+        "proposed": false
+      },
+      {
+        "key": "always_correct",
+        "label": "Always correct",
+        "proposed": false
+      },
+      {
+        "key": "prewome_style",
+        "label": "PreWoMe-style",
+        "proposed": false
+      },
+      {
+        "key": "extract_verify",
+        "label": "Extract + Verify",
+        "proposed": false
+      },
+      {
+        "key": "direct_gate_response",
+        "label": "Direct-gated response",
+        "proposed": false
+      },
+      {
+        "key": "cot_gate_response",
+        "label": "Premise-review gated response",
+        "proposed": false
+      },
+      {
+        "key": "hidden_gate_response",
+        "label": "Probe-gated response",
+        "proposed": false,
+        "models": [
+          "Qwen/Qwen2.5-7B-Instruct",
+          "google/gemma-4-12B-it",
+          "Qwen/Qwen3.8-27B-FP8:off",
+          "Qwen/Qwen3.8-27B-FP8:on"
+        ]
+      },
+      {
+        "key": "gepa",
+        "label": "GEPA",
+        "proposed": false
+      },
+      {
+        "key": "ours",
+        "label": "Ours",
+        "proposed": true
+      }
+    ],
+    "notes": [
+      "Stored results; —: not measured/comparable; n/a: outside the defined implementation. Percentages, one run.",
+      "H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger.",
+      "FPQ / NFP / TPQ: Well ≥ 4 (%). Medical and general QA preservation is reported in Table 3.",
+      "L: Luna matched 99 FPQ / 100 NFP, exposed test; R: CREPE 751 FPQ / 2253 TPQ.",
+      "Gate rows route saved Plain/correction answers; not exact Two Axes reproduction.",
+      "Ours is not fixed to SAE. Source counts and comparison limits: result_sources.md."
+    ]
+  },
+  "table3": {
+    "title": "Table 3. Preservation of medical and general QA performance",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "gpt-6-luna",
+        "display": "GPT-6\nLuna"
+      },
+      {
+        "id": "google/gemma-4-12B-it",
+        "display": "Gemma 4\n12B"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:off",
+        "display": "Qwen3.8\n27B OFF"
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B-FP8:on",
+        "display": "Qwen3.8\n27B ON"
+      }
+    ],
+    "groups": [
       {
         "label": "Medical QA",
         "columns": [
@@ -289,13 +397,11 @@
       }
     ],
     "notes": [
-      "Stored results; —: not measured/comparable; n/a: outside the defined implementation. Percentages, one run.",
-      "H: historical full-corpus Cancer-Myth; valid denominators and protocol differences in ledger.",
-      "FPQ / NFP / TPQ: Well ≥ 4. Acc.: accuracy; EM: exact match.",
-      "L: Luna matched 99 FPQ / 100 NFP, exposed test; R: CREPE 751 FPQ / 2253 TPQ.",
-      "Gate rows route saved Plain/correction answers; not exact Two Axes reproduction.",
-      "Ours is not fixed to SAE. Source counts and comparison limits: result_sources.md.",
-      "Each model contains every dataset; QA entries remain unmeasured (—), not zero."
+      "All entries are unmeasured; — means no completed comparable result, not zero. n/a: native probe unavailable.",
+      "Acc.: accuracy (%); GSM8K EM: final-answer exact match (%). Datasets are reported separately.",
+      "Evaluate the frozen response methods from Table 2; do not retune them on these QA test sets.",
+      "Use identical question IDs and scoring rules across methods within each dataset and model.",
+      "Report performance relative to the same-model Plain baseline; Ours implementation remains unspecified."
     ]
   }
 }

@@ -2,6 +2,8 @@
 
 **새 실험 없이 저장된 결과 90칸을 표에 표시했다. 학습 비교용 6칸은 `excluded_training_results.json`에 보존하고 표에서는 제외했다. 개인 상황 보존 변형 2칸도 `excluded_scope_results.json`에 보존하고 메인 표에서 제외했다. 중복 Direct gate 실행 2칸은 `excluded_duplicate_gate_results.json`에 보존했다.** 아래 분자/분모로 비율을 재계산하며, 표에는 소수 첫째 자리까지 표시한다. 탐지는 양성 판정 수, 답변은 Well 4·5점 답변 수다. 점수 보존과 gate 오탐은 다른 지표다.
 
+일반 QA 열은 Table 2에서 Table 3으로 옮겼다. Table 3은 전부 미측정이며 기존 90칸의 값과 분모는 바뀌지 않았다.
+
 ## 비교 범위와 중요한 차이
 
 - H: 전체 Cancer-Myth 대상의 과거 결과. Qwen Plain/CoT 및 routing은 FPQ 유효 582개인 행이 있다. Qwen 범위 보존 추출 검증은 FPQ 577/NFP 148개다. 누락을 실패로 재분류하지 않았다.
