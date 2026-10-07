@@ -40,6 +40,41 @@ Ours의 구체 구현은 미정이다. [GEPA·SAE 상세 계획](../gepa_sae_det
 
 Probe는 해당 모델의 내부 상태가 필요하다. 공개 모델 Qwen/Gemma에 배치했고 GPT-Luna에는 native probe 행을 두지 않았다. 다른 모델의 probe로 Luna를 라우팅한다면 별도의 transfer 조건이다. TF-IDF 판정은 모델 독립적이지만 그 판정으로 고르는 답변의 품질은 모델별로 다르므로 Response에서는 모델별 행이 필요하다.
 
+## Method 정의: 신호·판정·답변을 구분
+
+표의 행은 완성된 답변 방법을 뜻한다. GEPA는 프롬프트를 얻는 최적화 절차이고, gate는 판정으로 행동을 고르는 구성요소라 같은 층위의 용어가 아니다. 따라서 아래처럼 실제 실행 단위를 함께 정의한다.
+
+| 방법군 | 현재 행 | 답변을 만드는 방식 |
+|---|---|---|
+| 고정 답변 지시 | Plain, CoT, Balanced instruction, Always correct | 고정 지시로 답변. Always correct는 모든 질문에 거짓 전제가 있다고 지시하는 대조 조건 |
+| 전제 검토 파이프라인 | Premise-review CoT, PreWoMe, Extract + Verify | 중간 검토 내용 또는 주장별 판정을 최종 답변 입력으로 전달 |
+| 선택적 경로 | TF-IDF, Direct, Premise-review, Probe의 gated response | gate 판정으로 Plain/무조건 교정 경로를 선택 |
+| 최적화·제안 방법 | GEPA, Ours | GEPA 행은 최적화한 답변 프롬프트. Ours의 구현은 미정 |
+
+### Extract + Verify의 정확한 정의
+
+현재 Luna 실행은 [Well 공개 구현](https://github.com/ShenranTomWang/Well/blob/6c9770f65da6e9c50250cf94e35b07f258288e38/prompting/run_presupposition_pipeline.py)의 no-RAG 조건이다. 질문에서 전제 목록을 뽑고 각 전제를 개별적으로 True/False 판정한 뒤, 거짓으로 판정한 전제에 대한 피드백과 원 질문을 답변 생성기에 준다. 현재 검증 입력에는 원 질문이 없고 개별 전제만 있다. 검증 결과를 참고해 새 답변을 생성하며, 저장된 Plain/무조건 교정 답변을 하나 고르는 현재 routing 행과는 다르다. 넓게 보면 이 방법에도 교정 여부를 결정하는 판정 기능은 있지만, 개별 주장 검증과 질문 단위 gate를 동일한 구현으로 취급하지 않는다.
+
+Table 1에 이 방법의 탐지 성능을 넣으려면 예컨대 “하나 이상의 전제가 False이면 질문을 FPQ로 판정”이라는 집계 규칙을 별도로 정의해야 한다. 이는 답변 점수와 다른 지표이며 추출·파싱 실패를 정상 질문으로 간주해서는 안 된다. 아직 이 규칙의 결과를 Table 1에 추가하지 않았다.
+
+PreWoMe는 동일한 추출 목록을 받지만 질문·목록 전체를 보고 자유 서술 Feedback/Action을 만든다. Extract + Verify는 개별 전제를 이진 판정한다. 현재 두 방법이 같은 추출 목록을 공유한다는 사실은 두 전체 방법이 같다는 뜻이 아니다.
+
+### Gate 계열과 선행 연구의 범위
+
+[Two Axes of LLM Abstention: Answer Correctness and Question Answerability](https://arxiv.org/html/2607.08456v1)의 §5는 직접 판정, 자기평가, 출력 확신도, 표면 텍스트, hidden probe 및 평균 차이 방향을 탐지 신호로 비교한다. §6의 실제 답변 routing은 일반 답변과 조건부 전제 검토 지시를 고르며, 같은 routing budget의 무작위 선택도 대조한다. 모든 탐지 신호를 답변 gate로 실행한 것은 아니다. 우리의 Plain/무조건 교정 routing은 그 조건부 검토 지시와 같지 않다.
+
+[Detecting (Un)answerability in Large Language Models with Linear Directions](https://aclanthology.org/2026.eacl-long.29/)는 답변 불가능성을 읽는 내부 방향과 개입을 다룬다. 학습한 logistic probe 외 내부 방향 기반 점수도 후보지만, 원 연구의 주 과제인 답변 가능성 탐지와 우리의 FPQ 교정을 동일한 과제라고 보지 않는다.
+
+현재 표의 gate가 가능한 모든 gate를 포괄하는 것은 아니다. 검토할 추가 항목은 다음과 같다.
+
+- **검증 결과 기반 gate:** 전제별 판정을 질문 단위로 집계한 뒤 공통 답변 경로로 연결. 현재 Extract + Verify 파이프라인과 구분하는 추가 실험이다.
+- **자기평가·출력 확신도:** 답할 수 있는지, 생성한 답이 맞는지, 답변 확률 등의 신호. 낮은 확신도가 곧 거짓 전제를 뜻하지 않으며, 생성 후 신호는 호출 비용도 다르다.
+- **내부 방향:** logistic probe와 평균 차이 방향 등을 구분. 현재 원장에도 mean 신호는 있으나 main 표의 hidden logistic 값과 합치지 않았다.
+- **무작위 routing:** 같은 비율로 교정 경로를 켜는 대조군. 분류의 효과와 단순한 교정 횟수 감소를 구분하기 위한 분석 조건이다.
+- **항상/전혀 routing하지 않음:** 현재 Always correct/Plain이 양 끝 조건이다. 정답 라벨 routing은 진단용으로만 둘 수 있고 배포 가능한 방법은 아니다.
+
+공정한 gate 비교는 답변 경로를 고정하고 gate 신호만 바꾼다. 학습·임계값 선택에는 test를 쓰지 않고 AUROC와 선택한 임계값의 TPR/FPR, 최종 답변의 FPQ 교정·NFP 보존, 추가 호출 비용을 함께 보고한다. 판정 정확도와 최종 답변의 교정 성공률은 서로 대체할 수 없다. 새로운 gate 행이나 수치는 이 정의를 확정해 실행한 뒤 추가한다.
+
 ## Premise-review CoT gate가 하는 일
 
 1. 원 질문에서 사실적 전제를 검토하는 글을 생성한다. 잘못된 전제와 교정 정보를 찾고 타당한 전제에서는 오류를 만들지 않도록 지시한다.
