@@ -10,34 +10,34 @@
  &  & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ \\
 \midrule
 \multirow{5}{*}{\shortstack[l]{Qwen2.5\\7B}} & Direct gate & 7.0\textsuperscript{H} & 10.7\textsuperscript{H} & \textemdash & \textemdash \\
- & Premise-review CoT gate & 29.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash \\
+ & Review CoT gate (2-step) & 29.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
 \multirow{5}{*}{\shortstack[l]{GPT-6\\Luna}} & Direct gate & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Premise-review CoT gate & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Review CoT gate (2-step) & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
 \multirow{5}{*}{\shortstack[l]{Gemma 4\\12B}} & Direct gate & 40.5\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash \\
- & Premise-review CoT gate & 51.3\textsuperscript{H} & 32.9\textsuperscript{H} & \textemdash & \textemdash \\
+ & Review CoT gate (2-step) & 51.3\textsuperscript{H} & 32.9\textsuperscript{H} & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
 \multirow{5}{*}{\shortstack[l]{Qwen3.8\\27B OFF}} & Direct gate & 26.1\textsuperscript{H} & 16.1\textsuperscript{H} & \textemdash & \textemdash \\
- & Premise-review CoT gate & 57.5\textsuperscript{H} & 35.6\textsuperscript{H} & \textemdash & \textemdash \\
+ & Review CoT gate (2-step) & 57.5\textsuperscript{H} & 35.6\textsuperscript{H} & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
 \multirow{5}{*}{\shortstack[l]{Qwen3.8\\27B ON}} & Direct gate & 44.1\textsuperscript{H} & 21.5\textsuperscript{H} & \textemdash & \textemdash \\
- & Premise-review CoT gate & 61.4\textsuperscript{H} & 38.3\textsuperscript{H} & \textemdash & \textemdash \\
+ & Review CoT gate (2-step) & 61.4\textsuperscript{H} & 38.3\textsuperscript{H} & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash \\
 \bottomrule
 \end{tabular}}
 \caption{Table 1. False-premise detection across models and datasets. Stored results; \textemdash means unavailable or not comparable. Values are percentages, one run. TPR $\uparrow$: FPQ detection; FPR $\downarrow$: false positives on normal questions. H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger. Model versions, counts, judge/protocol differences and source hashes: result\_sources.md.}

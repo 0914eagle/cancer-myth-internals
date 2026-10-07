@@ -54,12 +54,41 @@ MMLU는 [Measuring Massive Multitask Language Understanding 공식 저장소](ht
 
 ## 방법 추가 및 의미
 
-- 본문: Plain, 전제 검토 CoT, PreWoMe식, Extract+Verify, GEPA, **GEPA + text feedback**, **GEPA + SAE feedback**.
-- `text feedback`: 동일 학습 답변 쌍에서 LLM이 텍스트만 보고 특징을 요약해 제공한다. 기존 GEPA도 자연어 피드백을 쓰므로 이 이름은 'GEPA에 처음 텍스트를 준다'는 뜻이 아니다.
+- 본문: Plain, 전제 검토 CoT, PreWoMe식, Extract+Verify, GEPA, **GEPA + text features**, **Ours (GEPA + SAE)**.
+- `text features` (이전 `text feedback`): 동일 학습 답변 쌍에서 LLM이 텍스트만 보고 특징을 요약해 제공한다. 기존 GEPA도 자연어 피드백을 쓰므로 이 이름은 'GEPA에 처음 텍스트를 준다'는 뜻이 아니다.
 - `SAE feedback`: WIMHF식 답변 쌍 특징을 설명·검증한 후 반성 입력에 제공하는 제안 조건. 탐지와 답변 각각 따로 최적화한다.
 - Table S1: 기존 **SFT/DPO (FPQ + 합성 twins)** 결과 두 행을 별도로 추가했다. 이는 계획 중인 같은 chosen의 SFT, 자연 FPQ+NFP 기본 DPO, 특징 선별 DPO와 다르므로 그 칸을 대신 채우지 않는다. NLA/AO 설명 추가도 계획 상태다. 학습 데이터 수·구성·예산을 맞추며 해당 요소의 추가 효과를 본다.
 - Table S2/S3: 기존 CoT·균형 지시·무조건 교정·Gate·학습 분류기 기준선을 삭제하지 않고 별도 표로 보존했다.
 - 본표에 포함되지 않은 NLA/AO 조합은 미지원 확정이 아니라 현재 계획 범위 밖이다. 모델에 따라 방법을 바꾼 결과를 같은 조건으로 묶지 않는다.
+
+## 방법명과 첨부 기존 표 대조 — 2026-10-07
+
+| 표의 방법명 | 프롬프트 최적화에 주는 정보 | 역할 |
+|---|---|---|
+| GEPA | 실행한 질문·답변, 채점 점수와 채점 이유 등 기존 실행 피드백 | 기존 기준선. 원래부터 자연어 피드백을 사용함 |
+| GEPA + text features | 위 정보 + 같은 학습 답변 풀에서 LLM이 텍스트를 직접 비교해 발견·검증한 공통 특징 | 우리가 설계한 SAE 없는 대조군. 공개 GEPA의 별도 공식 방법 이름이 아님 |
+| **Ours (GEPA + SAE)** | 위 정보 + 답변 임베딩 차이에서 SAE로 발견하고 자연어로 설명·검증한 특징 | GEPA + SAE feedback의 표 표시명. 제안 방법이며 아직 성능 미측정 |
+
+G2와 Ours는 같은 답변 풀·특징 검증·피드백 길이·예산을 맞춰 SAE의 추가 가치를 비교한다. 특징을 평가 점수에 더하지 않으며, 프롬프트를 고치는 반성 모델에게 추가 정보로 준다. 기존 GEPA 실행과 새 특징 실험의 길이 제한 등이 달라질 수 있으므로 최종 공정 비교에서는 G0도 같은 조건으로 다시 돌린다.
+
+**Review CoT gate (2-step)**는 첨부 표의 **전제 검토 CoT gate · 2-step**이다.
+
+1. 원 질문을 주고 사실적 전제를 검토하게 한다. 잘못된 전제와 교정 정보를 찾고, 전제가 타당하면 그렇다고 하며 오류를 만들지 않도록 지시한다.
+2. 원 질문과 검토문을 함께 주고 거짓 전제가 있는지 최종 Yes/No 또는 이진 JSON으로 판정한다. Qwen2.5는 Yes/No 토큰 점수 비교, Gemma/Qwen3.8은 생성 JSON이므로 판정 출력 절차는 다르다.
+
+Table 1은 **2단계의 탐지 성능**이다. Table 2의 `Review CoT (2-step)`는 2단계에서 판정 대신 **실제 질문에 대한 답변**을 생성한다. S2의 `CoT-gated response`는 별도로 gate 양성 시 저장된 무조건 교정 답변, 음성 시 저장된 Plain 답변을 선택한 결과다. gate의 2-step이 최종 답변 생성까지 총 두 번 호출했다는 뜻은 아니다.
+
+**첨부 표의 수치가 전부 들어간 것은 아니다.** 현재 계획 모델과 일치하는 공개 모델 4조건 및 공통 TF-IDF의 **76칸은 대조하여 모두 일치**함을 확인했다. 나머지는 아래 이유로 구분했다.
+
+| 첨부 표 항목 | 현재 위치 / 처리 |
+|---|---|
+| Qwen2.5·Gemma 4·Qwen3.8 OFF/ON Direct 및 CoT 탐지 16칸 | Table 1 |
+| 같은 모델들의 Plain·전제 검토 답변 16칸 | Table 2 |
+| 같은 모델들의 CoT·무조건 교정·Direct/CoT/Text gate 답변 40칸 | Table S2 |
+| Qwen hidden probe 및 공통 TF-IDF 탐지 4칸 | Table S3 |
+| GPT-Luna 탐지 62.6/39.6, 보호 지시 38.6/15.4, CoT 83.5/65.1 등 | **GPT-5.6-Luna** 결과. GPT-6 칸에 대입하지 않음. 기존 [45번 표](../../45_complete_performance_tables_2026-10-01.md)에 유지 |
+| GPT-5.6-Luna 답변 44.8/89.3 등 | 동일하게 현재 GPT-6와 별도. 50.2/90.8과 80.6/50.6은 원래 부분 채점 수치라는 단서도 유지 |
+| Claude-Sonnet | 앞서 요청한 모델 제외를 유지 |
 
 ## 공통 평가 규칙
 

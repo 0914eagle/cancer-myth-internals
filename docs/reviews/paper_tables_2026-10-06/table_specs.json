@@ -59,7 +59,7 @@
       },
       {
         "key": "premise_review_cot",
-        "label": "Premise-review CoT gate",
+        "label": "Review CoT gate (2-step)",
         "proposed": false
       },
       {
@@ -69,12 +69,12 @@
       },
       {
         "key": "gepa_text_feedback",
-        "label": "GEPA + text feedback",
+        "label": "GEPA + text features",
         "proposed": false
       },
       {
         "key": "gepa_sae_feedback",
-        "label": "GEPA + SAE feedback",
+        "label": "Ours (GEPA + SAE)",
         "proposed": true
       }
     ],
@@ -175,7 +175,7 @@
       },
       {
         "key": "premise_review_cot",
-        "label": "Premise-review CoT",
+        "label": "Review CoT (2-step)",
         "proposed": false
       },
       {
@@ -195,12 +195,12 @@
       },
       {
         "key": "gepa_text_feedback",
-        "label": "GEPA + text feedback",
+        "label": "GEPA + text features",
         "proposed": false
       },
       {
         "key": "gepa_sae_feedback",
-        "label": "GEPA + SAE feedback",
+        "label": "Ours (GEPA + SAE)",
         "proposed": true
       }
     ],
@@ -326,7 +326,7 @@
       },
       {
         "key": "gepa_sae_feedback",
-        "label": "GEPA + SAE feedback",
+        "label": "Ours (GEPA + SAE)",
         "proposed": true
       },
       {

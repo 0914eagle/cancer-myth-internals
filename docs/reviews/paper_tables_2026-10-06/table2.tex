@@ -10,44 +10,44 @@
  &  & FPQ $\uparrow$ & NFP $\uparrow$ & FPQ $\uparrow$ & TPQ $\uparrow$ & MQ $\uparrow$ & PQ $\uparrow$ & MB $\uparrow$ & MMLU $\uparrow$ & GSM $\uparrow$ \\
 \midrule
 \multirow{7}{*}{\shortstack[l]{Qwen2.5\\7B}} & Plain & 2.4\textsuperscript{H} & 100.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Premise-review CoT & 10.5\textsuperscript{H} & 94.6\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Review CoT (2-step) & 10.5\textsuperscript{H} & 94.6\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
 \multirow{7}{*}{\shortstack[l]{GPT-6\\Luna}} & Plain & 54.5\textsuperscript{L} & 91.0\textsuperscript{L} & 72.7\textsuperscript{R} & 98.9\textsuperscript{R} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Premise-review CoT & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Review CoT (2-step) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & 88.9\textsuperscript{L} & 59.0\textsuperscript{L} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & 87.9\textsuperscript{L} & 48.0\textsuperscript{L} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & 78.8\textsuperscript{L} & 72.0\textsuperscript{L} & 74.7\textsuperscript{R} & 98.0\textsuperscript{R} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
 \multirow{7}{*}{\shortstack[l]{Gemma 4\\12B}} & Plain & 4.3\textsuperscript{H} & 100.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Premise-review CoT & 41.2\textsuperscript{H} & 78.5\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Review CoT (2-step) & 41.2\textsuperscript{H} & 78.5\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
 \multirow{7}{*}{\shortstack[l]{Qwen3.8\\27B OFF}} & Plain & 49.7\textsuperscript{H} & 79.9\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Premise-review CoT & 61.4\textsuperscript{H} & 55.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Review CoT (2-step) & 61.4\textsuperscript{H} & 55.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \midrule
 \multirow{7}{*}{\shortstack[l]{Qwen3.8\\27B ON}} & Plain & 40.7\textsuperscript{H} & 88.6\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & Premise-review CoT & 66.7\textsuperscript{H} & 57.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & Review CoT (2-step) & 66.7\textsuperscript{H} & 57.0\textsuperscript{H} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & PreWoMe-style & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
  & GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & GEPA + text feedback & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
- & \textbf{GEPA + SAE feedback} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & GEPA + text features & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+ & \textbf{Ours (GEPA + SAE)} & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
 \bottomrule
 \end{tabular}}
 \caption{Table 2. Response quality and preservation of general QA performance. Stored results; \textemdash means unavailable or not comparable. Values are percentages, one run. FPQ / NFP / TPQ: Well $\geq$ 4. MQ / PQ / MB: MedQA / PubMedQA / Medbullets. H: historical full-corpus evaluation (583 FPQ / 149 NFP); valid denominators in ledger. L: Luna matched 99 FPQ / 100 NFP, exposed test; excludes few-shot overlap fpq\_291. R: Luna CREPE 751 FPQ / 2253 TPQ. Different markers are not controlled comparisons. Model versions, counts, judge/protocol differences and source hashes: result\_sources.md.}
