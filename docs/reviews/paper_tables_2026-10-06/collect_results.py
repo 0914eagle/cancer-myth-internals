@@ -73,12 +73,7 @@ for m in ['plain','gepa']:
   a=test['conditions']['crepe/'+m]['metrics'][gr]
   metric='crepe_fpq_well_ge4_pct' if gr=='fpq' else 'crepe_normal_well_ge4_pct'
   add('table2',L,m,metric,a['scores']['4']+a['scores']['5'],a['n'],'luna_test',['conditions','crepe/'+m,'metrics',gr],'R','Full CREPE test; unrounded counts, not optimization/dev score.')
-# Preserve extra measured legacy methods under explicit variant labels instead of silently merging.
-extras=[('extract_verify_scope','Extract+Verify (scope)'),('fp_identification','Self-gated FP identification'),('hidden_gate_response','Hidden-gated response')]
-for k,label in extras:
- if not any(x['key']==k for x in specs['table2']['methods']):specs['table2']['methods'].append(dict(key=k,label=label,proposed=False,models=[Q]))
-response('table_s2',Q,'extract_verify_scope',ans['qwen/extract_verify'],'qwen_answers',['qwen/extract_verify'],'H',note='Legacy scope-preserving extraction + question-aware verification. NOT the Well atomic baseline in Table 2.')
-response('table_s2',Q,'fp_identification',ans['qwen/fp_identification'],'qwen_answers',['qwen/fp_identification'],'H')
+# Scope-preservation variants are archived outside the main tables.
 response('table_s2',Q,'hidden_gate_response',routes['results']['qwen/hidden'],'routing',['results','qwen/hidden'],'H',den='n')
 # Legacy SFT/DPO and matched Plain are excluded from displayed tables by user request.
 # Source runtime manifest hashes / projections: no credentials or huge response dumps.

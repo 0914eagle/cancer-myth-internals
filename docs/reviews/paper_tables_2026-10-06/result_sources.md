@@ -1,6 +1,6 @@
 # Paper tables 수치 원장 — 2026-10-07
 
-**새 실험 없이 저장된 결과 94칸을 표에 표시했다. 학습 비교용 6칸은 `excluded_training_results.json`에 보존하고 표에서는 제외했다.** 아래 분자/분모로 비율을 재계산하며, 표에는 소수 첫째 자리까지 표시한다. 탐지는 양성 판정 수, 답변은 Well 4·5점 답변 수다. 점수 보존과 gate 오탐은 다른 지표다.
+**새 실험 없이 저장된 결과 90칸을 표에 표시했다. 학습 비교용 6칸은 `excluded_training_results.json`에 보존하고 표에서는 제외했다. 개인 상황 보존 변형 2칸도 `excluded_scope_results.json`에 보존하고 메인 표에서 제외했다. 중복 Direct gate 실행 2칸은 `excluded_duplicate_gate_results.json`에 보존했다.** 아래 분자/분모로 비율을 재계산하며, 표에는 소수 첫째 자리까지 표시한다. 탐지는 양성 판정 수, 답변은 Well 4·5점 답변 수다. 점수 보존과 gate 오탐은 다른 지표다.
 
 ## 비교 범위와 중요한 차이
 
@@ -16,7 +16,7 @@
 | 대상 | 처리 이유 |
 |---|---|
 | GPT-5.6 Luna의 기존 탐지·전제 검토·균형 지시·gate 답변 | 현재 GPT-6 칸과 모델 버전이 다름. 기존 docs/45 결과는 유지 |
-| Qwen 기존 `extract_verify` | 범위 보존 지시 및 질문 문맥 사용이 Well baseline과 다름. Table 2의 `Extract+Verify (scope)`에 별도로 반영 |
+| Qwen 기존 `extract_verify` | 범위 보존 지시 및 질문 문맥 사용이 Well baseline과 다름. 메인 표에서 제외하고 `excluded_scope_results.json`에 별도로 보존 |
 | Gemma `verify_extracted_routed` | 추출 검증의 판정으로 저장 답변을 선택하는 조건. 새 답변을 생성하는 Table 2 Extract+Verify와 달라 미대입 |
 | 초소규모 smoke / 부분 채점 / 오류로 중단한 검증기 GEPA | 본표의 완료된 시험 평가나 답변 프롬프트 GEPA로 간주하지 않음 |
 | B/C/D/E 및 의료 문구 제거 ablation | 본표에 정의한 방법과 다름. 기존 분석 문서를 유지하고 이번 표의 다른 방법 칸에 대입하지 않음 |
@@ -132,9 +132,5 @@
 | table2 | GPT-6 Luna | gepa | crepe_fpq_well_ge4_pct | 561/751 | 74.7 | R | luna_test / `conditions → crepe/gepa → metrics → fpq` |
 | table2 | GPT-6 Luna | gepa | cancer_nfp_well_ge4_pct | 72/100 | 72.0 | L | luna_pipelines / `methods → prewome → matched_reference_on_completed_primary_ids → gepa → nfp` |
 | table2 | GPT-6 Luna | gepa | crepe_normal_well_ge4_pct | 2209/2253 | 98.0 | R | luna_test / `conditions → crepe/gepa → metrics → nfp` |
-| table2 | Qwen2.5 7B | extract_verify_scope | cancer_fpq_well_ge4_pct | 33/577 | 5.7 | H | qwen_answers / `qwen/extract_verify → fpq` |
-| table2 | Qwen2.5 7B | extract_verify_scope | cancer_nfp_well_ge4_pct | 147/148 | 99.3 | H | qwen_answers / `qwen/extract_verify → nfp` |
-| table2 | Qwen2.5 7B | fp_identification | cancer_fpq_well_ge4_pct | 41/582 | 7.0 | H | qwen_answers / `qwen/fp_identification → fpq` |
-| table2 | Qwen2.5 7B | fp_identification | cancer_nfp_well_ge4_pct | 134/149 | 89.9 | H | qwen_answers / `qwen/fp_identification → nfp` |
 | table2 | Qwen2.5 7B | hidden_gate_response | cancer_fpq_well_ge4_pct | 261/582 | 44.8 | H | routing / `results → qwen/hidden → fpq` |
 | table2 | Qwen2.5 7B | hidden_gate_response | cancer_nfp_well_ge4_pct | 96/149 | 64.4 | H | routing / `results → qwen/hidden → nfp` |

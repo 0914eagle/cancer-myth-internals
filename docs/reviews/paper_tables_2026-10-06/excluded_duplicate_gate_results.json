@@ -1,0 +1,97 @@
+{
+  "reason": "Self-gated FP identification is a historical Direct-gate generation run, not an independent main-table method. Preserve results without merging different runs.",
+  "methods": [
+    {
+      "key": "fp_identification",
+      "label": "Self-gated FP identification (legacy)",
+      "proposed": false
+    }
+  ],
+  "cells": [
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "fp_identification",
+      "metric": "cancer_fpq_well_ge4_pct",
+      "numerator": 41,
+      "denominator": 582,
+      "value_pct": 7.0446735395189,
+      "cohort": "H",
+      "source": "qwen_answers",
+      "pointer": [
+        "qwen/fp_identification",
+        "fpq"
+      ],
+      "status": "historical_observed",
+      "expected_n": 583,
+      "missing_n": 1,
+      "note": ""
+    },
+    {
+      "table": "table2",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "method": "fp_identification",
+      "metric": "cancer_nfp_well_ge4_pct",
+      "numerator": 134,
+      "denominator": 149,
+      "value_pct": 89.93288590604027,
+      "cohort": "H",
+      "source": "qwen_answers",
+      "pointer": [
+        "qwen/fp_identification",
+        "nfp"
+      ],
+      "status": "historical_observed",
+      "expected_n": 149,
+      "missing_n": 0,
+      "note": ""
+    }
+  ],
+  "sources": {
+    "qwen_answers": {
+      "original_path": "docs/reviews/advisor_presentation_2026-09-23/answer_summary.json",
+      "snapshot": "sources/qwen_answers.json",
+      "sha256": "85c8236555741b29b100d24e40a39dc98f1d404a628d1fbffef0a1f5a320656d"
+    },
+    "default_gates": {
+      "original_path": "docs/reviews/default_gate_decisions_2026-09-23/summary.json",
+      "snapshot": "sources/default_gates.json",
+      "sha256": "8fc02b7322b2189f9bb0e4ebe447a8b2fbba2cdb046e572abe61d1953664a931"
+    },
+    "routing": {
+      "original_path": "docs/reviews/table2_completion_2026-10-01/routing_summary.json",
+      "snapshot": "sources/routing.json",
+      "sha256": "b88be73b084f25075b16eb0b59de95310801f745a94b61416043fd08bafc7d6f"
+    },
+    "gemma": {
+      "original_path": "results/gemma4/full_20260926_v2/analysis/summary.json",
+      "snapshot": "sources/gemma.json",
+      "sha256": "a1d607b035794a61dd2790c85eb687b0373374f12020521cead78ab293abd962"
+    },
+    "qwen38_off": {
+      "original_path": "results/qwen38/full_transformers_20260926_v1/thinking_off/analysis/summary.json",
+      "snapshot": "sources/qwen38_off.json",
+      "sha256": "dad082fa3227b37d1ba8ac543fc13fe616a512596f68e44d70bb5ad3fb126ec0"
+    },
+    "qwen38_on": {
+      "original_path": "results/qwen38/full_transformers_20260926_v1/thinking_on/analysis/summary.json",
+      "snapshot": "sources/qwen38_on.json",
+      "sha256": "82f5df9808817ff7800e97e6d829c45698a8088ace9e8e3b04f585f12010133d"
+    },
+    "luna_pipelines": {
+      "original_path": "results/fpqa_prompting/well_pipelines_luna6_20261004/metrics.json",
+      "snapshot": "sources/luna_pipelines.json",
+      "sha256": "b3698e373b8db358b36363508e387baa03ef472013340fb8c0b21b89065cb4bc"
+    },
+    "luna_test": {
+      "original_path": "results/fpqa_prompting/well_upstream_test_v1_20261003_run/metrics.json",
+      "snapshot": "sources/luna_test.json",
+      "sha256": "9018a5a614f99b55cc2a246ee5ea6695f30f2bdc68c8e44833bcc9cdf6683c7c"
+    },
+    "lora": {
+      "original_path": "docs/reviews/advisor_presentation_2026-09-23/lora_summary.json",
+      "snapshot": "sources/lora.json",
+      "sha256": "bfc425f7eb1421a22efda87669ee02eb8937926e45180bd38c6c288bf86f5c89"
+    }
+  }
+}

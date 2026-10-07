@@ -81,18 +81,6 @@
         ]
       },
       {
-        "key": "direct_protect",
-        "label": "Direct + scope protection",
-        "proposed": false,
-        "models": [
-          "Qwen/Qwen2.5-7B-Instruct",
-          "gpt-6-luna",
-          "google/gemma-4-12B-it",
-          "Qwen/Qwen3.8-27B-FP8:off",
-          "Qwen/Qwen3.8-27B-FP8:on"
-        ]
-      },
-      {
         "key": "hidden_probe",
         "label": "Probe gate (hidden states)",
         "proposed": false,
@@ -261,16 +249,6 @@
       {
         "key": "extract_verify",
         "label": "Extract + Verify",
-        "proposed": false
-      },
-      {
-        "key": "extract_verify_scope",
-        "label": "Extract+Verify (scope)",
-        "proposed": false
-      },
-      {
-        "key": "fp_identification",
-        "label": "Self-gated FP identification (legacy)",
         "proposed": false
       },
       {
