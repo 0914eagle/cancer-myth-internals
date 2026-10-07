@@ -1,0 +1,98 @@
+{
+  "status": "source_audit_only_not_frozen_split_manifest",
+  "source": "configs/premise_sft/cancer_questions.jsonl",
+  "source_sha256": "880564c27c5dcfde296334b95b00b825256c7cb0c7d89e37fee2696c9e64c12c",
+  "counts": {
+    "fpq": 583,
+    "nfp": 149
+  },
+  "groups": 516,
+  "normalized_premise_multi_group_count": 0,
+  "exact_fewshot_matches": [
+    {
+      "id": "fpq_291",
+      "group_id": "g_5529ea8bb29fa770"
+    },
+    {
+      "id": "fpq_417",
+      "group_id": "g_66e9e5470d66f952"
+    },
+    {
+      "id": "nfp_1002",
+      "group_id": "g_846c9d57d2496fe2"
+    },
+    {
+      "id": "nfp_1003",
+      "group_id": "g_d511cbc4501333dc"
+    }
+  ],
+  "excluded_existing_group_members": [
+    {
+      "id": "fpq_289",
+      "set": "fpq",
+      "group_id": "g_5529ea8bb29fa770",
+      "reason": "fixed_well_fewshot_group"
+    },
+    {
+      "id": "fpq_290",
+      "set": "fpq",
+      "group_id": "g_5529ea8bb29fa770",
+      "reason": "fixed_well_fewshot_group"
+    },
+    {
+      "id": "fpq_291",
+      "set": "fpq",
+      "group_id": "g_5529ea8bb29fa770",
+      "reason": "fixed_well_fewshot_group"
+    },
+    {
+      "id": "fpq_415",
+      "set": "fpq",
+      "group_id": "g_66e9e5470d66f952",
+      "reason": "fixed_well_fewshot_group"
+    },
+    {
+      "id": "fpq_416",
+      "set": "fpq",
+      "group_id": "g_66e9e5470d66f952",
+      "reason": "fixed_well_fewshot_group"
+    },
+    {
+      "id": "fpq_417",
+      "set": "fpq",
+      "group_id": "g_66e9e5470d66f952",
+      "reason": "fixed_well_fewshot_group"
+    },
+    {
+      "id": "nfp_1002",
+      "set": "nfp",
+      "group_id": "g_846c9d57d2496fe2",
+      "reason": "fixed_well_fewshot_group"
+    },
+    {
+      "id": "nfp_1003",
+      "set": "nfp",
+      "group_id": "g_d511cbc4501333dc",
+      "reason": "fixed_well_fewshot_group"
+    }
+  ],
+  "provisional_eligible_counts": {
+    "fpq": 577,
+    "nfp": 147
+  },
+  "provisional_eligible_groups": 512,
+  "outstanding": [
+    "semantic duplicate/group audit including cross-dataset links",
+    "semantic overlap of other fixed examples",
+    "CREPE official split group overlap audit",
+    "actual outer/inner/feature assignments and manifest freeze"
+  ],
+  "planned_split": {
+    "outer_folds": 3,
+    "seed": 20261007,
+    "unit": "audited question group",
+    "stratify": "FPQ/normal",
+    "role": "Cancer-Myth OOF; CREPE keeps official split"
+  },
+  "prompt_registry_sha256": "8c2a4db46b30e000d89acb64f577f5c2ad7650a647f881e965a49e41bcc6e475"
+}

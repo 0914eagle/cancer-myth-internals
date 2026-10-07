@@ -1,5 +1,11 @@
 # 논문 비교표 — Detection / Response / QA Preservation
 
+## 새 실험의 공통 실행 설계 (2026-10-07)
+
+[Table 2 실험 설계](table2_experiment_protocol_2026-10-07.md)에 3-fold·모델별 공통 메시지·13개 방법의 단계·학습/채점/재사용 기준을 정리했다. [프롬프트 원문 및 Well 템플릿 스냅샷](table2_prompt_registry_2026-10-07.json), [few-shot 중복·잠정 분모 감사](table2_source_audit_2026-10-07.json)를 함께 저장한다. **설계 초안이며 실행기 통합·분할 manifest 동결·새 실험 완료를 뜻하지 않는다.** Pooled 학습은 제안 설정이며 데이터셋별 학습과의 선택은 아직 확정하지 않았다. 현재 PNG의 과거 수치는 변경하지 않았다.
+
+Well 고정 예시가 전체 Cancer-Myth에서 4문항과 겹치며, 기존 질문 그룹 전체를 제외하면 8문항이다. 같은 예시를 유지하는 새 grouped 평가의 잠정 적격 집단은 FPQ 577 / NFP 147이다. 의미상 중복·그룹 감사를 완료한 뒤 최종 분모와 manifest를 고정한다. 기존 표의 583/149 및 99/100을 새 분할의 최종 분모로 미리 쓰지 않는다.
+
 ## 현재 표와 fold 평가 계획 (2026-10-07)
 
 Table 2·3은 합의한 방법 순서로 갱신했다: Plain, Balanced instruction, CoT, PreWoMe, Extract + Verify, TF-IDF text gate, Direct gate, CoT gate, Probe gate, GEPA-gate, GEPA, GEPA (both stages), Ours. TF-IDF text gate는 Extract + Verify 바로 아래에 놓았다. Gate 이름의 `response`를 제거했으며 Table 2·3에서는 모두 최종 답변 방법을 뜻한다. Table 1의 판정 성능과 구분한다.
