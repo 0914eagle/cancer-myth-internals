@@ -6,6 +6,10 @@
 
 Well 고정 예시가 전체 Cancer-Myth에서 4문항과 겹치며, 기존 질문 그룹 전체를 제외하면 8문항이다. 같은 예시를 유지하는 새 grouped 평가의 잠정 적격 집단은 FPQ 577 / NFP 147이다. 의미상 중복·그룹 감사를 완료한 뒤 최종 분모와 manifest를 고정한다. 기존 표의 583/149 및 99/100을 새 분할의 최종 분모로 미리 쓰지 않는다.
 
+## 두 서버의 작업 배정 (2026-10-08)
+
+[서버 분배·A6000 작업 지시서](server_handoff_2026-10-08.md) · [기계 판독용 배정](table2_server_allocation_2026-10-08.json). 현재 4090 서버는 Qwen2.5·Luna·임베딩/SAE·공통 채점을, 별도 A6000 서버는 Gemma·Qwen3.8을 담당한다. GPU 환경 점검은 `scripts/table2_server_preflight.py`로 실행한다. A6000 접속·원격 실행은 아직 하지 않았다.
+
 ## 현재 표와 fold 평가 계획 (2026-10-07)
 
 Table 2·3은 합의한 방법 순서로 갱신했다: Plain, Balanced instruction, CoT, PreWoMe, Extract + Verify, TF-IDF text gate, Direct gate, CoT gate, Probe gate, GEPA-gate, GEPA, GEPA (both stages), Ours. TF-IDF text gate는 Extract + Verify 바로 아래에 놓았다. Gate 이름의 `response`를 제거했으며 Table 2·3에서는 모두 최종 답변 방법을 뜻한다. Table 1의 판정 성능과 구분한다.
@@ -20,7 +24,7 @@ Table 2·3은 합의한 방법 순서로 갱신했다: Plain, Balanced instructi
 
 **Table 2의 Cancer-Myth 최종 평가 계획은 공통 grouped 3-fold의 out-of-fold 예측 합산이다. CREPE는 기존 고정 train/dev/test를 유지한다.** 3-fold 선택은 확정했지만 실제 적격 ID·그룹 감사와 split manifest 생성은 아직 완료하지 않았다. 각 외부 학습 영역을 다시 opt_train/opt_dev로 나누고 모든 모델·방법이 같은 배정을 사용한다. 최초 비교는 fold당 seed 하나이며 fold 간 변동을 최적화 seed 반복으로 간주하지 않는다. 고정 방법의 답변과 채점은 규약에 맞으면 재사용한다. TF-IDF·Probe의 학습·설정·임계값 선택, GEPA 및 Ours의 학습형 특징 발견·선택·최적화는 각 평가 fold를 제외한 자료에서 수행한다. 각 문항의 held-out 성공 여부를 한 번씩 합산한다. few-shot 예시와 겹친 문항은 공통 평가 대상에서 제외한다. 이미 자료를 보고 방법을 설계한 이력은 fold 분할로 없어지지 않으므로 탐색 평가로 밝힌다.
 
-Table 3은 Table 2에서 학습한 방법을 동결해 일반·의료 QA에 적용한다. 학습 출처는 Cancer-Myth로 고정하고 세 fold 결과물을 모든 의료·일반 QA에 적용해 평균한다. CREPE prompt를 일반 QA에 따로 선택하지 않는다. CREPE 학습 방법의 QA 전이는 후속 보조 분석이다.
+Table 3은 Table 2에서 학습한 방법을 동결해 일반·의료 QA에 적용한다. Cancer-Myth와 CREPE에서 학습한 결과물을 각각 모든 의료·일반 QA에 적용해 출처별 두 패널로 보고한다. Cancer는 세 fold 점수 평균, CREPE는 공식 split 결과물의 점수다. 출처와 무관한 고정 기준선은 공유한다.
 
 2026-10-07 갱신. **평가 과제에 따라 Table 1(탐지), Table 2(교정·정상 질문 보존), Table 3(일반 QA 보존)으로 나눴다.** 학습 비교용 SFT·DPO·`Plain (LoRA cohort)`를 제외하고 개인 상황 보존 변형과 중복되는 과거 Direct gate 실행도 메인 표에서 제외해 저장 결과 74칸을 표시했다(Table 1: 20칸, Table 2: 54칸, Table 3: 미측정). 일반 `Plain`은 유지했다. 추가로 2-step 검토·무조건 교정 대조 16칸은 `excluded_review_control_results.json`에 보존했다. 학습 비교 6칸은 `excluded_training_results.json`, 개인 상황 보존 변형 2칸은 `excluded_scope_results.json`과 출처 스냅샷에 보존했다. 중복 Direct gate 실행 2칸은 `excluded_duplicate_gate_results.json`에 보존했다. 새 생성·채점·학습은 하지 않았다.
 

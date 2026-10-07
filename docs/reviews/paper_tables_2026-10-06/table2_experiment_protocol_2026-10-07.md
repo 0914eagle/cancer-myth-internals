@@ -214,14 +214,21 @@ cache key는 `(protocol_id, model_revision, settings_hash, rendered_messages_has
 
 ## 10. Table 3와의 연결
 
-**Table 3 주 설정의 학습 출처는 Cancer-Myth로 고정한다.** 모델별 Cancer 3-fold에서 얻은 세 결과물을 각각 **모든 의료·일반 QA**에 적용하고 세 성능의 평균과 개별 값을 보고한다. QA 문항 수를 세 배의 독립 표본으로 세지 않는다. 의료 QA에만 Cancer, 일반 QA에는 CREPE prompt를 선택하는 routing은 하지 않는다. 이는 Cancer에서 최적화한 방법의 외부 QA 보존 평가이며 CREPE에서 최적화한 방법의 보존까지 보장하지 않는다.
+**사용자 후속 결정: Cancer-Myth와 CREPE에서 학습한 결과물을 둘 다 모든 의료·일반 QA에 적용한다.** 두 출처는 별도 패널로 보고하고 유리한 출처의 숫자를 골라 합치지 않는다.
 
-- 고정 Plain/Balanced/CoT는 동일 출력 규약으로 한 번 평가한다. PreWoMe/Extract+Verify는 **Cancer 고정 예시 팩**을 모든 QA에 똑같이 사용한다. TF-IDF/Probe 역시 Cancer 학습 결과물을 사용한다.
-- CREPE 학습 결과물의 QA 전이는 후속 source별 보조 분석으로 두며 이번 필수 예산에 넣지 않는다. 수행하면 모든 QA에 적용해 출처를 표시하고 유리한 source의 숫자만 골라 합치지 않는다.
-- MedQA/PubMedQA/Medbullets/MMLU/GSM8K 평가 문항은 학습·특징·threshold·후보 선택에 사용하지 않는다. 데이터 revision/ID, 출력 형식, few-shot과 원 task scoring을 별도 QA manifest에 고정한다. 객관식 정답과 숫자 EM을 Well 점수로 대체하지 않는다.
-- QA wrapper는 같은 문항의 모든 방법에 동일하게 적용하고 교정 지시를 유지한다. QA 성능으로 Table 2 prompt를 다시 선택하지 않는다. 캡션에 `Adaptation source: Cancer-Myth; 3 fold-specific systems`를 적는다.
+| 학습 출처 | 의료 QA | 일반 QA | 집계 |
+|---|---|---|---|
+| Cancer-Myth | 모두 평가 | 모두 평가 | 세 fold 결과물의 점수 평균과 개별 값 |
+| CREPE | 모두 평가 | 모두 평가 | 공식 train/dev에서 선택한 한 결과물 |
+
+- Plain/Balanced/CoT처럼 학습·예시 출처와 무관한 고정 기준선은 한 번 생성·평가해 공유한다. 표본 수를 두 배로 세지 않는다.
+- PreWoMe/Extract+Verify는 각 출처의 고정 few-shot 팩을 모든 QA에 적용한다. TF-IDF/Probe 역시 해당 출처에서 학습한 결과물을 사용한다. 의료 QA에만 Cancer, 일반 QA에만 CREPE를 선택하지 않는다.
+- QA 문항은 학습·특징·threshold·후보 선택에 사용하지 않는다. 데이터 revision/ID, 출력 형식, few-shot과 원 task scoring을 QA manifest에 고정한다. 객관식 정답과 숫자 EM을 Well 점수로 대체하지 않는다.
+- QA wrapper는 같은 문항의 모든 방법에 동일하게 적용한다. QA 성능으로 Table 2 prompt를 다시 선택하지 않는다. 캡션에는 adaptation source와 checkpoint 집계 방식을 명시한다.
 
 ## 11. 실행 순서와 완료 조건
+
+서버별 담당·A6000 인계 명령·결과 교환은 [서버 분배 지시서](server_handoff_2026-10-08.md)를 따른다. 4090은 Qwen2.5/임베딩/SAE와 중앙 평가, A6000은 Gemma/Qwen3.8을 담당한다.
 
 1. **분할·메시지 동결:** 제외/그룹 감사 → 공통 outer/inner/feature manifest → template·예시·parser·model revision 기록. 현 상태는 source audit와 prompt registry 초안까지다.
 2. **작은 adapter 검증:** 같은 학습 질문에서 모든 backend의 렌더링 메시지, 반환 모델, 도구 미사용, 파서, 캐시/반복 분리를 확인한다. 비용·길이를 확인하고 최종 budget을 동결한다.

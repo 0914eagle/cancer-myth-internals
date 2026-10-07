@@ -91,11 +91,19 @@
     ]
   },
   "table3": {
-    "adaptation_source": "cancer_myth",
-    "all_qa_use_same_source": true,
-    "aggregate": "mean_of_three_fold_system_scores",
-    "fixed_pipeline_fewshot_source": "cancer_myth",
-    "crepe_source_analysis": "optional_followup"
+    "adaptation_sources": [
+      "cancer_myth",
+      "crepe"
+    ],
+    "all_qa_per_source": true,
+    "aggregation_by_source": {
+      "cancer_myth": "mean_of_three_fold_system_scores",
+      "crepe": "one_official_split_system_score"
+    },
+    "fixed_pipeline_fewshot_source": "match_adaptation_source",
+    "shared_fixed_zero_shot_baselines": true,
+    "reporting": "two_source_panels_no_best_source_selection"
   },
-  "model_calls_started": false
+  "model_calls_started": false,
+  "server_allocation": "table2_server_allocation_2026-10-08.json"
 }

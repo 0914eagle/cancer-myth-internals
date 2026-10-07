@@ -1,0 +1,72 @@
+{
+  "server_role": "4090",
+  "recorded_utc": "2026-10-07T22:36:10.022900+00:00",
+  "python": "3.12.14",
+  "git_commit": "3a816eaa13e9020fb8159575c5d896e92a1c850a",
+  "working_tree_dirty": true,
+  "preflight_script_sha256": "a6916162afe19d9edf2e2b928e869f0ee3c4359024bbb7cf1b4d0984a24aeccd",
+  "protocol_hashes": {
+    "table2_run_settings_2026-10-08.json": "f33af25307084bb65b79e80a0fafd3b846371cedbdf533e08b17ed178a716807",
+    "table2_prompt_registry_2026-10-07.json": "3a0007bfb61ad1903e70e8a3445fde72d32ec280dbfadc334ec151235695f918",
+    "table2_server_allocation_2026-10-08.json": "18bf845fa2a612827e06c3ca50b23f22da4e82e6f17e6d72b6a3e95ded49a330"
+  },
+  "gpu_inventory": [
+    {
+      "index": "0",
+      "uuid": "GPU-ecb267e3-f640-38e0-9ca2-5f44c4af9868",
+      "name": "NVIDIA GeForce RTX 4090",
+      "memory_total_mib": "24564",
+      "memory_used_mib": "13",
+      "utilization_pct": "0"
+    },
+    {
+      "index": "1",
+      "uuid": "GPU-6ad52e9e-5cd2-8a39-81b0-25089b524cc9",
+      "name": "NVIDIA GeForce RTX 4090",
+      "memory_total_mib": "24564",
+      "memory_used_mib": "13",
+      "utilization_pct": "0"
+    },
+    {
+      "index": "2",
+      "uuid": "GPU-9e1f6645-88f8-1a03-0e95-db87968cd2c0",
+      "name": "NVIDIA GeForce RTX 4090",
+      "memory_total_mib": "24564",
+      "memory_used_mib": "13",
+      "utilization_pct": "0"
+    },
+    {
+      "index": "3",
+      "uuid": "GPU-4e7d11ad-f9d8-2837-6aeb-74c7b39cfe72",
+      "name": "NVIDIA GeForce RTX 4090",
+      "memory_total_mib": "24564",
+      "memory_used_mib": "124",
+      "utilization_pct": "0"
+    }
+  ],
+  "nvidia_smi_error": null,
+  "expected_hardware_matches": true,
+  "packages_in_this_python": {
+    "torch": null,
+    "transformers": null,
+    "sentence-transformers": null,
+    "scikit-learn": null,
+    "gepa": "0.1.1",
+    "vllm": null
+  },
+  "model_cache_metadata": {
+    "Qwen/Qwen2.5-7B-Instruct": [
+      {
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "config_present": true,
+        "tokenizer_present": true,
+        "weight_file_count": 4
+      }
+    ],
+    "Qwen/Qwen3-Embedding-0.6B": []
+  },
+  "split_manifest_present": false,
+  "launch_ready": false,
+  "launch_note": "Inventory only. Frozen manifests, weight completeness, model-load/kernel smoke, message parity and unified runner release must be checked separately.",
+  "model_calls": 0
+}
