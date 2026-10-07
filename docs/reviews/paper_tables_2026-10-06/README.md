@@ -31,7 +31,7 @@ Ours의 구체 구현은 미정이다. [GEPA·SAE 상세 계획](../gepa_sae_det
 | 전제 검토 | Premise-review CoT gate | Premise-review CoT (2-step), Premise-review gated response | 검토 후 판단하거나 답변 |
 | 내부 분류기 | **Probe gate (hidden states)** | **Probe-gated response** | 내부 표현을 학습한 분류기로 선택적 교정 |
 | 텍스트 분류기 | TF-IDF text (모델 독립 공통 행) | TF-IDF text gate | 내부 접근 없이 질문 텍스트로 판정 |
-| 구조화 파이프라인 | 별도 성능 대입 없음 | PreWoMe-style, Extract + Verify | 전제 추출·검토·답변 |
+| 구조화 파이프라인 | 별도 성능 대입 없음 | PreWoMe, Extract + Verify | 전제 추출·검토·답변 |
 | 프롬프트 최적화 | GEPA | GEPA | 최적화한 지시의 성능 |
 | 단순 지시 대조 | — | Plain, CoT, Balanced instruction, Always correct | 구조화 방법·gate의 효과를 읽기 위한 대조 |
 | 제안 방법 | Ours | Ours | 구체 방법과 측정 결과는 아직 미정 |
@@ -45,7 +45,7 @@ Probe는 해당 모델의 내부 상태가 필요하다. 공개 모델 Qwen/Gemm
 1. 원 질문에서 사실적 전제를 검토하는 글을 생성한다. 잘못된 전제와 교정 정보를 찾고 타당한 전제에서는 오류를 만들지 않도록 지시한다.
 2. **질문 + 검토문**으로 오류 있음/없음을 판정한다. Qwen2.5는 Yes/No 토큰 점수 비교, Gemma/Qwen3.8은 생성 JSON이라 판정 출력 절차는 다르다.
 
-Table 1은 이 판정 결과다. Table 2의 `Premise-review CoT (2-step)`는 2단계에서 판정 대신 실제 답변을 생성한다. `Premise-review gated response`는 gate 판정으로 저장된 Plain/무조건 교정 답변을 선택한다. 2-step gate가 최종 답변 생성까지 두 번 호출했다는 뜻은 아니다.
+Table 1은 이 판정 결과다. Table 2의 `Premise-review CoT (2-step)`는 2단계에서 판정 대신 실제 답변을 생성한다. `Premise-review gated response`는 gate 판정으로 저장된 Plain/무조건 교정 답변을 선택한다. 2-step gate가 최종 답변 생성까지 두 번 호출했다는 뜻은 아니다. **비-gate 조건에서는 검토문의 내용이 최종 답변 입력으로 들어가지만, 현재 gate 조건에서는 검토문이 판정에만 쓰이고 최종 선택에는 이진 판정만 사용된다.** 따라서 둘은 중간 검토를 공유해도 최종 답변을 만드는 방식이 다르다.
 
 ## Gate와 추출·검토 파이프라인의 구분
 
@@ -56,10 +56,10 @@ Table 1은 이 판정 결과다. Table 2의 `Premise-review CoT (2-step)`는 2�
 | Premise-review CoT gate (Table 1) | 질문 → 전제 검토문 → 오류 있음/없음 | 탐지기 |
 | Premise-review gated response (Table 2) | 위 gate 판정 → 저장된 Plain/무조건 교정 답변 중 선택 | 같은 gate를 사용한 답변 평가 |
 | Premise-review CoT (2-step) | 질문 → 전제 검토문 → 이를 참고해 새 답변 생성 | 이진 경로 선택 없는 답변 파이프라인 |
-| PreWoMe-style | 전제 목록 → 질문·목록을 보고 문제점과 대응 방침 → 새 답변 | 구조화 검토 파이프라인 |
+| PreWoMe | 전제 목록 → 질문·목록을 보고 문제점과 대응 방침 → 새 답변 | 구조화 검토 파이프라인 |
 | Extract + Verify | 전제 목록 → 전제마다 true/false → 거짓 전제에 관한 피드백으로 새 답변 | 주장별 검증 파이프라인 |
 
-PreWoMe-style과 Extract + Verify의 현재 Luna 값은 Well 공개 템플릿·few-shot·파서를 재사용한 no-RAG 실행이다. 두 방법의 추출 입력·목록을 공유했고, 검토 방식이 다르다. 이진 전제 검증을 한다는 이유만으로 질문 단위의 Plain/교정 경로 선택 gate와 같은 방법으로 묶지 않는다. 구현은 [fpqa_well_pipelines.py](../../../src/fpqa_well_pipelines.py)에 있다.
+PreWoMe과 Extract + Verify의 현재 Luna 값은 Well 공개 템플릿·few-shot·파서를 재사용한 no-RAG 실행이다. 두 방법의 추출 입력·목록을 공유했고, 검토 방식이 다르다. 이진 전제 검증을 한다는 이유만으로 질문 단위의 Plain/교정 경로 선택 gate와 같은 방법으로 묶지 않는다. 구현은 [fpqa_well_pipelines.py](../../../src/fpqa_well_pipelines.py)에 있다.
 
 메인 표에서 제외한 `Extract+Verify (scope)`는 이전 자체 구현이다. 추출할 때 주체·조건·불확실성·개인 상황을 보존하라는 지시를 넣고, 빈 목록을 허용하며, 검증에 원 질문도 함께 준다. 현재 Well 버전과는 few-shot·출력 파서 등도 달라 **scope 문구 하나의 효과를 분리한 ablation이 아니다.** 독립적인 기존 논문 방법명도 아니다.
 
@@ -76,6 +76,21 @@ Table 2는 “거짓 전제는 교정하고 정상 질문에는 적절히 답하
 - 선택형·단답형 출력 형식은 해당 데이터셋에 맞춰 공통으로 고정한다. 이 어댑터는 방법별로 유리하게 수정하지 않는다.
 - 같은 모델의 Plain을 기준으로 보존 여부를 읽는다. Acc./EM 절대값을 표에 넣고, 필요하면 Plain 대비 변화량을 추가 분석한다.
 - 현재 Table 3은 평가 계획표다. 완료 수치는 아직 없으며, 새 모델 호출은 하지 않았다.
+
+## 일반 도메인에서 TF-IDF gate를 쓰는 방법
+
+**CREPE의 FPQ/정상 질문 성능(Table 1·2)**을 측정한다면 CREPE train으로 TF-IDF vocabulary/IDF와 분류기를 학습하고 dev로 임계값을 정한 뒤 test를 평가할 수 있다. Cancer-Myth에서 학습한 분류기를 그대로 CREPE에 적용하는 것은 별도의 도메인 전이 실험이다. 두 설정을 같은 결과로 합치지 않는다. 모든 방법은 비교하려는 설정에 맞춰 같은 train/dev/test ID 정책을 사용한다.
+
+**일반 QA 능력 보존(Table 3)**에서는 출처를 명시한 FPQA 학습 자료에서 얻은 gate를 동결해 사용한다. Cancer-Myth/CREPE별 gate가 따로 있다면 어느 checkpoint를 전이하는지 실행 전에 고정하며, 대상 QA 성능을 보고 유리한 쪽을 고르지 않는다. 현재 표는 결과 칸만 준비했으며 이 source checkpoint는 아직 확정하지 않았다.
+
+1. 새 QA 질문을 기존 vocabulary/IDF로 변환한다. QA test를 포함해 vectorizer를 다시 fit하지 않는다.
+2. 동결된 분류기·임계값으로 거짓 전제 유무를 판정한다.
+3. 음성이면 Plain, 양성이면 동일한 교정 지시를 적용한 답변 경로를 사용한다. TF-IDF 자체는 답변 모델이 아니다.
+4. 각 경로에서 생성한 최종 답변을 해당 QA 정답 기준으로 채점한다. 같은 모델의 Plain과 비교한다.
+
+Probe gate도 layer·분류기·임계값을 동결하고 새 질문의 hidden state를 읽는다. LLM gate는 판정 프롬프트를 동결한다. QA 보존 평가를 위해 모든 QA 질문에 임의의 NFP 라벨을 붙여 분류기를 새로 학습하지 않는다.
+
+보조 지표로 교정 경로 선택률과 Plain 정답→오답 전환을 기록할 수 있다. 별도 전제 주석이 없는 QA에서는 경로 선택률을 바로 오탐률이라고 부르지 않는다. 선택형 QA의 틀린 선택지 역시 질문이 참이라고 전제한 주장은 아니므로, 선택지의 존재만으로 거짓 전제로 분류하지 않도록 입력·판정 대상을 공통 규약에 명시한다.
 
 ## GEPA와 고정 프롬프트의 비교 조건
 

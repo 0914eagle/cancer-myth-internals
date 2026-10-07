@@ -218,7 +218,7 @@
       },
       {
         "key": "prewome_style",
-        "label": "PreWoMe-style",
+        "label": "PreWoMe",
         "proposed": false
       },
       {
@@ -356,7 +356,7 @@
       },
       {
         "key": "prewome_style",
-        "label": "PreWoMe-style",
+        "label": "PreWoMe",
         "proposed": false
       },
       {
@@ -401,7 +401,8 @@
       "Acc.: accuracy (%); GSM8K EM: final-answer exact match (%). Datasets are reported separately.",
       "Evaluate the frozen response methods from Table 2; do not retune them on these QA test sets.",
       "Use identical question IDs and scoring rules across methods within each dataset and model.",
-      "Report performance relative to the same-model Plain baseline; Ours implementation remains unspecified."
+      "Report performance relative to the same-model Plain baseline; Ours implementation remains unspecified.",
+      "Gate vocabulary, classifier, and threshold are frozen from the declared FPQA training source; no QA-test fitting."
     ]
   }
 }
