@@ -57,6 +57,14 @@
     ],
     "methods": [
       {
+        "key": "tfidf",
+        "label": "TF-IDF text",
+        "proposed": false,
+        "models": [
+          "model_independent"
+        ]
+      },
+      {
         "key": "direct_gate",
         "label": "Direct gate",
         "proposed": false,
@@ -89,14 +97,6 @@
           "google/gemma-4-12B-it",
           "Qwen/Qwen3.8-27B-FP8:off",
           "Qwen/Qwen3.8-27B-FP8:on"
-        ]
-      },
-      {
-        "key": "tfidf",
-        "label": "TF-IDF text",
-        "proposed": false,
-        "models": [
-          "model_independent"
         ]
       },
       {
@@ -217,6 +217,11 @@
     ],
     "methods": [
       {
+        "key": "text_gate_response",
+        "label": "TF-IDF text gate",
+        "proposed": false
+      },
+      {
         "key": "plain",
         "label": "Plain",
         "proposed": false
@@ -259,11 +264,6 @@
       {
         "key": "cot_gate_response",
         "label": "Premise-review gated response",
-        "proposed": false
-      },
-      {
-        "key": "text_gate_response",
-        "label": "TF-IDF text gate",
         "proposed": false
       },
       {

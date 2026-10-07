@@ -20,6 +20,8 @@ Ours의 구체 구현은 미정이다. [GEPA·SAE 상세 계획](../gepa_sae_det
 
 ## 기존 비교 방법과 배치
 
+두 표 모두 TF-IDF를 첫 번째 방법 행에 둔다. 질문을 바로 주고 거짓 전제 유무만 묻는 판정은 `Direct gate`, 그 판정으로 답변 경로를 선택한 결과는 `Direct-gated response`로 표기한다. `Plain`은 별도 교정 지시 없이 답변하는 조건이므로 `Plain gate`라는 이름은 쓰지 않는다.
+
 | 방법군 | Table 1: Detection | Table 2: Response | 역할 |
 |---|---|---|---|
 | 직접 판정 | Direct gate | Direct-gated response | 명시적인 LLM 판단으로 답변 경로 선택 |
