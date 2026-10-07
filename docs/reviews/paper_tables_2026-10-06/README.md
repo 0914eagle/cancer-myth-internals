@@ -1,5 +1,9 @@
 # 논문 비교표 — Detection / Response / QA Preservation
 
+## 2026-10-08 실행 모델 변경
+
+[새 기준선 실행 지침](baseline_runbook_2026-10-08.md): Qwen2.5 / Gemma 3 12B, Ours 제외, Table 1·2·3 공통 실행·재개·집계. **아래 PNG의 Gemma 4 및 Qwen3.8 값은 과거 기록이다. Gemma 3 값으로 이름만 바꾸지 않는다.** 새 결과는 실행 폴더의 `tables/table{1,2,3}.csv`에 별도로 기록한다.
+
 ## 새 실험의 공통 실행 설계 (2026-10-07)
 
 [Table 2 실험 설계](table2_experiment_protocol_2026-10-07.md)에 3-fold·모델별 공통 메시지·13개 방법의 단계·학습/채점/재사용 기준을 정리했다. [프롬프트 원문 및 Well 템플릿 스냅샷](table2_prompt_registry_2026-10-07.json), [few-shot 중복·잠정 분모 감사](table2_source_audit_2026-10-07.json)를 함께 저장한다. **설계 초안이며 실행기 통합·분할 manifest 동결·새 실험 완료를 뜻하지 않는다.** **2026-10-08 결정: 데이터셋별로 독립 최적화한다. SAE는 예비 특징 검증을 통과한 뒤 진행한다.** [고정 실행 설정](table2_run_settings_2026-10-08.json)에 예산과 임베딩을 기록했다. 현재 PNG의 과거 수치는 변경하지 않았다.
@@ -8,7 +12,7 @@ Well 고정 예시가 전체 Cancer-Myth에서 4문항과 겹치며, 기존 질�
 
 ## 두 서버의 작업 배정 (2026-10-08)
 
-[서버 분배·A6000 작업 지시서](server_handoff_2026-10-08.md) · [기계 판독용 배정](table2_server_allocation_2026-10-08.json). 현재 4090 서버는 Qwen2.5·Luna·임베딩/SAE·공통 채점을, 별도 A6000 서버는 Gemma·Qwen3.8을 담당한다. GPU 환경 점검은 `scripts/table2_server_preflight.py`로 실행한다. A6000 접속·원격 실행은 아직 하지 않았다.
+[서버 분배·A6000 작업 지시서](server_handoff_2026-10-08.md) · [기계 판독용 배정](table2_server_allocation_2026-10-08.json). 현재 4090 서버는 Qwen2.5(GPU 0)·Gemma 3 12B(GPU 1·2) 기준선과 공통 채점을, 별도 A6000 서버는 NLA를 담당한다. Qwen3.8과 Ours는 이번 기준선 큐에서 제외한다. GPU 환경 점검은 `scripts/table2_server_preflight.py`로 실행한다. A6000 접속·원격 실행은 아직 하지 않았다.
 
 ## 현재 표와 fold 평가 계획 (2026-10-07)
 

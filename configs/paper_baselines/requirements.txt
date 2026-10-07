@@ -1,0 +1,8 @@
+# Install into a dedicated Python environment, not a running GPU job's environment.
+torch==2.5.1
+transformers==4.57.6
+accelerate==1.14.0
+scikit-learn==1.9.0
+pydantic==2.13.5
+gepa==0.1.1
+# Exact pinned Well templates additionally require Python >=3.12 via template_python.

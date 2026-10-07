@@ -1,27 +1,21 @@
 {
-  "protocol_id": "table2_matched_v2_separate_20261008",
-  "status": "assigned_preflight_only",
+  "protocol_id": "paper_baselines_v3_nla_backbones_20261008",
+  "status": "baseline_smoke_in_progress",
   "servers": {
     "4090": {
       "gpu_count_observed": 4,
-      "gpu_model_observed": "RTX 4090",
       "slots": {
-        "0": "qwen25",
-        "1": "embedding_and_sae",
-        "2": "reserve",
+        "0": "qwen25_baselines",
+        "1,2": "gemma3_baselines_BF16",
         "3": "reserve"
       },
       "owns": [
-        "canonical_split_bundle",
-        "qwen25_generation",
-        "qwen25_probe",
-        "luna_generation",
+        "baseline_Table1_Table2_Table3",
+        "common_splits",
         "tfidf",
-        "embedding",
-        "sae",
+        "probe",
         "judge",
-        "reflection",
-        "gepa_orchestration",
+        "GEPA_baselines",
         "aggregation"
       ]
     },
@@ -29,38 +23,26 @@
       "gpu_count_user_reported": 2,
       "hardware_verified": false,
       "slots_proposed": {
-        "0": "gemma4",
-        "1": "qwen38_fp8_compatibility_then_inference"
+        "0,1": "NLA_target_then_AV_then_AR_sequential_or_measured_parallel"
       },
       "owns": [
-        "gemma4_generation",
-        "gemma4_probe",
-        "qwen38_off_generation",
-        "qwen38_on_generation",
-        "qwen38_probe"
+        "NLA_feasibility",
+        "activation_verbalization",
+        "reconstruction_checks"
       ],
-      "two_gpu_mode": "exclusive_big_model_sequential_gemma_qwen"
+      "nla_targets": [
+        "Qwen2.5-7B-Instruct L20",
+        "Gemma-3-12B-IT L32"
+      ]
     }
   },
   "training_scope": "per_dataset",
-  "qwen_fp8_failure_policy": "record_blocked_runtime_continue_gemma_no_silent_requantization",
-  "fallback_4090_pair": [
-    2,
-    3
-  ],
-  "fallback_requires": [
-    "owner_transfer_record",
-    "previous_owner_stopped",
-    "same_model_revision",
-    "runtime_parity_smoke"
-  ],
+  "ours_in_baseline_queue": false,
+  "qwen38_in_baseline_queue": false,
+  "split_bundle": "results/paper_baselines_v3/protocol/bundle.json",
   "request_limits": {
     "provider_global": 4,
-    "per_role": 2,
-    "remote_task_endpoint_initial": 1
+    "per_role": 2
   },
-  "split_bundle": "results/table2_v2/protocol/split_manifest.json",
-  "remote_host_address_in_git": false,
-  "model_launches_in_this_change": 0,
-  "runtime_status": "Unified v2 runners and frozen split bundle not yet complete"
+  "note": "Separate hosts do not pool VRAM. No automatic model quantization or checkpoint substitution."
 }

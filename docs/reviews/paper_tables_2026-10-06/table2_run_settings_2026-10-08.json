@@ -1,6 +1,6 @@
 {
-  "protocol_id": "table2_matched_v2_separate_20261008",
-  "status": "design_fixed_execution_not_started",
+  "protocol_id": "paper_baselines_v3_nla_backbones_20261008",
+  "status": "baseline_runner_implemented_smoke_in_progress",
   "training_scope": "per_dataset",
   "cancer_myth": {
     "outer_folds": 3,
@@ -50,7 +50,8 @@
     "difference": "embedding(A)-embedding(B)",
     "max_tokens": 8192,
     "overflow": "exclude_pair_and_report",
-    "model_card": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B"
+    "model_card": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+    "status": "previous_SAE_branch_deferred"
   },
   "sae": {
     "features": 32,
@@ -61,7 +62,8 @@
       44
     ],
     "main_requires_useful_features": true,
-    "cross_dataset_feature_transfer": false
+    "cross_dataset_feature_transfer": false,
+    "status": "previous_SAE_branch_deferred"
   },
   "feature_pilot": {
     "first_model": "gpt-6-luna",
@@ -88,7 +90,8 @@
       "BH_FDR_0.05_across_32_features",
       "pattern_consistent_in_at_least_2_of_3_SAE_seeds",
       "not_only_length_or_style"
-    ]
+    ],
+    "status": "superseded_by_NLA_feasibility_pilot_not_launched"
   },
   "table3": {
     "adaptation_sources": [
@@ -105,5 +108,26 @@
     "reporting": "two_source_panels_no_best_source_selection"
   },
   "model_calls_started": false,
-  "server_allocation": "table2_server_allocation_2026-10-08.json"
+  "server_allocation": "table2_server_allocation_2026-10-08.json",
+  "baseline_models": [
+    "Qwen/Qwen2.5-7B-Instruct",
+    "google/gemma-3-12b-it"
+  ],
+  "excluded_models": [
+    "Qwen3.8 OFF",
+    "Qwen3.8 ON"
+  ],
+  "ours_in_baseline_run": false,
+  "nla": {
+    "server": "a6000",
+    "first_model": "Qwen/Qwen2.5-7B-Instruct",
+    "second_model": "google/gemma-3-12b-it",
+    "layers": {
+      "qwen25": 20,
+      "gemma3": 32
+    },
+    "reuse_released_checkpoints": true,
+    "new_training_planned": false,
+    "status": "handoff_only_not_launched"
+  }
 }

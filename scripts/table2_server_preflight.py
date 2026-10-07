@@ -20,9 +20,11 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs/reviews/paper_tables_2026-10-06"
 MODELS = {
     "Qwen/Qwen2.5-7B-Instruct": "4090",
-    "Qwen/Qwen3-Embedding-0.6B": "4090",
-    "google/gemma-4-12B-it": "a6000",
-    "Qwen/Qwen3.8-27B-FP8": "a6000",
+    "google/gemma-3-12b-it": "4090",
+    "kitft/nla-qwen2.5-7b-L20-av": "a6000",
+    "kitft/nla-qwen2.5-7b-L20-ar": "a6000",
+    "kitft/nla-gemma3-12b-L32-av": "a6000",
+    "kitft/nla-gemma3-12b-L32-ar": "a6000",
 }
 
 

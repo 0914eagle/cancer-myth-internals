@@ -1,6 +1,6 @@
 # Table 2 공통 실험 설계
 
-2026-10-07 작성, 2026-10-08 결정 반영. **실행 전 설계 v2 — 데이터셋별 독립 최적화**. 이 문서를 작성하면서 생성·채점·GEPA를 실행하지 않았다. 기존 표의 측정값을 새 프로토콜의 결과로 바꾸지 않는다. 분할 ID manifest와 실행기 통합은 아직 완료되지 않았다.
+2026-10-07 작성, 2026-10-08 결정 반영. **v3 — NLA 지원 모델 기준선; 데이터셋별 독립 최적화**. 학습 문항만 사용한 로컬 생성 smoke를 수행했으며 본 평가·GEPA·NLA는 아직 실행하지 않았다. 기존 표의 측정값을 새 프로토콜의 결과로 바꾸지 않는다. 새 baseline 실행기는 `scripts/run_paper_baselines_4090.sh`이며, 실행 상태와 실제 명령은 [v3 실행 지침](baseline_runbook_2026-10-08.md)을 따른다. 아래 SAE 절은 이전 설계 이력이며 이번 baseline 실행에 포함하지 않는다.
 
 목표는 같은 질문에 대해 **필요한 교정과 정상 질문 보존을 함께 평가**하는 것이다. 같은 방법은 모든 모델에서 같은 영어 메시지와 예시, 같은 단계, 같은 파서를 사용한다. 서로 다른 방법까지 프롬프트를 같게 만들지는 않는다. 모델별 native chat template와 제공되지 않는 생성 설정은 차이로 기록한다.
 
@@ -8,12 +8,12 @@
 
 | 항목 | 상태 |
 |---|---|
-| Cancer-Myth grouped 3-fold, 공통 모델·방법 배정 | 설계에 반영; 실제 ID 배정 전 |
+| Cancer-Myth grouped 3-fold, 공통 모델·방법 배정 | 실행용 manifest 생성; 의미상 중복 감사는 미완료로 명시 |
 | 방법별 입력·출력·프롬프트 | 아래 §3–7 및 [프롬프트 원문](table2_prompt_registry_2026-10-07.json)에 정리 |
 | 예시 중복과 잠정 평가 분모 | [원자료 점검 기록](table2_source_audit_2026-10-07.json)에 보존 |
 | 학습 자료 구성 | 확정: 데이터셋별 독립 최적화; Cancer 3-fold / CREPE 공식 split |
-| Ours의 SAE 채택 | 예비 특징 검증 후 결정; 표 이름은 Ours 유지 |
-| 실행기 통합·모델 호출·새 결과 | 미완료; 기존 표의 숫자는 과거 측정값 |
+| Ours | 이번 baseline 큐에서 제외; A6000에서 NLA 예비 검증 후 설계 |
+| 실행기 | 12개 baseline 경로 구현; Qwen/Gemma Plain·Direct 학습-only 생성 smoke 완료; 본 수치 없음 |
 
 문서는 분할(§2), 모델·방법·gate(§3–6), GEPA/Ours(§7), 평가·재사용(§8–9), 일반 QA와 실행 순서(§10–11) 순서로 읽으면 된다. 예산·임베딩·예비 실험 범위는 §7과 [설정 파일](table2_run_settings_2026-10-08.json)에 고정했다. 실행 시 checkpoint revision과 실제 ID·환경 해시를 manifest에 기록한다.
 
@@ -55,11 +55,9 @@ Well 고정 예시의 질문을 원문으로 대조하면 `fpq_291`, `fpq_417`, 
 |---|---|---|
 | Qwen2.5 | Qwen/Qwen2.5-7B-Instruct | checkpoint/tokenizer/runtime revision |
 | GPT-6 Luna | gpt-6-luna | served model ID, CLI 버전, reasoning effort=medium |
-| Gemma 4 | google/gemma-4-12B-it | checkpoint/tokenizer/runtime revision |
-| Qwen3.8 OFF | Qwen/Qwen3.8-27B-FP8 | enable_thinking=false |
-| Qwen3.8 ON | Qwen/Qwen3.8-27B-FP8 | enable_thinking=true |
+| Gemma 3 12B | google/gemma-3-12b-it | BF16; checkpoint/tokenizer/runtime revision |
 
-위 이름은 현재 저장소 설정의 식별자다. 실제 서버에 해당 체크포인트가 로드됐는지 preflight에서 확인한다. 다른 버전으로 자동 대체하지 않는다. Qwen OFF/ON은 별도 설정으로 보고한다.
+위 이름은 현재 저장소 설정의 식별자다. 실제 서버에 해당 체크포인트가 로드됐는지 preflight에서 확인한다. 다른 버전으로 자동 대체하지 않는다. Qwen3.8 OFF/ON은 이번 실행에서 제외한다. Luna는 기존 비교 자료로 남기되 이번 로컬 실행기는 Qwen2.5/Gemma 3만 대상으로 한다.
 
 - 사용자 입력은 원 질문 그대로다. 추론에 test 라벨, reference, 정답 전제, 채점 이유, 파일 경로를 주지 않는다.
 - 저장·해시의 단위는 **최종 렌더링한 system/user 메시지**다. 영어, closed-book, 도구/검색 없음이라는 공통 실행 문구를 모든 task 단계에 동일하게 적용한다. Well template 본문은 유지하되 이 공통 transport wrapper를 사용한다는 점을 재현 설명에 밝힌다.
@@ -69,7 +67,7 @@ Well 고정 예시의 질문을 원문으로 대조하면 `fpq_291`, `fpq_417`, 
 - 모델당 동일 backend·checkpoint·생성 설정을 모든 방법에 유지한다. 요청마다 새 대화를 사용한다. 모델 내 방법 순서는 seed로 섞어 시점 효과를 줄이고 날짜·served ID를 기록한다.
 - preflight는 학습 구역의 사전 선택한 문항만 사용한다. 최종 test로 형식·길이·프롬프트를 튜닝하지 않는다.
 
-## 4. Table 2의 13개 행 정의
+## 4. 이번 Table 2 기준선 12개 행 정의
 
 | 행 | 질문에서 최종 답변까지 | 최적화 대상 | 기본 task 호출/질문 |
 |---|---|---|---:|
@@ -85,7 +83,6 @@ Well 고정 예시의 질문을 원문으로 대조하면 `fpq_291`, `fpq_417`, 
 | GEPA-gate | 최적화한 검토문+판정 → 고정 분기 답변 | detector prompt | 2 |
 | GEPA | 최적화한 직접 답변 prompt → 답변 | answer prompt | 1 |
 | GEPA (both stages) | 최적화한 detector → 최적화한 분기 답변 | detector + 공통 answer supplement | 2 |
-| Ours | 특징 피드백으로 최적화한 직접 답변 prompt → 답변 | answer prompt | 1 |
 
 호출 수에는 judge·학습·오류 재시도가 포함되지 않는다. k는 실제 추출된 전제 수다. PreWoMe/Extract+Verify의 추출을 공유하면 공동 실행 비용이 줄지만 각 방법의 독립 실행 비용은 위대로 보고한다.
 
@@ -155,33 +152,13 @@ GEPA (both stages)는 동일 detector와, No/Yes 양쪽 답변에 붙이는 **�
 - 최종 후보는 dev J 최대, 동률이면 해당 normal 집단 평균, 이후 짧은 prompt, 이후 먼저 평가한 후보 순으로 정한다. test 성능으로 후보나 seed를 선택하지 않는다.
 - 학습 주석과 평가 설명은 학습 feedback에 사용할 수 있으나 test 주석은 전달하지 않는다. reference 문장이 prompt에 복사되는지 검사하고 audit를 남긴다. 보고할 때 train 기반 지식 주입과 일반적인 지시 개선을 구분한다.
 
-### Ours의 변경점
+### Ours / NLA — 기준선 실행과 분리
 
-GEPA의 기존 텍스트 feedback에 검증된 특징 설명을 추가한다. SAE 활성값은 점수에 더하지 않는다. 최종 추론에는 선택된 answer prompt와 질문만 필요하다.
+현재 사용자는 SAE 답변 임베딩보다 내부 활성의 NLA 설명을 먼저 검토하기로 했다. 이번 실행기는 Ours를 호출하지 않는다. 별도 A6000에서 공개 Qwen2.5 L20 / Gemma 3 12B L32 AV·AR로 예비 해석을 수행한다. GEPA에 설명을 전달하는 방법과 유용성 검증은 그 예비 결과 이후 고정한다. 기존 SAE 32/4 및 Luna 특징 발견 규칙은 이전 이력이며 활성 실행 설정이 아니다.
 
-- feature_fit/check는 해당 데이터셋/분할의 opt_train 안에서만 구성한다. Cancer outer-test, CREPE test, 모든 opt_dev와 다른 데이터셋의 답변을 사용하지 않는다.
-- 답변 풀은 같은 모델의 Plain/Balanced/CoT와 고정한 동일 프롬프트 반복, 학습 전용 공통 pilot GEPA 출력으로 구성한다. 모델·조건 출처, 길이·문체 혼입을 점검한다.
-- 선형 행동 구분 검사는 상한 증명이 아니다. FPQ 교정과 NFP 오반박을 따로 검사하고 질문 그룹을 나눠 조건 내·조건 간 평가한다.
-- SAE는 **M=32, K=4, 학습 seed 42/43/44**로 시작한다. 첫 실행에서는 용량을 탐색하지 않는다.
-- 임베딩은 **Qwen/Qwen3-Embedding-0.6B, 1024차원, 답변 텍스트만, 별도 instruction 없음**으로 고정한다. 모델 카드의 last-token pooling과 L2 normalization을 사용하고 `emb(A)-emb(B)`를 계산한다. 생성 모델 내부 SAE가 아니다. 로컬 계산으로 임베딩 API 비용을 줄이며 WIMHF의 원 임베딩 모델 재현이라고 부르지 않는다. [공식 모델 카드](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B)
-- 질문 포함 입력은 첫 실험에 혼합하지 않는다. 모델 revision과 tokenizer를 최초 로드 시 고정한다. 길이 제한은 8192 embedding tokens이며 초과 답변 쌍은 임의 절단하지 않고 제외 사유·비율을 기록한다. 모델 미설치나 메모리 부족 시 다른 임베딩으로 조용히 대체하지 않는다.
+### v3 실행기에서 명시한 최적화 세부 차이
 
-- 의미 있는 특징이 확보되지 않으면 SAE 본 실험을 확정하지 않는다. 표에는 계속 Ours로 표시하고 실제 구현을 본문에서 명시한다.
-- SAE의 추가 가치는 같은 답변 풀·특징 검증·feedback 길이/비용을 사용하는 **LLM 텍스트 특징 대조**와 비교한다. 이는 ablation이며 Table 2에 기존 방법 행을 늘리지 않는다. 추가 예시만 주는 대조도 feature pilot에서 확인한다.
-- 이는 WIMHF의 선호 분석을 GEPA feedback으로 확장하는 설계다. 원 논문이 사실 교정 특징의 유용성을 입증했다고 주장하지 않는다.
-
-### 특징 예비 실험과 다음 단계 판정
-
-1. GPT-6 Luna의 Cancer fold 0 **opt_train 안에서** 시작한다. 질문 그룹·feature_fit/check를 먼저 고정하고 최대 200질문을 선택한다. Normal을 가능한 만큼 포함한 뒤 FPQ로 채우며, 기존 feature 구역을 바꾸거나 dev/test로 부족분을 채우지 않는다. 희소한 normal 수와 양성 행동 수를 보고한다.
-2. 질문당 Plain 2회, Balanced 1회, CoT 1회로 최대 800답변이다. 호환되는 저장 답변을 우선 사용한다. 동일 프롬프트 반복은 provider가 허용하는 원 설정 그대로 독립 호출하며, 차이가 안 나온다고 temperature를 조건별로 올리지 않는다. 반복 2개의 실제 출력이 같으면 같은 행동 대조로 남긴다.
-3. Plain 두 답변 간 쌍과 Balanced/CoT 대 첫 Plain 쌍을 구성한다. 모든 쌍은 원 질문과 같은 fit/check 구역에 둔다. 질문당 총 학습 가중치를 같게 하고 A/B 방향을 기록한다. 정답·방법명·모델명은 임베딩 입력에서 제외한다.
-4. 특징 설명은 feature_fit에서만 만들고, feature_check에서 설명–활성 일치도를 검증한다. FPQ 교정과 NFP 불필요한 반박 행동 코드는 각각 원 질문을 보며 판독한다. 학습 feature가 임상적 참·거짓을 직접 판별한다고 가정하지 않는다.
-5. **계속 진행:** 길이·문체만을 설명하지 않는 교정 관련 특징과 오반박 관련 특징이 각각 최소 하나 있고, 각 설명의 check 일치도 상관에 대한 질문 그룹 bootstrap 95% 구간 하한이 0보다 크며, 세 SAE seed 중 두 개 이상에서 일치하는 패턴이 관찰될 때 저예산 GEPA 연결을 진행한다. 최대 32개 설명에 대한 다중 검정은 BH-FDR 0.05로 보정한다. 이 문턱은 진행 기준이며 인과 증명이 아니다.
-6. **판단 보류:** check에서 해당 행동의 양성/음성 질문이 각각 10개 미만이면 부재로 결론내리지 않는다. 같은 데이터셋의 남은 opt_train 질문으로 한 번만 확대한다. 그래도 부족하면 그 데이터셋의 SAE 효과는 판단 불가로 기록한다. Cancer 자료 부족을 CREPE를 섞어 해결하지 않는다.
-7. **중단:** 충분한 행동 변동이 있는데도 설명 일치도가 낮거나 문체 특징만 남으면 SAE 대규모 최적화는 진행하지 않는다. LLM 텍스트 특징 대조와 임베딩 입력 문제를 검토하고 새 버전 계획으로 남긴다.
-8. 통과하면 GEPA/답변쌍 feedback/LLM 텍스트 특징/SAE 특징 네 조건에 각각 100 metric evaluations를 주어 연결·비용을 확인한다. 이 pilot으로 최종 성능 우위를 주장하지 않는다. 본 비교의 SAE 추가 가치 대조는 동일 자료·예산의 LLM 텍스트 특징 조건이다.
-
-CREPE는 자체 opt_train에서 같은 절차를 독립 수행한다. Cancer에서 학습한 SAE를 가져오지 않는다. 다른 Cancer fold와 모델도 자기 학습 구역에서 특징을 재학습·검증한다. 공통 알고리즘과 통과 규칙은 첫 outer-test 실행 전에 동결한다. 파일 설정 변경이나 라이브러리 불일치는 성능과 무관한 기술 문제로 기록한다.
+`gepa==0.1.1 optimize_anything`을 사용한다. evaluator 단위는 FPQ 1개+normal 1개인 쌍이며, 점수는 두 Well/5 값의 평균이다. **500 문항 평가 예산 = 최대 250 pair metric calls**다. 길이 초과 후보는 생성 없이 0점으로 거부하므로 실제 호출은 상한보다 적을 수 있다. 반성 minibatch는 2쌍(2+2), validation은 클래스당 최대 16개다. 학습 때 작은 클래스는 결정적으로 순환해 재사용하며 원래 질문을 버리지 않는다. 후보 선택은 라이브러리의 frozen-dev best_candidate 규칙을 사용하고, 원래 문서의 추가 수동 tie-break나 길이 초과 1회 재제안은 구현하지 않는다. 이 차이는 모든 세 GEPA 조건/두 모델에 공통이다. GPU 환경에서는 task 호출이 순차이며 두 모델의 worker만 병행한다.
 
 ## 8. 최종 채점과 통계
 
@@ -228,26 +205,26 @@ cache key는 `(protocol_id, model_revision, settings_hash, rendered_messages_has
 
 ## 11. 실행 순서와 완료 조건
 
-서버별 담당·A6000 인계 명령·결과 교환은 [서버 분배 지시서](server_handoff_2026-10-08.md)를 따른다. 4090은 Qwen2.5/임베딩/SAE와 중앙 평가, A6000은 Gemma/Qwen3.8을 담당한다.
+서버별 담당·A6000 인계 명령·결과 교환은 [서버 분배 지시서](server_handoff_2026-10-08.md)를 따른다. 4090 GPU 0은 Qwen2.5, GPU 1·2는 Gemma 3 12B 기준선을 맡는다. 별도 A6000은 NLA 예비 해석·복원 점검을 맡는다.
 
 1. **분할·메시지 동결:** 제외/그룹 감사 → 공통 outer/inner/feature manifest → template·예시·parser·model revision 기록. 현 상태는 source audit와 prompt registry 초안까지다.
 2. **작은 adapter 검증:** 같은 학습 질문에서 모든 backend의 렌더링 메시지, 반환 모델, 도구 미사용, 파서, 캐시/반복 분리를 확인한다. 비용·길이를 확인하고 최종 budget을 동결한다.
 3. **고정 기준선 채우기:** 호환성 audit 후 Plain/Balanced/CoT, 공통 추출을 쓰는 PreWoMe/Extract+Verify. 적격 Cancer + CREPE test를 목표로 누락분만 생성하고 공통 judge와 맞지 않는 점수만 재채점한다.
 4. **gate 채우기:** 공유 TF-IDF, 공개 모델 Probe, Direct/CoT. 원 gate 판정과 최종 답변을 함께 저장한다. 저장 두 답변 routing은 별도 분석으로 계산한다.
-5. **특징 예비 실험 병행:** 학습 구역의 답변으로 SAE/텍스트 특징을 비교한다. test 결과를 보고 특징을 바꾸지 않는다. stage 실행 상태와 다음 수정의 평가 노출 이력을 기록한다.
-6. **GEPA 최적화:** GEPA와 Ours를 같은 fold/예산으로 먼저 비교한다. GEPA-gate/both-stages도 registry의 독립 조건으로 실행한다. 한 모델의 test를 보고 다른 모델의 규약을 바꾸지 않는다.
+5. **NLA 예비 실험 분리:** A6000에서 학습 구역 활성만 해석한다. 이번 baseline 큐에 Ours를 넣지 않는다.
+6. **GEPA 최적화:** GEPA / GEPA-gate / both-stages를 같은 fold/문항 평가 예산으로 실행한다. 한 모델의 test를 보고 다른 모델의 규약을 바꾸지 않는다.
 7. **최종 비교·QA:** 동결 후보로 held-out 답변/반복/독립 판독, Table 3. 테스트 수정이 생기면 protocol v2로 구분하고 v1 결과를 보존한다.
 
-처음부터 5설정×모든 행×전체 test를 무조건 실행하지 않는다. **설계는 다섯 모델에 공통**으로 적용하고, 실행은 Luna 및 공개 모델 한 개의 학습-only preflight부터 시작한다. 표에 모델 열이 있다는 사실은 완료를 뜻하지 않는다.
+현재 실행 대상은 Qwen2.5와 Gemma 3 12B 두 모델이다. 학습-only smoke 후 고정 기준선, 학습형 기준선을 순차 실행한다. Ours는 제외한다. 표에 모델 열이 있다는 사실은 완료를 뜻하지 않는다.
 
-비용 산식: 고정 생성 + `(Cancer 3 splits + CREPE 1 split) × conditions × optimization seeds × metric budget` + feature 구축 + 최종 test/QA 생성·채점이다. GEPA/Ours/GEPA-gate/both-stages 네 조건, seed 1개, 각 500이면 **모델당 8,000 metric evaluations**가 기본 최적화 예산이다. SAE 통과 후 LLM 텍스트 특징 ablation을 모두 수행하면 추가 2,000이다. 최초에는 Luna의 feature pilot과 고정 기준선 보충부터 진행하며, SAE가 통과하지 않으면 Ours 본 비교 예산을 소비하지 않는다. 이 계산은 feature 생성·설명/검증 및 최종 평가 비용을 포함하지 않는다.
+비용 산식: 고정 생성 + `(Cancer 3 splits + CREPE 1 split) × conditions × optimization seeds × metric budget` + feature 구축 + 최종 test/QA 생성·채점이다. GEPA/Ours/GEPA-gate/both-stages 네 조건, seed 1개, 각 500이면 **모델당 8,000 metric evaluations**가 기본 최적화 예산이다. SAE 통과 후 LLM 텍스트 특징 ablation을 모두 수행하면 추가 2,000이다. 현재 Ours를 제외한 GEPA / GEPA-gate / both-stages 세 조건의 최적화 예산은 모델당 6,000 문항 평가다. NLA 예비 검증과 Ours는 별도 실행이다. 이 계산은 feature 생성·설명/검증 및 최종 평가 비용을 포함하지 않는다.
 
 ## 12. 결정 이력과 적용 우선순위
 
 - v1의 pooled 권장안은 사용자 결정에 따라 **데이터셋별 독립 최적화로 대체**했다. 두 설정을 같은 행의 숫자로 섞지 않는다.
 - 첫 임베딩은 Qwen3-Embedding-0.6B/답변-only, SAE 32/4, 학습 seed 3개, pilot 100/main 500으로 고정했다. 이전 상세 초안의 8B/question+answer/16특징 및 pooled 자료안은 이 실행에 적용하지 않는다.
 - 우선순위는 본 문서와 `table2_run_settings_2026-10-08.json` → 프롬프트 registry → 이전 상세 프로토콜 순이다. 최초 checkpoint·라이브러리 revision 및 split ID의 기입은 구현 작업이며 사용자에게 다시 연구 방향 결정을 요청할 항목이 아니다.
-- Ours는 예비 특징 검증 후 결정한다. 구현이 다르면 별도 protocol_id를 부여하고 이전 결과를 보존한다.
+- Ours는 NLA 예비 검증 후 결정한다. 구현이 다르면 별도 protocol_id를 부여하고 이전 결과를 보존한다.
 
 ## 관련 구현과 참고
 

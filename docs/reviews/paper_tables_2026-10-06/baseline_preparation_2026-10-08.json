@@ -1,0 +1,236 @@
+{
+  "status": "prepared_and_train_only_generation_smoke_passed",
+  "models": [
+    "Qwen2.5-7B-Instruct",
+    "Gemma-3-12B-IT"
+  ],
+  "unit_tests": 12,
+  "smoke": {
+    "qwen25": {
+      "status": {
+        "cancer_myth/fold0/plain": {
+          "state": "smoke_complete",
+          "n_fpqa": 2,
+          "n_qa": 0
+        },
+        "cancer_myth/fold0/direct_gate": {
+          "state": "smoke_complete",
+          "n_fpqa": 2,
+          "n_qa": 0
+        },
+        "table3": {
+          "state": "pending",
+          "reason": "blocked_missing_frozen_QA_inputs"
+        }
+      },
+      "model_calls": 4,
+      "output_tokens": 688,
+      "identity": {
+        "protocol": "paper_baselines_v3_nla_backbones_20261008",
+        "model": {
+          "model_id": "Qwen/Qwen2.5-7B-Instruct",
+          "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+          "gpus": [
+            0
+          ],
+          "n_layers": 28
+        },
+        "decoding": {
+          "dtype": "bfloat16",
+          "max_new_tokens": 8192,
+          "max_input_tokens": 8192,
+          "seed": 42,
+          "replicate": 0
+        },
+        "registry_sha256": "3a0007bfb61ad1903e70e8a3445fde72d32ec280dbfadc334ec151235695f918",
+        "bundle_sha256": "d612523f3eae9cbac222b3b5ced6307743d3aacdae0e24e9366575004c890916",
+        "code_sha256": {
+          "src/paper_baselines.py": "659001b246deaa01ecc4f493d4ba5a7f5cea5c14ba2eca8f7c8c6fe4f07f6fa5",
+          "scripts/run_paper_baselines.py": "55cda09b0c8bd921c245ba55afc2ee5d41c636e3873ce8643485b7c79035ec28",
+          "scripts/paper_well_bridge.py": "1cf85fba8083aee116257c0b72ceed588d8720bfb2ee4a8af70aec0df84e3e61",
+          "src/fpqa_cli_backend.py": "e4c60b02c2fadf8fbd93ce3c4b739e7b33e1c713170f63d4b976f9d0d05b06e9"
+        },
+        "versions": {
+          "torch": "2.5.1+cu121",
+          "transformers": "4.57.6",
+          "scikit-learn": "1.9.0",
+          "accelerate": "1.14.0"
+        }
+      },
+      "scores_reported": false
+    },
+    "gemma3": {
+      "status": {
+        "cancer_myth/fold0/plain": {
+          "state": "smoke_complete",
+          "n_fpqa": 2,
+          "n_qa": 0
+        },
+        "cancer_myth/fold0/direct_gate": {
+          "state": "smoke_complete",
+          "n_fpqa": 2,
+          "n_qa": 0
+        },
+        "table3": {
+          "state": "pending",
+          "reason": "blocked_missing_frozen_QA_inputs"
+        }
+      },
+      "model_calls": 4,
+      "output_tokens": 1836,
+      "identity": {
+        "protocol": "paper_baselines_v3_nla_backbones_20261008",
+        "model": {
+          "model_id": "google/gemma-3-12b-it",
+          "revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+          "gpus": [
+            1,
+            2
+          ],
+          "n_layers": 48
+        },
+        "decoding": {
+          "dtype": "bfloat16",
+          "max_new_tokens": 8192,
+          "max_input_tokens": 8192,
+          "seed": 42,
+          "replicate": 0
+        },
+        "registry_sha256": "3a0007bfb61ad1903e70e8a3445fde72d32ec280dbfadc334ec151235695f918",
+        "bundle_sha256": "d612523f3eae9cbac222b3b5ced6307743d3aacdae0e24e9366575004c890916",
+        "code_sha256": {
+          "src/paper_baselines.py": "659001b246deaa01ecc4f493d4ba5a7f5cea5c14ba2eca8f7c8c6fe4f07f6fa5",
+          "scripts/run_paper_baselines.py": "55cda09b0c8bd921c245ba55afc2ee5d41c636e3873ce8643485b7c79035ec28",
+          "scripts/paper_well_bridge.py": "1cf85fba8083aee116257c0b72ceed588d8720bfb2ee4a8af70aec0df84e3e61",
+          "src/fpqa_cli_backend.py": "e4c60b02c2fadf8fbd93ce3c4b739e7b33e1c713170f63d4b976f9d0d05b06e9"
+        },
+        "versions": {
+          "torch": "2.5.1+cu121",
+          "transformers": "4.57.6",
+          "scikit-learn": "1.9.0",
+          "accelerate": "1.14.0"
+        }
+      },
+      "scores_reported": false
+    }
+  },
+  "qa_counts": {
+    "medqa": 1273,
+    "pubmedqa": 1000,
+    "medbullets": 308,
+    "mmlu": 14042,
+    "gsm8k": 1319
+  },
+  "qa_sources": {
+    "datasets": [
+      "medqa",
+      "pubmedqa",
+      "medbullets",
+      "mmlu",
+      "gsm8k"
+    ],
+    "limit": 0,
+    "selection": "sha256(seed42,dataset,id), independent of answers/scores",
+    "sources": {
+      "medqa": {
+        "repo": "GBaker/MedQA-USMLE-4-options",
+        "config": null,
+        "split": "test",
+        "revision": "0fb93dd23a7339b6dcd27e241cb9b5eca62d4d18"
+      },
+      "pubmedqa": {
+        "repo": "qiaojin/PubMedQA",
+        "config": "pqa_labeled",
+        "split": "train",
+        "revision": "9001f2853fb87cab8d220904e0de81ac6973b318"
+      },
+      "medbullets": {
+        "repo": "mkieffer/Medbullets",
+        "config": null,
+        "split": "op4_test",
+        "revision": "527f6fc0eebac4eeedf3dd64b9ee87c3bcf23b36"
+      },
+      "mmlu": {
+        "repo": "cais/mmlu",
+        "config": "all",
+        "split": "test",
+        "revision": "c30699e8356da336a370243923dbaf21066bb9fe"
+      },
+      "gsm8k": {
+        "repo": "openai/gsm8k",
+        "config": "main",
+        "split": "test",
+        "revision": "740312add88f781978c0658806c59bc2815b9866"
+      }
+    }
+  },
+  "runtime": {
+    "protocol_id": "paper_baselines_v3_nla_backbones_20261008",
+    "registry": "docs/reviews/paper_tables_2026-10-06/table2_prompt_registry_2026-10-07.json",
+    "well_root": "external/fpqa_20261002/Well",
+    "template_python": ".venv/fpqa_prompting/bin/python",
+    "external_config": "configs/fpqa_prompting/luna6_sonnet55.json",
+    "cache_root": "/data1/heejae/hf_cache/hub",
+    "dtype": "bfloat16",
+    "max_new_tokens": 8192,
+    "max_input_tokens": 8192,
+    "seed": 42,
+    "replicate": 0,
+    "max_memory_per_gpu": "21GiB",
+    "methods": [
+      "plain",
+      "balanced",
+      "cot",
+      "prewome",
+      "extract_verify",
+      "tfidf_gate",
+      "direct_gate",
+      "cot_gate",
+      "probe_gate",
+      "gepa_gate",
+      "gepa",
+      "gepa_both"
+    ],
+    "models": {
+      "qwen25": {
+        "model_id": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "gpus": [
+          0
+        ],
+        "n_layers": 28
+      },
+      "gemma3": {
+        "model_id": "google/gemma-3-12b-it",
+        "revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "gpus": [
+          1,
+          2
+        ],
+        "n_layers": 48
+      }
+    },
+    "gepa": {
+      "metric_budget": 500,
+      "seed": 42,
+      "dev_per_class_max": 16,
+      "prompt_token_limit": 512,
+      "prompt_tokenizer": "Qwen/Qwen3-Embedding-0.6B",
+      "tokenizer_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+    },
+    "qa_datasets": [
+      "medqa",
+      "pubmedqa",
+      "medbullets",
+      "mmlu",
+      "gsm8k"
+    ]
+  },
+  "not_completed": [
+    "full_baseline_generation",
+    "common_judge_live_smoke",
+    "probe_training",
+    "GEPA_real_optimization",
+    "NLA_remote_execution"
+  ]
+}
