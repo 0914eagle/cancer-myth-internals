@@ -26,7 +26,7 @@ done
 PAPER_PIDS=()
 trap 'for p in "${PAPER_PIDS[@]}"; do kill "$p" 2>/dev/null || true; done' INT TERM
 for PAPER_MODEL in qwen25 gemma3; do
-    "$PAPER_PYTHON" scripts/run_paper_baselines.py "$PAPER_COMMAND" \
+    "$PAPER_PYTHON" scripts/run_paper_baselines_resilient.py "$PAPER_COMMAND" \
         --phase "$PAPER_PHASE" --config "$PAPER_CONFIG" --bundle "$PAPER_BUNDLE" \
         --model "$PAPER_MODEL" --out "$PAPER_OUT" "${@:3}" \
         > "$PAPER_OUT/logs/$PAPER_MODEL-$PAPER_COMMAND-$PAPER_PHASE.log" 2>&1 &

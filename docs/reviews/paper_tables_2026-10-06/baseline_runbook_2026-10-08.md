@@ -71,7 +71,11 @@ bash scripts/run_paper_baselines_4090.sh run trained
 
 `PAPER_CONFIG`, `PAPER_BUNDLE`, `PAPER_OUT`, `PAPER_PYTHON` 환경변수로 경로를 바꿀 수 있다. 설정/코드/분할/주석/judge가 바뀌면 새 out을 사용한다. `--generate-only`는 답변·판정만 저장하고 Well 채점은 건너뛴다. 같은 명령에서 이 옵션을 빼면 저장 답변만 채점하여 이어간다. 다만 GEPA 최적화 자체는 학습 judge를 필요로 하므로 generate-only로 judge-free GEPA가 되지는 않는다.
 
-중단은 해당 모델의 출력 폴더에 `STOP` 파일을 만든다. 진행 중 호출은 마치고 다음 호출 전에 중단한다. 재개 전 STOP을 제거하고 동일 명령을 실행한다. 전송 오류를 정상 답변 실패 점수로 바꾸지 않는다. 현재는 자동 재시도 없이 실패를 기록하고 같은 요청으로 재개한다.
+중단은 해당 모델의 출력 폴더에 `STOP` 파일을 만든다. 진행 중 호출은 마치고 다음 호출 전에 중단한다. 재개 전 STOP을 제거하고 동일 명령을 실행한다. 전송 오류를 정상 답변 실패 점수로 바꾸지 않는다. Sonnet의 명시적인 사용량·rate limit 오류는 `run_paper_baselines_resilient.py`가 실패한 동일 요청을 600초 간격으로 재시도한다. 성공 시 기존 캐시에 저장하고 이어간다. 별도 ping 호출은 하지 않는다. 인증·잔액·파싱·GPU 오류는 재시도하지 않는다. 대기 중에도 STOP은 1초 이내에 확인한다. `quota_retry.json`에는 대기/회복 상태와 다음 재시도 시각, `transport_retry_policy.json`에는 재시도 진입점 해시를 남긴다. 프롬프트·모델·채점 기준과 기존 캐시 identity는 변경하지 않는다.
+
+### 대화 세션과 독립적인 실행
+
+현재 고정 기준선은 사용자 서비스 `paper-baselines-fixed-20261008.service`로 실행한다. `systemctl --user status paper-baselines-fixed-20261008.service`로 확인한다. 서버 종료·재부팅까지 복구하는 서비스는 아니며, 다른 오류를 자동으로 재시작하지 않는다. 각 모델의 `quota_retry.json`에서 사용량 제한 대기와 회복을 확인할 수 있다. 두 worker는 각각 10분 간격으로 자신의 미완료 요청을 재시도한다.
 
 ## 결과와 상태
 
