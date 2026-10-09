@@ -26,26 +26,40 @@ def aggregate(out,bundle,config):
             expected={i for s in splits for i in s['test']}
             for method in config['methods']:
                 records=[]
+                failures=[]
                 for s in splits:
                     for p in (root/'table12'/dataset/s['name']/method).glob('*.json'):
                         r=json.loads(p.read_text())
                         if r['id'] not in s['test']: raise ValueError('Non-test record in Table 1/2')
                         records.append(r)
+                    for p in (root/'failures/table12'/dataset/s['name']/method).glob('*.json'):
+                        r=json.loads(p.read_text())
+                        if r['id'] not in s['test']: raise ValueError('Non-test failure in Table 1/2')
+                        failures.append(r)
                 if len({r['id'] for r in records})!=len(records): raise ValueError('Duplicate OOF records')
+                if len({r['id'] for r in records+failures})!=len(records)+len(failures):
+                    raise ValueError('Duplicate/overlapping result and failure IDs')
                 lookup={r['id']:r for r in bundle['rows']}
                 item={'model':model,'dataset':dataset,'method':method,'expected':len(expected),
-                      'generated':len(records),'scored':sum('rating' in r for r in records)}
+                      'generated':len(records),'scored':sum('rating' in r for r in records),
+                      'execution_failures':len(failures)}
                 for y,name in ((1,'FPQ'),(0,'NFP')):
                     den=sum(lookup[i]['label']==y for i in expected)
                     scored=[r for r in records if r['label']==y and 'rating' in r]
                     item[name+'_n']=den;item[name+'_scored']=len(scored)
+                    failed=sum(r['label']==y for r in failures)
+                    item[name+'_execution_failures']=failed
                     # Partial runs never masquerade as complete performance percentages.
-                    item[name+'_Well_ge4']=100*sum(r['rating']>=4 for r in scored)/den if len(scored)==den and den else None
-                item['state']='complete' if item['scored']==len(expected) else 'pending' if not records else 'partial'
+                    item[name+'_Well_ge4']=100*sum(r['rating']>=4 for r in scored)/den if len(scored)+failed==den and den else None
+                complete=item['scored']+len(failures)==len(expected)
+                item['state']=('complete_with_errors' if failures else 'complete') if complete else 'pending' if not records and not failures else 'partial'
                 tables[2].append(item)
                 if method in DETECTORS:
                     d={k:item[k] for k in ('model','dataset','method','expected','generated')}
-                    d['state']='complete' if len(records)==len(expected) else 'partial' if records else 'pending'
+                    d['execution_failures']=len(failures)
+                    # No invented Yes/No for a failed generation. Suppress TPR/FPR
+                    # until all predictions exist; report missing/invalid counts.
+                    d['state']='incomplete_predictions' if failures else 'complete' if len(records)==len(expected) else 'partial' if records else 'pending'
                     for y,name in ((1,'TPR'),(0,'FPR')):
                         den=sum(lookup[i]['label']==y for i in expected)
                         rr=[r for r in records if r['label']==y]
@@ -62,22 +76,30 @@ def aggregate(out,bundle,config):
             for dataset in config['qa_datasets']:
                 qa=[r for r in bundle['qa'] if r['dataset']==dataset]
                 for method in config['methods']:
-                    scores=[];n_completed=0
+                    scores=[];n_completed=0;n_failures=0;unique_failures=set()
                     for split in splits:
                         folder_source=source;name=split['name']
                         if method in FIXED:
                             name='fixed';folder_source=source if method in ('prewome','extract_verify') else 'shared'
                         records=[]
+                        failures=[]
                         for row in qa:
                             p=root/'table3'/folder_source/name/method/(digest([row['dataset'],row['id']])+'.json')
+                            failure=root/'failures/table3'/folder_source/name/method/p.name
+                            if p.exists() and failure.exists(): raise ValueError('QA answer/failure overlap')
                             if p.exists():records.append(json.loads(p.read_text()))
+                            elif failure.exists():
+                                failures.append(json.loads(failure.read_text()))
+                                unique_failures.add(str(failure))
                         n_completed+=len(records)
-                        if qa and len(records)==len(qa): scores.append(100*sum(r['correct'] for r in records)/len(qa))
-                    complete=bool(qa) and len(scores)==len(splits)
+                        n_failures+=len(failures)
+                        if qa and len(records)+len(failures)==len(qa): scores.append(100*sum(r['correct'] for r in records)/len(qa))
+                    complete=bool(qa) and bool(splits) and len(scores)==len(splits)
                     tables[3].append({'model':model,'source':source,'dataset':dataset,'method':method,
                         'expected_questions':len(qa),'systems':len(splits),'completed_system_questions':n_completed,
+                        'failed_system_questions':n_failures,'unique_failed_generations':len(unique_failures),
                         'accuracy':sum(scores)/len(scores) if complete else None,
-                        'per_system_accuracy':scores,'state':'complete' if complete else 'pending'})
+                        'per_system_accuracy':scores,'state':('complete_with_errors' if n_failures else 'complete') if complete else 'pending'})
     destination=out/'tables'
     for number,rows in tables.items():
         write_json(destination/f'table{number}.json',rows)
@@ -86,7 +108,7 @@ def aggregate(out,bundle,config):
             writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(rows)
     write_json(destination/'provenance.json',{'protocol':config['protocol_id'],'bundle':bundle['content_sha256'],
         'audit':bundle['audit'],'historical_values_reused':False,
-        'note':'Table1 TPR/FPR use full eligible denominators; invalid counted separately. QA Cancer mean is across 3 systems, not 3x independent questions.'})
+        'note':'Table1 suppresses metrics with missing generation predictions. Table2/3 retain failed generations in full denominators (unsuccessful, no invented Well score). Failures reported separately. QA Cancer mean is across 3 systems, not 3x independent questions.'})
     return tables
 
 

@@ -77,6 +77,14 @@ bash scripts/run_paper_baselines_4090.sh run trained
 
 현재 고정 기준선은 사용자 서비스 `paper-baselines-fixed-20261008.service`로 실행한다. `systemctl --user status paper-baselines-fixed-20261008.service`로 확인한다. 서버 종료·재부팅까지 복구하는 서비스는 아니며, 다른 오류를 자동으로 재시작하지 않는다. 각 모델의 `quota_retry.json`에서 사용량 제한 대기와 회복을 확인할 수 있다. 두 worker는 각각 10분 간격으로 자신의 미완료 요청을 재시도한다.
 
+### 2026-10-09: 문항 길이 오류를 기록하고 계속 실행
+
+현재 서비스는 `paper-baselines-all-20261009.service`이며 `run all`로 Ours를 제외한 12개 기준선을 순서대로 실행한다. 고정 7개와 학습형 5개(TF-IDF, Probe, GEPA-gate, GEPA, GEPA both stages)가 대상이다. GPU 배정·프롬프트·모델·분할·최대 길이·기존 성공 캐시는 유지한다. 학습/최적화 설정 오류나 GPU·인증 오류를 무시하지는 않는다.
+
+최종 평가에서 입력 길이 초과와 출력 종료 토큰 없이 8,192토큰에 도달한 문항은 `failures/table12/` 또는 `failures/table3/`에 기록하고 다음 문항으로 진행한다. `failed_calls/`는 같은 실패 요청의 반복 생성을 막는다. 성공 답변이나 Well 점수를 만들어 넣지 않는다. Table 2/3의 전체 분모에는 실패를 유지하고 성공 수에는 포함하지 않으며, 오류 수와 `complete_with_errors` 상태를 함께 보고한다. Table 1에서는 실패를 No로 바꾸지 않고, 누락 판정이 있는 경우 최종 TPR/FPR을 비워 둔다. `execution_policies/`에 이번 실행 정책의 코드 해시를 보존한다. 기존 core identity를 바꾸지 않는 실행 래퍼 수정이다.
+
+최초 중단 문항은 Qwen `mmlu:1410`, Gemma `mmlu:13`이다. 출력 원문은 이전 실행기가 저장하지 않았다. 고정 QA 순서에서 성공 파일이 연속으로 존재하는 마지막 지점과 fail-fast 로그를 대조해 해당 다음 문항을 실패 기록으로 복원했고, 로그 해시·원장 인덱스를 기록했다. 이 두 문항을 다시 생성하지 않는다.
+
 ## 결과와 상태
 
 - 기본 결과: `results/paper_baselines_v3/main/{qwen25,gemma3}/`
