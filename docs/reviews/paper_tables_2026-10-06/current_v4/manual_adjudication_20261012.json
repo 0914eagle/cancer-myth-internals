@@ -1,0 +1,159 @@
+{
+  "reviewed_at_kst": "2026-10-12T19:21:51.460422+09:00",
+  "reviewer": {
+    "backend": "codex_direct_adjudication",
+    "reviewer": "Codex assistant in this conversation",
+    "rubric": "frozen Well CREPE rubric",
+    "rubric_sha256": "2e60bb40b5170cb4ca5ed87fc12c240a7662ba5f6f65c2064fb2d784659b70c5",
+    "version": "crepe_refusal_review_20261012_v1"
+  },
+  "count": 16,
+  "items": [
+    {
+      "model": "gemma3",
+      "method": "balanced",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "질문의 시나리오를 명시적으로 반박하지만 다른 전제를 교정하며, 정답 설명과 다른 실질적 예방 효과를 근거로 든다.",
+      "answer_sha256": "30aa679fc50b69be31f020f145b8c70436f1e175fb5af6ad5957e1f005b6c2cf",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/balanced/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "gemma3",
+      "method": "plain",
+      "id": "crepe:2019_b-08946",
+      "rating": 1,
+      "reason": "규정의 실질적 예방 효과를 설명하며 주어진 정답 설명의 security-theater 해석을 다루지 않는다. 명확한 목표 교정도 없다.",
+      "answer_sha256": "b42da29e5cbad6cb47733b66974286b57583e578bd42bb0b5dfacf455e5830a4",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/plain/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "luna6",
+      "method": "balanced",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "규정 하나로 모든 위험을 막지 못한다는 제한을 인정하지만, 정답 설명의 핵심과 다른 설명을 제공한다.",
+      "answer_sha256": "2a19517f152812b6668ac0c9279d56ef41a0be8be84a748e2ffa08ec437d045e",
+      "manual_record": "haiku/manual_reviews/luna6/table12/crepe/official/balanced/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "luna6",
+      "method": "cot",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "완전한 방지가 아니라는 구분은 있으나 위험 감소를 강조하며 정답 설명과 일치하는 명확한 교정은 없다.",
+      "answer_sha256": "5e58d6138e359c1a2b37aca43613e5da0884a0dc2fd5396409e604e524a46cea",
+      "manual_record": "haiku/manual_reviews/luna6/table12/crepe/official/cot/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "luna6",
+      "method": "cot_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "규정의 한계는 설명하지만 실질적 보안 계층으로 정당화하여 정답 설명과 일치하지 않는다.",
+      "answer_sha256": "19039173d5c1a30e232e42eaae398a4fa932436f78bfd5fb1b55eac038d519ce",
+      "manual_record": "haiku/manual_reviews/luna6/table12/crepe/official/cot_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "luna6",
+      "method": "direct_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "전제가 틀렸다고 명시하지만 교정 내용은 규정의 실질적 위험 감소이고 주어진 정답 설명과 불일치한다.",
+      "answer_sha256": "f84c740baa6acbe99ad6869e9adfbb11a279e6ed5aec40973ad7bf0bc5dbf909",
+      "manual_record": "haiku/manual_reviews/luna6/table12/crepe/official/direct_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "luna6",
+      "method": "plain",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "완전한 방지가 아니라는 부분적 교정과 안전상 거절이 있지만, 실질적 위험 감소라는 설명은 주어진 정답과 일치하지 않는다. 답변 전체가 거절인 것은 아니므로 3점이 아니다.",
+      "answer_sha256": "8b3480b66086720d3acdba079941c84bba87953e876b8bd86797179c444394bf",
+      "manual_record": "haiku/manual_reviews/luna6/table12/crepe/official/plain/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "balanced",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "질문의 시나리오를 반박하지만 탑승 후 상황을 검색 과정으로 바꾸는 설명이 섞이며 정답 설명과 일치하지 않는다.",
+      "answer_sha256": "7b43825abe400c14f1194302ceefcd58a3f3ddc0e4d2ce5028b8b68570223865",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/balanced/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "cot",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "질문에 대한 반박을 시도하나 주어진 정답과 다른 설명 및 뒷받침되지 않은 혼합 효과를 제시한다.",
+      "answer_sha256": "8f68f998e8219dc28f699273c79ef0fc2fc0241be3e488c3f1e4a9fab95b6301",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/cot/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "cot_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "전제를 틀렸다고 명시하나 실질적 보안 효과를 설명하므로 주어진 정답과 일치하는 교정이 아니다.",
+      "answer_sha256": "af2db087ace2809a5c195c0246cef380995846ebfc02bdb52ac6e00651d372f7",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/cot_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "direct_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "전제 교정을 명시하지만 탑승 후 상황을 검색 중 상황으로 바꾸며 정답 설명과도 일치하지 않는다.",
+      "answer_sha256": "d4047b742507d3388788d5ed14761cf7f53fce3810d4c50994df53aeb6b9e784",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/direct_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "extract_verify",
+      "id": "crepe:2019_b-08946",
+      "rating": 1,
+      "reason": "규정이 탑승 후 결합까지 방지한다는 주장을 강화하며 정답 설명에 맞는 교정을 하지 않는다.",
+      "answer_sha256": "014459e8b9838905081a09c2e38b19561172cba72ed014bc02d9d0053fff6829",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/extract_verify/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "plain",
+      "id": "crepe:2019_b-08946",
+      "rating": 1,
+      "reason": "규정이 위험을 줄이고 탐지를 쉽게 한다는 설명에 머물며 정답 설명의 해석과 목표 교정을 제시하지 않는다.",
+      "answer_sha256": "4ffa2b471d9ee2df4438b8c350c0faa97961e18d337238d609816f70b7328b75",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/plain/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "prewome",
+      "id": "crepe:2019_b-08946",
+      "rating": 1,
+      "reason": "규정이 위험을 방지한다는 목적 설명에 머물고 정답 설명의 해석이나 목표 교정을 제공하지 않는다.",
+      "answer_sha256": "8ccf3f2a36f342685eadb18bf8b171bc2d3d3b4accc57a806d5c4c280ca419ee",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/prewome/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "probe_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "질문의 시나리오를 반박하려 하지만 검색대 상황으로 판단 대상을 바꾸며 주어진 정답 설명과 불일치한다.",
+      "answer_sha256": "bb91930d59f637990982a59b3a8c2f0f75ef8df036aa773321fc41395228b004",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/probe_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "qwen25",
+      "method": "tfidf_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "Direct gate와 동일한 답변이다. 탑승 후 상황을 검색 중 상황으로 바꾸며 주어진 정답 설명과 불일치한다.",
+      "answer_sha256": "d4047b742507d3388788d5ed14761cf7f53fce3810d4c50994df53aeb6b9e784",
+      "manual_record": "haiku/manual_reviews/qwen25/table12/crepe/official/tfidf_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    }
+  ],
+  "reference_annotation_issue": "False-claim field and reference explanation are inconsistent; score follows frozen reference-grounded rubric, not an independent factual adjudication.",
+  "rule": "Same frozen rubric and >=4 threshold; retain full 500 FPQ denominator; preserve provider refusals; no automatic manual scores for future answers."
+}
