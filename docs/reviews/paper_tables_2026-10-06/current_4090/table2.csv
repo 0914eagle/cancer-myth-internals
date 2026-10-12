@@ -1,0 +1,13 @@
+method,Qwen2.5 7B / cancer_fpq_well_ge4_pct,Qwen2.5 7B / cancer_nfp_well_ge4_pct,Qwen2.5 7B / crepe_fpq_well_ge4_pct,Qwen2.5 7B / crepe_normal_well_ge4_pct,Gemma 3 12B / cancer_fpq_well_ge4_pct,Gemma 3 12B / cancer_nfp_well_ge4_pct,Gemma 3 12B / crepe_fpq_well_ge4_pct,Gemma 3 12B / crepe_normal_well_ge4_pct
+Plain,0.5,100.0,,,0.5,100.0,,
+Balanced instruction,,,,,,,,
+CoT,,,,,,,,
+PreWoMe,,,,,,,,
+Extract + Verify,,,,,,,,
+TF-IDF text gate,,,,,,,,
+Direct gate,,,,,,,,
+CoT gate,,,,,,,,
+Probe gate,,,,,,,,
+GEPA-gate,,,,,,,,
+GEPA,,,,,,,,
+GEPA (both stages),,,,,,,,

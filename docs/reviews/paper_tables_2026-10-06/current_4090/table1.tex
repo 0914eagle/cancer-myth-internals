@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccc}
+\toprule
+\multirow{3}{*}{Method} & \multicolumn{4}{c}{Qwen2.5 7B} & \multicolumn{4}{c}{Gemma 3 12B} \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-9}
+ & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} & \multicolumn{2}{c}{Cancer-Myth} & \multicolumn{2}{c}{CREPE} \\
+ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ & TPR $\uparrow$ & FPR $\downarrow$ \\
+\midrule
+TF-IDF text (shared) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Direct gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+CoT gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Probe gate (hidden states) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+GEPA-gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\bottomrule
+\end{tabular}}
+\caption{Table 1. Detection baselines - current 4090 protocol (pending). Qwen2.5-7B / Gemma 3-12B; no compatible detection results yet. Dash = pending. Historical model/protocol results are not substituted. Cancer-Myth: grouped 3-fold; CREPE: official test split.}
+\label{tab:table1}
+\end{table*}

@@ -1,0 +1,100 @@
+[
+  {
+    "table": "table2",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "method": "plain",
+    "metric": "cancer_fpq_well_ge4_pct",
+    "value_pct": 0.5181347150259067
+  },
+  {
+    "table": "table2",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "method": "plain",
+    "metric": "cancer_nfp_well_ge4_pct",
+    "value_pct": 100.0
+  },
+  {
+    "table": "table3",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "method": "plain",
+    "metric": "medqa_accuracy_pct",
+    "value_pct": 51.45326001571092
+  },
+  {
+    "table": "table3",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "method": "plain",
+    "metric": "pubmedqa_accuracy_pct",
+    "value_pct": 48.5
+  },
+  {
+    "table": "table3",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "method": "plain",
+    "metric": "medbullets_accuracy_pct",
+    "value_pct": 35.38961038961039
+  },
+  {
+    "table": "table3",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "method": "plain",
+    "metric": "mmlu_accuracy_pct",
+    "value_pct": 73.51516877937615
+  },
+  {
+    "table": "table3",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "method": "plain",
+    "metric": "gsm8k_em_pct",
+    "value_pct": 89.08263836239576
+  },
+  {
+    "table": "table2",
+    "model": "google/gemma-3-12b-it",
+    "method": "plain",
+    "metric": "cancer_fpq_well_ge4_pct",
+    "value_pct": 0.5181347150259067
+  },
+  {
+    "table": "table2",
+    "model": "google/gemma-3-12b-it",
+    "method": "plain",
+    "metric": "cancer_nfp_well_ge4_pct",
+    "value_pct": 100.0
+  },
+  {
+    "table": "table3",
+    "model": "google/gemma-3-12b-it",
+    "method": "plain",
+    "metric": "medqa_accuracy_pct",
+    "value_pct": 68.26394344069128
+  },
+  {
+    "table": "table3",
+    "model": "google/gemma-3-12b-it",
+    "method": "plain",
+    "metric": "pubmedqa_accuracy_pct",
+    "value_pct": 59.9
+  },
+  {
+    "table": "table3",
+    "model": "google/gemma-3-12b-it",
+    "method": "plain",
+    "metric": "medbullets_accuracy_pct",
+    "value_pct": 55.1948051948052
+  },
+  {
+    "table": "table3",
+    "model": "google/gemma-3-12b-it",
+    "method": "plain",
+    "metric": "mmlu_accuracy_pct",
+    "value_pct": 76.65574704458055
+  },
+  {
+    "table": "table3",
+    "model": "google/gemma-3-12b-it",
+    "method": "plain",
+    "metric": "gsm8k_em_pct",
+    "value_pct": 91.88779378316907
+  }
+]

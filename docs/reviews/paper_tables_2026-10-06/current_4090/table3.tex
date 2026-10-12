@@ -1,0 +1,29 @@
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccccc}
+\toprule
+\multirow{3}{*}{Method} & \multicolumn{5}{c}{Qwen2.5 7B} & \multicolumn{5}{c}{Gemma 3 12B} \\
+\cmidrule(lr){2-6} \cmidrule(lr){7-11}
+ & \multicolumn{1}{c}{MedQA} & \multicolumn{1}{c}{PubMedQA} & \multicolumn{1}{c}{Medbullets} & \multicolumn{1}{c}{MMLU} & \multicolumn{1}{c}{GSM8K} & \multicolumn{1}{c}{MedQA} & \multicolumn{1}{c}{PubMedQA} & \multicolumn{1}{c}{Medbullets} & \multicolumn{1}{c}{MMLU} & \multicolumn{1}{c}{GSM8K} \\
+ & Acc. $\uparrow$ & Acc. $\uparrow$ & Acc. $\uparrow$ & Acc. $\uparrow$ & EM $\uparrow$ & Acc. $\uparrow$ & Acc. $\uparrow$ & Acc. $\uparrow$ & Acc. $\uparrow$ & EM $\uparrow$ \\
+\midrule
+Plain & 51.5 & 48.5 & 35.4 & 73.5 & 89.1 & 68.3 & 59.9 & 55.2 & 76.7 & 91.9 \\
+Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+CoT & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+PreWoMe & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+TF-IDF text gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Direct gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+CoT gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Probe gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+GEPA-gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+GEPA (both stages) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\bottomrule
+\end{tabular}}
+\caption{Table 3. Medical and general QA - current 4090 results. Accuracy / numeric EM (\%), generated answers; full dataset denominators. MedQA 1,273; PubMedQA labeled pool 1,000 (not official 500-item test); Medbullets 308. MMLU 14,042; GSM8K 1,319. MMLU length failures: Qwen 2, Gemma 7, counted unsuccessful. Plain is shared across adaptation sources/folds. Other methods pending; no Sonnet judge for QA.}
+\label{tab:table3}
+\end{table*}

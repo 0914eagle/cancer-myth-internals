@@ -1,3 +1,7 @@
+> **2026-10-12 현재 4090 결과:** [갱신된 Table 1·2·3](current_4090/README.md) · [Table 1](current_4090/table1.png) · [Table 2 중간 결과](current_4090/table2.png) · [Table 3](current_4090/table3.png)
+>
+> 현재 실행은 Qwen2.5-7B와 Gemma 3-12B이다. 아래 기존 표·원장은 10월 7일의 역사적 스냅샷으로 보존하며 현재 3-fold 결과로 읽지 않는다. 현재 Table 2는 fold 0 중간 결과이고, Table 3의 Plain만 전체 평가가 끝났다. 현 분할·실행 규약은 [10월 8일 실행 문서](baseline_runbook_2026-10-08.md)를 따른다.
+
 # 논문 비교표 — Detection / Response / QA Preservation
 
 ## 2026-10-08 실행 모델 변경

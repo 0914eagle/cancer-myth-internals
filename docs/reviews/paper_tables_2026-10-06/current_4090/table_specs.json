@@ -1,0 +1,297 @@
+{
+  "table1": {
+    "title": "Table 1. Detection baselines - current 4090 protocol (pending)",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "google/gemma-3-12b-it",
+        "display": "Gemma 3\n12B"
+      }
+    ],
+    "groups": [
+      {
+        "label": "Cancer-Myth",
+        "columns": [
+          {
+            "key": "cancer_fpq_tpr_pct",
+            "label": "TPR ↑"
+          },
+          {
+            "key": "cancer_nfp_fpr_pct",
+            "label": "FPR ↓"
+          }
+        ]
+      },
+      {
+        "label": "CREPE",
+        "columns": [
+          {
+            "key": "crepe_fpq_tpr_pct",
+            "label": "TPR ↑"
+          },
+          {
+            "key": "crepe_normal_fpr_pct",
+            "label": "FPR ↓"
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "tfidf_gate",
+        "label": "TF-IDF text (shared)",
+        "proposed": false
+      },
+      {
+        "key": "direct_gate",
+        "label": "Direct gate",
+        "proposed": false
+      },
+      {
+        "key": "premise_review_cot",
+        "label": "CoT gate",
+        "proposed": false
+      },
+      {
+        "key": "hidden_probe",
+        "label": "Probe gate (hidden states)",
+        "proposed": false
+      },
+      {
+        "key": "gepa_detection",
+        "label": "GEPA-gate",
+        "proposed": false
+      }
+    ],
+    "notes": [
+      "Qwen2.5-7B / Gemma 3-12B; no compatible detection results yet.",
+      "Dash = pending. Historical model/protocol results are not substituted.",
+      "Cancer-Myth: grouped 3-fold; CREPE: official test split."
+    ]
+  },
+  "table2": {
+    "title": "Table 2. Interim response results - Cancer-Myth fold 0 only",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "google/gemma-3-12b-it",
+        "display": "Gemma 3\n12B"
+      }
+    ],
+    "groups": [
+      {
+        "label": "Cancer-Myth (fold 0)",
+        "columns": [
+          {
+            "key": "cancer_fpq_well_ge4_pct",
+            "label": "FPQ ↑"
+          },
+          {
+            "key": "cancer_nfp_well_ge4_pct",
+            "label": "NFP ↑"
+          }
+        ]
+      },
+      {
+        "label": "CREPE",
+        "columns": [
+          {
+            "key": "crepe_fpq_well_ge4_pct",
+            "label": "FPQ ↑"
+          },
+          {
+            "key": "crepe_normal_well_ge4_pct",
+            "label": "TPQ ↑"
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "plain",
+        "label": "Plain",
+        "proposed": false
+      },
+      {
+        "key": "balanced",
+        "label": "Balanced instruction",
+        "proposed": false
+      },
+      {
+        "key": "cot",
+        "label": "CoT",
+        "proposed": false
+      },
+      {
+        "key": "prewome_style",
+        "label": "PreWoMe",
+        "proposed": false
+      },
+      {
+        "key": "extract_verify",
+        "label": "Extract + Verify",
+        "proposed": false
+      },
+      {
+        "key": "text_gate_response",
+        "label": "TF-IDF text gate",
+        "proposed": false
+      },
+      {
+        "key": "direct_gate_response",
+        "label": "Direct gate",
+        "proposed": false
+      },
+      {
+        "key": "cot_gate_response",
+        "label": "CoT gate",
+        "proposed": false
+      },
+      {
+        "key": "hidden_gate_response",
+        "label": "Probe gate",
+        "proposed": false
+      },
+      {
+        "key": "gepa_gate",
+        "proposed": false,
+        "label": "GEPA-gate"
+      },
+      {
+        "key": "gepa",
+        "label": "GEPA",
+        "proposed": false
+      },
+      {
+        "key": "gepa_both",
+        "proposed": false,
+        "label": "GEPA (both stages)"
+      }
+    ],
+    "notes": [
+      "Well score >= 4 (%), Sonnet 5.5. Fold 0: 193 FPQ / 49 NFP; NOT final 3-fold results.",
+      "Only fully scored fold rows are shown; partial rows stay blank.",
+      "Balanced scored in fold 0 - qwen25: 220/242; gemma3: 0/242.",
+      "CREPE and remaining methods pending. No historical measurements mixed into this table."
+    ]
+  },
+  "table3": {
+    "title": "Table 3. Medical and general QA - current 4090 results",
+    "models": [
+      {
+        "id": "Qwen/Qwen2.5-7B-Instruct",
+        "display": "Qwen2.5\n7B"
+      },
+      {
+        "id": "google/gemma-3-12b-it",
+        "display": "Gemma 3\n12B"
+      }
+    ],
+    "groups": [
+      {
+        "label": "Medical QA",
+        "columns": [
+          {
+            "key": "medqa_accuracy_pct",
+            "label": "MQ ↑"
+          },
+          {
+            "key": "pubmedqa_accuracy_pct",
+            "label": "PQ ↑"
+          },
+          {
+            "key": "medbullets_accuracy_pct",
+            "label": "MB ↑"
+          }
+        ]
+      },
+      {
+        "label": "General QA",
+        "columns": [
+          {
+            "key": "mmlu_accuracy_pct",
+            "label": "MMLU ↑"
+          },
+          {
+            "key": "gsm8k_em_pct",
+            "label": "GSM ↑"
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "key": "plain",
+        "label": "Plain",
+        "proposed": false
+      },
+      {
+        "key": "balanced",
+        "label": "Balanced instruction",
+        "proposed": false
+      },
+      {
+        "key": "cot",
+        "label": "CoT",
+        "proposed": false
+      },
+      {
+        "key": "prewome_style",
+        "label": "PreWoMe",
+        "proposed": false
+      },
+      {
+        "key": "extract_verify",
+        "label": "Extract + Verify",
+        "proposed": false
+      },
+      {
+        "key": "text_gate_response",
+        "label": "TF-IDF text gate",
+        "proposed": false
+      },
+      {
+        "key": "direct_gate_response",
+        "label": "Direct gate",
+        "proposed": false
+      },
+      {
+        "key": "cot_gate_response",
+        "label": "CoT gate",
+        "proposed": false
+      },
+      {
+        "key": "hidden_gate_response",
+        "label": "Probe gate",
+        "proposed": false
+      },
+      {
+        "key": "gepa_gate",
+        "proposed": false,
+        "label": "GEPA-gate"
+      },
+      {
+        "key": "gepa",
+        "label": "GEPA",
+        "proposed": false
+      },
+      {
+        "key": "gepa_both",
+        "proposed": false,
+        "label": "GEPA (both stages)"
+      }
+    ],
+    "notes": [
+      "Accuracy / numeric EM (%), generated answers; full dataset denominators.",
+      "MedQA 1,273; PubMedQA labeled pool 1,000 (not official 500-item test); Medbullets 308.",
+      "MMLU 14,042; GSM8K 1,319. MMLU length failures: Qwen 2, Gemma 7, counted unsuccessful.",
+      "Plain is shared across adaptation sources/folds. Other methods pending; no Sonnet judge for QA."
+    ]
+  }
+}

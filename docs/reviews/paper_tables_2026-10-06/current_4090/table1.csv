@@ -1,0 +1,6 @@
+method,Qwen2.5 7B / cancer_fpq_tpr_pct,Qwen2.5 7B / cancer_nfp_fpr_pct,Qwen2.5 7B / crepe_fpq_tpr_pct,Qwen2.5 7B / crepe_normal_fpr_pct,Gemma 3 12B / cancer_fpq_tpr_pct,Gemma 3 12B / cancer_nfp_fpr_pct,Gemma 3 12B / crepe_fpq_tpr_pct,Gemma 3 12B / crepe_normal_fpr_pct
+TF-IDF text (shared),,,,,,,,
+Direct gate,,,,,,,,
+CoT gate,,,,,,,,
+Probe gate (hidden states),,,,,,,,
+GEPA-gate,,,,,,,,

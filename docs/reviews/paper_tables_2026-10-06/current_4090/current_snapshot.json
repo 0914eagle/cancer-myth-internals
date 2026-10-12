@@ -1,0 +1,2060 @@
+{
+  "captured_at_utc": "2026-10-12T01:51:18.273473+00:00",
+  "source_run": "results/paper_baselines_v3/main",
+  "bundle_sha256": "11b4be14157742dba72aaf8b9c2faf17302d37f14e2c310ca5ba8a7a7842e507",
+  "qa_sizes": {
+    "medqa": 1273,
+    "pubmedqa": 1000,
+    "medbullets": 308,
+    "mmlu": 14042,
+    "gsm8k": 1319
+  },
+  "splits": [
+    {
+      "dataset": "cancer_myth",
+      "name": "fold0",
+      "n": 242
+    },
+    {
+      "dataset": "cancer_myth",
+      "name": "fold1",
+      "n": 241
+    },
+    {
+      "dataset": "cancer_myth",
+      "name": "fold2",
+      "n": 241
+    },
+    {
+      "dataset": "crepe",
+      "name": "official",
+      "n": 3004
+    }
+  ],
+  "models": {
+    "qwen25": {
+      "identity_sha256": "1eda9be623f15ca97bd91d7e433be28b15aff6a48ba10e2c39b038cd4971e353",
+      "fpqa": [
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "plain",
+          "label": 1,
+          "expected": 193,
+          "generated": 193,
+          "scored": 193,
+          "ge4": 1
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "plain",
+          "label": 0,
+          "expected": 49,
+          "generated": 49,
+          "scored": 49,
+          "ge4": 49
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "balanced",
+          "label": 1,
+          "expected": 193,
+          "generated": 193,
+          "scored": 193,
+          "ge4": 17
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "balanced",
+          "label": 0,
+          "expected": 49,
+          "generated": 28,
+          "scored": 27,
+          "ge4": 26
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "cot",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "cot",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "prewome",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "prewome",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "extract_verify",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "extract_verify",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "tfidf_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "tfidf_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "direct_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "direct_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "cot_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "cot_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "probe_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "probe_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa_both",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa_both",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "plain",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "plain",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "balanced",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "balanced",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "cot",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "cot",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "prewome",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "prewome",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "extract_verify",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "extract_verify",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "tfidf_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "tfidf_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "direct_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "direct_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "cot_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "cot_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "probe_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "probe_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa_both",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa_both",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "plain",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "plain",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "balanced",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "balanced",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "cot",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "cot",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "prewome",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "prewome",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "extract_verify",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "extract_verify",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "tfidf_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "tfidf_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "direct_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "direct_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "cot_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "cot_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "probe_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "probe_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa_both",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa_both",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "plain",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "plain",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "balanced",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "balanced",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "cot",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "cot",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "prewome",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "prewome",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "extract_verify",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "extract_verify",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "tfidf_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "tfidf_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "direct_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "direct_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "cot_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "cot_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "probe_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "probe_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa_both",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa_both",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        }
+      ],
+      "qa": [
+        {
+          "dataset": "medqa",
+          "method": "plain",
+          "expected": 1273,
+          "scored": 1273,
+          "correct": 655,
+          "failures": 0,
+          "complete": true
+        },
+        {
+          "dataset": "pubmedqa",
+          "method": "plain",
+          "expected": 1000,
+          "scored": 1000,
+          "correct": 485,
+          "failures": 0,
+          "complete": true
+        },
+        {
+          "dataset": "medbullets",
+          "method": "plain",
+          "expected": 308,
+          "scored": 308,
+          "correct": 109,
+          "failures": 0,
+          "complete": true
+        },
+        {
+          "dataset": "mmlu",
+          "method": "plain",
+          "expected": 14042,
+          "scored": 14040,
+          "correct": 10323,
+          "failures": 2,
+          "complete": true
+        },
+        {
+          "dataset": "gsm8k",
+          "method": "plain",
+          "expected": 1319,
+          "scored": 1319,
+          "correct": 1175,
+          "failures": 0,
+          "complete": true
+        }
+      ]
+    },
+    "gemma3": {
+      "identity_sha256": "600049662d4f598803790861e2759c27e1284684ab235f6505b29c6a24d06918",
+      "fpqa": [
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "plain",
+          "label": 1,
+          "expected": 193,
+          "generated": 193,
+          "scored": 193,
+          "ge4": 1
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "plain",
+          "label": 0,
+          "expected": 49,
+          "generated": 49,
+          "scored": 49,
+          "ge4": 49
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "balanced",
+          "label": 1,
+          "expected": 193,
+          "generated": 1,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "balanced",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "cot",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "cot",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "prewome",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "prewome",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "extract_verify",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "extract_verify",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "tfidf_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "tfidf_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "direct_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "direct_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "cot_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "cot_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "probe_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "probe_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa_gate",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa_both",
+          "label": 1,
+          "expected": 193,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold0",
+          "method": "gepa_both",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "plain",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "plain",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "balanced",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "balanced",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "cot",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "cot",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "prewome",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "prewome",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "extract_verify",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "extract_verify",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "tfidf_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "tfidf_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "direct_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "direct_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "cot_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "cot_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "probe_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "probe_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa_both",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold1",
+          "method": "gepa_both",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "plain",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "plain",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "balanced",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "balanced",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "cot",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "cot",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "prewome",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "prewome",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "extract_verify",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "extract_verify",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "tfidf_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "tfidf_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "direct_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "direct_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "cot_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "cot_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "probe_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "probe_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa_gate",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa_gate",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa_both",
+          "label": 1,
+          "expected": 192,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "cancer_myth",
+          "split": "fold2",
+          "method": "gepa_both",
+          "label": 0,
+          "expected": 49,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "plain",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "plain",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "balanced",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "balanced",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "cot",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "cot",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "prewome",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "prewome",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "extract_verify",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "extract_verify",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "tfidf_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "tfidf_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "direct_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "direct_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "cot_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "cot_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "probe_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "probe_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa_gate",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa_gate",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa_both",
+          "label": 1,
+          "expected": 751,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        },
+        {
+          "dataset": "crepe",
+          "split": "official",
+          "method": "gepa_both",
+          "label": 0,
+          "expected": 2253,
+          "generated": 0,
+          "scored": 0,
+          "ge4": 0
+        }
+      ],
+      "qa": [
+        {
+          "dataset": "medqa",
+          "method": "plain",
+          "expected": 1273,
+          "scored": 1273,
+          "correct": 869,
+          "failures": 0,
+          "complete": true
+        },
+        {
+          "dataset": "pubmedqa",
+          "method": "plain",
+          "expected": 1000,
+          "scored": 1000,
+          "correct": 599,
+          "failures": 0,
+          "complete": true
+        },
+        {
+          "dataset": "medbullets",
+          "method": "plain",
+          "expected": 308,
+          "scored": 308,
+          "correct": 170,
+          "failures": 0,
+          "complete": true
+        },
+        {
+          "dataset": "mmlu",
+          "method": "plain",
+          "expected": 14042,
+          "scored": 14035,
+          "correct": 10764,
+          "failures": 7,
+          "complete": true
+        },
+        {
+          "dataset": "gsm8k",
+          "method": "plain",
+          "expected": 1319,
+          "scored": 1319,
+          "correct": 1212,
+          "failures": 0,
+          "complete": true
+        }
+      ]
+    }
+  }
+}

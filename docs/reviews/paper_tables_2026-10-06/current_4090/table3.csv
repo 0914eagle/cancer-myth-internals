@@ -1,0 +1,13 @@
+method,Qwen2.5 7B / medqa_accuracy_pct,Qwen2.5 7B / pubmedqa_accuracy_pct,Qwen2.5 7B / medbullets_accuracy_pct,Qwen2.5 7B / mmlu_accuracy_pct,Qwen2.5 7B / gsm8k_em_pct,Gemma 3 12B / medqa_accuracy_pct,Gemma 3 12B / pubmedqa_accuracy_pct,Gemma 3 12B / medbullets_accuracy_pct,Gemma 3 12B / mmlu_accuracy_pct,Gemma 3 12B / gsm8k_em_pct
+Plain,51.5,48.5,35.4,73.5,89.1,68.3,59.9,55.2,76.7,91.9
+Balanced instruction,,,,,,,,,,
+CoT,,,,,,,,,,
+PreWoMe,,,,,,,,,,
+Extract + Verify,,,,,,,,,,
+TF-IDF text gate,,,,,,,,,,
+Direct gate,,,,,,,,,,
+CoT gate,,,,,,,,,,
+Probe gate,,,,,,,,,,
+GEPA-gate,,,,,,,,,,
+GEPA,,,,,,,,,,
+GEPA (both stages),,,,,,,,,,

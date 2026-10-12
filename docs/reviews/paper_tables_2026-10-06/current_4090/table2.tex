@@ -1,0 +1,29 @@
+\begin{table*}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccc}
+\toprule
+\multirow{3}{*}{Method} & \multicolumn{4}{c}{Qwen2.5 7B} & \multicolumn{4}{c}{Gemma 3 12B} \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-9}
+ & \multicolumn{2}{c}{Cancer-Myth (fold 0)} & \multicolumn{2}{c}{CREPE} & \multicolumn{2}{c}{Cancer-Myth (fold 0)} & \multicolumn{2}{c}{CREPE} \\
+ & FPQ $\uparrow$ & NFP $\uparrow$ & FPQ $\uparrow$ & TPQ $\uparrow$ & FPQ $\uparrow$ & NFP $\uparrow$ & FPQ $\uparrow$ & TPQ $\uparrow$ \\
+\midrule
+Plain & 0.5 & 100.0 & \textemdash & \textemdash & 0.5 & 100.0 & \textemdash & \textemdash \\
+Balanced instruction & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+CoT & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+PreWoMe & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Extract + Verify & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+TF-IDF text gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Direct gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+CoT gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+Probe gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+GEPA-gate & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+GEPA & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+GEPA (both stages) & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash & \textemdash \\
+\bottomrule
+\end{tabular}}
+\caption{Table 2. Interim response results - Cancer-Myth fold 0 only. Well score >= 4 (\%), Sonnet 5.5. Fold 0: 193 FPQ / 49 NFP; NOT final 3-fold results. Only fully scored fold rows are shown; partial rows stay blank. Balanced scored in fold 0 - qwen25: 220/242; gemma3: 0/242. CREPE and remaining methods pending. No historical measurements mixed into this table.}
+\label{tab:table2}
+\end{table*}
