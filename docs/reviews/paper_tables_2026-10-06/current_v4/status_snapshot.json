@@ -1,5 +1,5 @@
 {
-  "captured_at_kst": "2026-10-12T12:37:14.351580+09:00",
+  "captured_at_kst": "2026-10-12T13:34:25.353004+09:00",
   "bundle_sha256": "88f6f9d4ef07f2812112d1004abdbeedcd90f910171d309a5d3d93d33a16fbe1",
   "cells": {
     "table1|qwen25|tfidf_gate|cancer_myth|1": "완료\n78.2%",
@@ -22,18 +22,18 @@
     "table1|qwen25|gepa_gate|cancer_myth|0": "판정 필요",
     "table1|qwen25|gepa_gate|crepe|1": "판정 필요",
     "table1|qwen25|gepa_gate|crepe|0": "판정 필요",
-    "table2|qwen25|plain|cancer_myth|1": "채점만 남음\n112/577",
-    "table2|qwen25|plain|cancer_myth|0": "채점만 남음\n27/147",
+    "table2|qwen25|plain|cancer_myth|1": "완료\n1.0%",
+    "table2|qwen25|plain|cancer_myth|0": "완료\n98.0%",
     "table2|qwen25|plain|crepe|1": "채점만 남음\n0/500",
     "table2|qwen25|plain|crepe|0": "채점만 남음\n0/500",
-    "table2|qwen25|balanced|cancer_myth|1": "채점만 남음\n193/577",
-    "table2|qwen25|balanced|cancer_myth|0": "채점만 남음\n49/147",
-    "table2|qwen25|balanced|crepe|1": "채점만 남음\n0/500",
-    "table2|qwen25|balanced|crepe|0": "채점만 남음\n0/500",
-    "table2|qwen25|cot|cancer_myth|1": "생성 필요",
-    "table2|qwen25|cot|cancer_myth|0": "생성 필요",
-    "table2|qwen25|cot|crepe|1": "생성 필요",
-    "table2|qwen25|cot|crepe|0": "생성 필요",
+    "table2|qwen25|balanced|cancer_myth|1": "완료\n10.4%",
+    "table2|qwen25|balanced|cancer_myth|0": "완료\n91.8%",
+    "table2|qwen25|balanced|crepe|1": "채점만 남음\n332/500",
+    "table2|qwen25|balanced|crepe|0": "채점만 남음\n342/500",
+    "table2|qwen25|cot|cancer_myth|1": "채점만 남음\n0/577",
+    "table2|qwen25|cot|cancer_myth|0": "채점만 남음\n0/147",
+    "table2|qwen25|cot|crepe|1": "채점만 남음\n0/500",
+    "table2|qwen25|cot|crepe|0": "채점만 남음\n0/500",
     "table2|qwen25|prewome|cancer_myth|1": "생성 필요",
     "table2|qwen25|prewome|cancer_myth|0": "생성 필요",
     "table2|qwen25|prewome|crepe|1": "생성 필요",
@@ -42,18 +42,18 @@
     "table2|qwen25|extract_verify|cancer_myth|0": "생성 필요",
     "table2|qwen25|extract_verify|crepe|1": "생성 필요",
     "table2|qwen25|extract_verify|crepe|0": "생성 필요",
-    "table2|qwen25|tfidf_gate|cancer_myth|1": "생성 필요",
-    "table2|qwen25|tfidf_gate|cancer_myth|0": "생성 필요",
+    "table2|qwen25|tfidf_gate|cancer_myth|1": "생성 중\n325/577",
+    "table2|qwen25|tfidf_gate|cancer_myth|0": "생성 중\n49/147",
     "table2|qwen25|tfidf_gate|crepe|1": "생성 필요",
     "table2|qwen25|tfidf_gate|crepe|0": "생성 필요",
-    "table2|qwen25|direct_gate|cancer_myth|1": "생성 중\n417/577",
-    "table2|qwen25|direct_gate|cancer_myth|0": "생성 중\n98/147",
-    "table2|qwen25|direct_gate|crepe|1": "생성 필요",
-    "table2|qwen25|direct_gate|crepe|0": "생성 필요",
-    "table2|qwen25|cot_gate|cancer_myth|1": "생성 필요",
-    "table2|qwen25|cot_gate|cancer_myth|0": "생성 필요",
-    "table2|qwen25|cot_gate|crepe|1": "생성 필요",
-    "table2|qwen25|cot_gate|crepe|0": "생성 필요",
+    "table2|qwen25|direct_gate|cancer_myth|1": "채점만 남음\n0/577",
+    "table2|qwen25|direct_gate|cancer_myth|0": "채점만 남음\n0/147",
+    "table2|qwen25|direct_gate|crepe|1": "채점만 남음\n0/500",
+    "table2|qwen25|direct_gate|crepe|0": "채점만 남음\n0/500",
+    "table2|qwen25|cot_gate|cancer_myth|1": "채점만 남음\n0/577",
+    "table2|qwen25|cot_gate|cancer_myth|0": "채점만 남음\n0/147",
+    "table2|qwen25|cot_gate|crepe|1": "채점만 남음\n0/500",
+    "table2|qwen25|cot_gate|crepe|0": "채점만 남음\n0/500",
     "table2|qwen25|probe_gate|cancer_myth|1": "생성 필요",
     "table2|qwen25|probe_gate|cancer_myth|0": "생성 필요",
     "table2|qwen25|probe_gate|crepe|1": "생성 필요",
@@ -149,18 +149,18 @@
     "table1|gemma3|direct_gate|crepe|0": "완료\n59.6%",
     "table1|gemma3|cot_gate|cancer_myth|1": "완료\n99.1%",
     "table1|gemma3|cot_gate|cancer_myth|0": "완료\n97.3%",
-    "table1|gemma3|cot_gate|crepe|1": "판정 중\n173/500",
-    "table1|gemma3|cot_gate|crepe|0": "판정 중\n171/500",
-    "table1|gemma3|probe_gate|cancer_myth|1": "판정 필요",
-    "table1|gemma3|probe_gate|cancer_myth|0": "판정 필요",
+    "table1|gemma3|cot_gate|crepe|1": "완료\n99.0%",
+    "table1|gemma3|cot_gate|crepe|0": "완료\n98.0%",
+    "table1|gemma3|probe_gate|cancer_myth|1": "완료\n64.6%",
+    "table1|gemma3|probe_gate|cancer_myth|0": "완료\n34.7%",
     "table1|gemma3|probe_gate|crepe|1": "판정 필요",
     "table1|gemma3|probe_gate|crepe|0": "판정 필요",
     "table1|gemma3|gepa_gate|cancer_myth|1": "판정 필요",
     "table1|gemma3|gepa_gate|cancer_myth|0": "판정 필요",
     "table1|gemma3|gepa_gate|crepe|1": "판정 필요",
     "table1|gemma3|gepa_gate|crepe|0": "판정 필요",
-    "table2|gemma3|plain|cancer_myth|1": "추가 생성 필요\n305/577",
-    "table2|gemma3|plain|cancer_myth|0": "추가 생성 필요\n49/147",
+    "table2|gemma3|plain|cancer_myth|1": "생성 중\n489/577",
+    "table2|gemma3|plain|cancer_myth|0": "생성 중\n98/147",
     "table2|gemma3|plain|crepe|1": "생성 필요",
     "table2|gemma3|plain|crepe|0": "생성 필요",
     "table2|gemma3|balanced|cancer_myth|1": "추가 생성 필요\n1/577",
@@ -282,12 +282,12 @@
     "table1|luna6|tfidf_gate|crepe|0": "완료\n31.8%",
     "table1|luna6|direct_gate|cancer_myth|1": "완료\n70.9%",
     "table1|luna6|direct_gate|cancer_myth|0": "완료\n65.3%",
-    "table1|luna6|direct_gate|crepe|1": "판정 중\n130/500",
-    "table1|luna6|direct_gate|crepe|0": "판정 중\n131/500",
-    "table1|luna6|cot_gate|cancer_myth|1": "판정 필요",
-    "table1|luna6|cot_gate|cancer_myth|0": "판정 필요",
-    "table1|luna6|cot_gate|crepe|1": "판정 필요",
-    "table1|luna6|cot_gate|crepe|0": "판정 필요",
+    "table1|luna6|direct_gate|crepe|1": "완료\n55.4%",
+    "table1|luna6|direct_gate|crepe|0": "완료\n35.2%",
+    "table1|luna6|cot_gate|cancer_myth|1": "완료\n95.3%",
+    "table1|luna6|cot_gate|cancer_myth|0": "완료\n88.4%",
+    "table1|luna6|cot_gate|crepe|1": "판정 중\n287/500",
+    "table1|luna6|cot_gate|crepe|0": "판정 중\n307/500",
     "table1|luna6|probe_gate|cancer_myth|1": "해당 없음",
     "table1|luna6|probe_gate|cancer_myth|0": "해당 없음",
     "table1|luna6|probe_gate|crepe|1": "해당 없음",
@@ -527,16 +527,16 @@
       "generated": 577,
       "yes": 0,
       "correct": 0,
-      "scored": 112,
-      "good": 1,
+      "scored": 577,
+      "good": 6,
       "expected": 577
     },
     "table2|qwen25|plain|cancer_myth|0": {
       "generated": 147,
       "yes": 0,
       "correct": 0,
-      "scored": 27,
-      "good": 27,
+      "scored": 147,
+      "good": 144,
       "expected": 147
     },
     "table2|qwen25|plain|crepe|1": {
@@ -555,40 +555,56 @@
       "generated": 577,
       "yes": 0,
       "correct": 0,
-      "scored": 193,
-      "good": 15,
+      "scored": 577,
+      "good": 60,
       "expected": 577
     },
     "table2|qwen25|balanced|cancer_myth|0": {
       "generated": 147,
       "yes": 0,
       "correct": 0,
-      "scored": 49,
-      "good": 46,
+      "scored": 147,
+      "good": 135,
       "expected": 147
     },
     "table2|qwen25|balanced|crepe|1": {
       "generated": 500,
       "yes": 0,
       "correct": 0,
+      "scored": 332,
+      "good": 61,
       "expected": 500
     },
     "table2|qwen25|balanced|crepe|0": {
       "generated": 500,
       "yes": 0,
       "correct": 0,
+      "scored": 342,
+      "good": 277,
       "expected": 500
     },
     "table2|qwen25|cot|cancer_myth|1": {
+      "generated": 577,
+      "yes": 0,
+      "correct": 0,
       "expected": 577
     },
     "table2|qwen25|cot|cancer_myth|0": {
+      "generated": 147,
+      "yes": 0,
+      "correct": 0,
       "expected": 147
     },
     "table2|qwen25|cot|crepe|1": {
+      "generated": 500,
+      "yes": 0,
+      "correct": 0,
       "expected": 500
     },
     "table2|qwen25|cot|crepe|0": {
+      "generated": 500,
+      "yes": 0,
+      "correct": 0,
       "expected": 500
     },
     "table2|qwen25|prewome|cancer_myth|1": {
@@ -616,9 +632,15 @@
       "expected": 500
     },
     "table2|qwen25|tfidf_gate|cancer_myth|1": {
+      "generated": 325,
+      "yes": 237,
+      "correct": 0,
       "expected": 577
     },
     "table2|qwen25|tfidf_gate|cancer_myth|0": {
+      "generated": 49,
+      "yes": 17,
+      "correct": 0,
       "expected": 147
     },
     "table2|qwen25|tfidf_gate|crepe|1": {
@@ -628,33 +650,51 @@
       "expected": 500
     },
     "table2|qwen25|direct_gate|cancer_myth|1": {
-      "generated": 417,
-      "yes": 4,
+      "generated": 577,
+      "yes": 7,
       "correct": 0,
       "expected": 577
     },
     "table2|qwen25|direct_gate|cancer_myth|0": {
-      "generated": 98,
-      "yes": 2,
+      "generated": 147,
+      "yes": 3,
       "correct": 0,
       "expected": 147
     },
     "table2|qwen25|direct_gate|crepe|1": {
+      "generated": 500,
+      "yes": 84,
+      "correct": 0,
       "expected": 500
     },
     "table2|qwen25|direct_gate|crepe|0": {
+      "generated": 500,
+      "yes": 19,
+      "correct": 0,
       "expected": 500
     },
     "table2|qwen25|cot_gate|cancer_myth|1": {
+      "generated": 577,
+      "yes": 499,
+      "correct": 0,
       "expected": 577
     },
     "table2|qwen25|cot_gate|cancer_myth|0": {
+      "generated": 147,
+      "yes": 121,
+      "correct": 0,
       "expected": 147
     },
     "table2|qwen25|cot_gate|crepe|1": {
+      "generated": 500,
+      "yes": 429,
+      "correct": 0,
       "expected": 500
     },
     "table2|qwen25|cot_gate|crepe|0": {
+      "generated": 500,
+      "yes": 387,
+      "correct": 0,
       "expected": 500
     },
     "table2|qwen25|probe_gate|cancer_myth|1": {
@@ -1194,21 +1234,27 @@
       "expected": 147
     },
     "table1|gemma3|cot_gate|crepe|1": {
-      "generated": 173,
-      "yes": 171,
+      "generated": 500,
+      "yes": 495,
       "correct": 0,
       "expected": 500
     },
     "table1|gemma3|cot_gate|crepe|0": {
-      "generated": 171,
-      "yes": 168,
+      "generated": 500,
+      "yes": 490,
       "correct": 0,
       "expected": 500
     },
     "table1|gemma3|probe_gate|cancer_myth|1": {
+      "generated": 577,
+      "yes": 373,
+      "correct": 0,
       "expected": 577
     },
     "table1|gemma3|probe_gate|cancer_myth|0": {
+      "generated": 147,
+      "yes": 51,
+      "correct": 0,
       "expected": 147
     },
     "table1|gemma3|probe_gate|crepe|1": {
@@ -1230,7 +1276,7 @@
       "expected": 500
     },
     "table2|gemma3|plain|cancer_myth|1": {
-      "generated": 305,
+      "generated": 489,
       "yes": 0,
       "correct": 0,
       "scored": 305,
@@ -1238,7 +1284,7 @@
       "expected": 577
     },
     "table2|gemma3|plain|cancer_myth|0": {
-      "generated": 49,
+      "generated": 98,
       "yes": 0,
       "correct": 0,
       "scored": 49,
@@ -1853,27 +1899,39 @@
       "expected": 147
     },
     "table1|luna6|direct_gate|crepe|1": {
-      "generated": 130,
-      "yes": 68,
+      "generated": 500,
+      "yes": 277,
       "correct": 0,
       "expected": 500
     },
     "table1|luna6|direct_gate|crepe|0": {
-      "generated": 131,
-      "yes": 49,
+      "generated": 500,
+      "yes": 176,
       "correct": 0,
       "expected": 500
     },
     "table1|luna6|cot_gate|cancer_myth|1": {
+      "generated": 577,
+      "yes": 550,
+      "correct": 0,
       "expected": 577
     },
     "table1|luna6|cot_gate|cancer_myth|0": {
+      "generated": 147,
+      "yes": 130,
+      "correct": 0,
       "expected": 147
     },
     "table1|luna6|cot_gate|crepe|1": {
+      "generated": 287,
+      "yes": 253,
+      "correct": 0,
       "expected": 500
     },
     "table1|luna6|cot_gate|crepe|0": {
+      "generated": 307,
+      "yes": 209,
+      "correct": 0,
       "expected": 500
     },
     "table1|luna6|probe_gate|cancer_myth|1": {
@@ -1904,8 +1962,8 @@
       "generated": 315,
       "yes": 0,
       "correct": 0,
-      "scored": 288,
-      "good": 93,
+      "scored": 315,
+      "good": 103,
       "expected": 577
     },
     "table2|luna6|plain|cancer_myth|0": {

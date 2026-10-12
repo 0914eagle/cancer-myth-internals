@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="2420" height="1328" viewBox="0 0 2420 1328"><rect width="100%" height="100%" fill="white"/>
 <text x="28" y="31.0" font-family="Noto Sans CJK KR,sans-serif" font-size="29" font-weight="700" text-anchor="start" dominant-baseline="central" fill="#17212b">Table 3. 일반 QA 보존 — 진행 상태</text>
-<text x="2392" y="64.0" font-family="Noto Sans CJK KR,sans-serif" font-size="17" font-weight="400" text-anchor="end" dominant-baseline="central" fill="#17212b">기준 시각: 2026-10-12 12:37:14 KST</text>
+<text x="2392" y="64.0" font-family="Noto Sans CJK KR,sans-serif" font-size="17" font-weight="400" text-anchor="end" dominant-baseline="central" fill="#17212b">기준 시각: 2026-10-12 13:34:25 KST</text>
 <rect x="28" y="88" width="2364" height="122" fill="#edf2f5"/>
 <text x="175.0" y="149.0" font-family="Noto Sans CJK KR,sans-serif" font-size="23" font-weight="700" text-anchor="middle" dominant-baseline="central" fill="#17212b">방법</text>
 <text x="667.0" y="111.0" font-family="Noto Sans CJK KR,sans-serif" font-size="25" font-weight="700" text-anchor="middle" dominant-baseline="central" fill="#17212b">Qwen2.5 7B</text>
