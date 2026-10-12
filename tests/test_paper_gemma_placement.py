@@ -13,7 +13,9 @@ def test_placement_applied_before_worker_init_without_changing_config(tmp_path,m
     monkeypatch.setattr(parent,'__init__',init)
     monkeypatch.setattr(parent,'start_prefetch',lambda self:None)
     worker=PlacementWorker(SimpleNamespace(model='gemma3'))
-    worker.start_prefetch()
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        list(pool.map(lambda _:worker.start_prefetch(),range(32)))
     assert config['models']['gemma3']['gpus']==[1,2]
     assert json.loads((tmp_path/'device_overrides/gpu2_gpu3.json').read_text())['physical_gpus']==[2,3]
     assert json.loads((tmp_path/'probe_device.json').read_text())['gpus']==[2,3]
