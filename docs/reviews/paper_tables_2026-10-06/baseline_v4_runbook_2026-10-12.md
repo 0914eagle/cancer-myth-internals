@@ -1,5 +1,11 @@
 # Baseline v4 실행 규약 — 2026-10-12
 
+## 현재 GPU 배정 변경: Gemma 2·3
+
+사용자 요청으로 Gemma의 물리 GPU를 1·2에서 **2·3**으로 옮겼다. Qwen은 GPU 0, GPU 1은 비워둔다. Luna와 Sol은 CLI 호출이며 로컬 GPU를 사용하지 않는다. Gemma의 batch 상한 8, 토큰 예산 98,304, BF16, 출력 한도, 모델·프롬프트·분할은 유지한다. 이전에도 두 장을 사용했으므로 GPU 이동 자체를 처리량 증가로 해석하지 않는다.
+
+`run_paper_gemma_placement.py`가 모델 적재 전에 `CUDA_VISIBLE_DEVICES=2,3`을 적용한다. 기존 답변·Probe 캐시의 과학적 설정 identity는 보존하고, 실제 배정은 `device_overrides/gpu2_gpu3.json` 및 `probe_device.json`에 기록한다. 현재 Gemma 서비스는 `paper-v4-gemma-sol-gpu23-20261012.service`이며 `launch_paper_v4_sol.py gemma`로 재개한다. Probe 특징 추출도 같은 모델/GPU lock을 공유한다.
+
 ## 현재 적용: GPT-6 Sol 공통 추출 (10월 12일 변경)
 
 사용자 요청으로 **PreWoMe와 Extract+Verify의 추출 모델만 GPT-6 Sol, reasoning high로 변경**했다. [추출 설정](current_v4/extraction_sol.json)이 이전 Luna 추출 설정보다 우선한다. 검토·검증·답변 모델은 Qwen2.5-7B / Gemma 3-12B / GPT-6 Luna 그대로다. Well의 추출 템플릿과 고정 예시도 유지하며 정답 라벨·교정문은 추출 입력에 넣지 않는다.

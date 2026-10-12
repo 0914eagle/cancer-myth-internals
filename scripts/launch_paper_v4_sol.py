@@ -9,8 +9,9 @@ PYTHON='/data1/heejae/uv/cancer_myth_internals/bin/python'
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('role',choices=['qwen','gemma','luna','extraction','haiku']);a=p.parse_args()
-    new=f'paper-v4-{a.role}-sol-20261012.service'
-    for unit in [f'paper-v4-{a.role}-{suffix}-20261012.service' for suffix in ('cli','fast','prefetch','sol')]:
+    new=f'paper-v4-{a.role}-sol'+('-gpu23' if a.role=='gemma' else '')+'-20261012.service'
+    units=[f'paper-v4-{a.role}-{suffix}-20261012.service' for suffix in ('cli','fast','prefetch','sol')]
+    for unit in dict.fromkeys([*units,new]):
         state=subprocess.run(['systemctl','--user','show',unit,'-p','MainPID','--value'],capture_output=True,text=True)
         if state.stdout.strip() not in ('','0'):raise SystemExit(f'{unit} is still running; drain first')
         load=subprocess.run(['systemctl','--user','show',unit,'-p','LoadState','--value'],capture_output=True,text=True)
@@ -27,7 +28,8 @@ def main():
         command=[PYTHON,'scripts/prepare_shared_sol_extractions.py',*common]
     else:
         model={'qwen':'qwen25','gemma':'gemma3','luna':'luna6'}[a.role];stop=ROOT/out/model/'STOP'
-        command=[PYTHON,'scripts/run_paper_baselines_sol.py','run','--model',model,*common,'--detect-first']
+        script='scripts/run_paper_gemma_placement.py' if a.role=='gemma' else 'scripts/run_paper_baselines_sol.py'
+        command=[PYTHON,script,'run','--model',model,*common,'--detect-first']
         if a.role!='luna':command+=['--max-batch','16' if a.role=='qwen' else '8','--token-budget','147456' if a.role=='qwen' else '98304']
     stop.unlink(missing_ok=True)
     subprocess.run(['systemd-run','--user',f'--unit={new}','--property=Restart=on-failure','--property=RestartSec=600',
