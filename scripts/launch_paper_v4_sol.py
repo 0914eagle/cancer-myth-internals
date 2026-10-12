@@ -35,6 +35,7 @@ def main():
     subprocess.run(['systemd-run','--user',f'--unit={new}','--property=Restart=on-failure','--property=RestartSec=600',
         f'--property=WorkingDirectory={ROOT}',
         '--setenv=PATH=/home/eagle0914/.local/bin:/home/eagle0914/.npm-global/bin:/usr/local/bin:/usr/bin:/bin',
+        '--setenv=HF_HUB_OFFLINE=1',
         f'--setenv=PYTHONPATH={ROOT}/.venv/paper_baseline_extras',*command],check=True)
     print(json.dumps({'unit':new,'command':command,'split_manifest_unchanged':True}))
 

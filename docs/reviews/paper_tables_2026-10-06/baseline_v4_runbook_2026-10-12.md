@@ -101,3 +101,12 @@ Table 3의 고정 Plain/Balanced/CoT/Direct/CoT gate는 공통 실행을 한 번
 생성은 `scripts/run_paper_baselines_v4.py`, 공통 추출은 `scripts/prepare_shared_luna_extractions.py`, 채점은 `scripts/judge_paper_queue.py --judge-config .../haiku.json --judgments-out .../haiku`로 실행한다. 데이터·출력 루트는 `results/paper_baselines_v4/`이다. Table 1·2 모든 방법을 Table 3의 추가 생성보다 먼저 수행한다.
 
 상태 그림 갱신: `python3 docs/reviews/paper_tables_2026-10-06/update_v4_status.py`. 이 명령은 생성·채점을 호출하지 않는다. 집계기는 `scripts/summarize_paper_baselines.py`이며 Haiku sidecar의 답변·주석·판정기 해시가 일치하는 평가만 인정한다.
+
+
+## 10월 12일 채점 형식 오류 및 GEPA 토크나이저 복구
+
+Haiku가 `Rating:`을 여러 번 출력한 응답이 캐시에 남아, 자동 재시작 후에도 같은 응답을 읽고 중단되는 문제가 있었다. 형식 위반 원본은 `invalid_judge_calls`에 보관하고 **동일 프롬프트·채점 기준**으로 최대 3회 다시 요청한다. 모두 실패하면 점수를 부여하지 않고 `format_failures`에 기록해 다른 문항을 계속 처리하며 600초 후 다시 시도한다. 완료 집계에는 포함하지 않는다. 관련 회귀 테스트 12개 통과.
+
+Qwen이 9개 비최적화 방법의 Table 2 생성을 끝낸 후 GEPA 진입 시, 로컬 토크나이저 로딩 과정에서 원격 인증 요청이 발생해 만료된 인증으로 실패했다. 고정 체크포인트와 토크나이저는 이미 로컬에 있다. `HF_HUB_OFFLINE=1`로 원격 조회를 막고 동일 토크나이저 호출이 성공하는 것을 확인했다. 실행기에도 이 환경을 추가했다. 실행 중 Gemma/Luna에는 다음 서비스 재시작부터 적용되는 runtime drop-in을 추가했다.
+
+작업량 주의: Table 2는 Ours 및 Luna Probe를 제외해 35개 모델·방법 조합 × 1,724 = 60,340개 답변이다. Table 3은 일반 QA 17,942문항 × (Qwen 19 + Gemma 19 + Luna 17개 출처별 설정) = 986,810개 답변이다. 이 수는 GEPA 학습 중 평가 호출 및 검토·검증 등 중간 호출을 제외한 최종 답변 수다. 현재 전체 Table 3은 소규모 보존 표본이 아니라 전체 벤치마크 실행이며, 소요 시간은 Table 1·2와 분리해 보고한다.

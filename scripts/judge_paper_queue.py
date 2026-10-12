@@ -14,6 +14,28 @@ from scripts.run_paper_baselines_resilient import quota_error, locked_external_c
 from src.paper_baselines import WellBridge, write_json, sha, digest
 
 
+class JudgeFormatError(ValueError):
+    pass
+
+
+def validated_judge_call(client,role,messages):
+    """Retry malformed ratings, preserving the raw output without changing the rubric."""
+    from src.fpqa_prompting import parse_rating
+    for attempt in range(3):
+        text=Worker.external_call(client,role,messages)
+        try:parse_rating(text)
+        except ValueError:
+            identity={'role':role,'config':client.external[role+'_model'],'messages':messages,
+                      'code':sha(ROOT/'src/fpqa_cli_backend.py')}
+            path=client.out/'external_calls'/(digest(identity)+'.json')
+            archive=client.out/'invalid_judge_calls'/f'{digest(identity)}-{time.time_ns()}.json'
+            archive.parent.mkdir(parents=True,exist_ok=True)
+            if path.exists():path.replace(archive)
+            else:write_json(archive,{'request':identity,'text':text})
+        else:return text
+    raise JudgeFormatError('Three malformed ratings; raw responses archived, no score assigned')
+
+
 class JudgeClient:
     judge=Worker.judge
     def __init__(self,config,out,judge_config=None):
@@ -25,7 +47,7 @@ class JudgeClient:
             raise ValueError('Frozen judge configuration mismatch')
         if judge_config is not None:self.external['judge_model']=judge_config
     def external_call(self,role,messages):
-        return locked_external_call(self,role,messages,Worker.external_call)
+        return locked_external_call(self,role,messages,validated_judge_call if role=='judge' else Worker.external_call)
 
 
 def evaluation_key(record,judge_config,row):
@@ -108,7 +130,11 @@ def main():
                 state.update(state='stopped');write_json(status,state);return
             if time.time()<deadline:
                 time.sleep(min(1,deadline-time.time()));continue
-            queue=list(pending(a.out,clients,a.judgments_out,judge_config,lookup if a.judgments_out else None))
+            queue=[]
+            for model,path in pending(a.out,clients,a.judgments_out,judge_config,lookup if a.judgments_out else None):
+                failure=queue_root/'format_failures'/path.relative_to(a.out)
+                if failure.exists() and json.loads(failure.read_text()).get('retry_after_epoch',0)>time.time():continue
+                queue.append((model,path))
             state.update(state='running' if queue else 'idle',pending=len(queue),updated_epoch=time.time())
             write_json(status,state)
             if not queue:
@@ -118,12 +144,21 @@ def main():
                 limited=False;fatal=None
                 for model,path,changed,error in score_group(queue[offset:offset+a.workers],clients,lookup,a.out,a.judgments_out,a.workers):
                     if error is not None:
+                        if isinstance(error,JudgeFormatError):
+                            write_json(queue_root/'format_failures'/path.relative_to(a.out),{
+                                'source_answer_path':str(path),'error':str(error),
+                                'retry_after_epoch':time.time()+INTERVAL,'score_assigned':False})
+                            state['format_failures_this_run']=state.get('format_failures_this_run',0)+1
+                            state['pending']-=1
+                            write_json(status,state)
+                            continue
                         if not quota_error(error):fatal=error;continue
                         limited=True;deadline=time.time()+INTERVAL
                         state.update(state='waiting_quota',model=model,next_retry_epoch=deadline)
                         write_json(status,state)
                         continue
                     state['scored_this_run']+=int(changed)
+                    (queue_root/'format_failures'/path.relative_to(a.out)).unlink(missing_ok=True)
                     state['pending']-=1
                     state.update(updated_epoch=time.time())
                     write_json(status,state)
