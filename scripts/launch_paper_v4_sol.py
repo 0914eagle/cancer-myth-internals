@@ -29,7 +29,7 @@ def main():
         command=[PYTHON,'scripts/prepare_shared_sol_extractions.py',*common]
     else:
         model={'qwen':'qwen25','gemma':'gemma3','luna':'luna6'}[a.role];stop=ROOT/out/model/'STOP'
-        script='scripts/run_paper_gemma_placement.py' if a.role=='gemma' else 'scripts/run_paper_baselines_sol.py'
+        script='scripts/run_paper_baselines_recovery.py'
         command=[PYTHON,script,'run','--model',model,*common,'--detect-first']
         if a.role!='luna':command+=['--max-batch','16' if a.role=='qwen' else '32','--token-budget','147456' if a.role=='qwen' else '393216']
     stop.unlink(missing_ok=True)

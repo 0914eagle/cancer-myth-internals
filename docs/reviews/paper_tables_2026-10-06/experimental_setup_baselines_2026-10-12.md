@@ -221,3 +221,7 @@ train은 FPQ/NFP를 각각 seed 42로 섞고 한 쌍씩 묶는다. 작은 클래
 2026-10-12에 `main`에 이미 포함된 원격 `claude/document-session-o2temh`와 로컬 게시용 `codex/paper-tables-20261006`을 정리하고, 깨끗한 게시 저장소를 `main`으로 통일했다. 삭제 전 원격 브랜치 tip은 `e5fcd34`이며 해당 커밋은 main 이력에 남아 있다.
 
 실험 작업공간의 main에는 실행 중인 코드와 미커밋 변경·미추적 파일이 다수 있으므로 강제 checkout/reset으로 덮어쓰지 않는다. 별도 `claude/paper-writing-start-a7fd1f` worktree에는 미커밋 `paper/writing_guide.md`가 있어 보존한다. 이 원고 초안의 예전 CREPE 분모·Sonnet 채점·GEPA 500 예산보다 이 문서의 확인된 현재 설정이 우선한다. 원고 파일 자체는 변경하지 않았다.
+
+### 2026-10-13 실행 안정화 추가
+
+`run_paper_baselines_recovery.py`가 기존 실행기를 감싼다. 잘못된 GEPA 채점 형식은 원문을 보관하고 같은 프롬프트로 재요청하며, 빈 생성은 기존 길이 초과와 마찬가지로 문항 실패로 남기고 진행한다. 분할·프롬프트·모델·배치·평가 분모는 그대로다. 자세한 변경은 [실행 일지](baseline_v4_runbook_2026-10-12.md)를 참조한다.
