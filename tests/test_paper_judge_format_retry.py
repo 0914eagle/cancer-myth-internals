@@ -3,6 +3,16 @@ import pytest
 from scripts import judge_paper_queue as q
 
 
+def test_worker_control_changes_without_restart(tmp_path):
+    import json
+    path=tmp_path/'workers.json'
+    assert q.worker_count(path,16)==16
+    path.write_text(json.dumps({'workers':32}))
+    assert q.worker_count(path,16)==32
+    path.write_text(json.dumps({'workers':0}))
+    with pytest.raises(ValueError):q.worker_count(path,16)
+
+
 def test_malformed_output_retried_without_changing_prompt(tmp_path,monkeypatch):
     replies=iter(['Rating: 2\nRating: 4','Rating: 3']);calls=[]
     def call(self,role,messages):

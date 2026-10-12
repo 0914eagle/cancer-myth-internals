@@ -18,6 +18,12 @@ class JudgeFormatError(ValueError):
     pass
 
 
+def worker_count(path,default):
+    value=json.loads(path.read_text())['workers'] if path and path.exists() else default
+    if type(value) is not int or value<1:raise ValueError('workers must be a positive integer')
+    return value
+
+
 def validated_judge_call(client,role,messages):
     """Retry malformed ratings, preserving the raw output without changing the rubric."""
     from src.fpqa_prompting import parse_rating
@@ -107,6 +113,7 @@ def main():
     p.add_argument('--out',type=Path,required=True)
     p.add_argument('--judgments-out',type=Path);p.add_argument('--judge-config',type=Path)
     p.add_argument('--workers',type=int,default=1)
+    p.add_argument('--workers-control',type=Path)
     a=p.parse_args()
     if a.workers<1:p.error('workers must be positive')
     config=json.loads(a.config.read_text());bundle=check_bundle(a.bundle)
@@ -119,7 +126,7 @@ def main():
     lock=(queue_root/'.judge_queue.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     clients={m:JudgeClient(config,a.out/m,judge_config) for m in config['models']}
     status=queue_root/'judge_queue_status.json'
-    state={'state':'running','code_sha256':sha(Path(__file__)),'scored_this_run':0,'judge_config':judge_config,'regrade_all':bool(a.judgments_out),'workers':a.workers}
+    state={'state':'running','code_sha256':sha(Path(__file__)),'scored_this_run':0,'judge_config':judge_config,'regrade_all':bool(a.judgments_out),'workers':worker_count(a.workers_control,a.workers),'started_epoch':time.time()}
     deadline=0
     if status.exists():
         old=json.loads(status.read_text())
@@ -139,10 +146,16 @@ def main():
             write_json(status,state)
             if not queue:
                 time.sleep(10);continue
-            for offset in range(0,len(queue),a.workers):
+            offset=0
+            while offset<len(queue):
                 if (queue_root/'STOP_JUDGE').exists():break
+                workers=worker_count(a.workers_control,a.workers)
+                jobs=queue[offset:offset+workers];offset+=len(jobs)
+                group_started=time.time();group_scored=0
+                state.update(workers=workers,group_started_epoch=group_started)
+                write_json(status,state)
                 limited=False;fatal=None
-                for model,path,changed,error in score_group(queue[offset:offset+a.workers],clients,lookup,a.out,a.judgments_out,a.workers):
+                for model,path,changed,error in score_group(jobs,clients,lookup,a.out,a.judgments_out,workers):
                     if error is not None:
                         if isinstance(error,JudgeFormatError):
                             write_json(queue_root/'format_failures'/path.relative_to(a.out),{
@@ -158,12 +171,18 @@ def main():
                         write_json(status,state)
                         continue
                     state['scored_this_run']+=int(changed)
+                    group_scored+=int(changed)
                     (queue_root/'format_failures'/path.relative_to(a.out)).unlink(missing_ok=True)
                     state['pending']-=1
                     state.update(updated_epoch=time.time())
                     write_json(status,state)
                 if fatal is not None:raise fatal
+                state.update(last_group_seconds=time.time()-group_started,last_group_scored=group_scored)
+                write_json(status,state)
                 if limited:
+                    if a.workers_control:
+                        target=max(1,min(worker_count(a.workers_control,workers),workers//2))
+                        write_json(a.workers_control,{'workers':target,'reason':'reduce after provider quota error','updated_epoch':time.time()})
                     print(f'[judge queue] Quota limit; retry in {INTERVAL}s. GPU generation continues.',flush=True)
                     break
     except BaseException as error:

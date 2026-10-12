@@ -22,7 +22,8 @@ def main():
     common=['--config',str(protocol/'runtime.json'),'--bundle',str(protocol/'bundle.json'),'--out',str(out)]
     if a.role=='haiku':
         stop=ROOT/'results/paper_baselines_v4/haiku/STOP_JUDGE'
-        command=[PYTHON,'scripts/judge_paper_queue.py',*common,'--judge-config',str(protocol/'haiku.json'),'--judgments-out','results/paper_baselines_v4/haiku','--workers','8']
+        command=[PYTHON,'scripts/judge_paper_queue.py',*common,'--judge-config',str(protocol/'haiku.json'),'--judgments-out','results/paper_baselines_v4/haiku','--workers','256',
+                 '--workers-control','results/paper_baselines_v4/haiku/workers_control.json']
     elif a.role=='extraction':
         stop=ROOT/out/'shared/sol_extraction/STOP'
         command=[PYTHON,'scripts/prepare_shared_sol_extractions.py',*common]
