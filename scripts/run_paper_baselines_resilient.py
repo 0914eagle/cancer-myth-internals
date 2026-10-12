@@ -4,6 +4,8 @@ import json
 import re
 import sys
 import time
+import os
+import fcntl
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -11,6 +13,14 @@ from scripts import run_paper_baselines as runner
 from src.paper_baselines import FIXED, digest, sha, write_json
 
 INTERVAL = 600
+
+
+def locked_external_call(worker, role, messages, call):
+    lock_path=worker.out/'external_calls/locks'/(digest({'role':role,'messages':messages})+'.lock')
+    lock_path.parent.mkdir(parents=True,exist_ok=True)
+    with lock_path.open('a') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX)
+        return call(worker,role,messages)
 
 
 def item_error(error):
@@ -138,11 +148,15 @@ def main():
             'interval_seconds': INTERVAL, 'entrypoint_sha256': sha(Path(__file__)),
             'only': 'Claude usage/rate limit errors',
             'experiment_identity': 'unchanged; retry same request, reuse successful cache'})
-        return with_quota_retry(worker, role, messages, original)
+        return with_quota_retry(worker, role, messages,
+            lambda w,r,m:locked_external_call(w,r,m,original))
     runner.Worker.external_call = resilient_call
     runner.Worker.__init__ = initialize
     runner.Worker.task = resilient_task
     runner.Worker.process = resilient_process
+    if os.environ.get('PAPER_DECOUPLED_JUDGE')=='1' and len(sys.argv)>1 and sys.argv[1]=='run':
+        from scripts.paper_generation_schedule import execute
+        runner.Worker.execute=execute
     runner.main()
 
 

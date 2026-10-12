@@ -1,0 +1,24 @@
+{
+  "captured_at_utc": "2026-10-12T02:00:51.902828+00:00",
+  "scope": "Successful cached judge calls from this baseline run only; not account-wide quota",
+  "models": {
+    "qwen25": {
+      "successful_calls": 463,
+      "usage": {
+        "input_tokens": 926,
+        "output_tokens": 124126,
+        "cache_creation_input_tokens": 1849458,
+        "cache_read_input_tokens": 0
+      }
+    },
+    "gemma3": {
+      "successful_calls": 242,
+      "usage": {
+        "input_tokens": 484,
+        "output_tokens": 67468,
+        "cache_creation_input_tokens": 1069764,
+        "cache_read_input_tokens": 0
+      }
+    }
+  }
+}

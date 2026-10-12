@@ -85,6 +85,18 @@ bash scripts/run_paper_baselines_4090.sh run trained
 
 최초 중단 문항은 Qwen `mmlu:1410`, Gemma `mmlu:13`이다. 출력 원문은 이전 실행기가 저장하지 않았다. 고정 QA 순서에서 성공 파일이 연속으로 존재하는 마지막 지점과 fail-fast 로그를 대조해 해당 다음 문항을 실패 기록으로 복원했고, 로그 해시·원장 인덱스를 기록했다. 이 두 문항을 다시 생성하지 않는다.
 
+### 2026-10-12: 고정 방법 전체 평가와 독립 채점 대기열
+
+현재 생성 서비스: `paper-baselines-generate-20261012.service` (`PAPER_DECOUPLED_JUDGE=1`). 현재 채점 서비스: `paper-baselines-judge-20261012.service`. 이전 `paper-baselines-all-20261009.service`는 중단한다.
+
+고정 방법은 fold별로 학습하지 않는다. 동일 고정 프롬프트로 Cancer-Myth의 적격 724문항과 CREPE test 3,004문항을 한 번씩 생성한다. 기존 성공 캐시 재사용을 위해 Cancer-Myth의 저장 폴더만 이전 fold 배정대로 유지한다. 전체 문항에 대한 집계가 최종 고정 기준선이다. TF-IDF·Probe·GEPA는 train/dev 정보가 필요한 방법이므로 그룹 분할을 유지한다.
+
+생성 순서는 **고정 방법 전체 FPQA → TF-IDF/Probe 전체 FPQA → 이 방법들의 일반 QA → GEPA 최적화·평가**다. Plain 다음에 Balanced로 가기 전에 일반 QA 전체를 먼저 돌리던 순서를 폐기했다. 최종 Well 채점은 `judge_paper_queue.py`가 이미 저장된 `table12` 답변을 읽어 모델별 번갈아 수행한다. 일반 QA는 대기열에 넣지 않는다. 성공 점수와 외부 호출 캐시는 재사용한다. 요청별 파일 잠금으로 동일 외부 요청의 동시 쓰기를 막는다.
+
+Sonnet 제한 시 채점 대기열만 600초 대기하며 로컬 생성은 계속된다. **GEPA 최적화 자체의 학습 피드백은 여전히 Sonnet을 필요로 한다.** 이를 우회하거나 무채점 최적화로 바꾸지 않는다. 생성 상태는 모델별 `generation_progress.json`, 채점 상태는 `main/judge_queue_status.json`이다. 채점 중단은 `main/STOP_JUDGE`; 모델별 생성 중단은 기존 `STOP`을 쓴다.
+
+검증: FPQA가 일반 QA보다 먼저 진행되는지, 고정 방법이 전체 문항을 순회하는지, 생성에서 최종 judge를 호출하지 않는지, 모델 간 채점 순환과 기존 점수 재사용을 테스트했다. 관련 30개 테스트 통과.
+
 ## 결과와 상태
 
 - 기본 결과: `results/paper_baselines_v3/main/{qwen25,gemma3}/`
