@@ -24,6 +24,11 @@ def worker_count(path,default):
     return value
 
 
+def provider_refusal(error):
+    text=str(error)
+    return "can't help with this" in text and ('[general_harms]' in text or 'anthropic.com/legal/aup' in text)
+
+
 def validated_judge_call(client,role,messages):
     """Retry malformed ratings, preserving the raw output without changing the rubric."""
     from src.fpqa_prompting import parse_rating
@@ -139,6 +144,11 @@ def main():
                 time.sleep(min(1,deadline-time.time()));continue
             queue=[]
             for model,path in pending(a.out,clients,a.judgments_out,judge_config,lookup if a.judgments_out else None):
+                refusal=queue_root/'provider_refusals'/path.relative_to(a.out)
+                if refusal.exists():
+                    record=json.loads(path.read_text())
+                    key=evaluation_key(record,clients[model].external['judge_model'],lookup[record['id']])
+                    if json.loads(refusal.read_text()).get('evaluation_key')==key:continue
                 failure=queue_root/'format_failures'/path.relative_to(a.out)
                 if failure.exists() and json.loads(failure.read_text()).get('retry_after_epoch',0)>time.time():continue
                 queue.append((model,path))
@@ -157,6 +167,16 @@ def main():
                 limited=False;fatal=None
                 for model,path,changed,error in score_group(jobs,clients,lookup,a.out,a.judgments_out,workers):
                     if error is not None:
+                        if provider_refusal(error):
+                            record=json.loads(path.read_text())
+                            write_json(queue_root/'provider_refusals'/path.relative_to(a.out),{
+                                'source_answer_path':str(path),'error':str(error),'score_assigned':False,
+                                'evaluation_key':evaluation_key(record,clients[model].external['judge_model'],lookup[record['id']]),
+                                'action':'manual review required; do not automatically retry provider refusal'})
+                            state['provider_refusals_this_run']=state.get('provider_refusals_this_run',0)+1
+                            state['pending']-=1
+                            write_json(status,state)
+                            continue
                         if isinstance(error,JudgeFormatError):
                             write_json(queue_root/'format_failures'/path.relative_to(a.out),{
                                 'source_answer_path':str(path),'error':str(error),

@@ -33,7 +33,8 @@ def main():
         command=[PYTHON,script,'run','--model',model,*common,'--detect-first']
         if a.role!='luna':command+=['--max-batch','16' if a.role=='qwen' else '32','--token-budget','147456' if a.role=='qwen' else '393216']
     stop.unlink(missing_ok=True)
-    subprocess.run(['systemd-run','--user',f'--unit={new}','--property=Restart=on-failure','--property=RestartSec=600',
+    resource_properties=['--property=LimitNOFILE=65536'] if a.role=='haiku' else []
+    subprocess.run(['systemd-run','--user',f'--unit={new}','--property=Restart=on-failure','--property=RestartSec=600',*resource_properties,
         f'--property=WorkingDirectory={ROOT}',
         '--setenv=PATH=/home/eagle0914/.local/bin:/home/eagle0914/.npm-global/bin:/usr/local/bin:/usr/bin:/bin',
         '--setenv=HF_HUB_OFFLINE=1',

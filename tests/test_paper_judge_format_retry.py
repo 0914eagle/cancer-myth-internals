@@ -13,6 +13,12 @@ def test_worker_control_changes_without_restart(tmp_path):
     with pytest.raises(ValueError):q.worker_count(path,16)
 
 
+def test_provider_refusal_is_not_quota_or_generic_transport_error():
+    assert q.provider_refusal(RuntimeError("API Error: Haiku 5.5 can't help with this. [general_harms]"))
+    assert not q.provider_refusal(RuntimeError('HTTP 429 rate limit'))
+    assert not q.provider_refusal(RuntimeError('request timeout'))
+
+
 def test_malformed_output_retried_without_changing_prompt(tmp_path,monkeypatch):
     replies=iter(['Rating: 2\nRating: 4','Rating: 3']);calls=[]
     def call(self,role,messages):
