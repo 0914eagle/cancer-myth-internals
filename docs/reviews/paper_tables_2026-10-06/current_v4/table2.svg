@@ -441,6 +441,6 @@
 <text x="1932.0" y="1160.0" font-family="Noto Sans CJK KR,sans-serif" font-size="19" font-weight="400" text-anchor="middle" dominant-baseline="central" fill="#17212b">후속 실험</text>
 <line x1="28" y1="1198" x2="2002" y2="1198" stroke="#bdc7ce" stroke-width="1"/>
 <text x="28" y="1225.0" font-family="Noto Sans CJK KR,sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central" fill="#17212b">Cancer-Myth: 577 FPQ / 147 NFP. CREPE: 공통 test 500 FPQ / 500 NFP.</text>
-<text x="28" y="1254.0" font-family="Noto Sans CJK KR,sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central" fill="#17212b">Table 2는 4점 이상 비율. Haiku 거부분은 Codex 직접 판정으로 보완(기록 참조). 진행 분자는 문항 수입니다.</text>
+<text x="28" y="1254.0" font-family="Noto Sans CJK KR,sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central" fill="#17212b">Table 2는 4점 이상 비율. 생성/채점 분자는 완료 문항 수이며 부분 성능을 뜻하지 않습니다.</text>
 <text x="28" y="1283.0" font-family="Noto Sans CJK KR,sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central" fill="#17212b">후속 실험 = Ours는 이번 baseline 실행 범위 밖. 해당 없음 = Luna 내부 Probe 미지원.</text>
 </svg>

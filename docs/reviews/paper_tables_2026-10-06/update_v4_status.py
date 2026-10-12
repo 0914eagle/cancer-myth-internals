@@ -152,7 +152,7 @@ def render(snap,name,methods,groups):
                 row.append(value.replace('\n',' '))
         csvrows.append(row);line(left,y+rh,width-left,y+rh)
     notes=['Cancer-Myth: 577 FPQ / 147 NFP. CREPE: 공통 test 500 FPQ / 500 NFP.' if name!='table3' else '분모: MedQA 1,273 / PubMedQA 1,000 / Medbullets 308 / MMLU 14,042 / GSM8K 1,319.',
-           'Table 2는 4점 이상 비율. Haiku 거부분은 Codex 직접 판정으로 보완(기록 참조). 진행 분자는 문항 수입니다.' if name=='table2' else 'Table 1은 정답 라벨로 직접 평가합니다. 별도 LLM 채점이 필요 없습니다.' if name=='table1' else '일반 QA는 정답 비교로 자동 채점. 2개 설정 = Cancer-Myth fold0 / CREPE 학습·예시 버전.',
+           'Table 2는 4점 이상 비율. 생성/채점 분자는 완료 문항 수이며 부분 성능을 뜻하지 않습니다.' if name=='table2' else 'Table 1은 정답 라벨로 직접 평가합니다. 별도 LLM 채점이 필요 없습니다.' if name=='table1' else '일반 QA는 정답 비교로 자동 채점. 2개 설정 = Cancer-Myth fold0 / CREPE 학습·예시 버전.',
            'TF-IDF는 모델 공통 판정입니다. 해당 없음 = Luna 내부 Probe 미지원.' if name=='table1' else '후속 실험 = Ours는 이번 baseline 실행 범위 밖. 해당 없음 = Luna 내부 Probe 미지원.']
     for i,note in enumerate(notes):text(note,left,top+head+rh*len(methods)+27+i*29,18,False,'lm')
     svg.append('</svg>');(OUT/(name+'.svg')).write_text('\n'.join(svg));im.save(OUT/(name+'.png'))
@@ -166,7 +166,7 @@ if __name__=='__main__':
     render(snap,'table1',DETECT,[(d,l,[(m,'FPQ 탐지 ↑' if m=='1' else 'NFP 오탐 ↓') for m,_ in metrics]) for d,l,metrics in fpqa])
     render(snap,'table2',METHODS,fpqa)
     render(snap,'table3',METHODS,[(d,l,[('qa','정확도 ↑')]) for d,l in [('medqa','MedQA'),('pubmedqa','PubMedQA'),('medbullets','Medbullets'),('mmlu','MMLU'),('gsm8k','GSM8K')]])
-    lines=['# 세 모델 baseline 진행 상태','',f"기준: {snap['captured_at_kst']}",'','빈칸 대신 자연어 상태를 표시했습니다. 완료된 셀만 성능 수치를 표시합니다.','','Table 2: Haiku 채점에 거부된 CREPE 한 문항의 16개 답변은 사용자 요청으로 Codex가 직접 판정했습니다(사람 판정 아님). 원본 주석 불일치를 기록하고 기존 정답 설명 기반 규약을 유지했습니다. 미래 답변에는 이 점수를 자동 적용하지 않습니다. [판정 기록](manual_adjudication_20261012.json) · [설명](manual_adjudication_20261012.md)','']
+    lines=['# 세 모델 baseline 진행 상태','',f"기준: {snap['captured_at_kst']}",'','빈칸 대신 자연어 상태를 표시했습니다. 완료된 셀만 성능 수치를 표시합니다.','','완료된 셀은 해당 평가 문항의 채점이 모두 끝난 결과입니다.','']
     for n in (1,2,3):lines += [f'## Table {n}',f'![Table {n}](table{n}.png)',f'[CSV](table{n}.csv) · [SVG](table{n}.svg)','']
     (OUT/'README.md').write_text('\n'.join(lines).rstrip()+'\n')
     print(OUT)
