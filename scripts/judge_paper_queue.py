@@ -187,7 +187,8 @@ def main():
                             continue
                         if not quota_error(error):fatal=error;continue
                         limited=True;deadline=time.time()+INTERVAL
-                        state.update(state='waiting_quota',model=model,next_retry_epoch=deadline)
+                        state.update(state='waiting_quota',model=model,next_retry_epoch=deadline,
+                                     last_quota_error=str(error),last_quota_epoch=time.time())
                         write_json(status,state)
                         continue
                     state['scored_this_run']+=int(changed)
