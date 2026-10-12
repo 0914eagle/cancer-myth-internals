@@ -53,6 +53,21 @@ def test_stop_during_wait_and_resume_preserves_deadline(tmp_path):
 
 
 def test_rate_error_variants():
-    for message in ['rate_limit_error', 'Rate limit exceeded', 'HTTP 429', 'Too many requests']:
+    for message in ['rate_limit_error', 'Rate limit exceeded', 'HTTP 429', 'Too many requests',
+                    "You've hit your session limit · resets 4:40pm (Australia/Perth)",
+                    "You've hit your weekly limit", 'CLI exited 1: {"api_error_status":429}']:
         assert quota_error(ValueError(message))
     assert not quota_error(OSError('HTTP 429'))
+
+
+def test_recorded_session_limit_recovers_after_delay(tmp_path):
+    clock=[0.]
+    calls=[]
+    def call(*args):
+        calls.append(clock[0])
+        if len(calls)==1:
+            raise RuntimeError('CLI exited 1: {"api_error_status":429,"result":"You\'ve hit your session limit · resets 4:40pm (Australia/Perth)"}')
+        return 'Rating: 4'
+    assert with_quota_retry(worker(tmp_path),'judge',[],call,
+        now=lambda:clock[0],sleep=lambda s:clock.__setitem__(0,clock[0]+s))=='Rating: 4'
+    assert calls==[0,600]

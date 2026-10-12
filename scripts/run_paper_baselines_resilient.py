@@ -53,9 +53,10 @@ def quota_error(error):
     if not isinstance(error, (RuntimeError, ValueError)):
         return False
     return bool(re.search(
-        r"you[’']ve hit your limit|usage limit (?:reached|exceeded)|"
+        r"you[’']ve hit your (?:(?:session|weekly|usage) )?limit|usage limit (?:reached|exceeded)|"
         r"rate[_ -]limit(?:ed|_error| exceeded| reached)|"
-        r"too many requests|(?:http|status(?: code)?)\s*[:=]?\s*429\b",
+        r'too many requests|(?:http|status(?: code)?)\s*[:=]?\s*429\b|'
+        r'"api_error_status"\s*:\s*429\b',
         str(error), re.I))
 
 
