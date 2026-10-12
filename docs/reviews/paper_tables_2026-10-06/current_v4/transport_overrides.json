@@ -1,0 +1,19 @@
+{
+  "max_batch": {
+    "qwen25": 16,
+    "gemma3": 8
+  },
+  "token_budget": {
+    "qwen25": 147456,
+    "gemma3": 98304
+  },
+  "gpt_shared_concurrency": 4,
+  "haiku_concurrency": 4,
+  "detect_first": [
+    "direct_gate",
+    "cot_gate"
+  ],
+  "frozen_runtime_unchanged": true,
+  "entrypoint": "scripts/run_paper_baselines_v4.py",
+  "launcher": "scripts/launch_paper_v4_fast.py"
+}

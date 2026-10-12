@@ -1,4 +1,5 @@
 """Drain saved FPQA answers independently of GPU generation. No generation calls."""
+from concurrent.futures import ThreadPoolExecutor,as_completed
 import argparse
 import fcntl
 import json
@@ -67,12 +68,26 @@ def score_one(client,path,lookup,destination=None):
     return True
 
 
+def score_group(jobs,clients,lookup,out,judgments_out,workers):
+    """At most workers requests; preserve successful grades if a peer fails."""
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures={pool.submit(score_one,clients[m],p,lookup,judgments_out/p.relative_to(out) if judgments_out else None):(m,p) for m,p in jobs}
+        for future in as_completed(futures):
+            model,path=futures[future]
+            try:changed=future.result()
+            except Exception as error:yield model,path,False,error
+            else:yield model,path,changed,None
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--config',type=Path,required=True);p.add_argument('--bundle',type=Path,required=True)
     p.add_argument('--out',type=Path,required=True)
     p.add_argument('--judgments-out',type=Path);p.add_argument('--judge-config',type=Path)
-    a=p.parse_args();config=json.loads(a.config.read_text());bundle=check_bundle(a.bundle)
+    p.add_argument('--workers',type=int,default=1)
+    a=p.parse_args()
+    if a.workers<1:p.error('workers must be positive')
+    config=json.loads(a.config.read_text());bundle=check_bundle(a.bundle)
     lookup={r['id']:r for r in bundle['rows']}
     if bool(a.judgments_out)!=bool(a.judge_config):p.error('Provide both --judgments-out and --judge-config')
     judge_config=json.loads(a.judge_config.read_text()) if a.judge_config else None
@@ -82,7 +97,7 @@ def main():
     lock=(queue_root/'.judge_queue.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     clients={m:JudgeClient(config,a.out/m,judge_config) for m in config['models']}
     status=queue_root/'judge_queue_status.json'
-    state={'state':'running','code_sha256':sha(Path(__file__)),'scored_this_run':0,'judge_config':judge_config,'regrade_all':bool(a.judgments_out)}
+    state={'state':'running','code_sha256':sha(Path(__file__)),'scored_this_run':0,'judge_config':judge_config,'regrade_all':bool(a.judgments_out),'workers':a.workers}
     deadline=0
     if status.exists():
         old=json.loads(status.read_text())
@@ -98,21 +113,24 @@ def main():
             write_json(status,state)
             if not queue:
                 time.sleep(10);continue
-            for model,path in queue:
+            for offset in range(0,len(queue),a.workers):
                 if (queue_root/'STOP_JUDGE').exists():break
-                try:
-                    changed=score_one(clients[model],path,lookup,(a.judgments_out/path.relative_to(a.out)) if a.judgments_out else None)
-                except (RuntimeError,ValueError) as error:
-                    if not quota_error(error):raise
-                    deadline=time.time()+INTERVAL
-                    state.update(state='waiting_quota',model=model,next_retry_epoch=deadline)
+                limited=False;fatal=None
+                for model,path,changed,error in score_group(queue[offset:offset+a.workers],clients,lookup,a.out,a.judgments_out,a.workers):
+                    if error is not None:
+                        if not quota_error(error):fatal=error;continue
+                        limited=True;deadline=time.time()+INTERVAL
+                        state.update(state='waiting_quota',model=model,next_retry_epoch=deadline)
+                        write_json(status,state)
+                        continue
+                    state['scored_this_run']+=int(changed)
+                    state['pending']-=1
+                    state.update(updated_epoch=time.time())
                     write_json(status,state)
+                if fatal is not None:raise fatal
+                if limited:
                     print(f'[judge queue] Quota limit; retry in {INTERVAL}s. GPU generation continues.',flush=True)
                     break
-                state['scored_this_run']+=int(changed)
-                state['pending']-=1
-                state.update(updated_epoch=time.time(),state='running')
-                write_json(status,state)
     except BaseException as error:
         state.update(state='failed',error=str(error));write_json(status,state);raise
 

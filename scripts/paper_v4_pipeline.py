@@ -39,6 +39,7 @@ class EvaluatedPipeline(SharedExtractionPipeline):
                 info.update(detector_raw=raw,verdict=verdict,review=review)
             info['invalid_detection']=info['verdict'] is None
             if path:write_json(path,info,immutable=True)
+        if getattr(self.context,'detection_only',False):return info
         verdict=info['verdict'];review=info['review']
         prompt=self.prompts['correct_route' if verdict==1 else 'plain']
         if candidate.get('supplement'):prompt+='\n\n'+candidate['supplement']

@@ -1,9 +1,10 @@
 """Matched three-model suite with shared extraction, true gated generation and batching."""
 import argparse,fcntl,json,os,sys,time
 from pathlib import Path
+from types import SimpleNamespace
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.run_paper_baselines import Worker,ROOT
-from scripts.run_paper_baselines_resilient import process_with_failures,quota_error,INTERVAL
+from scripts.run_paper_baselines_resilient import process_with_failures,quota_error,item_error,INTERVAL
 from scripts.paper_batch_inference import BatchedHFTask,MicroBatch,LockedCachedTask,run_rows
 from scripts.paper_shared_extraction import SharedLunaExtraction
 from scripts.paper_v4_pipeline import EvaluatedPipeline
@@ -58,9 +59,29 @@ class V4Worker(Worker):
             return process_with_failures(self,row,split,method,candidate,gate,qa,Worker.process)
         finally:self.pipeline.context.value=None
 
+    def detect(self,row,split,method,candidate,gate,qa):
+        path=self.out/'table1'/split['dataset']/split['name']/method/(digest([row['dataset'],row['id']])+'.json')
+        failure=self.out/'failures/table1'/split['dataset']/split['name']/method/path.name
+        if path.exists() or failure.exists():return
+        self.pipeline.context.value=(row,split,False)
+        self.pipeline.context.detection_only=True
+        try:
+            self.pipeline.run(method,row['question'],split['dataset'])
+        except (RuntimeError,ValueError) as error:
+            kind=item_error(error)
+            if not kind:raise
+            write_json(failure,{'id':row['id'],'dataset':row['dataset'],'label':row['label'],
+                'method':method,'failure_kind':kind,'error':str(error)},immutable=True)
+        finally:
+            self.pipeline.context.value=None
+            self.pipeline.context.detection_only=False
+
     def execute(self):
         self.args.generate_only=True
-        opts=self.config['batching'][self.args.model];dispatch=None
+        opts=dict(self.config['batching'][self.args.model]);dispatch=None
+        for arg in ('max_batch','token_budget'):
+            value=getattr(self.args,arg,None)
+            if value is not None:opts[arg]=value
         if self.cli:
             call=self.task;workers=opts['pipeline_workers']
         else:
@@ -76,7 +97,21 @@ class V4Worker(Worker):
         else:splits=self.bundle['splits']
         state={'state':'running','protocol':self.config['protocol_id'],'model':self.args.model,'batching':opts,'methods':methods,'final_judge':'separate Haiku ledger'}
         status=self.out/'generation_progress.json';write_json(status,state)
+        write_json(self.out/'execution_policies'/(str(time.time_ns())+'.json'),
+            {'batching':opts,'detect_first':self.args.detect_first,'frozen_config_unchanged':True,'runner_sha256':sha(Path(__file__))},immutable=True)
         try:
+            if self.args.detect_first:
+                detector_worker=SimpleNamespace(out=self.out,process=self.detect)
+                for method in ('direct_gate','cot_gate'):
+                    if method not in methods:continue
+                    for split in splits:
+                        rows=[self.lookup[i] for i in split['test']]
+                        state.update(stage='table1',method=method,dataset=split['dataset'],split=split['name'],processed=0,total=len(rows),updated_epoch=time.time());write_json(status,state)
+                        print(f'[detect-first] {self.args.model} {split["dataset"]}/{split["name"]} {method}',flush=True)
+                        def detection_completed(n):
+                            if n%10==0 or n==len(rows):
+                                state.update(processed=n,updated_epoch=time.time());write_json(status,state)
+                        run_rows(detector_worker,rows,split,method,None,None,False,workers,detection_completed)
             # Main FPQA tables first, including GEPA; native QA cannot delay them.
             for qa in (False,True):
                 if qa and self.args.command=='smoke':continue
@@ -106,6 +141,9 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['run','smoke','init'])
     p.add_argument('--config',type=Path,required=True);p.add_argument('--bundle',type=Path,required=True);p.add_argument('--out',type=Path,required=True)
     p.add_argument('--model',choices=['qwen25','gemma3','luna6'],required=True);p.add_argument('--methods');p.add_argument('--phase',default='all');p.add_argument('--generate-only',action='store_true',default=True)
-    a=p.parse_args();c=json.loads(a.config.read_text());os.environ['CUDA_VISIBLE_DEVICES']=','.join(map(str,c['models'][a.model]['gpus']))
+    p.add_argument('--max-batch',type=int);p.add_argument('--token-budget',type=int);p.add_argument('--detect-first',action='store_true')
+    a=p.parse_args()
+    if any(v is not None and v<1 for v in (a.max_batch,a.token_budget)):p.error('Batch settings must be positive')
+    c=json.loads(a.config.read_text());os.environ['CUDA_VISIBLE_DEVICES']=','.join(map(str,c['models'][a.model]['gpus']))
     w=V4Worker(a)
     if a.command!='init':w.execute()

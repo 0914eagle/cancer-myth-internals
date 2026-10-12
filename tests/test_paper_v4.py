@@ -51,3 +51,42 @@ def test_haiku_regrades_sonnet_without_overwriting_source(tmp_path):
     assert not list(pending(out,['qwen25'],grades,config,lookup))
     original['answer']='Changed';write_json(path,original)
     assert len(list(pending(out,['qwen25'],grades,config,lookup)))==1
+
+
+def test_detection_first_does_not_generate_response_and_later_reuses(tmp_path):
+    calls=[]
+    def call(messages):
+        calls.append(messages)
+        return 'Yes' if messages[0]['content']=='detect' else 'fresh answer'
+    worker=SimpleNamespace(out=tmp_path)
+    p=EvaluatedPipeline({'prompts':{'direct_detector':'detect','plain':'plain','correct_route':'correct'}},call,None,None,worker)
+    p.context.value=({'id':'x','dataset':'crepe','label':1},{'name':'official'},False)
+    p.context.detection_only=True
+    r=p.run('direct_gate','Q','crepe')
+    assert r['verdict']==1 and 'answer' not in r and len(calls)==1
+    p.context.detection_only=False
+    r=p.run('direct_gate','Q','crepe')
+    assert r['answer']=='fresh answer' and len(calls)==2
+    assert 'Verdict: Yes' in calls[1][1]['content']
+
+
+def test_parallel_judge_keeps_success_when_peer_is_rate_limited(tmp_path):
+    import threading
+    from scripts.judge_paper_queue import score_group
+    barrier=threading.Barrier(2)
+    out=tmp_path/'answers';grades=tmp_path/'grades';lookup={}
+    jobs=[]
+    for i in range(2):
+        key=str(i);path=out/'m/table12'/f'{i}.json'
+        row={'id':key,'question':'Q','label':i};lookup[key]=row
+        write_json(path,{**row,'answer':'A'});jobs.append(('m',path))
+    def judge(row,answer):
+        barrier.wait(timeout=5)
+        if row['id']=='0':raise RuntimeError('rate_limit_error')
+        return 5,'Rating: 5'
+    client=SimpleNamespace(external={'judge_model':{'model':'haiku'}},judge=judge)
+    results=list(score_group(jobs,{'m':client},lookup,out,grades,2))
+    assert sum(r[2] for r in results)==1
+    assert sum(r[3] is not None for r in results)==1
+    assert (grades/'m/table12/1.json').exists()
+    assert not (grades/'m/table12/0.json').exists()

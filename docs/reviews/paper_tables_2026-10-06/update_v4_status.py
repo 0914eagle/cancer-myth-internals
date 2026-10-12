@@ -60,7 +60,7 @@ def capture():
                         elif table=='table1':
                             text=f"완료\n{100*c['yes']/n:.1f}%" if c['generated']==n else f"판정 중\n{c['generated']}/{n}" if c['generated'] else '판정 필요'
                         elif c['generated']+c['failed']<n:
-                            active=progress.get('state')=='running' and progress.get('method')==method and progress.get('dataset')==dataset
+                            active=progress.get('state')=='running' and progress.get('stage')=='table12' and progress.get('method')==method and progress.get('dataset')==dataset
                             label='생성 중' if active else '추가 생성 필요' if c['generated'] else '생성 필요'
                             text=label+(f"\n{c['generated']}/{n}" if active or c['generated'] else '')
                         elif c['scored']+c['failed']<n:text=f"채점만 남음\n{c['scored']}/{c['generated']}"

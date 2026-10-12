@@ -1,0 +1,53 @@
+{
+  "bundle_sha256": "88f6f9d4ef07f2812112d1004abdbeedcd90f910171d309a5d3d93d33a16fbe1",
+  "manifest_sha256": "1f223102ebba30e47430704d45d6432064e2f0ba8b9eb3e824f16146ce0367df",
+  "cancer_group_disjoint": true,
+  "cancer_each_question_tested_once": true,
+  "manifest_unchanged": true,
+  "splits": [
+    {
+      "dataset": "cancer_myth",
+      "name": "fold0",
+      "sizes": {
+        "train": 385,
+        "dev": 97,
+        "test": 242
+      },
+      "test_fpq": 193,
+      "test_nfp": 49
+    },
+    {
+      "dataset": "cancer_myth",
+      "name": "fold1",
+      "sizes": {
+        "train": 387,
+        "dev": 96,
+        "test": 241
+      },
+      "test_fpq": 192,
+      "test_nfp": 49
+    },
+    {
+      "dataset": "cancer_myth",
+      "name": "fold2",
+      "sizes": {
+        "train": 386,
+        "dev": 97,
+        "test": 241
+      },
+      "test_fpq": 192,
+      "test_nfp": 49
+    },
+    {
+      "dataset": "crepe",
+      "name": "official",
+      "sizes": {
+        "train": 3437,
+        "dev": 2000,
+        "test": 1000
+      },
+      "test_fpq": 500,
+      "test_nfp": 500
+    }
+  ]
+}
