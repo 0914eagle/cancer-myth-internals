@@ -1,0 +1,996 @@
+{
+  "reason": "User requested shared GPT-6 Sol extraction; retain Luna results outside active tables",
+  "epoch": 1791780936.3826077,
+  "entries": [
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/01b04ad0f717e8e9e5d3f06de2ae32d1b5e77dc7f6699c1869f9fe9d12818579.json",
+      "sha256": "95667e4d7fcb75e544458628dc65d643d000053bb5db9e9dd2d34ac11c92ea1b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/fbd3e4e9300f0f8ae8c32f2321bf7db984d4078c4de95d08270a1426233e4ec0.json",
+      "sha256": "aa25a95cb059bc56c146edb274c817817126aacf6b1549df567bfae530d11b20",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/260ba9c04d8ab53b600155eb3c3ab5b479ae47f7946d2b31bf1902f31a585630.json",
+      "sha256": "afe111293147e85da6eeec7d2d188af659c96268dbf3bb93d68c18f9ee9f9264",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/1090c0143b808f6d6405ac2340b3fe8b106a317c7cb2515140114ff8db51496c.json",
+      "sha256": "8c9697bab4984224c501a228994d86f8ec870dbf7ce30dc1118fbd700e9e8be0",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/06b72580175469deaa2ff1420533fcf33e641f9004d17d0ccc642616ce006f4c.json",
+      "sha256": "08514ae7a8fa0cce3335f651a65b457ccb459cd54c7dd796b86247307daaedad",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/7a2e756f072a29935dbfd7671578a963d092ce35d3eef3e11527e140ae6721de.json",
+      "sha256": "c538701df50f9c6069cf4b7396e010b2a20e262528ea120f81fccd6f6c819f09",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/8930eea19a5a0d734df6e2365c93ea9dd30501987986d25f432aae9b5af723a1.json",
+      "sha256": "dbd7a9489f808897722b506603c27f59d6b80eb4283ff5bc5551f849efe44519",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/8668fd997d144d958f65374f4ec6f8afeef5acec31459f2432b98a9794dde782.json",
+      "sha256": "fbe334432e6a8868abc279590e0684dd162a24180d38f2e2449865d759486737",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/64867e3441709ec227f1309b3a8c6518fd3c31160f2f532f41396c7f352cb56e.json",
+      "sha256": "ac6474191657e5c342edfd8f09122d62c3e96e9943fa6aaa435681bdd6d926f4",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/6bbaf11c69bb7f81484cd633bc65f82ae275217f0e369669558ba35df103216d.json",
+      "sha256": "b45f7ff84950d766d9aad6eaa4d64a99144f496f57df3cb20a9b19e5a63eb836",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/26a86bf91656d0262c085f4ed876283d79cf9e725f3e4cdcfc0e9f75461d1601.json",
+      "sha256": "e35ae37d8c7c3412e48827fdda697ddefaa0b062005fc9adff0ac497bdec9279",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/6353ad07bed0109b26f9dc847c3ebe08d0f667bea11c6795d63c1b4e4e11e963.json",
+      "sha256": "b6348bc5749265fa2981d86087c19bfe01ba5a4c14d01b291565d210735449b6",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/cf0a66e3f8f8b7b1089645f2174447b4da661816b25feb8a6c6815e64e1795d5.json",
+      "sha256": "397bbe0ec291e24ff89f16431ff1fa08042a697a12a22316e68d64ddcd46f261",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2abb2421be3dd0d1cdf6f07542f437a9c54365b3339c8deb74155be67d4712e0.json",
+      "sha256": "505c670d4d8de2c1e674a62f66dbc95341d4410c9ea4f79e31ef7588b33f5d88",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2377448bdd7b7e0e591eb9d6ca57a536b7e1edc0c3d7b5311f8345b8126fd7fa.json",
+      "sha256": "3350d61420b387919f2f4f172a0b0f4d03c4ae5aff279d9ebde127a54350dda7",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/41cd61058b08f5ac43b5fa92315d177271504c79348d4774d21e2b093e576189.json",
+      "sha256": "6cbdac86060fcd736de05bab61332f85432a368b998834d3cef56fb7d6a36705",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/89fac610387077c170ed3d4bd852cd59303e9b18b4a7702cb5e2a99e1b044e9d.json",
+      "sha256": "f2209f017726fa162d5a14a0c4cdbe28b88d918a97fb13c61083e2a86ddc9e4f",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/0e87c2a1aa6ca11e1ae3353de00461662d4396c4130f981cd1d3a6fa5170d213.json",
+      "sha256": "8a14d5c930a21a64f4cd864232b9ae86693d6f6ff3a4f9c4904d0c380ab82aef",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/fa430162042db3a8a2340493dd62b329f2d3a6e917e9d924adfc21e1894af36c.json",
+      "sha256": "247b8e4740b2983950e8467be629b7feb3ddf2052150a2ec56085fb6d4f8584a",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/1151f7ab536dcbfd246ecffa696e5179dffca212c085d44285f50d5842f588c6.json",
+      "sha256": "082c5e28cfcf1b1659a791a4ba2e238d3678b6f8ee125753c48495f4d0d17461",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/5bea3e3cf83999464b5d8a95074c2aa774a60e7e4752d7a9e00f58f2d3d13568.json",
+      "sha256": "52bd8ed1d116e3acc09e68fee77c7f7c7136bdea94e2b159a3efe7ada7aeb37a",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/4c7a80967cae2d072be0314c9ccf89320359e396d4e120572ea894d1049c591c.json",
+      "sha256": "1e94506ec2ed4be771b289c646d770957cb26893342f63bde8f0cc95d046d4fa",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d01acce6b2eb9c0fe460975763462ef478fdce7ed63c18fce1f890884ea520d9.json",
+      "sha256": "263ed0b9562160a8a3fa8ac607d4db34ef6392833489f2cf49dfd3a866f8b87c",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/c349b7bd412af425c07c475ffa574ace694b471d37cf62b1fdf6fbd4fe542c37.json",
+      "sha256": "74af3c9e7f7be91a753d7e82bdfc3cc92b06e9ed104ce729e27f766877338256",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/896a23d213828f5cfd22efcc552b6d1f279cc98f2537f09b132330f8a2bb136a.json",
+      "sha256": "f41a29f33976dd938fe61b0fc878578ce3f90316da807d912e12b0a343c2e7f1",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/af71ec3ef9a32706fe09b89cd49e496524a2af8aa7c5be95aa4455866064f6da.json",
+      "sha256": "306d6817ed88c401be458ad2e4a2eaa9c80efa2653e7c702b152aec47bbb6e58",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d6e1bfc7c345899499fc85083ed9d986b157605ae7123484138d605b6c456be2.json",
+      "sha256": "a6ca1af23392978c665878b790f7509b87a6e18654a365a2b3f90bdaaebe4a74",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/6f69442289f4cc5788628a8338977d4476fa05f757e13b2992aa3f6e8effdf47.json",
+      "sha256": "e24939d4d062bc45c5867659799c9b77a3f95e814a192da75f7b13e1ab77ca31",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/44602ce4ecf9b21cd07428a2ded8378e548353d6b3f6ddea7dde060fd5800e74.json",
+      "sha256": "68d2996edd290fcab2c0af3b9e0a15f8e778c047c62c57d83ba6c6786f613f7f",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/9b02ab876fea6b4841d61292d99ddbd8b57e288560056d8750eb96f149baacca.json",
+      "sha256": "584ab65bf1ae5cf38b66d63b4a3e686d6287233c1cbe5e71a49747aa08e03630",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/36c8a52433289a07f1ffd4e7629b39ab6cfc11d1261192b4fb646db0bcc660e6.json",
+      "sha256": "00423223e804045eb96a5f650af5d50da21484a166b44dd5c8671373cd7e049e",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/336ce383e8c8f08927adb78d557b93f8e976305f8f4d1d15d25717066921a027.json",
+      "sha256": "3e431a485cd680660817c18079f047e22296d8a993b5aaa9f9f0919214b15225",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2661cb1e0bb904974c19d7794163ca1283266590dc6b8cd232eb733d65cdf80c.json",
+      "sha256": "e7c1b7abc130e1f401931a5b3e3a61adbc7d617867746a43c0fd7fde139a6b18",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/af5b1df5f3104ccc62fa14bdef46a9c2540eec510af020d9f90c049bc7e2e1b5.json",
+      "sha256": "835d39f7167eba8aad7b464956cde84bd953cb43eac5db07c575f0d3b65bc71c",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/647d0e1075d10e383ddf549b0e20573c864a720ca80b1e09135f87e77067e714.json",
+      "sha256": "537c77b921d19174a24fa52c316369579abde10a9ee0ae7f360c69fc91aa5958",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/a8ee359c603fc2446e133c274f6ad789c18b4cc517a4bef2f38e644bd612d8d4.json",
+      "sha256": "7c683f82e593a2e9660bac8961a5d339a162d4c00103a8096435e6d6f575c0fd",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/7d498a143c10e747e9b2d195c0d4f0a99d3623e4d38b4dee2ec58f51a3f7a766.json",
+      "sha256": "9598885f733eb9db3c462e2f80fb8bb5d567ae1fa95d409dc626c80f98f06901",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/b76fa75d2c6fcf918912a5f8023485af6561b08ffb26db08e909438fb8f4cd7b.json",
+      "sha256": "e4fe6e5c5e7b2c9eee13e00da5225ce6f9137666a63b8fad10434d26bc7e6f75",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/43369d77bdaff07a29b9b55bab423615449828880fad5945e650bc4ee5e8c544.json",
+      "sha256": "c46279c0316728339620b518947f67964780513e9a2f82cee5ab434df82b391a",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2c7a4d220e0796f5dbd170f3f5ffc78449eddc0f7bca7b633b916edbad573da6.json",
+      "sha256": "b802969c5ccf18c5f2cedaa1a4904907ec99245fea52ff44e41a860c7cd8ec1b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/0fa6a9f46720f99827c98bd986f9f7d170367529f91c4c5ae2b36799c1287f61.json",
+      "sha256": "e5f375b00fb97b29f1601e32e33d342b1cd9e398ff0501196c7b16dc406f8e71",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/3a18e40e86e32a2de302f3a0fce35ed035f0e812d5919beaac5f8fd39a3eb17c.json",
+      "sha256": "a8c3c17c2c5fd8d08abd0bc3d758e6ab17cded4ca9d641dad8a295abd1d0d7dd",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/e3aef09b9d84b184567456039f7bc18a9f8cc4ad75629ede443c8733963df340.json",
+      "sha256": "50bbe1729b1ce78841379e2c0c76e41e6f09147d5cc7971482f689c238264324",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/286ffec84e3d0322af7d49e45819a240cfa3cd94700fa5720a40285e90e05845.json",
+      "sha256": "c726ec3467084695fa2af442e90ec5612a3e987761828af4bba2bb2529637144",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2a3da2024fb5e886277a184e44a403b817397d4e62285a276163cef16bf22065.json",
+      "sha256": "b09f5c6cb0508f3c552bcbe9d33674fa3c22b3ee0cebe8ae3f7194f8f21d5723",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2f8bcb7e05fef0a7bf87c2d379b79deb0b5fe082b0c4d5fbc5ba4f10343189d2.json",
+      "sha256": "027b6cbe814ff87a942233fa26600578ef1c651f569a40b02e116beade29312b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/46292f0ac0adb8776c9208a412954e8c83fbafc9b6efd7cb67929e7b42727831.json",
+      "sha256": "69218680e188430e91ad6cca6f939634a76c9899bad43005d0d9a5c7069ec94c",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/3a3a683230b94a7a88bd926a46524c48cc934462aff428d9925cc6baa9af9c09.json",
+      "sha256": "6df9a004463e744eac198f2b17ee4dff93cf1313f70a42c0e4fae913f6215cc2",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/c4f3f60910bf1ba3d83a37335f52835b6fb6da66646869b7624efbc3e5af5f9e.json",
+      "sha256": "acddfc5970cb2372886f50ba691d49dbe4078506e91427036db230f70c39902d",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/eff86a405d1ee1159507989f37f30661ace0637509877b0b9f401f98cdcf22a6.json",
+      "sha256": "ed385397c5d255db4ea29b02286b69de245411d974237aec3e3493ac30246d07",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/b108bff8529105ebe1b9c59dce98e12ce07fa1aec0137e6f966d3ed96b15c9f2.json",
+      "sha256": "37ab60d636ef6311eff27a56d3f77708db8f5cc6f4a9c5aeedceceaa4714c921",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/0fc59f023ad8466fc007dbb28f662ac9268efe42e04c01c6699765d2288d989b.json",
+      "sha256": "5139dfb9f0aa6c15d8064b8e9487ca7b52e0e8a01de86ef738c924a2cd7ae070",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/5fdf8dbd247f4cd686c3959b4a1704afeafc679329754619d2498a8b790193d7.json",
+      "sha256": "337a9848118e84fa0919a68049da82d9883a48c0ddc290bab6e9e94b847a37b3",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/61f0df8918c221ce4acb31ac5a97bf9ce9e5c22c70177fbef6319d8c35a88ae6.json",
+      "sha256": "e8cab73251efefc4f1413b8773ed04dd9a2f0d2e9d73b7b6ff366b24a9d0b79a",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/8732b49e9b2140dd404842a127ef652940190ae1c4e2c4f62faf946f679ac57b.json",
+      "sha256": "fa52d8cc321221d216dd54e4dd0e35aa6a39be740cd3e2fe687c9a106ca007a3",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/ee7c0046aa80b4084cf0995ab2823d5f98c05cfce2e3b4aaca48fabbbe9a46a7.json",
+      "sha256": "5269db7e80de7d5f54efdf9b42f3d76617af325795a222d4b423f7e949874ffa",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/4f9bbe9b34016a8e6fef0c99252b7d28ba228fcadac8d713d29e6b455a17f52d.json",
+      "sha256": "18f5b9737875af170d479f68c3f86cd38036f2dceb34fad0232ed5fb35bb751e",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/98c188c74048fd6115d3abfc77aaaa517228aa627fa808870f857690770730a5.json",
+      "sha256": "bb9576d733b4d786cbe87b2d2359607d93a9f1faaca20e91daa247ea76cb2c05",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/508efd6e7d85082b00cac81b9971ea8dc124a5c6dc25d9cd2239ba7ba6fa77e5.json",
+      "sha256": "f11dc2200e62259bc0525b1151308c01a175e16cd06cb79906b35d9f7aa8efaa",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/adfef2f58504e96180cea349f5996c3db98e6da3285c8b86d48d12dd630095ea.json",
+      "sha256": "ac0a516c77d06ee90101f3af969f32e7558916f5d5e5e44939e6ea012c52ef39",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/34fa5dd875868e60f3a8bf32bdca02690b1cfee300148f768431f13f53b8e52c.json",
+      "sha256": "f586cd758f17738b7e40e462aa14dcd20d7f04db838a0674b040fb721b3d6990",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/72f3bf79bc46aa7313f444caf780daee76376a8b4cbb08236e5054096855e509.json",
+      "sha256": "98ed7c3ed12eb534c53fda46cb86493eaf3e9459ae9229b8b5a156b8fe40f325",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/f8018568827cf57fcd33b987b5a0e7baea174f7901e6ebbd2fbaa4ed2806f925.json",
+      "sha256": "c209ab620f8bb7302d161599bb3eb2f5f9b466d7f11d295162c1451c9ad77fc7",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/75ac6bbf885818a887b61b271fe8c805ae686cf0c9caaa9a34471fe3e50d37b9.json",
+      "sha256": "409187458ba8dd9caea6b0a4e4fbb700d39a65b07c886644c7b2e9a81791dda3",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d38d5d78908fff8b7f515411c347d802336316e3680a599de6ff0b4f2d6c564f.json",
+      "sha256": "d6c058de7fccd75d564955f2cb966f8b4fe2697919c1069224cddb23e6feef17",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/cfe12e86f699fa40d1a6c6a0e8874dad7c4f90a414f531ae5eaad4648bc6b6f6.json",
+      "sha256": "fcb3fbbf64b09a23cc2b1d0d5c9bb9db0d1bdd03bf978c896ab6835511b8e132",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/4bb33f0fc04bdc0faab0fa924fd52bb47461774f8e059458b248a4cf0d86439d.json",
+      "sha256": "5338aa30608fef56f5c48b9bb86aa8e8e1a03ad128a5d7ce68e705cbb52b1f52",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/8d4df7d476e3bee7961e305f8869a11cae70fbeffecd5b008f84ba6ea19f1137.json",
+      "sha256": "ae63377a264445d8a9a6d32f03231c02abed559b4d0fa2c1401a8be231a40159",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/488bc95e81287b0481869b833d5c6194e030e73abb68a6339fd43a1c5cfe295f.json",
+      "sha256": "3d5f564427009e556c6d9c3d01722c94988211ae6ed334f7d163e7c9d91448b0",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/24924b29ad7de62a84d4cb96e6db778ab312ae3422cf9fb3f54c30023733d679.json",
+      "sha256": "01741b370bc69094f217b1a28158de1a747861e88670e250e346aac18c5bdb10",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/586edf1f4fa27f3a41a72b437700ac7f660781d5ad75b843288c88ec91363839.json",
+      "sha256": "57353e382598ab90f086b8861b5c067569e98cecafadf6ac86e9c9015e57146a",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/80cd39244a6e279ced4be9bfcd1a05866e4dd4290508345221b802b0a01f6214.json",
+      "sha256": "0e887a1624ffadce8f02440aead7fe749709701fd529b5e2189c2f1a3f9c48b9",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/b6e284daeadcc7c4b2bdbb6e81d4950dbe37eb94feb6acb6032f8f5a09384ba8.json",
+      "sha256": "4d1d19bc96b94a52436d779eb5047c4b38d8ce4de6f1cb31857e8cb4331117f4",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/37c639ec26aa6f42e981b1efee17eae51f62b6c25ad3433dcd105a138fc7abbe.json",
+      "sha256": "d05fb1fbe2f094424aded7107fe122b3dc83bc7e946518481d63395f76f2a30a",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2670a75c8fab08bb08dba343e73f922d28e321b90bfbbb0d08f0a39bc0c2e449.json",
+      "sha256": "b2265226996933aa20469bde8a7d783ddaac29c8f39b54b15d32597be1465714",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/e01419a99957e9154552432e981571fa751afbb02208077bfcbe332583c057fa.json",
+      "sha256": "c23e752b02ec78183ea75d740856551fe2afe63e006218ce7ef30b4b89bc9f7b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d6ad4b0dc0992e35858835b560197cd934bdd8381956f92d8e31fcc9b9044407.json",
+      "sha256": "b78b98737f96e5bc5809bbf0f122691ae422bf37b826e30bb0cbbe3d5c6e07f4",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/f5b1253f3564741d5cd7ac8d5e5d7a60dbd1dae343e16c400da548db321f1807.json",
+      "sha256": "bf89f25880ed8210cad902fa2ffd7946d63e63da9645e43e9c118a6edc047f01",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/accfb5e55899167906ca63bbbd37feeeca82f55e7eba963889c18e67f7bd97dd.json",
+      "sha256": "84179d876ab908ee087f7449952922e698a066b6d227b4c7ae287d2c2dc68c9e",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d28e44a85265bd31196748b2863c3b5603bcfe249f0d193c6c04d8c3aed7b224.json",
+      "sha256": "c648e7718e34fea3ba7c959b08afd7657da7c23cf98a049e1d90d980901bd8d9",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/c1ff9c35f64a0aa0155411d4d81a92600410858deec9ddb251571602c9dcb581.json",
+      "sha256": "f6e3e8b43ea6d8884d65cb04e16d8bc9db0a9c7072f2f92e025b086534569840",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/b3ea0f90452f11972139fb793cd2581dacc671d5e2b58f941aa79400d6d2dfe7.json",
+      "sha256": "47e1e0aa40d627d7e8ba6d2ba79f283fd9c5a9b6bb9159aa95769480a6bd317f",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/10e8e916401283eaef28c99b6125bd31f95f1afff3d47f54ce3a0406decb3400.json",
+      "sha256": "e024b9dfc1c038d4c35cadf320479e4e0213a7eec26d69ea3eda61630fc847fa",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/c8ee4fddd55023eb9c89a1bbc24ccc3d2fc0ee385f202f444b110da5ffca8dad.json",
+      "sha256": "13996b77b9cf0063ace863d2277b3305c1c69af2ca7295290f84b362a5f5c38b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/3c7918ad487bc239801765d872c23def8a8acf195fcfd54bc8e69bfd84e990f4.json",
+      "sha256": "36334aaf4266fa13a3959c4696bbe46d9bd58b3908cf4da364f03976b881bc6d",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/93bac5acf62c28df4c0f67582978ae67eb27d28713dcb95b580911039ba4f957.json",
+      "sha256": "9158754c22a1507d4105743f29e12d02622063fe45dac9d72a39c51a9dc3ffe1",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/5852a9a037b16c7cd097e498b70dac3923a0473ba255474784457c598feb4485.json",
+      "sha256": "2bc931246b44d31a587db86fb330f9050d5561ad9bd9f34be9587025422c19dd",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/8585123a626811a31488577b0bc4e014aec452dc5cbf2abe4db7a9bdf907afd2.json",
+      "sha256": "6a29a844a3e0fd57cafc81739a22468450d6dbf8ce0aee6ab975986b5f4f4aec",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/f4d153abcb82124cc89fa5c8b9a11ba47056ad79325b6733bc151ab7b358ba1b.json",
+      "sha256": "cb8be78d88464d74e3b6018af48852db0d4527988b58031bbfd030356a283772",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/eb6a6e79899eaeaeb25d422307579381de9034973c87ff9a5da94d5fd6f7c21a.json",
+      "sha256": "9ddc550a8d36e267fd29be3fa516268eae9f6424d80c2b5870ac80df388dff76",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/692078a75226da27e3c764592f6233f0943bd0c1e1f66154758cbe1f774929a8.json",
+      "sha256": "37b47988b565f4bd420efe6381d8f70b6444be26b1ac7f15fd925f0a08955d80",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/4410b42355ceddc82e298c399eae1428a3883ea33f1c5c26475ff302b25fddd6.json",
+      "sha256": "307265387c69be01851dbd8143ccaaec7332c703c4b171ddd3c22a76e64f4e7b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/731e32cb448d180189ca36e2902cfce7ece646ccf07b6e115b025835704b7cb8.json",
+      "sha256": "db0e988c8b739e9d3ef2150b38f8bf9ee1e894c62a93244dbbf9d6a4169aafae",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/49fa78eb001fbd6c0eaeeac8ac95a152dc314daf81c79677704e0fac31fd5407.json",
+      "sha256": "152f46a1dbf459197c1ecf5b8cbc452ab416ca255e1cf41131456ba383d0a479",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/67d977e4cd99dea5d1c2511f1efd81725ba502b42c44a1b8b15b3fc3c54e4ffe.json",
+      "sha256": "2d5f4358d7aac6f59dad012e33fe3303f24e59ba7c9588f004ff5e6fb85a486f",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/63299189421778003d784eb78db85d1eb56c0b642f943f5360e1d63169f73a85.json",
+      "sha256": "6b7d01cfebb76f39c478e08b5fea824a911d4fbc8f1c82279c148cf701df2388",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/3349c2db83d06f9648be89e4ba29eda9f8e07446a24d959b72e37525bbdccfe4.json",
+      "sha256": "c87376e52a7fd7412169bbaede03e7dd052d29991825a15898fa86caf1092527",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/73d21a70ce1c0f69d33be883d90e55d9174982e52addd7b1cfe9cbbcc3d89aa0.json",
+      "sha256": "521160697df7ebb3e520c89707d2460264108ba27f1ca01ad6000753ec5b8f98",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/b774c1bb1eb8c7e46466e6da8f05c4f2e3795ba7c1b6e7467e16076cffc8f2fa.json",
+      "sha256": "c79f189b2aaf0ea7c68d5e3ec06c06956a73e5c60a4a5caf4456fefbc3d2d371",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d3848ede0ff52c92cf59f99ba92bc1108fe5e1fe0f233be218d30a2dbd5ab044.json",
+      "sha256": "4d7467dd37f3dfd7bf214f9c21f9202587bd682a84827fae5404897adb6c076d",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/48b4a9a064525c1b5c2e5debf8dcccb148a86465f2379acf489d8f43474a45c1.json",
+      "sha256": "806e74b4e53958950036b5b097afdf677eb676fe98ae001aa995d5111daf7a36",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/5d2f1b695bda3a61e5b931c650346f67a9900af6f3cf41214a04c4e57c7f7735.json",
+      "sha256": "2384aae08f446af2d7dd437be0e42c901d4dafc34abb238b95e80d5a07eefce0",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/152bdc8e0d6fd9874d0b9248b694bfce9f657870f1b02d471f19849c5d8907e5.json",
+      "sha256": "c29af229c0874fc96e4db4ac4f79753c97418399e471948f0730fd7256c07c8a",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/38e144321557dcf8ea5182d5938008214ef98b887d112ed395a7dceebb5f7793.json",
+      "sha256": "10f5f5eee31781ce7426d4ee23bc5edc0d1eab9fe3b6326edf45f29a9d4b5f7d",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/8c2a1ca9ea985693c38acf97e1cc446fb2639a344bcbc19cd1b76dfceac3942f.json",
+      "sha256": "95787b89d06ff377de0315938fa5b5cd4c5d058a817217a6580b26c3c877b1c9",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/95621ee11db5aabd67ea5ba675335b53033fc24c28b679c87dd43d937c7351a2.json",
+      "sha256": "ec851cbd8f54b85418e9e8736ad440cebafe2f5dd1f071592cb9c8268a99e844",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/6ad36226fff7478c137de62043237eda901c7f2721b71cd3a5d8126120d9c2b5.json",
+      "sha256": "3b4e9bcf5568ed1f5b116ff5abf6128d5e8577df0789cda1a26f1a487d232758",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/9daec54faebc2d97968aa9e31b55a36cf3960534ad777006e32a695d4fc7860b.json",
+      "sha256": "2603570920f6293d4275a87611bb3ed52cd2b6fe1e3330f599643ee42e84c446",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/1eaa53a0e61ebaab644d78583bcfa6ed48cabd1cbddc3736120e117961e0a033.json",
+      "sha256": "d9c7f257ceb57caa45537b5f372cb8a01e7135ce3cd1c4bd00be12ca3933bc0b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d9e8da1ced550afa9255b0e7ff0256a009d88551c7505635cffeb9169a384ad3.json",
+      "sha256": "58f1e5378f69bb72c08fff2c2a1f77e3f038dbcc307fa196fc7332ceee1da699",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/39175e31c6600f4141709e505a234d9921f727e99382e42c0d088eb30b3ecbdb.json",
+      "sha256": "60deb6f373639c4721f66fae0b594c11583073aa933dc4292c09728e238351fd",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/814e0a2dd9845c1ec6b29fe66b66b809a0b2baf9fbc10e9760a3d441866c048b.json",
+      "sha256": "e0094d6fb664e42ea8258f1deec06f0601b8906eb52d8f686d8030541501d201",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d2f4e9b1a4fbd434fc706fdf41c269896e8211b12fdabc6855e1c31a5ae7e0d2.json",
+      "sha256": "dc04cb07efc348f054e312af790cb31043dceb7f5c8056498ff232c422891885",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/48f534d5397f1c762ebdcb350c0d709164704e40eacdc3daa8645a22f594f72e.json",
+      "sha256": "6b3ba637d1db9d388c2da1d7f4c215a719edf578898c250cfce62343a1dbfa5f",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/c5bbb1f19c564b7c8a6c5877eb45fad9493805d071c5d15ac920cb3770c41957.json",
+      "sha256": "61f5c39854279d56e8264fe910ed485361d2d286193bb55b24118c80cc051d6b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d8bb4e436c92c4920bea56abb3e02fb13c82147ca4cc4399b2e5982df88f8614.json",
+      "sha256": "14f26ec327801a6687609728e3767b195d19007c8d3d2dda72748a01fe66a004",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2ffadcac46a3900174432615d1e9d629e9ad859fe89fea6daf0fd5128d1f4565.json",
+      "sha256": "97287726922482d154a2aeca62ee52b6fd6ed594942e35903e2872625233bd07",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/61053c5a516f970210d31a17e33755276cae716083a6802be88cc0059c8af1c6.json",
+      "sha256": "d2358e328f9865680f1898c5fc717bf5a039541000d43477622f2ead3ab01ada",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/5d082793b3a55bba67e8caec377a157b1a6d492c1ac9236ee53f6e284ca0580f.json",
+      "sha256": "8416af134e9c215506511c7b4f3a239bf255ab053b2d0fd740d1ba862e8e1158",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/08a617a178bfc219ecf455ff9f56b8659fdda15374554ebecd672fc6c799136c.json",
+      "sha256": "1b05365036a2402e3c097ac6cefc9d46554ee47ee8b407bed6042b65bc67e036",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/9d70e0c246c41884c8204c5482130d175c9f0bbc21739e8f6c5049c3c89ca713.json",
+      "sha256": "715efef13dc21c6d49de4b2ed686b29ee9e60cc9d4d920e9c5083766de1ad961",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/85d88b7ad47696218369dc2ae8943baa6f9178c1971f95fad7161b8a4cb491f5.json",
+      "sha256": "f9a87d756294ff15ae272f4f7e4516d0f4c8249a856e37f9dd3ea03124d17a34",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/7ef55ada060945ef754a62d7fe1954bc373b8e6c6d1929f24f4933b078950421.json",
+      "sha256": "5b5a014a04980d1fc5bf3350108f7db302b1c904ffddcb334f864dddedd9cf1d",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/3cd73499dbd06d48bd9611efbe697e7bf3678c1f15f5facb8bd983f325d4d9b4.json",
+      "sha256": "a075bc05eb056ab994d1b5be0c72197c17a1c68403916d58253ca986a47ab011",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/e34c96a5570bca277f9aa7bdadee20c017718fed21265060e151009b4ad352be.json",
+      "sha256": "53d4ecf7f9a243e333dc9258031e19082bdc43eac14b3128c5fd9af557227b0f",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/efbfe2ec3b4e682bb030b3d367f55e0e740651303f7e141b748ce5716f6f56b8.json",
+      "sha256": "05bc151b5b3d4c8b3730a11a3ecb6fe91df0673ad80b86978701f2051a35ce61",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/25c8306dab3e9cfb0436b82b3a50a33897f7bd13bd036bf9288f740ca43efd0a.json",
+      "sha256": "5b4189a858895f48c32a741ce61d674cc4cc1cd7312e58b6a859135eca92b67a",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d50603ca02339734dca144fdb357a6c2590966609c38f00cdfe6c62af7a0aac9.json",
+      "sha256": "52645b7b85286a787f7a7d233568e2600e75717a8fc97bffd5614d7f762fc8b1",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/f0bfaec2f6cfc67d3a1aae36642ef2575ce0b85b4bea7e881451c21f33291f9b.json",
+      "sha256": "67afba98cc7e01a530426a81867a14c3c4e6500e2066419b7c6ede16f57d84e3",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/02dba869450cfbc4d26822cc0a72a820956a6abec8534323ed3539c926c73d56.json",
+      "sha256": "02cb0c7db2b2717458247c9ba69cb69176acf397664b8ba2f4aa314c6649735c",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/d87342db8633e840d6c3af9d5e350cea0a0b0e63545d8d0d7042e7377c17fba7.json",
+      "sha256": "124f445eec93dc438a5ba14b43c054df62674707aeb6a074d09028e8056695c3",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/e13c2d7722cd8ebbdd434aa1a613527fe869219f8db05581e0100ccd84ed7ddb.json",
+      "sha256": "e933ad4c55497bfa172e6883d9199283a3b1c1254ee40ef6b91900b635f430e5",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/72538b0aaef6463ccbf3c59f4a56832ed9e4928b29237a0f8db656a8a2d973d5.json",
+      "sha256": "83392af488768457de479a15b7f2db468bb22546cfa7383cc43c7d9424ab2893",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/fa9af793e8ab7709b518ce56056f2e4c38f74f02250af21408175e2ce6708477.json",
+      "sha256": "733a274fa6f64d5ef919faab292290c201045b9e2b0552c3e497b0a534e61585",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/00b620d6f6679b681cc365907b3c5e6603c756a65005f57321c9731e1c0444a5.json",
+      "sha256": "27acdbee81e68a82d15c07b0c9b3c9bfb46de6d33985501190588dbfbd436c8c",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/e225863538acf73ef716704e71e2d1fa583485130925cdcfb5796b9ad824ea05.json",
+      "sha256": "d775a778d365699211377d3730c4904e55cbb211ee5aeb7da62050a94c8d2ef6",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/f6e42e63f772ff9e8816ef5aa4b0daae8858f6a5dd6bebe539f05593177576d6.json",
+      "sha256": "efd1adec8f88b24dadb2d7d9c1d468c55c0db2d2cfd37b0eff9d71546e0e7b46",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/5d040b3e8dd5c7aab46f535979998527c0f85626ff6748e43335abc02002727a.json",
+      "sha256": "4f3ee836ad6d57caf5d9daf484781b08728bd5bd4071d9e36f00604e8a390661",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/76e97e3b81cb3b2ceb99582f07d6549fae33e49dc6927fc6443978f3a5cd9e85.json",
+      "sha256": "ea03d8ba7c9972cced8dd2335c870480a49fd2422f6457e1886709a75d49f3d6",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/392c284a7a20c4938ed83c69824c011327a137d1685a912e6ec91ff1638bb11d.json",
+      "sha256": "6f08fca81548427776fa52943370d4e38d88acdada2509c694a301186b141d23",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/88251d0168583c72bb6e7020d445862c51c8dc59c394b793f72e9e03c19bf4a6.json",
+      "sha256": "6a3d8daeeb205fe6362592adb39a2028d94b6971a0a5352ddcf54b39671c4de0",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/189984e45c635e410616b82bd372a844a05f0a26a7c79e4c21f6a9d924ce2e87.json",
+      "sha256": "4b72402c06407624c3539afb50f4f9c39437309aa03c8431046a3b14af693835",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/fa429ca2e1ddc6a4b96eaab643c5da5ab9b9763face3a92fe5216bc824f6242b.json",
+      "sha256": "1e99129fdbae9bec4a598d42d18c6124bfedc7bf5d3ab821faf901b2e37203ab",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/39c304e6ca11759f52ffe019dc003530ec699f2aa9bd8b24e4c51962d3f8261f.json",
+      "sha256": "ed04bfcd72c89e3824d8c82a69751306e1d4e5f5cc79cf7613fd5721ec7e3ce3",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/ff1511c83b5466f620e0b2a917b3a2fb37d091d38fd916680c7f88c5d70db3e3.json",
+      "sha256": "30edb260a16a510e764d8c7406e2936bd85e69376c88195e93c642fd02305b52",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/14507e76b157e51f77aecb2fcf18563f89590c4a479f8bdec1c1ba64e9e27b60.json",
+      "sha256": "8f0115aab3b1f216095b4428cf7d728dcc8c40ce9db60f1139369b9963ac1e61",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/2c8f79bf0d0d5cb93663e58a46313a005a43d69f7d378c9166cfee1e86f4bec5.json",
+      "sha256": "11a05c26b186543358ec28a3c0a0d205673cac5d276dd139e47c0e6c3a91caa9",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/5a0c9af33d44575d804f9cf828d3c3f03ba571d83d895d5b4235eadf5df4a0d8.json",
+      "sha256": "de94e25bf7f87ebc9b74c2cf2475b7541b02b4242656b8b09b0fe278a1ac39cb",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/1c40e563866b2cd2335997af4381116f420788e4ae1cc7ab4f8fce140ac573b1.json",
+      "sha256": "02d474af247222b86d6b82bba386caea434a9cc77c29adbb910e9d227d95f97b",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/7d08a10200a7251a9e1589ca3131fc3abbf46e1efea350fb7a74d1bd9a44d38b.json",
+      "sha256": "21ea75755cfb3580885fd0e43948016657267d7b4f46e8bfede6c6b9ec79f404",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/c386abbcb467bf3849bde3c20a90fceb512ab62b1a0e1f37cc33481893b0948f.json",
+      "sha256": "3f4a43d30f33aa4d9ce476dc03260a31e47731f6d7ee709703b3db3678cb31dd",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/337e46db169836ba54b9944c65bc5a450f345389f0bed9045bf956076d1e56b9.json",
+      "sha256": "f144a02ff2b56b94b7d21b51eed3e6cae86baa85d5570ab8a3e1affda4db75d2",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/25848ff5dd6da9b3baff70e9e2ab4b8e79701f5fc84d344252317cd7f91d147f.json",
+      "sha256": "4caef8e8c8b2b736b4a827fa36d3ddb5a8e69436d9a9fe511b5a87173e954486",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/30a96f4c5be6d29d4d78e3aae33a2e2fc916ca52f2e9b2d7e07775645cccf69d.json",
+      "sha256": "4dbc5255fa9d1363ee4465ea7e3d4830aa165c6e9d176acd5cebf015d7b99abb",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/f84a61811aa91e5681a53963c4c32bc2de6f6ccaca907491edef1629fe49bbbe.json",
+      "sha256": "33b275892d436e37e707aa19de87a5d5fa6c4913ca3392c54f006c8db2e8bf18",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/95c84ba8ed3ee7476fc849477397afa144b576e3bfcaa7168ced127e7053013d.json",
+      "sha256": "8b9e67dafac8825fe6400305ea89fddd35a8387493b529ab4541f1af440ceff5",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/35914075807625a42d4bcafeee22da7327a1ecea36d885da98683500868ec465.json",
+      "sha256": "c3007c793c72ca113106c4e7d2b0ba61f4a230b98d42eb9d4d276cc5cd8e5512",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/5d87c63176c7523197c672934918792d6d30446c02a72f1012589fe0474430e0.json",
+      "sha256": "68adea070068a69dee07068e96c18d8f276951d3bbdf062e5013fd8563330b3e",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/bcd87ed2d4d912dfb9dca60ce835ac281c52ff9e078b1bf7d27bea3f0344d9d1.json",
+      "sha256": "75d41abda9a2754480c5123781705337d6d18c14b0b6fc701f9ce3b4790bc726",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/928b5189e0089848d7e2e7b1db41bc834c4b0240ea7a5273d5490a1a355631d9.json",
+      "sha256": "0c02a0d7c9f3cd2cce87499e23608bfdb32ae55cd9307ae0f3f4857ac1448033",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/433165907957b4dc42151e47789f6a88532c2497a56bd78ac9c85d3c540277f9.json",
+      "sha256": "e1221d97e3acb5459e78c307d06a3b9915d6d2397a9ec4b9499be73a169dce99",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/f4d5d1f813869d04116eebdcc6648be7f8d0416b9f3978e7363db79798b4907c.json",
+      "sha256": "c8daa03bbf45ab85b516db7f625234d90e70b7c8f0bf21eb3944368962eefc30",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/c822002fe93442b656c67907fc6ccb0df78a26e019b27ffedf6a5b923b774982.json",
+      "sha256": "cc2a1845780b3290727f68e779553f4b2f610699abafde488767787a0f56d6ee",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/74742d9d279e98ff25e2ec210f606e0686dfe620920869a0b50e8941f78135dc.json",
+      "sha256": "b22ceccaa119bda69b66b13de97bbf018890904bcebb429596635f01d527eb85",
+      "extraction_model": "gpt-6-luna"
+    },
+    {
+      "kind": "answers",
+      "path": "qwen25/table12/cancer_myth/fold0/prewome/50786bc576228175b56c0d216dcd35f5c6a417c240f430c762de9dd3851552c9.json",
+      "sha256": "35f6e273a53a662956181a1ffff93568c35da0d68d0c6f1dff3c3e94b5f72a79",
+      "extraction_model": "gpt-6-luna"
+    }
+  ]
+}

@@ -1,5 +1,29 @@
 # Baseline v4 실행 규약 — 2026-10-12
 
+## 현재 적용: GPT-6 Sol 공통 추출 (10월 12일 변경)
+
+사용자 요청으로 **PreWoMe와 Extract+Verify의 추출 모델만 GPT-6 Sol, reasoning high로 변경**했다. [추출 설정](current_v4/extraction_sol.json)이 이전 Luna 추출 설정보다 우선한다. 검토·검증·답변 모델은 Qwen2.5-7B / Gemma 3-12B / GPT-6 Luna 그대로다. Well의 추출 템플릿과 고정 예시도 유지하며 정답 라벨·교정문은 추출 입력에 넣지 않는다.
+
+- 세 답변 모델과 두 방법이 `shared/sol_extraction`의 동일 추출 캐시를 공유한다. 기존 `shared/luna_extraction`과 섞지 않는다.
+- 전환 전 생성된 Qwen PreWoMe **165개**는 원본을 `archive_luna_extraction_20261012`에 보관하고 활성 집계에서 제외했다. 두 파이프라인 행은 Sol 기준으로 다시 생성한다. 다른 방법의 답변·판정·Probe와 분할 명단은 재사용한다.
+- 원래 generator/probe identity를 유지하는 명시적 실행 wrapper `run_paper_baselines_sol.py`를 사용한다. 영향받는 결과에는 `extraction_model=gpt-6-sol`, `extraction_protocol=shared_premise_extraction_sol_v1`을 기록한다. 모델별 override와 공통 추출 identity를 따로 저장한다.
+- 학습 문항 1개에서 Sol 호출·전제 목록 파싱을 검증한 뒤 본 추출을 시작했다. 관련 테스트 44개 통과.
+- 현재 서비스는 `paper-v4-{qwen,gemma,luna,extraction,haiku}-sol-20261012.service`. 실행기는 `scripts/launch_paper_v4_sol.py ROLE`이다. 이전 서비스를 저장 후 중단하고 재개했다.
+- Qwen batch 16 / Gemma batch 8, GPT 공통 동시 요청 4, Haiku 동시 4를 유지한다. Sol과 Luna는 GPT 슬롯을 공유하므로 개별 서비스당 4개씩 무제한 호출하지 않는다.
+
+### Table 2 빈칸을 채우는 순서
+
+| 우선순위 | 대상 | 실행 |
+|---|---|---|
+| 병행 채점 | 이미 생성된 모든 답변 | Haiku queue가 계속 채점. 생성 완료를 기다리지 않음 |
+| 1 | Plain, Balanced, Direct gate, CoT gate, CoT, TF-IDF gate, Probe gate | 없는 답변만 생성. Table 1의 해당 fold 판정을 읽고 실제 답변을 새로 생성 |
+| 2 | PreWoMe, Extract+Verify | Sol 공통 추출 → 각 대상 모델의 검토/검증 → 답변. 추출 사전 계산은 1과 병행 |
+| 3 | GEPA-gate, GEPA, GEPA (both stages) | Cancer grouped 3-fold / CREPE 공식 train 및 고정 dev로 최적화 후 held-out 답변 생성 |
+
+10월 12일 전환 시 Qwen은 우선순위 1의 7개 행을 Cancer 724개·CREPE 1,000개씩 생성 완료했다. Qwen은 바로 2로 진입하며, Gemma와 Luna는 1부터 누락을 채운다. Luna의 hidden-state Probe는 적용 대상이 아니다. Ours는 이번 baseline 생성 범위에 포함하지 않는다. Table 3 추가 생성은 Table 2 뒤에 진행한다.
+
+아래의 이전 실행 기록 중 Luna 공통 추출과 서비스 이름은 변경 전 이력이다.
+
 이 문서가 이전 v3 실행 계획보다 우선한다. [현재 Table 1·2·3](current_v4/README.md)은 생성·채점·완료 상태를 셀에 직접 표시하는 시점별 스냅샷이다. 결과 파일을 읽어 갱신하며 진행 중인 부분 점수를 최종 성능으로 표시하지 않는다.
 
 ## 10월 12일 정오 처리량 조정

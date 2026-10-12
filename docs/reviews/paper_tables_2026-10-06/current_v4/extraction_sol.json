@@ -1,0 +1,6 @@
+{
+  "backend": "codex",
+  "model": "gpt-6-sol",
+  "effort": "high",
+  "timeout_seconds": 240
+}
