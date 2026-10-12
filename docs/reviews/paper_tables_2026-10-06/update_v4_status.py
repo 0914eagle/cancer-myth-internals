@@ -37,6 +37,18 @@ def capture():
             if r.get('evaluation_key')!=expected_key:continue
             key=('table12',r['dataset'],r['method'],r['label'],r.get('source',''),r.get('split',''))
             counters[key]['scored']+=1;counters[key]['good']+=r['rating']>=4
+        for path in (GRADES/'provider_refusals'/model/'table12').rglob('*.json'):
+            refusal=read(path);source=RUN/path.relative_to(GRADES/'provider_refusals')
+            if not source.exists():continue
+            r=read(source)
+            if r['id'] not in look:continue
+            judge=read(ROOT/'results/paper_baselines_v4/protocol/haiku.json')
+            expected_key=digest({'question':r['question'],'answer':r['answer'],'judge':judge,'annotation':look[r['id']]})
+            if refusal.get('evaluation_key')!=expected_key:continue
+            rated=GRADES/path.relative_to(GRADES/'provider_refusals')
+            if rated.exists() and read(rated).get('evaluation_key')==expected_key:continue
+            key=('table12',r['dataset'],r['method'],r['label'],r.get('source',''),r.get('split',''))
+            counters[key]['refused']+=1
         for table in ('table12','table3'):
             for p in (root/'failures'/table).rglob('*.json'):
                 r=read(p);rel=p.relative_to(root/'failures'/table)
@@ -62,7 +74,9 @@ def capture():
                         elif c['generated']+c['failed']<n:
                             active=progress.get('state')=='running' and progress.get('stage')=='table12' and progress.get('method')==method and progress.get('dataset')==dataset
                             label='생성 중' if active else '추가 생성 필요' if c['generated'] else '생성 필요'
+                            if active and method.startswith('gepa') and not c['generated']:label='최적화 중'
                             text=label+(f"\n{c['generated']}/{n}" if active or c['generated'] else '')
+                        elif c['refused']:text=f"미완료·거부 {c['refused']}\n채점 {c['scored']}/{c['generated']}"
                         elif c['scored']+c['failed']<n:text=f"채점만 남음\n{c['scored']}/{c['generated']}"
                         else:text=f"완료\n{100*c['good']/n:.1f}%"
                         snapshot['cells'][key]=text
