@@ -24,19 +24,8 @@ class SharedLunaExtraction:
         with (self.out/'.identity.lock').open('a') as lock:
             fcntl.flock(lock,fcntl.LOCK_EX)
             write_json(self.out/'identity.json',identity,immutable=True)
-        cli=CLIBackend(self.config)
-        def limited(messages):
-            # Global, cross-process cap of four CLI requests, not GPU batch size.
-            while True:
-                if (worker.out/'STOP').exists():raise RuntimeError('STOP requested')
-                for i in range(4):
-                    lock=(self.out/f'.slot-{i}').open('a')
-                    try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-                    except BlockingIOError:
-                        lock.close();continue
-                    try:return cli(messages)
-                    finally:lock.close()
-                time.sleep(.1)
+        from scripts.paper_cli_pool import PooledCLI
+        limited=PooledCLI(self.config,worker.args.out,worker.out/'STOP')
         self.call=LockedCachedTask(limited,self.out,identity,worker.reg['transport_common'])
 
 

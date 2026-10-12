@@ -1,0 +1,91 @@
+{
+  "protocol_id": "paper_baselines_v4_shared_luna_crepe1000_20261012",
+  "registry": "docs/reviews/paper_tables_2026-10-06/table2_prompt_registry_2026-10-07.json",
+  "well_root": "external/fpqa_20261002/Well",
+  "template_python": ".venv/fpqa_prompting/bin/python",
+  "external_config": "results/paper_baselines_v4/protocol/external.json",
+  "cache_root": "/data1/heejae/hf_cache/hub",
+  "dtype": "bfloat16",
+  "max_new_tokens": 8192,
+  "max_input_tokens": 8192,
+  "seed": 42,
+  "replicate": 0,
+  "max_memory_per_gpu": "21GiB",
+  "methods": [
+    "plain",
+    "balanced",
+    "cot",
+    "prewome",
+    "extract_verify",
+    "tfidf_gate",
+    "direct_gate",
+    "cot_gate",
+    "probe_gate",
+    "gepa_gate",
+    "gepa",
+    "gepa_both"
+  ],
+  "models": {
+    "qwen25": {
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "gpus": [
+        0
+      ],
+      "n_layers": 28
+    },
+    "gemma3": {
+      "model_id": "google/gemma-3-12b-it",
+      "revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+      "gpus": [
+        1,
+        2
+      ],
+      "n_layers": 48
+    },
+    "luna6": {
+      "model_id": "gpt-6-luna",
+      "backend": "codex",
+      "gpus": [],
+      "decoding": "provider defaults; medium reasoning; no claim of HF-equivalent sampling"
+    }
+  },
+  "gepa": {
+    "metric_budget": 2000,
+    "seed": 42,
+    "dev_per_class_max": 100,
+    "prompt_token_limit": 512,
+    "prompt_tokenizer": "Qwen/Qwen3-Embedding-0.6B",
+    "tokenizer_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+  },
+  "qa_datasets": [
+    "medqa",
+    "pubmedqa",
+    "medbullets",
+    "mmlu",
+    "gsm8k"
+  ],
+  "batching": {
+    "qwen25": {
+      "max_batch": 8,
+      "token_budget": 73728
+    },
+    "gemma3": {
+      "max_batch": 4,
+      "token_budget": 49152
+    },
+    "luna6": {
+      "pipeline_workers": 4
+    }
+  },
+  "global_gpt_concurrency": 4,
+  "response_protocol": "fresh_response_with_saved_detection_v1",
+  "extraction_protocol": "shared_premise_extraction_v1",
+  "qa_cancer_system": "fold0 preselected; report as single-system transfer, not three-fold mean",
+  "final_judge": {
+    "backend": "claude",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "timeout_seconds": 240
+  }
+}

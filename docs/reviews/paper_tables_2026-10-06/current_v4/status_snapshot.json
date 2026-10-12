@@ -1,0 +1,2340 @@
+{
+  "captured_at_kst": "2026-10-12T11:59:14.969360+09:00",
+  "bundle_sha256": "88f6f9d4ef07f2812112d1004abdbeedcd90f910171d309a5d3d93d33a16fbe1",
+  "cells": {
+    "table1|qwen25|tfidf_gate|cancer_myth|1": "완료\n78.2%",
+    "table1|qwen25|tfidf_gate|cancer_myth|0": "완료\n43.5%",
+    "table1|qwen25|tfidf_gate|crepe|1": "완료\n60.4%",
+    "table1|qwen25|tfidf_gate|crepe|0": "완료\n31.8%",
+    "table1|qwen25|direct_gate|cancer_myth|1": "판정 필요",
+    "table1|qwen25|direct_gate|cancer_myth|0": "판정 필요",
+    "table1|qwen25|direct_gate|crepe|1": "판정 필요",
+    "table1|qwen25|direct_gate|crepe|0": "판정 필요",
+    "table1|qwen25|cot_gate|cancer_myth|1": "판정 필요",
+    "table1|qwen25|cot_gate|cancer_myth|0": "판정 필요",
+    "table1|qwen25|cot_gate|crepe|1": "판정 필요",
+    "table1|qwen25|cot_gate|crepe|0": "판정 필요",
+    "table1|qwen25|probe_gate|cancer_myth|1": "판정 필요",
+    "table1|qwen25|probe_gate|cancer_myth|0": "판정 필요",
+    "table1|qwen25|probe_gate|crepe|1": "판정 필요",
+    "table1|qwen25|probe_gate|crepe|0": "판정 필요",
+    "table1|qwen25|gepa_gate|cancer_myth|1": "판정 필요",
+    "table1|qwen25|gepa_gate|cancer_myth|0": "판정 필요",
+    "table1|qwen25|gepa_gate|crepe|1": "판정 필요",
+    "table1|qwen25|gepa_gate|crepe|0": "판정 필요",
+    "table2|qwen25|plain|cancer_myth|1": "채점만 남음\n0/577",
+    "table2|qwen25|plain|cancer_myth|0": "채점만 남음\n0/147",
+    "table2|qwen25|plain|crepe|1": "생성 중\n240/500",
+    "table2|qwen25|plain|crepe|0": "생성 중\n256/500",
+    "table2|qwen25|balanced|cancer_myth|1": "추가 생성 필요\n193/577",
+    "table2|qwen25|balanced|cancer_myth|0": "추가 생성 필요\n28/147",
+    "table2|qwen25|balanced|crepe|1": "생성 필요",
+    "table2|qwen25|balanced|crepe|0": "생성 필요",
+    "table2|qwen25|cot|cancer_myth|1": "생성 필요",
+    "table2|qwen25|cot|cancer_myth|0": "생성 필요",
+    "table2|qwen25|cot|crepe|1": "생성 필요",
+    "table2|qwen25|cot|crepe|0": "생성 필요",
+    "table2|qwen25|prewome|cancer_myth|1": "생성 필요",
+    "table2|qwen25|prewome|cancer_myth|0": "생성 필요",
+    "table2|qwen25|prewome|crepe|1": "생성 필요",
+    "table2|qwen25|prewome|crepe|0": "생성 필요",
+    "table2|qwen25|extract_verify|cancer_myth|1": "생성 필요",
+    "table2|qwen25|extract_verify|cancer_myth|0": "생성 필요",
+    "table2|qwen25|extract_verify|crepe|1": "생성 필요",
+    "table2|qwen25|extract_verify|crepe|0": "생성 필요",
+    "table2|qwen25|tfidf_gate|cancer_myth|1": "생성 필요",
+    "table2|qwen25|tfidf_gate|cancer_myth|0": "생성 필요",
+    "table2|qwen25|tfidf_gate|crepe|1": "생성 필요",
+    "table2|qwen25|tfidf_gate|crepe|0": "생성 필요",
+    "table2|qwen25|direct_gate|cancer_myth|1": "생성 필요",
+    "table2|qwen25|direct_gate|cancer_myth|0": "생성 필요",
+    "table2|qwen25|direct_gate|crepe|1": "생성 필요",
+    "table2|qwen25|direct_gate|crepe|0": "생성 필요",
+    "table2|qwen25|cot_gate|cancer_myth|1": "생성 필요",
+    "table2|qwen25|cot_gate|cancer_myth|0": "생성 필요",
+    "table2|qwen25|cot_gate|crepe|1": "생성 필요",
+    "table2|qwen25|cot_gate|crepe|0": "생성 필요",
+    "table2|qwen25|probe_gate|cancer_myth|1": "생성 필요",
+    "table2|qwen25|probe_gate|cancer_myth|0": "생성 필요",
+    "table2|qwen25|probe_gate|crepe|1": "생성 필요",
+    "table2|qwen25|probe_gate|crepe|0": "생성 필요",
+    "table2|qwen25|gepa_gate|cancer_myth|1": "생성 필요",
+    "table2|qwen25|gepa_gate|cancer_myth|0": "생성 필요",
+    "table2|qwen25|gepa_gate|crepe|1": "생성 필요",
+    "table2|qwen25|gepa_gate|crepe|0": "생성 필요",
+    "table2|qwen25|gepa|cancer_myth|1": "생성 필요",
+    "table2|qwen25|gepa|cancer_myth|0": "생성 필요",
+    "table2|qwen25|gepa|crepe|1": "생성 필요",
+    "table2|qwen25|gepa|crepe|0": "생성 필요",
+    "table2|qwen25|gepa_both|cancer_myth|1": "생성 필요",
+    "table2|qwen25|gepa_both|cancer_myth|0": "생성 필요",
+    "table2|qwen25|gepa_both|crepe|1": "생성 필요",
+    "table2|qwen25|gepa_both|crepe|0": "생성 필요",
+    "table2|qwen25|ours|cancer_myth|1": "후속 실험",
+    "table2|qwen25|ours|cancer_myth|0": "후속 실험",
+    "table2|qwen25|ours|crepe|1": "후속 실험",
+    "table2|qwen25|ours|crepe|0": "후속 실험",
+    "table3|qwen25|plain|medqa|qa": "완료\n51.5%",
+    "table3|qwen25|plain|pubmedqa|qa": "완료\n48.5%",
+    "table3|qwen25|plain|medbullets|qa": "완료\n35.4%",
+    "table3|qwen25|plain|mmlu|qa": "처리 완료·실패 2\n73.5%",
+    "table3|qwen25|plain|gsm8k|qa": "완료\n89.1%",
+    "table3|qwen25|balanced|medqa|qa": "생성 필요",
+    "table3|qwen25|balanced|pubmedqa|qa": "생성 필요",
+    "table3|qwen25|balanced|medbullets|qa": "생성 필요",
+    "table3|qwen25|balanced|mmlu|qa": "생성 필요",
+    "table3|qwen25|balanced|gsm8k|qa": "생성 필요",
+    "table3|qwen25|cot|medqa|qa": "생성 필요",
+    "table3|qwen25|cot|pubmedqa|qa": "생성 필요",
+    "table3|qwen25|cot|medbullets|qa": "생성 필요",
+    "table3|qwen25|cot|mmlu|qa": "생성 필요",
+    "table3|qwen25|cot|gsm8k|qa": "생성 필요",
+    "table3|qwen25|prewome|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|prewome|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|prewome|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|prewome|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|prewome|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|extract_verify|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|extract_verify|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|extract_verify|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|extract_verify|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|extract_verify|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|tfidf_gate|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|tfidf_gate|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|tfidf_gate|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|tfidf_gate|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|tfidf_gate|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|direct_gate|medqa|qa": "생성 필요",
+    "table3|qwen25|direct_gate|pubmedqa|qa": "생성 필요",
+    "table3|qwen25|direct_gate|medbullets|qa": "생성 필요",
+    "table3|qwen25|direct_gate|mmlu|qa": "생성 필요",
+    "table3|qwen25|direct_gate|gsm8k|qa": "생성 필요",
+    "table3|qwen25|cot_gate|medqa|qa": "생성 필요",
+    "table3|qwen25|cot_gate|pubmedqa|qa": "생성 필요",
+    "table3|qwen25|cot_gate|medbullets|qa": "생성 필요",
+    "table3|qwen25|cot_gate|mmlu|qa": "생성 필요",
+    "table3|qwen25|cot_gate|gsm8k|qa": "생성 필요",
+    "table3|qwen25|probe_gate|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|probe_gate|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|probe_gate|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|probe_gate|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|probe_gate|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_gate|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_gate|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_gate|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_gate|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_gate|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_both|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_both|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_both|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_both|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|gepa_both|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|qwen25|ours|medqa|qa": "후속 실험",
+    "table3|qwen25|ours|pubmedqa|qa": "후속 실험",
+    "table3|qwen25|ours|medbullets|qa": "후속 실험",
+    "table3|qwen25|ours|mmlu|qa": "후속 실험",
+    "table3|qwen25|ours|gsm8k|qa": "후속 실험",
+    "table1|gemma3|tfidf_gate|cancer_myth|1": "완료\n78.2%",
+    "table1|gemma3|tfidf_gate|cancer_myth|0": "완료\n43.5%",
+    "table1|gemma3|tfidf_gate|crepe|1": "완료\n60.4%",
+    "table1|gemma3|tfidf_gate|crepe|0": "완료\n31.8%",
+    "table1|gemma3|direct_gate|cancer_myth|1": "판정 필요",
+    "table1|gemma3|direct_gate|cancer_myth|0": "판정 필요",
+    "table1|gemma3|direct_gate|crepe|1": "판정 필요",
+    "table1|gemma3|direct_gate|crepe|0": "판정 필요",
+    "table1|gemma3|cot_gate|cancer_myth|1": "판정 필요",
+    "table1|gemma3|cot_gate|cancer_myth|0": "판정 필요",
+    "table1|gemma3|cot_gate|crepe|1": "판정 필요",
+    "table1|gemma3|cot_gate|crepe|0": "판정 필요",
+    "table1|gemma3|probe_gate|cancer_myth|1": "판정 필요",
+    "table1|gemma3|probe_gate|cancer_myth|0": "판정 필요",
+    "table1|gemma3|probe_gate|crepe|1": "판정 필요",
+    "table1|gemma3|probe_gate|crepe|0": "판정 필요",
+    "table1|gemma3|gepa_gate|cancer_myth|1": "판정 필요",
+    "table1|gemma3|gepa_gate|cancer_myth|0": "판정 필요",
+    "table1|gemma3|gepa_gate|crepe|1": "판정 필요",
+    "table1|gemma3|gepa_gate|crepe|0": "판정 필요",
+    "table2|gemma3|plain|cancer_myth|1": "생성 중\n281/577",
+    "table2|gemma3|plain|cancer_myth|0": "생성 중\n49/147",
+    "table2|gemma3|plain|crepe|1": "생성 필요",
+    "table2|gemma3|plain|crepe|0": "생성 필요",
+    "table2|gemma3|balanced|cancer_myth|1": "추가 생성 필요\n1/577",
+    "table2|gemma3|balanced|cancer_myth|0": "생성 필요",
+    "table2|gemma3|balanced|crepe|1": "생성 필요",
+    "table2|gemma3|balanced|crepe|0": "생성 필요",
+    "table2|gemma3|cot|cancer_myth|1": "생성 필요",
+    "table2|gemma3|cot|cancer_myth|0": "생성 필요",
+    "table2|gemma3|cot|crepe|1": "생성 필요",
+    "table2|gemma3|cot|crepe|0": "생성 필요",
+    "table2|gemma3|prewome|cancer_myth|1": "생성 필요",
+    "table2|gemma3|prewome|cancer_myth|0": "생성 필요",
+    "table2|gemma3|prewome|crepe|1": "생성 필요",
+    "table2|gemma3|prewome|crepe|0": "생성 필요",
+    "table2|gemma3|extract_verify|cancer_myth|1": "생성 필요",
+    "table2|gemma3|extract_verify|cancer_myth|0": "생성 필요",
+    "table2|gemma3|extract_verify|crepe|1": "생성 필요",
+    "table2|gemma3|extract_verify|crepe|0": "생성 필요",
+    "table2|gemma3|tfidf_gate|cancer_myth|1": "생성 필요",
+    "table2|gemma3|tfidf_gate|cancer_myth|0": "생성 필요",
+    "table2|gemma3|tfidf_gate|crepe|1": "생성 필요",
+    "table2|gemma3|tfidf_gate|crepe|0": "생성 필요",
+    "table2|gemma3|direct_gate|cancer_myth|1": "생성 필요",
+    "table2|gemma3|direct_gate|cancer_myth|0": "생성 필요",
+    "table2|gemma3|direct_gate|crepe|1": "생성 필요",
+    "table2|gemma3|direct_gate|crepe|0": "생성 필요",
+    "table2|gemma3|cot_gate|cancer_myth|1": "생성 필요",
+    "table2|gemma3|cot_gate|cancer_myth|0": "생성 필요",
+    "table2|gemma3|cot_gate|crepe|1": "생성 필요",
+    "table2|gemma3|cot_gate|crepe|0": "생성 필요",
+    "table2|gemma3|probe_gate|cancer_myth|1": "생성 필요",
+    "table2|gemma3|probe_gate|cancer_myth|0": "생성 필요",
+    "table2|gemma3|probe_gate|crepe|1": "생성 필요",
+    "table2|gemma3|probe_gate|crepe|0": "생성 필요",
+    "table2|gemma3|gepa_gate|cancer_myth|1": "생성 필요",
+    "table2|gemma3|gepa_gate|cancer_myth|0": "생성 필요",
+    "table2|gemma3|gepa_gate|crepe|1": "생성 필요",
+    "table2|gemma3|gepa_gate|crepe|0": "생성 필요",
+    "table2|gemma3|gepa|cancer_myth|1": "생성 필요",
+    "table2|gemma3|gepa|cancer_myth|0": "생성 필요",
+    "table2|gemma3|gepa|crepe|1": "생성 필요",
+    "table2|gemma3|gepa|crepe|0": "생성 필요",
+    "table2|gemma3|gepa_both|cancer_myth|1": "생성 필요",
+    "table2|gemma3|gepa_both|cancer_myth|0": "생성 필요",
+    "table2|gemma3|gepa_both|crepe|1": "생성 필요",
+    "table2|gemma3|gepa_both|crepe|0": "생성 필요",
+    "table2|gemma3|ours|cancer_myth|1": "후속 실험",
+    "table2|gemma3|ours|cancer_myth|0": "후속 실험",
+    "table2|gemma3|ours|crepe|1": "후속 실험",
+    "table2|gemma3|ours|crepe|0": "후속 실험",
+    "table3|gemma3|plain|medqa|qa": "완료\n68.3%",
+    "table3|gemma3|plain|pubmedqa|qa": "완료\n59.9%",
+    "table3|gemma3|plain|medbullets|qa": "완료\n55.2%",
+    "table3|gemma3|plain|mmlu|qa": "처리 완료·실패 7\n76.7%",
+    "table3|gemma3|plain|gsm8k|qa": "완료\n91.9%",
+    "table3|gemma3|balanced|medqa|qa": "생성 필요",
+    "table3|gemma3|balanced|pubmedqa|qa": "생성 필요",
+    "table3|gemma3|balanced|medbullets|qa": "생성 필요",
+    "table3|gemma3|balanced|mmlu|qa": "생성 필요",
+    "table3|gemma3|balanced|gsm8k|qa": "생성 필요",
+    "table3|gemma3|cot|medqa|qa": "생성 필요",
+    "table3|gemma3|cot|pubmedqa|qa": "생성 필요",
+    "table3|gemma3|cot|medbullets|qa": "생성 필요",
+    "table3|gemma3|cot|mmlu|qa": "생성 필요",
+    "table3|gemma3|cot|gsm8k|qa": "생성 필요",
+    "table3|gemma3|prewome|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|prewome|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|prewome|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|prewome|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|prewome|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|extract_verify|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|extract_verify|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|extract_verify|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|extract_verify|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|extract_verify|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|tfidf_gate|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|tfidf_gate|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|tfidf_gate|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|tfidf_gate|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|tfidf_gate|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|direct_gate|medqa|qa": "생성 필요",
+    "table3|gemma3|direct_gate|pubmedqa|qa": "생성 필요",
+    "table3|gemma3|direct_gate|medbullets|qa": "생성 필요",
+    "table3|gemma3|direct_gate|mmlu|qa": "생성 필요",
+    "table3|gemma3|direct_gate|gsm8k|qa": "생성 필요",
+    "table3|gemma3|cot_gate|medqa|qa": "생성 필요",
+    "table3|gemma3|cot_gate|pubmedqa|qa": "생성 필요",
+    "table3|gemma3|cot_gate|medbullets|qa": "생성 필요",
+    "table3|gemma3|cot_gate|mmlu|qa": "생성 필요",
+    "table3|gemma3|cot_gate|gsm8k|qa": "생성 필요",
+    "table3|gemma3|probe_gate|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|probe_gate|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|probe_gate|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|probe_gate|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|probe_gate|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_gate|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_gate|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_gate|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_gate|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_gate|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_both|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_both|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_both|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_both|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|gepa_both|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|gemma3|ours|medqa|qa": "후속 실험",
+    "table3|gemma3|ours|pubmedqa|qa": "후속 실험",
+    "table3|gemma3|ours|medbullets|qa": "후속 실험",
+    "table3|gemma3|ours|mmlu|qa": "후속 실험",
+    "table3|gemma3|ours|gsm8k|qa": "후속 실험",
+    "table1|luna6|tfidf_gate|cancer_myth|1": "완료\n78.2%",
+    "table1|luna6|tfidf_gate|cancer_myth|0": "완료\n43.5%",
+    "table1|luna6|tfidf_gate|crepe|1": "완료\n60.4%",
+    "table1|luna6|tfidf_gate|crepe|0": "완료\n31.8%",
+    "table1|luna6|direct_gate|cancer_myth|1": "판정 필요",
+    "table1|luna6|direct_gate|cancer_myth|0": "판정 필요",
+    "table1|luna6|direct_gate|crepe|1": "판정 필요",
+    "table1|luna6|direct_gate|crepe|0": "판정 필요",
+    "table1|luna6|cot_gate|cancer_myth|1": "판정 필요",
+    "table1|luna6|cot_gate|cancer_myth|0": "판정 필요",
+    "table1|luna6|cot_gate|crepe|1": "판정 필요",
+    "table1|luna6|cot_gate|crepe|0": "판정 필요",
+    "table1|luna6|probe_gate|cancer_myth|1": "해당 없음",
+    "table1|luna6|probe_gate|cancer_myth|0": "해당 없음",
+    "table1|luna6|probe_gate|crepe|1": "해당 없음",
+    "table1|luna6|probe_gate|crepe|0": "해당 없음",
+    "table1|luna6|gepa_gate|cancer_myth|1": "판정 필요",
+    "table1|luna6|gepa_gate|cancer_myth|0": "판정 필요",
+    "table1|luna6|gepa_gate|crepe|1": "판정 필요",
+    "table1|luna6|gepa_gate|crepe|0": "판정 필요",
+    "table2|luna6|plain|cancer_myth|1": "생성 중\n203/577",
+    "table2|luna6|plain|cancer_myth|0": "생성 중\n49/147",
+    "table2|luna6|plain|crepe|1": "생성 필요",
+    "table2|luna6|plain|crepe|0": "생성 필요",
+    "table2|luna6|balanced|cancer_myth|1": "생성 필요",
+    "table2|luna6|balanced|cancer_myth|0": "생성 필요",
+    "table2|luna6|balanced|crepe|1": "생성 필요",
+    "table2|luna6|balanced|crepe|0": "생성 필요",
+    "table2|luna6|cot|cancer_myth|1": "생성 필요",
+    "table2|luna6|cot|cancer_myth|0": "생성 필요",
+    "table2|luna6|cot|crepe|1": "생성 필요",
+    "table2|luna6|cot|crepe|0": "생성 필요",
+    "table2|luna6|prewome|cancer_myth|1": "생성 필요",
+    "table2|luna6|prewome|cancer_myth|0": "생성 필요",
+    "table2|luna6|prewome|crepe|1": "생성 필요",
+    "table2|luna6|prewome|crepe|0": "생성 필요",
+    "table2|luna6|extract_verify|cancer_myth|1": "생성 필요",
+    "table2|luna6|extract_verify|cancer_myth|0": "생성 필요",
+    "table2|luna6|extract_verify|crepe|1": "생성 필요",
+    "table2|luna6|extract_verify|crepe|0": "생성 필요",
+    "table2|luna6|tfidf_gate|cancer_myth|1": "생성 필요",
+    "table2|luna6|tfidf_gate|cancer_myth|0": "생성 필요",
+    "table2|luna6|tfidf_gate|crepe|1": "생성 필요",
+    "table2|luna6|tfidf_gate|crepe|0": "생성 필요",
+    "table2|luna6|direct_gate|cancer_myth|1": "생성 필요",
+    "table2|luna6|direct_gate|cancer_myth|0": "생성 필요",
+    "table2|luna6|direct_gate|crepe|1": "생성 필요",
+    "table2|luna6|direct_gate|crepe|0": "생성 필요",
+    "table2|luna6|cot_gate|cancer_myth|1": "생성 필요",
+    "table2|luna6|cot_gate|cancer_myth|0": "생성 필요",
+    "table2|luna6|cot_gate|crepe|1": "생성 필요",
+    "table2|luna6|cot_gate|crepe|0": "생성 필요",
+    "table2|luna6|probe_gate|cancer_myth|1": "해당 없음",
+    "table2|luna6|probe_gate|cancer_myth|0": "해당 없음",
+    "table2|luna6|probe_gate|crepe|1": "해당 없음",
+    "table2|luna6|probe_gate|crepe|0": "해당 없음",
+    "table2|luna6|gepa_gate|cancer_myth|1": "생성 필요",
+    "table2|luna6|gepa_gate|cancer_myth|0": "생성 필요",
+    "table2|luna6|gepa_gate|crepe|1": "생성 필요",
+    "table2|luna6|gepa_gate|crepe|0": "생성 필요",
+    "table2|luna6|gepa|cancer_myth|1": "생성 필요",
+    "table2|luna6|gepa|cancer_myth|0": "생성 필요",
+    "table2|luna6|gepa|crepe|1": "생성 필요",
+    "table2|luna6|gepa|crepe|0": "생성 필요",
+    "table2|luna6|gepa_both|cancer_myth|1": "생성 필요",
+    "table2|luna6|gepa_both|cancer_myth|0": "생성 필요",
+    "table2|luna6|gepa_both|crepe|1": "생성 필요",
+    "table2|luna6|gepa_both|crepe|0": "생성 필요",
+    "table2|luna6|ours|cancer_myth|1": "후속 실험",
+    "table2|luna6|ours|cancer_myth|0": "후속 실험",
+    "table2|luna6|ours|crepe|1": "후속 실험",
+    "table2|luna6|ours|crepe|0": "후속 실험",
+    "table3|luna6|plain|medqa|qa": "생성 필요",
+    "table3|luna6|plain|pubmedqa|qa": "생성 필요",
+    "table3|luna6|plain|medbullets|qa": "생성 필요",
+    "table3|luna6|plain|mmlu|qa": "생성 필요",
+    "table3|luna6|plain|gsm8k|qa": "생성 필요",
+    "table3|luna6|balanced|medqa|qa": "생성 필요",
+    "table3|luna6|balanced|pubmedqa|qa": "생성 필요",
+    "table3|luna6|balanced|medbullets|qa": "생성 필요",
+    "table3|luna6|balanced|mmlu|qa": "생성 필요",
+    "table3|luna6|balanced|gsm8k|qa": "생성 필요",
+    "table3|luna6|cot|medqa|qa": "생성 필요",
+    "table3|luna6|cot|pubmedqa|qa": "생성 필요",
+    "table3|luna6|cot|medbullets|qa": "생성 필요",
+    "table3|luna6|cot|mmlu|qa": "생성 필요",
+    "table3|luna6|cot|gsm8k|qa": "생성 필요",
+    "table3|luna6|prewome|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|prewome|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|prewome|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|prewome|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|prewome|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|extract_verify|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|extract_verify|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|extract_verify|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|extract_verify|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|extract_verify|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|tfidf_gate|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|tfidf_gate|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|tfidf_gate|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|tfidf_gate|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|tfidf_gate|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|direct_gate|medqa|qa": "생성 필요",
+    "table3|luna6|direct_gate|pubmedqa|qa": "생성 필요",
+    "table3|luna6|direct_gate|medbullets|qa": "생성 필요",
+    "table3|luna6|direct_gate|mmlu|qa": "생성 필요",
+    "table3|luna6|direct_gate|gsm8k|qa": "생성 필요",
+    "table3|luna6|cot_gate|medqa|qa": "생성 필요",
+    "table3|luna6|cot_gate|pubmedqa|qa": "생성 필요",
+    "table3|luna6|cot_gate|medbullets|qa": "생성 필요",
+    "table3|luna6|cot_gate|mmlu|qa": "생성 필요",
+    "table3|luna6|cot_gate|gsm8k|qa": "생성 필요",
+    "table3|luna6|probe_gate|medqa|qa": "해당 없음",
+    "table3|luna6|probe_gate|pubmedqa|qa": "해당 없음",
+    "table3|luna6|probe_gate|medbullets|qa": "해당 없음",
+    "table3|luna6|probe_gate|mmlu|qa": "해당 없음",
+    "table3|luna6|probe_gate|gsm8k|qa": "해당 없음",
+    "table3|luna6|gepa_gate|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_gate|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_gate|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_gate|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_gate|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_both|medqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_both|pubmedqa|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_both|medbullets|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_both|mmlu|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|gepa_both|gsm8k|qa": "생성 필요\n(2개 설정)",
+    "table3|luna6|ours|medqa|qa": "후속 실험",
+    "table3|luna6|ours|pubmedqa|qa": "후속 실험",
+    "table3|luna6|ours|medbullets|qa": "후속 실험",
+    "table3|luna6|ours|mmlu|qa": "후속 실험",
+    "table3|luna6|ours|gsm8k|qa": "후속 실험"
+  },
+  "counts": {
+    "table1|qwen25|tfidf_gate|cancer_myth|1": {
+      "generated": 577,
+      "yes": 451,
+      "correct": 0,
+      "expected": 577
+    },
+    "table1|qwen25|tfidf_gate|cancer_myth|0": {
+      "generated": 147,
+      "yes": 64,
+      "correct": 0,
+      "expected": 147
+    },
+    "table1|qwen25|tfidf_gate|crepe|1": {
+      "generated": 500,
+      "yes": 302,
+      "correct": 0,
+      "expected": 500
+    },
+    "table1|qwen25|tfidf_gate|crepe|0": {
+      "generated": 500,
+      "yes": 159,
+      "correct": 0,
+      "expected": 500
+    },
+    "table1|qwen25|direct_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|qwen25|direct_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|qwen25|direct_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|qwen25|direct_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|qwen25|cot_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|qwen25|cot_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|qwen25|cot_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|qwen25|cot_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|qwen25|probe_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|qwen25|probe_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|qwen25|probe_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|qwen25|probe_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|qwen25|gepa_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|qwen25|gepa_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|qwen25|gepa_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|qwen25|gepa_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|plain|cancer_myth|1": {
+      "generated": 577,
+      "yes": 0,
+      "correct": 0,
+      "expected": 577
+    },
+    "table2|qwen25|plain|cancer_myth|0": {
+      "generated": 147,
+      "yes": 0,
+      "correct": 0,
+      "expected": 147
+    },
+    "table2|qwen25|plain|crepe|1": {
+      "generated": 240,
+      "yes": 0,
+      "correct": 0,
+      "expected": 500
+    },
+    "table2|qwen25|plain|crepe|0": {
+      "generated": 256,
+      "yes": 0,
+      "correct": 0,
+      "expected": 500
+    },
+    "table2|qwen25|balanced|cancer_myth|1": {
+      "generated": 193,
+      "yes": 0,
+      "correct": 0,
+      "scored": 33,
+      "good": 2,
+      "expected": 577
+    },
+    "table2|qwen25|balanced|cancer_myth|0": {
+      "generated": 28,
+      "yes": 0,
+      "correct": 0,
+      "scored": 4,
+      "good": 4,
+      "expected": 147
+    },
+    "table2|qwen25|balanced|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|balanced|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|cot|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|cot|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|cot|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|cot|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|prewome|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|prewome|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|prewome|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|prewome|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|extract_verify|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|extract_verify|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|extract_verify|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|extract_verify|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|tfidf_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|tfidf_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|tfidf_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|tfidf_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|direct_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|direct_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|direct_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|direct_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|cot_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|cot_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|cot_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|cot_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|probe_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|probe_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|probe_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|probe_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|gepa_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|gepa_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|gepa_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|gepa_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|gepa|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|gepa|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|gepa|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|gepa|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|gepa_both|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|gepa_both|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|gepa_both|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|gepa_both|crepe|0": {
+      "expected": 500
+    },
+    "table2|qwen25|ours|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|qwen25|ours|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|qwen25|ours|crepe|1": {
+      "expected": 500
+    },
+    "table2|qwen25|ours|crepe|0": {
+      "expected": 500
+    },
+    "table3|qwen25|plain|medqa|qa": {
+      "systems": [
+        {
+          "generated": 1273,
+          "yes": 0,
+          "correct": 655
+        }
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|plain|pubmedqa|qa": {
+      "systems": [
+        {
+          "generated": 1000,
+          "yes": 0,
+          "correct": 485
+        }
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|plain|medbullets|qa": {
+      "systems": [
+        {
+          "generated": 308,
+          "yes": 0,
+          "correct": 109
+        }
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|plain|mmlu|qa": {
+      "systems": [
+        {
+          "generated": 14040,
+          "yes": 0,
+          "correct": 10323,
+          "failed": 2
+        }
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|plain|gsm8k|qa": {
+      "systems": [
+        {
+          "generated": 1319,
+          "yes": 0,
+          "correct": 1175
+        }
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|balanced|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|balanced|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|balanced|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|balanced|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|balanced|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|cot|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|cot|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|cot|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|cot|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|cot|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|prewome|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|prewome|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|prewome|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|prewome|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|prewome|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|extract_verify|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|extract_verify|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|extract_verify|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|extract_verify|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|extract_verify|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|tfidf_gate|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|tfidf_gate|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|tfidf_gate|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|tfidf_gate|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|tfidf_gate|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|direct_gate|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|direct_gate|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|direct_gate|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|direct_gate|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|direct_gate|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|cot_gate|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|cot_gate|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|cot_gate|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|cot_gate|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|cot_gate|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|probe_gate|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|probe_gate|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|probe_gate|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|probe_gate|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|probe_gate|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|gepa_gate|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|gepa_gate|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|gepa_gate|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|gepa_gate|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|gepa_gate|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|gepa|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|gepa|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|gepa|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|gepa|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|gepa|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|qwen25|gepa_both|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|qwen25|gepa_both|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|qwen25|gepa_both|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|qwen25|gepa_both|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|qwen25|gepa_both|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table1|gemma3|tfidf_gate|cancer_myth|1": {
+      "generated": 577,
+      "yes": 451,
+      "correct": 0,
+      "expected": 577
+    },
+    "table1|gemma3|tfidf_gate|cancer_myth|0": {
+      "generated": 147,
+      "yes": 64,
+      "correct": 0,
+      "expected": 147
+    },
+    "table1|gemma3|tfidf_gate|crepe|1": {
+      "generated": 500,
+      "yes": 302,
+      "correct": 0,
+      "expected": 500
+    },
+    "table1|gemma3|tfidf_gate|crepe|0": {
+      "generated": 500,
+      "yes": 159,
+      "correct": 0,
+      "expected": 500
+    },
+    "table1|gemma3|direct_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|gemma3|direct_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|gemma3|direct_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|gemma3|direct_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|gemma3|cot_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|gemma3|cot_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|gemma3|cot_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|gemma3|cot_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|gemma3|probe_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|gemma3|probe_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|gemma3|probe_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|gemma3|probe_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|gemma3|gepa_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|gemma3|gepa_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|gemma3|gepa_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|gemma3|gepa_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|plain|cancer_myth|1": {
+      "generated": 281,
+      "yes": 0,
+      "correct": 0,
+      "scored": 29,
+      "good": 0,
+      "expected": 577
+    },
+    "table2|gemma3|plain|cancer_myth|0": {
+      "generated": 49,
+      "yes": 0,
+      "correct": 0,
+      "scored": 7,
+      "good": 7,
+      "expected": 147
+    },
+    "table2|gemma3|plain|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|plain|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|balanced|cancer_myth|1": {
+      "generated": 1,
+      "yes": 0,
+      "correct": 0,
+      "scored": 1,
+      "good": 1,
+      "expected": 577
+    },
+    "table2|gemma3|balanced|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|balanced|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|balanced|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|cot|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|cot|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|cot|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|cot|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|prewome|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|prewome|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|prewome|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|prewome|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|extract_verify|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|extract_verify|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|extract_verify|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|extract_verify|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|tfidf_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|tfidf_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|tfidf_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|tfidf_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|direct_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|direct_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|direct_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|direct_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|cot_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|cot_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|cot_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|cot_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|probe_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|probe_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|probe_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|probe_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|gepa_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|gepa_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|gepa_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|gepa_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|gepa|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|gepa|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|gepa|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|gepa|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|gepa_both|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|gepa_both|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|gepa_both|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|gepa_both|crepe|0": {
+      "expected": 500
+    },
+    "table2|gemma3|ours|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|gemma3|ours|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|gemma3|ours|crepe|1": {
+      "expected": 500
+    },
+    "table2|gemma3|ours|crepe|0": {
+      "expected": 500
+    },
+    "table3|gemma3|plain|medqa|qa": {
+      "systems": [
+        {
+          "generated": 1273,
+          "yes": 0,
+          "correct": 869
+        }
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|plain|pubmedqa|qa": {
+      "systems": [
+        {
+          "generated": 1000,
+          "yes": 0,
+          "correct": 599
+        }
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|plain|medbullets|qa": {
+      "systems": [
+        {
+          "generated": 308,
+          "yes": 0,
+          "correct": 170
+        }
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|plain|mmlu|qa": {
+      "systems": [
+        {
+          "generated": 14035,
+          "yes": 0,
+          "correct": 10764,
+          "failed": 7
+        }
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|plain|gsm8k|qa": {
+      "systems": [
+        {
+          "generated": 1319,
+          "yes": 0,
+          "correct": 1212
+        }
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|balanced|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|balanced|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|balanced|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|balanced|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|balanced|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|cot|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|cot|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|cot|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|cot|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|cot|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|prewome|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|prewome|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|prewome|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|prewome|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|prewome|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|extract_verify|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|extract_verify|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|extract_verify|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|extract_verify|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|extract_verify|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|tfidf_gate|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|tfidf_gate|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|tfidf_gate|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|tfidf_gate|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|tfidf_gate|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|direct_gate|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|direct_gate|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|direct_gate|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|direct_gate|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|direct_gate|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|cot_gate|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|cot_gate|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|cot_gate|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|cot_gate|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|cot_gate|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|probe_gate|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|probe_gate|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|probe_gate|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|probe_gate|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|probe_gate|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|gepa_gate|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|gepa_gate|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|gepa_gate|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|gepa_gate|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|gepa_gate|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|gepa|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|gepa|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|gepa|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|gepa|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|gepa|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|gemma3|gepa_both|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|gemma3|gepa_both|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|gemma3|gepa_both|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|gemma3|gepa_both|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|gemma3|gepa_both|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table1|luna6|tfidf_gate|cancer_myth|1": {
+      "generated": 577,
+      "yes": 451,
+      "correct": 0,
+      "expected": 577
+    },
+    "table1|luna6|tfidf_gate|cancer_myth|0": {
+      "generated": 147,
+      "yes": 64,
+      "correct": 0,
+      "expected": 147
+    },
+    "table1|luna6|tfidf_gate|crepe|1": {
+      "generated": 500,
+      "yes": 302,
+      "correct": 0,
+      "expected": 500
+    },
+    "table1|luna6|tfidf_gate|crepe|0": {
+      "generated": 500,
+      "yes": 159,
+      "correct": 0,
+      "expected": 500
+    },
+    "table1|luna6|direct_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|luna6|direct_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|luna6|direct_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|luna6|direct_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|luna6|cot_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|luna6|cot_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|luna6|cot_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|luna6|cot_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|luna6|probe_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|luna6|probe_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|luna6|probe_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|luna6|probe_gate|crepe|0": {
+      "expected": 500
+    },
+    "table1|luna6|gepa_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table1|luna6|gepa_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table1|luna6|gepa_gate|crepe|1": {
+      "expected": 500
+    },
+    "table1|luna6|gepa_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|plain|cancer_myth|1": {
+      "generated": 203,
+      "yes": 0,
+      "correct": 0,
+      "scored": 16,
+      "good": 4,
+      "expected": 577
+    },
+    "table2|luna6|plain|cancer_myth|0": {
+      "generated": 49,
+      "yes": 0,
+      "correct": 0,
+      "expected": 147
+    },
+    "table2|luna6|plain|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|plain|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|balanced|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|balanced|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|balanced|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|balanced|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|cot|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|cot|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|cot|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|cot|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|prewome|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|prewome|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|prewome|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|prewome|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|extract_verify|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|extract_verify|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|extract_verify|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|extract_verify|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|tfidf_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|tfidf_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|tfidf_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|tfidf_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|direct_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|direct_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|direct_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|direct_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|cot_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|cot_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|cot_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|cot_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|probe_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|probe_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|probe_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|probe_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|gepa_gate|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|gepa_gate|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|gepa_gate|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|gepa_gate|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|gepa|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|gepa|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|gepa|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|gepa|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|gepa_both|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|gepa_both|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|gepa_both|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|gepa_both|crepe|0": {
+      "expected": 500
+    },
+    "table2|luna6|ours|cancer_myth|1": {
+      "expected": 577
+    },
+    "table2|luna6|ours|cancer_myth|0": {
+      "expected": 147
+    },
+    "table2|luna6|ours|crepe|1": {
+      "expected": 500
+    },
+    "table2|luna6|ours|crepe|0": {
+      "expected": 500
+    },
+    "table3|luna6|plain|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|plain|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|plain|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|plain|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|plain|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|balanced|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|balanced|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|balanced|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|balanced|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|balanced|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|cot|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|cot|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|cot|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|cot|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|cot|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|prewome|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|prewome|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|prewome|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|prewome|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|prewome|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|extract_verify|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|extract_verify|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|extract_verify|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|extract_verify|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|extract_verify|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|tfidf_gate|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|tfidf_gate|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|tfidf_gate|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|tfidf_gate|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|tfidf_gate|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|direct_gate|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|direct_gate|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|direct_gate|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|direct_gate|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|direct_gate|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|cot_gate|medqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|cot_gate|pubmedqa|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|cot_gate|medbullets|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|cot_gate|mmlu|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|cot_gate|gsm8k|qa": {
+      "systems": [
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|gepa_gate|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|gepa_gate|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|gepa_gate|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|gepa_gate|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|gepa_gate|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|gepa|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|gepa|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|gepa|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|gepa|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|gepa|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    },
+    "table3|luna6|gepa_both|medqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1273
+    },
+    "table3|luna6|gepa_both|pubmedqa|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1000
+    },
+    "table3|luna6|gepa_both|medbullets|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 308
+    },
+    "table3|luna6|gepa_both|mmlu|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 14042
+    },
+    "table3|luna6|gepa_both|gsm8k|qa": {
+      "systems": [
+        {},
+        {}
+      ],
+      "expected_per_system": 1319
+    }
+  }
+}

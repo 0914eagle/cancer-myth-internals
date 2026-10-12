@@ -1,0 +1,6 @@
+{
+  "backend": "claude",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "timeout_seconds": 240
+}

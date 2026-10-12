@@ -10,8 +10,8 @@ A per-key lock prevents duplicate extraction; four cross-process CLI slots cap c
 
 ## Batch transport
 
-- Qwen proposed cap: 8, padded input plus maximum output token budget 73,728.
-- Gemma proposed initial cap: 4, corresponding token budget 49,152. Validate on its two assigned GPUs before increasing.
+- Qwen applied cap: 8, padded input plus maximum output token budget 73,728.
+- Gemma applied cap: 4, corresponding token budget 49,152. Validated on its two assigned GPUs.
 - Batch requests across independent question pipelines. Within each question, extraction, review/checking and answer dependencies remain sequential.
 - Left padding with an attention mask; greedy decoding, checkpoint, prompts and 8,192-token input/output caps remain unchanged.
 - Per-row EOS parsing discards padding after that row terminates. Output-limit failures are kept as failures, not silently shortened answers.
@@ -29,10 +29,12 @@ Qwen2.5-7B on a spare RTX 4090; fixed Plain prompt, full normal output cap, no t
 | 4 | 20.933 | 8.467 | 2.47x | 1/4 |
 | 8 | 47.040 | 9.295 | 5.06x | 1/8 |
 
+Gemma 3-12B: four train questions took 150.197s sequentially and 71.378s batched (2.10x); 0/4 texts were identical.
+
 These small short-answer checks establish working transport and potential throughput, not an overall speed guarantee or equal task accuracy. Text differences are not evidence that correction scores changed. Long CoT and premise prompts require separate observation; the token budget and OOM fallback handle memory pressure. No additional full benchmark re-generation is justified solely by wording differences.
 
-The Luna extraction smoke test on a train question returned a parsed premise list successfully. At the time of this note, switching the live service and launching full extraction are pending explicit restart approval after automatic review rejected a combined launch/stop command. Existing singleton generators were left running.
+The Luna extraction smoke test returned a parsed premise list successfully. Following the user's explicit instruction to run the parallel work, v4 services now use Qwen batch 8, Gemma batch 4 and the shared GPT pool of four. See the [v4 runbook](../baseline_v4_runbook_2026-10-12.md) for the active protocol, Haiku regrading, sampling and GEPA settings. Initial service launches lacked CLI paths; replacement `-cli` services include both CLI directories and are running.
 
 ## Execution priority
 
-All local Table 1/2 work comes before native QA: Plain/Balanced; Direct/CoT gate; CoT; TF-IDF/Probe; shared-extraction pipelines. Final answer judging is independent. GEPA still requires optimization feedback and is a separate pending execution change; this batching work does not implement the proposed GPT optimization judge or Haiku final regrading.
+All Table 1/2 generation and optimization precede additional native QA generation. Shared extraction and final Haiku grading run independently of GPU generation. Existing answers and previous judge results are preserved; only compatible answers are reused in the new ledger.
