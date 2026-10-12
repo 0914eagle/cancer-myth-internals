@@ -1,0 +1,188 @@
+{
+  "captured_at_kst": "2026-10-12T20:15:39.377602+09:00",
+  "bundle_sha256": "88f6f9d4ef07f2812112d1004abdbeedcd90f910171d309a5d3d93d33a16fbe1",
+  "split_manifest_sha256": "1f223102ebba30e47430704d45d6432064e2f0ba8b9eb3e824f16146ce0367df",
+  "splits": [
+    {
+      "dataset": "cancer_myth",
+      "name": "fold0",
+      "counts": {
+        "train": {
+          "total": 385,
+          "fpq": 307,
+          "nfp": 78
+        },
+        "dev": {
+          "total": 97,
+          "fpq": 77,
+          "nfp": 20
+        },
+        "gepa_dev": {
+          "total": 97,
+          "fpq": 77,
+          "nfp": 20
+        },
+        "test": {
+          "total": 242,
+          "fpq": 193,
+          "nfp": 49
+        }
+      },
+      "gepa_effective_dev_per_class": 20,
+      "id_overlap": false,
+      "group_overlap": false
+    },
+    {
+      "dataset": "cancer_myth",
+      "name": "fold1",
+      "counts": {
+        "train": {
+          "total": 387,
+          "fpq": 308,
+          "nfp": 79
+        },
+        "dev": {
+          "total": 96,
+          "fpq": 77,
+          "nfp": 19
+        },
+        "gepa_dev": {
+          "total": 96,
+          "fpq": 77,
+          "nfp": 19
+        },
+        "test": {
+          "total": 241,
+          "fpq": 192,
+          "nfp": 49
+        }
+      },
+      "gepa_effective_dev_per_class": 19,
+      "id_overlap": false,
+      "group_overlap": false
+    },
+    {
+      "dataset": "cancer_myth",
+      "name": "fold2",
+      "counts": {
+        "train": {
+          "total": 386,
+          "fpq": 308,
+          "nfp": 78
+        },
+        "dev": {
+          "total": 97,
+          "fpq": 77,
+          "nfp": 20
+        },
+        "gepa_dev": {
+          "total": 97,
+          "fpq": 77,
+          "nfp": 20
+        },
+        "test": {
+          "total": 241,
+          "fpq": 192,
+          "nfp": 49
+        }
+      },
+      "gepa_effective_dev_per_class": 20,
+      "id_overlap": false,
+      "group_overlap": false
+    },
+    {
+      "dataset": "crepe",
+      "name": "official",
+      "counts": {
+        "train": {
+          "total": 3437,
+          "fpq": 904,
+          "nfp": 2533
+        },
+        "dev": {
+          "total": 2000,
+          "fpq": 544,
+          "nfp": 1456
+        },
+        "gepa_dev": {
+          "total": 200,
+          "fpq": 100,
+          "nfp": 100
+        },
+        "test": {
+          "total": 1000,
+          "fpq": 500,
+          "nfp": 500
+        }
+      },
+      "gepa_effective_dev_per_class": 100,
+      "id_overlap": false,
+      "group_overlap": false
+    }
+  ],
+  "checks": {
+    "bundle_hash": true,
+    "published_manifest_identical": true,
+    "id_and_group_disjoint_within_split": true,
+    "cancer_each_question_one_test_fold": true,
+    "cancer_test_groups_disjoint": true,
+    "crepe_test_seed42_reproduced": true,
+    "crepe_gepa_dev_seed43_reproduced": true
+  },
+  "seeds": {
+    "cancer_outer": 20261007,
+    "cancer_inner": [
+      20261008,
+      20261009,
+      20261010
+    ],
+    "crepe_test": 42,
+    "crepe_gepa_dev": 43,
+    "gepa": 42,
+    "torch": 42
+  },
+  "effective_execution": {
+    "qwen25": {
+      "max_batch": 16,
+      "token_budget": 147456
+    },
+    "gemma3": {
+      "max_batch": 32,
+      "token_budget": 393216
+    },
+    "gemma_physical_gpus": [
+      1,
+      2,
+      3
+    ],
+    "gpt_global_slots": 4,
+    "haiku_workers": 128,
+    "gepa_question_budget": 2000,
+    "gepa_pair_call_budget": 1000,
+    "gepa_parallel": false,
+    "gepa_max_workers": 1
+  },
+  "qa_counts": {
+    "medqa": 1273,
+    "pubmedqa": 1000,
+    "medbullets": 308,
+    "mmlu": 14042,
+    "gsm8k": 1319
+  },
+  "source_hashes": {
+    "cancer": "880564c27c5dcfde296334b95b00b825256c7cb0c7d89e37fee2696c9e64c12c",
+    "registry": "3a0007bfb61ad1903e70e8a3445fde72d32ec280dbfadc334ec151235695f918",
+    "crepe_train": "1f0d31100ac1857cdac2889dfeb3ade501bc999c3c18764bf95e18606bc3d01f",
+    "crepe_dev": "324c859a364498735d48ae5c25f97d1fafe836883622dab683940fa9f5802977",
+    "crepe_test": "b3ed9a35621ee83366d2ae4b2f16cbf6466db48f9f1bf88987474ac4e80fd37b",
+    "qa": "0fa6bda8b4a1574ba75ce0f9053feb7eb47bf1e4027c41c4e947786f61dc9fea"
+  },
+  "code_hashes": {
+    "scripts/prepare_paper_baseline_bundle.py": "6a1801f9f8ef5d0a593afba44051ab0e81d4c43aff63d0c48d14076224436eca",
+    "scripts/prepare_paper_v4.py": "7bbdb803c8a132ecc44979a0d87957d10d3cd7f25f278bd7ec4246a960257a8c",
+    "scripts/launch_paper_v4_sol.py": "23b0aa348e96d3523182e4e6bd6e4c6449b236615f2f8c198c61548590374fc9",
+    "scripts/run_paper_baselines.py": "d16aaf4fffc3684871ef4664ee73353a9887f5dd775c4b9f8cc3bde71e982c0c",
+    "scripts/run_paper_baselines_v4.py": "bc9a91e57dcc93766ec1234fd112520d406899543ca1e2ae5c4045e4c0e7909a",
+    "src/paper_baselines.py": "09a369f3a56c0dcdf2fa253291377f4de1514f19b796f870328b62e802a663b7"
+  }
+}

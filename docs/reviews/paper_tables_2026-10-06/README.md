@@ -1,6 +1,8 @@
+> **실제 적용 설정 모음:** [3-fold·CREPE·프롬프트·hyperparameter·배치·채점 설정 (2026-10-12)](experimental_setup_baselines_2026-10-12.md)
+>
 > **2026-10-12 새 실행 현황:** [자연어 상태를 넣은 Table 1·2·3](current_v4/README.md) · [Table 1](current_v4/table1.png) · [Table 2](current_v4/table2.png) · [Table 3](current_v4/table3.png)
 >
-> Qwen2.5-7B · Gemma 3-12B · GPT-6 Luna의 생성/채점/완료 상태를 각 셀에 표시했다. Table 2는 **Haiku 재채점**만 집계한다. [현재 실행 규약](baseline_v4_runbook_2026-10-12.md)이 아래 과거 계획보다 우선한다. 아래 기존 표와 `current_4090`는 이전 스냅샷이며 새 실행의 완료 결과가 아니다.
+> Qwen2.5-7B · Gemma 3-12B · GPT-6 Luna의 생성/채점/완료 상태를 각 셀에 표시했다. Table 2는 현재 최종 평가 원장을 집계한다. [현재 실행 규약](baseline_v4_runbook_2026-10-12.md)이 아래 과거 계획보다 우선한다. 아래 기존 표와 `current_4090`는 이전 스냅샷이며 새 실행의 완료 결과가 아니다.
 
 # 논문 비교표 — Detection / Response / QA Preservation
 
