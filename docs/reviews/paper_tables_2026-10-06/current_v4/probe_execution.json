@@ -1,0 +1,26 @@
+{
+  "qwen_generation": {
+    "gpu": [
+      0
+    ],
+    "batch_cap": 16
+  },
+  "qwen_probe": {
+    "gpu": [
+      3
+    ],
+    "script": "scripts/prepare_probe_v4.py"
+  },
+  "gemma_generation_and_probe": {
+    "gpu": [
+      1,
+      2
+    ],
+    "batch_cap": 8,
+    "script": "scripts/run_paper_baselines_probe_prefetch.py",
+    "shared_model_and_gpu_lock": true
+  },
+  "haiku_concurrency": 4,
+  "cancer_myth_table2_gate_rule": "reuse matching dataset/fold/method/question held-out prediction",
+  "crepe_split": "official train/dev; fixed test500+500"
+}

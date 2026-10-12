@@ -15,6 +15,17 @@
 
 아래 표는 초기 실행 설정을 기록한 것이며, 배치와 채점 동시성은 위 변경이 우선한다.
 
+## Probe 병행 및 fold 연결
+
+실행 서비스: Qwen 특징 추출은 `paper-v4-qwen-probe-gpu3-20261012`, Gemma 생성·Probe 공유 실행은 `paper-v4-gemma-prefetch-20261012`, Haiku는 `paper-v4-haiku-prefetch-20261012`이다. Qwen의 `-fast` 생성 서비스와 Luna·공통 추출은 그대로 유지한다.
+
+- Qwen 답변 생성은 GPU 0에서 계속하고, 별도 `prepare_probe_v4.py`가 GPU 3에서 같은 고정 체크포인트로 질문 특징을 추출한다. 답변 생성 호출이나 추가 판정기 호출은 없다.
+- Gemma는 GPU 1·2에 이미 적재된 모델을 공유한다. `run_paper_baselines_probe_prefetch.py`가 특징 추출을 background thread로 수행하며, 생성과 forward는 하나의 GPU lock을 공유해 동시 메모리 사용을 막는다. Probe 학습의 CPU 처리는 생성과 병행한다.
+- 질문 입력은 기존 Plain wrapper이며 마지막 입력 토큰의 hidden state를 쓴다. 후보 layer는 모델 깊이의 25/50/75/100%이다. 정규화 및 로지스틱 회귀는 train에만 fit하고 layer·C·threshold는 dev에서 선택한다. 기존 `fit_gate` 구현을 변경하지 않는다.
+- Cancer-Myth는 3개 fold gate를 각각 저장한다. Table 1의 예측은 해당 fold test에만 작성하고, Table 2는 **같은 dataset/fold/method/question ID 경로의 판정**을 재사용한다. Table 3의 사전 선택 fold0 transfer 규칙과 혼동하지 않는다.
+- CREPE는 공식 train 전체와 dev 전체로 Probe를 학습·선택하며, 고정된 500+500 test에 평가한다. GEPA의 100+100 dev 축소는 Probe에 적용하지 않는다.
+- 고정 모델 특징은 질문만으로 계산하며 fold 간 재사용할 수 있다. 특징을 공유하는 것과 학습된 scaler/probe/threshold를 공유하는 것은 다르다. 후자는 각 fold에 독립적이다.
+
 ## 고정한 대상과 분할
 
 - Qwen2.5-7B, Gemma 3-12B, GPT-6 Luna. Ours와 Qwen3.8은 이번 실행 범위 밖이다. NLA는 별도 A6000 서버 작업이다.

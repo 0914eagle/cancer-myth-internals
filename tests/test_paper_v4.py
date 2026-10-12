@@ -90,3 +90,36 @@ def test_parallel_judge_keeps_success_when_peer_is_rate_limited(tmp_path):
     assert sum(r[3] is not None for r in results)==1
     assert (grades/'m/table12/1.json').exists()
     assert not (grades/'m/table12/0.json').exists()
+
+
+def test_table2_reuses_only_its_own_fold_detection(tmp_path):
+    from src.paper_baselines import digest
+    calls=[]
+    p=EvaluatedPipeline({'prompts':{'direct_detector':'detect','plain':'plain','correct_route':'correct'}},lambda messages:calls.append(messages) or 'answer',None,None,SimpleNamespace(out=tmp_path))
+    for fold,verdict in [('fold0',1),('fold1',0)]:
+        row={'id':fold,'dataset':'cancer_myth','label':verdict}
+        path=tmp_path/'table1/cancer_myth'/fold/'probe_gate'/(digest(['cancer_myth',fold])+'.json')
+        write_json(path,{'question':'Q','verdict':verdict,'review':'','invalid_detection':False})
+        p.context.value=(row,{'name':fold},False)
+        p.run('probe_gate','Q','cancer_myth',gate=lambda q:(_ for _ in ()).throw(AssertionError('Must reuse own fold verdict')))
+    assert len(calls)==2
+    assert 'Verdict: Yes' in calls[0][1]['content']
+    assert 'Verdict: No' in calls[1][1]['content']
+
+
+def test_probe_preparation_fits_each_fold_and_publishes_only_test(tmp_path,monkeypatch):
+    from scripts.prepare_probe_v4 import prepare
+    from scripts.run_paper_baselines import Worker
+    splits=[{'dataset':'cancer_myth','name':'fold0','train':['a'],'dev':['b'],'test':['c']},
+            {'dataset':'cancer_myth','name':'fold1','train':['c'],'dev':['a'],'test':['b']}]
+    lookup={i:{'id':i,'dataset':'cancer_myth','label':int(i=='c'),'question':i} for i in 'abc'}
+    fitted=[];features=[]
+    def classifier(worker,split,method):
+        assert not set(split['test'])&set(split['train']+split['dev'])
+        fitted.append(split['name']);return lambda q:(.8 if split['name']=='fold0' else .1,.5)
+    monkeypatch.setattr(Worker,'classifier',classifier)
+    worker=SimpleNamespace(out=tmp_path,bundle={'splits':splits},lookup=lookup,feature=lambda q:features.append(q))
+    prepare(worker)
+    assert fitted==['fold0','fold1'] and set(features)==set('abc')
+    saved=[json.loads(p.read_text()) for p in (tmp_path/'table1').rglob('*.json')]
+    assert {(r['split'],r['id'],r['verdict']) for r in saved}=={('fold0','c',1),('fold1','b',0)}
