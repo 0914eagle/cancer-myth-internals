@@ -1,5 +1,9 @@
 # Baseline v4 실행 규약 — 2026-10-12
 
+## 최종 정정: Gemma는 GPU 1·2·3 모두 사용
+
+사용자는 GPU 1도 계속 Gemma에 쓰도록 정정했다. 현재 배정은 **Qwen GPU 0 / Gemma GPU 1·2·3**이다. 아래의 GPU 1 유휴 기록은 이전 배정이다. `CUDA_VISIBLE_DEVICES=1,2,3`, 서비스 `paper-v4-gemma-sol-gpu123-20261012.service`, 배정 기록 `device_overrides/gpu1_gpu2_gpu3.json`을 사용한다. 모델을 세 GPU에 분산 적재하며 기존 batch 상한 8, 토큰 예산 98,304 및 과학적 실험 설정은 유지한다. 완료 결과를 재사용하고 전환 시 미완료 요청만 다시 실행한다.
+
 ## 현재 GPU 배정 변경: Gemma 2·3
 
 사용자 요청으로 Gemma의 물리 GPU를 1·2에서 **2·3**으로 옮겼다. Qwen은 GPU 0, GPU 1은 비워둔다. Luna와 Sol은 CLI 호출이며 로컬 GPU를 사용하지 않는다. Gemma의 batch 상한 8, 토큰 예산 98,304, BF16, 출력 한도, 모델·프롬프트·분할은 유지한다. 이전에도 두 장을 사용했으므로 GPU 이동 자체를 처리량 증가로 해석하지 않는다.

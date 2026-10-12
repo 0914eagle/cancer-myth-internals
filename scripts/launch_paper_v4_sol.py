@@ -9,8 +9,8 @@ PYTHON='/data1/heejae/uv/cancer_myth_internals/bin/python'
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('role',choices=['qwen','gemma','luna','extraction','haiku']);a=p.parse_args()
-    new=f'paper-v4-{a.role}-sol'+('-gpu23' if a.role=='gemma' else '')+'-20261012.service'
-    units=[f'paper-v4-{a.role}-{suffix}-20261012.service' for suffix in ('cli','fast','prefetch','sol')]
+    new=f'paper-v4-{a.role}-sol'+('-gpu123' if a.role=='gemma' else '')+'-20261012.service'
+    units=[f'paper-v4-{a.role}-{suffix}-20261012.service' for suffix in ('cli','fast','prefetch','sol','sol-gpu23')]
     for unit in dict.fromkeys([*units,new]):
         state=subprocess.run(['systemctl','--user','show',unit,'-p','MainPID','--value'],capture_output=True,text=True)
         if state.stdout.strip() not in ('','0'):raise SystemExit(f'{unit} is still running; drain first')
