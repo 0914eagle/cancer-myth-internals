@@ -8,7 +8,7 @@ PYTHON='/data1/heejae/uv/cancer_myth_internals/bin/python'
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('role',choices=['qwen','gemma','luna','extraction','haiku']);a=p.parse_args()
+    p.add_argument('role',choices=['qwen','gemma','luna','extraction','haiku']);p.add_argument('--methods');a=p.parse_args()
     new=f'paper-v4-{a.role}-sol'+('-gpu123' if a.role=='gemma' else '')+'-20261012.service'
     units=[f'paper-v4-{a.role}-{suffix}-20261012.service' for suffix in ('cli','fast','prefetch','sol','sol-gpu23')]
     for unit in dict.fromkeys([*units,new]):
@@ -31,6 +31,7 @@ def main():
         model={'qwen':'qwen25','gemma':'gemma3','luna':'luna6'}[a.role];stop=ROOT/out/model/'STOP'
         script='scripts/run_paper_baselines_recovery.py'
         command=[PYTHON,script,'run','--model',model,*common,'--detect-first']
+        if a.methods:command+=['--methods',a.methods]
         if a.role!='luna':command+=['--max-batch','16' if a.role=='qwen' else '32','--token-budget','147456' if a.role=='qwen' else '393216']
     stop.unlink(missing_ok=True)
     resource_properties=['--property=LimitNOFILE=65536'] if a.role=='haiku' else []

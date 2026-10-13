@@ -15,13 +15,13 @@ def read(path):return json.loads(path.read_text())
 def rows(folder):return [read(p) for p in folder.rglob('*.json')]
 def digest(value):return hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
 
-def capture():
+def capture(run=RUN,grades=GRADES):
     b=read(ROOT/'results/paper_baselines_v4/protocol/bundle.json');look={r['id']:r for r in b['rows']}
     expected={d:{y:sum(look[i]['label']==y for s in b['splits'] if s['dataset']==d for i in s['test']) for y in (1,0)} for d in ('cancer_myth','crepe')}
     snapshot={'captured_at_kst':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'bundle_sha256':b['content_sha256'],'cells':{},'counts':{}}
     qa_sizes=collections.Counter(r['dataset'] for r in b['qa'])
     for model,_ in MODELS:
-        root=RUN/model;progress=read(root/'generation_progress.json') if (root/'generation_progress.json').exists() else {}
+        root=run/model;progress=read(root/'generation_progress.json') if (root/'generation_progress.json').exists() else {}
         counters=collections.defaultdict(collections.Counter)
         for table in ('table1','table12','table3'):
             for r in rows(root/table):
@@ -30,8 +30,8 @@ def capture():
                 counters[key]['yes']+=r.get('verdict')==1
                 counters[key]['correct']+=r.get('correct',False)
         scored_sources=set()
-        for path in (GRADES/model/'table12').rglob('*.json'):
-            r=read(path);source=RUN/path.relative_to(GRADES)
+        for path in (grades/model/'table12').rglob('*.json'):
+            r=read(path);source=run/path.relative_to(grades)
             if not source.exists() or r['id'] not in look:continue
             answer=read(source);judge=read(ROOT/'results/paper_baselines_v4/protocol/haiku.json')
             expected_key=digest({'question':answer['question'],'answer':answer['answer'],'judge':judge,'annotation':look[r['id']]})
@@ -39,8 +39,8 @@ def capture():
             scored_sources.add(str(source))
             key=('table12',r['dataset'],r['method'],r['label'],r.get('source',''),r.get('split',''))
             counters[key]['scored']+=1;counters[key]['good']+=r['rating']>=4
-        for path in (GRADES/'manual_reviews'/model/'table12').rglob('*.json'):
-            r=read(path);source=RUN/path.relative_to(GRADES/'manual_reviews')
+        for path in (grades/'manual_reviews'/model/'table12').rglob('*.json'):
+            r=read(path);source=run/path.relative_to(grades/'manual_reviews')
             if not source.exists() or str(source) in scored_sources or r['id'] not in look:continue
             answer=read(source)
             expected_key=digest({'question':answer['question'],'answer':answer['answer'],'judge':r['judge_config'],'annotation':look[r['id']]})
@@ -48,15 +48,15 @@ def capture():
             scored_sources.add(str(source))
             key=('table12',r['dataset'],r['method'],r['label'],r.get('source',''),r.get('split',''))
             counters[key]['scored']+=1;counters[key]['good']+=r['rating']>=4;counters[key]['manual']+=1
-        for path in (GRADES/'provider_refusals'/model/'table12').rglob('*.json'):
-            refusal=read(path);source=RUN/path.relative_to(GRADES/'provider_refusals')
+        for path in (grades/'provider_refusals'/model/'table12').rglob('*.json'):
+            refusal=read(path);source=run/path.relative_to(grades/'provider_refusals')
             if not source.exists() or str(source) in scored_sources:continue
             r=read(source)
             if r['id'] not in look:continue
             judge=read(ROOT/'results/paper_baselines_v4/protocol/haiku.json')
             expected_key=digest({'question':r['question'],'answer':r['answer'],'judge':judge,'annotation':look[r['id']]})
             if refusal.get('evaluation_key')!=expected_key:continue
-            rated=GRADES/path.relative_to(GRADES/'provider_refusals')
+            rated=grades/path.relative_to(grades/'provider_refusals')
             if rated.exists() and read(rated).get('evaluation_key')==expected_key:continue
             key=('table12',r['dataset'],r['method'],r['label'],r.get('source',''),r.get('split',''))
             counters[key]['refused']+=1
@@ -110,6 +110,28 @@ def capture():
     return snapshot
 
 
+def integrate_self_extraction(snap):
+    base=ROOT/'results/paper_baselines_v4'
+    if not (base/'self_extraction').exists():return snap
+    alt=capture(base/'self_extraction',base/'self_extraction_haiku')
+    origin={}
+    for model,_ in MODELS:
+        for method in ('prewome','extract_verify'):
+            for dataset in ('cancer_myth','crepe'):
+                keys=['|'.join(['table2',model,method,dataset,str(y)]) for y in (1,0)]
+                ready=all(alt['counts'][k].get('scored',0)+alt['counts'][k].get('failed',0)==alt['counts'][k]['expected'] and not alt['counts'][k].get('refused',0) for k in keys)
+                for k in keys:
+                    origin[k]='same_model_extraction_v1' if ready else 'shared_premise_extraction_sol_v1'
+                    if ready:snap['counts'][k]=alt['counts'][k];snap['cells'][k]=alt['cells'][k]
+            for k,c in alt['counts'].items():
+                if not k.startswith('|'.join(['table3',model,method])+'|'):continue
+                ready=all(v.get('generated',0)+v.get('failed',0)==c['expected_per_system'] for v in c['systems'])
+                origin[k]='same_model_extraction_v1' if ready else 'shared_premise_extraction_sol_v1'
+                if ready:snap['counts'][k]=c;snap['cells'][k]=alt['cells'][k]
+    snap['pipeline_result_origin']=origin
+    return snap
+
+
 def render(snap,name,methods,groups):
     cw=140 if name!='table3' else 138;mw=294;left=28;top=88;head=122;rh=76
     columns=[(dataset,metric,label) for dataset,_,metrics in groups for metric,label in metrics]
@@ -152,7 +174,7 @@ def render(snap,name,methods,groups):
         csvrows.append(row);line(left,y+rh,width-left,y+rh)
     notes=['Cancer-Myth: 577 FPQ / 147 NFP. CREPE: 공통 test 500 FPQ / 500 NFP.' if name!='table3' else '분모: MedQA 1,273 / PubMedQA 1,000 / Medbullets 308 / MMLU 14,042 / GSM8K 1,319.',
            'Table 2는 4점 이상 비율. 생성 실패는 분모에 포함하며 성공으로 세지 않습니다.' if name=='table2' else 'Table 1은 정답 라벨로 직접 평가합니다. 별도 LLM 채점이 필요 없습니다.' if name=='table1' else '일반 QA는 정답 비교로 자동 채점하며 생성 실패도 분모에 포함. 두 값은 Cancer-Myth / CREPE 설정 순서.',
-           'TF-IDF는 모델 공통 판정입니다. 해당 없음 = Luna 내부 Probe 미지원.' if name=='table1' else '후속 실험 = Ours는 이번 baseline 실행 범위 밖. 해당 없음 = Luna 내부 Probe 미지원.']
+           'TF-IDF는 모델 공통 판정입니다. 해당 없음 = Luna 내부 Probe 미지원.' if name=='table1' else 'PreWoMe·Extract+Verify: 자체 추출 평가 완료 시 교체. 추출 출처는 snapshot에 기록. Ours는 후속 실험.']
     for i,note in enumerate(notes):text(note,left,top+head+rh*len(methods)+27+i*29,18,False,'lm')
     svg.append('</svg>');(OUT/(name+'.svg')).write_text('\n'.join(svg));im.save(OUT/(name+'.png'))
     with (OUT/(name+'.csv')).open('w',newline='') as f:csv.writer(f,lineterminator='\n').writerows(csvrows)
@@ -160,7 +182,7 @@ def render(snap,name,methods,groups):
 
 
 if __name__=='__main__':
-    snap=capture();(OUT/'status_snapshot.json').write_text(json.dumps(snap,ensure_ascii=False,indent=2)+'\n')
+    snap=integrate_self_extraction(capture());(OUT/'status_snapshot.json').write_text(json.dumps(snap,ensure_ascii=False,indent=2)+'\n')
     fpqa=[('cancer_myth','Cancer-Myth',[('1','FPQ 교정 ↑'),('0','NFP 보존 ↑')]),('crepe','CREPE',[('1','FPQ 교정 ↑'),('0','NFP 보존 ↑')])]
     render(snap,'table1',DETECT,[(d,l,[(m,'FPQ 탐지 ↑' if m=='1' else 'NFP 오탐 ↓') for m,_ in metrics]) for d,l,metrics in fpqa])
     render(snap,'table2',METHODS,fpqa)

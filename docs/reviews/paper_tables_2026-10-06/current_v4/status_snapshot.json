@@ -1,5 +1,5 @@
 {
-  "captured_at_kst": "2026-10-13T09:10:27.899588+09:00",
+  "captured_at_kst": "2026-10-13T10:00:23.347592+09:00",
   "bundle_sha256": "88f6f9d4ef07f2812112d1004abdbeedcd90f910171d309a5d3d93d33a16fbe1",
   "cells": {
     "table1|qwen25|tfidf_gate|cancer_myth|1": "78.2%",
@@ -292,8 +292,8 @@
     "table1|luna6|probe_gate|cancer_myth|0": "해당 없음",
     "table1|luna6|probe_gate|crepe|1": "해당 없음",
     "table1|luna6|probe_gate|crepe|0": "해당 없음",
-    "table1|luna6|gepa_gate|cancer_myth|1": "판정 중\n92/577",
-    "table1|luna6|gepa_gate|cancer_myth|0": "판정 필요",
+    "table1|luna6|gepa_gate|cancer_myth|1": "판정 중\n193/577",
+    "table1|luna6|gepa_gate|cancer_myth|0": "판정 중\n49/147",
     "table1|luna6|gepa_gate|crepe|1": "판정 필요",
     "table1|luna6|gepa_gate|crepe|0": "판정 필요",
     "table2|luna6|plain|cancer_myth|1": "32.2%",
@@ -332,8 +332,8 @@
     "table2|luna6|probe_gate|cancer_myth|0": "해당 없음",
     "table2|luna6|probe_gate|crepe|1": "해당 없음",
     "table2|luna6|probe_gate|crepe|0": "해당 없음",
-    "table2|luna6|gepa_gate|cancer_myth|1": "생성 중\n88/577",
-    "table2|luna6|gepa_gate|cancer_myth|0": "최적화 중\n0/147",
+    "table2|luna6|gepa_gate|cancer_myth|1": "생성 중\n193/577",
+    "table2|luna6|gepa_gate|cancer_myth|0": "생성 중\n49/147",
     "table2|luna6|gepa_gate|crepe|1": "생성 필요",
     "table2|luna6|gepa_gate|crepe|0": "생성 필요",
     "table2|luna6|gepa|cancer_myth|1": "생성 필요",
@@ -2256,12 +2256,15 @@
       "expected": 500
     },
     "table1|luna6|gepa_gate|cancer_myth|1": {
-      "generated": 92,
-      "yes": 44,
+      "generated": 193,
+      "yes": 100,
       "correct": 0,
       "expected": 577
     },
     "table1|luna6|gepa_gate|cancer_myth|0": {
+      "generated": 49,
+      "yes": 15,
+      "correct": 0,
       "expected": 147
     },
     "table1|luna6|gepa_gate|crepe|1": {
@@ -2547,14 +2550,19 @@
       "expected": 500
     },
     "table2|luna6|gepa_gate|cancer_myth|1": {
-      "generated": 88,
-      "yes": 42,
+      "generated": 193,
+      "yes": 100,
       "correct": 0,
-      "scored": 85,
-      "good": 40,
+      "scored": 193,
+      "good": 90,
       "expected": 577
     },
     "table2|luna6|gepa_gate|cancer_myth|0": {
+      "generated": 49,
+      "yes": 15,
+      "correct": 0,
+      "scored": 49,
+      "good": 23,
       "expected": 147
     },
     "table2|luna6|gepa_gate|crepe|1": {
@@ -2959,5 +2967,61 @@
       ],
       "expected_per_system": 1319
     }
+  },
+  "pipeline_result_origin": {
+    "table2|qwen25|prewome|cancer_myth|1": "shared_premise_extraction_sol_v1",
+    "table2|qwen25|prewome|cancer_myth|0": "shared_premise_extraction_sol_v1",
+    "table2|qwen25|prewome|crepe|1": "shared_premise_extraction_sol_v1",
+    "table2|qwen25|prewome|crepe|0": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|prewome|medqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|prewome|pubmedqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|prewome|medbullets|qa": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|prewome|mmlu|qa": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|prewome|gsm8k|qa": "shared_premise_extraction_sol_v1",
+    "table2|qwen25|extract_verify|cancer_myth|1": "shared_premise_extraction_sol_v1",
+    "table2|qwen25|extract_verify|cancer_myth|0": "shared_premise_extraction_sol_v1",
+    "table2|qwen25|extract_verify|crepe|1": "shared_premise_extraction_sol_v1",
+    "table2|qwen25|extract_verify|crepe|0": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|extract_verify|medqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|extract_verify|pubmedqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|extract_verify|medbullets|qa": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|extract_verify|mmlu|qa": "shared_premise_extraction_sol_v1",
+    "table3|qwen25|extract_verify|gsm8k|qa": "shared_premise_extraction_sol_v1",
+    "table2|gemma3|prewome|cancer_myth|1": "shared_premise_extraction_sol_v1",
+    "table2|gemma3|prewome|cancer_myth|0": "shared_premise_extraction_sol_v1",
+    "table2|gemma3|prewome|crepe|1": "shared_premise_extraction_sol_v1",
+    "table2|gemma3|prewome|crepe|0": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|prewome|medqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|prewome|pubmedqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|prewome|medbullets|qa": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|prewome|mmlu|qa": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|prewome|gsm8k|qa": "shared_premise_extraction_sol_v1",
+    "table2|gemma3|extract_verify|cancer_myth|1": "shared_premise_extraction_sol_v1",
+    "table2|gemma3|extract_verify|cancer_myth|0": "shared_premise_extraction_sol_v1",
+    "table2|gemma3|extract_verify|crepe|1": "shared_premise_extraction_sol_v1",
+    "table2|gemma3|extract_verify|crepe|0": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|extract_verify|medqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|extract_verify|pubmedqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|extract_verify|medbullets|qa": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|extract_verify|mmlu|qa": "shared_premise_extraction_sol_v1",
+    "table3|gemma3|extract_verify|gsm8k|qa": "shared_premise_extraction_sol_v1",
+    "table2|luna6|prewome|cancer_myth|1": "shared_premise_extraction_sol_v1",
+    "table2|luna6|prewome|cancer_myth|0": "shared_premise_extraction_sol_v1",
+    "table2|luna6|prewome|crepe|1": "shared_premise_extraction_sol_v1",
+    "table2|luna6|prewome|crepe|0": "shared_premise_extraction_sol_v1",
+    "table3|luna6|prewome|medqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|luna6|prewome|pubmedqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|luna6|prewome|medbullets|qa": "shared_premise_extraction_sol_v1",
+    "table3|luna6|prewome|mmlu|qa": "shared_premise_extraction_sol_v1",
+    "table3|luna6|prewome|gsm8k|qa": "shared_premise_extraction_sol_v1",
+    "table2|luna6|extract_verify|cancer_myth|1": "shared_premise_extraction_sol_v1",
+    "table2|luna6|extract_verify|cancer_myth|0": "shared_premise_extraction_sol_v1",
+    "table2|luna6|extract_verify|crepe|1": "shared_premise_extraction_sol_v1",
+    "table2|luna6|extract_verify|crepe|0": "shared_premise_extraction_sol_v1",
+    "table3|luna6|extract_verify|medqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|luna6|extract_verify|pubmedqa|qa": "shared_premise_extraction_sol_v1",
+    "table3|luna6|extract_verify|medbullets|qa": "shared_premise_extraction_sol_v1",
+    "table3|luna6|extract_verify|mmlu|qa": "shared_premise_extraction_sol_v1",
+    "table3|luna6|extract_verify|gsm8k|qa": "shared_premise_extraction_sol_v1"
   }
 }
