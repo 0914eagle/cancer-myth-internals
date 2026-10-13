@@ -5,7 +5,8 @@ from types import SimpleNamespace
 import pytest
 
 
-def test_gepa_response_adapter_pair_budget(tmp_path,monkeypatch):
+@pytest.mark.parametrize('workers', [1, 4])
+def test_gepa_response_adapter_pair_budget(tmp_path,monkeypatch,workers):
     pytest.importorskip('gepa.optimize_anything')
     from scripts.run_paper_baselines import Worker
     class Tokenizer:
@@ -14,6 +15,8 @@ def test_gepa_response_adapter_pair_budget(tmp_path,monkeypatch):
         def encode(self,v,**kw):return v.split()
     monkeypatch.setitem(sys.modules,'transformers',SimpleNamespace(AutoTokenizer=Tokenizer))
     w=object.__new__(Worker)
+    w.gepa_evaluation_workers=workers
+    w.gepa_pair_workers=2 if workers>1 else 1
     w.config={'cache_root':str(tmp_path),'gepa':{'metric_budget':24,'seed':42,'dev_per_class_max':2,
                 'tokenizer_revision':'test','prompt_tokenizer':'fake','prompt_token_limit':512}}
     w.out=tmp_path;w.identity={'test':True};w.reg={'prompts':{'plain':'seed','cot_detector':'seed'}}

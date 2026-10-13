@@ -50,6 +50,8 @@ class Worker:
             code_sha256={f:sha(ROOT/f) for f in ('src/paper_baselines.py','scripts/run_paper_baselines.py',
                                               'scripts/paper_well_bridge.py','src/fpqa_cli_backend.py','src/fpqa_well_pipelines.py','src/fpqa_prompting.py')},
             versions={k:importlib.metadata.version(k) for k in ('torch','transformers','scikit-learn','accelerate')})
+        from scripts.paper_gepa_resume import preserve_cache_identity
+        self.identity=preserve_cache_identity(self.out,self.identity,'base')
         write_json(self.out/'identity.json',self.identity,immutable=True)
         self.status={}
 
@@ -116,6 +118,9 @@ class Worker:
         return lambda q:gate_predict(artifact,q,self.feature)
 
     def optimize(self,split,method):
+        from concurrent.futures import ThreadPoolExecutor
+        from contextlib import nullcontext
+        from scripts.paper_gepa_parallel import evaluate_pair,check_stop
         from gepa.optimize_anything import GEPAConfig,EngineConfig,ReflectionConfig,optimize_anything
         from transformers import AutoTokenizer
         cfg=self.config['gepa']; directory=self.out/'gepa'/split['dataset']/split['name']/method
@@ -145,18 +150,18 @@ class Worker:
         train=pairs(split['train']); dev=pairs(split['dev'],cfg['dev_per_class_max'])
         # One metric call = one FPQ + one normal; budget expressed below in question units.
         if cfg['metric_budget']%2: raise ValueError('Paired GEPA needs an even question budget')
+        # Only batching-aware workers opt into concurrent GPU/CLI submission.
+        evaluation_workers=getattr(self,'gepa_evaluation_workers',1)
+        pair_workers=getattr(self,'gepa_pair_workers',1)
+        if evaluation_workers<1 or pair_workers not in (1,2):
+            raise ValueError('Invalid GEPA evaluation concurrency')
+        row_pool=None
         def evaluate(candidate,example):
+            check_stop(self)
             if set(candidate)!=set(seed_candidate): raise ValueError('Candidate components changed')
             if any(len(tok.encode(v,add_special_tokens=False))>cfg['prompt_token_limit'] for v in candidate.values()):
                 return 0.,{'error':'Candidate exceeds fixed component token limit; rejected','valid':False}
-            feedback=[]
-            for row in example['pair']:
-                record=self.pipeline.run(method,row['question'],split['dataset'],candidate=candidate)
-                rating,reason=self.judge(row,record['answer'])
-                feedback.append({'id':row['id'],'label':row['label'],'question':row['question'],
-                                 'answer':record['answer'],'rating':rating,'reason':reason,
-                                 'detector_raw':record.get('detector_raw')})
-            return sum(r['rating']/5 for r in feedback)/2,{'examples':feedback}
+            return evaluate_pair(self,method,split['dataset'],candidate,example['pair'],row_pool)
         seed_candidate=candidate.copy()
         directory.mkdir(parents=True,exist_ok=True)
         write_json(directory/'plan.json',{'method':method,'train_ids':split['train'],'dev_ids':[r['id'] for p in dev for r in p['pair']],
@@ -170,12 +175,23 @@ class Worker:
                 messages=[{'role':'system','content':'Improve the prompt following the supplied optimization conversation.'},
                           {'role':'user','content':json.dumps(messages,ensure_ascii=False)}]
             return self.external_call('reflection',messages)
-        result=optimize_anything(seed_candidate=candidate,evaluator=evaluate,dataset=train,valset=dev,
-            objective='Maximize balanced FPQ correction and normal-question preservation. Only questions are available at inference.',
-            background='Optimize only supplied components. Keep Yes/No verdict format when detecting. No tools or retrieval. Each component must fit 512 tokenizer tokens.',
-            config=GEPAConfig(engine=EngineConfig(run_dir=str(directory/'engine'),seed=cfg['seed'],
-                max_metric_calls=cfg['metric_budget']//2,parallel=False,max_workers=1,cache_evaluation=True),
-                reflection=ReflectionConfig(reflection_lm=reflect,reflection_minibatch_size=2)))
+        write_json(directory/'execution_policies'/(str(time.time_ns())+'.json'),{
+            'evaluation_workers':evaluation_workers,'pair_workers':pair_workers,
+            'row_workers':evaluation_workers*pair_workers if pair_workers==2 else 0,
+            'helper_sha256':sha(ROOT/'scripts/paper_gepa_parallel.py'),
+            'reflection_minibatch_pairs':2,'budget_questions':cfg['metric_budget'],
+            'feedback_order':'FPQ then NFP; independent of completion order',
+            'scope':'Scheduling only; generation can still vary with batching'})
+        pool_context=(ThreadPoolExecutor(max_workers=evaluation_workers*pair_workers,
+                          thread_name_prefix='gepa-row') if pair_workers==2 else nullcontext(None))
+        with pool_context as row_pool:
+            result=optimize_anything(seed_candidate=candidate,evaluator=evaluate,dataset=train,valset=dev,
+                objective='Maximize balanced FPQ correction and normal-question preservation. Only questions are available at inference.',
+                background='Optimize only supplied components. Keep Yes/No verdict format when detecting. No tools or retrieval. Each component must fit 512 tokenizer tokens.',
+                config=GEPAConfig(engine=EngineConfig(run_dir=str(directory/'engine'),seed=cfg['seed'],
+                    max_metric_calls=cfg['metric_budget']//2,parallel=evaluation_workers>1,
+                    max_workers=evaluation_workers,cache_evaluation=True),
+                    reflection=ReflectionConfig(reflection_lm=reflect,reflection_minibatch_size=2)))
         candidate=result.best_candidate
         if any(len(tok.encode(v,add_special_tokens=False))>cfg['prompt_token_limit'] for v in candidate.values()):
             raise ValueError('Selected candidate violates length limit')

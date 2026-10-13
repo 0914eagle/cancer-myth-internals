@@ -15,9 +15,13 @@ from src.paper_baselines import digest,write_json,sha
 class V4Worker(Worker):
     def __init__(self,args):
         super().__init__(args)
+        self.gepa_evaluation_workers=self.config['gepa'].get('evaluation_workers',4)
+        self.gepa_pair_workers=self.config['gepa'].get('pair_workers',2)
         if args.model=='luna6':self.methods=[m for m in self.methods if m!='probe_gate']
-        adapter={f:sha(ROOT/'scripts'/f) for f in ('run_paper_baselines_v4.py','paper_v4_pipeline.py','paper_batch_inference.py','paper_shared_extraction.py','paper_cli_pool.py')}
+        adapter={f:sha(ROOT/'scripts'/f) for f in ('run_paper_baselines_v4.py','paper_v4_pipeline.py','paper_batch_inference.py','paper_shared_extraction.py','paper_cli_pool.py','paper_gepa_parallel.py')}
         self.identity={**self.identity,'v4_adapter_sha256':adapter}
+        from scripts.paper_gepa_resume import preserve_cache_identity
+        self.identity=preserve_cache_identity(self.out,self.identity,'adapter')
         write_json(self.out/'execution_policies'/(digest(adapter)+'.json'),adapter,immutable=True)
         self.cli=PooledCLI(self.external['task_model'],args.out,self.out/'STOP') if args.model=='luna6' else None
 
@@ -31,16 +35,22 @@ class V4Worker(Worker):
         with (base/(key+'.lock')).open('a') as lock:
             fcntl.flock(lock,fcntl.LOCK_EX)
             if path.exists():return json.loads(path.read_text())['text']
+            from scripts.paper_gepa_parallel import write_quota_status
+            waited=False
             while True:
                 try:text,meta=PooledCLI(cfg,self.args.out,self.out/'STOP')(messages)
                 except (RuntimeError,ValueError) as error:
                     if not quota_error(error):raise
-                    write_json(self.out/'optimization_quota.json',{'state':'waiting_quota','next_retry_epoch':time.time()+INTERVAL})
+                    waited=True
+                    write_quota_status(self,key,{'state':'waiting_quota','role':role,
+                        'updated_epoch':time.time(),'next_retry_epoch':time.time()+INTERVAL})
                     for _ in range(INTERVAL):
                         if (self.out/'STOP').exists():raise RuntimeError('STOP requested')
                         time.sleep(1)
                     continue
                 write_json(path,{'config':cfg,'messages':messages,'text':text,'metadata':meta},immutable=True)
+                if waited:
+                    write_quota_status(self,key,{'state':'recovered','role':role,'updated_epoch':time.time()})
                 return text
 
     def optimize(self,split,method):
