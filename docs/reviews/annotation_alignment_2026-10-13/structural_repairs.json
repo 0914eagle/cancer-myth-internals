@@ -1,0 +1,20 @@
+[
+  {
+    "source_file": "batch_04_raw_0.json",
+    "ids": [
+      "fpq_238",
+      "fpq_239",
+      "fpq_240",
+      "fpq_241",
+      "fpq_245"
+    ],
+    "change": "reason text emitted under note_relation; moved verbatim to reason; FPQ note_relation set to not_applicable. First attempt retained; no semantic label edits."
+  },
+  {
+    "source_file": "batch_16_raw_0.json",
+    "ids": [
+      "fpq_802"
+    ],
+    "change": "reason text emitted under note_relation; moved verbatim to reason; FPQ note_relation set to not_applicable. First attempt retained; no semantic label edits."
+  }
+]

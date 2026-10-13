@@ -1,0 +1,31 @@
+{
+  "n_rows": 732,
+  "fpq": 583,
+  "nfp": 149,
+  "source_changes": 0,
+  "fpq_premise_relation": {
+    "metadata_only": 1,
+    "related_not_equivalent": 420,
+    "aligned": 87,
+    "different_claim": 74,
+    "unclear": 1
+  },
+  "fpq_reference_relation": {
+    "aligned": 289,
+    "adds_unstated_assumption": 292,
+    "unclear": 1,
+    "different_claim": 1
+  },
+  "nfp_source_note_relation": {
+    "aligned_context": 29,
+    "adds_unstated_assumption": 118,
+    "different_claim": 2
+  },
+  "directly_reviewed_examples": 13,
+  "direct_review_of_different_claim_candidates": {
+    "target_difference": 33,
+    "not_entailed": 26,
+    "borderline": 15
+  },
+  "interpretation": "Automated semantic alignment categories, not confirmed annotation-error counts, clinical validation, or relabeling. Source verification uses cached upstream snapshot, not a fresh remote download."
+}

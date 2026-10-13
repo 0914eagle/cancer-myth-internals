@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "rows": 732,
+  "unique_ids": 732,
+  "validated_batches": 23,
+  "raw_request_attempts": 25,
+  "format_repair_rows": 6,
+  "note": "Runner initially counted batch 4 as failed due to a misplaced JSON key; its first response contained all 32 judgments and was structurally recovered. Consolidated semantic_audit.json and document tables include all 732 records. No semantic labels were changed by format repair. Primary review is a separate field.",
+  "artifact_sha256": {
+    "direct_review.json": "2e0167b904fc1d5fbb096df57b6c148216526fd57b49a9f17bbdd82db94e1cde",
+    "item_audit.json": "408f4932d6334d176b9047cfd4974b5038a0bbfbff80b45dedb0ab5fca7115ac",
+    "README.md": "0efef14f47d2e676e392bd427284a402c47f9e7a032d4908c261a6b5e081f4e0",
+    "protocol.json": "6c3c4285aa814f04e87795cffad92ede22750a02fac6d872d8ed48d2f5a5beec",
+    "item_audit.csv": "ca65b0147116ce5921f78817078474cdebdc291d47688d683d3b8ae56b8f265a",
+    "structural_repairs.json": "9238af122508b9230041b35a87ddefc7b59d7a57555cf56387739c9c0a15295b",
+    "different_claim_candidate_review.json": "31e0ebb334d6cb3eb1b4d1f3578f57477a4fe0c60d6826aa163907125d250972",
+    "source_comparison.json": "2729fb09f880983aea0ebaf8d5bbae63f154966a41e59e6743ad20af45fa2dd6",
+    "summary.json": "430560ef7881b8445542c2b654ca894fa25678719592585c48f710af0390f0f2"
+  }
+}

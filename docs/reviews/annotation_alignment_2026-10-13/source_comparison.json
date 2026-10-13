@@ -1,0 +1,3706 @@
+{
+  "local_count": 732,
+  "local_labels": {
+    "fpq": 583,
+    "nfp": 149
+  },
+  "hf_source_rows": 585,
+  "nfp_source_rows": 150,
+  "hf_arrow": "/data1/heejae/hf_cache/datasets/Cancer-Myth___cancer-myth/default/0.0.0/2542429b78f2105e56971ca87b105dc1af66633d/cancer-myth-validation.arrow",
+  "hf_arrow_sha256": "48563ba2ca2419dbd602e63cf0e1776c68acb1c7ea2b0d2ee7ef8a0b336803ed",
+  "nfp_source_sha256": "c5c8020258696f2955c11a7ae2fa3a531e60d00bf85e771287fb556dcb938cf6",
+  "changed_rows": 0,
+  "items": [
+    {
+      "id": "fpq_0",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_10",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_100",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_101",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_102",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_103",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_105",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_106",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_107",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_108",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_109",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_11",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_110",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_111",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_112",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_113",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_114",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_115",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_116",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_12",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_120",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_121",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_122",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_123",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_124",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_125",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_126",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_127",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_128",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_129",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_13",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_130",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_131",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_133",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_134",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_135",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_136",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_137",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_138",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_139",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_14",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_140",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_141",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_142",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_143",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_144",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_145",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_146",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_147",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_148",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_149",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_15",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_152",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_153",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_155",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_156",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_157",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_158",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_159",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_16",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_160",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_163",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_164",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_165",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_166",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_167",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_168",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_169",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_17",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_170",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_173",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_174",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_175",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_176",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_177",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_178",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_179",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_18",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_180",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_181",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_182",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_184",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_185",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_186",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_188",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_189",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_19",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_190",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_191",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_192",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_193",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_194",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_195",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_196",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_197",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_198",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_2",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_20",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_200",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_201",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_202",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_204",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_205",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_206",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_207",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_208",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_21",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_216",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_217",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_218",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_219",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_22",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_220",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_221",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_222",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_223",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_224",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_225",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_226",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_227",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_228",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_229",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_23",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_230",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_231",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_232",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_233",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_234",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_236",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_237",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_238",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_239",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_24",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_240",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_241",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_244",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_245",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_246",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_247",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_248",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_249",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_25",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_250",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_251",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_252",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_253",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_254",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_255",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_256",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_257",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_258",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_259",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_26",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_260",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_261",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_262",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_263",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_264",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_265",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_266",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_267",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_268",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_269",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_27",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_270",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_271",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_272",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_273",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_274",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_275",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_276",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_277",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_278",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_279",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_28",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_283",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_285",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_286",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_287",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_288",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_289",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_29",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_290",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_291",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_292",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_293",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_294",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_295",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_296",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_297",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_3",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_30",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_302",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_303",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_304",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_305",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_306",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_307",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_308",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_309",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_31",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_311",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_312",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_313",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_314",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_315",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_316",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_317",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_318",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_319",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_32",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_320",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_321",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_325",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_326",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_327",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_33",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_336",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_34",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_342",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_343",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_344",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_348",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_35",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_350",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_353",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_354",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_357",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_358",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_359",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_36",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_361",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_362",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_366",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_368",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_37",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_376",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_378",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_379",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_38",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_380",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_383",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_385",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_386",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_387",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_388",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_389",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_39",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_390",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_391",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_392",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_394",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_395",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_396",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_397",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_398",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_399",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_4",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_40",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_400",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_403",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_405",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_407",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_408",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_41",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_415",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_416",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_417",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_42",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_420",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_421",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_422",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_423",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_425",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_426",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_428",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_429",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_43",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_434",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_436",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_438",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_439",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_44",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_443",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_445",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_446",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_45",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_459",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_46",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_460",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_462",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_467",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_47",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_472",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_473",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_474",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_477",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_479",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_48",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_484",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_485",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_487",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_488",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_49",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_492",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_493",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_494",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_495",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_497",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_499",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_5",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_50",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_500",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_501",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_502",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_505",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_506",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_507",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_51",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_512",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_514",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_516",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_517",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_52",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_521",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_522",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_524",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_525",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_53",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_530",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_531",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_534",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_535",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_54",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_542",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_543",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_546",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_547",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_549",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_55",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_550",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_552",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_556",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_557",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_558",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_559",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_56",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_560",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_563",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_564",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_565",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_566",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_57",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_570",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_572",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_574",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_58",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_580",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_583",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_584",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_586",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_59",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_593",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_595",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_596",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_598",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_6",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_60",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_600",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_601",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_603",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_604",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_606",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_607",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_608",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_609",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_61",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_610",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_611",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_612",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_613",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_614",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_615",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_616",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_617",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_618",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_619",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_62",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_620",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_621",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_622",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_623",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_624",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_625",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_626",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_628",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_629",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_63",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_630",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_631",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_632",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_633",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_634",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_635",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_636",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_638",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_639",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_64",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_640",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_641",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_643",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_644",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_645",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_646",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_647",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_649",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_65",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_650",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_652",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_653",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_654",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_655",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_657",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_659",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_66",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_661",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_662",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_663",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_666",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_669",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_67",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_671",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_675",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_676",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_677",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_678",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_68",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_682",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_685",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_687",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_689",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_69",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_690",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_691",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_692",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_694",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_695",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_696",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_697",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_699",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_7",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_70",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_702",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_703",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_704",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_705",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_706",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_71",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_712",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_713",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_72",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_721",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_722",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_723",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_724",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_725",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_726",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_727",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_728",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_729",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_73",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_730",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_735",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_736",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_738",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_739",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_74",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_740",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_741",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_743",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_744",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_745",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_746",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_747",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_749",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_75",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_750",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_751",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_753",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_754",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_755",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_76",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_761",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_762",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_763",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_764",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_77",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_771",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_772",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_773",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_774",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_775",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_776",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_777",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_778",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_78",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_780",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_781",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_789",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_794",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_797",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_798",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_799",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_8",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_80",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_801",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_802",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_804",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_805",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_806",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_807",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_808",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_81",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_813",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_814",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_817",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_818",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_82",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_820",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_823",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_824",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_827",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_828",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_829",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_830",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_831",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_832",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_833",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_834",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_835",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_836",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_837",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_838",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_839",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_84",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_840",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_844",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_846",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_847",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_848",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_849",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_85",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_850",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_851",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_852",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_854",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_855",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_858",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_859",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_860",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_861",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_862",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_863",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_864",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_865",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_866",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_869",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_87",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_870",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_871",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_872",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_88",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_89",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_9",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_90",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_91",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_92",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_94",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_95",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_96",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_97",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_98",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "fpq_99",
+      "source": "HF Cancer-Myth validation",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1000",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1001",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1002",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1003",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1004",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1005",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1006",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1008",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1009",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1010",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1011",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1012",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1013",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1014",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1015",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1016",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1017",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1018",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1019",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1020",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1021",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1022",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1023",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1024",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1025",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1026",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1027",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1028",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1029",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1030",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1031",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1032",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1033",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1034",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1035",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1036",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1037",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1038",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1039",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1040",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1041",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1042",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1043",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1044",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1045",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1046",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1047",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1048",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1049",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1050",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1051",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1052",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1053",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1054",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1055",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1056",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1057",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1058",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1059",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1060",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1061",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1062",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1063",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1064",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1065",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1066",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1067",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1068",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1069",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1070",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1071",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1072",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1073",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1074",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1075",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1076",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1077",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1078",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1079",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1080",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1081",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1082",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1083",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1084",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1085",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1086",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1087",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1088",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1089",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1090",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1091",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1092",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1093",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1094",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1095",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1096",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1097",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1098",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1099",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1100",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1101",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1102",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1103",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1104",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1105",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1106",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1107",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1108",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1109",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1110",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1111",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1112",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1113",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1114",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1115",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1116",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1117",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1118",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1119",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1120",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1121",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1122",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1123",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1124",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1125",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1126",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1127",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1128",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1129",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1130",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1131",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1132",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1133",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1134",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1135",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1136",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1137",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1138",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1139",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1140",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1141",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1142",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1143",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1144",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1145",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1146",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1147",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1148",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    },
+    {
+      "id": "nfp_1149",
+      "source": "Well vendored CancerMythNFP/nfp.json",
+      "differences": {}
+    }
+  ],
+  "nfp_original_github_path": "/data1/heejae/cancer_myth_internals/external/cancer-myth/data/nfp.json",
+  "nfp_original_matches_well_copy": true,
+  "nfp_original_sha256": "c5c8020258696f2955c11a7ae2fa3a531e60d00bf85e771287fb556dcb938cf6",
+  "excluded_source_rows": [
+    {
+      "id": "fpq_1",
+      "reason": "judge example question"
+    },
+    {
+      "id": "fpq_419",
+      "reason": "identical text also labeled NFP (nfp_1007)"
+    },
+    {
+      "id": "nfp_1007",
+      "reason": "identical text also labeled FPQ (fpq_419)"
+    }
+  ],
+  "current_bundle_comparison": {
+    "rows": 724,
+    "differences": [],
+    "additional_excluded_ids": [
+      "fpq_289",
+      "fpq_290",
+      "fpq_291",
+      "fpq_415",
+      "fpq_416",
+      "fpq_417",
+      "nfp_1002",
+      "nfp_1003"
+    ]
+  }
+}

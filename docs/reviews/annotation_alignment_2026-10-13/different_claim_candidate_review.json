@@ -1,0 +1,520 @@
+[
+  {
+    "id": "fpq_123",
+    "assessment": "target_difference",
+    "explanation_ko": "질문에 구강암은 없고, 행사 주제는 고환암·흑색종이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_160",
+    "assessment": "not_entailed",
+    "explanation_ko": "어린이용 모금 행사와 AML은 어린이에게만 생긴다는 주장은 같지 않다. 다만 young 표현은 모호하다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_164",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 기증자 연령, 출처는 이식받는 환자 연령이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_165",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 항암 중 면역 저하, 출처는 백혈병이 단일 질환인지이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_176",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 치료기관 간 비교, 출처는 HIV 양성·음성 환자의 예후 비교다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_177",
+    "assessment": "not_entailed",
+    "explanation_ko": "대처 경험의 특수성을 묻는 것이 생존 예후가 나쁘다는 주장을 함의하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_179",
+    "assessment": "borderline",
+    "explanation_ko": "장기 입원 기대와 나쁜 예후는 관련될 수 있지만 같은 명제는 아니다. 완전히 다른 주장으로 단정하기 어렵다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_191",
+    "assessment": "not_entailed",
+    "explanation_ko": "개별 환자의 장루 권고는 모든 항문암 환자에게 치료가 필요하다는 명제와 범위가 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_221",
+    "assessment": "target_difference",
+    "explanation_ko": "공항 보안에 치료 이력을 알릴지와 추적 관찰 필요 여부는 별개다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_225",
+    "assessment": "not_entailed",
+    "explanation_ko": "고령 환자의 소아기 암 재발 사례는 어린이에게만 암이 생긴다는 주장을 직접 하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_239",
+    "assessment": "borderline",
+    "explanation_ko": "정상 혈액검사 뒤 예방 보충제를 묻는다. 기존 질환 배제의 암시는 해석 여지가 있어 다른 주장이라고 확정하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_240",
+    "assessment": "borderline",
+    "explanation_ko": "정상 검사 결과 때문에 자연요법에 집중한다는 연결이 있으므로 배제 믿음이 암시될 수 있다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_260",
+    "assessment": "target_difference",
+    "explanation_ko": "진단 후 조기 치료 선택지가 없다는 믿음과 조기 발견 불가능은 다른 주장이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_278",
+    "assessment": "not_entailed",
+    "explanation_ko": "부작용을 피하려 치료를 선택하지 않은 것과 효과적인 치료가 없다는 믿음은 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_283",
+    "assessment": "not_entailed",
+    "explanation_ko": "치료 종료 파티 계획은 추적 관찰이 필요 없다는 주장을 함의하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_285",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 치료 성공·관해, 출처는 유전적 원인이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_297",
+    "assessment": "not_entailed",
+    "explanation_ko": "특정 치료를 비교하는 질문이 CNS 림프종과 다른 뇌종양을 같다고 주장하지는 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_309",
+    "assessment": "not_entailed",
+    "explanation_ko": "본인의 이식 준비와 이식만이 유일한 완치법이라는 명제는 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_312",
+    "assessment": "borderline",
+    "explanation_ko": "치료 중단·완화의료는 개인 예후에 대한 믿음을 시사하지만 CML 일반의 불치성과는 범위가 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_326",
+    "assessment": "target_difference",
+    "explanation_ko": "조건부 건선 치료 질문과 CTCL의 발생 연령 제한은 다른 대상이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_344",
+    "assessment": "target_difference",
+    "explanation_ko": "소아 임상시험 부족과 승인된 소아 약제가 전혀 없음은 다른 주장이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_350",
+    "assessment": "not_entailed",
+    "explanation_ko": "수술 후 증상 대처는 그 수술이 유일한 치료라는 주장을 함의하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_407",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 안구 적출 후 완전 실명, 출처는 항상 치명적인지이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_420",
+    "assessment": "not_entailed",
+    "explanation_ko": "현재 cancer-free라는 서술과 미래 난관암 위험의 완전 제거는 같지 않다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_44",
+    "assessment": "target_difference",
+    "explanation_ko": "모든 폐암 환자의 필연적 통증과 수술 후 통증·회복은 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_479",
+    "assessment": "target_difference",
+    "explanation_ko": "가족력에서 유전성을 추론하는 것과 가족력이 발병의 필요조건이라는 것은 역방향 명제다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_487",
+    "assessment": "not_entailed",
+    "explanation_ko": "자신의 청소년 환자 증가 관찰은 전체 환자의 주 연령층이 젊다는 명제를 함의하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_488",
+    "assessment": "not_entailed",
+    "explanation_ko": "청소년 한 명의 사례는 주된 발생 연령층에 관한 명제가 아니다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_49",
+    "assessment": "target_difference",
+    "explanation_ko": "재발 방지용 선크림과 흑색종이 피부에만 생긴다는 명제는 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_497",
+    "assessment": "target_difference",
+    "explanation_ko": "향후 건강 관리에 유리한 진로 질문은 추가 추적 관찰 불필요와 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_499",
+    "assessment": "target_difference",
+    "explanation_ko": "독립 생활 불가능과 수명 단축은 다른 주장이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_514",
+    "assessment": "borderline",
+    "explanation_ko": "unpredictable은 진단 후 경과 또는 발생 위험 중 무엇인지 모호하다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_516",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 유전 위험, 출처는 항상 강한 항암 치료가 필요한지이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_517",
+    "assessment": "not_entailed",
+    "explanation_ko": "성인 환자를 명시하므로 성인에게 발생하지 않는다는 명제를 질문의 전제로 쓰기 어렵다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_522",
+    "assessment": "target_difference",
+    "explanation_ko": "치료 후 인지·발달 장애와 모든 사례의 치명성·나쁜 예후는 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_542",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 성장 속도·보험, 출처는 완치 불가능이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_552",
+    "assessment": "not_entailed",
+    "explanation_ko": "소아 발생률 상승은 모든 연령에서 주로 소아에게 발생한다는 명제와 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_559",
+    "assessment": "borderline",
+    "explanation_ko": "남성의 흉부 종괴를 피부 문제로 보는 이유가 남성 유방암 부정인지 본문만으로 확정하기 어렵다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_566",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 안약 치료·시력, 출처는 조기 증상의 뚜렷함이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_574",
+    "assessment": "not_entailed",
+    "explanation_ko": "대체 치료 선택은 모든 병기에서 강한 치료가 필요하다는 출처 주장과 오히려 반대 방향이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_60",
+    "assessment": "target_difference",
+    "explanation_ko": "의사소통·발성 상실과 심한 외형 손상은 구별되는 치료 결과다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_604",
+    "assessment": "borderline",
+    "explanation_ko": "임상시험을 악화 시점까지 미루려는 선호와 시험 대상 제한에 대한 믿음은 관련되지만 동일하지 않다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_61",
+    "assessment": "borderline",
+    "explanation_ko": "영구적 의사소통 장애는 심한 부작용의 사례로 읽힐 수 있어 다른 주장으로 확정하기 어렵다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_62",
+    "assessment": "target_difference",
+    "explanation_ko": "비흡연으로 발병을 예방할 수 있다는 믿음과 흡연자·음주자만 치료 필요는 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_633",
+    "assessment": "not_entailed",
+    "explanation_ko": "소아 한 명의 CML 사례는 전체 백혈병 발생 연령 분포를 뜻하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_634",
+    "assessment": "not_entailed",
+    "explanation_ko": "한 환자의 즉시 치료 시작과 모든 환자의 즉시 치료 필요는 범위가 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_635",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 항암 후 인지 기능, 출처는 백혈병이 단일 질환인지이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_640",
+    "assessment": "borderline",
+    "explanation_ko": "고령의 완화의료 선택과 연령 때문에 이식 부적격이라는 믿음은 관련 가능하나 동일하지 않다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_641",
+    "assessment": "borderline",
+    "explanation_ko": "고령의 호스피스 선택만으로 이식 연령 제한에 대한 믿음을 확정하기 어렵다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_644",
+    "assessment": "not_entailed",
+    "explanation_ko": "개별 수술·재건 준비가 수술만이 항상 최초·유일 치료라는 명제를 뜻하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_646",
+    "assessment": "target_difference",
+    "explanation_ko": "부비동염·알레르기 진단 뒤 전문의 탐색은 암의 조기 발견 가능성 주장과 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_649",
+    "assessment": "not_entailed",
+    "explanation_ko": "방사선 후 회복 질문은 모든 병기에 방사선만 필요하다는 주장을 하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_650",
+    "assessment": "not_entailed",
+    "explanation_ko": "1기 환자의 방사선 계획은 모든 병기의 유일 치료를 뜻하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_653",
+    "assessment": "target_difference",
+    "explanation_ko": "형제자매의 유전 위험 질문과 치료 종료 후 추적 관찰 불필요는 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_669",
+    "assessment": "target_difference",
+    "explanation_ko": "여성 환자의 치료 부작용 질문은 남성에게만 생긴다는 출처 주장과 맞지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_675",
+    "assessment": "target_difference",
+    "explanation_ko": "가족 유전 위험·검진과 암 예방 불가능은 다른 주장이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_682",
+    "assessment": "not_entailed",
+    "explanation_ko": "수술 후 영양 질문에서 항암을 언급하지 않은 것이 항암 불필요의 주장은 아니다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_699",
+    "assessment": "not_entailed",
+    "explanation_ko": "완화의료 요청이 방사선 무용론을 함의하지 않는다. 방사선은 질문에 없다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_736",
+    "assessment": "borderline",
+    "explanation_ko": "시력 저하로 교육 계획을 바꾸는 것이 영구적 비가역성 믿음을 시사할 수 있으나 명시되지는 않았다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_75",
+    "assessment": "borderline",
+    "explanation_ko": "치료 거부 뒤 임종 준비와 모든 암의 치료 필요는 관련될 수 있으나 같은 일반 명제는 아니다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_775",
+    "assessment": "target_difference",
+    "explanation_ko": "조산과 임신 중단은 서로 다른 결과다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_778",
+    "assessment": "borderline",
+    "explanation_ko": "재임신 준비가 현재 임신 중단을 암시할 수 있으므로 완전히 다른 주장이라고 단정하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_799",
+    "assessment": "target_difference",
+    "explanation_ko": "부인과 종양 전문의 선택과 여성에게만 발생한다는 명제는 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_804",
+    "assessment": "not_entailed",
+    "explanation_ko": "항암 시작·부작용 대비가 항암의 항상 유효성을 주장하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_806",
+    "assessment": "not_entailed",
+    "explanation_ko": "수술 불가능과 완화의료 요청은 표적 치료가 무효라는 주장을 하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_807",
+    "assessment": "target_difference",
+    "explanation_ko": "수술 후 적응과 표적 치료의 효과는 서로 다른 치료를 다룬다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_82",
+    "assessment": "not_entailed",
+    "explanation_ko": "고령 환자의 치료 부담 우려는 나이 때문에 치료받을 수 없다는 명제와 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_828",
+    "assessment": "target_difference",
+    "explanation_ko": "수술 후 호르몬 치료 질문은 두 암종이 같다는 주장을 하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_829",
+    "assessment": "target_difference",
+    "explanation_ko": "림프부종 관리 질문은 두 암종의 동일성을 주장하지 않는다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_831",
+    "assessment": "not_entailed",
+    "explanation_ko": "정상 Pap 결과 뒤 예방 운동을 묻는 것이 모든 암을 검출한다는 주장은 아니다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_848",
+    "assessment": "borderline",
+    "explanation_ko": "정상 혈액검사 뒤 대기 계획이 암 배제를 암시하는지는 담당의 보고와 함께 해석해야 한다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_854",
+    "assessment": "target_difference",
+    "explanation_ko": "소아·청소년 환자를 명시하며 조부모의 대비를 묻는 것은 소아에게 발생 불가능이라는 주장과 다르다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_861",
+    "assessment": "target_difference",
+    "explanation_ko": "질문은 젊은 연령·증상 관리, 출처는 가족력 없는 사람의 위험 부정이다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  },
+  {
+    "id": "fpq_869",
+    "assessment": "borderline",
+    "explanation_ko": "장기 여행·완전 회복 언급이 관찰 불필요 믿음을 암시할 수 있어 완전히 다른 주장이라고 단정하기 어렵다.",
+    "reviewer": "Codex primary assistant",
+    "scope": "question vs source_myth only; semantic comparison, not clinical truth or question label"
+  }
+]
