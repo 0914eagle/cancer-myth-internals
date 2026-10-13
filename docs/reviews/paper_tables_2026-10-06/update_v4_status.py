@@ -1,5 +1,5 @@
 """Put auditable Korean progress labels directly in the existing three table layouts."""
-import collections,csv,datetime,hashlib,html,json
+import collections,csv,datetime,hashlib,html,json,re
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 BASE=Path(__file__).resolve().parent;ROOT=BASE.parents[2]
@@ -81,7 +81,7 @@ def capture():
                         if method=='ours':text='후속 실험'
                         elif method=='probe_gate' and model=='luna6':text='해당 없음'
                         elif table=='table1':
-                            text=f"완료\n{100*c['yes']/n:.1f}%" if c['generated']==n else f"판정 중\n{c['generated']}/{n}" if c['generated'] else '판정 필요'
+                            text=f"{100*c['yes']/n:.1f}%" if c['generated']==n else f"판정 중\n{c['generated']}/{n}" if c['generated'] else '판정 필요'
                         elif c['generated']+c['failed']<n:
                             active=progress.get('state')=='running' and progress.get('stage')=='table12' and progress.get('method')==method and progress.get('dataset')==dataset
                             label='생성 중' if active else '추가 생성 필요' if c['generated'] else '생성 필요'
@@ -89,7 +89,7 @@ def capture():
                             text=label+(f"\n{c['generated']}/{n}" if active or c['generated'] else '')
                         elif c['refused']:text=f"미완료·거부 {c['refused']}\n채점 {c['scored']}/{c['generated']}"
                         elif c['scored']+c['failed']<n:text=f"채점만 남음\n{c['scored']}/{c['generated']}"
-                        else:text=f"완료\n{100*c['good']/n:.1f}%"
+                        else:text=f"{100*c['good']/n:.1f}%"
                         snapshot['cells'][key]=text
         for method,_ in METHODS:
             for dataset,n in qa_sizes.items():
@@ -102,8 +102,7 @@ def capture():
                     cs=[count('table3',dataset,method,None,s,f) for s,f in contexts]
                     if all(c['generated']+c['failed']==n for c in cs):
                         values='/'.join(f"{100*c['correct']/n:.1f}%" for c in cs)
-                        fails=sum(c['failed'] for c in cs)
-                        text=('완료' if not fails else f'처리 완료·실패 {fails}')+'\n'+values
+                        text=values
                     elif any(c['generated'] for c in cs):text='추가 생성 필요\n'+str(sum(c['generated'] for c in cs))+'/'+str(n*len(cs))
                     else:text='생성 필요'+('\n(2개 설정)' if not shared else '')
                     snapshot['counts'][key]={'systems':[dict(c) for c in cs],'expected_per_system':n}
@@ -129,7 +128,7 @@ def render(snap,name,methods,groups):
         draw.line((x1,y1,x2,y2),fill=color,width=w);svg.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="{w}"/>')
     def box(x,y,w,h,color):
         draw.rectangle((x,y,x+w,y+h),fill=color);svg.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{color}"/>')
-    titles={'table1':'Table 1. 전제 탐지 — 진행 상태','table2':'Table 2. 최종 답변 — 진행 상태','table3':'Table 3. 일반 QA 보존 — 진행 상태'}
+    titles={'table1':'Table 1. 전제 탐지','table2':'Table 2. 최종 답변','table3':'Table 3. 일반 QA 보존'}
     text(titles[name],left,31,29,True,'lm');text('기준 시각: '+snap['captured_at_kst'][:19].replace('T',' ')+' KST',width-left,64,17,False,'rm')
     box(left,top,width-2*left,head,'#edf2f5');text('방법',left+mw/2,top+head/2,23,True)
     for mi,(model,label) in enumerate(MODELS):
@@ -147,12 +146,12 @@ def render(snap,name,methods,groups):
         for mi,(model,_) in enumerate(MODELS):
             for ci,(dataset,metric,_) in enumerate(columns):
                 x=left+mw+(mi*len(columns)+ci)*cw;value=snap['cells']['|'.join([name,model,method,dataset,metric])]
-                fill='#e7f3e8' if '완료' in value else '#fff3d8' if '채점만' in value else '#e9f2fc' if '생성 중' in value or '판정 중' in value else '#f5f6f7'
+                fill='#e7f3e8' if re.fullmatch(r'\d+\.\d+%(?:/\d+\.\d+%)*',value) else '#fff3d8' if '채점만' in value else '#e9f2fc' if '생성 중' in value or '판정 중' in value else '#f5f6f7'
                 box(x+2,y+2,cw-4,rh-4,fill);text(value,x+cw/2,y+rh/2,17 if len(value.split('\n')[0])>8 else 19)
                 row.append(value.replace('\n',' '))
         csvrows.append(row);line(left,y+rh,width-left,y+rh)
     notes=['Cancer-Myth: 577 FPQ / 147 NFP. CREPE: 공통 test 500 FPQ / 500 NFP.' if name!='table3' else '분모: MedQA 1,273 / PubMedQA 1,000 / Medbullets 308 / MMLU 14,042 / GSM8K 1,319.',
-           'Table 2는 4점 이상 비율. 생성/채점 분자는 완료 문항 수이며 부분 성능을 뜻하지 않습니다.' if name=='table2' else 'Table 1은 정답 라벨로 직접 평가합니다. 별도 LLM 채점이 필요 없습니다.' if name=='table1' else '일반 QA는 정답 비교로 자동 채점. 2개 설정 = Cancer-Myth fold0 / CREPE 학습·예시 버전.',
+           'Table 2는 4점 이상 비율. 생성 실패는 분모에 포함하며 성공으로 세지 않습니다.' if name=='table2' else 'Table 1은 정답 라벨로 직접 평가합니다. 별도 LLM 채점이 필요 없습니다.' if name=='table1' else '일반 QA는 정답 비교로 자동 채점하며 생성 실패도 분모에 포함. 두 값은 Cancer-Myth / CREPE 설정 순서.',
            'TF-IDF는 모델 공통 판정입니다. 해당 없음 = Luna 내부 Probe 미지원.' if name=='table1' else '후속 실험 = Ours는 이번 baseline 실행 범위 밖. 해당 없음 = Luna 내부 Probe 미지원.']
     for i,note in enumerate(notes):text(note,left,top+head+rh*len(methods)+27+i*29,18,False,'lm')
     svg.append('</svg>');(OUT/(name+'.svg')).write_text('\n'.join(svg));im.save(OUT/(name+'.png'))
@@ -166,7 +165,7 @@ if __name__=='__main__':
     render(snap,'table1',DETECT,[(d,l,[(m,'FPQ 탐지 ↑' if m=='1' else 'NFP 오탐 ↓') for m,_ in metrics]) for d,l,metrics in fpqa])
     render(snap,'table2',METHODS,fpqa)
     render(snap,'table3',METHODS,[(d,l,[('qa','정확도 ↑')]) for d,l in [('medqa','MedQA'),('pubmedqa','PubMedQA'),('medbullets','Medbullets'),('mmlu','MMLU'),('gsm8k','GSM8K')]])
-    lines=['# 세 모델 baseline 진행 상태','',f"기준: {snap['captured_at_kst']}",'','빈칸 대신 자연어 상태를 표시했습니다. 완료된 셀만 성능 수치를 표시합니다.','','완료된 셀은 해당 평가 문항의 채점이 모두 끝난 결과입니다.','']
+    lines=['# 세 모델 baseline 진행 상태','',f"기준: {snap['captured_at_kst']}",'','평가가 끝난 칸은 실제 성능(%)만 표시하고, 미완료 칸만 진행 상태를 표시합니다.','','숫자는 전체 평가 분모 기준입니다. 생성 실패는 성공으로 세지 않고 분모에 포함합니다. 채점 출처와 실패 건수는 status_snapshot.json 및 판독 기록에 보존합니다.','']
     for n in (1,2,3):lines += [f'## Table {n}',f'![Table {n}](table{n}.png)',f'[CSV](table{n}.csv) · [SVG](table{n}.svg)','']
     (OUT/'README.md').write_text('\n'.join(lines).rstrip()+'\n')
     print(OUT)
