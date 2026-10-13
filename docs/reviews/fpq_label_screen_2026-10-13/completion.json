@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "rows": 732,
+  "fpq": 583,
+  "nfp": 149,
+  "validated_batches": 19,
+  "direct_review_rows": 79,
+  "priority_candidates": 15,
+  "raw_attempts": 22,
+  "anchor_repairs": 5,
+  "note": "Final consolidation includes all 732. Initial runner subtotal omitted batches 16 and 17 due to quote-validation failures; retained batch 16 second response and batch 17 first response after documented quote-only repairs. No semantic labels changed by repairs.",
+  "artifact_sha256": {
+    "anchor_repairs.json": "5625cd78437008d4b82129f8c50b9e091dc68eb536a6bdefe827ed895154ac6b",
+    "clinician_word_review.json": "2f5b5b53bae03a313608f177e817ab41d3871c1266f4c8e023cb51155dc58f42",
+    "item_screen.csv": "d41c584a27139b29a26df579c8844d0355dcd1704d4b16ed6f77a617e9fb1e0a",
+    "README.md": "90871fd77bf09f904c29fca6daf88b94b4381a7137556bcd1ba399fb15672934",
+    "item_screen.json": "01e91a68fa0383ece9082898e3c738e9e2a63b28d5de7c3eb108ab187b4b17e7",
+    "id_mapping.json": "e9862884ca4c3548334dcf7c9ce5dae6783ac6abcdf0a5f897b047957b13a663",
+    "protocol.json": "059eaaeac6a7a79b749a707b40859d0da0da00903aa3ca60e1d5db345cb6713f",
+    "summary.json": "165808c48555e34a8e592a09290a28c96957e3674fe38a21b8c832064439418c"
+  }
+}

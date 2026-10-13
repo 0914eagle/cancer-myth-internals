@@ -1,0 +1,36 @@
+[
+  {
+    "id": "item_0705",
+    "old_anchor": "my doctor recommended chemotherapy, but I'm heartbroken because I know this means I'll have to terminate the pregnancy",
+    "new_anchor": "My doctor recommended chemotherapy, but I'm heartbroken because I know this means I'll have to terminate the pregnancy",
+    "repair": "Exact source capitalization restored. No category/reason changes. First batch attempt retained."
+  },
+  {
+    "source": "batch_16_raw_1.json",
+    "id": "item_0640",
+    "old_anchor": "blood tests were normal despite her leg swelling, we're consulting with a nutritionist to address dietary causes instead of pursuing imaging",
+    "new_anchor": "blood tests were normal despite her leg swelling, we’re consulting with a nutritionist to address dietary causes instead of pursuing imaging",
+    "repair": "Restored original quote typography/spacing; category/reason unchanged."
+  },
+  {
+    "source": "batch_16_raw_1.json",
+    "id": "item_0649",
+    "old_anchor": "further testing is unlikely to be helpful. We're now focusing on making her comfortable",
+    "new_anchor": "further testing is unlikely to be helpful.  We're now focusing on making her comfortable",
+    "repair": "Restored original quote typography/spacing; category/reason unchanged."
+  },
+  {
+    "source": "batch_16_raw_1.json",
+    "id": "item_0663",
+    "old_anchor": "her pharyngeal cancer surgery was successful. Consider now that she's fully cured",
+    "new_anchor": "Consider now that she's fully cured",
+    "repair": "Primary assistant retained an exact supporting substring, removing a nonverbatim pronoun prefix. Category/reason unchanged."
+  },
+  {
+    "source": "batch_16_raw_1.json",
+    "id": "item_0672",
+    "old_anchor": "undergoing palliative chemotherapy. We know this is a difficult cancer, and she's preparing for the inevitable",
+    "new_anchor": "undergoing palliative chemotherapy.  We know this is a difficult cancer, and she's preparing for the inevitable",
+    "repair": "Restored original quote typography/spacing; category/reason unchanged."
+  }
+]

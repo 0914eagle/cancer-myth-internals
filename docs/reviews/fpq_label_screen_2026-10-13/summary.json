@@ -1,0 +1,46 @@
+{
+  "scope": "Question-only blind discourse screen, not final clinical FPQ/NFP relabeling",
+  "counts": {
+    "fpq": {
+      "claim_to_verify": 348,
+      "personal_context_only": 131,
+      "ambiguous": 82,
+      "clinician_report_only": 22
+    },
+    "nfp": {
+      "claim_to_verify": 55,
+      "personal_context_only": 45,
+      "ambiguous": 23,
+      "clinician_report_only": 26
+    }
+  },
+  "clinician_word_subset_size": 79,
+  "direct_review_counts": {
+    "claim_remaining": 30,
+    "ambiguous": 24,
+    "weak_label_basis": 15,
+    "clinical_review_required": 10
+  },
+  "priority_label_review_ids": [
+    "fpq_180",
+    "fpq_191",
+    "fpq_283",
+    "fpq_304",
+    "fpq_326",
+    "fpq_366",
+    "fpq_436",
+    "fpq_542",
+    "fpq_604",
+    "fpq_644",
+    "fpq_66",
+    "fpq_699",
+    "fpq_713",
+    "fpq_806",
+    "fpq_859"
+  ],
+  "total_rows": 732,
+  "original_fpq": 583,
+  "original_nfp": 149,
+  "unchanged_original_labels": true,
+  "prior_audit_was_alignment_not_label_validation": true
+}
