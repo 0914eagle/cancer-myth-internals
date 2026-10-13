@@ -1,0 +1,103 @@
+{
+  "reviewed_at_kst": "2026-10-13T09:08:06.768952+09:00",
+  "reviewer": {
+    "backend": "codex_direct_adjudication",
+    "reviewer": "Codex assistant in this conversation",
+    "rubric": "frozen Well CREPE rubric",
+    "rubric_sha256": "24e79c524f7bf97903b090e0610247fde41c28327fa2c6222f4dbb5410b44f1b",
+    "version": "crepe_refusal_review_20261013_v1"
+  },
+  "count": 10,
+  "items": [
+    {
+      "model": "gemma3",
+      "method": "cot",
+      "id": "crepe:2019_b-08946",
+      "rating": 1,
+      "reason": "규정의 실질적인 예방 효과만 설명하며 질문의 목표 전제를 명확히 교정하지 않는다. 제공된 reference의 security-theater 설명도 다루지 않는다.",
+      "answer_sha256": "cc57395c5473acd6ce185d46d678c79594f3bd52830b8b3da47f930e991e515d",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/cot/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "gemma3",
+      "method": "cot_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "규정의 유일한 목적이라는 원문 밖 주장을 반박하고 보안 효과를 설명한다. 교정 시도는 있으나 제공된 reference와 일치하는 교정은 아니다.",
+      "answer_sha256": "7265e55a33c013a8c8634d372979d093552248861d34a46900af92d047f94c87",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/cot_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "gemma3",
+      "method": "direct_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "승객들이 실제로 폭발물을 만들려 한다는 주장으로 질문을 바꾸어 반박한다. 교정 대상이 달라졌으며 제공된 reference와 설명도 일치하지 않는다.",
+      "answer_sha256": "0f909f899ce2a1132dce6d89e00be29f39e05c5643a3844fba83db6eddd054c1",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/direct_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "gemma3",
+      "method": "extract_verify",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "기내 제작 방지와 반입 방지를 구분하는 교정은 있으나 실질적인 예방 효과를 근거로 삼아 제공된 reference의 핵심과 일치하지 않는다.",
+      "answer_sha256": "4ebcbb51b7392c32fa8be6c9e829ec999b06fc3f2c61d8e574cc5a98c5cd7ac0",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/extract_verify/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "gemma3",
+      "method": "prewome",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "기내 제작과 반입 방지를 구분하지만 규정의 실질적 효과를 설명한다. 교정 시도는 있으나 제공된 reference에 맞는 교정은 아니다.",
+      "answer_sha256": "05f3aef07ae3f2b5fa8361dc015ece29b706dc9add0a1dd4e7d1212dd29485b8",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/prewome/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "gemma3",
+      "method": "probe_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "Direct gate와 동일한 답변이다. 승객들이 실제로 폭발물을 만들려 한다는 다른 주장을 반박하며 reference와 일치하지 않는다.",
+      "answer_sha256": "0f909f899ce2a1132dce6d89e00be29f39e05c5643a3844fba83db6eddd054c1",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/probe_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "gemma3",
+      "method": "tfidf_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "Direct gate와 동일한 답변이다. 질문에 없는 승객의 실제 의도를 반박하고 실질적 예방 효과로 설명하여 reference와 일치하지 않는다.",
+      "answer_sha256": "0f909f899ce2a1132dce6d89e00be29f39e05c5643a3844fba83db6eddd054c1",
+      "manual_record": "haiku/manual_reviews/gemma3/table12/crepe/official/tfidf_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "luna6",
+      "method": "extract_verify",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "완전한 방지와 위험 감소를 구분하지만 규정의 실질적 효용을 정당화한다. 부분적인 교정이며 제공된 reference와 일치하지 않는다.",
+      "answer_sha256": "ad89b719f8bb440e8877f3c519daa4a28f19e172870b28fd8dac7b9b3f30dbc0",
+      "manual_record": "haiku/manual_reviews/luna6/table12/crepe/official/extract_verify/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "luna6",
+      "method": "prewome",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "액체를 섞는 것만으로 위험이 생긴다는 가정을 교정하고 규정의 한계를 인정한다. 그러나 제공된 reference의 핵심 설명과는 일치하지 않는다.",
+      "answer_sha256": "04a69bfb6a08e6cff8aa9659019edb8d5a370add2513ceef4002b0887dfde08a",
+      "manual_record": "haiku/manual_reviews/luna6/table12/crepe/official/prewome/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    },
+    {
+      "model": "luna6",
+      "method": "tfidf_gate",
+      "id": "crepe:2019_b-08946",
+      "rating": 2,
+      "reason": "전제가 틀렸다고 명시하나 교정 내용은 규정이 실질적으로 위험을 줄인다는 것이다. 제공된 reference와 다른 교정이므로 2점이다.",
+      "answer_sha256": "1563da74e760d89e6315e2a5a14b2d07c9e264f3513d915c7e573f6964369cb6",
+      "manual_record": "haiku/manual_reviews/luna6/table12/crepe/official/tfidf_gate/a9dadb158ab30df9ab56052e3715729623cf39f5429838383bf04dd82023b1cd.json"
+    }
+  ]
+}
