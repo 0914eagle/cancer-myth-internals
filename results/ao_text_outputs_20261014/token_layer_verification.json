@@ -1,0 +1,724 @@
+{
+  "verified_questions": 100,
+  "positions": [
+    {
+      "row_id": "fpq_46",
+      "question_end_token": 99,
+      "final_input_token": 104,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_237",
+      "question_end_token": 117,
+      "final_input_token": 122,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_706",
+      "question_end_token": 100,
+      "final_input_token": 105,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_128",
+      "question_end_token": 146,
+      "final_input_token": 151,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_659",
+      "question_end_token": 104,
+      "final_input_token": 109,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_525",
+      "question_end_token": 106,
+      "final_input_token": 111,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_174",
+      "question_end_token": 127,
+      "final_input_token": 132,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_153",
+      "question_end_token": 132,
+      "final_input_token": 137,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_113",
+      "question_end_token": 113,
+      "final_input_token": 118,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_64",
+      "question_end_token": 113,
+      "final_input_token": 118,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_4",
+      "question_end_token": 108,
+      "final_input_token": 113,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_775",
+      "question_end_token": 148,
+      "final_input_token": 153,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_75",
+      "question_end_token": 109,
+      "final_input_token": 114,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_319",
+      "question_end_token": 144,
+      "final_input_token": 149,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_780",
+      "question_end_token": 111,
+      "final_input_token": 116,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_872",
+      "question_end_token": 103,
+      "final_input_token": 108,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_723",
+      "question_end_token": 125,
+      "final_input_token": 130,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_353",
+      "question_end_token": 120,
+      "final_input_token": 125,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_859",
+      "question_end_token": 119,
+      "final_input_token": 124,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_106",
+      "question_end_token": 113,
+      "final_input_token": 118,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_837",
+      "question_end_token": 99,
+      "final_input_token": 104,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_727",
+      "question_end_token": 123,
+      "final_input_token": 128,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_629",
+      "question_end_token": 126,
+      "final_input_token": 131,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_91",
+      "question_end_token": 106,
+      "final_input_token": 111,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "fpq_44",
+      "question_end_token": 103,
+      "final_input_token": 108,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1083",
+      "question_end_token": 145,
+      "final_input_token": 150,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1084",
+      "question_end_token": 159,
+      "final_input_token": 164,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1090",
+      "question_end_token": 114,
+      "final_input_token": 119,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1016",
+      "question_end_token": 111,
+      "final_input_token": 116,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1088",
+      "question_end_token": 134,
+      "final_input_token": 139,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1124",
+      "question_end_token": 142,
+      "final_input_token": 147,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1062",
+      "question_end_token": 109,
+      "final_input_token": 114,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1029",
+      "question_end_token": 103,
+      "final_input_token": 108,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1106",
+      "question_end_token": 137,
+      "final_input_token": 142,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1091",
+      "question_end_token": 137,
+      "final_input_token": 142,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1121",
+      "question_end_token": 157,
+      "final_input_token": 162,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1087",
+      "question_end_token": 129,
+      "final_input_token": 134,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1075",
+      "question_end_token": 118,
+      "final_input_token": 123,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1143",
+      "question_end_token": 156,
+      "final_input_token": 161,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1095",
+      "question_end_token": 134,
+      "final_input_token": 139,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1046",
+      "question_end_token": 118,
+      "final_input_token": 123,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1049",
+      "question_end_token": 121,
+      "final_input_token": 126,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1015",
+      "question_end_token": 109,
+      "final_input_token": 114,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1105",
+      "question_end_token": 144,
+      "final_input_token": 149,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1096",
+      "question_end_token": 143,
+      "final_input_token": 148,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1070",
+      "question_end_token": 115,
+      "final_input_token": 120,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1034",
+      "question_end_token": 106,
+      "final_input_token": 111,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1118",
+      "question_end_token": 141,
+      "final_input_token": 146,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1035",
+      "question_end_token": 118,
+      "final_input_token": 123,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "nfp_1038",
+      "question_end_token": 119,
+      "final_input_token": 124,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-03301",
+      "question_end_token": 110,
+      "final_input_token": 115,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-20803",
+      "question_end_token": 92,
+      "final_input_token": 97,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-04484",
+      "question_end_token": 74,
+      "final_input_token": 79,
+      "tokens_after_question": 5,
+      "ao_window_length": 11
+    },
+    {
+      "row_id": "crepe:2018-22025",
+      "question_end_token": 84,
+      "final_input_token": 89,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-04919",
+      "question_end_token": 91,
+      "final_input_token": 96,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-06105",
+      "question_end_token": 79,
+      "final_input_token": 84,
+      "tokens_after_question": 5,
+      "ao_window_length": 16
+    },
+    {
+      "row_id": "crepe:2018-00499",
+      "question_end_token": 77,
+      "final_input_token": 82,
+      "tokens_after_question": 5,
+      "ao_window_length": 14
+    },
+    {
+      "row_id": "crepe:2018-00203",
+      "question_end_token": 86,
+      "final_input_token": 91,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-03248",
+      "question_end_token": 87,
+      "final_input_token": 92,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-02290",
+      "question_end_token": 76,
+      "final_input_token": 81,
+      "tokens_after_question": 5,
+      "ao_window_length": 13
+    },
+    {
+      "row_id": "crepe:2018-09949",
+      "question_end_token": 85,
+      "final_input_token": 90,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-17103",
+      "question_end_token": 72,
+      "final_input_token": 77,
+      "tokens_after_question": 5,
+      "ao_window_length": 9
+    },
+    {
+      "row_id": "crepe:2018-07050",
+      "question_end_token": 94,
+      "final_input_token": 99,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-03671",
+      "question_end_token": 74,
+      "final_input_token": 79,
+      "tokens_after_question": 5,
+      "ao_window_length": 11
+    },
+    {
+      "row_id": "crepe:2018-15077",
+      "question_end_token": 90,
+      "final_input_token": 95,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-16019",
+      "question_end_token": 85,
+      "final_input_token": 90,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-02362",
+      "question_end_token": 69,
+      "final_input_token": 74,
+      "tokens_after_question": 5,
+      "ao_window_length": 6
+    },
+    {
+      "row_id": "crepe:2018-07817",
+      "question_end_token": 85,
+      "final_input_token": 90,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-01728",
+      "question_end_token": 91,
+      "final_input_token": 96,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-00217",
+      "question_end_token": 112,
+      "final_input_token": 117,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-15273",
+      "question_end_token": 93,
+      "final_input_token": 98,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-00592",
+      "question_end_token": 92,
+      "final_input_token": 97,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-02253",
+      "question_end_token": 96,
+      "final_input_token": 101,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-06974",
+      "question_end_token": 88,
+      "final_input_token": 93,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-20327",
+      "question_end_token": 90,
+      "final_input_token": 95,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-02563",
+      "question_end_token": 78,
+      "final_input_token": 83,
+      "tokens_after_question": 5,
+      "ao_window_length": 15
+    },
+    {
+      "row_id": "crepe:2018-21837",
+      "question_end_token": 90,
+      "final_input_token": 95,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-04211",
+      "question_end_token": 96,
+      "final_input_token": 101,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-23354",
+      "question_end_token": 88,
+      "final_input_token": 93,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-04678",
+      "question_end_token": 85,
+      "final_input_token": 90,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-06333",
+      "question_end_token": 77,
+      "final_input_token": 82,
+      "tokens_after_question": 5,
+      "ao_window_length": 14
+    },
+    {
+      "row_id": "crepe:2018-00473",
+      "question_end_token": 73,
+      "final_input_token": 78,
+      "tokens_after_question": 5,
+      "ao_window_length": 10
+    },
+    {
+      "row_id": "crepe:2018-00028",
+      "question_end_token": 76,
+      "final_input_token": 81,
+      "tokens_after_question": 5,
+      "ao_window_length": 13
+    },
+    {
+      "row_id": "crepe:2018-02448",
+      "question_end_token": 80,
+      "final_input_token": 85,
+      "tokens_after_question": 5,
+      "ao_window_length": 17
+    },
+    {
+      "row_id": "crepe:2018-01918",
+      "question_end_token": 76,
+      "final_input_token": 81,
+      "tokens_after_question": 5,
+      "ao_window_length": 13
+    },
+    {
+      "row_id": "crepe:2018-08982",
+      "question_end_token": 71,
+      "final_input_token": 76,
+      "tokens_after_question": 5,
+      "ao_window_length": 8
+    },
+    {
+      "row_id": "crepe:2018-18176",
+      "question_end_token": 84,
+      "final_input_token": 89,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-07636",
+      "question_end_token": 72,
+      "final_input_token": 77,
+      "tokens_after_question": 5,
+      "ao_window_length": 9
+    },
+    {
+      "row_id": "crepe:2018-03050",
+      "question_end_token": 75,
+      "final_input_token": 80,
+      "tokens_after_question": 5,
+      "ao_window_length": 12
+    },
+    {
+      "row_id": "crepe:2018-15061",
+      "question_end_token": 76,
+      "final_input_token": 81,
+      "tokens_after_question": 5,
+      "ao_window_length": 13
+    },
+    {
+      "row_id": "crepe:2018-17751",
+      "question_end_token": 91,
+      "final_input_token": 96,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-01943",
+      "question_end_token": 73,
+      "final_input_token": 78,
+      "tokens_after_question": 5,
+      "ao_window_length": 10
+    },
+    {
+      "row_id": "crepe:2018-07866",
+      "question_end_token": 94,
+      "final_input_token": 99,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-01138",
+      "question_end_token": 82,
+      "final_input_token": 87,
+      "tokens_after_question": 5,
+      "ao_window_length": 19
+    },
+    {
+      "row_id": "crepe:2018-00074",
+      "question_end_token": 71,
+      "final_input_token": 76,
+      "tokens_after_question": 5,
+      "ao_window_length": 8
+    },
+    {
+      "row_id": "crepe:2018-15645",
+      "question_end_token": 86,
+      "final_input_token": 91,
+      "tokens_after_question": 5,
+      "ao_window_length": 20
+    },
+    {
+      "row_id": "crepe:2018-00543",
+      "question_end_token": 71,
+      "final_input_token": 76,
+      "tokens_after_question": 5,
+      "ao_window_length": 8
+    },
+    {
+      "row_id": "crepe:2018-01777",
+      "question_end_token": 79,
+      "final_input_token": 84,
+      "tokens_after_question": 5,
+      "ao_window_length": 16
+    },
+    {
+      "row_id": "crepe:2018-07125",
+      "question_end_token": 82,
+      "final_input_token": 87,
+      "tokens_after_question": 5,
+      "ao_window_length": 19
+    },
+    {
+      "row_id": "crepe:2018-21103",
+      "question_end_token": 82,
+      "final_input_token": 87,
+      "tokens_after_question": 5,
+      "ao_window_length": 19
+    }
+  ],
+  "timing": "Actual answer generation prefill, question-end token selected; assistant-header suffix is not included in this causal token state.",
+  "source_model": {
+    "model_id": "google/gemma-3-27b-it",
+    "revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "gpus": [
+      2,
+      3
+    ],
+    "n_layers": 62
+  },
+  "source_capture": "scripts/reader_gepa_native_worker.py generate()",
+  "nla_layer_zero_based": 41,
+  "nla_hf_hidden_state_index": 42,
+  "nla_canonical_query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation.",
+  "ao_layer_zero_based": 31,
+  "ao_hf_hidden_state_index": 32,
+  "ao_query": "Describe the semantic content represented by these activations.",
+  "tokenizer_verification": "Six frozen prompt encodings equal the pinned raw tokenizer.json after local-path resolution.",
+  "external_data2_paths": "Not present on this host, not verified or merged."
+}

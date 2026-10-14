@@ -1,0 +1,94 @@
+{
+  "state": "complete",
+  "results": [
+    {
+      "dataset": "cancer_myth",
+      "arm": "gepa",
+      "fpq_mean": 3.5,
+      "nfp_mean": 3.25,
+      "balanced_normalized": 0.675,
+      "fpq_ge4": 2,
+      "nfp_ge4": 3,
+      "fpq_n": 4,
+      "nfp_n": 4
+    },
+    {
+      "dataset": "cancer_myth",
+      "arm": "text",
+      "fpq_mean": 2.0,
+      "nfp_mean": 4.75,
+      "balanced_normalized": 0.675,
+      "fpq_ge4": 1,
+      "nfp_ge4": 4,
+      "fpq_n": 4,
+      "nfp_n": 4
+    },
+    {
+      "dataset": "cancer_myth",
+      "arm": "nla",
+      "fpq_mean": 2.75,
+      "nfp_mean": 4.25,
+      "balanced_normalized": 0.7,
+      "fpq_ge4": 2,
+      "nfp_ge4": 4,
+      "fpq_n": 4,
+      "nfp_n": 4
+    },
+    {
+      "dataset": "cancer_myth",
+      "arm": "ao",
+      "fpq_mean": 2.75,
+      "nfp_mean": 4.0,
+      "balanced_normalized": 0.675,
+      "fpq_ge4": 2,
+      "nfp_ge4": 3,
+      "fpq_n": 4,
+      "nfp_n": 4
+    },
+    {
+      "dataset": "crepe",
+      "arm": "gepa",
+      "fpq_mean": 1.75,
+      "nfp_mean": 5.0,
+      "balanced_normalized": 0.675,
+      "fpq_ge4": 0,
+      "nfp_ge4": 4,
+      "fpq_n": 4,
+      "nfp_n": 4
+    },
+    {
+      "dataset": "crepe",
+      "arm": "text",
+      "fpq_mean": 1.75,
+      "nfp_mean": 5.0,
+      "balanced_normalized": 0.675,
+      "fpq_ge4": 0,
+      "nfp_ge4": 4,
+      "fpq_n": 4,
+      "nfp_n": 4
+    },
+    {
+      "dataset": "crepe",
+      "arm": "nla",
+      "fpq_mean": 2.0,
+      "nfp_mean": 5.0,
+      "balanced_normalized": 0.7,
+      "fpq_ge4": 0,
+      "nfp_ge4": 4,
+      "fpq_n": 4,
+      "nfp_n": 4
+    },
+    {
+      "dataset": "crepe",
+      "arm": "ao",
+      "fpq_mean": 1.75,
+      "nfp_mean": 5.0,
+      "balanced_normalized": 0.675,
+      "fpq_ge4": 0,
+      "nfp_ge4": 4,
+      "fpq_n": 4,
+      "nfp_n": 4
+    }
+  ],
+  "limits": "Tiny heldout pilot dev subset; not official dataset test or main-table results; no candidate re-selection using Haiku"
+}

@@ -1,0 +1,9 @@
+dataset,arm,fpq_mean,nfp_mean,balanced_normalized,fpq_ge4,nfp_ge4,fpq_n,nfp_n
+cancer_myth,gepa,3.5,3.25,0.675,2,3,4,4
+cancer_myth,text,2.0,4.75,0.675,1,4,4,4
+cancer_myth,nla,2.75,4.25,0.7,2,4,4,4
+cancer_myth,ao,2.75,4.0,0.675,2,3,4,4
+crepe,gepa,1.75,5.0,0.675,0,4,4,4
+crepe,text,1.75,5.0,0.675,0,4,4,4
+crepe,nla,2.0,5.0,0.7,0,4,4,4
+crepe,ao,1.75,5.0,0.675,0,4,4,4

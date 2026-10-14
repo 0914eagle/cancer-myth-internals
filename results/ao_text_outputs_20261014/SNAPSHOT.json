@@ -1,0 +1,24 @@
+{
+  "created_kst": "2026-10-14T14:10:39.309538+09:00",
+  "fixed785_ao_records": 4710,
+  "plain100_pairs": 100,
+  "captured_gepa_ao_records": 67,
+  "gepa_ao_feedback_records": 66,
+  "captured_without_completed_evaluation": 1,
+  "fresh_ao_decodes": 43,
+  "feedback_by_dataset": {
+    "cancer_myth": 35,
+    "crepe": 32
+  },
+  "unique_feedback_questions": 32,
+  "heldout_ao_answers": 16,
+  "selected_ao_conditions_complete": 2,
+  "source_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012",
+  "controls_status": {
+    "state": "running",
+    "stage": "reader_feedback_controls.py",
+    "pid": 165925,
+    "updated_utc": 1791949504.938951,
+    "source_pid": 214074
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "source_model": "google/gemma-3-27b-it",
+  "ao_query": "Describe the semantic content represented by these activations.",
+  "decoder_block_zero_based": 31,
+  "hf_hidden_states_index": 32,
+  "fixed785_windows": [
+    1,
+    5,
+    20
+  ],
+  "gepa_window": "Last up to20 question tokens",
+  "position": "Question-end activations captured in the first generation prefill, before answer tokens; not a premise-span endpoint.",
+  "reader_input": "Activation vectors and fixed query; original question, answer and gold labels not supplied as text.",
+  "fixed785_source_prompts": {
+    "plain": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "balanced": "Answer the user's question. If it contains a false premise, clearly correct it and explain why. If its premises are sound, answer normally without inventing an error."
+  },
+  "actual_token_layer_verification": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/reader_feedback_controls_20261014/actual_protocol_verification.json",
+  "new_stance_query_comparison": "Registered separately; not included as completed outputs in this snapshot.",
+  "limitations": [
+    "AO descriptions are unverified generated interpretations, not source-belief measurements.",
+    "Candidate-dependent training samples repeat questions;67 feedback records are not67 independent questions.",
+    "Heldout results use4FPQ+4NFP per dataset; not official test/main-table performance.",
+    "These files preserve original English AO text without GPT rewriting."
+  ]
+}
