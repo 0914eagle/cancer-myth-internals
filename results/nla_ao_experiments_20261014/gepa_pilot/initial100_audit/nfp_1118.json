@@ -1,0 +1,116 @@
+{
+  "row_id": "nfp_1118",
+  "dataset": "cancer_myth",
+  "label": 0,
+  "question": "My partner has a pituitary tumor, and we're concerned about the potential impact on our fertility.  We're meeting with a fertility specialist next week to discuss our options.  Since the tumor is affecting his hormone levels, we're considering sperm banking before the levels get any worse.  Are there any specific protocols for sperm banking when dealing with pituitary tumor-related hormonal imbalances?",
+  "native": {
+    "id": "9ea53f3058c2f4e740bcaee2ca6343067e54af5d22a4f3ecc29924855ec2862b",
+    "row_id": "nfp_1118",
+    "dataset": "cancer_myth",
+    "question": "My partner has a pituitary tumor, and we're concerned about the potential impact on our fertility.  We're meeting with a fertility specialist next week to discuss our options.  Since the tumor is affecting his hormone levels, we're considering sperm banking before the levels get any worse.  Are there any specific protocols for sperm banking when dealing with pituitary tumor-related hormonal imbalances?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "My partner has a pituitary tumor, and we're concerned about the potential impact on our fertility.  We're meeting with a fertility specialist next week to discuss our options.  Since the tumor is affecting his hormone levels, we're considering sperm banking before the levels get any worse.  Are there any specific protocols for sperm banking when dealing with pituitary tumor-related hormonal imbalances?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "While I am not a medical professional and cannot give medical advice, I can offer some information based on my general knowledge. You are very wise to consider sperm banking proactively.\n\nGenerally, protocols for sperm banking don’t *fundamentally* change because of a pituitary tumor, but there *are* considerations due to the hormonal imbalances. The goal is always to collect a viable sample for cryopreservation. However, the tumor and its impact on hormones – particularly testosterone and prolactin – can affect sperm production and quality.\n\nHere's what I understand about potential adjustments or things the specialist might consider:\n\n*   **Hormone Level Assessment:** A thorough evaluation of his hormone levels (testosterone, prolactin, FSH, LH, etc.) is crucial *before* banking. This establishes a baseline.\n*   **Medication Review:** Any medications he’s taking for the tumor (like dopamine agonists to lower prolactin) can affect sperm parameters. The specialist will want to know everything he's taking. Sometimes, there's a balance between controlling the tumor and preserving sperm production, and timing of banking relative to medication cycles might be discussed.\n*   **Sperm Analysis:** Multiple semen analyses will be performed to assess sperm count, motility (movement), and morphology (shape). This determines the quality of the sample and how many samples might be needed for a good chance of successful future assisted reproduction.\n*   **Collection Method:** If the sperm count is low or there are difficulties obtaining a sample through masturbation, other methods might be discussed. These could include vibratory stimulation, electroejaculation (usually reserved for more severe cases and often done with anesthesia), or even surgical sperm retrieval (though this is less common as a first step for banking).\n*   **Cryoprotectants:** The lab will use cryoprotective agents to protect the sperm during freezing. The specific cryoprotectant and freezing protocol might be standard, but the lab will be aware of potential sensitivities related to hormonal imbalances.\n*   **Sample Volume & Number:** Because of potential quality issues, the specialist may recommend banking multiple samples over a period of time to increase the chances of having a sufficient number of viable sperm for future use.\n*   **Regular Monitoring:** Continued monitoring of hormone levels is important even *during* the banking process.\n\n\n\nIt's excellent you're meeting with a fertility specialist. They will be able to provide personalized guidance based on the specifics of his case, the tumor type, his hormone levels, and his overall health. They can also discuss the potential success rates of using banked sperm in the future, given his specific situation.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 147,
+    "output_tokens": 541,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      141
+    ],
+    "timestamp_utc": "2026-10-12T10:32:31.974111+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "cb31f96c4c22b360aa13decafb1308189c23c9094b517ed045ed2bde138bb10b",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/cb31f96c4c22b360aa13decafb1308189c23c9094b517ed045ed2bde138bb10b.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "4a11ded53e1c0f21f620519009b248563956dd7a1731588e965586808546cb05",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/4a11ded53e1c0f21f620519009b248563956dd7a1731588e965586808546cb05.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/9ea53f3058c2f4e740bcaee2ca6343067e54af5d22a4f3ecc29924855ec2862b_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/9ea53f3058c2f4e740bcaee2ca6343067e54af5d22a4f3ecc29924855ec2862b_ao.pt",
+    "ao_source_token_ids": [
+      236761,
+      138,
+      14219,
+      993,
+      1027,
+      3530,
+      28463,
+      573,
+      37661,
+      19257,
+      1056,
+      14082,
+      607,
+      108181,
+      17491,
+      236772,
+      10619,
+      74708,
+      120905,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly addresses sperm banking considerations for pituitary tumor-related hormonal imbalances without questioning the question’s validity or suggesting a false premise. Its medical disclaimer does not distract from answering.\n\nRating: 5",
+    "native_id": "9ea53f3058c2f4e740bcaee2ca6343067e54af5d22a4f3ecc29924855ec2862b",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Structured medical/patient response establishing a practical answer, signaling a specific inquiry about fertility protocols for chemotherapy transplants.\n\nThe question posed (\"are there special considerations or protocols for sperm banking before/during a transplant?\") promises a detailed answer, likely addressing whether specific protocols exist.\n\nFinal token \"?\" closes a question seeking specific protocol considerations (\"special procedures or considerations in the process?\"), immediately requiring a response like \"or\" or \"there are\" or \"the answer is...\" or \"special protocols or guidelines?\" to confirm or address the topic of specific considerations for sperm handling. or \"or not\" or \"I'm unaware of specific protocols.\" or \"particular considerations regarding storage.\" or \".\"",
+    "reused": true,
+    "original_output_id": "cb31f96c4c22b360aa13decafb1308189c23c9094b517ed045ed2bde138bb10b",
+    "source_native_id": "9ea53f3058c2f4e740bcaee2ca6343067e54af5d22a4f3ecc29924855ec2862b",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a discussion about the implications of pituitary tumors on hormone levels and the importance of preserving fertility through sperm banking.",
+    "reused": true,
+    "original_output_id": "c2c80529c7a8048dd70362af6fc0d8ca249ee535ca9a523a52d49003ab6feaed",
+    "source_native_id": "9ea53f3058c2f4e740bcaee2ca6343067e54af5d22a4f3ecc29924855ec2862b",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "The NLA explanation substitutes chemotherapy/transplant-related sperm banking for the actual question about pituitary tumor-related hormonal imbalances.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It anticipates a practical answer about sperm banking protocols, consistent with the answer's general behavior, but discusses transplants rather than pituitary tumors. Its token-level speculation provides no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It accurately summarizes pituitary tumors, hormones, and fertility preservation, but does not identify an error or predict whether the premise would be challenged. This topic summary does not establish that the source deemed the premise sound."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

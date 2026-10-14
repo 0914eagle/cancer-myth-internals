@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/709387b1cb24855171370d23cd0e31c322b5ee1c978e41ac0ec28b30b6346eeb",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-21837",
+  "label": 0,
+  "candidate_key": "919934b5244c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question asks about a common television production practice; its broad wording can be qualified without treating it as a false-premise question.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "Why don't film directors typically direct television episodes?",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader substitutes a different question about film directors working in television. The answer explains director rotation without attacking the premise."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "differences between film and television production",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "not universally true, but it’s common",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes the broad film/TV contrast but misstates the question. The answer's qualification is reasonable, not over-rebuttal."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/de50e3b67bcc42c780acd959c40fb8ee49656304084a4d7d6583dfa248a8a677",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "nfp_1038",
+  "label": 0,
+  "candidate_key": "669be170460c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "Reported possible temporary chemotherapy-related hair loss and questions about gentle care and regrowth contain no clear false premise.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "hair loss in children undergoing chemotherapy",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader is topical only; the answer offers hair-care and regrowth guidance with ordinary uncertainty, not premise correction."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "hair loss in children undergoing chemotherapy",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader summarizes the topic without judging premise validity. The answer's variability qualifications do not rebut the reported possibility of hair loss."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

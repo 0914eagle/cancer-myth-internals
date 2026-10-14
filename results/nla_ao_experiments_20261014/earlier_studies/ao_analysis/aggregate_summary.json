@@ -1,0 +1,387 @@
+{
+  "snapshot_utc": "2026-10-12T05:50:53.526696+00:00",
+  "ao": {
+    "path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/ao_results.jsonl",
+    "sha256": "94818cd5da612612858a73ba03dc1ceba23f1ec38ce59892503ba2c22c389923",
+    "rows": 4710,
+    "ignored_unterminated_bytes": 0
+  },
+  "nla": {
+    "path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/av_results.jsonl",
+    "sha256": "42114413236f366d3282a971e1d8a3b57f5739322b160dc7794403066140fce2",
+    "rows": 4448,
+    "ignored_unterminated_bytes": 0
+  },
+  "expected_ao": 4710,
+  "expected_nla": 4710,
+  "n_questions": 785,
+  "review_ao": 48,
+  "review_nla": 48,
+  "native_review_answers": 16,
+  "groups": [
+    {
+      "dataset": "cancer_myth",
+      "category": "FPQ",
+      "condition": "balanced",
+      "requested_window_size": 1,
+      "n": 307,
+      "actual_sizes": {
+        "1": 307
+      },
+      "mean_words": 22.237785016286644,
+      "correction_language": 0
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "FPQ",
+      "condition": "balanced",
+      "requested_window_size": 5,
+      "n": 307,
+      "actual_sizes": {
+        "5": 307
+      },
+      "mean_words": 22.42671009771987,
+      "correction_language": 1
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "FPQ",
+      "condition": "balanced",
+      "requested_window_size": 20,
+      "n": 307,
+      "actual_sizes": {
+        "20": 307
+      },
+      "mean_words": 23.218241042345277,
+      "correction_language": 1
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "FPQ",
+      "condition": "plain",
+      "requested_window_size": 1,
+      "n": 307,
+      "actual_sizes": {
+        "1": 307
+      },
+      "mean_words": 22.28338762214984,
+      "correction_language": 0
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "FPQ",
+      "condition": "plain",
+      "requested_window_size": 5,
+      "n": 307,
+      "actual_sizes": {
+        "5": 307
+      },
+      "mean_words": 22.62540716612378,
+      "correction_language": 0
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "FPQ",
+      "condition": "plain",
+      "requested_window_size": 20,
+      "n": 307,
+      "actual_sizes": {
+        "20": 307
+      },
+      "mean_words": 22.872964169381106,
+      "correction_language": 0
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "NFP",
+      "condition": "balanced",
+      "requested_window_size": 1,
+      "n": 78,
+      "actual_sizes": {
+        "1": 78
+      },
+      "mean_words": 23.82051282051282,
+      "correction_language": 0
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "NFP",
+      "condition": "balanced",
+      "requested_window_size": 5,
+      "n": 78,
+      "actual_sizes": {
+        "5": 78
+      },
+      "mean_words": 22.525641025641026,
+      "correction_language": 1
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "NFP",
+      "condition": "balanced",
+      "requested_window_size": 20,
+      "n": 78,
+      "actual_sizes": {
+        "20": 78
+      },
+      "mean_words": 23.615384615384617,
+      "correction_language": 0
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "NFP",
+      "condition": "plain",
+      "requested_window_size": 1,
+      "n": 78,
+      "actual_sizes": {
+        "1": 78
+      },
+      "mean_words": 22.55128205128205,
+      "correction_language": 0
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "NFP",
+      "condition": "plain",
+      "requested_window_size": 5,
+      "n": 78,
+      "actual_sizes": {
+        "5": 78
+      },
+      "mean_words": 21.858974358974358,
+      "correction_language": 0
+    },
+    {
+      "dataset": "cancer_myth",
+      "category": "NFP",
+      "condition": "plain",
+      "requested_window_size": 20,
+      "n": 78,
+      "actual_sizes": {
+        "20": 78
+      },
+      "mean_words": 22.76923076923077,
+      "correction_language": 0
+    },
+    {
+      "dataset": "crepe",
+      "category": "FPQ",
+      "condition": "balanced",
+      "requested_window_size": 1,
+      "n": 200,
+      "actual_sizes": {
+        "1": 200
+      },
+      "mean_words": 22.265,
+      "correction_language": 1
+    },
+    {
+      "dataset": "crepe",
+      "category": "FPQ",
+      "condition": "balanced",
+      "requested_window_size": 5,
+      "n": 200,
+      "actual_sizes": {
+        "5": 200
+      },
+      "mean_words": 22.925,
+      "correction_language": 0
+    },
+    {
+      "dataset": "crepe",
+      "category": "FPQ",
+      "condition": "balanced",
+      "requested_window_size": 20,
+      "n": 200,
+      "actual_sizes": {
+        "14": 16,
+        "20": 96,
+        "19": 8,
+        "11": 9,
+        "15": 8,
+        "18": 10,
+        "17": 12,
+        "7": 1,
+        "13": 11,
+        "12": 6,
+        "16": 9,
+        "8": 5,
+        "10": 5,
+        "6": 2,
+        "9": 2
+      },
+      "mean_words": 22.34,
+      "correction_language": 2
+    },
+    {
+      "dataset": "crepe",
+      "category": "FPQ",
+      "condition": "plain",
+      "requested_window_size": 1,
+      "n": 200,
+      "actual_sizes": {
+        "1": 200
+      },
+      "mean_words": 21.96,
+      "correction_language": 0
+    },
+    {
+      "dataset": "crepe",
+      "category": "FPQ",
+      "condition": "plain",
+      "requested_window_size": 5,
+      "n": 200,
+      "actual_sizes": {
+        "5": 200
+      },
+      "mean_words": 22.8,
+      "correction_language": 0
+    },
+    {
+      "dataset": "crepe",
+      "category": "FPQ",
+      "condition": "plain",
+      "requested_window_size": 20,
+      "n": 200,
+      "actual_sizes": {
+        "14": 16,
+        "20": 96,
+        "19": 8,
+        "11": 9,
+        "15": 8,
+        "18": 10,
+        "17": 12,
+        "7": 1,
+        "13": 11,
+        "12": 6,
+        "16": 9,
+        "8": 5,
+        "10": 5,
+        "6": 2,
+        "9": 2
+      },
+      "mean_words": 22.605,
+      "correction_language": 2
+    },
+    {
+      "dataset": "crepe",
+      "category": "NFP",
+      "condition": "balanced",
+      "requested_window_size": 1,
+      "n": 200,
+      "actual_sizes": {
+        "1": 200
+      },
+      "mean_words": 21.62,
+      "correction_language": 0
+    },
+    {
+      "dataset": "crepe",
+      "category": "NFP",
+      "condition": "balanced",
+      "requested_window_size": 5,
+      "n": 200,
+      "actual_sizes": {
+        "5": 200
+      },
+      "mean_words": 22.38,
+      "correction_language": 0
+    },
+    {
+      "dataset": "crepe",
+      "category": "NFP",
+      "condition": "balanced",
+      "requested_window_size": 20,
+      "n": 200,
+      "actual_sizes": {
+        "8": 7,
+        "16": 12,
+        "20": 70,
+        "18": 6,
+        "13": 15,
+        "19": 10,
+        "7": 3,
+        "17": 10,
+        "14": 7,
+        "11": 12,
+        "12": 13,
+        "10": 9,
+        "9": 9,
+        "15": 13,
+        "6": 4
+      },
+      "mean_words": 22.24,
+      "correction_language": 2
+    },
+    {
+      "dataset": "crepe",
+      "category": "NFP",
+      "condition": "plain",
+      "requested_window_size": 1,
+      "n": 200,
+      "actual_sizes": {
+        "1": 200
+      },
+      "mean_words": 21.94,
+      "correction_language": 0
+    },
+    {
+      "dataset": "crepe",
+      "category": "NFP",
+      "condition": "plain",
+      "requested_window_size": 5,
+      "n": 200,
+      "actual_sizes": {
+        "5": 200
+      },
+      "mean_words": 22.64,
+      "correction_language": 0
+    },
+    {
+      "dataset": "crepe",
+      "category": "NFP",
+      "condition": "plain",
+      "requested_window_size": 20,
+      "n": 200,
+      "actual_sizes": {
+        "8": 7,
+        "16": 12,
+        "20": 70,
+        "18": 6,
+        "13": 15,
+        "19": 10,
+        "7": 3,
+        "17": 10,
+        "14": 7,
+        "11": 12,
+        "12": 13,
+        "10": 9,
+        "9": 9,
+        "15": 13,
+        "6": 4
+      },
+      "mean_words": 22.315,
+      "correction_language": 1
+    }
+  ],
+  "exact_condition_matches": [
+    {
+      "requested_window_size": 1,
+      "n_questions": 785,
+      "exact_plain_balanced_matches": 124
+    },
+    {
+      "requested_window_size": 5,
+      "n_questions": 785,
+      "exact_plain_balanced_matches": 173
+    },
+    {
+      "requested_window_size": 20,
+      "n_questions": 785,
+      "exact_plain_balanced_matches": 165
+    }
+  ],
+  "layer_confounds": "Common source Gemma3-27B, public AO decoder31 versus public NLA decoder41; distinct receiver/injection/query/batching protocols.",
+  "scope": "Fixed training cohort only; outputs cannot be read as final-test scores or actual correction labels",
+  "token_windows": "Consecutive question tokens ending at question last token; every source vector sees its causal prefix. Requested20 is cropped to actual question length."
+}

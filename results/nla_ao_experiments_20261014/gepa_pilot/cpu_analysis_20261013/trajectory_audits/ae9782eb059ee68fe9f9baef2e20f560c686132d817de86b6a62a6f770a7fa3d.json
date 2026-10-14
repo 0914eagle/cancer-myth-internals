@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/10441669bc68128098a7f86fff594bb8caf9a7bf2f611f73ba4e9a7024a81c3b",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-00543",
+  "label": 0,
+  "candidate_key": "d78f4dc0b5fd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "Constant-force springs are real devices, and asking how they work contains no false premise. Approximate constancy is a normal engineering qualification.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a detailed explanation of a coiled spring or constant-force spring",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader gives only topical framing. The answer's approximate-force qualification is normal, not an attack on the premise; its mechanical explanation contains inaccuracies."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a mechanistic explanation of spring mechanics",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader merely anticipates a mechanical explanation. The answer's qualification about nearly constant force is not spurious correction, although its stress-release account is inaccurate."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

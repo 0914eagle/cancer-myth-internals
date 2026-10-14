@@ -1,0 +1,8 @@
+{
+  "state": "complete",
+  "n": 4710,
+  "parsed_explanations": 4710,
+  "mean_recon_mse": 0.16632411681479456,
+  "mean_question_control_mse": 0.8570722581791017,
+  "scope": "All fixed785train questions; correct NLA layers; Plain/Balanced; three pre-answer positions; no final test"
+}

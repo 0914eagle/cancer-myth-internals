@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/697f6eb4cb53902179510a3e9e7b912be28bfe7aa093ac3631ebb3bdd65caf3b",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "fpq_727",
+  "label": 1,
+  "candidate_key": "669be170460c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question treats a pituitary tumor as aggressive brain cancer requiring experimental treatment for survival; most pituitary tumors are benign and manageable.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "latest advancements in brain tumor treatment",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "The vast majority are benign (non-cancerous) adenomas.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader mentions experimental tumor treatments but not the specific misconception; the answer corrects the assumption of aggressive brain cancer."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "diagnosis of a brain tumor",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "the vast majority are benign (non-cancerous) adenomas",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes tumor care without identifying the mistaken cancer classification or prognosis; the answer explicitly corrects both."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

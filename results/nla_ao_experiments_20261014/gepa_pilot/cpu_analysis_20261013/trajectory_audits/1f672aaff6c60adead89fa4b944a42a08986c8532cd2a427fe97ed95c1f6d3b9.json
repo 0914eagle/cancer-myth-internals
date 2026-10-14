@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/79416206d8577f760a80a0c0c5c718f0f2e743048814347fe5493c4fac94b7a7",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "fpq_44",
+  "label": 1,
+  "candidate_key": "5fd1a68d8de2",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "conflict",
+    "annotation_reason": "The listed presupposition concerns surgery and recovery, which the question does not mention. The reference correctly targets universally inevitable severe pain.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "cancer pain management",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts discuss pain management. Individualized management alone does not identify that severe pain is not inevitable."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": true,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": true,
+      "reader_evidence": "likely examining the flawed premise of the question",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "It is not accurate to state that *everyone* with lung cancer experiences *severe* pain.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader signals generic premise scrutiny but never names the universal severe-pain error and introduces terminality. The answer explicitly corrects the reference's target."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

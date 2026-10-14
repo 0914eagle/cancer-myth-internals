@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/0dd6f12a3947a1327a3d282bb91d35e3f4a6bf502c8997fe5f0652ae30684b46",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "nfp_1084",
+  "label": 0,
+  "candidate_key": "669be170460c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question reports surgery already performed and seeks rehabilitation for its effects and subsequent treatment; an unusual treatment history is not itself a false premise.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "patients recovering from brain surgery for germinomas",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader summarizes rehabilitation needs without evaluating the premise. The answer's qualification about narrowly specialized centers does not attack the reported surgery."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "management of side effects from radiation and chemotherapy",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader is topical only. The answer addresses rehabilitation and reasonably qualifies center specialization without rebutting the patient's treatment history."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

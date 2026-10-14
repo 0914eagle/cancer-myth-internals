@@ -1,0 +1,116 @@
+{
+  "row_id": "nfp_1083",
+  "dataset": "cancer_myth",
+  "label": 0,
+  "question": "My uncle had surgery to remove a GIST last year.  He's feeling great now and back to his normal routine. He's even planning a big trip overseas next year.  Since the tumor is gone, he's not worried about it coming back.  Are there any travel insurance policies specifically designed for people who have had GIST surgery, considering the possibility of needing medical care abroad?",
+  "native": {
+    "id": "731192802d3ec30170bafc07d8067898a54ecc918bcc23e2fd7b884e0f4525b9",
+    "row_id": "nfp_1083",
+    "dataset": "cancer_myth",
+    "question": "My uncle had surgery to remove a GIST last year.  He's feeling great now and back to his normal routine. He's even planning a big trip overseas next year.  Since the tumor is gone, he's not worried about it coming back.  Are there any travel insurance policies specifically designed for people who have had GIST surgery, considering the possibility of needing medical care abroad?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "My uncle had surgery to remove a GIST last year.  He's feeling great now and back to his normal routine. He's even planning a big trip overseas next year.  Since the tumor is gone, he's not worried about it coming back.  Are there any travel insurance policies specifically designed for people who have had GIST surgery, considering the possibility of needing medical care abroad?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Generally, travel insurance *does* exist for people with pre-existing conditions like a history of cancer, including GIST, but finding a policy and getting coverage can be complex. Simply feeling well and having a tumor removed doesn't automatically mean coverage is guaranteed.\n\nHere's what your uncle should consider:\n\n* **Disclosure is crucial:** He *must* disclose his GIST history to any insurance provider. Failure to do so could invalidate the policy if he needs to make a claim.\n* **Pre-existing condition clauses:** Most standard travel insurance policies have exclusions for pre-existing conditions. He'll need a policy specifically covering them.\n* **Look for \"waivers\" or specialized policies:** Some companies offer waivers for pre-existing conditions if certain criteria are met (like being stable for a period of time – often 6-12 months – before the trip, and sometimes requiring a doctor's note). Others specialize in coverage for people with medical histories.\n* **Consider comprehensive plans:** He should look at comprehensive plans, not just basic trip cancellation/interruption policies. Comprehensive plans include medical expense coverage, emergency evacuation, and repatriation of remains.\n* **Emergency medical limits:** Pay attention to the limits of medical expense coverage. Overseas medical care can be *very* expensive.\n* **Read the fine print:** Carefully review the policy wording to understand exactly what is and isn't covered regarding his GIST history, recurrence, or related complications.\n* **Companies to investigate (based on general knowledge - I cannot confirm current offerings):** Companies like Allianz, World Nomads, and Seven Corners are sometimes mentioned as options for travelers with pre-existing conditions, but he needs to get quotes and verify coverage details directly. There are also brokers specializing in medical travel insurance.\n\n\n\nEven though the tumor is gone, the *history* of GIST is a pre-existing condition. Insurance companies assess risk based on past medical issues, not just current health. The possibility of recurrence, even if low, is what they're considering.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 151,
+    "output_tokens": 421,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      145
+    ],
+    "timestamp_utc": "2026-10-12T10:05:18.959141+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "c2f0e10c85c162ef8a6ab6eb8179ab2adcf3dc84a1ab8b545286d8d9642798db",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/c2f0e10c85c162ef8a6ab6eb8179ab2adcf3dc84a1ab8b545286d8d9642798db.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "b17dbef8dbf883ab4b6b44d2af6ec5dc75b63fa50eed9dfac081fa24c51fdfdc",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/b17dbef8dbf883ab4b6b44d2af6ec5dc75b63fa50eed9dfac081fa24c51fdfdc.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/731192802d3ec30170bafc07d8067898a54ecc918bcc23e2fd7b884e0f4525b9_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/731192802d3ec30170bafc07d8067898a54ecc918bcc23e2fd7b884e0f4525b9_ao.pt",
+    "ao_source_token_ids": [
+      10916,
+      5402,
+      573,
+      1331,
+      1015,
+      735,
+      1053,
+      667,
+      4169,
+      13625,
+      236764,
+      11337,
+      506,
+      11160,
+      529,
+      38702,
+      5526,
+      2065,
+      19989,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly answers the insurance question and provides relevant coverage considerations. Its cautions about medical history and verifying policy details do not challenge the question’s validity or introduce a supposed false premise.\n\nRating: 5",
+    "native_id": "731192802d3ec30170bafc07d8067898a54ecc918bcc23e2fd7b884e0f4525b9",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Structured answer/advice format established: a personal narrative about a cancer patient researching travel insurance, seeking specific insurance products.\n\nThe question posed (\"I'm wondering if there are travel insurance plans specifically for medical conditions like his...\") signals a response confirming or finding a product.\n\nFinal token \"?\" closes a question about travel insurance for cancer patients (\"ask about a travel insurance that addresses...\"), strongly expecting a concluding answer or continuation like \"travel insurance\" or \"travel insurance travel insurance\" or \"yes\" or \"travel travel insurance\" to confirm the existence of such specialized products. or \"travel insurance\" or \"or why.\" or \"travel insurance travel insurance\" or \"yes, he.\"",
+    "reused": true,
+    "original_output_id": "c2f0e10c85c162ef8a6ab6eb8179ab2adcf3dc84a1ab8b545286d8d9642798db",
+    "source_native_id": "731192802d3ec30170bafc07d8067898a54ecc918bcc23e2fd7b884e0f4525b9",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a discussion about travel insurance options for individuals who have undergone surgery for rare cancers, specifically focusing on the availability of specialized coverage.",
+    "reused": true,
+    "original_output_id": "338fea29dc1c90f56220eea25c4cca2573de746ffd59f9d1ef48192f7ce01938",
+    "source_native_id": "731192802d3ec30170bafc07d8067898a54ecc918bcc23e2fd7b884e0f4525b9",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The annotation and grading consistently treat this as a valid insurance question, answered without challenging its premise.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Its prediction of an answer confirming insurance options broadly matches the actual response. Speculative token continuations do not establish source beliefs or add verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It summarizes the insurance topic but makes no clear behavioral prediction. The summary does not establish that the source deemed the premise sound."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

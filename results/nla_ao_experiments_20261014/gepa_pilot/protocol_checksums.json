@@ -1,0 +1,17 @@
+{
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/runtime.json": "5679105fd4a56c62a0612296989c336066842141b7e273feb9051fd41b47f935",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/plan.json": "314068e3b9522e2baafe0fb39a045e78db1f84a9dc93b7e25fbf220f04458023",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/protocol.md": "c69ee93f87b1850681a6553156d057ba85c0046c8098d08015e95f9b7e90845f",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/cohort.json": "8d5dec261dd8ceae67be2acc9a039cd41522091377b700f1201968f999a60ebe",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/gpt_runtime.json": "8bef86c48a81ac7cc5c828cdbea6eab4fb9e0394a921423c24fb3eb22fe50942",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/haiku_runtime.json": "543dfa3d8848a9976e462ede54249eb2569a361c030d3942206415ec37a53c42",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/gepa_contract_verification.json": "37ade60672f239f1b598f342147a26607dc57fa6d87b4b413608c3520e431e59",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/scripts/reader_gepa_native_worker.py": "066c2092ead37a9cb0f46ad2c91e1d8da508126c327b45021b7c0d4030f19fe8",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/scripts/reader_gepa_verbalizer_worker.py": "e1adaa6be81ca0cfed56ae23ce5974f13ef7ca5d7b4bdff73644be305ae092b4",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/scripts/reader_gepa_io.py": "883ce4d6a565d1f1cd5b043187b1b7fa9156d22f90b6d96b50a7e9482a66d82e",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/scripts/run_reader_gepa_pilot.py": "9d8518cebd247268ac9d24754f191f6e95cb076e686356ca6470b9e72ee0768e",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/scripts/export_reader_gepa_cohort.py": "2407f32af5a1ab374072fe64ef15a92b576a3850c9b3d42b05adc0102db97de3",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/export_manifest.json": "4acca896502c335cd1e719e03bf334b65c8c43a4eeb6a2f5423a7b5c4dddafd2",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/export_consent.json": "806785b948a1a549c42e7caa7d9599642c110ee5d6fc56894d98def7db5f509f",
+  "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/scripts/supervise_reader_gepa_pilot.py": "94c3d7047eeb05426f65c9878e1bf15a406e0e5c68c9a3b9f2a1760cdd02098d"
+}

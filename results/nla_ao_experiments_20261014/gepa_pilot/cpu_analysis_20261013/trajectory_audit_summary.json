@@ -1,0 +1,289 @@
+{
+  "completed_records": 59,
+  "expected_records": 59,
+  "results": [
+    {
+      "dataset": "cancer_myth",
+      "reader": "nla",
+      "label": 1,
+      "interpretation_records": 12,
+      "unique_questions": 8,
+      "annotation_alignment": {
+        "aligned": 9,
+        "conflict": 3
+      },
+      "seed_topic_matches": 7,
+      "current_topic_matches": 6,
+      "seed_specific_target_recognitions": 0,
+      "current_specific_target_recognitions": 1,
+      "recognition_appeared": 1,
+      "recognition_disappeared": 0,
+      "seed_correction_intent": 0,
+      "current_correction_intent": 5,
+      "current_generic_correction_language": 5,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 10,
+      "answer_spurious_nfp_correction": 0,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 11,
+        "concordant": 1
+      }
+    },
+    {
+      "dataset": "cancer_myth",
+      "reader": "nla",
+      "label": 0,
+      "interpretation_records": 12,
+      "unique_questions": 8,
+      "annotation_alignment": {
+        "ambiguous": 3,
+        "aligned": 9
+      },
+      "seed_topic_matches": 7,
+      "current_topic_matches": 6,
+      "seed_specific_target_recognitions": 0,
+      "current_specific_target_recognitions": 0,
+      "recognition_appeared": 0,
+      "recognition_disappeared": 0,
+      "seed_correction_intent": 0,
+      "current_correction_intent": 0,
+      "current_generic_correction_language": 0,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 0,
+      "answer_spurious_nfp_correction": 2,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 12
+      }
+    },
+    {
+      "dataset": "cancer_myth",
+      "reader": "ao",
+      "label": 1,
+      "interpretation_records": 8,
+      "unique_questions": 6,
+      "annotation_alignment": {
+        "aligned": 7,
+        "conflict": 1
+      },
+      "seed_topic_matches": 5,
+      "current_topic_matches": 5,
+      "seed_specific_target_recognitions": 0,
+      "current_specific_target_recognitions": 1,
+      "recognition_appeared": 1,
+      "recognition_disappeared": 0,
+      "seed_correction_intent": 0,
+      "current_correction_intent": 0,
+      "current_generic_correction_language": 0,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 7,
+      "answer_spurious_nfp_correction": 0,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 7,
+        "concordant": 1
+      }
+    },
+    {
+      "dataset": "cancer_myth",
+      "reader": "ao",
+      "label": 0,
+      "interpretation_records": 7,
+      "unique_questions": 5,
+      "annotation_alignment": {
+        "aligned": 3,
+        "conflict": 3,
+        "ambiguous": 1
+      },
+      "seed_topic_matches": 7,
+      "current_topic_matches": 7,
+      "seed_specific_target_recognitions": 0,
+      "current_specific_target_recognitions": 0,
+      "recognition_appeared": 0,
+      "recognition_disappeared": 0,
+      "seed_correction_intent": 0,
+      "current_correction_intent": 0,
+      "current_generic_correction_language": 0,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 0,
+      "answer_spurious_nfp_correction": 0,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 7
+      }
+    },
+    {
+      "dataset": "crepe",
+      "reader": "nla",
+      "label": 1,
+      "interpretation_records": 10,
+      "unique_questions": 8,
+      "annotation_alignment": {
+        "aligned": 9,
+        "conflict": 1
+      },
+      "seed_topic_matches": 7,
+      "current_topic_matches": 8,
+      "seed_specific_target_recognitions": 1,
+      "current_specific_target_recognitions": 0,
+      "recognition_appeared": 0,
+      "recognition_disappeared": 1,
+      "seed_correction_intent": 0,
+      "current_correction_intent": 1,
+      "current_generic_correction_language": 1,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 10,
+      "answer_spurious_nfp_correction": 0,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 10
+      }
+    },
+    {
+      "dataset": "crepe",
+      "reader": "nla",
+      "label": 0,
+      "interpretation_records": 10,
+      "unique_questions": 8,
+      "annotation_alignment": {
+        "ambiguous": 2,
+        "aligned": 8
+      },
+      "seed_topic_matches": 6,
+      "current_topic_matches": 5,
+      "seed_specific_target_recognitions": 0,
+      "current_specific_target_recognitions": 0,
+      "recognition_appeared": 0,
+      "recognition_disappeared": 0,
+      "seed_correction_intent": 2,
+      "current_correction_intent": 2,
+      "current_generic_correction_language": 2,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 0,
+      "answer_spurious_nfp_correction": 4,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 10
+      }
+    },
+    {
+      "dataset": "all",
+      "reader": "nla",
+      "label": 1,
+      "interpretation_records": 22,
+      "unique_questions": 16,
+      "annotation_alignment": {
+        "aligned": 18,
+        "conflict": 4
+      },
+      "seed_topic_matches": 14,
+      "current_topic_matches": 14,
+      "seed_specific_target_recognitions": 1,
+      "current_specific_target_recognitions": 1,
+      "recognition_appeared": 1,
+      "recognition_disappeared": 1,
+      "seed_correction_intent": 0,
+      "current_correction_intent": 6,
+      "current_generic_correction_language": 6,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 20,
+      "answer_spurious_nfp_correction": 0,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 21,
+        "concordant": 1
+      }
+    },
+    {
+      "dataset": "all",
+      "reader": "nla",
+      "label": 0,
+      "interpretation_records": 22,
+      "unique_questions": 16,
+      "annotation_alignment": {
+        "ambiguous": 5,
+        "aligned": 17
+      },
+      "seed_topic_matches": 13,
+      "current_topic_matches": 11,
+      "seed_specific_target_recognitions": 0,
+      "current_specific_target_recognitions": 0,
+      "recognition_appeared": 0,
+      "recognition_disappeared": 0,
+      "seed_correction_intent": 2,
+      "current_correction_intent": 2,
+      "current_generic_correction_language": 2,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 0,
+      "answer_spurious_nfp_correction": 6,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 22
+      }
+    },
+    {
+      "dataset": "all",
+      "reader": "ao",
+      "label": 1,
+      "interpretation_records": 8,
+      "unique_questions": 6,
+      "annotation_alignment": {
+        "aligned": 7,
+        "conflict": 1
+      },
+      "seed_topic_matches": 5,
+      "current_topic_matches": 5,
+      "seed_specific_target_recognitions": 0,
+      "current_specific_target_recognitions": 1,
+      "recognition_appeared": 1,
+      "recognition_disappeared": 0,
+      "seed_correction_intent": 0,
+      "current_correction_intent": 0,
+      "current_generic_correction_language": 0,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 7,
+      "answer_spurious_nfp_correction": 0,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 7,
+        "concordant": 1
+      }
+    },
+    {
+      "dataset": "all",
+      "reader": "ao",
+      "label": 0,
+      "interpretation_records": 7,
+      "unique_questions": 5,
+      "annotation_alignment": {
+        "aligned": 3,
+        "conflict": 3,
+        "ambiguous": 1
+      },
+      "seed_topic_matches": 7,
+      "current_topic_matches": 7,
+      "seed_specific_target_recognitions": 0,
+      "current_specific_target_recognitions": 0,
+      "recognition_appeared": 0,
+      "recognition_disappeared": 0,
+      "seed_correction_intent": 0,
+      "current_correction_intent": 0,
+      "current_generic_correction_language": 0,
+      "current_spurious_nfp_correction": 0,
+      "answer_specific_target_recognitions": 0,
+      "answer_spurious_nfp_correction": 0,
+      "added_information_beyond_answer": 0,
+      "mismatch": {
+        "topic_only": 7
+      }
+    }
+  ],
+  "limitations": [
+    "Exploratory GPT judgment with answers visible; not blind behavioral prediction.",
+    "Counts are question-candidate records, not independent questions; unique_question denominators are reported.",
+    "Sampled training feedback varies by candidate and search branch; no full-population or monotonic improvement claim.",
+    "Annotation alignment refers jointly to presupposition and reference fields; inspect reasons to distinguish which field conflicts.",
+    "A missing correction signal is not evidence of a normality decision. A positive signal is not proof of source belief."
+  ]
+}

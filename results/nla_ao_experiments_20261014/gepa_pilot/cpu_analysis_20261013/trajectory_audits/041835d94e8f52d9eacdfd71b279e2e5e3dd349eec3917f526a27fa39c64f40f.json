@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/fa0b66b3ad7f4be2062f5ac977010c352356dce878cf184a33a329c1ec540178",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "nfp_1029",
+  "label": 0,
+  "candidate_key": "9543dcf38c8e",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "conflict",
+    "annotation_reason": "The NFP label conflicts with the question's unsupported characterization of amputation as inevitable after a soft tissue sarcoma diagnosis; limb-sparing treatment is often possible.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "topic of prosthetic limbs",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader and answer discuss prosthetic options without challenging inevitability. The reader provides no positive normality judgment."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "best prosthetic options",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "amputation isn’t automatically “inevitable” with a soft tissue sarcoma diagnosis",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses prosthetics only. The answer's correction of inevitability is justified, not spurious; specific-recognition flags remain false under the supplied NFP label."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/6d87b5fdbc515f5ebf0357794d3152c345a53fb9967ee31bf5c46ebc7f88b72c",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-00203",
+  "label": 1,
+  "candidate_key": "d78f4dc0b5fd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The target is the assumption that an individual nuclear test necessarily poses worldwide danger, rather than distinguishing contained tests from large-scale nuclear warfare.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "the paradox of nuclear testing despite treaties/safety",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "though on a localized scale",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes the apparent paradox without resolving the mistaken global-danger assumption. The answer supplies localized effects as a correct alternative but does not explicitly rebut that assumption."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "addressing the apparent contradiction of testing nuclear bombs",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "The idea that any use of nuclear weapons would automatically endanger the whole world is an exaggeration",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader identifies an apparent contradiction but states neither the mistaken assumption nor its resolution. The answer explicitly distinguishes individual tests from globally catastrophic exchanges."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

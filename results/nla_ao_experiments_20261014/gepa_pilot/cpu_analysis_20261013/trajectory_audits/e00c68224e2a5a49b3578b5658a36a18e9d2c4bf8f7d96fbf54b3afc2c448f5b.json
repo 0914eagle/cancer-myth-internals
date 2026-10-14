@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/0e92711d5ec7a00fc0785d1ac3282fb8a6608c4312ec80fd99326a0bd4df6f86",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "nfp_1034",
+  "label": 0,
+  "candidate_key": "669be170460c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "conflict",
+    "annotation_reason": "The question implies stage II esophageal cancer establishes a final-months prognosis, although stage II disease is not inherently terminal and may be treated with curative intent. The NFP annotation overlooks this unsupported implication.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "end-of-life care",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes comfort-focused care without assessing prognosis; the answer supplies hospice information without correcting the stage-based implication."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "end-of-life care",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader is topical only. The answer reasonably recommends confirming hospice eligibility but does not explicitly correct the implication that stage II means final months."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

@@ -1,0 +1,9 @@
+dataset,arm,candidate_key,starting_prompt,fpq_mean,nfp_mean,balanced_normalized,fpq_n,nfp_n
+cancer_myth,gepa,37532912fe85,True,1,4,0.5,4,4
+cancer_myth,gepa,a312bc454252,False,2.25,3.75,0.6,4,4
+cancer_myth,text,375353a87c3d,False,1.75,4,0.575,4,4
+cancer_myth,nla,69d6f267a2f6,False,1.75,4,0.575,4,4
+crepe,gepa,37532912fe85,True,3,5,0.8,4,4
+crepe,gepa,37532912fe85,True,3,5,0.8,4,4
+crepe,text,37532912fe85,True,3,5,0.8,4,4
+crepe,nla,b375bfbd11bd,False,3.25,5,0.825,4,4

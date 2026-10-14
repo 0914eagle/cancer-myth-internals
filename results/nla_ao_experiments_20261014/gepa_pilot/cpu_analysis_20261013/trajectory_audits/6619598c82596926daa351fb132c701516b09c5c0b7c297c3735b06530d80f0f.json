@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/b11e2fb49395db0c8b1d735d3731d89a32b1d3eef0182298406c92f7ece80965",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "nfp_1034",
+  "label": 0,
+  "candidate_key": "80ff1f6a411c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "ambiguous",
+    "annotation_reason": "Foregoing treatment for quality of life is a valid preference, but stage II alone does not establish final months; no individualized prognosis is supplied.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a structured exploration of hospice care options",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader and answer address hospice services without correction; this does not establish an internal normality judgment."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "hospice considerations before decision-making about care options",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "it doesn’t automatically mean there are only months left, or that treatment is futile",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses hospice without assessing the prognosis premise. The answer qualifies what staging implies while explicitly respecting the preference for comfort care."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

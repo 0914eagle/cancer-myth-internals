@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/d740158595ec59de8e8ba82ff575a1e65e06c9ea8a28322c2b4d0250b47ed44f",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "fpq_775",
+  "label": 1,
+  "candidate_key": "69d6f267a2f6",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "conflict",
+    "annotation_reason": "The listed presupposition concerns inevitable preterm delivery, which the question does not assert. The question and reference instead concern inevitable termination after a Hodgkin lymphoma diagnosis and chemotherapy recommendation.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "seeking specialized support groups",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes pregnancy-loss support without identifying inevitable termination as mistaken. The answer likewise provides grief resources while leaving that assumption uncorrected."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "seeking specialized grief counseling",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "There are situations where treatment *can* be adjusted or delayed to allow a pregnancy to continue",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Using the question/reference target, the answer corrects inevitable termination. The reader only anticipates grief resources and substitutes miscarriage for the specific situation."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

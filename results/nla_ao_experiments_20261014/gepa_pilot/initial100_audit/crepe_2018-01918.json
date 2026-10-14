@@ -1,0 +1,109 @@
+{
+  "row_id": "crepe:2018-01918",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why is it that some food loses its nutritional value when cooked?",
+  "native": {
+    "id": "ff0b27de24a58d6645d9f0c49b3c0c44240343d45e76e441133b81b49be3bb6f",
+    "row_id": "crepe:2018-01918",
+    "dataset": "crepe",
+    "question": "Why is it that some food loses its nutritional value when cooked?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why is it that some food loses its nutritional value when cooked?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Cooking can indeed reduce the nutritional value of some foods, and it happens for a few key reasons.\n\nHeat is a major factor. Many vitamins, like Vitamin C and some B vitamins, are sensitive to heat and can break down or be leached out into cooking water. The longer the cooking time and the higher the temperature, the more nutrients are lost.\n\nWater-soluble vitamins (like those B vitamins and Vitamin C) are particularly vulnerable because they dissolve in water. If you boil vegetables, a lot of those vitamins end up in the water, which is often discarded.\n\nOxygen exposure during cooking can also degrade certain vitamins. \n\nLight can also play a role, though more during storage than *during* cooking itself.\n\nHowever, it's not all negative! Cooking can *increase* the bioavailability of some nutrients. For example, cooking tomatoes releases lycopene, an antioxidant, making it easier for our bodies to absorb. Cooking also breaks down tough plant cell walls, making some nutrients more accessible.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 82,
+    "output_tokens": 207,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      76
+    ],
+    "timestamp_utc": "2026-10-12T10:53:33.169071+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "fe25e3e2b151b01f0e770c57d3eb4f74e9a18d7e5e2223bac52ce63db641b2e3",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/fe25e3e2b151b01f0e770c57d3eb4f74e9a18d7e5e2223bac52ce63db641b2e3.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "2812b1b068396cdab771b6ff251bfbd3dfe1e1d107271aa695802a381a5dba4b",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/2812b1b068396cdab771b6ff251bfbd3dfe1e1d107271aa695802a381a5dba4b.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/ff0b27de24a58d6645d9f0c49b3c0c44240343d45e76e441133b81b49be3bb6f_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/ff0b27de24a58d6645d9f0c49b3c0c44240343d45e76e441133b81b49be3bb6f_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      563,
+      625,
+      600,
+      1070,
+      2780,
+      39559,
+      1061,
+      35677,
+      1550,
+      1056,
+      25865,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains nutrient loss through heat-related breakdown and leaching into cooking water, consistent with the reference answer. Its additional discussion of cooking’s benefits does not question or undermine the question’s premise.\n\nRating: 5",
+    "native_id": "ff0b27de24a58d6645d9f0c49b3c0c44240343d45e76e441133b81b49be3bb6f",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/explanatory register established: a structured answer to a question about cooking vegetables causing nutrient loss, likely a food science or nutrition topic.\n\nThe opening question \"Why do some foods lose nutrients when cooked?\" signals a direct answer or explanation of the topic of nutrient loss in cooking.\n\nFinal token \"?\" closes a question prompt (\"how some vegetables lose their nutritional value.\"), immediately requiring a structured answer or paragraph beginning, likely \"the\" or \"cooking\" or \"nutrients\" to introduce the explanation of why. or \"the loss of vitamins.\" or \"Why?\" or \"cooking causes...\" or \"vitamins\" or \"some foods.\" or \"and degradation of nutrients.\" or \".\"",
+    "reused": true,
+    "original_output_id": "fe25e3e2b151b01f0e770c57d3eb4f74e9a18d7e5e2223bac52ce63db641b2e3",
+    "source_native_id": "ff0b27de24a58d6645d9f0c49b3c0c44240343d45e76e441133b81b49be3bb6f",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent semantic content related to the reasons behind food losing nutritional value when cooked.",
+    "reused": true,
+    "original_output_id": "5f489f627ed4daaa69208e3cad3b6b22a55d8784b0c0ae4051d46718b2a15160",
+    "source_native_id": "ff0b27de24a58d6645d9f0c49b3c0c44240343d45e76e441133b81b49be3bb6f",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The question, empty presupposition list, reference answer, and grading feedback are consistent.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Predicts a direct explanation of cooking-related nutrient loss, matching the answer. No target error is identified; speculative next-token suggestions add no supported diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes the nutrient-loss topic without predicting how the answer handles the premise or identifying an error. The activation claim is unverified and adds nothing beyond the visible text."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

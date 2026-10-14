@@ -1,0 +1,108 @@
+{
+  "row_id": "crepe:2018-03050",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why sometimes when in resting my eyes start to like cry?",
+  "native": {
+    "id": "719824370bbce3fbc1e90453b0dc09df0b52d706e321f0e5c216ffd82e6d9d93",
+    "row_id": "crepe:2018-03050",
+    "dataset": "crepe",
+    "question": "Why sometimes when in resting my eyes start to like cry?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why sometimes when in resting my eyes start to like cry?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That sensation of your eyes watering when you rest them is pretty common! It's usually due to a few things.\n\nFirst, when you're actively looking around, you blink more often. Blinking spreads tears across the surface of your eye, keeping it lubricated. When you close your eyes to rest, you blink *less*. This means the natural tear film isn't being refreshed as frequently, and tears can build up and overflow.\n\nSecond, your tear ducts drain tears away from your eyes. When your head is down or you're lying flat, gravity can make it harder for those ducts to work efficiently, leading to overflow – what feels like crying.\n\nFinally, sometimes it can be a sign of dry eye. It seems counterintuitive, but dry eyes can *overproduce* tears as a reflex response to irritation. \n\nIt's usually nothing to worry about, but if it's happening a lot or is accompanied by pain, redness, or vision changes, it's a good idea to see an eye doctor.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 81,
+    "output_tokens": 216,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      75
+    ],
+    "timestamp_utc": "2026-10-12T10:54:57.293940+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "6d419365e1deba79b3652322c6cb96db42bf70f4053c0276629ebd96ef5d6c72",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/6d419365e1deba79b3652322c6cb96db42bf70f4053c0276629ebd96ef5d6c72.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "659584092e703e2d49b85d83e66396ad05120b93f97d1095b477afb84cfbd50c",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/659584092e703e2d49b85d83e66396ad05120b93f97d1095b477afb84cfbd50c.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/719824370bbce3fbc1e90453b0dc09df0b52d706e321f0e5c216ffd82e6d9d93_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/719824370bbce3fbc1e90453b0dc09df0b52d706e321f0e5c216ffd82e6d9d93_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      6494,
+      1056,
+      528,
+      31432,
+      1041,
+      6114,
+      1502,
+      531,
+      1133,
+      4665,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response accepts the question’s premise and directly explains why eyes may water while resting. It does not challenge the question’s validity or introduce unnecessary skepticism.\n\nRating: 5",
+    "native_id": "719824370bbce3fbc1e90453b0dc09df0b52d706e321f0e5c216ffd82e6d9d93",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Article/advice format established: a structured answer to a question about eye watering, likely a common phenomenon or symptom of eye irritation.\n\nThe question \"why sometimes my eyes water up in a sad/emotional situation?\" signals a specific scenario about watery eye discharge, likely a common complaint about spontaneous tearing or overflow.\n\nFinal token \"?\" ends a question defining a phenomenon (\"why my eyes sometimes...\"), immediately requiring a specific symptom description, likely \"tearing,\" \"overflow,\" or \"why do eyes water?\" or \"tearing/discharge\" to specify the phenomenon of watery eyes. or \"or watery discharge\" or \"sometimes tears overflow.\" or \"eye stinging\" or \"the reason.\"",
+    "reused": true,
+    "original_output_id": "6d419365e1deba79b3652322c6cb96db42bf70f4053c0276629ebd96ef5d6c72",
+    "source_native_id": "719824370bbce3fbc1e90453b0dc09df0b52d706e321f0e5c216ffd82e6d9d93",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The semantic content represented by these activations is the concept of 'tears' and 'crying'.",
+    "reused": true,
+    "original_output_id": "b5f8ab59be4c2dd26d35e857a0c5cfe37b0fa1804774fd0d3fb97d08e65efea4",
+    "source_native_id": "719824370bbce3fbc1e90453b0dc09df0b52d706e321f0e5c216ffd82e6d9d93",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "The reference explains tearing during yawning, but the question mentions resting, not yawning.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It anticipates a structured explanation of watery eyes, consistent with the actual answer, but substitutes a sad/emotional situation for resting. It identifies no specific error or correction and does not establish that the source deemed the premise sound."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Tears and crying match the visible topic, but this summary predicts no answer behavior and supplies no diagnostic information beyond the text."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

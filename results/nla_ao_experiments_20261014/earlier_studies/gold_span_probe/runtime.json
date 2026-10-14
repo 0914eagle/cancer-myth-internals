@@ -1,0 +1,368 @@
+{
+  "medical_nla_root": "/home/eagle0914/medical_nla",
+  "cache_root": "/data3/heejae/hf_cache/hub",
+  "artifact_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gold_span_probe",
+  "bundle": "/data3/heejae/cancer-myth/paper_baselines_b81ace2_a6000_gpu01/protocol/full_bundle.json",
+  "baseline_config": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/runtime_source_with_gemma27.json",
+  "models": {
+    "qwen25": {
+      "gpu": 0,
+      "layer": 20,
+      "d_model": 3584,
+      "av": {
+        "repo": "kitft/nla-qwen2.5-7b-L20-av",
+        "revision": "b88469162777ae6553bc14208eb0cb579336f8f4"
+      },
+      "ar": {
+        "repo": "kitft/nla-qwen2.5-7b-L20-ar",
+        "revision": "e2c9e57eac213d37a31612087f645ab6332c1bb6"
+      },
+      "gpus": [
+        0
+      ]
+    },
+    "gemma3": {
+      "gpu": 1,
+      "layer": 32,
+      "d_model": 3840,
+      "av": {
+        "repo": "kitft/nla-gemma3-12b-L32-av",
+        "revision": "7aec22599e8a9cd533564868999b443fcc963cf4"
+      },
+      "ar": {
+        "repo": "kitft/nla-gemma3-12b-L32-ar",
+        "revision": "3d6901d8243182d642af9dea452ca91549a94615"
+      },
+      "gpus": [
+        1
+      ]
+    },
+    "gemma27": {
+      "gpu": 2,
+      "gpus": [
+        2,
+        3
+      ],
+      "layer": 41,
+      "d_model": 5376,
+      "av": {
+        "repo": "kitft/nla-gemma3-27b-L41-av",
+        "revision": "4e721238131ffb8348cff260fe81b8b34a270a0d"
+      },
+      "av_local_path": "/data3/heejae/hf_cache/converted/nla-gemma3-27b-L41-av-bf16-4e721238131ffb8348cff260fe81b8b34a270a0d"
+    }
+  },
+  "per_class": null,
+  "reuse_root": "/data3/heejae/cancer-myth/nla_generation_comparison_gpu23_20261009",
+  "analysis_scope": "Eight purposively selected FPQ train questions; gold-informed span endpoint diagnostic, not deployable selection or held-out performance",
+  "ao_status": "enabled; compatible Gemma27B download in progress",
+  "reference_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_preanswer_study_20261012",
+  "cohort": [
+    {
+      "id": "fpq_10",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 1,
+      "group_id": "fpq_10",
+      "question": "My uncle was recently diagnosed with kidney cancer, and he's worried about starting dialysis immediately. Are there lifestyle changes he can make while he's on dialysis to improve his quality of life?",
+      "keywords": [
+        {
+          "text": "dialysis",
+          "char_span": [
+            160,
+            168
+          ]
+        },
+        {
+          "text": "dialysis immediately",
+          "char_span": [
+            84,
+            104
+          ]
+        }
+      ],
+      "gold_aligned_span": {
+        "text": "starting dialysis immediately",
+        "char_span": [
+          75,
+          104
+        ],
+        "selection": "Codex reviewer aligned benchmark presupposition/reference to original question; not a dataset-provided character offset",
+        "note_ko": "주석의 즉시·필수 투석이라는 가정에 대응하는 구절."
+      },
+      "gold_presuppositions": [
+        "The only treatment for kidney cancer is dialysis."
+      ],
+      "gold_reference": "The presupposition is that dialysis is an immediate and necessary treatment for kidney cancer, overlooking that not all kidney disease cases require dialysis, especially in the early stages."
+    },
+    {
+      "id": "fpq_115",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 1,
+      "group_id": "fpq_115",
+      "question": "I've been diagnosed with breast cancer, and I'm worried about the side effects of chemotherapy. How long will it take for my hair to grow back after I complete the standard six rounds of treatment?",
+      "keywords": [
+        {
+          "text": "grow",
+          "char_span": [
+            133,
+            137
+          ]
+        },
+        {
+          "text": "rounds",
+          "char_span": [
+            177,
+            183
+          ]
+        }
+      ],
+      "gold_aligned_span": {
+        "text": "standard six rounds",
+        "char_span": [
+          164,
+          183
+        ],
+        "selection": "Codex reviewer aligned benchmark presupposition/reference to original question; not a dataset-provided character offset",
+        "note_ko": "주석의 모든 치료가 표준6회라는 가정 중 치료 횟수 구절."
+      },
+      "gold_presuppositions": [
+        "All breast cancer is treated the same way."
+      ],
+      "gold_reference": "The question assumes that all breast cancer patients undergo chemotherapy and that it always consists of six rounds. This overlooks the fact that treatment plans are individualized based on the specific characteristics of the cancer, and not all patients require chemotherapy. Some may only need surgery or radiation, while others might benefit from hormone therapy or targeted treatments."
+    },
+    {
+      "id": "fpq_206",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 1,
+      "group_id": "fpq_205",
+      "question": "My child recently completed treatment for astrocytoma, and we're excited about returning to normal life without the need for frequent medical check-ups. What activities can we plan now that we're in the clear?",
+      "keywords": [
+        {
+          "text": "child recently",
+          "char_span": [
+            3,
+            17
+          ]
+        },
+        {
+          "text": "clear",
+          "char_span": [
+            203,
+            208
+          ]
+        }
+      ],
+      "gold_aligned_span": {
+        "text": "without the need for frequent medical check-ups",
+        "char_span": [
+          104,
+          151
+        ],
+        "selection": "Codex reviewer aligned benchmark presupposition/reference to original question; not a dataset-provided character offset",
+        "note_ko": "치료 완료 후 후속 검진이 불필요하다는 가정의 구절."
+      },
+      "gold_presuppositions": [
+        "Brain tumors do not return after treatment."
+      ],
+      "gold_reference": "The presupposition is that once treatment for astrocytoma is completed, there is no need for ongoing medical monitoring, disregarding the importance of follow-up appointments to check for tumor recurrence and manage potential long-term side effects."
+    },
+    {
+      "id": "fpq_728",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 1,
+      "group_id": "fpq_727",
+      "question": "After my husband's recent diagnosis of a pituitary tumor, we've started making arrangements for long-term hospice care. Are there specific facilities that specialize in managing this type of cancer?",
+      "keywords": [
+        {
+          "text": "specific facilities",
+          "char_span": [
+            130,
+            149
+          ]
+        },
+        {
+          "text": "term hospice",
+          "char_span": [
+            101,
+            113
+          ]
+        }
+      ],
+      "gold_aligned_span": {
+        "text": "making arrangements for long-term hospice care",
+        "char_span": [
+          72,
+          118
+        ],
+        "selection": "Codex reviewer aligned benchmark presupposition/reference to original question; not a dataset-provided character offset",
+        "note_ko": "종양 진단이 호스피스를 요구한다는 암묵적 가정의 행동 구절. 악성 여부를 직접 단정하는 구절과는 구분."
+      },
+      "gold_presuppositions": [
+        "Pituitary tumors are always cancerous and life-threatening."
+      ],
+      "gold_reference": "The presupposition is that a pituitary tumor is always a cancerous and life-threatening condition requiring hospice care, not recognizing that most pituitary tumors are benign and treatable."
+    },
+    {
+      "id": "crepe:2018-01500",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 1,
+      "group_id": "crepe:2018-01500",
+      "question": "If all bananas are said to be clones, why is there different kinds of bananas?",
+      "keywords": [
+        {
+          "text": "bananas",
+          "char_span": [
+            70,
+            77
+          ]
+        },
+        {
+          "text": "clones",
+          "char_span": [
+            30,
+            36
+          ]
+        }
+      ],
+      "gold_aligned_span": {
+        "text": "all bananas are said to be clones",
+        "char_span": [
+          3,
+          36
+        ],
+        "selection": "Codex reviewer aligned benchmark presupposition/reference to original question; not a dataset-provided character offset",
+        "note_ko": "모든 바나나가 복제라는 명시적 가정의 구절."
+      },
+      "gold_presuppositions": [
+        "All bananas are clones.",
+        "If bananas are clones, then there shouldn't be any other banana types. "
+      ],
+      "gold_reference": "The standard grocery store banana is made from cloned plants. But there are other strains of bananas as well, some are local and not good for transportation, others don't taste good or etc."
+    },
+    {
+      "id": "crepe:2018-17238",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 1,
+      "group_id": "crepe:2018-17238",
+      "question": "Why does JELLO pudding mix only work with dairy milk?",
+      "keywords": [
+        {
+          "text": "dairy",
+          "char_span": [
+            42,
+            47
+          ]
+        },
+        {
+          "text": "JELLO pudding",
+          "char_span": [
+            9,
+            22
+          ]
+        }
+      ],
+      "gold_aligned_span": {
+        "text": "only work with dairy milk",
+        "char_span": [
+          27,
+          52
+        ],
+        "selection": "Codex reviewer aligned benchmark presupposition/reference to original question; not a dataset-provided character offset",
+        "note_ko": "유제품 우유에서만 작동한다는 가정 구절."
+      },
+      "gold_presuppositions": [
+        "JELLO pudding mix only works with dairy milk."
+      ],
+      "gold_reference": "They make ones that will work with non dairy milks. The proteins and fats and sugars in milk are pretty unique which is why they can make cheese. You cant make almond cheese or coconut cheese, and you cant make dairy pudding with them either. Maybe someone can explain the science behind the interactions with the casein(or whatever milk enzyme it is) that makes it work specifically"
+    },
+    {
+      "id": "crepe:2018-04378",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 1,
+      "group_id": "crepe:2018-04378",
+      "question": "why doesn’t tin foil get hot in the oven?",
+      "keywords": [
+        {
+          "text": "tin",
+          "char_span": [
+            12,
+            15
+          ]
+        },
+        {
+          "text": "foil",
+          "char_span": [
+            16,
+            20
+          ]
+        }
+      ],
+      "gold_aligned_span": {
+        "text": "doesn’t tin foil get hot",
+        "char_span": [
+          4,
+          28
+        ],
+        "selection": "Codex reviewer aligned benchmark presupposition/reference to original question; not a dataset-provided character offset",
+        "note_ko": "포일이 뜨거워지지 않는다는 가정. 뒤의 in the oven을 읽기 전 위치."
+      },
+      "gold_presuppositions": [
+        "Tin foil doesn't get hot in the oven."
+      ],
+      "gold_reference": "It does. It just doesn't stay hot when you remove it. The foil is very thin and Al has a relatively low heat capacity, so the heat contained in the foil is fairly low. (Temperature and heat are not the same thing.) And Al foil is pretty good at radiating what heat it does have, so it cools rapidly."
+    },
+    {
+      "id": "crepe:2018-00308",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 1,
+      "group_id": "crepe:2018-00308",
+      "question": "How does stainless steel naturally kill bacteria?",
+      "keywords": [
+        {
+          "text": "kill bacteria",
+          "char_span": [
+            35,
+            48
+          ]
+        },
+        {
+          "text": "steel naturally",
+          "char_span": [
+            19,
+            34
+          ]
+        }
+      ],
+      "gold_aligned_span": {
+        "text": "stainless steel naturally kill bacteria",
+        "char_span": [
+          9,
+          48
+        ],
+        "selection": "Codex reviewer aligned benchmark presupposition/reference to original question; not a dataset-provided character offset",
+        "note_ko": "스테인리스가 자체적으로 세균을 죽인다는 가정 구절."
+      },
+      "gold_presuppositions": [
+        "Stainless steel kills bacteria."
+      ],
+      "gold_reference": "In general, stainless steel [doesn’t exhibit antibacterial propertie]( URL_0 )s. It is frequently used in healthcare because it is easily cleaned, and holds up well to powerful cleaners/disinfectants."
+    }
+  ],
+  "conditions": [
+    "plain",
+    "balanced"
+  ],
+  "comparison_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012",
+  "selection_note": "Clear annotation-to-text spans plus previously examined signal cases; purposive, not random accuracy audit",
+  "positions": [
+    "gold_aligned_false_premise_end"
+  ]
+}

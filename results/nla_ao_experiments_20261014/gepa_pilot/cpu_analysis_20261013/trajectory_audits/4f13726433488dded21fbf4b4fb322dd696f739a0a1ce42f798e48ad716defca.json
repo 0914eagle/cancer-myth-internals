@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/eebf6a9b1e3fcbb2e0bf988c4f7bc35c1e11f5f23bf439a08b0009c65a80d19c",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-20803",
+  "label": 1,
+  "candidate_key": "919934b5244c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The target is the mistaken generalization that airplane propellers routinely exceed the speed of sound; exceptional supersonic operation does not invalidate that target.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "explaining a physics phenomenon about supersonic propeller tips",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader anticipates an explanation, not a correction of the speed premise. The answer explains purported supersonic operation without clearly correcting that premise."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "likely addressing the specific reason propellers avoid supersonic shock waves",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "The premise that airplane propeller tips routinely travel faster than the speed of sound is generally incorrect for most aircraft.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The answer explicitly corrects routine supersonic tip speeds; the reader merely anticipates an explanation of the phenomenon."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

@@ -1,0 +1,66 @@
+{
+  "state": "passed",
+  "purpose": "Train improvement with dev degradation must not select candidate; independent dev actually evaluated",
+  "calls": [
+    [
+      "plain",
+      {
+        "partition": "dev",
+        "i": 0
+      }
+    ],
+    [
+      "plain",
+      {
+        "partition": "dev",
+        "i": 1
+      }
+    ],
+    [
+      "plain",
+      {
+        "partition": "train",
+        "i": 1
+      }
+    ],
+    [
+      "plain",
+      {
+        "partition": "train",
+        "i": 0
+      }
+    ],
+    [
+      "improved",
+      {
+        "partition": "train",
+        "i": 1
+      }
+    ],
+    [
+      "improved",
+      {
+        "partition": "train",
+        "i": 0
+      }
+    ],
+    [
+      "improved",
+      {
+        "partition": "dev",
+        "i": 0
+      }
+    ],
+    [
+      "improved",
+      {
+        "partition": "dev",
+        "i": 1
+      }
+    ]
+  ],
+  "selected": {
+    "answer": "plain"
+  },
+  "engine_cache_evaluation": false
+}

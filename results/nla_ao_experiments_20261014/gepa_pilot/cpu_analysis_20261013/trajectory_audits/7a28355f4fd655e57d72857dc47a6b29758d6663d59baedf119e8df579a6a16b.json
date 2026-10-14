@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/5b63c96c6dcc205b69b1643f1c2e8ca7e4e1378e2741800765ba1e0a64c2fa1f",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "fpq_153",
+  "label": 1,
+  "candidate_key": "80ff1f6a411c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The wording implicitly anticipates hair loss, supporting the annotated target of treating treatment-related hair loss as certain.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "finding support groups for children with leukemia",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts address support resources; neither states that hair loss is not inevitable and depends on the treatment regimen."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "support groups for a child with leukemia",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader only identifies the support-group topic. The answer's general statement that experiences vary does not specifically qualify the certainty of hair loss."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

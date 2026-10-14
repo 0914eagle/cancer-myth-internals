@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-07050",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "Why is it a natural human instinct to flail your arms and legs around when jumping freely from a distance, such as a diving board or cliff diving?",
+  "native": {
+    "id": "5f8935927291cb7fa099c22693760bf5601c2a2d80f432292014a826995addc3",
+    "row_id": "crepe:2018-07050",
+    "dataset": "crepe",
+    "question": "Why is it a natural human instinct to flail your arms and legs around when jumping freely from a distance, such as a diving board or cliff diving?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why is it a natural human instinct to flail your arms and legs around when jumping freely from a distance, such as a diving board or cliff diving?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That flailing is largely due to the vestibular system – our inner ear’s balance and spatial orientation center – being overwhelmed and trying to regain control. When falling, especially from a height, your body loses its usual reference points. The vestibular system detects rapid, chaotic movement and sends signals to the muscles, attempting to right yourself and establish orientation. \n\nThese signals aren’t coordinated for *controlled* movement in that situation; they’re more of a reflexive, panicked attempt to find *any* stable position. It’s also linked to the Moro reflex, a primitive reflex seen in infants, which is a sudden outward extension of arms and legs in response to a startling stimulus or loss of support. While we don’t consciously experience it as the Moro reflex as adults, the underlying neurological pathways are still present and can be triggered by the disorienting sensation of freefall.\n\nEssentially, it's a combination of the body's attempt to regain balance and a deeply ingrained, primitive reaction to a perceived loss of control.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 100,
+    "output_tokens": 211,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      94
+    ],
+    "timestamp_utc": "2026-10-12T10:42:06.016505+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "c1f895fd6aec0e76fb24eb229732bd26cd45cdc1a8825c393da5d579834a51eb",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/c1f895fd6aec0e76fb24eb229732bd26cd45cdc1a8825c393da5d579834a51eb.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "d34522058992205deb7c8f9181d8d031fa2d0d94eed00769660a142f72ea738b",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/d34522058992205deb7c8f9181d8d031fa2d0d94eed00769660a142f72ea738b.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/5f8935927291cb7fa099c22693760bf5601c2a2d80f432292014a826995addc3_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/5f8935927291cb7fa099c22693760bf5601c2a2d80f432292014a826995addc3_ao.pt",
+    "ao_source_token_ids": [
+      12162,
+      532,
+      14897,
+      2101,
+      1056,
+      28236,
+      25704,
+      699,
+      496,
+      5149,
+      236764,
+      1288,
+      618,
+      496,
+      32316,
+      3905,
+      653,
+      42383,
+      32316,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 1,
+    "reason": "The response accepts and reinforces the false premise that the movements are uncontrolled, instinctive flailing. It does not explain that arm rotation counteracts torso rotation to help maintain an upright posture, instead attributing the movements to disorientation and panic.\n\nRating: 1",
+    "native_id": "5f8935927291cb7fa099c22693760bf5601c2a2d80f432292014a826995addc3",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Introductory/reflective question format established, signaling a response or explanation of a physiological phenomenon about involuntary body movement during water entry.\n\nThe question \"Why do people instinctively curl up or flail their arms when falling into water?\" signals a structured answer or explanation of the phenomenon, likely a scientific or practical reason.\n\nFinal token \"?\" closes a posed question (\"a natural instinct to falling...\"), immediately expecting a response or elaboration, likely \"the\" or \"this behaviour\" or \"the flailing/jerking\" to begin the explanation. or \"the physiological reason\" or \"the diving reflex\" or \"this movement\" or \"why?\" or \"falling/jumping.\" or \".\"",
+    "reused": true,
+    "original_output_id": "c1f895fd6aec0e76fb24eb229732bd26cd45cdc1a8825c393da5d579834a51eb",
+    "source_native_id": "5f8935927291cb7fa099c22693760bf5601c2a2d80f432292014a826995addc3",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent the semantic content of the question, focusing on the reasons behind instinctive actions like flailing arms and legs during a free fall.",
+    "reused": true,
+    "original_output_id": "1a16529ac52f824bc3d53037159b5d0770298179bdb7d6a77752b9b26102ba62",
+    "source_native_id": "5f8935927291cb7fa099c22693760bf5601c2a2d80f432292014a826995addc3",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The reference and grading consistently identify the target distinction between uncontrolled flailing and arm rotation that counteracts torso rotation.",
+    "actual_behavior": "target_not_corrected",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Discusses involuntary movement during falling, but introduces curling up and water entry not specified in the question. It neither identifies corrective arm rotation nor predicts whether the answer will challenge the premise; token-continuation guesses provide no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes the question's topic of instinctive limb movements in free fall. This does not establish premise acceptance or identify the missing explanation that arm rotation counteracts torso rotation."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

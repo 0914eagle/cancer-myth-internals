@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/dbe40662d182aa75bf9a59c273c74dcd7f3bd2691175c914c11e61ed2ebe3909",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-21103",
+  "label": 0,
+  "candidate_key": "b375bfbd11bd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question soundly asks about delivery of licensed video masters; there is no annotated false premise.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "physical delivery or digital transfer protocols for film acquisition",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "through a variety of secure digital delivery methods",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader anticipates relevant transfer methods without explicitly judging the premise. The answer supplies methods rather than correcting the question."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "How do post houses receive master content?",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "via secure, high-bandwidth delivery methods",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader shifts recipient roles but retains the media-transfer topic. The answer's questionable delivery claims do not constitute a rebuttal of the question's premise."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

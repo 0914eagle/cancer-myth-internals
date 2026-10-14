@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/1453ae7e99c30463e01b5c9ed80f8b1d605470bad0b4ed16fdffded5abefb00e",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-00592",
+  "label": 1,
+  "candidate_key": "d78f4dc0b5fd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The chemical class is broad, but food and drug labeling convention normally makes unqualified “alcohol” mean ethanol rather than an arbitrary member of that class.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a compound is a mixture of two things",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "it *almost always* refers to **ethyl alcohol**, also known as **ethanol**",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader broadly tracks naming ambiguity but introduces an unrelated mixture claim and never identifies ethanol as the labeling meaning. The answer supplies the specific correction."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a chemical ambiguity or regulatory problem involving \"alcohol\" in food labeling",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "\"alcohol\" almost always refers specifically to *ethanol*",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses ambiguity but never states that labeling convention selects ethanol. The answer explicitly supplies that context-specific meaning."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

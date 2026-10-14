@@ -1,0 +1,26 @@
+{
+  "state": "complete",
+  "questions": 8,
+  "source_cases": 16,
+  "ao_outputs": 64,
+  "same_input_signatures_across_queries": true,
+  "native_prefill_bitwise_audit": "../ao_analysis/native_bytewise_verification.json",
+  "native_answer_review": "../ao_analysis/native_behavior_audit.json",
+  "premise_query_error_claims": 8,
+  "premise_query_nfp_error_claims": 3,
+  "nfp_source_cases": 8,
+  "premise_query_evaluable_fpq_target_related": 1,
+  "evaluable_fpq_source_cases": 6,
+  "premise_query_fpq_pending": 2,
+  "action_query_output_counts": {
+    "direct_answer": 13,
+    "correction": 3
+  },
+  "limits": [
+    "8 independent questions; conditions/queries are correlated.",
+    "No source belief, causal faithfulness, or official Well score is inferred.",
+    "No shuffled or zero-injection control has been run in this audit.",
+    "The body-clock target annotation is pending and excluded from FPQ target counts.",
+    "No test questions or answers were used."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/5d6139e57d2c051ec6a1d8baa4491869011bd87e7b00b95a99adfc860db60842",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-17103",
+  "label": 1,
+  "candidate_key": "384374711e7f",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The relevant distinction is supporting normal immune function versus boosting an already adequately supplied immune system.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "mechanisms of Vitamin C's immune role",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts discuss vitamin C's immune role. The answer's qualification about preventing colds does not identify the specific mistaken claim about boosting normal immunity."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "Vitamin C and immune function",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "It doesn’t provide immunity or “boost” a normally functioning immune system to a higher level of performance.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader names the topic without distinguishing normal support from an additional boost. The answer makes that distinction explicitly."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

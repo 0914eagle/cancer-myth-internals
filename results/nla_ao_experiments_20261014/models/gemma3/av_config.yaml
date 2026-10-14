@@ -1,0 +1,13 @@
+seed: 42
+paths:
+  cache_dir: /data3/heejae/hf_cache/hub
+nla_model:
+  model_id: /data3/heejae/hf_cache/hub/models--kitft--nla-gemma3-12b-L32-av/snapshots/7aec22599e8a9cd533564868999b443fcc963cf4
+  dtype: bfloat16
+  device_map: cuda
+  trust_remote_code: false
+  expected_d_model: 3840
+  sidecar_filename: nla_meta.yaml
+generation:
+  do_sample: false
+  max_new_tokens: 256

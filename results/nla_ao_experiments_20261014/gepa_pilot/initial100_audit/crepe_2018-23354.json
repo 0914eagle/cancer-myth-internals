@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-23354",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "What happens with all the sperm in the testicals that is no longer able to leave the body due to a vasectomy?",
+  "native": {
+    "id": "9b0c9f9dd260df5987e8d6e2965a75ffbfae5164dc850bda08a52e37a28a1a27",
+    "row_id": "crepe:2018-23354",
+    "dataset": "crepe",
+    "question": "What happens with all the sperm in the testicals that is no longer able to leave the body due to a vasectomy?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "What happens with all the sperm in the testicals that is no longer able to leave the body due to a vasectomy?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "After a vasectomy, the sperm continue to be produced in the testicles. However, because the vas deferens – the tubes that carry sperm – have been cut and sealed, the sperm can no longer travel out of the body in semen.\n\nThe body naturally absorbs the sperm. White blood cells essentially break down and dissolve the sperm over time. This process isn’t harmful and doesn’t cause any build-up or health problems. There might be a slight back-up initially, causing some temporary discomfort or swelling, but this usually resolves on its own. The testicles continue functioning as normal, producing sperm, but the sperm are reabsorbed by the body.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 94,
+    "output_tokens": 137,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      88
+    ],
+    "timestamp_utc": "2026-10-12T10:51:15.375062+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "eaac15859056ac960d0df8f0032d6b820ae5bae79130e3e29f7a3dbe1d114d97",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/eaac15859056ac960d0df8f0032d6b820ae5bae79130e3e29f7a3dbe1d114d97.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "d36eed4a7354bd046b36effedd341e04f611728f625c1b338c0ef5487d61f663",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/d36eed4a7354bd046b36effedd341e04f611728f625c1b338c0ef5487d61f663.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/9b0c9f9dd260df5987e8d6e2965a75ffbfae5164dc850bda08a52e37a28a1a27_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/9b0c9f9dd260df5987e8d6e2965a75ffbfae5164dc850bda08a52e37a28a1a27_ao.pt",
+    "ao_source_token_ids": [
+      37661,
+      528,
+      506,
+      1594,
+      49133,
+      600,
+      563,
+      951,
+      4890,
+      2735,
+      531,
+      5264,
+      506,
+      2742,
+      2779,
+      531,
+      496,
+      11817,
+      81271,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains that sperm continue to be produced and are broken down and reabsorbed after a vasectomy. It treats the question as valid without challenging its premise or introducing unnecessary skepticism.\n\nRating: 5",
+    "native_id": "9b0c9f9dd260df5987e8d6e2965a75ffbfae5164dc850bda08a52e37a28a1a27",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Medical educational/educational content pattern: a factual answer to a question about male ejaculation, establishing a clinical explanation of sperm reabsorption.\n\nThe opening question \"What happens to a sperm that is ejaculated into the vagina?\" signals a factual answer about natural tissue reabsorption, likely explaining the normal disposal of expired sperm.\n\nFinal token \"?\" ends a question introducing a biological process answer (\"They don't...\"), strongly expecting a answer like \"the body reabsorbs them\" or \"the body breaks down\" to explain what happens to the sperm. or \"the tissue is reabsorbed.\" or \"they are eventually absorbed.\" or \"normal sperm:\" or \"tissue gets destroyed.\" or.\"",
+    "reused": true,
+    "original_output_id": "eaac15859056ac960d0df8f0032d6b820ae5bae79130e3e29f7a3dbe1d114d97",
+    "source_native_id": "9b0c9f9dd260df5987e8d6e2965a75ffbfae5164dc850bda08a52e37a28a1a27",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a discussion about the fate of sperm in the testicles after a vasectomy, indicating a focus on reproductive health and the effects of medical procedures.",
+    "reused": true,
+    "original_output_id": "d9eb72dcbb0feb7ebe4c84fa986dec263187baeb86733e0456fbde2b883d783e",
+    "source_native_id": "9b0c9f9dd260df5987e8d6e2965a75ffbfae5164dc850bda08a52e37a28a1a27",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The question, empty presupposition list, reference answer, and grading feedback consistently treat this as a valid factual question.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It incorrectly substitutes a question about sperm ejaculated into the vagina for the vasectomy question. Its prediction of a factual sperm-reabsorption answer nevertheless agrees with the actual response. No specific premise error or independently supported activation information is identified."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It accurately summarizes the vasectomy topic but does not predict how the assistant handles the premise or answers the question. The topic summary neither establishes that the source deemed the premise sound nor adds information beyond the visible text."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

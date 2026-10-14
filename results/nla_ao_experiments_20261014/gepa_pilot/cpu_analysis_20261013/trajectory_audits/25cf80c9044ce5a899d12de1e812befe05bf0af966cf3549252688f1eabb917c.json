@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/24894efa1a01a6236c389dca773b5e270c65d14b2589a109ef8b097b949b801c",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-18176",
+  "label": 0,
+  "candidate_key": "384374711e7f",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "ambiguous",
+    "annotation_reason": "Sufficiently low-water-activity bacon can be shelf-stable, but crispness and curing alone do not establish safety. The reference overgeneralizes, particularly about uncooked bacon and storage for days.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "Why can restaurants leave meat out on a buffet?",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses generic buffet storage. The answer offers safety qualifications and hot-holding context rather than a categorical rebuttal; these qualifications are not themselves spurious correction."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "Why is deli meat safe to leave out?",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": true,
+      "answer_evidence": "The two-hour rule applies to all cooked foods, including bacon.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader gives a generic restaurant-storage topic, not a normality judgment. The answer categorically rejects the premise without establishing whether the bacon's water activity requires temperature control and overgeneralizes the two-hour rule."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

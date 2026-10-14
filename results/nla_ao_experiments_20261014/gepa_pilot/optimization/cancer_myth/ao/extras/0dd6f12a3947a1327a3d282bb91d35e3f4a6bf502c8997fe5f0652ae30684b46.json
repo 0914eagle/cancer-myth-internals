@@ -1,0 +1,13 @@
+{
+  "explanation": "The activations represent semantic content related to medical rehabilitation, specifically for patients recovering from brain surgery for germinomas, and the management of side effects from radiation and chemotherapy.",
+  "query": "Describe the semantic content represented by these activations.",
+  "rendered_prompt": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n",
+  "finish_reason": "not_recorded_by_official_helper",
+  "id": "10c622b363cca935e0425ca9a3c8c6de1f360bf30a54c5df77587f1566ab75ea",
+  "source_native_id": "0dd6f12a3947a1327a3d282bb91d35e3f4a6bf502c8997fe5f0652ae30684b46",
+  "source_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/0dd6f12a3947a1327a3d282bb91d35e3f4a6bf502c8997fe5f0652ae30684b46_ao.pt",
+  "source_text_provided": false,
+  "timestamp_utc": "2026-10-13T02:42:02.880900+00:00",
+  "supplied_diagnostic": "The activations represent semantic content related to medical rehabilitation, specifically for patients recovering from brain surgery for germinomas, and the management of side effects from radiation and chemotherapy.",
+  "clipped": false
+}

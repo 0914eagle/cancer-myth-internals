@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/b94e7079ad35842cc6d383ac3b47b77b67da1018696793abed30d76afa7aec26",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "nfp_1034",
+  "label": 0,
+  "candidate_key": "4ba0ec54a129",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "Choosing comfort-focused care is not inherently mistaken, and the father's individual prognosis is unspecified.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "structured exploration of hospice care options",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts address hospice care. Topic agreement does not establish an internal normality judgment."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "choosing a comfortable, supportive hospice",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "doesn’t *necessarily* mean only months remain",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses hospice options without assessing premise validity. The answer offers a qualified prognosis clarification while respecting the stated care preference, not a spurious rebuttal."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

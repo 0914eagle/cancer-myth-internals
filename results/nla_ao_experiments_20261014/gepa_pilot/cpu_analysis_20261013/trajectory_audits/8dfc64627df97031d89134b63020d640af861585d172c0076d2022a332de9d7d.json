@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/a6705dc91032ed804a29ed24f15013a68a959e1a728642688727067a33ec0924",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-00473",
+  "label": 0,
+  "candidate_key": "384374711e7f",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The mechanism question contains no false premise. The reference's camouflage correction concerns an unasserted misconception, not an error in the question.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": true,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": true,
+      "reader_evidence": "to explain the common misconception",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "not* simply about matching their surroundings",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader's generic misconception language does not specify the camouflage claim. Its speculative mechanism fragments provide no accurate diagnostic information absent from the answer."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": true,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": true,
+      "reader_evidence": "likely a factual correction or answer",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "do not change colors primarily to camouflage themselves",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader generically anticipates misconception correction but never identifies camouflage. The answer supplies a relevant clarification without attacking the question."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

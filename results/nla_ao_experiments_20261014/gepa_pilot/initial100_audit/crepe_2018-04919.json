@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-04919",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "How did English become the most commonly spoken language in the world when the population density of other races far exceeded those of European/Caucasian descent?",
+  "native": {
+    "id": "6671157a92c0fb4e148d32d146c7b6875a1faf7d477e1cd7597fc178fb52ce8a",
+    "row_id": "crepe:2018-04919",
+    "dataset": "crepe",
+    "question": "How did English become the most commonly spoken language in the world when the population density of other races far exceeded those of European/Caucasian descent?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "How did English become the most commonly spoken language in the world when the population density of other races far exceeded those of European/Caucasian descent?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That's a complex question with roots in historical power dynamics, not simply population size. While it's true populations of non-European descent have historically been larger, several factors propelled English to global prominence.\n\nFirstly, **British colonialism** played a massive role. From the 17th through 20th centuries, the British Empire expanded across the globe, establishing English as the language of administration, trade, and education in vast territories including India, large parts of Africa, Australia, and North America. This imposed the language on local populations.\n\nSecondly, the **rise of the United States** as a global superpower in the 20th and 21st centuries cemented English’s position. American economic, political, and cultural influence – particularly in areas like science, technology, business, and entertainment (music, movies, television) – led to widespread adoption of English. \n\nThirdly, **trade and commerce**. English became the *lingua franca* of international business. Even if people don't have English as a first language, it's often the common language used in international dealings.\n\nFinally, **relative ease of learning** (compared to some other languages with complex grammatical structures) and the availability of learning resources contributed.\n\nIt wasn't about a larger originating population, but about power, influence, and the spread of those things through colonization, economic dominance, and cultural export. The language became valuable for access to power and opportunity, driving its adoption even in areas with vastly different population demographics.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 97,
+    "output_tokens": 314,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      91
+    ],
+    "timestamp_utc": "2026-10-12T10:38:17.735544+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "ae6be19c3042a5c53625b8ecd70da8d76dee1aab7d9e3188f44fc63443cf182e",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/ae6be19c3042a5c53625b8ecd70da8d76dee1aab7d9e3188f44fc63443cf182e.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "8141a9301ceeef858d6d288dc8199d14fd53eccf8e3d3ef9167bc2fdd90df0bf",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/8141a9301ceeef858d6d288dc8199d14fd53eccf8e3d3ef9167bc2fdd90df0bf.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/6671157a92c0fb4e148d32d146c7b6875a1faf7d477e1cd7597fc178fb52ce8a_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/6671157a92c0fb4e148d32d146c7b6875a1faf7d477e1cd7597fc178fb52ce8a_ao.pt",
+    "ao_source_token_ids": [
+      5192,
+      528,
+      506,
+      1902,
+      1056,
+      506,
+      5499,
+      7620,
+      529,
+      1032,
+      22758,
+      2793,
+      36774,
+      1724,
+      529,
+      6693,
+      236786,
+      202224,
+      33975,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response clearly rejects the assumption that a language’s global prevalence depends on its originating population. It explains how British colonialism imposed and spread English through administration, trade, and education, consistent with the reference explanation, and describes incentives for its continued adoption.\n\nRating: 5",
+    "native_id": "6671157a92c0fb4e148d32d146c7b6875a1faf7d477e1cd7597fc178fb52ce8a",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/analytical forum post format established, posing a question about historical explanation of non-White dominance in global cultures.\n\nThe question \"How did Europeans/White people dominate despite lesser numbers?\" signals an answer or discussion is forthcoming, addressing the demographic paradox of Asian dominance despite numerical inferiority.\n\nFinal token \"?\" closes a posed question (\"given White dominance in history.\"), immediately requiring a continuation like a period or \"the question\" or \"population numbers\" or \"numerical disparity\" to clarify the answer about how minority groups prevailed. or \"population numbers\" or \"the reason\" or \"the question of sheer numbers.\" or \"superiority and dominance.\" or \"African/Asian groups outnumber.\"",
+    "reused": true,
+    "original_output_id": "ae6be19c3042a5c53625b8ecd70da8d76dee1aab7d9e3188f44fc63443cf182e",
+    "source_native_id": "6671157a92c0fb4e148d32d146c7b6875a1faf7d477e1cd7597fc178fb52ce8a",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The semantic content represented by these activations is the concept of language dominance, specifically how English became the most widely spoken language despite having a smaller native population compared to other ethnic groups.",
+    "reused": true,
+    "original_output_id": "e84de2b3934de605a54505c67eadb629232b4d7c71b21eac27b8b1e7f3e22e83",
+    "source_native_id": "6671157a92c0fb4e148d32d146c7b6875a1faf7d477e1cd7597fc178fb52ce8a",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "The annotated presupposition asserts a highest-country-density rule that the question does not explicitly state. The answer and grading instead address originating population size, not population density.",
+    "actual_behavior": "target_corrected",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "The explanation shifts to racial and cultural dominance, inconsistently mentioning Asian dominance. It neither identifies the density-based assumption nor predicts its correction."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It summarizes English's prevalence despite demographic differences but does not identify the assumption as erroneous or predict corrective behavior. This topic summary adds no diagnostic information beyond the supplied text."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

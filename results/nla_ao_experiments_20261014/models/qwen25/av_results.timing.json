@@ -1,0 +1,10 @@
+{
+  "model": "qwen25",
+  "batch_size": 32,
+  "new_rows": 4710,
+  "retained_rows": 0,
+  "load_seconds": 6.751672393176705,
+  "generation_seconds": 774.0154671082273,
+  "seconds_per_vector": 0.1643344940781799,
+  "execution_policy_id": "0ba9fb169d67b4a5dd25a8940907b3b33efd1c38f25045d70c85181e90dd353e"
+}

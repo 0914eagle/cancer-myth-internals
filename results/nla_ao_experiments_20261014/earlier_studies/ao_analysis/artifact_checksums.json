@@ -1,0 +1,16 @@
+{
+  "aggregate_summary.json": "6706bf84713d96dcbd517f389ec98fef4697213993a516bcbfb99b47598fc7e8",
+  "inspection_report.md": "cf6c25406147ab7acde97e507fcda0fd247643a42acf06445a0175bb43b7a412",
+  "lexical_retrieval_rows.jsonl": "437a9fa5f22b34a323edfb4ad04024da07b3ead783034564045707938343b168",
+  "lexical_retrieval_summary.json": "682a8aa096e87e78dde2b74d4a48e73b5d13b520c7b8dfb9f745a8540d36b06f",
+  "matched_qualitative_summary.json": "45ec110cbf1a74ce7f58860af642795416233b5cc2870dc659161e1b43ede7f5",
+  "native_behavior_audit.json": "d718c2f5e7fcd160300270716a1361a33d6f30563068a23dc40e2c19be72c8a1",
+  "native_bytewise_verification.json": "5411d1100bd0063a142f83fbafcebe8dc5cfe33aad5fe9aea752050ad73f45c3",
+  "native_trace_summary.json": "469f22f689ffe6e0e4d4f02a5f5b5b994ed65d62f5264c049318f98240e6a164",
+  "paired_comparison.csv": "430a2d8d4f039695029d7c6081a83c6e3f65e93ebff6f1d9281d72414bfbbf3f",
+  "qualitative_annotations.json": "23a7eee9b596fa845baf3909b438ae187b50fa5e18541005a472f0b9ee59086e",
+  "qualitative_summary.json": "a5f88552cd004ddff08ee22d0f712dc990d62b81c306ecd3864bbf4ca5044c91",
+  "review_explanations.jsonl": "edb034ca1005026c2ec586c67880038b7c924b647dfcce9de52c84ee68ffd75d",
+  "review_window_tokens.json": "c2f285555697962328db45b7f51236d9f709b17cb6df078848e615605ec8e740",
+  "reviewed_examples.md": "22ad7b60e0bdc83d56f8fd98c2b16b328fc3c23e4a8b1cb21ebb31711e129868"
+}

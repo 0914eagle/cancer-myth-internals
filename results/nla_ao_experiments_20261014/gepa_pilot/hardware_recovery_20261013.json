@@ -1,0 +1,14 @@
+{
+  "reason": "GPU1 (PCI0000:1e:00.0) NVML Unknown Error; outstanding native request stalled while GPU0 idle.",
+  "source_gpu_indices_before": "0,1",
+  "source_gpu_indices_after": "4,5",
+  "reader_gpu_indices": "2,3",
+  "scientific_prompts_models_generation_parameters_changed": false,
+  "cache_policy": "Completed answers and their judgments retained. Unfinished request re-generated with its own activations; new records include physical GPU indices.",
+  "existing_driver_pid_adopted": 44584,
+  "timestamp_utc": 1791862395.9079573,
+  "recovery_successful": false,
+  "failed_attempt": "GPU4,5 index selection and UUID minimal CUDA probe both failed driver initialization.",
+  "result": "Preserved six frozen selections and all completed native/reader/judge artifacts; stopped waiting driver and owned AO reader.",
+  "updated_utc": 1791862531.8865395
+}

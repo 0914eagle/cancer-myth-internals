@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/0e5902806f4c9e552a346f2db462595e39c29b400399e7a10e26d20e3b4a5504",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "nfp_1029",
+  "label": 0,
+  "candidate_key": "80ff1f6a411c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "ambiguous",
+    "annotation_reason": "The NFP label may reflect a patient-specific expected amputation, but diagnosis alone does not establish inevitability; the question leaves that distinction unresolved.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a medical or practical question about prosthetic selection",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts concern prosthetic selection, but the reader provides no positive evidence of an internal normality decision."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "prosthetic selection, likely a practical decision-making guide",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "amputation is *not* always inevitable with a soft tissue sarcoma diagnosis",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader only anticipates prosthetic advice. The answer provides a medically supported qualification and conditionally answers the question, rather than denying a confirmed individual treatment plan."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

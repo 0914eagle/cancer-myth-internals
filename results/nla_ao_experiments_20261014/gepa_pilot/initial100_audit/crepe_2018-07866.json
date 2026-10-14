@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-07866",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why do shower curtains tend to get inside the shower and stick to the body when taking a shower, instead of staying were they should or outside the shower?",
+  "native": {
+    "id": "d3a7b20b94c38471e6a7f7382987943699ea67441d5c357aea341ee4a47b92e0",
+    "row_id": "crepe:2018-07866",
+    "dataset": "crepe",
+    "question": "Why do shower curtains tend to get inside the shower and stick to the body when taking a shower, instead of staying were they should or outside the shower?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why do shower curtains tend to get inside the shower and stick to the body when taking a shower, instead of staying were they should or outside the shower?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "This happens due to a combination of physics principles! Here's the breakdown:\n\n* **Bernoulli's Principle:** The hot water running creates a lower air pressure *inside* the shower stall. The higher air pressure *outside* the shower then pushes the curtain inward.\n* **Temperature Differences:** Warm, moist air rises inside the shower. This creates convection currents that also pull the curtain inward.\n* **Static Electricity:** Sometimes, static cling can contribute, especially with certain curtain materials.\n* **The Shape of the Water Spray:** The direction of the water spray can directly push the curtain inwards.\n\n\n\nEssentially, it's not that the curtain *wants* to stick to you, it's that the physics of the shower environment are actively working to pull it in and the water then makes it cling.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 100,
+    "output_tokens": 169,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      94
+    ],
+    "timestamp_utc": "2026-10-12T10:56:40.264883+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "cf3b933aca9954379fb0c49b7f2def194cbf6564784198c6224877cf58632f0a",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/cf3b933aca9954379fb0c49b7f2def194cbf6564784198c6224877cf58632f0a.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "6a288d8ba8a6f356857d75dc4fe9a37cad91a9fd2b54f3bc1a22f944adc31820",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/6a288d8ba8a6f356857d75dc4fe9a37cad91a9fd2b54f3bc1a22f944adc31820.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/d3a7b20b94c38471e6a7f7382987943699ea67441d5c357aea341ee4a47b92e0_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/d3a7b20b94c38471e6a7f7382987943699ea67441d5c357aea341ee4a47b92e0_ao.pt",
+    "ao_source_token_ids": [
+      6568,
+      531,
+      506,
+      2742,
+      1056,
+      4030,
+      496,
+      16984,
+      236764,
+      5205,
+      529,
+      19447,
+      964,
+      901,
+      1374,
+      653,
+      4782,
+      506,
+      16984,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains why shower curtains move inward and cling to the body, treating the question as valid without challenging its premise or introducing unnecessary skepticism.\n\nRating: 5",
+    "native_id": "d3a7b20b94c38471e6a7f7382987943699ea67441d5c357aea341ee4a47b92e0",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Answer/advice article format established: a question posed about a bathroom phenomenon, signaling a practical explanation of why water moves toward a shower.\n\nThe question \"Why does the water in a bathtub get pulled away from the wall?\" signals a scientific or mechanical explanation of the phenomenon of water being pushed back into a shower.\n\nFinal token \"?\" closes a question (\"why does water in a bathtub move away from the wall and towards the drain?\"), immediately requiring a causal explanation, likely \"Bernoulli's principle\" or \"air pressure/water circulation.\" or \"the effect\" or \"this phenomenon\" or \"water jet/convection.\" or \"hydrodynamic pressure.\" or \"air.\"",
+    "reused": true,
+    "original_output_id": "cf3b933aca9954379fb0c49b7f2def194cbf6564784198c6224877cf58632f0a",
+    "source_native_id": "d3a7b20b94c38471e6a7f7382987943699ea67441d5c357aea341ee4a47b92e0",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent semantic content related to the phenomenon of shower curtains sticking to the body, which is a common occurrence during showers.",
+    "reused": true,
+    "original_output_id": "8b38133b62777002d41f10a75d827a483cacd628b3f83e8688c1cee132ca7f1e",
+    "source_native_id": "d3a7b20b94c38471e6a7f7382987943699ea67441d5c357aea341ee4a47b92e0",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The question and no-false-premise annotation are consistent. The NLA misstates the question, but that is a reader-explanation mismatch.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It substitutes questions about bathtub water moving away from a wall or toward a drain for the shower-curtain question. Its prediction of a causal explanation involving Bernoulli's principle or convection broadly matches the answer, but adds no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It accurately summarizes the shower-curtain topic, but does not establish whether the source accepted or challenged the premise. Its activation claim is unverified and adds nothing beyond the visible text."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

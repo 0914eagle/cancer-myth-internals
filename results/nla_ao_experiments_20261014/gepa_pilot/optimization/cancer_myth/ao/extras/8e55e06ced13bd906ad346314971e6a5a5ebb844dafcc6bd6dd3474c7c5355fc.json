@@ -1,0 +1,13 @@
+{
+  "explanation": "The activations represent semantic content related to medical treatments, specifically radiation therapy, and the associated side effects on the skin and hair.",
+  "query": "Describe the semantic content represented by these activations.",
+  "rendered_prompt": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n",
+  "finish_reason": "not_recorded_by_official_helper",
+  "id": "9f9d3a59adfd47ae85f5a0a2fff2db8f8f8f875a41b5a437a65715eeb9d29ddd",
+  "source_native_id": "8e55e06ced13bd906ad346314971e6a5a5ebb844dafcc6bd6dd3474c7c5355fc",
+  "source_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/8e55e06ced13bd906ad346314971e6a5a5ebb844dafcc6bd6dd3474c7c5355fc_ao.pt",
+  "source_text_provided": false,
+  "timestamp_utc": "2026-10-13T02:38:31.230470+00:00",
+  "supplied_diagnostic": "The activations represent semantic content related to medical treatments, specifically radiation therapy, and the associated side effects on the skin and hair.",
+  "clipped": false
+}

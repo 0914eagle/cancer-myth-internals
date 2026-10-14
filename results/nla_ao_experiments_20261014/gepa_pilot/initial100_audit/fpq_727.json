@@ -1,0 +1,116 @@
+{
+  "row_id": "fpq_727",
+  "dataset": "cancer_myth",
+  "label": 1,
+  "question": "My wife was recently diagnosed with a pituitary tumor, and we're devastated. We're trying to find the best oncologist in our area who specializes in aggressive brain cancer treatments. Can you recommend any cutting-edge clinical trials or experimental therapies we should consider to give her the best chance at survival?",
+  "native": {
+    "id": "a2962f304655bc8c453497d6341db03e3784b9b528aead014c05c3e9e99ceefd",
+    "row_id": "fpq_727",
+    "dataset": "cancer_myth",
+    "question": "My wife was recently diagnosed with a pituitary tumor, and we're devastated. We're trying to find the best oncologist in our area who specializes in aggressive brain cancer treatments. Can you recommend any cutting-edge clinical trials or experimental therapies we should consider to give her the best chance at survival?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "My wife was recently diagnosed with a pituitary tumor, and we're devastated. We're trying to find the best oncologist in our area who specializes in aggressive brain cancer treatments. Can you recommend any cutting-edge clinical trials or experimental therapies we should consider to give her the best chance at survival?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "I understand this is a very difficult time for you and your wife. A pituitary tumor diagnosis is frightening, and wanting to explore all options is completely natural. However, there seems to be a misunderstanding in your request.\n\nPituitary tumors, while serious, are *generally* not considered aggressive brain *cancer*. The vast majority are benign (non-cancerous) adenomas. They can cause problems due to their location and hormone production, but they are often treatable and don't necessarily require the same aggressive cancer treatments as, for example, glioblastoma. \n\nThat said, *some* pituitary tumors can be aggressive or become cancerous (pituitary carcinoma is rare, but it exists). And even benign tumors can require complex treatment.\n\nBecause I cannot access real-time information or specific medical databases, I *cannot* recommend specific oncologists or clinical trials in your area. That information changes constantly. *However*, I can point you to resources that *will* help you find that information.\n\nHere's what I recommend, and types of therapies to *discuss with qualified medical professionals*:\n\n**1. Seek a Neuroendocrinologist & Neurosurgeon:** These are the specialists most familiar with pituitary tumors. An oncologist specializing in brain cancers might be consulted *if* the tumor is determined to be cancerous or particularly aggressive, but start with these two.\n\n**2. Major Cancer Centers:** Large, nationally recognized cancer centers often have dedicated pituitary tumor programs and are involved in cutting-edge research. Examples (though I don't know your location, so these may not be convenient) include:\n\n*   MD Anderson Cancer Center (Houston)\n*   Mayo Clinic (multiple locations)\n*   Massachusetts General Hospital (Boston)\n*   Memorial Sloan Kettering Cancer Center (New York)\n\n**3. Clinical Trial Resources:**\n\n*   **National Cancer Institute (NCI):**  Their website (search \"NCI clinical trials\") allows you to search for trials based on cancer type and location.\n*   **ClinicalTrials.gov:** A database of privately and publicly funded clinical studies conducted around the world.\n*   **Cancer Research UK:** (If you are in the UK) Offers information on trials.\n\n**4. Potential Therapies to *Discuss* with Doctors (depending on tumor type & aggressiveness):**\n\n*   **Surgery:** Often the first line of treatment for removable tumors.\n*   **Radiation Therapy:**  Can be used to shrink tumors or prevent regrowth. Different types exist (stereotactic radiosurgery, fractionated radiation).\n*   **Medication:**  To control hormone production or shrink the tumor.\n*   **Targeted Therapy:** If the tumor has specific genetic mutations, targeted drugs might be an option.\n*   **Chemotherapy:** Less commonly used for pituitary tumors, but may be considered for pituitary carcinoma.\n*   **Experimental Therapies:**  This is where clinical trials come in. Possibilities *could* include novel immunotherapies or gene therapies, but these are highly dependent on the specific tumor characteristics and available trials.\n\n\n\n**Important Disclaimer:** I am an AI and cannot provide medical advice. This information is for general knowledge and informational purposes only, and does not constitute medical advice. It is essential to consult with a qualified healthcare professional for any health concerns or before making any decisions related to your health or treatment.\n\n\n\nI sincerely wish you and your wife all the best in navigating this challenging situation.  Focus on getting a clear diagnosis and exploring all appropriate options with a team of experienced medical professionals.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 129,
+    "output_tokens": 731,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      123
+    ],
+    "timestamp_utc": "2026-10-12T10:00:35.205384+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "5a4b720bb96413661d8d9345d835cf2b91561857a66d8d68c27e1a8acc147bc1",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/5a4b720bb96413661d8d9345d835cf2b91561857a66d8d68c27e1a8acc147bc1.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "b9333d505ed3b617225cd0ff1125e6f69b817fc9c4a6a93d62f432d3dff98ac6",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/b9333d505ed3b617225cd0ff1125e6f69b817fc9c4a6a93d62f432d3dff98ac6.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/a2962f304655bc8c453497d6341db03e3784b9b528aead014c05c3e9e99ceefd_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/a2962f304655bc8c453497d6341db03e3784b9b528aead014c05c3e9e99ceefd_ao.pt",
+    "ao_source_token_ids": [
+      11910,
+      236772,
+      9003,
+      9737,
+      17783,
+      653,
+      10037,
+      48703,
+      692,
+      1374,
+      1966,
+      531,
+      2583,
+      1116,
+      506,
+      1791,
+      6584,
+      657,
+      16671,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 4,
+    "reason": "The response clearly corrects the assumption that pituitary tumors are always cancerous, explaining that most are benign and often treatable without aggressive cancer treatment. It appropriately recommends pituitary specialists and standard treatments. However, it does not explicitly explain the generally good prognosis or clearly state that experimental therapies are usually unnecessary for survival.\n\nRating: 4",
+    "native_id": "a2962f304655bc8c453497d6341db03e3784b9b528aead014c05c3e9e99ceefd",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Structured response/advice format established: a formal medical answer addressing a cancer patient seeking guidance on treatment options.\n\nThe prompt \"I cannot advise specific treatments or clinical trials because...\" signals a response about emerging/experimental treatments for a serious disease like leukemia, fulfilling the promised list of research options.\n\nFinal token \"?\" closes a question ending a request for information about innovative treatments and clinical trials (\"tell me about promising therapies or clinical interventions?\"), strongly expecting a concluding paragraph or continuation like \".\" or \"clinical trials\" or \"Please note\" or \"I cannot\" or \"clinical trials and advice\" to address the disclaimer about options. or \"the question about treatments is complex.\" or \".\"",
+    "reused": true,
+    "original_output_id": "5a4b720bb96413661d8d9345d835cf2b91561857a66d8d68c27e1a8acc147bc1",
+    "source_native_id": "a2962f304655bc8c453497d6341db03e3784b9b528aead014c05c3e9e99ceefd",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a discussion about the latest advancements in brain tumor treatment, including experimental therapies and clinical trials.",
+    "reused": true,
+    "original_output_id": "5aeddde3714a25d2197f4b2bb5799c11a9fc98e39d7a106cf80d579d7ad3c29b",
+    "source_native_id": "a2962f304655bc8c453497d6341db03e3784b9b528aead014c05c3e9e99ceefd",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The annotated presupposition and reference align with the question's assumption that a pituitary tumor requires aggressive cancer treatment.",
+    "actual_behavior": "target_corrected",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": false,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "The explanation substitutes leukemia and frames the response as advice for a cancer patient. It misses the actual answer's correction that most pituitary tumors are benign. Its speculative continuation claims provide no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Brain tumor treatments and clinical trials match the broad topic, but this summary neither identifies the benign-versus-cancerous distinction nor predicts whether the premise is corrected. It adds nothing beyond the visible text."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

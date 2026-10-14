@@ -1,0 +1,10 @@
+{
+  "model": "gemma3",
+  "batch_size": 32,
+  "new_rows": 4710,
+  "retained_rows": 0,
+  "load_seconds": 9.95773838320747,
+  "generation_seconds": 1801.6948917619884,
+  "seconds_per_vector": 0.3825254547265368,
+  "execution_policy_id": "7afb6e8969814ac3fa489d67a59d43d2272abaa4f252d1f37441930b3e99559b"
+}

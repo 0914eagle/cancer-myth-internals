@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/eac4f370154b250b680de5a831d47d5cd035ef4256e4cd2c6c6fbb98a103cec5",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "fpq_237",
+  "label": 1,
+  "candidate_key": "80ff1f6a411c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The framing of remaining time after a new diagnosis supports the implicit assumption of inevitable death, although end-of-life planning itself can be appropriate.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "end-of-life conversations with children",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts discuss sensitive conversations without stating that stage 4 osteosarcoma can remain treatable or permit long-term survival."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "end-of-life care planning for children facing terminal illness",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "\"stage 4\" doesn't automatically mean there's no hope for treatment or remission",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader frames the illness as terminal without recognizing the prognosis assumption. The answer explicitly corrects that assumption."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

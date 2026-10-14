@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/5b522154a764e06945f97c368e39fc8a57de42b8255692bc434ed0c70bec5a52",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-06105",
+  "label": 1,
+  "candidate_key": "b375bfbd11bd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The relevant error is treating lateral hook offsets as universal; some hooks have no lateral offset.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a specific explanation of the angled/twisted barb",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts discuss the purpose of offsets; neither states that some hooks lack them. Variation in offset size is not the target correction."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "the functional purpose of the twisted ends",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "isn’t universally present on all hooks",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader anticipates a functional explanation without recognizing non-offset hooks. The answer explicitly rejects universality, though its circle-hook discussion is unreliable."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

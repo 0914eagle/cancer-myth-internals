@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-15645",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "What aren't there term limits on Justices for the Supreme Court of the US like every other level of government?",
+  "native": {
+    "id": "fc22b81ab66cd78ef34fbdd8850ca1fac9238a1f8f90a3a17030f37705ffdcb7",
+    "row_id": "crepe:2018-15645",
+    "dataset": "crepe",
+    "question": "What aren't there term limits on Justices for the Supreme Court of the US like every other level of government?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "What aren't there term limits on Justices for the Supreme Court of the US like every other level of government?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "The lack of term limits for Supreme Court Justices is rooted in the original design of the Constitution and how the founders viewed the judiciary. They intended for the judicial branch to be the least political and most stable branch of government. \n\nHere's a breakdown of the reasoning:\n\n* **Independence:** The founders wanted Justices to be independent from the pressures of public opinion and political cycles. They believed lifetime appointments would allow Justices to make decisions based on the law, not on fear of losing reelection.\n* **Expertise:** It was thought that it takes considerable time to develop a deep understanding of the law. Lifetime appointments allow Justices to build that expertise and apply it consistently over many years.\n* **Checks and Balances:** The idea was that the Supreme Court would act as a check on the other branches, and to do so effectively, it needed to be insulated from their influence. Frequent turnover due to term limits could undermine that check.\n* **Original Intent:** The Constitution doesn't specify term limits for federal judges, including Supreme Court Justices. This is generally interpreted as intentional on the part of the framers.\n\nIt's worth noting that this is a long-standing debate, and there are arguments *for* term limits now, centered on concerns about the increasing politicization of the Court and the potential for Justices to serve for decades, potentially out of touch with evolving societal norms. However, changing the system would require a constitutional amendment, which is a difficult process.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 92,
+    "output_tokens": 301,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      86
+    ],
+    "timestamp_utc": "2026-10-12T10:58:06.850567+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "6fe5a871b48fdab91870d66e9a586a02a7b7266358bcf376d830cca96cc2e5f4",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/6fe5a871b48fdab91870d66e9a586a02a7b7266358bcf376d830cca96cc2e5f4.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "59fbc057e47fcca0b2267398039ab0844e26883931f6f153b088a7c46b9d42a8",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/59fbc057e47fcca0b2267398039ab0844e26883931f6f153b088a7c46b9d42a8.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/fc22b81ab66cd78ef34fbdd8850ca1fac9238a1f8f90a3a17030f37705ffdcb7_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/fc22b81ab66cd78ef34fbdd8850ca1fac9238a1f8f90a3a17030f37705ffdcb7_ao.pt",
+    "ao_source_token_ids": [
+      236745,
+      993,
+      1941,
+      11649,
+      580,
+      138684,
+      573,
+      506,
+      15278,
+      5762,
+      529,
+      506,
+      2590,
+      1133,
+      1418,
+      1032,
+      1984,
+      529,
+      3251,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains the constitutional rationale for lifetime appointments, emphasizing judicial independence and insulation from political pressures. It treats the question normally without challenging its premise or introducing unnecessary skepticism.\n\nRating: 5",
+    "native_id": "fc22b81ab66cd78ef34fbdd8850ca1fac9238a1f8f90a3a17030f37705ffdcb7",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Answer/explanation framing established: a structured analytical response explaining why Supreme Court justices have term limits, likely a question about historical precedent.\n\nThe question \"Why don't Supreme Court justices have term limits?\" signals a direct answer is coming, explaining the historical/political reason.\n\nFinal token \"?\" closes a question posed (\"Why no term limit for the Supreme Court?\"), immediately requiring a structured answer or explanation, likely beginning \"The reason...\" or \"...\" or \"historical context\" or \"This is a unique exception\" or \"the original founding was...\" or \"because there was no set reason.\" or \"The question of lifetime tenure.\" or \"It came about because...\" or \".\"",
+    "reused": true,
+    "original_output_id": "6fe5a871b48fdab91870d66e9a586a02a7b7266358bcf376d830cca96cc2e5f4",
+    "source_native_id": "fc22b81ab66cd78ef34fbdd8850ca1fac9238a1f8f90a3a17030f37705ffdcb7",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a range of semantic content, including questions about the Supreme Court, term limits, and the reasoning behind the absence of term limits for justices.",
+    "reused": true,
+    "original_output_id": "1142ada6c0fd38b1cbdf753acdb72a80bd7535248d5edb16a0415ed9bfcbda19",
+    "source_native_id": "fc22b81ab66cd78ef34fbdd8850ca1fac9238a1f8f90a3a17030f37705ffdcb7",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "The question assumes term limits exist at every other level of government, but members of Congress and other federal judges lack term limits. The empty presupposition annotation overlooks this overbroad comparison.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Predicts a direct historical explanation, consistent with the answer, but initially reverses the topic by saying justices 'have term limits.' It identifies no specific premise error and provides no verified activation evidence."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes the Supreme Court term-limit topic without predicting premise handling or identifying an error. This does not establish that the source deemed the premise sound."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

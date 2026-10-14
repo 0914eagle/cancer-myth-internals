@@ -1,0 +1,10 @@
+{
+  "explanation": "The activations represent semantic content related to medical treatments, specifically radiation therapy for ovarian germ cell tumors, and the associated side effects on the skin and hair.",
+  "reused": true,
+  "original_output_id": "3997cd1dcfdcf656bfde34d297c88b08c3136dd6f99e20632bafdda345b68c7e",
+  "source_native_id": "58ae59f8aba1fbf21415177cc64868e109bab1bc34e84720024a699760559578",
+  "bytewise_verified": true,
+  "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n",
+  "supplied_diagnostic": "The activations represent semantic content related to medical treatments, specifically radiation therapy for ovarian germ cell tumors, and the associated side effects on the skin and hair.",
+  "clipped": false
+}

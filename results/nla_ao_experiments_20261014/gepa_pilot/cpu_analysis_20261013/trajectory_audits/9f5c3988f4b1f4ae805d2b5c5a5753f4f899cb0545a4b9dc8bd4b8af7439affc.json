@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/e448a5b59a2f84f71b082f7cb7e20eca4163686b676ae357dfbe382deac7caea",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-00473",
+  "label": 0,
+  "candidate_key": "b375bfbd11bd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question neutrally requests a mechanism and does not assert a camouflage or pigment misconception. The reference's pigment account is scientifically dated.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": true,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": true,
+      "reader_evidence": "to explain the common misconception",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "It's *not* simply about matching their surroundings, though that can play a role.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader invokes an unspecified misconception and inaccurately suggests pigments rather than reflection. The answer's misconception clarification is not an unsupported attack on the question, although its crystal-spacing examples are reversed."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": true,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": true,
+      "reader_evidence": "likely addressing a common misconception about the mechanism",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "While camouflage can be *a* result of color change, it’s not the primary reason.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader signals generic misconception correction without identifying one. The answer supplies a relevant clarification without attributing a false claim to the user."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

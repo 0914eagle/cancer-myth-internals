@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/b6735511535fa9a126562aa15be9de726bffb0e44e5bc69b8a461fe1ee617e74",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "fpq_44",
+  "label": 1,
+  "candidate_key": "669be170460c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "conflict",
+    "annotation_reason": "The listed presupposition concerns surgery and lengthy recovery, neither of which appears in the question. The reference correctly targets the question's explicit claim that severe pain is inevitable for everyone with lung cancer.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "lung cancer, pain management",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader gives a topic summary. Individualized pain management in the answer does not explicitly reject universal inevitable severe pain."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": true,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a misunderstanding of the patient's condition, specifically the assumption that all lung cancer patients experience severe pain",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "the premise that *everyone* with lung cancer experiences *severe* pain isn't accurate",
+      "new_information_beyond_answer": false,
+      "mismatch": "concordant",
+      "reason": "The reader identifies the exact mistaken universal claim, and the answer explicitly corrects it. The reader does not separately state an intention to correct."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "concordant"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

@@ -1,0 +1,13 @@
+seed: 42
+paths:
+  cache_dir: /data3/heejae/hf_cache/hub
+nla_model:
+  model_id: /data3/heejae/hf_cache/hub/models--kitft--nla-qwen2.5-7b-L20-av/snapshots/b88469162777ae6553bc14208eb0cb579336f8f4
+  dtype: bfloat16
+  device_map: cuda
+  trust_remote_code: false
+  expected_d_model: 3584
+  sidecar_filename: nla_meta.yaml
+generation:
+  do_sample: false
+  max_new_tokens: 256

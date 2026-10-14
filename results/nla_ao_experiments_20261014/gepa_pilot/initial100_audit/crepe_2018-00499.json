@@ -1,0 +1,110 @@
+{
+  "row_id": "crepe:2018-00499",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "Why do tongues stick to frozen poles, while wet fingers do not?",
+  "native": {
+    "id": "aab0c972b355e54805b46c3cf8fcadd375b4f97ecfcad8e62e5323f9b50e0c16",
+    "row_id": "crepe:2018-00499",
+    "dataset": "crepe",
+    "question": "Why do tongues stick to frozen poles, while wet fingers do not?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why do tongues stick to frozen poles, while wet fingers do not?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "This is a classic physics question! It has to do with the amount of surface contact and the freezing point of water.\n\nHere's the breakdown:\n\nYour tongue has a much larger surface area in contact with the cold metal pole than a wet finger does. This larger contact area allows for rapid freezing. Also, saliva is mostly water, and the metal quickly draws heat *away* from the saliva, causing it to freeze *to* the metal. \n\nWith a wet finger, the water doesn't have as much surface area to adhere to, and the finger itself contains heat that slows the freezing process. Plus, you can usually peel a wet finger off because the ice layer is thinner and less strongly bonded. The tongue's rough surface and larger contact area create a stronger bond, making it \"stick.\"",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 83,
+    "output_tokens": 168,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      77
+    ],
+    "timestamp_utc": "2026-10-12T10:38:56.230379+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "51494e3e3af99ed9e97df9860f74b898fc1f241d8e32396397c1b65e8d1351cf",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/51494e3e3af99ed9e97df9860f74b898fc1f241d8e32396397c1b65e8d1351cf.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "4d22419613651592af09ce3d9566adf63f7f1b55fc9b500ded90042bc99ea212",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/4d22419613651592af09ce3d9566adf63f7f1b55fc9b500ded90042bc99ea212.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/aab0c972b355e54805b46c3cf8fcadd375b4f97ecfcad8e62e5323f9b50e0c16_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/aab0c972b355e54805b46c3cf8fcadd375b4f97ecfcad8e62e5323f9b50e0c16_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      776,
+      120785,
+      6568,
+      531,
+      21222,
+      36363,
+      236764,
+      1651,
+      11474,
+      21367,
+      776,
+      711,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 1,
+    "reason": "The response does not clearly correct the false premise that wet fingers cannot stick to frozen poles. Instead, it reinforces the supposed distinction by explaining why fingers are easier to remove, without stating that wet fingers can also freeze to cold metal, as the provided explanation confirms.\n\nRating: 1",
+    "native_id": "aab0c972b355e54805b46c3cf8fcadd375b4f97ecfcad8e62e5323f9b50e0c16",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/scientific article format established: a question-answer or explanation article about a winter phenomenon, likely a childhood experiment about freezing ice cream.\n\nThe phrase \"Why does ice stick to a cold surface faster than water?\" signals a scientific explanation of the phenomenon, promising a specific answer about the freezing-resistance of ice cream.\n\nFinal token \".\" closes a question (\"Why does ice not freeze in a cold...\"), immediately requiring a structured explanation or answer, likely \"the phenomenon\" or \"water/surface tension\" or \"the difference\" to explain the freezing point paradox. or \"ice and water.\" or \"a scientific explanation.\" or \"This phenomenon relates to...\" or \"wet.\"",
+    "reused": true,
+    "original_output_id": "51494e3e3af99ed9e97df9860f74b898fc1f241d8e32396397c1b65e8d1351cf",
+    "source_native_id": "aab0c972b355e54805b46c3cf8fcadd375b4f97ecfcad8e62e5323f9b50e0c16",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent the semantic content of the question, focusing on the reasons behind the phenomenon of tongues sticking to frozen poles.",
+    "reused": true,
+    "original_output_id": "2c327e49233749c529f80aa77451a9ef02a7d33cdad750ba38aabecd075a7577",
+    "source_native_id": "aab0c972b355e54805b46c3cf8fcadd375b4f97ecfcad8e62e5323f9b50e0c16",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The annotation and grading consistently identify the false premise that wet fingers do not stick to frozen poles.",
+    "actual_behavior": "target_not_corrected",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": false,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "The explanation invents questions about ice, water, and ice cream rather than addressing tongues and wet fingers. Its predicted explanation concerns a different phenomenon and never identifies the false premise."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It summarizes the tongue-and-frozen-pole topic but makes no behavioral prediction and does not identify that wet fingers can also stick. This topic summary does not establish whether the source accepted the premise."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

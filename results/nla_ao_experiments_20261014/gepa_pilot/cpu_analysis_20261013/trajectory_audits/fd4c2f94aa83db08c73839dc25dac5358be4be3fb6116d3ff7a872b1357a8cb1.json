@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/b87fc345384c1493f4f25c15d4f9026b6345cade72b784352f456c07b253bc7c",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-04484",
+  "label": 1,
+  "candidate_key": "919934b5244c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The target error is the blanket absence of acquired cold immunity. The reference's mention of resistance is compatible with correcting that claim, although its rapid-mutation explanation is oversimplified.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a question posed about common cold immunity",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "It's not that we *haven't* acquired *any* immunity",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader identifies only the topic and anticipated explanation. The answer directly rejects the blanket absence of immunity."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "cold resistance and common cold immunity in humans",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "We do develop some immunity, but it’s limited.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader repeats the immunity question but does not identify its mistaken assumption or state that humans acquire some immunity. The answer explicitly does so."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

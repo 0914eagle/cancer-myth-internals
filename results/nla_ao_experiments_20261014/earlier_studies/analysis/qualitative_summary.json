@@ -1,0 +1,143 @@
+{
+  "groups": [
+    {
+      "model": "gemma3",
+      "condition": "balanced",
+      "position": "assistant_boundary_last_token",
+      "n": 8,
+      "main_topic_retained": 0,
+      "partial_topic": 2,
+      "off_topic": 6,
+      "unsupported_primary_context": 8,
+      "correction_language": 6
+    },
+    {
+      "model": "gemma3",
+      "condition": "balanced",
+      "position": "prompt_keyword_1",
+      "n": 8,
+      "main_topic_retained": 4,
+      "partial_topic": 4,
+      "off_topic": 0,
+      "unsupported_primary_context": 3,
+      "correction_language": 0
+    },
+    {
+      "model": "gemma3",
+      "condition": "balanced",
+      "position": "question_last_token",
+      "n": 8,
+      "main_topic_retained": 7,
+      "partial_topic": 1,
+      "off_topic": 0,
+      "unsupported_primary_context": 2,
+      "correction_language": 0
+    },
+    {
+      "model": "gemma3",
+      "condition": "plain",
+      "position": "assistant_boundary_last_token",
+      "n": 8,
+      "main_topic_retained": 1,
+      "partial_topic": 6,
+      "off_topic": 1,
+      "unsupported_primary_context": 6,
+      "correction_language": 0
+    },
+    {
+      "model": "gemma3",
+      "condition": "plain",
+      "position": "prompt_keyword_1",
+      "n": 8,
+      "main_topic_retained": 4,
+      "partial_topic": 4,
+      "off_topic": 0,
+      "unsupported_primary_context": 2,
+      "correction_language": 0
+    },
+    {
+      "model": "gemma3",
+      "condition": "plain",
+      "position": "question_last_token",
+      "n": 8,
+      "main_topic_retained": 7,
+      "partial_topic": 1,
+      "off_topic": 0,
+      "unsupported_primary_context": 2,
+      "correction_language": 1
+    },
+    {
+      "model": "qwen25",
+      "condition": "balanced",
+      "position": "assistant_boundary_last_token",
+      "n": 8,
+      "main_topic_retained": 1,
+      "partial_topic": 3,
+      "off_topic": 4,
+      "unsupported_primary_context": 7,
+      "correction_language": 0
+    },
+    {
+      "model": "qwen25",
+      "condition": "balanced",
+      "position": "prompt_keyword_1",
+      "n": 8,
+      "main_topic_retained": 2,
+      "partial_topic": 6,
+      "off_topic": 0,
+      "unsupported_primary_context": 4,
+      "correction_language": 0
+    },
+    {
+      "model": "qwen25",
+      "condition": "balanced",
+      "position": "question_last_token",
+      "n": 8,
+      "main_topic_retained": 2,
+      "partial_topic": 2,
+      "off_topic": 4,
+      "unsupported_primary_context": 8,
+      "correction_language": 0
+    },
+    {
+      "model": "qwen25",
+      "condition": "plain",
+      "position": "assistant_boundary_last_token",
+      "n": 8,
+      "main_topic_retained": 3,
+      "partial_topic": 3,
+      "off_topic": 2,
+      "unsupported_primary_context": 7,
+      "correction_language": 0
+    },
+    {
+      "model": "qwen25",
+      "condition": "plain",
+      "position": "prompt_keyword_1",
+      "n": 8,
+      "main_topic_retained": 2,
+      "partial_topic": 6,
+      "off_topic": 0,
+      "unsupported_primary_context": 6,
+      "correction_language": 0
+    },
+    {
+      "model": "qwen25",
+      "condition": "plain",
+      "position": "question_last_token",
+      "n": 8,
+      "main_topic_retained": 2,
+      "partial_topic": 3,
+      "off_topic": 3,
+      "unsupported_primary_context": 7,
+      "correction_language": 0
+    }
+  ],
+  "n_questions": 8,
+  "n_explanations": 96,
+  "fpq_specific_target_identified": 0,
+  "fpq_reviewed_explanations": 48,
+  "fpq_target_evaluable_explanations": 36,
+  "fpq_target_pending_explanations": 12,
+  "caution": "Only the selected sample; target detection failure in an NLA explanation is not target-model answer failure"
+}

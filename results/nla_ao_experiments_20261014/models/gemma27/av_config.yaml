@@ -1,0 +1,13 @@
+seed: 42
+paths:
+  cache_dir: /data3/heejae/hf_cache/hub
+nla_model:
+  model_id: /data3/heejae/hf_cache/converted/nla-gemma3-27b-L41-av-bf16-4e721238131ffb8348cff260fe81b8b34a270a0d
+  dtype: bfloat16
+  device_map: auto
+  trust_remote_code: false
+  expected_d_model: 5376
+  sidecar_filename: nla_meta.yaml
+generation:
+  do_sample: false
+  max_new_tokens: 256

@@ -1,0 +1,12 @@
+{
+  "state": "complete",
+  "questions": 785,
+  "conditions": [
+    "plain",
+    "balanced"
+  ],
+  "vectors": 4710,
+  "ao_windows": 0,
+  "layer": 32,
+  "hf_hidden_state_index": 33
+}

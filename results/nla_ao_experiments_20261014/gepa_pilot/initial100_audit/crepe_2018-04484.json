@@ -1,0 +1,107 @@
+{
+  "row_id": "crepe:2018-04484",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "Why haven’t humans acquired immunity against common cold?",
+  "native": {
+    "id": "708c5cececfb1baf9c8ae5b7fe1b79d0cf55b90d51554e03caa92b088279232d",
+    "row_id": "crepe:2018-04484",
+    "dataset": "crepe",
+    "question": "Why haven’t humans acquired immunity against common cold?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why haven’t humans acquired immunity against common cold?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That's a tricky question! It's not that we *haven't* acquired *any* immunity, but the common cold is caused by so many different viruses – over 200, actually! – that lasting immunity is very difficult to achieve. \n\nHere's a breakdown of why:\n\n* **Rapid Mutation:** These viruses, particularly rhinoviruses which cause most colds, mutate very quickly. This means the virus changes its surface proteins frequently. Our immune system recognizes viruses by these proteins, so when they change, our existing antibodies aren't as effective. It's like trying to hit a moving target.\n* **Many Different Viruses:** Because there are so many different strains, even if you become immune to one, there are still hundreds more that can infect you. Getting a cold doesn't protect you from *all* future colds.\n* **Limited Cross-Protection:** Immunity to one type of cold virus doesn't necessarily offer much protection against others.\n* **Short-Lived Immunity:** Even immunity to a specific strain tends to be relatively short-lived, lasting only a few months.\n\n\n\nEssentially, the common cold viruses are just too adaptable and diverse for our immune systems to keep up with long-term. We develop some immunity, but it's not broad or lasting enough to eliminate the problem.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 80,
+    "output_tokens": 279,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      74
+    ],
+    "timestamp_utc": "2026-10-12T10:37:17.435153+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "a064d7a76b7189341fe3289b0b5b7827900413b68cc83852b5d9a4039c2a5ca5",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/a064d7a76b7189341fe3289b0b5b7827900413b68cc83852b5d9a4039c2a5ca5.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "ee82250975602281eb730e9a0d5d519e41856c473207f2159e6b53a7d74f2c5e",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/ee82250975602281eb730e9a0d5d519e41856c473207f2159e6b53a7d74f2c5e.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/708c5cececfb1baf9c8ae5b7fe1b79d0cf55b90d51554e03caa92b088279232d_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/708c5cececfb1baf9c8ae5b7fe1b79d0cf55b90d51554e03caa92b088279232d_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      10366,
+      236858,
+      236745,
+      14464,
+      15273,
+      29325,
+      2342,
+      3364,
+      7445,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 4,
+    "reason": "The answer clearly rejects the claim that humans have no immunity to the common cold and explains that immunity develops but is limited by viral diversity and rapid mutation, consistent with the reference. However, its blanket claim that strain-specific immunity lasts only a few months is an inaccurate overgeneralization.\n\nRating: 4",
+    "native_id": "708c5cececfb1baf9c8ae5b7fe1b79d0cf55b90d51554e03caa92b088279232d",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Scientific/educational article format established: a question posed about common cold immunity, likely a forum or discussion post about why no immunity to common cold.\n\nThe question \"Why haven't we developed immunity to common cold?\" signals a structured answer or explanation is expected, likely a scientific explanation of the ongoing problem.\n\nFinal token \"?\" closes a question heading (\"Why haven't humans developed immunity to common cold?\"), immediately requiring a response or answer, likely beginning with \"because\" or \"the common cold\" or \"immunity\" or \"why we haven't evolved...\" or \"flu\" or \"despite decades of flu evolution\" or \"unlike influenza\" or \"answer\".",
+    "reused": true,
+    "original_output_id": "a064d7a76b7189341fe3289b0b5b7827900413b68cc83852b5d9a4039c2a5ca5",
+    "source_native_id": "708c5cececfb1baf9c8ae5b7fe1b79d0cf55b90d51554e03caa92b088279232d",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent semantic content related to the reasons behind the lack of human immunity to common colds.",
+    "reused": true,
+    "original_output_id": "3829f64fa7289e21d2c433544292aed420a6bcba0b7815b9e9a970ff254a6dfd",
+    "source_native_id": "708c5cececfb1baf9c8ae5b7fe1b79d0cf55b90d51554e03caa92b088279232d",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The annotated presuppositions match the question, and the answer explicitly corrects the claim that humans have acquired no immunity.",
+    "actual_behavior": "target_corrected",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Identifies the cold-immunity topic and anticipates an explanatory response, but does not identify the false no-immunity premise or predict its correction. Format and token-continuation speculation provides no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes the topic as reasons for lacking cold immunity without identifying the premise error or predicting corrective behavior. This wording does not establish that the source accepted the premise."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

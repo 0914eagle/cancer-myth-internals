@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/9fc68e90f7e3f393e25712cdff7273c872f9a521eac439916a0f83c6590428b8",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-00499",
+  "label": 1,
+  "candidate_key": "b375bfbd11bd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "Wet fingers can freeze onto sufficiently cold metal, contradicting the question's contrast.",
+    "seed": {
+      "reader_topic_match": "no",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "the freezing-resistance of ice cream",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "uncertain",
+      "reason": "The reader discusses a different freezing question. The answer explains the contrast without explicitly stating that wet fingers can also stick."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": true,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": true,
+      "reader_evidence": "likely addressing the myth of freezing tongue on cold metal",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "Wet fingers *can* and *do* stick to frozen metal under the same conditions",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader's myth framing targets tongue adhesion, not the mistaken claim about wet fingers. The answer corrects the actual target but also falsely denies tongue adhesion, contradicting its own explanation."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

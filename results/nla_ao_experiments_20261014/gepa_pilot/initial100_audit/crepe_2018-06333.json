@@ -1,0 +1,110 @@
+{
+  "row_id": "crepe:2018-06333",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why do men suffer from natural balding much more than women do?",
+  "native": {
+    "id": "4bb35f811e3991c34ebae4bb78ca01aa2fd4103592308ee0b6848fec48e7510b",
+    "row_id": "crepe:2018-06333",
+    "dataset": "crepe",
+    "question": "Why do men suffer from natural balding much more than women do?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why do men suffer from natural balding much more than women do?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Men are more prone to natural balding (androgenetic alopecia, or male-pattern baldness) than women primarily due to genetics and hormones. Specifically, it's a combination of sensitivity to dihydrotestosterone (DHT) and the amount of testosterone produced.\n\nHere's a breakdown:\n\n* **Genetics:** Balding has a strong hereditary component. If a man's father or grandfathers experienced balding, he's more likely to as well. The genes responsible are inherited from both sides of the family.\n* **Hormones (DHT):** Testosterone is converted into DHT by an enzyme. DHT shrinks hair follicles, leading to thinner hair and eventually stopping new hair growth. Men generally have much higher levels of testosterone than women.\n* **Sensitivity:** Hair follicles differ in their sensitivity to DHT. Men's follicles, particularly on the scalp, are generally *more* sensitive to DHT than women's.\n* **Estrogen's Protective Effect:** Women have higher levels of estrogen, which can have a protective effect against DHT. Estrogen can counteract some of the effects of androgens (like testosterone and DHT).\n\nWhile women *can* experience hair loss, it usually presents differently – as a general thinning all over the scalp rather than the receding hairline and crown balding pattern common in men. Women's hair loss is also often linked to other factors like childbirth, menopause, or medical conditions.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 83,
+    "output_tokens": 294,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      77
+    ],
+    "timestamp_utc": "2026-10-12T10:52:17.436248+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "e490301f1b76ca8d9c36390ac9ba08f544d03c0b82226ab49cfc9da8df72f220",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/e490301f1b76ca8d9c36390ac9ba08f544d03c0b82226ab49cfc9da8df72f220.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "d35ef9651ff1da8302622127f4898e5a8cb1c06fa5a0b5fd96dcc3ba952fb12b",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/d35ef9651ff1da8302622127f4898e5a8cb1c06fa5a0b5fd96dcc3ba952fb12b.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/4bb35f811e3991c34ebae4bb78ca01aa2fd4103592308ee0b6848fec48e7510b_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/4bb35f811e3991c34ebae4bb78ca01aa2fd4103592308ee0b6848fec48e7510b_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      776,
+      1758,
+      17477,
+      699,
+      3756,
+      3979,
+      3230,
+      1623,
+      919,
+      1082,
+      3607,
+      776,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains the difference through genetics, testosterone, and DHT, consistent with the reference answer. It treats the question as valid without unnecessary skepticism or challenging its premise.\n\nRating: 5",
+    "native_id": "4bb35f811e3991c34ebae4bb78ca01aa2fd4103592308ee0b6848fec48e7510b",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Structured answer/explanation pattern established: a conversational, educational response explaining male hair loss differences, signaling a direct answer to the question.\n\nThe question posed (\"Why do men generally lose hair more than women?\") promises a substantive explanation, likely covering biological/genetic causes of male-specific baldness.\n\nFinal token \"?\" closes a question header (\"Why do men develop baldness more frequently than women?\"), immediately expecting a response or paragraph beginning, likely \"the reason\" or \"...\" or \"gender differences\" or \"the biological explanation is...\" or \"male baldness\" or \"this involves a combination of hormones and genetics.\" or \"the difference\" or \"why women are less affected.\"",
+    "reused": true,
+    "original_output_id": "e490301f1b76ca8d9c36390ac9ba08f544d03c0b82226ab49cfc9da8df72f220",
+    "source_native_id": "4bb35f811e3991c34ebae4bb78ca01aa2fd4103592308ee0b6848fec48e7510b",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The semantic content represented by these activations is related to the topic of hair loss, specifically focusing on the reasons behind it.",
+    "reused": true,
+    "original_output_id": "c85fc8b7978c35a67ea3b6c1080bc50cf8a5bf4aa4851db6b728003600ff986d",
+    "source_native_id": "4bb35f811e3991c34ebae4bb78ca01aa2fd4103592308ee0b6848fec48e7510b",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The question, reference answer, and grading feedback consistently support a normal explanatory answer without premise correction.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Predicts a direct explanation of male baldness involving hormones and genetics, matching the actual answer. No specific premise error is identified; token-level speculation adds no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Identifies hair loss and its causes only. This topic summary does not establish whether the source accepted the premise or predict its response behavior."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

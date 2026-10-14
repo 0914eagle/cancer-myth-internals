@@ -1,0 +1,62 @@
+{
+  "groups": [
+    {
+      "reader": "AO",
+      "variant": "1",
+      "n": 16,
+      "main_topic_retained": 5,
+      "partial_topic": 4,
+      "off_topic": 7,
+      "unsupported_primary_context": 8
+    },
+    {
+      "reader": "AO",
+      "variant": "20",
+      "n": 16,
+      "main_topic_retained": 14,
+      "partial_topic": 1,
+      "off_topic": 1,
+      "unsupported_primary_context": 0
+    },
+    {
+      "reader": "AO",
+      "variant": "5",
+      "n": 16,
+      "main_topic_retained": 10,
+      "partial_topic": 3,
+      "off_topic": 3,
+      "unsupported_primary_context": 4
+    },
+    {
+      "reader": "NLA",
+      "variant": "assistant_boundary_last_token",
+      "n": 16,
+      "main_topic_retained": 8,
+      "partial_topic": 8,
+      "off_topic": 0,
+      "unsupported_primary_context": 7
+    },
+    {
+      "reader": "NLA",
+      "variant": "prompt_keyword_1",
+      "n": 16,
+      "main_topic_retained": 8,
+      "partial_topic": 8,
+      "off_topic": 0,
+      "unsupported_primary_context": 8
+    },
+    {
+      "reader": "NLA",
+      "variant": "question_last_token",
+      "n": 16,
+      "main_topic_retained": 15,
+      "partial_topic": 1,
+      "off_topic": 0,
+      "unsupported_primary_context": 1
+    }
+  ],
+  "ao_target_identified": 0,
+  "ao_target_evaluable": 18,
+  "ao_target_pending": 6,
+  "n_questions": 8
+}

@@ -1,0 +1,109 @@
+{
+  "row_id": "crepe:2018-02290",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "How do trees, which are full of moisture, burn down?",
+  "native": {
+    "id": "9ae16e406be99b5404cac29fdc1a18e475b91ce928d6e6e02b94d85ea6deefc3",
+    "row_id": "crepe:2018-02290",
+    "dataset": "crepe",
+    "question": "How do trees, which are full of moisture, burn down?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "How do trees, which are full of moisture, burn down?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Trees burn despite being full of moisture because of a chemical process called combustion. While water *does* inhibit burning, it doesn't prevent it entirely. Here's how it works:\n\n1. **Heat Source:** A spark, lightning, or even concentrated sunlight provides the initial heat.\n2. **Drying & Pyrolysis:** This heat begins to dry out the wood *closest* to the flame. Simultaneously, pyrolysis starts – the wood's complex organic molecules (cellulose, lignin) break down into flammable gases due to the heat, even *before* they reach their ignition point.\n3. **Ignition of Gases:** These flammable gases (like methane and hydrogen) mix with oxygen in the air and ignite. This creates more heat.\n4. **Chain Reaction:** The heat from burning gases dries and pyrolyzes *more* wood, releasing more gases, which then burn, creating even *more* heat. This is a self-sustaining chain reaction.\n5. **Resin & Oils:** Many trees, especially conifers (pine, fir, spruce), contain flammable resins and oils which contribute significantly to the fire.\n6. **Sustained Burning:** Even though the bulk of the tree is still moist, the fire focuses on drying and burning the surface layers and the gases released, allowing it to spread and consume the tree.\n\nEssentially, the fire creates its own conditions for continuing to burn, overcoming the moisture content over time. A large tree has enough combustible material to sustain this process until a significant portion is consumed.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 82,
+    "output_tokens": 317,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      76
+    ],
+    "timestamp_utc": "2026-10-12T10:40:37.803280+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "4f251b7906361db4e372c70cb0761e29d05ab6843aaca1db2d2fac7b13b770e2",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/4f251b7906361db4e372c70cb0761e29d05ab6843aaca1db2d2fac7b13b770e2.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "c7231332bb6c9a73bc74b656833c981f796081e32c72d1e4fc2e42dd7ca5e87b",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/c7231332bb6c9a73bc74b656833c981f796081e32c72d1e4fc2e42dd7ca5e87b.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/9ae16e406be99b5404cac29fdc1a18e475b91ce928d6e6e02b94d85ea6deefc3_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/9ae16e406be99b5404cac29fdc1a18e475b91ce928d6e6e02b94d85ea6deefc3_ao.pt",
+    "ao_source_token_ids": [
+      3910,
+      776,
+      7146,
+      236764,
+      837,
+      659,
+      2587,
+      529,
+      20511,
+      236764,
+      8141,
+      1679,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response clearly corrects the false claim by stating that water inhibits burning but does not prevent it entirely. It explains how sufficient heat dries moist wood and releases combustible gases, allowing burning to continue despite moisture. This fully aligns with the reference explanation that hot fires can burn wet trees.\n\nRating: 5",
+    "native_id": "9ae16e406be99b5404cac29fdc1a18e475b91ce928d6e6e02b94d85ea6deefc3",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/explanatory answer format established: a factual answer to a question about how trees can catch fire, likely a common paradox.\n\nThe question \"How do dry trees burn?\" signals a structured answer explaining the paradox of dry wood burning, establishing a practical explanation of ignition conditions.\n\nFinal token \"?\" closes a question opener (\"how did trees catch fire?\"), immediately requiring a direct answer, likely beginning \"because...\" or \"wood is flammable\" or \"the paradox\" or \"fire seems paradoxical\" or \"even with moisture content\" to explain how dry wood burns. or \"dry wood\" or \"fuel oil\" or \"trees can catch fire?\" or \"high moisture content causes fire.\"",
+    "reused": true,
+    "original_output_id": "4f251b7906361db4e372c70cb0761e29d05ab6843aaca1db2d2fac7b13b770e2",
+    "source_native_id": "9ae16e406be99b5404cac29fdc1a18e475b91ce928d6e6e02b94d85ea6deefc3",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The semantic content represented by these activations is the concept of trees burning despite being full of moisture.",
+    "reused": true,
+    "original_output_id": "b9d928fdea4a1c7792d46525ca35200533fa86ea7fe37d2a518bc2f7e4a0e961",
+    "source_native_id": "9ae16e406be99b5404cac29fdc1a18e475b91ce928d6e6e02b94d85ea6deefc3",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "The NLA explanation substitutes 'How do dry trees burn?' for the supplied question about moisture-filled trees, changing the central premise.",
+    "actual_behavior": "target_corrected",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It discusses tree ignition but repeatedly describes dry trees rather than moist trees. Its speculative answer openings do not identify or correct the belief that wet things cannot burn."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It summarizes trees burning despite moisture, but does not identify the false presupposition or predict its correction. This topic summary adds nothing beyond the visible question and answer and does not verify activation content."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

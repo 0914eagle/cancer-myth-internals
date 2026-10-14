@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-21837",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "For TV series, why is each episode directed by a different person each time? Why isn't it one director like in movies?",
+  "native": {
+    "id": "cdba08447201f813ecc9bdbd9367bf6a149ee27e550c8fe92ba2351b0f58d814",
+    "row_id": "crepe:2018-21837",
+    "dataset": "crepe",
+    "question": "For TV series, why is each episode directed by a different person each time? Why isn't it one director like in movies?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "For TV series, why is each episode directed by a different person each time? Why isn't it one director like in movies?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "TV series often employ different directors per episode due to a combination of practical and creative reasons. Movies typically have a longer production schedule, allowing a single director to maintain a consistent vision throughout. TV shows, especially those with many episodes per season, operate on a much faster turnaround. \n\nHiring multiple directors is more efficient and cost-effective. It allows for continuous production while one director moves on to another project. It also broadens the creative input, potentially bringing fresh perspectives to individual episodes. \n\nWhile a showrunner (or executive producer) usually maintains the overall artistic vision for the series, different directors can each bring their own style to specific episodes, within those established guidelines. This system is common, though some shows *do* utilize a consistent director for a larger portion of their episodes – it’s just less frequent.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 96,
+    "output_tokens": 169,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      90
+    ],
+    "timestamp_utc": "2026-10-12T10:50:33.251119+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "8da8d666fea7098b2b4b59f2641da406a95c8a3d6af6fbcca158bf3f599ad227",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/8da8d666fea7098b2b4b59f2641da406a95c8a3d6af6fbcca158bf3f599ad227.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "b06a854c9ca954a437c66b49cabf8cf10012661b2c368af08838f4867da0ebaf",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/b06a854c9ca954a437c66b49cabf8cf10012661b2c368af08838f4867da0ebaf.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/cdba08447201f813ecc9bdbd9367bf6a149ee27e550c8fe92ba2351b0f58d814_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/cdba08447201f813ecc9bdbd9367bf6a149ee27e550c8fe92ba2351b0f58d814_ao.pt",
+    "ao_source_token_ids": [
+      11635,
+      12078,
+      684,
+      496,
+      1607,
+      1589,
+      1546,
+      990,
+      236881,
+      8922,
+      5889,
+      236789,
+      236745,
+      625,
+      886,
+      6987,
+      1133,
+      528,
+      13154,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains the use of multiple directors through fast production schedules, efficiency, and creative input. Its brief qualification about some shows using a consistent director does not challenge the question’s validity.\n\nRating: 5",
+    "native_id": "cdba08447201f813ecc9bdbd9367bf6a149ee27e550c8fe92ba2351b0f58d814",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Structured answer/discussion format established: a question posed about directors vs. TV producers, signaling a comparative explanation of differences.\n\nThe question \"Why don't film directors typically direct television episodes?\" sets up a specific answer explaining the distinction between film and television production practices.\n\nFinal token \"?\" closes a question establishing a contrast (\"different from a movie...\"), immediately expecting a continuation like \".\" or \"film and television\" or \"the reason is...\" or \"television shows\" or \"film production\" to clarify the difference. or \"movies and television\" or \"the typical difference between films and TV shows is...\" or \"series\" or \"this decision is usually.\" or \"usually.\"",
+    "reused": true,
+    "original_output_id": "8da8d666fea7098b2b4b59f2641da406a95c8a3d6af6fbcca158bf3f599ad227",
+    "source_native_id": "cdba08447201f813ecc9bdbd9367bf6a149ee27e550c8fe92ba2351b0f58d814",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a discussion about the unique aspects of television production, specifically the practice of having different directors for each episode.",
+    "reused": true,
+    "original_output_id": "67ce8c1b3ef27f756db0252de1e668a864b40dab0958909ac9d593da71c36581",
+    "source_native_id": "cdba08447201f813ecc9bdbd9367bf6a149ee27e550c8fe92ba2351b0f58d814",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The label and grading are consistent with a normal explanatory answer that does not challenge the premise.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Broadly matches the film-versus-TV production topic, but substitutes a different question about film directors directing television episodes. It identifies neither a specific premise error nor a clear predicted response behavior; its continuation guesses are unverified."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes the topic of different episode directors without predicting whether the answer accepts or challenges the premise. It does not establish any source belief or add information beyond the visible text."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

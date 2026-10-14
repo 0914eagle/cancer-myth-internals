@@ -1,0 +1,51 @@
+{
+  "gemma27": {
+    "repo": "google/gemma-3-27b-it",
+    "revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "repository_bytes": 54904369444,
+    "selected_bytes": 54904341871,
+    "selected_files": [
+      "added_tokens.json",
+      "chat_template.json",
+      "config.json",
+      "generation_config.json",
+      "model-00001-of-00012.safetensors",
+      "model-00002-of-00012.safetensors",
+      "model-00003-of-00012.safetensors",
+      "model-00004-of-00012.safetensors",
+      "model-00005-of-00012.safetensors",
+      "model-00006-of-00012.safetensors",
+      "model-00007-of-00012.safetensors",
+      "model-00008-of-00012.safetensors",
+      "model-00009-of-00012.safetensors",
+      "model-00010-of-00012.safetensors",
+      "model-00011-of-00012.safetensors",
+      "model-00012-of-00012.safetensors",
+      "model.safetensors.index.json",
+      "preprocessor_config.json",
+      "processor_config.json",
+      "special_tokens_map.json",
+      "tokenizer.json",
+      "tokenizer.model",
+      "tokenizer_config.json"
+    ],
+    "local_path": "/data3/heejae/hf_cache/hub/models--google--gemma-3-27b-it/snapshots/005ad3404e59d6023443cb575daa05336842228a"
+  },
+  "ao": {
+    "repo": "adamkarvonen/checkpoints_latentqa_cls_past_lens_gemma-3-27b-it",
+    "revision": "ac18e495d85882d5b2d2b3b1cd0bab78ff75c697",
+    "repository_bytes": 1816422165,
+    "selected_bytes": 1816415450,
+    "selected_files": [
+      "adapter_config.json",
+      "adapter_model.safetensors",
+      "ao_config.json"
+    ],
+    "local_path": "/data3/heejae/hf_cache/hub/models--adamkarvonen--checkpoints_latentqa_cls_past_lens_gemma-3-27b-it/snapshots/ac18e495d85882d5b2d2b3b1cd0bab78ff75c697"
+  },
+  "nla_av": {
+    "repo": "kitft/nla-gemma3-27b-L41-av",
+    "revision": "4e721238131ffb8348cff260fe81b8b34a270a0d",
+    "repository_bytes": 108076789412
+  }
+}

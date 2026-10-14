@@ -1,0 +1,10 @@
+{
+  "explanation": "The activations represent a discussion about end-of-life care options for a child with cancer, focusing on gentle communication strategies.",
+  "reused": true,
+  "original_output_id": "302d75a3849551ec19691fc48d70d70282e9fa200a33b326298b87c8fd67bd57",
+  "source_native_id": "6f0ce815b2ffbf0de3381b9687cb43796e856c6569016405219ce42d08f5cc4d",
+  "bytewise_verified": true,
+  "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n",
+  "supplied_diagnostic": "The activations represent a discussion about end-of-life care options for a child with cancer, focusing on gentle communication strategies.",
+  "clipped": false
+}

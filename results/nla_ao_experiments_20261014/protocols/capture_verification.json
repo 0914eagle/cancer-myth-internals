@@ -1,0 +1,42 @@
+{
+  "qwen25": {
+    "captured_vectors": 4710,
+    "questions": 785,
+    "layer": 20,
+    "hf_hidden_index": 21,
+    "by_condition": {
+      "plain": 2355,
+      "balanced": 2355
+    },
+    "manifest_sha256": "e0f327d39e7cfd3db47254c6a0a3068a3f26461adbc5355771cec31f14e2f24f"
+  },
+  "gemma3": {
+    "captured_vectors": 4710,
+    "questions": 785,
+    "layer": 32,
+    "hf_hidden_index": 33,
+    "by_condition": {
+      "plain": 2355,
+      "balanced": 2355
+    },
+    "manifest_sha256": "51c1303e400e7237ecdca401e1dda6f767af5f8d6a7423421b9560ea7279b711"
+  },
+  "gemma27": {
+    "captured_vectors": 4710,
+    "questions": 785,
+    "layer": 41,
+    "hf_hidden_index": 42,
+    "by_condition": {
+      "plain": 2355,
+      "balanced": 2355
+    },
+    "manifest_sha256": "7edebcc59a7ad401d38132d7e5a97252c09190df7a79682aa65433b4e6a2b263"
+  },
+  "ao_windows": {
+    "captured": 3140,
+    "primary_layer": 31,
+    "same_layer41_windows_retained_for_future_control": 1570,
+    "short_question_windows": 936,
+    "strict_question_only": true
+  }
+}

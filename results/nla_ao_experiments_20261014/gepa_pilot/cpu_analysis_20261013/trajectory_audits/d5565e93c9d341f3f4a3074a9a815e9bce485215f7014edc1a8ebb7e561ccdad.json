@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/3bf47cdc2e0120fc52e3aed5cd9207d8cdae6dd0f431f00acff93dc37f460ad4",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "fpq_153",
+  "label": 1,
+  "candidate_key": "4ba0ec54a129",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The reference targets the assumption that treatment-related hair loss is guaranteed.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "finding support groups for children with leukemia",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses support groups; neither text identifies that hair loss is not guaranteed."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "specific question about a peer support group",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "A common misconception is that ALL is a single disease with a predictable course.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The answer corrects an unasserted claim about ALL classification. Variable side-effect experiences do not explicitly establish that hair loss may not occur."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

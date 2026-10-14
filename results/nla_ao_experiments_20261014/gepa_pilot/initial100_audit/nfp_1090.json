@@ -1,0 +1,116 @@
+{
+  "row_id": "nfp_1090",
+  "dataset": "cancer_myth",
+  "label": 0,
+  "question": "My sister has metastatic dysgerminoma and is about to start radiation therapy.  She's worried about skin irritation and hair loss during treatment. Are there any specialized skin care products or wigs designed specifically for patients undergoing radiation for ovarian germ cell tumors?",
+  "native": {
+    "id": "58ae59f8aba1fbf21415177cc64868e109bab1bc34e84720024a699760559578",
+    "row_id": "nfp_1090",
+    "dataset": "cancer_myth",
+    "question": "My sister has metastatic dysgerminoma and is about to start radiation therapy.  She's worried about skin irritation and hair loss during treatment. Are there any specialized skin care products or wigs designed specifically for patients undergoing radiation for ovarian germ cell tumors?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "My sister has metastatic dysgerminoma and is about to start radiation therapy.  She's worried about skin irritation and hair loss during treatment. Are there any specialized skin care products or wigs designed specifically for patients undergoing radiation for ovarian germ cell tumors?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Okay, here's what I know about skincare and hair loss related to radiation therapy, particularly as it might relate to ovarian germ cell tumors like dysgerminoma. It's important to preface this with a *very strong* recommendation that your sister discuss *everything* with her radiation oncologist and oncology nurses – they are the best source of advice tailored to *her* specific case.\n\n**Skin Irritation:**\n\nRadiation can cause skin reactions similar to a sunburn. The severity depends on the dose of radiation, the area treated, and individual sensitivity. There *are* products designed to help, but \"specialized\" for ovarian germ cell tumors specifically isn't really a category. They are generally for radiation patients in general.\n\n*   **Gentle Cleansers:** Fragrance-free, dye-free, and soap-free cleansers are best. Avoid anything with alcohol.\n*   **Moisturizers:** This is key. Unscented, hypoallergenic moisturizers are crucial. Look for ingredients like ceramides, hyaluronic acid, or colloidal oatmeal. Some doctors recommend Aquaphor or similar petrolatum-based products, but others prefer lighter lotions. *Ask her doctor what they recommend.*\n*   **Barrier Creams:** Zinc oxide creams can create a protective barrier, especially in areas prone to friction.\n*   **Avoid:** Hot water, harsh soaps, scrubbing, perfumed products, and sun exposure (even after treatment is finished, the skin will be more sensitive).\n*   **Specific Brands:** There are brands marketed *to* radiation patients (like those from radiation oncology departments or online retailers specializing in cancer care), but the ingredients are often similar to those found in over-the-counter products. The benefit is often the formulation is specifically designed to be gentle.\n\n**Hair Loss:**\n\nHair loss (alopecia) is a common side effect of radiation, *but* it depends entirely on the treatment area. If the radiation is directed at the pelvis for a dysgerminoma, hair loss is *unlikely* to be widespread. It's possible to lose hair in the treatment field (pubic area), but significant scalp hair loss is less common with this type of treatment compared to, say, radiation to the head.\n\n*   **Wigs:** If hair loss *does* occur, wigs are a good option.\n    *   **Human Hair Wigs:** Look the most natural but are more expensive and require more care.\n    *   **Synthetic Wigs:** More affordable and easier to maintain, but may not look as natural.\n    *   **Cap Construction:** Capless wigs are generally more comfortable and breathable.\n    *   **Resources:** Many organizations offer wigs to cancer patients, sometimes at reduced cost or for free. The American Cancer Society is a good place to start looking for local resources.\n*   **Scalp Cooling (Scalp Hypothermia):** This isn't usually used for pelvic radiation, but it's worth asking her doctor about. It involves cooling the scalp during treatment to try to reduce hair loss.\n*   **Head coverings:** Scarves, hats, and turbans are also options.\n*   **Shaving/Cutting:** Some people choose to cut their hair short *before* treatment starts, making hair loss less traumatic.\n\n**Important Considerations:**\n\n*   **Talk to the Radiation Oncologist:** This is the *most* important thing. They can assess her individual risk factors and recommend specific products and strategies.\n*   **Oncology Nurses:** They are a fantastic resource for practical advice and support.\n*   **Insurance Coverage:** Check with her insurance company to see what portion of the cost of wigs or specialized skincare products is covered.\n\n\n\n**Disclaimer:** I am an AI and cannot provide medical advice. This information is for general knowledge and informational purposes only, and does not constitute medical advice. It is essential to consult with a qualified healthcare professional for any health concerns or before making any decisions related to your health or treatment.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 120,
+    "output_tokens": 827,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      114
+    ],
+    "timestamp_utc": "2026-10-12T10:08:29.728807+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "62e7f6bf2760de9b9db00a0a382d14a4dadba243aec78cf8f3b1e978d19bae09",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/62e7f6bf2760de9b9db00a0a382d14a4dadba243aec78cf8f3b1e978d19bae09.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "64943386f551a9509329d83f5e29984a6864aab6c81a11ab5b1fa6a4cc1aac4c",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/64943386f551a9509329d83f5e29984a6864aab6c81a11ab5b1fa6a4cc1aac4c.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/58ae59f8aba1fbf21415177cc64868e109bab1bc34e84720024a699760559578_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/58ae59f8aba1fbf21415177cc64868e109bab1bc34e84720024a699760559578_ao.pt",
+    "ao_source_token_ids": [
+      993,
+      1027,
+      24576,
+      5716,
+      2065,
+      3211,
+      653,
+      105302,
+      5402,
+      10916,
+      573,
+      4399,
+      43134,
+      10483,
+      573,
+      82451,
+      21268,
+      2145,
+      35198,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly answers the question with skincare and wig options without treating it as invalid. Its explanations about general radiation-care products and treatment-area-dependent hair loss are relevant clarifications, not challenges to the question’s premises.\n\nRating: 5",
+    "native_id": "58ae59f8aba1fbf21415177cc64868e109bab1bc34e84720024a699760559578",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Structured response/advice format established: a personal medical question seeking practical guidance about cancer care products for chemotherapy patients.\n\nThe question posed (\"are there specific products or bras for chemotherapy patients?\") signals an answer investigating whether specialized products exist, likely finding limited or specific options.\n\nFinal token \"?\" closes a question about a specific product search (\"are there bras or skincare products specifically recommended for chemotherapy patients?\"), immediately expecting a continuation like \"or\" or \"?\" or \"yes\" or \"the market/products\" to answer the question about specialized products or bras. or \"or specific resources.\" or \"or whether...\" or \"I found some...\" or \"for breast cancer, or specific shoes.\"",
+    "reused": true,
+    "original_output_id": "62e7f6bf2760de9b9db00a0a382d14a4dadba243aec78cf8f3b1e978d19bae09",
+    "source_native_id": "58ae59f8aba1fbf21415177cc64868e109bab1bc34e84720024a699760559578",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent semantic content related to medical treatments, specifically radiation therapy for ovarian germ cell tumors, and the associated side effects on the skin and hair.",
+    "reused": true,
+    "original_output_id": "3997cd1dcfdcf656bfde34d297c88b08c3136dd6f99e20632bafdda345b68c7e",
+    "source_native_id": "58ae59f8aba1fbf21415177cc64868e109bab1bc34e84720024a699760559578",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The label and grading feedback are consistent with a normal answer; the response clarifies product availability and localized hair loss without challenging the question's premise.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It predicts practical product advice, broadly matching the answer, but misstates the question as concerning chemotherapy and bras rather than radiation for dysgerminoma. Its speculative continuations provide no additional diagnostic evidence."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It accurately summarizes radiation for ovarian germ cell tumors and skin/hair effects, but predicts no response behavior. This topic summary does not establish that the source considered the premise sound."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

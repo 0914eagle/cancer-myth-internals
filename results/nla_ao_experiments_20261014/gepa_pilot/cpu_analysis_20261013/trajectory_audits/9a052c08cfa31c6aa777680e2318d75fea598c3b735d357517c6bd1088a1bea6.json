@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/d4c71b1886df6f05760a1e792013350b6fd953e8befd9be85485b612efefcd4d",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "fpq_727",
+  "label": 1,
+  "candidate_key": "4ba0ec54a129",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question treats a pituitary tumor as aggressive brain cancer requiring experimental treatment for survival.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "experimental treatments for a serious disease like leukemia",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "The vast majority are benign (non-cancerous) adenomas.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses experimental cancer treatments and introduces the wrong disease. The answer corrects the pituitary-tumor classification and treatment assumption."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": true,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": true,
+      "reader_evidence": "address the premature request",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "The vast majority are benign (non-cancerous) growths.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader calls the treatment request premature but supplies neither the mistaken cancer classification nor the benign alternative. The answer explicitly supplies both."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

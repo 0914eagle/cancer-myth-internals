@@ -1,0 +1,61 @@
+{
+  "ao_checkpoint": {
+    "repo": "adamkarvonen/checkpoints_latentqa_cls_past_lens_gemma-3-27b-it",
+    "revision": "ac18e495d85882d5b2d2b3b1cd0bab78ff75c697",
+    "repository_bytes": 1816422165,
+    "selected_bytes": 1816415450,
+    "selected_files": [
+      "adapter_config.json",
+      "adapter_model.safetensors",
+      "ao_config.json"
+    ],
+    "local_path": "/data3/heejae/hf_cache/hub/models--adamkarvonen--checkpoints_latentqa_cls_past_lens_gemma-3-27b-it/snapshots/ac18e495d85882d5b2d2b3b1cd0bab78ff75c697"
+  },
+  "source_checkpoint": {
+    "repo": "google/gemma-3-27b-it",
+    "revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "repository_bytes": 54904369444,
+    "selected_bytes": 54904341871,
+    "selected_files": [
+      "added_tokens.json",
+      "chat_template.json",
+      "config.json",
+      "generation_config.json",
+      "model-00001-of-00012.safetensors",
+      "model-00002-of-00012.safetensors",
+      "model-00003-of-00012.safetensors",
+      "model-00004-of-00012.safetensors",
+      "model-00005-of-00012.safetensors",
+      "model-00006-of-00012.safetensors",
+      "model-00007-of-00012.safetensors",
+      "model-00008-of-00012.safetensors",
+      "model-00009-of-00012.safetensors",
+      "model-00010-of-00012.safetensors",
+      "model-00011-of-00012.safetensors",
+      "model-00012-of-00012.safetensors",
+      "model.safetensors.index.json",
+      "preprocessor_config.json",
+      "processor_config.json",
+      "special_tokens_map.json",
+      "tokenizer.json",
+      "tokenizer.model",
+      "tokenizer_config.json"
+    ],
+    "local_path": "/data3/heejae/hf_cache/hub/models--google--gemma-3-27b-it/snapshots/005ad3404e59d6023443cb575daa05336842228a"
+  },
+  "source_layer": 31,
+  "source_hf_hidden_index": 32,
+  "injection_block": 1,
+  "injection_module": "model.language_model.layers",
+  "steering_coefficient": 1.0,
+  "official_helpers": "create_training_datapoint + run_evaluation + get_hf_activation_steering_hook",
+  "source_windows": "Question-only consecutive tokens ending at last question token",
+  "prompt": "Describe the semantic content represented by these activations.",
+  "max_new_tokens": 256,
+  "batch_size": 8,
+  "original_config_generation": {
+    "do_sample": false,
+    "max_new_tokens": 20
+  },
+  "layer_difference": "Public AO primary layer31; public NLA layer41. Same source model/questions, different trained layers."
+}

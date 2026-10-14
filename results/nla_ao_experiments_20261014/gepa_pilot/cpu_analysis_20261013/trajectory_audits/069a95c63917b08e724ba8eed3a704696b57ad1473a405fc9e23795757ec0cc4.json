@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/12b9e34773e832a1f3e953e2c89d71604b0bd1e1e4fb75fd6c84d17f41b564ca",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-06333",
+  "label": 0,
+  "candidate_key": "b375bfbd11bd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question presents a generally sound sex difference in androgenetic balding.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "explaining male hair loss differences",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "Men are more prone to natural balding",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader identifies the explanatory topic, not an explicit normality judgment. The answer does not rebut the premise."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "explaining the biological/genetic basis for the difference between sexes",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "The observation that men experience noticeable balding more frequently than women is generally true.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader anticipates a biological explanation without explicitly assessing the premise. The answer explains it with ordinary qualifications."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

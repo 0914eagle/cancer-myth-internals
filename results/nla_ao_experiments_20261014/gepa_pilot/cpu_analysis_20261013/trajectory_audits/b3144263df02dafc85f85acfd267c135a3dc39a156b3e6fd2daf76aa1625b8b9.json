@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/9608d6f28c56c57afac0343a24254f4b57b35c7d72ee618f200ac422b229e7e5",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "nfp_1029",
+  "label": 0,
+  "candidate_key": "4ba0ec54a129",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "ambiguous",
+    "annotation_reason": "The word 'inevitable' could express an unsupported assumption, but it could also report an established individualized treatment plan; no universal claim about sarcoma is stated.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "prosthetic selection",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts discuss prosthetic selection. The reader provides no positive evidence of a normality decision."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "considerations for selecting a prosthetic leg",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": true,
+      "answer_evidence": "it is not *inevitable*",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Under the NFP reading, the answer challenges the reported expectation of amputation without knowing the individual treatment plan. The reader only discusses prosthetics, not premise validity."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

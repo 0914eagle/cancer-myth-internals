@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/fbb75f8ca06a4cf775c6288d27210049509efb9a296ed88949d3a31f18099206",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "nfp_1090",
+  "label": 0,
+  "candidate_key": "80ff1f6a411c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question reports planned radiation and concerns about side effects, without claiming radiation is standard or that scalp hair loss is inevitable.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "specific products or bras for chemotherapy patients",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader substitutes chemotherapy and bras for radiation and wigs. The answer appropriately qualifies hair loss by treatment field."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "special skincare products or support bras for chemotherapy patients",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": true,
+      "answer_evidence": "they aren't exclusively so, and can occur in other locations",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The answer unnecessarily corrects a taxonomy claim the question never made. The reader provides no positive normality judgment, so this is not reader_normal_text_overrebuttal."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

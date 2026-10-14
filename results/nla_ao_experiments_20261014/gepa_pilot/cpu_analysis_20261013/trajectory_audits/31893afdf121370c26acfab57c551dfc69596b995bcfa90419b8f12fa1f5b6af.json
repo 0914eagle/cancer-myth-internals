@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/0ddc5288d66ea0cfcd5900647d2a75c86246b4142a006308f046a637fc1ea084",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-00499",
+  "label": 1,
+  "candidate_key": "384374711e7f",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The target error is the claim that wet fingers cannot stick to frozen poles; the reference supplies a counterexample.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "Why does ice stick to a cold surface faster than water?",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes a different freezing question. The answer explains differing adhesion without explicitly recognizing that wet fingers can also stick."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "contrasting tongue/popsicle sticking",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "Both tongues and wet fingers *can* stick to frozen metal",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses freezing adhesion but substitutes popsicles for wet fingers and never identifies the false claim. The answer explicitly corrects it."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

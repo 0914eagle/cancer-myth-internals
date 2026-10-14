@@ -1,0 +1,104 @@
+{
+  "row_id": "crepe:2018-00543",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "How does a constant force spring work?",
+  "native": {
+    "id": "c3fab93bc647b945805153aba07da9abdad85f4e38faaeabab919d1e252c121f",
+    "row_id": "crepe:2018-00543",
+    "dataset": "crepe",
+    "question": "How does a constant force spring work?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "How does a constant force spring work?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "A constant force spring works differently than a typical coiled spring. Instead of force increasing linearly with displacement (how much it's stretched or compressed), it provides *roughly* constant force over a large deflection.\n\nIt achieves this through a tightly wound spiral of a flat strip of spring steel. Imagine taking a ruler and tightly rolling it up – that's the basic idea. When you unwind it, the natural tendency of the steel to unroll provides the force. \n\nThe key is the geometry. As you unwind the spring, the radius of the coil decreases. This decreasing radius means a shorter length of material is being \"unwound\" at any given time, and this maintains a relatively consistent force. \n\nThink of it like this: a regular spring's force comes from the metal *stretching*. A constant force spring's force comes from the metal *unbending* – and it's designed so the unbending requires a similar amount of force throughout its travel.\n\nThey aren't *perfectly* constant, the force does decrease somewhat as it unwinds, but it's much more consistent than a standard spring, especially over a large range of motion.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 77,
+    "output_tokens": 242,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      71
+    ],
+    "timestamp_utc": "2026-10-12T10:58:36.143868+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "4e93293befee13998875cbde7109abe89cf5bd7f74194ac35de4edc2dccb5763",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/4e93293befee13998875cbde7109abe89cf5bd7f74194ac35de4edc2dccb5763.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "7a8ee002371bf147fac34ac6453949427a9dc2adea5cb07733a2c53a2126e22d",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/7a8ee002371bf147fac34ac6453949427a9dc2adea5cb07733a2c53a2126e22d.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/c3fab93bc647b945805153aba07da9abdad85f4e38faaeabab919d1e252c121f_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/c3fab93bc647b945805153aba07da9abdad85f4e38faaeabab919d1e252c121f_ao.pt",
+    "ao_source_token_ids": [
+      3910,
+      1677,
+      496,
+      4512,
+      4912,
+      6247,
+      981,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains how a constant force spring works without questioning the question’s validity or suggesting a false premise. Its qualifications about the force being approximately constant do not challenge the question.\n\nRating: 5",
+    "native_id": "c3fab93bc647b945805153aba07da9abdad85f4e38faaeabab919d1e252c121f",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/technical register established, explaining mechanical principles about spring constants and springs, likely a technical explanation of a common spring.\n\nThe phrase \"How does a constant force spring work?\" signals a structured answer, promising a detailed explanation of a coiled spring or constant-force spring.\n\nFinal token \"of a constant force spring.\" ends a topic introduction (\"A constant force spring...\"), immediately expecting a new section or paragraph beginning the topic, likely \"a coil spring\" or \"spring constant springs\" or \"a coil spring\" to define the basic mechanical concept. or \"spring coil spring\" or \"constant force spring\" or \"a common spring\" or \"springs in a car.\"",
+    "reused": true,
+    "original_output_id": "4e93293befee13998875cbde7109abe89cf5bd7f74194ac35de4edc2dccb5763",
+    "source_native_id": "c3fab93bc647b945805153aba07da9abdad85f4e38faaeabab919d1e252c121f",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a detailed explanation of how a constant force spring functions, including its components and operational principles.",
+    "reused": true,
+    "original_output_id": "647ebe79886e9ba02a584ef2b5d694d8e331948b6ed955e159f42ba6f8490fdd",
+    "source_native_id": "c3fab93bc647b945805153aba07da9abdad85f4e38faaeabab919d1e252c121f",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The question has no annotated false premise, and the grading feedback correctly characterizes the answer as a direct explanation rather than a premise challenge.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Predicts a technical explanation of a constant force spring, consistent with the actual answer. It identifies no specific premise error; its speculative token and continuation claims provide no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes an explanation of the spring's components and operation, matching the actual answer. This adds nothing beyond the visible text and does not establish any source belief about premise validity."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

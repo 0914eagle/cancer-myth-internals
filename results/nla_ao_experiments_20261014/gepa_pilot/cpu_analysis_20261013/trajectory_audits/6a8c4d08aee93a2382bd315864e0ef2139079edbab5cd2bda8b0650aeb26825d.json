@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/86c37a028e8bcc10eefe183b4766bbfa4da3ba9fadb1751d2c0cac6c7f1e43c6",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "nfp_1087",
+  "label": 0,
+  "candidate_key": "69d6f267a2f6",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "Radiation can affect pediatric growth; asking about subsequent interventions does not establish a false premise.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "growth recovery after chemotherapy",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses growth recovery but substitutes chemotherapy and endocrine issues for radiation. The answer does not attack the reported treatment recommendation."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "growth hormone or related treatments for children post-cancer",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader recognizes post-cancer growth interventions but introduces early puberty. The answer's eligibility qualifications are not over-rebuttal."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

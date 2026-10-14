@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-04678",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "how did they discover tobacco? Like, did they just go around smoking plants until they found one they liked?",
+  "native": {
+    "id": "63da980e1bb8f88a19d07fba3c04f425146d53bd72500472e5ba1b8cfa4de9f0",
+    "row_id": "crepe:2018-04678",
+    "dataset": "crepe",
+    "question": "how did they discover tobacco? Like, did they just go around smoking plants until they found one they liked?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "how did they discover tobacco? Like, did they just go around smoking plants until they found one they liked?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "The discovery of tobacco wasn't likely a simple case of randomly trying plants. It's rooted in the practices of Indigenous peoples of the Americas, particularly in Central and South America. Archaeological evidence suggests tobacco use dates back as far as 1400 BC. \n\nInitially, it wasn’t smoked in the way we typically think of it now. Indigenous cultures used tobacco in various *ceremonial* ways – chewed, sniffed, or used in religious rituals. They understood its effects, which were considered spiritual and medicinal. \n\nThe practice spread throughout the Americas, with different tribes developing their own methods and traditions around its use. When Europeans arrived, they *observed* Indigenous people using tobacco and adopted the practice, initially for medicinal purposes, and then for recreational smoking. \n\nSo, it wasn’t “discovery” in the sense of finding something new, but rather Europeans learning about and adopting a practice already deeply embedded in Indigenous cultures. They didn't just stumble upon it; they learned about it from the people who had been using it for millennia.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 91,
+    "output_tokens": 220,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      85
+    ],
+    "timestamp_utc": "2026-10-12T10:51:41.944625+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "361fd99fc21ac12aec324fec2fa30880ff13e114d6198934175f558622de4abd",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/361fd99fc21ac12aec324fec2fa30880ff13e114d6198934175f558622de4abd.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "8266584aef4678c7cfe03654489a2e20933871135836d1c7c22110cf2f496e50",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/8266584aef4678c7cfe03654489a2e20933871135836d1c7c22110cf2f496e50.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/63da980e1bb8f88a19d07fba3c04f425146d53bd72500472e5ba1b8cfa4de9f0_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/63da980e1bb8f88a19d07fba3c04f425146d53bd72500472e5ba1b8cfa4de9f0_ao.pt",
+    "ao_source_token_ids": [
+      901,
+      6878,
+      28653,
+      236881,
+      9929,
+      236764,
+      1602,
+      901,
+      1164,
+      817,
+      2101,
+      24264,
+      6485,
+      3097,
+      901,
+      1765,
+      886,
+      901,
+      18142,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 2,
+    "reason": "The response provides relevant historical context but dismisses the suggested discovery scenario and reframes the question as Europeans adopting Indigenous practices. Rather than acknowledging that tobacco’s original discovery predates written history and is unknown, it partially answers while challenging the question’s framing.\n\nRating: 2",
+    "native_id": "63da980e1bb8f88a19d07fba3c04f425146d53bd72500472e5ba1b8cfa4de9f0",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Question/answer format established: a reflective or analytical question about historical discovery of plants, likely a humorous or serious inquiry.\n\nThe question \"I doubt they just randomly found all the plants.\" signals a hypothesis or assumption about the historical process of discovering edible plants.\n\nFinal token \"?\" closes a posed question (\"like they just ate everything they found?\"), strongly expecting a continuation like a period or \"or\" to answer the humorous scenario of random discovery. or \"?\" or \"the idea that...\" or \"or was it a more systematic process?\" or \"the humorous image of them stumbling.\" or \"or did they...\" or \"that seems unlikely.\" or \"how did they find...\"",
+    "reused": true,
+    "original_output_id": "361fd99fc21ac12aec324fec2fa30880ff13e114d6198934175f558622de4abd",
+    "source_native_id": "63da980e1bb8f88a19d07fba3c04f425146d53bd72500472e5ba1b8cfa4de9f0",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The semantic content represented by these activations is the process of discovering tobacco, which involves experimentation and exploration of different plants.",
+    "reused": true,
+    "original_output_id": "4335edd3b32fd93efb0444d3a47ccd3f33c38ceddcf06adfe1ae23f36c15dd53",
+    "source_native_id": "63da980e1bb8f88a19d07fba3c04f425146d53bd72500472e5ba1b8cfa4de9f0",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "The NLA explanation quotes a different question about discovering edible plants and eating everything, rather than the supplied question about tobacco and smoking plants.",
+    "actual_behavior": "premise_challenged",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Discusses edible-plant discovery and speculative continuations, not tobacco specifically. It does not identify the answer's failure to acknowledge that tobacco's original discovery is unknown."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes tobacco discovery as experimentation with plants but does not predict the answer's reframing toward European adoption or identify its unsupported dismissal of the suggested scenario. This topic summary does not establish that the source accepted the premise."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

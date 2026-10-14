@@ -1,0 +1,11 @@
+{
+  "n_answers": 16,
+  "expected": 16,
+  "completed": 16,
+  "bitwise_equal_records": 64,
+  "total_compared_records": 64,
+  "bitwise_equal_vectors": 334,
+  "total_compared_vectors": 334,
+  "min_cosine": 0.9999999999999998,
+  "provenance": "Fresh native Gemma27 generation with decoder31window + decoder41threepositions captured during generation prefill; no reader-output intervention"
+}

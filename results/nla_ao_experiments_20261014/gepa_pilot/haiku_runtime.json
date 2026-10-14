@@ -1,0 +1,9 @@
+{
+  "judge_model": {
+    "backend": "claude",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "selection": "Served modelUsage resolved from requested haiku alias preflight; frozen before heldout evaluation."
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "original_directory": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/qwen25",
+    "pt_files": 4710,
+    "bytes": 75327030
+  },
+  {
+    "original_directory": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma3",
+    "pt_files": 4710,
+    "bytes": 80150070
+  },
+  {
+    "original_directory": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27",
+    "pt_files": 7850,
+    "bytes": 1335116378
+  },
+  {
+    "original_directory": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations",
+    "pt_files": 854,
+    "bytes": 178376583
+  }
+]

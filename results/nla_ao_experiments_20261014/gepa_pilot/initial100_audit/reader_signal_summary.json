@@ -1,0 +1,20 @@
+{
+  "questions": 100,
+  "fpq_n": 50,
+  "nfp_n": 50,
+  "audit_author": "GPT6.1sol exploratory audit; not independent human validation",
+  "readers": {
+    "nla": {
+      "topic_matches": 77,
+      "fpq_specific_target_identified": 0,
+      "additional_diagnostic_information": 0
+    },
+    "ao": {
+      "topic_matches": 97,
+      "fpq_specific_target_identified": 0,
+      "additional_diagnostic_information": 0
+    }
+  },
+  "annotation_issue_flags": 46,
+  "limits": "Annotation flags require review; these results concern the fixed neutral reader queries, layers and positions only. They do not establish absence of information in source hidden states."
+}

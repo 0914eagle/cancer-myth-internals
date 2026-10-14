@@ -1,0 +1,115 @@
+{
+  "row_id": "crepe:2018-01138",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why is buttermilk used in so many cakes and breads, and what separates it from normal milk?",
+  "native": {
+    "id": "65db910bc12a11ce762905409f477645e50bbffa8fd13b015851b1fbd7319834",
+    "row_id": "crepe:2018-01138",
+    "dataset": "crepe",
+    "question": "Why is buttermilk used in so many cakes and breads, and what separates it from normal milk?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why is buttermilk used in so many cakes and breads, and what separates it from normal milk?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Buttermilk is used in many cakes and breads for a few key reasons related to its acidity and composition. It makes baked goods tender and flavorful.\n\nHere's how it differs from regular milk and why those differences matter:\n\n* **Acidity:** Buttermilk is more acidic than regular milk. This acidity reacts with baking soda (a common leavening agent) to create carbon dioxide, which helps the baked good rise. It provides a lighter, fluffier texture.\n* **Tenderness:** The acid in buttermilk also breaks down gluten in the flour. Less gluten development means a more tender crumb.\n* **Flavor:** Buttermilk has a slightly tangy flavor that complements many baked goods, especially those with fruit. It adds complexity.\n* **Fat Content:** Traditionally, buttermilk was the liquid left over after churning butter. While commercially produced buttermilk is often made by adding cultures to low-fat milk, it generally has a lower fat content than whole milk. This can contribute to a moister final product.\n\nEssentially, buttermilk isn't *just* a liquid; it's an ingredient that actively changes the chemistry of the baking process to improve texture and taste.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 88,
+    "output_tokens": 239,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      82
+    ],
+    "timestamp_utc": "2026-10-12T10:57:09.144544+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "a74055d85d9f5ce42242502f8097c57c38000ee728f4682792415be25d82000b",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/a74055d85d9f5ce42242502f8097c57c38000ee728f4682792415be25d82000b.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "44e1321c37f6e0d02750bb4523314bb2cb40ac1839d141442a31408df5d9bc35",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/44e1321c37f6e0d02750bb4523314bb2cb40ac1839d141442a31408df5d9bc35.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/65db910bc12a11ce762905409f477645e50bbffa8fd13b015851b1fbd7319834_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/65db910bc12a11ce762905409f477645e50bbffa8fd13b015851b1fbd7319834_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      563,
+      228017,
+      1456,
+      528,
+      834,
+      1551,
+      37796,
+      532,
+      131632,
+      236764,
+      532,
+      1144,
+      62079,
+      625,
+      699,
+      3867,
+      9556,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains buttermilk’s acidity, its reaction with baking soda, and its tenderizing effect, consistent with the reference answer. It treats the question normally without questioning its validity or introducing unnecessary skepticism.\n\nRating: 5",
+    "native_id": "65db910bc12a11ce762905409f477645e50bbffa8fd13b015851b1fbd7319834",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Answer/response framing: a conversational or analytical question posed, establishing a practical explanation of differences between buttermilk and yogurt.\n\nThe question \"what makes buttermilk distinct, and what is its difference?\" signals a summary or answer is expected, likely summarizing the comparative distinctions.\n\nFinal token \"?\" closes a question defining the difference (\"milk is sourer and has a different texture.\"), strongly expecting a period or continuation like \"Buttermilk\" or \"the difference between buttermilk and yogurt?\" to begin or conclude the answer. or \"Buttermilk differs in...\" or \"Buttermilk\" or \"the main difference is...\" or \"what distinguishes it.\" or \"Buttermilk is...\" or \"composition\" or \".\"",
+    "reused": true,
+    "original_output_id": "a74055d85d9f5ce42242502f8097c57c38000ee728f4682792415be25d82000b",
+    "source_native_id": "65db910bc12a11ce762905409f477645e50bbffa8fd13b015851b1fbd7319834",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a semantic content that includes information about the use of buttermilk in cooking, its unique properties, and how it differs from regular milk.",
+    "reused": true,
+    "original_output_id": "b8ffcf5a005c0fb8ac1ff2ab64a0b2b45567520eaaf82c7df96db878a5497791",
+    "source_native_id": "65db910bc12a11ce762905409f477645e50bbffa8fd13b015851b1fbd7319834",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The ordinary explanatory question, label 0, and empty presupposition list are consistent.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It anticipates a practical explanatory answer, matching the actual behavior, but substitutes yogurt for regular milk. Its speculative token continuations provide no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It summarizes buttermilk's cooking uses and differences from regular milk, but does not identify a target error or establish whether the source accepted or challenged the premise. The summary adds nothing beyond the visible answer."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

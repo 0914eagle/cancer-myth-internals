@@ -1,0 +1,10 @@
+{
+  "explanation": "The activations represent a conversation about a serious medical diagnosis, specifically thyroid cancer, and the emotional and practical aspects of coping with it.",
+  "reused": true,
+  "original_output_id": "6c3c63c62300c525b8aa10a5d3e3b27565787d43935e2cac0dd56088dd073142",
+  "source_native_id": "a2612e0c30dc0b211c39894b7d1524e6d2faa059d90f19fca07673574b06ee5c",
+  "bytewise_verified": true,
+  "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n",
+  "supplied_diagnostic": "The activations represent a conversation about a serious medical diagnosis, specifically thyroid cancer, and the emotional and practical aspects of coping with it.",
+  "clipped": false
+}

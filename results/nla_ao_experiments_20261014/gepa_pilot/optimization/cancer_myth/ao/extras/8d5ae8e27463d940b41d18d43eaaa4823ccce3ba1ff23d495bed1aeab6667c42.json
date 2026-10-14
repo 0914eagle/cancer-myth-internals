@@ -1,0 +1,10 @@
+{
+  "explanation": "The activations represent semantic content related to medical rehabilitation, specifically for patients recovering from brain surgery for germinomas, and the management of side effects from radiation and chemotherapy.",
+  "reused": true,
+  "original_output_id": "1ff4570b8827c00ae57096b2db5c7721101719a4485a634c6a868f5d6f506b64",
+  "source_native_id": "8d5ae8e27463d940b41d18d43eaaa4823ccce3ba1ff23d495bed1aeab6667c42",
+  "bytewise_verified": true,
+  "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n",
+  "supplied_diagnostic": "The activations represent semantic content related to medical rehabilitation, specifically for patients recovering from brain surgery for germinomas, and the management of side effects from radiation and chemotherapy.",
+  "clipped": false
+}

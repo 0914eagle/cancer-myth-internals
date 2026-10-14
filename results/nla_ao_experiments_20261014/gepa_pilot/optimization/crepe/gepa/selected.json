@@ -1,0 +1,12 @@
+{
+  "candidate": {
+    "answer": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+  },
+  "best_idx": 0,
+  "selection": "Frozen GPT candidate-dev best; heldout not accessed",
+  "dataset": "crepe",
+  "arm": "gepa",
+  "seed": 42,
+  "budget_question_cap": 100,
+  "max_candidate_proposals": 4
+}

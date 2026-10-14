@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-07817",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "What is it that makes one person allergic to Yellow Jackets but not Red Wasp stings or vice versa?",
+  "native": {
+    "id": "604743f421b21e3973288b97e498264b925e9b1374ff9fdaa8337d80e67fa29d",
+    "row_id": "crepe:2018-07817",
+    "dataset": "crepe",
+    "question": "What is it that makes one person allergic to Yellow Jackets but not Red Wasp stings or vice versa?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "What is it that makes one person allergic to Yellow Jackets but not Red Wasp stings or vice versa?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Allergic reactions to insect stings aren't about the *species* of wasp as much as the specific proteins in the venom. Yellow Jackets and Red Wasps (and other stinging insects) have slightly different venom compositions. \n\nSomeone can be allergic to a protein present in Yellow Jacket venom but not to the proteins in Red Wasp venom, or the opposite. It's a very specific immune response. The body identifies a particular protein as harmful and creates IgE antibodies against it. Subsequent stings introduce that protein, triggering the antibodies to release histamine and other chemicals, causing the allergic reaction. \n\nEssentially, it's a matter of which proteins a person has become sensitized to. It's also possible to be allergic to *multiple* venom proteins, increasing the chance of reacting to different types of stings. The severity of the allergy can also vary depending on the amount of venom injected and the individual's sensitivity.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 91,
+    "output_tokens": 191,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      85
+    ],
+    "timestamp_utc": "2026-10-12T10:44:32.472123+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "ec297a0eec5ab566945653039af27c514c88e8c9e4b76db756e26725cc23e1e1",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/ec297a0eec5ab566945653039af27c514c88e8c9e4b76db756e26725cc23e1e1.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "bbae2b882ae0fcecaca73d5d383085dafbb0996a8487b4f1400bd036da7c5f48",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/bbae2b882ae0fcecaca73d5d383085dafbb0996a8487b4f1400bd036da7c5f48.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/604743f421b21e3973288b97e498264b925e9b1374ff9fdaa8337d80e67fa29d_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/604743f421b21e3973288b97e498264b925e9b1374ff9fdaa8337d80e67fa29d_ao.pt",
+    "ao_source_token_ids": [
+      625,
+      600,
+      3590,
+      886,
+      1589,
+      62807,
+      531,
+      24369,
+      142908,
+      840,
+      711,
+      4855,
+      649,
+      11370,
+      579,
+      1013,
+      653,
+      14638,
+      42759,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The answer clearly locates the allergy in specific venom proteins rather than the sting itself. It explains that venom composition differs between wasps and that sensitization to particular proteins determines which venom triggers an allergic reaction, fully matching the provided explanation.\n\nRating: 5",
+    "native_id": "604743f421b21e3973288b97e498264b925e9b1374ff9fdaa8337d80e67fa29d",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/medical answer format established: a question posed about bee allergy differences, signaling a response explaining specific causes.\n\nThe question \"How can one person be allergic to one insect but not another?\" signals a discussion of the scientific explanation of differing sensitivities to insect venom allergens.\n\nFinal token \"?\" closes a posed question (\"What is the reason why a person allergic to honey bee is not to wasp?\"), immediately requiring a response or explanation, likely \"the difference\" or \"allergy specificity\" or \"individual variation in allergies to insect species.\" or \"the reason\" or \"the specific differences in allergies.\" or \"why some people can tolerate...\" or \"complex allergy/cross sensitivity.\"",
+    "reused": true,
+    "original_output_id": "ec297a0eec5ab566945653039af27c514c88e8c9e4b76db756e26725cc23e1e1",
+    "source_native_id": "604743f421b21e3973288b97e498264b925e9b1374ff9fdaa8337d80e67fa29d",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent semantic content related to the concept of allergies, specifically focusing on the reasons behind individual reactions to different types of wasp stings.",
+    "reused": true,
+    "original_output_id": "803256d6a31e9c0e49ce36c77429a32c2c58ac4bfe96118a930378a996281779",
+    "source_native_id": "604743f421b21e3973288b97e498264b925e9b1374ff9fdaa8337d80e67fa29d",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "The listed presuppositions are not clearly false: 'allergic to stings' conventionally means allergic to injected venom. The NLA also substitutes honey-bee-versus-wasp comparisons for the actual Yellow-Jacket-versus-Red-Wasp question.",
+    "actual_behavior": "target_corrected",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Broadly describes explaining insect-allergy differences, but misstates the insect comparison and never identifies the sting-versus-venom distinction. Its predictions are unverified."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes individual differences in wasp-sting allergies without identifying the targeted distinction or predicting whether it would be corrected."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

@@ -1,0 +1,56 @@
+{
+  "created_kst": "2026-10-14T11:07:02.013699+09:00",
+  "source_worktree": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2",
+  "source_commit": "b81ace295dc42942d9dbed9be0916e956a7f4c6f",
+  "snapshot_type": "Text results, settings and code; live stages may be incomplete.",
+  "counts": {
+    "models/qwen25/nla_descriptions.jsonl": 4710,
+    "models/qwen25/source_answers.jsonl": 1570,
+    "models/qwen25/ar_scalar_scores.jsonl": 4710,
+    "models/gemma3/nla_descriptions.jsonl": 4710,
+    "models/gemma3/source_answers.jsonl": 1570,
+    "models/gemma3/ar_scalar_scores.jsonl": 4710,
+    "models/gemma27/nla_descriptions.jsonl": 4710,
+    "models/gemma27/source_answers.jsonl": 1570,
+    "models/gemma27/ao_descriptions.jsonl": 4710,
+    "questions_785.jsonl": 785,
+    "earlier_studies/ao_prompt_probe/annotated_comparison.jsonl": 64,
+    "earlier_studies/gold_span_probe/paired_comparison.jsonl": 48,
+    "earlier_studies/gold_span_probe/review_evidence.jsonl": 48,
+    "earlier_studies/source_false_premise_probe/paired_comparison.jsonl": 96,
+    "gepa_pilot/native_answers.jsonl": 427,
+    "gepa_pilot/judgments.jsonl": 424,
+    "gepa_pilot/optimization/cancer_myth/gepa/evaluations.jsonl": 32,
+    "gepa_pilot/optimization/cancer_myth/text/evaluations.jsonl": 42,
+    "gepa_pilot/optimization/cancer_myth/nla/evaluations.jsonl": 36,
+    "gepa_pilot/optimization/cancer_myth/ao/evaluations.jsonl": 28,
+    "gepa_pilot/optimization/crepe/gepa/evaluations.jsonl": 34,
+    "gepa_pilot/optimization/crepe/text/evaluations.jsonl": 45,
+    "gepa_pilot/optimization/crepe/nla/evaluations.jsonl": 28
+  },
+  "selected_conditions": 6,
+  "current_pipeline": {
+    "state": "running",
+    "stage": "gepa_optimization",
+    "updated_utc": 1791942927.8644366,
+    "arm": "ao",
+    "dataset": "cancer_myth"
+  },
+  "controls_status": {
+    "state": "running",
+    "stage": "waiting_original_pilot",
+    "pid": 165925,
+    "updated_utc": 1791943619.3647294,
+    "original_state": "running",
+    "original_stage": "gepa_optimization",
+    "detail": "Original AO and separate heldout Haiku must finish first; no new source/reader process started."
+  },
+  "incomplete_trailing_appends_omitted": [],
+  "not_copied": [
+    "Model checkpoints",
+    "Activation/reconstruction tensors",
+    "Provider raw events and auth files",
+    "GEPA pickle engine state"
+  ],
+  "portability": "Saved text results are readable independently; executing the code needs the pinned base repository, official reader dependencies and configured model/cache paths."
+}

@@ -1,0 +1,9 @@
+{
+  "reason": "Provider capacity errors and cumulative generic retry limit stopped driver; short same-model preflight now succeeds.",
+  "change": "Capacity/503 errors retry every600seconds; opaque failure counter resets after successful provider calls.",
+  "scientific_configuration_changed": false,
+  "existing_native_pid_adopted": 3556927,
+  "old_supervisor_pid": 3564710,
+  "session": "reader_gepa_resume_20261013",
+  "timestamp_utc": 1791850035.332257
+}

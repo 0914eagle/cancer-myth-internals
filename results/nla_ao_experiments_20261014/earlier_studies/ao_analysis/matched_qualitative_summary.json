@@ -1,0 +1,30 @@
+{
+  "groups": [
+    {
+      "reader": "NLA",
+      "variant": "question_last_token",
+      "n": 16,
+      "main_topic_retained": 15
+    },
+    {
+      "reader": "AO",
+      "variant": "1",
+      "n": 16,
+      "main_topic_retained": 5
+    },
+    {
+      "reader": "AO",
+      "variant": "5",
+      "n": 16,
+      "main_topic_retained": 10
+    },
+    {
+      "reader": "AO",
+      "variant": "20",
+      "n": 16,
+      "main_topic_retained": 14
+    }
+  ],
+  "n_shared_question_conditions": 16,
+  "caution": "Fixed sample, shared completed source cases only; layer/query/injection/batching differences remain"
+}

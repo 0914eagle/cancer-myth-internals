@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/8e55e06ced13bd906ad346314971e6a5a5ebb844dafcc6bd6dd3474c7c5355fc",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "nfp_1090",
+  "label": 0,
+  "candidate_key": "669be170460c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question reports planned radiation and asks about supportive products; it does not claim radiation is standard first-line treatment or that scalp hair loss is inevitable.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "radiation therapy for ovarian germ cell tumors",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes the topic only. The answer gives relevant product and treatment-field qualifications without attacking the reported treatment plan."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "associated side effects on the skin and hair",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "radiation is not a standard first-line treatment for metastatic dysgerminoma",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader supplies only topical content. The answer qualifies usual treatment practice but acknowledges possible radiation use and does not reject the reported plan."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

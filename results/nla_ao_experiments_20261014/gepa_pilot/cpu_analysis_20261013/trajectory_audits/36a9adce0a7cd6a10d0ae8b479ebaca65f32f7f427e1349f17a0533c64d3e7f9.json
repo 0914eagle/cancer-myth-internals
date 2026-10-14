@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/a6a37112981a949baa99542ed6f237e3c408d4703022e125075d5708846afe8e",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-00028",
+  "label": 0,
+  "candidate_key": "d78f4dc0b5fd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question describes cooling-related burn pain relief; the reference supports that reported effect. “Brunch” appears to be a typo for “burn.”",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a common pain-cooling effect",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader identifies the topic only. The answer's distinction between temporary pain relief and tissue damage does not attack the reported premise."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a question about pain mechanisms",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": true,
+      "answer_evidence": "is based on a misunderstanding of how pain works",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes the topic without evaluating the premise. The answer unnecessarily labels the reported pain relief a misunderstanding."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

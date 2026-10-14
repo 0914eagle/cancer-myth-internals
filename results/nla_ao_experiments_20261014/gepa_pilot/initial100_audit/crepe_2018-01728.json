@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-01728",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "How do aged spirit brands(whisky etc.) that grow rapidly manage to have enough stock if everything is aged minimum 10 years?",
+  "native": {
+    "id": "bf3e22232732fab3479dba4e74689cba9dd333dbeba3a8d710f8dd3c63460024",
+    "row_id": "crepe:2018-01728",
+    "dataset": "crepe",
+    "question": "How do aged spirit brands(whisky etc.) that grow rapidly manage to have enough stock if everything is aged minimum 10 years?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "How do aged spirit brands(whisky etc.) that grow rapidly manage to have enough stock if everything is aged minimum 10 years?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That's a really common question about rapidly growing aged spirit brands! It's not magic, but a combination of planning, blending, and sometimes, strategic sourcing. Here's how they do it:\n\n* **Long-Term Forecasting & Stockpiling:** Successful brands anticipate growth and lay down spirit for aging *years* in advance. They essentially stockpile knowing demand will eventually catch up. This requires significant capital tied up in maturing stock.\n* **Blending:** A key technique. Master blenders combine whiskies (or other spirits) of different ages. They might use a small percentage of very old whisky to impart character to a larger batch of younger whisky, legally allowing them to label it as aged – even if the *majority* isn't 10+ years old. The rules around this vary by region (Scotch has very strict rules, for example).\n* **Strategic Sourcing/Buying Distilled Spirit:** Some brands, especially newer ones experiencing explosive growth, may *buy* already-distilled spirit from other distilleries to blend with their own aged stock. This allows them to meet demand while their own spirit matures. They might buy unaged spirit and age it themselves, or purchase already aged spirit. This is often less publicized.\n* **Releases in Stages:** Brands might release new expressions or limited editions to manage demand and avoid depleting their core stock too quickly.\n* **Increasing Production Capacity:** Simultaneously, they'll be investing in expanding their distillery's production capacity to ensure future supply. However, that future supply takes years to mature.\n\n\n\nIt's a delicate balancing act, and rapid growth can sometimes lead to temporary shortages or price increases if a brand miscalculates.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 97,
+    "output_tokens": 352,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      91
+    ],
+    "timestamp_utc": "2026-10-12T10:45:14.979961+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "a191f73b76325a4bfd41045d006efac71baaae8a8152a0e33d3680bd573d9719",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/a191f73b76325a4bfd41045d006efac71baaae8a8152a0e33d3680bd573d9719.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "f0b3515fb72127e9771b4a1b1c738c7b675c33a98005fd7a9fe3b256933e1b44",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/f0b3515fb72127e9771b4a1b1c738c7b675c33a98005fd7a9fe3b256933e1b44.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/bf3e22232732fab3479dba4e74689cba9dd333dbeba3a8d710f8dd3c63460024_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/bf3e22232732fab3479dba4e74689cba9dd333dbeba3a8d710f8dd3c63460024_ao.pt",
+    "ao_source_token_ids": [
+      4044,
+      2907,
+      600,
+      2171,
+      13380,
+      9688,
+      531,
+      735,
+      3487,
+      2862,
+      768,
+      4326,
+      563,
+      18124,
+      7081,
+      236743,
+      236770,
+      236771,
+      1518,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 2,
+    "reason": "The response explains how forecasting and purchasing aged stock can support growth, but does not clearly correct the assumption that all spirits require at least 10 years of aging. Its blending explanation also misleadingly suggests that older whisky can confer an age designation on younger whisky; Scotch age statements reflect the youngest component. It therefore offers a partial but inadequate correction.\n\nRating: 2",
+    "native_id": "bf3e22232732fab3479dba4e74689cba9dd333dbeba3a8d710f8dd3c63460024",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Established a question-answer/forum post format, signaling a whisky/industry discussion about aged Scotch supply and maturation challenges.\n\nThe question \"How do whisky brands like Johnnie Walker make 18 year old whisky when demand outpaces supply?\" sets up a classic industry trick or explanation of the shortage/fake aging problem.\n\nFinal token \"?\" closes a posed question (\"how do aged whisky appear 18 years old?\"), immediately expecting a answer like \"the illusion\" or \"shortage\" or \"the problem of supply\" to introduce the specific explanation of aged stock shortages. or \"bottling\" or \"they have reserves.\" or \"fake whisky?\" or \"illusion of.\"",
+    "reused": true,
+    "original_output_id": "a191f73b76325a4bfd41045d006efac71baaae8a8152a0e33d3680bd573d9719",
+    "source_native_id": "bf3e22232732fab3479dba4e74689cba9dd333dbeba3a8d710f8dd3c63460024",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a semantic content that includes the concept of aging, the process of maturation, and the idea of time-dependent quality enhancement.",
+    "reused": true,
+    "original_output_id": "0ac92be2b920ae6c3d73c1aa634fd59bf3635444d09bee48035791df1eb6d27e",
+    "source_native_id": "bf3e22232732fab3479dba4e74689cba9dd333dbeba3a8d710f8dd3c63460024",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The annotation reasonably captures the question's mistaken inventory constraint and minimum-ten-year aging premise.",
+    "actual_behavior": "target_not_corrected",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Matches whisky supply and maturation broadly, but substitutes a Johnnie Walker/18-year question. It neither identifies the false universal ten-year minimum nor predicts a definite response; its proposed continuations are unverified speculation."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Only summarizes aging and maturation. It identifies neither the minimum-aging misconception nor the misleading blending claim, and makes no behavioral prediction. Its activation characterization is unverified."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

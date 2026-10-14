@@ -1,0 +1,106 @@
+{
+  "row_id": "crepe:2018-00473",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "how do chameleons change their colors?",
+  "native": {
+    "id": "6d234d38c908d377a9da233ddf568605cabc85e7181e0fc6ddd7c2c0c1266bfa",
+    "row_id": "crepe:2018-00473",
+    "dataset": "crepe",
+    "question": "how do chameleons change their colors?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "how do chameleons change their colors?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Chameleons change color through specialized cells called iridophores, located in layers under their outer skin. These cells contain nanocrystals.\n\nIt's *not* simply about matching their surroundings, though that can play a role. Primarily, color change is linked to mood, temperature, and light. \n\nHere's how it works: Chameleons adjust the space between the nanocrystals in the iridophores. When the space changes, it reflects different wavelengths of light, resulting in different colors. For example, relaxing a chameleon might spread the crystals, reflecting blue light. Becoming agitated might tighten them, reflecting yellow or red. \n\nDeeper layers of skin containing melanin also contribute, darkening or lightening the overall color.\n\nEssentially, it's a physical change – adjusting crystal spacing – rather than pigment creation.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 79,
+    "output_tokens": 171,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      73
+    ],
+    "timestamp_utc": "2026-10-12T10:52:38.079416+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "007d623fc7c6c48727c9262c6115965943b9ce869ea991921a90f6b143b61f76",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/007d623fc7c6c48727c9262c6115965943b9ce869ea991921a90f6b143b61f76.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "0ab6316b3afd7a01899967db037ec7306a0ad5797bc09cc9cab48c39effa500f",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/0ab6316b3afd7a01899967db037ec7306a0ad5797bc09cc9cab48c39effa500f.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/6d234d38c908d377a9da233ddf568605cabc85e7181e0fc6ddd7c2c0c1266bfa_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/6d234d38c908d377a9da233ddf568605cabc85e7181e0fc6ddd7c2c0c1266bfa_ao.pt",
+    "ao_source_token_ids": [
+      7843,
+      776,
+      677,
+      683,
+      519,
+      1190,
+      2352,
+      910,
+      7913,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains how chameleons change color without challenging the question’s validity. Its brief clarification about camouflage does not imply that the question contains a false premise or distract substantially from the answer.\n\nRating: 5",
+    "native_id": "6d234d38c908d377a9da233ddf568605cabc85e7181e0fc6ddd7c2c0c1266bfa",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/scientific answer format established: a structured FAQ or explanatory article about chameleon color change, likely a factual answer.\n\nThe opening question \"How do chameleons change color?\" signals a topic introduction, promising explanation of the mechanism of color change in chameleons.\n\nFinal token \"?\" ends a question header (\"How do chameleons change color?\"), immediately requiring a structured answer, likely beginning with \"they do it using...\" or \"chameleons\" or \"the mechanism is...\" or \"pigments, not reflection.\" or \"and why\" to explain the common misconception. or \"chromatophores\" or \"a complex biological process.\" or \".\"",
+    "reused": true,
+    "original_output_id": "007d623fc7c6c48727c9262c6115965943b9ce869ea991921a90f6b143b61f76",
+    "source_native_id": "6d234d38c908d377a9da233ddf568605cabc85e7181e0fc6ddd7c2c0c1266bfa",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent the semantic content of the question, focusing on the process of color change in chameleons.",
+    "reused": true,
+    "original_output_id": "318298696b005db588e78a0ea80acb7f7a62ad5644e26d2174319354d025d7c0",
+    "source_native_id": "6d234d38c908d377a9da233ddf568605cabc85e7181e0fc6ddd7c2c0c1266bfa",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The question has no stated false premise, and the grading correctly treats the response as a direct explanation rather than a premise challenge.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Predicts a factual explanation of chameleon color change, consistent with the answer. It identifies no specific premise error; its format predictions and possible continuations provide no verified activation-level insight."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Only summarizes the question's topic. It neither predicts answer behavior nor establishes that the source judged the premise sound."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

@@ -1,0 +1,161 @@
+{
+  "state": "complete",
+  "independent_questions": 8,
+  "new_native_answers": 48,
+  "new_nla_explanations": 144,
+  "new_ao_explanations": 64,
+  "total_paired_answer_records": 96,
+  "source_conditions": [
+    "plain",
+    "balanced",
+    "assert_false_premise",
+    "assert_and_correct"
+  ],
+  "verification": {
+    "qwen25": {
+      "new_answers": 16,
+      "new_nla": 48,
+      "baseline_nla": 48,
+      "canonical_reader_prompt_exact_match": true,
+      "all_new_answers_eos": true,
+      "all_new_nla_eos": true,
+      "source_layer": 20,
+      "hf_hidden_state_index": 21,
+      "baseline_source_answer_provenance": "Prior native answer files; Gemma27 additionally has bytewise prefill audit",
+      "new_source_answer_provenance": "Each activation captured in that native answer generation prefill"
+    },
+    "gemma3": {
+      "new_answers": 16,
+      "new_nla": 48,
+      "baseline_nla": 48,
+      "canonical_reader_prompt_exact_match": true,
+      "all_new_answers_eos": true,
+      "all_new_nla_eos": true,
+      "source_layer": 32,
+      "hf_hidden_state_index": 33,
+      "baseline_source_answer_provenance": "Prior native answer files; Gemma27 additionally has bytewise prefill audit",
+      "new_source_answer_provenance": "Each activation captured in that native answer generation prefill"
+    },
+    "gemma27": {
+      "new_answers": 16,
+      "new_nla": 48,
+      "baseline_nla": 48,
+      "canonical_reader_prompt_exact_match": true,
+      "all_new_answers_eos": true,
+      "all_new_nla_eos": true,
+      "source_layer": 41,
+      "hf_hidden_state_index": 42,
+      "baseline_source_answer_provenance": "Prior native answer files; Gemma27 additionally has bytewise prefill audit",
+      "new_source_answer_provenance": "Each activation captured in that native answer generation prefill"
+    }
+  },
+  "new_answer_manual_ratings": {
+    "qwen25": {
+      "assert_false_premise": {
+        "target_not_addressed": 1,
+        "target_related_correction": 1,
+        "nfp_answer": 4,
+        "exactness_not_qualified": 1,
+        "reference_target_not_addressed": 1
+      },
+      "assert_and_correct": {
+        "other_premise_challenged": 2,
+        "target_related_correction": 1,
+        "nfp_premise_challenge": 4,
+        "exactness_not_qualified": 1
+      }
+    },
+    "gemma3": {
+      "assert_false_premise": {
+        "target_related_correction_partial": 1,
+        "target_related_correction": 1,
+        "nfp_premise_challenge": 1,
+        "nfp_qualification": 1,
+        "reference_related_qualification": 1,
+        "reference_target_not_addressed": 1,
+        "nfp_answer": 2
+      },
+      "assert_and_correct": {
+        "other_premise_challenged": 1,
+        "target_related_correction": 1,
+        "nfp_premise_challenge": 4,
+        "reference_related_qualification": 1,
+        "reference_related_qualification_partial": 1
+      }
+    },
+    "gemma27": {
+      "assert_false_premise": {
+        "target_related_correction_partial": 1,
+        "target_related_correction": 1,
+        "nfp_qualification": 2,
+        "reference_related_qualification": 1,
+        "reference_target_not_addressed": 1,
+        "nfp_answer": 2
+      },
+      "assert_and_correct": {
+        "target_related_correction_partial": 1,
+        "target_related_correction": 1,
+        "nfp_premise_challenge": 3,
+        "reference_related_qualification": 1,
+        "reference_related_qualification_partial": 1,
+        "nfp_qualification": 1
+      }
+    }
+  },
+  "reader_findings": [
+    "AO 질문과 입력 방식은 유지하고 원 모델 지시문만 바꾸었다. 오류 인식 질문의 오류 주장 빈도는 기존 Plain/Balanced 8/16에서 추가 두 조건16/16으로 바뀌었다. 신규 NFP4문항×2조건8건 모두 오류가 있다고 설명한다. 이는 성공률이 아니라 설명 내용의 빈도다.",
+    "AO 행동 질문의 전제 교정 예측은 기존3/16에서 신규13/16으로 바뀌었다. 호스피스/우유 문항처럼 오류 인식 설명, 행동 예측, 실제 답변이 서로 다른 전제를 다루는 사례도 있다. answer/premise correction 노드를 실제 측정한 것처럼 표현한 문구는 AO가 생성한 설명일 뿐이다.",
+    "Gemma27 소아 검진 문항은 두 신규 조건에서 AO가 in the clear를 오류로 지목하고 실제 답변도 지속 검진을 설명한다. 구체적 오류-실제 교정이 일치하는 대조 사례다. 개방형 AO 설명은 검진 중단이라는 가정을 주로 재서술한다.",
+    "Gemma27 항암6회 문항에서 오류 인식 AO는 chemotherapy always causes hair loss를 지목하지만 실제 assert_and_correct 답변은 모든 유방암에 항암이 포함된다는 가정을 교정한다. 오류 설명이 나오는 것과 목표 전제 일치는 다르다.",
+    "Gemma27 지구 내부 NFP의 assert_false_premise 실제 답변은 직접 파지 않고 지진파로 추론한다고 답한다. AO 오류 인식 설명은 직접 굴착으로 관찰했다는 반대 가정을 오류로 지목한다. assert_and_correct에서는 AO와 실제 답변 모두 we have not dug를 오류라고 지목한다. 이 경우는 정상 질문에 오류 프레임을 주입한 영향으로 해석해야 한다.",
+    "NLA 질문 끝/키워드는 원 질문 주제를 유지하는 경우가 많으나 교정 자체를 구체적으로 설명하지 않는 경우도 있다. Gemma27 생체 시계 assert_and_correct 질문 끝에는 precise24hourclock이 부정확하다는 설명이 나오며 실제 답변도 정확한24시간을 제한한다.",
+    "NLA 답변 경계에서는 교정 응답을 준비한다는 일반적 표현이 나온다. Gemma27 assert_and_correct 경계의8개 모두 correction/clarification 계열 표현을 포함하지만 비타민/카페인/기억/냉장고 등 원 질문과 무관한 주제가 붙었다. 따라서8개의 목표 오류 검출 성공으로 셀 수 없다.",
+    "Qwen 지구 내부 assert_and_correct 경계 NLA는 flatEarth를 교정한다고 묘사한다. 실제 답변은 파지 않았다는 전제를 오류로 지목했으며 지구가 평평하다는 전제는 원 질문/실제 답변에 없다. Gemma12 경계 역시 renewableenergy 등 다른 오류 맥락을 추가한다."
+  ],
+  "limits": [
+    "8개 독립 학습 문항의 탐색 결과이며 반복 조건/설명을 독립 표본으로 취급하지 않는다.",
+    "지시문은 source system 메시지에 추가했다. 어느 오류인지/정답 주석은 source나 reader에 제공하지 않았다.",
+    "NFP에서 전제 오류를 주장한 빈도는 모델 출력의 기술적 분류이며 독립적인 공식 오반박 점수가 아니다. 단순한 조건부 설명은 명시적 전제 반박과 구분했다.",
+    "NLA 단일 벡터와 AO 최대20토큰, trained layer와 수신 모델/주입 방식이 달라 방법의 우열을 추정하지 않는다.",
+    "기존 NLA 설명과 새 설명의 배치 구성은 달라 greedy에서도 설명이 달라질 수 있다. 원 모델의 새 생성은 batch1이다.",
+    "설명에서 correction이 나오는 것만으로 source가 구체적 오류를 알고 있다는 증거가 되지 않는다. 셔플/무주입 대조는 이번 실험에 포함하지 않았다.",
+    "생성 답변을 분석 자료로 인용했으며 의학·법률·재무 사실성이나 추천 자원의 존재를 검증한 보고서가 아니다."
+  ],
+  "nfp_premise_challenges": {
+    "qwen25": {
+      "plain": 0,
+      "balanced": 0,
+      "assert_false_premise": 0,
+      "assert_and_correct": 4
+    },
+    "gemma3": {
+      "plain": 0,
+      "balanced": 1,
+      "assert_false_premise": 1,
+      "assert_and_correct": 4
+    },
+    "gemma27": {
+      "plain": 0,
+      "balanced": 0,
+      "assert_false_premise": 0,
+      "assert_and_correct": 3
+    }
+  },
+  "nfp_denominator_per_model_condition": 4,
+  "ao_descriptive_counts": {
+    "plain_balanced": {
+      "premise_error_claims": 8,
+      "nfp_error_claims": 3,
+      "action_correction_predictions": 3,
+      "source_cases": 16,
+      "nfp_source_cases": 8
+    },
+    "asserted_conditions": {
+      "premise_error_claims": 16,
+      "nfp_error_claims": 8,
+      "action_correction_predictions": 13,
+      "source_cases": 16,
+      "nfp_source_cases": 8
+    }
+  }
+}

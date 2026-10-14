@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-00592",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "How can foods/drugs list \"generic\" ingredients like \"alcohol\" when in science \"alcohol\" could describe any one of thousands of compounds.",
+  "native": {
+    "id": "11fcce6135180dcc2cf451264437ce810017f451e8f9ecebfeaa20dfdbe6cd2d",
+    "row_id": "crepe:2018-00592",
+    "dataset": "crepe",
+    "question": "How can foods/drugs list \"generic\" ingredients like \"alcohol\" when in science \"alcohol\" could describe any one of thousands of compounds.",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "How can foods/drugs list \"generic\" ingredients like \"alcohol\" when in science \"alcohol\" could describe any one of thousands of compounds."
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That's a good point – “alcohol” is indeed a very broad chemical term! When you see “alcohol” listed as an ingredient, especially on food or drug labels, it *almost always* refers to **ethyl alcohol**, also known as **ethanol**. \n\nHere's how that works:\n\n* **Common Usage & Legal Definitions:** In everyday language and in regulations for labeling, \"alcohol\" has become a shorthand for ethanol. This is the type of alcohol produced by fermentation (like in beer and wine) and the type found in alcoholic beverages. It's also the type used in many extracts and some medications.\n* **Context Clues:** The context usually makes it clear. If a food product lists \"alcohol\" it's likely a small amount used as a flavoring agent or solvent, and it *is* ethanol. For drugs, it's often a vehicle for other ingredients.\n* **Specificity When Needed:** When a different type of alcohol *is* used (like isopropyl alcohol in rubbing alcohol), the label *must* specify that – it won’t just say “alcohol.” Scientific or technical documents will always use the precise chemical name (e.g., methanol, propanol).\n* **Historical Reasons:** The use of \"alcohol\" as a general term for ethanol predates the full development of organic chemistry and the understanding of the vast number of alcohol compounds. The practice stuck due to established usage.\n\n\n\nEssentially, it’s a case of a scientific term being simplified for common understanding and regulated for clarity in specific applications like labeling.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 98,
+    "output_tokens": 323,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      92
+    ],
+    "timestamp_utc": "2026-10-12T10:46:58.577112+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "d69db427935cd387e829de47eadd16e40c4415ed49d884237bbde3dabf3ae66c",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/d69db427935cd387e829de47eadd16e40c4415ed49d884237bbde3dabf3ae66c.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "980863604d048333bf62429545d324d23d47ceb2de0b019b00c43e3c39a4bd87",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/980863604d048333bf62429545d324d23d47ceb2de0b019b00c43e3c39a4bd87.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/11fcce6135180dcc2cf451264437ce810017f451e8f9ecebfeaa20dfdbe6cd2d_nla.pt",
+    "nla_source_token_ids": [
+      236761
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/11fcce6135180dcc2cf451264437ce810017f451e8f9ecebfeaa20dfdbe6cd2d_ao.pt",
+    "ao_source_token_ids": [
+      13153,
+      1133,
+      623,
+      73327,
+      236775,
+      1056,
+      528,
+      6647,
+      623,
+      73327,
+      236775,
+      1451,
+      9779,
+      1027,
+      886,
+      529,
+      11252,
+      529,
+      12046,
+      236761
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response clearly corrects the assumption by explaining that “alcohol” on food and drug ingredient labels normally means ethanol, not an arbitrary member of the chemical class. Its explanation of established usage and labeling conventions is consistent with the provided reference.\n\nRating: 5",
+    "native_id": "11fcce6135180dcc2cf451264437ce810017f451e8f9ecebfeaa20dfdbe6cd2d",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Scientific/educational discussion establishing a practical argument about chemical naming ambiguity, likely a chemistry or pharmacology context explaining the problem of imprecise \"alcohol\" terminology.\n\nThe question posed (\"How can a chemist say 'alcohol' when a compound is a mixture of two things?\") signals an answer or analysis of the ambiguity problem.\n\nFinal token \".\" closes a specific example question (\"because a chemical term like 'alcohol' is imprecise.\"), immediately expecting a continuation like \"the ambiguity\" or \"why?\" or \"in consumer contexts\" or \"the imprecise term\" or \"this ambiguity?\" or \"using specific names.\" or \"in chemistry?\" or \"how do they get away with...\" or \"same ambiguous.\"",
+    "reused": true,
+    "original_output_id": "d69db427935cd387e829de47eadd16e40c4415ed49d884237bbde3dabf3ae66c",
+    "source_native_id": "11fcce6135180dcc2cf451264437ce810017f451e8f9ecebfeaa20dfdbe6cd2d",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent the semantic content of the question, focusing on the ambiguity of generic drug names and their potential for misinterpretation.",
+    "reused": true,
+    "original_output_id": "05422c3dfca355b3c2ae664922cc9ba589afa4e22e800ad199cc56dc7dab2d4c",
+    "source_native_id": "11fcce6135180dcc2cf451264437ce810017f451e8f9ecebfeaa20dfdbe6cd2d",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "NLA substitutes a question about a chemist and a mixture for the supplied ingredient-label question. AO also conflates generic ingredient terminology with generic drug names.",
+    "actual_behavior": "target_corrected",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Matches the broad topic of ambiguous alcohol terminology, but does not identify the mistaken assumption that label-listed alcohol could be any alcohol compound. Its substituted question and continuation guesses are unsupported."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Broadly overlaps with naming ambiguity in drug labels, but discusses generic drug names rather than the ethanol labeling convention. It neither identifies the target error nor predicts the actual correction."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

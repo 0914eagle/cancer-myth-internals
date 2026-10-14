@@ -1,0 +1,9 @@
+{
+  "state": "running",
+  "stage": "waiting_original_pilot",
+  "pid": 165925,
+  "updated_utc": 1791943619.3647294,
+  "original_state": "running",
+  "original_stage": "gepa_optimization",
+  "detail": "Original AO and separate heldout Haiku must finish first; no new source/reader process started."
+}

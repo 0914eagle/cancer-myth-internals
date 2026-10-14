@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/afc6c165f57a0400be624112ea41a041dd74cc84ce71f4e8d88c684cc4e26468",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "fpq_727",
+  "label": 1,
+  "candidate_key": "9543dcf38c8e",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question treats an unspecified pituitary tumor as aggressive brain cancer requiring experimental survival-oriented treatment; most pituitary tumors are benign.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "experimental therapies and clinical trials",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "The vast majority are benign (non-cancerous) adenomas.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader echoes the requested brain-tumor treatment topic without recognizing the pituitary classification error. The answer explicitly corrects it."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "medical terminology, treatment options, and emotional expressions",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "most are benign (non-cancerous) growths",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader gives only broad medical themes. The answer directly corrects the assumed cancer classification and need for aggressive treatment."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

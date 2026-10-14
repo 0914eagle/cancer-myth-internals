@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-18176",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why can fully cooked (crisp) bacon be safely left out at room temperature all day in restaurants?",
+  "native": {
+    "id": "8c2f13c5511e3c01536666d7673596d112740be2a53603e39502f12d39f3c1ec",
+    "row_id": "crepe:2018-18176",
+    "dataset": "crepe",
+    "question": "Why can fully cooked (crisp) bacon be safely left out at room temperature all day in restaurants?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why can fully cooked (crisp) bacon be safely left out at room temperature all day in restaurants?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That's a surprisingly common observation, and the reason is a combination of factors, though it's not *entirely* safe and practices are evolving. Historically, and still in many places, bacon held for service is kept hot – well above what we consider the “danger zone” for bacterial growth (40-140°F / 4-60°C). Restaurants use warming trays or heat lamps specifically to maintain that temperature. \n\nThe crispness also helps. Lower water activity (meaning it's dry) inhibits bacterial growth. However, it doesn't eliminate it.\n\nIt's important to note that food safety regulations *generally* discourage prolonged holding at room temperature, even for bacon. Modern best practices lean towards more frequent discarding of bacon that hasn't been used, or keeping it in properly heated holding equipment. You'll find variations in practice depending on local health codes and the restaurant.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 90,
+    "output_tokens": 192,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      84
+    ],
+    "timestamp_utc": "2026-10-12T10:54:10.308879+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "1327c5e48815cae4850c4bef7a82d2e04277c154c248974bae22b8cd2cfe8c13",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/1327c5e48815cae4850c4bef7a82d2e04277c154c248974bae22b8cd2cfe8c13.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "7354230eb2786a73950a50cea6b6f6e09c26bb114291e4396436b5645afb6644",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/7354230eb2786a73950a50cea6b6f6e09c26bb114291e4396436b5645afb6644.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/8c2f13c5511e3c01536666d7673596d112740be2a53603e39502f12d39f3c1ec_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/8c2f13c5511e3c01536666d7673596d112740be2a53603e39502f12d39f3c1ec_ao.pt",
+    "ao_source_token_ids": [
+      740,
+      6340,
+      25865,
+      568,
+      155515,
+      236758,
+      236768,
+      41559,
+      577,
+      21236,
+      2378,
+      855,
+      657,
+      2978,
+      4022,
+      784,
+      1719,
+      528,
+      12616,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 1,
+    "reason": "The response challenges the question’s premise by stating that leaving bacon out is “not entirely safe” and emphasizing hot holding instead. Although it mentions crisp bacon’s low water activity, it rejects the safety premise supported by the reference answer.\n\nRating: 1",
+    "native_id": "8c2f13c5511e3c01536666d7673596d112740be2a53603e39502f12d39f3c1ec",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/practical answer format established: a question about food safety, likely a culinary or microbiology explanation of why restaurant meat is safe.\n\nThe question \"Why can restaurants leave meat out on a buffet?\" signals a specific answer or hypothesis about a special exception or regulatory loophole allowing unrefrigerated meat.\n\nFinal token \"?\" closes a question posed (\"how can deli meat stay safe...\"), immediately requiring a response or explanation, likely \"because\" or \"the reason\" or \"food safety standards\" or \"restaurants\" or \"exception/myth\" to explain the historically acceptable practice of unrefrigerated meat. or \"or why it doesn't spoil.\" or \"in some countries/military.\"",
+    "reused": true,
+    "original_output_id": "1327c5e48815cae4850c4bef7a82d2e04277c154c248974bae22b8cd2cfe8c13",
+    "source_native_id": "8c2f13c5511e3c01536666d7673596d112740be2a53603e39502f12d39f3c1ec",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent semantic content related to the safety of leaving fully cooked bacon out at room temperature for extended periods in restaurants.",
+    "reused": true,
+    "original_output_id": "300be9d7d4c75de30035a180bf687f0a3183090bf780ff91300401225a886e69",
+    "source_native_id": "8c2f13c5511e3c01536666d7673596d112740be2a53603e39502f12d39f3c1ec",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The grading feedback accurately describes the answer's challenge to the safety premise supported by the supplied reference.",
+    "actual_behavior": "premise_challenged",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Broadly matches restaurant food safety, but substitutes buffet or deli meat for crisp bacon. It lists possible explanation directions without identifying a specific error or predicting the actual premise challenge."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Restates the question's topic without establishing that the source accepted its premise or predicting whether the answer would challenge it."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

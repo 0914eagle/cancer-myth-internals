@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/0e7be898f3cd16598366faa4fcd2500984535efcf1ec32cb71f7f8191227cfe5",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "nfp_1124",
+  "label": 0,
+  "candidate_key": "5fd1a68d8de2",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question reports an individualized physician recommendation, not a universal claim that cancer during pregnancy requires termination.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "seeking support groups, likely miscarriage support",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader anticipates pregnancy-loss support but blurs termination with miscarriage. The answer provides support resources without challenging the reported recommendation."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "groups for pregnancy loss",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "terminating a pregnancy is not automatically the only or best course of action",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader describes support seeking without an explicit normality decision. The answer introduces a corrective framing, but conditionally discusses alternatives rather than denying the reported recommendation; this is not spurious over-rebuttal."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

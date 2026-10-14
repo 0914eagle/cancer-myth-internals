@@ -1,0 +1,51 @@
+{
+  "checked_utc": "2026-10-12T05:57:19.934785+00:00",
+  "nla": {
+    "qwen25": {
+      "rows_checked": 4710,
+      "canonical_prompt_exact_match": true,
+      "prompt_sha256": "cc97b9040faba78ceb9122d9ff6fef7dd511b6665528eb45fa37a0918bb01d8a",
+      "sidecar_path": "/data3/heejae/hf_cache/hub/models--kitft--nla-qwen2.5-7b-L20-av/snapshots/b88469162777ae6553bc14208eb0cb579336f8f4/nla_meta.yaml",
+      "injection_scale": 150.0,
+      "source_decoder_index": 20,
+      "generation": "HF greedy, max_new_tokens256, batch32(Qwen/Gemma12) or16(Gemma27)",
+      "official_inference_library_default": "SGLang temperature1.0,max_new_tokens200; this is a library default, not a verified universal paper-evaluation setting"
+    },
+    "gemma3": {
+      "rows_checked": 4710,
+      "canonical_prompt_exact_match": true,
+      "prompt_sha256": "a95cc3b2815fa6cac2475088f9544765891323eb6e4482ca0995cab131c80da0",
+      "sidecar_path": "/data3/heejae/hf_cache/hub/models--kitft--nla-gemma3-12b-L32-av/snapshots/7aec22599e8a9cd533564868999b443fcc963cf4/nla_meta.yaml",
+      "injection_scale": 80000.0,
+      "source_decoder_index": 32,
+      "generation": "HF greedy, max_new_tokens256, batch32(Qwen/Gemma12) or16(Gemma27)",
+      "official_inference_library_default": "SGLang temperature1.0,max_new_tokens200; this is a library default, not a verified universal paper-evaluation setting"
+    },
+    "gemma27": {
+      "rows_checked": 4710,
+      "canonical_prompt_exact_match": true,
+      "prompt_sha256": "a95cc3b2815fa6cac2475088f9544765891323eb6e4482ca0995cab131c80da0",
+      "sidecar_path": "/data3/heejae/hf_cache/converted/nla-gemma3-27b-L41-av-bf16-4e721238131ffb8348cff260fe81b8b34a270a0d/nla_meta.yaml",
+      "injection_scale": 60000.0,
+      "source_decoder_index": 41,
+      "generation": "HF greedy, max_new_tokens256, batch32(Qwen/Gemma12) or16(Gemma27)",
+      "official_inference_library_default": "SGLang temperature1.0,max_new_tokens200; this is a library default, not a verified universal paper-evaluation setting"
+    }
+  },
+  "ao": {
+    "rows_checked": 4710,
+    "question": "Describe the semantic content represented by these activations.",
+    "question_origin": "Written for this experiment; not verbatim reproduction of the original paper open-ended question",
+    "official_prefix_and_injection_helpers": true,
+    "original_paper_open_ended_question": "Can you describe what is happening in this text?",
+    "original_paper_scope": "This query is used for model-diffing in section4.2/appendixC.2; other paper tasks have their own questions. Our FPQA activations are not those difference vectors.",
+    "paper_url": "https://arxiv.org/html/2512.15674v2#S4.SS2",
+    "generation": "HF greedy,max_new_tokens256,batch8",
+    "downloaded_checkpoint_generation_defaults": {
+      "do_sample": false,
+      "max_new_tokens": 20
+    },
+    "model": "Public author-released Gemma3-27B extension; original paper main models includeGemma2-9B,Qwen3-8B,Llama3.3-70B,Haiku3.5"
+  },
+  "interpretation": "Public checkpoint/code transfer with explicit adaptations; not exact reproduction of either paper evaluation. Existing results remain valid observations under the recorded settings; query/decoding sensitivity remains to be tested."
+}

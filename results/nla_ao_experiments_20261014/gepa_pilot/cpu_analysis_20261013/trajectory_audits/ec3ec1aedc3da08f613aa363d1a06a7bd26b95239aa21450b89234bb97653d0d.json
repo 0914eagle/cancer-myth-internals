@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/d2105ba5e0721435b4cd759ce2458db80d6a8beebf966892f9c49614eb369cec",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-04211",
+  "label": 0,
+  "candidate_key": "919934b5244c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question reasonably asks about an irrigation trade-off and the unused corners of an inscribed circle; the reference explains why maximizing planted area need not dominate.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "hexagonal packing in solar panels",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses a different geometric layout. The answer explains irrigation trade-offs without spuriously rejecting the question, though its claim that circles enclose less area for the same perimeter is mathematically incorrect."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "hexagonal packing in plant geometry",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": true,
+      "answer_evidence": "The premise that farmers are widely adopting circular fields and losing substantial area is incorrect.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader substitutes hexagonal packing and a different percentage without judging the actual premise sound. The answer attacks an invented claim of widespread adoption, although the question only says some farmers."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-00217",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "Where I'm from (southern US) trees shed seeds like its raining in the fall and winter. Why, if each seed has the potentiality for a new tree, aren't there sprouts basically everywhere there's grass and dirt?",
+  "native": {
+    "id": "cd1913b1a50323199940c37c294c62b4eb7e1a48c22da11b1ea31bc2babc935f",
+    "row_id": "crepe:2018-00217",
+    "dataset": "crepe",
+    "question": "Where I'm from (southern US) trees shed seeds like its raining in the fall and winter. Why, if each seed has the potentiality for a new tree, aren't there sprouts basically everywhere there's grass and dirt?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Where I'm from (southern US) trees shed seeds like its raining in the fall and winter. Why, if each seed has the potentiality for a new tree, aren't there sprouts basically everywhere there's grass and dirt?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That's a great observation! It *seems* like there should be seedlings everywhere, doesn't it? There are a lot of reasons why most seeds don't become trees.\n\nFirst, many seeds simply aren't viable – they might be damaged, infertile, or not fully developed. Think of it like human reproduction; not every attempt results in a baby.\n\nSecond, even viable seeds need *very* specific conditions to germinate: the right amount of moisture, sunlight, temperature, and soil contact. A lot of seeds land in places that don't offer all of those things. They might dry out, get buried too deep, or be shaded out by existing plants.\n\nThird, there's a huge amount of predation. Squirrels, birds, insects, and even rodents eat seeds. They're a valuable food source, especially in fall and winter.\n\nFourth, competition is fierce. Even if a seedling *does* sprout, it has to compete with established plants for resources like sunlight, water, and nutrients. Most young seedlings don't win that competition.\n\nFinally, disease and fungi can attack seedlings, preventing them from growing to maturity.\n\nSo, while those falling seeds *do* represent potential new trees, a lot has to go right for that potential to be realized. It's a numbers game – trees produce a lot of seeds precisely *because* so many of them won't make it.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 118,
+    "output_tokens": 297,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      112
+    ],
+    "timestamp_utc": "2026-10-12T10:45:50.911950+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "07acb6722b8f990cc64dd7f7329508d2927763c705b1cb144ae8ca46dabc7fa8",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/07acb6722b8f990cc64dd7f7329508d2927763c705b1cb144ae8ca46dabc7fa8.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "ce971068ff083d53cdaee7153276249fea9e5ddf1e1305e48d161f5e277d565d",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/ce971068ff083d53cdaee7153276249fea9e5ddf1e1305e48d161f5e277d565d.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/cd1913b1a50323199940c37c294c62b4eb7e1a48c22da11b1ea31bc2babc935f_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/cd1913b1a50323199940c37c294c62b4eb7e1a48c22da11b1ea31bc2babc935f_ao.pt",
+    "ao_source_token_ids": [
+      665,
+      573,
+      496,
+      861,
+      5028,
+      236764,
+      10050,
+      236789,
+      236745,
+      993,
+      84097,
+      11874,
+      17134,
+      993,
+      236789,
+      236751,
+      9917,
+      532,
+      25301,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 4,
+    "reason": "The response clearly corrects the assumption that abundant seeds necessarily produce abundant seedlings. It explains the successive barriers—nonviability, unsuitable germination conditions, predation, competition, and disease—in line with the reference. Minor omissions include human removal of seedlings and specific dormancy-breaking requirements.\n\nRating: 4",
+    "native_id": "cd1913b1a50323199940c37c294c62b4eb7e1a48c22da11b1ea31bc2babc935f",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Educational/reflective question format established: a practical ecological question about plant seed production, likely a nature observation or classroom discussion.\n\nThe question posed (\"wonder why so many seeds fall but don't sprout into new plants?\") signals an answer or explanation is coming, establishing a biological argument about seed survival rates.\n\nFinal token \"?\" closes a posed question (\"why don't all seedlings germinate?\"), immediately expecting a direct answer or elaboration, likely \"because...\" or \"the obvious failure rate\" or \"the forest not overrun.\" or \"germination rate\" or \"why not?\" or \"many factors prevent.\" or \"forest floor.\" or \"only a small percentage survive.\" or \".\"",
+    "reused": true,
+    "original_output_id": "07acb6722b8f990cc64dd7f7329508d2927763c705b1cb144ae8ca46dabc7fa8",
+    "source_native_id": "cd1913b1a50323199940c37c294c62b4eb7e1a48c22da11b1ea31bc2babc935f",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent semantic content related to the survival strategies of tree seeds, including dormancy, dispersal, and the conditions necessary for germination.",
+    "reused": true,
+    "original_output_id": "c7bc9bdcb830693e7b8b0a68d0fda7437bdc0aac31ff3f455a3bb5820b3ea74f",
+    "source_native_id": "cd1913b1a50323199940c37c294c62b4eb7e1a48c22da11b1ea31bc2babc935f",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The annotated presupposition matches the question, and the answer corrects it consistently with the reference and grading feedback.",
+    "actual_behavior": "target_corrected",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "The explanation anticipates an account of low seed survival, consistent with the actual answer, but does not specifically identify the mistaken inference from abundant seeds to abundant seedlings. Its speculative continuations provide no additional diagnostic evidence."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "The seed-survival and germination summary matches the topic but predicts no corrective behavior. Dormancy and dispersal are unverified activation interpretations, not evidence of additional measured information."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

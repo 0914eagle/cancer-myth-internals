@@ -1,0 +1,104 @@
+{
+  "row_id": "crepe:2018-08982",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why does heating an egg solidify it?",
+  "native": {
+    "id": "3faae7f68e1c0c0800968396931b196acb6f5d2492d1636bd9b323e3d1227832",
+    "row_id": "crepe:2018-08982",
+    "dataset": "crepe",
+    "question": "Why does heating an egg solidify it?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why does heating an egg solidify it?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Heating an egg solidifies it due to the changes in the proteins within the egg. Egg proteins, like albumin in the white and various proteins in the yolk, are naturally coiled up. Heat provides energy that causes these coiled protein molecules to unravel (denature) and then link together, forming a network. This network traps water and creates a firmer, more solid structure – what we experience as a cooked egg. Essentially, you're changing the protein's shape and allowing it to bond with other proteins, going from a liquid state to a solid one.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 77,
+    "output_tokens": 114,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      71
+    ],
+    "timestamp_utc": "2026-10-12T10:53:46.976191+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "ff52419d75e578dd2946075fba539197b5d811c9d76ced98b7849eecbcbe879a",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/ff52419d75e578dd2946075fba539197b5d811c9d76ced98b7849eecbcbe879a.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "66b326f6ef5ac0f81d5b108202a86e5341c4150324f638f4e72461536650c89e",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/66b326f6ef5ac0f81d5b108202a86e5341c4150324f638f4e72461536650c89e.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/3faae7f68e1c0c0800968396931b196acb6f5d2492d1636bd9b323e3d1227832_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/3faae7f68e1c0c0800968396931b196acb6f5d2492d1636bd9b323e3d1227832_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      1677,
+      12674,
+      614,
+      8727,
+      154614,
+      625,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains that heating denatures egg proteins, which then form a network that solidifies the egg. It treats the question as valid without skepticism or challenging its premise.\n\nRating: 5",
+    "native_id": "3faae7f68e1c0c0800968396931b196acb6f5d2492d1636bd9b323e3d1227832",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Structured answer format established: a scientific/cooking explanation of egg cooking, likely a practical answer about egg coagulation.\n\nThe question \"How does an egg turn into a scrambled omelet?\" signals a direct answer about chemical changes, implying a scientific explanation of cooking processes.\n\nFinal token \".\" ends a question introduction (\"Why does an egg become a scrambled omelet?\"), strongly expecting a structured answer beginning, likely \"cooking\" or \"the chemical change\" or \"protein coagulation\" to explain the cooking transformation of eggs. or \"the\" or \"cooking\" or \"changes in eggs\" or \"proteins\" or \"the chemical process\" or \"or coagulation\" or \"Why eggs change.\"",
+    "reused": true,
+    "original_output_id": "ff52419d75e578dd2946075fba539197b5d811c9d76ced98b7849eecbcbe879a",
+    "source_native_id": "3faae7f68e1c0c0800968396931b196acb6f5d2492d1636bd9b323e3d1227832",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent the semantic content of the question, focusing on the reasons behind the solidification of an egg when heated.",
+    "reused": true,
+    "original_output_id": "848055e5107461c6afb3f57465c3963be1fd321f64c4225bb09653dc2fc95a88",
+    "source_native_id": "3faae7f68e1c0c0800968396931b196acb6f5d2492d1636bd9b323e3d1227832",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "NLA substitutes questions about a 'scrambled omelet' for the supplied question about heat-induced solidification and makes unsupported claims about token context.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Broadly predicts a direct scientific explanation of egg coagulation, consistent with the actual answer, but misquotes the question. No specific premise error is identified, and the activation claims are unverified."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Restates the topic of heat-induced egg solidification. This topic summary neither identifies a premise error nor establishes whether the source accepted or challenged the premise."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

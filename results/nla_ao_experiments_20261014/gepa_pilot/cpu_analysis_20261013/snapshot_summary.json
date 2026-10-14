@@ -1,0 +1,99 @@
+{
+  "snapshot_kst": "2026-10-13T13:02:17.080337+09:00",
+  "selected_conditions": 6,
+  "expected_conditions": 8,
+  "final_haiku_scores": 0,
+  "native_answers": 419,
+  "native_eos": 419,
+  "initial_audit": {
+    "cancer_myth": {
+      "n": 50,
+      "fpq_n": 25,
+      "annotation_issue_flags": 25,
+      "behaviors": {
+        "normal_answer": 23,
+        "target_not_corrected": 26,
+        "target_corrected": 1
+      },
+      "readers": {
+        "nla": {
+          "topic_match": 38,
+          "specific_target_error_identified": 0,
+          "adds_diagnostic_information_beyond_text": 0
+        },
+        "ao": {
+          "topic_match": 49,
+          "specific_target_error_identified": 0,
+          "adds_diagnostic_information_beyond_text": 0
+        }
+      }
+    },
+    "crepe": {
+      "n": 50,
+      "fpq_n": 25,
+      "annotation_issue_flags": 21,
+      "behaviors": {
+        "target_not_corrected": 14,
+        "target_corrected": 10,
+        "normal_answer": 23,
+        "premise_challenged": 3
+      },
+      "readers": {
+        "nla": {
+          "topic_match": 39,
+          "specific_target_error_identified": 0,
+          "adds_diagnostic_information_beyond_text": 0
+        },
+        "ao": {
+          "topic_match": 48,
+          "specific_target_error_identified": 0,
+          "adds_diagnostic_information_beyond_text": 0
+        }
+      }
+    },
+    "all": {
+      "n": 100,
+      "fpq_n": 50,
+      "annotation_issue_flags": 46,
+      "behaviors": {
+        "target_not_corrected": 40,
+        "target_corrected": 11,
+        "normal_answer": 46,
+        "premise_challenged": 3
+      },
+      "readers": {
+        "nla": {
+          "topic_match": 77,
+          "specific_target_error_identified": 0,
+          "adds_diagnostic_information_beyond_text": 0
+        },
+        "ao": {
+          "topic_match": 97,
+          "specific_target_error_identified": 0,
+          "adds_diagnostic_information_beyond_text": 0
+        }
+      }
+    }
+  },
+  "reader_records": 83,
+  "optimized_reader_records": 59,
+  "optimized_reader_by_kind": {
+    "nla": 44,
+    "ao": 15
+  },
+  "recorded_feedback_by_kind": {
+    "nla": 44,
+    "ao": 14
+  },
+  "matched_text_diagnostics": 16,
+  "fixed_split_checks": "All selected scores use exactly the same8 candidate-dev IDs per dataset; all reader trajectories are train only.",
+  "limitations": [
+    "GPT-selected candidate-dev scores are selection data, not heldout performance.",
+    "FPQ4 and NFP4 per dataset: estimates are highly variable; no main-table claim.",
+    "AO is unfinished; do not compare its partial best candidate as a completed arm.",
+    "Candidate search branches and rejections are not a monotonic time series.",
+    "Reader audit opinions are not human labels or causal evidence of source beliefs.",
+    "Candidate-dependent sampled training items do not form a fixed longitudinal panel.",
+    "Annotation flags require review; labels/scores were not changed or selectively removed."
+  ]
+}

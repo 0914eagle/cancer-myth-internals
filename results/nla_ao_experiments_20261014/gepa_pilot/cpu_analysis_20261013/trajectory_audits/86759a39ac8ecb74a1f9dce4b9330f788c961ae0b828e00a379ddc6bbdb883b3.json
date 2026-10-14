@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/96f81d5dd77ba3a60c01e811d3dc90453495e30b59283bf09a0799090d301c1c",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "fpq_237",
+  "label": 1,
+  "candidate_key": "669be170460c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The reference addresses the question's implied assumption that stage 4 disease necessarily means only remaining-time and end-of-life care.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "focusing on gentle communication strategies",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts address communication about end-of-life care without identifying that stage 4 osteosarcoma need not imply inevitable near-term death."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "a rare and aggressive cancer",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "treatment advances mean outcomes vary, and focusing solely on end-of-life *at this moment* might not be the most helpful approach initially",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Calling the cancer aggressive does not identify the mistaken prognosis. The answer explicitly challenges an exclusively end-of-life framing."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

@@ -1,0 +1,7 @@
+{
+  "runtime_nla.json": "9392da792c8c69f46b4b85d028652680758b8754fba3de6269b22c3046828cc4",
+  "runtime_gemma27.json": "37fadf52cbe0c582722a283fd500b2aa0ee5b01c782915e7cb74131f9cf87ac1",
+  "runtime_source_with_gemma27.json": "561c77f4b880d60018cb1759f4aa203eee9914bff1c481d83c45dc8aba6e33fa",
+  "capture_verification.json": "69c4cacaa29c00a294452e1d09a794068b063060542e0698b7eb46d3b985a107",
+  "execution_plan.md": "70d87baf04fed47f0334bf579acae0048545858dadacefc482b5b3f03b3eb150"
+}

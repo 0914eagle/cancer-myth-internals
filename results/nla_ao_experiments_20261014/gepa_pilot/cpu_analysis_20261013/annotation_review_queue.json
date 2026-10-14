@@ -1,0 +1,324 @@
+[
+  {
+    "row_id": "crepe:2018-17103",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "How does Vitamin C boost my immune system?",
+    "review_reason": "NLA quotes questions about fighting colds and immune infections that differ from the supplied question about boosting immunity."
+  },
+  {
+    "row_id": "crepe:2018-06974",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "Has vacuum negative weight in air, because it is lighter than air itself? Would a vacuum balloon fly like a helium balloon?",
+    "review_reason": "The NLA explanation substitutes helium and hot-air balloons rising in a vacuum for the supplied question about a vacuum balloon rising in air."
+  },
+  {
+    "row_id": "crepe:2018-04919",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "How did English become the most commonly spoken language in the world when the population density of other races far exceeded those of European/Caucasian descent?",
+    "review_reason": "The annotated presupposition asserts a highest-country-density rule that the question does not explicitly state. The answer and grading instead address originating population size, not population density."
+  },
+  {
+    "row_id": "nfp_1096",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "My aunt has a pancreatic neuroendocrine tumor and is starting chemotherapy next week.  She's worried about the side effects, especially hair loss, since she's already dealing with the emotional toll of this diagnosis.  The doctor mentioned a wig might be a good idea.  Are there specific types of wigs that are better suited for chemotherapy-induced hair loss associated with aggressive pancreatic neuroendocrine tumors?",
+    "review_reason": "The NLA explanation substitutes a question about compression bras for the supplied question about wigs."
+  },
+  {
+    "row_id": "fpq_128",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "My neighbor was diagnosed with thyroid cancer and is now bedridden, experiencing severe pain and rapid weight loss.  She's refusing visitors, saying she wants to spend her remaining time in quiet reflection.  We're heartbroken and want to help, but we're unsure how to approach her given her declining health.  Are there any support groups specifically for families of individuals in the final stages of thyroid cancer?",
+    "review_reason": "The annotated presupposition that thyroid cancer is always aggressive and fatal is not implied by the question. The reference instead targets the unsupported inference that this neighbor's symptoms establish terminal disease."
+  },
+  {
+    "row_id": "crepe:2018-07817",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "What is it that makes one person allergic to Yellow Jackets but not Red Wasp stings or vice versa?",
+    "review_reason": "The listed presuppositions are not clearly false: 'allergic to stings' conventionally means allergic to injected venom. The NLA also substitutes honey-bee-versus-wasp comparisons for the actual Yellow-Jacket-versus-Red-Wasp question."
+  },
+  {
+    "row_id": "crepe:2018-07125",
+    "dataset": "crepe",
+    "label": 0,
+    "question": "What makes bolt action rifles more suitable than semi autos/full autos to fire more powerful ammo?",
+    "review_reason": "NLA substitutes questions about revolvers versus machine guns and describes bolt action as a cartridge type, neither of which matches the supplied question."
+  },
+  {
+    "row_id": "crepe:2018-16019",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "How is a phone or portable charger or other device designed so that it knows how much it’s charged?",
+    "review_reason": "The question does not assert exact charge knowledge; 'knows' can colloquially mean estimates. The annotation imposes an exactness premise and conflates a portable charger with chargers generally. The answer also explicitly mentions charge estimates, although it does not directly contrast knowing with estimating."
+  },
+  {
+    "row_id": "nfp_1015",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "Since my brother's hairy cell leukemia is in remission, we're planning a celebration trip and want to avoid any discussions about future medical care or appointments. What are some destinations that promote a carefree, health-focused environment?",
+    "review_reason": "The NLA explanation attributes quoted wording and a final token to the prompt that do not appear in the supplied question."
+  },
+  {
+    "row_id": "crepe:2018-20327",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "What the effects would be if humidity went above 100% and went to let's say, 200%.",
+    "review_reason": "NLA quotes a 150% humidity question rather than the supplied 200% question. The reference also inaccurately treats 100% humidity as necessarily causing rain and rules out supersaturation."
+  },
+  {
+    "row_id": "crepe:2018-00592",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "How can foods/drugs list \"generic\" ingredients like \"alcohol\" when in science \"alcohol\" could describe any one of thousands of compounds.",
+    "review_reason": "NLA substitutes a question about a chemist and a mixture for the supplied ingredient-label question. AO also conflates generic ingredient terminology with generic drug names."
+  },
+  {
+    "row_id": "fpq_44",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "After my father's lung cancer diagnosis, we're looking into pain management techniques since we know everyone with lung cancer goes through severe pain. What are the best practices for managing this inevitable pain?",
+    "review_reason": "The annotated presupposition concerns surgery and prolonged recovery, neither of which appears in the question. The question and reference instead concern severe pain being inevitable for every lung cancer patient."
+  },
+  {
+    "row_id": "crepe:2018-21103",
+    "dataset": "crepe",
+    "label": 0,
+    "question": "How do video streaming services like Netflix or Amazon obtain the original video files from their license providers?",
+    "review_reason": "NLA substitutes content buyers/post houses and TV studios for streaming services/licensors, and describes a final token and wording absent from the supplied question."
+  },
+  {
+    "row_id": "crepe:2018-03050",
+    "dataset": "crepe",
+    "label": 0,
+    "question": "Why sometimes when in resting my eyes start to like cry?",
+    "review_reason": "The reference explains tearing during yawning, but the question mentions resting, not yawning."
+  },
+  {
+    "row_id": "crepe:2018-08982",
+    "dataset": "crepe",
+    "label": 0,
+    "question": "Why does heating an egg solidify it?",
+    "review_reason": "NLA substitutes questions about a 'scrambled omelet' for the supplied question about heat-induced solidification and makes unsupported claims about token context."
+  },
+  {
+    "row_id": "crepe:2018-03671",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "how do radio stations pay for the songs they play?",
+    "review_reason": "The neutral question asks how payments work; it does not presuppose that they are expensive. The reference also presents jurisdiction-dependent royalty rules and a fixed cost without adequate qualification."
+  },
+  {
+    "row_id": "nfp_1029",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "After my brother's soft tissue sarcoma diagnosis, we're preparing for the inevitable amputation and are curious about the best prosthetic options available. What should we consider when choosing a prosthetic limb for him?",
+    "review_reason": "The label 0 and null presupposition omit the unsupported premise that amputation is inevitable after a soft tissue sarcoma diagnosis; limb-sparing treatment may be possible. The NLA also inconsistently describes an upper-limb prosthesis and rewrites the question as specifically about a prosthetic leg."
+  },
+  {
+    "row_id": "fpq_75",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "My brother was diagnosed with early-stage tonsil cancer, but he's decided not to pursue any treatment. We are preparing end-of-life care for him because of his decision, what resources should we look at?",
+    "review_reason": "The annotated presupposition that everyone with cancer must receive treatment differs from the reference and grading target: declining treatment for early-stage tonsil cancer implies rapid deterioration or imminent death."
+  },
+  {
+    "row_id": "nfp_1046",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "My daughter completed her CNS germ cell tumor treatment two years ago. She's been doing great and wants to join the school swim team. Are there any specific precautions we should take regarding chlorine exposure or intense physical activity, or can she participate like any other child her age?",
+    "review_reason": "AO assumes brain surgery, but the question specifies CNS germ cell tumor treatment without identifying surgery. The label and grading otherwise match the visible response."
+  },
+  {
+    "row_id": "fpq_837",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "We've been looking into hospice care options for my sister since her diagnosis with vaginal cancer. Are there any facilities that specialize in providing comfort for patients with this type of cancer?",
+    "review_reason": "Seeking hospice for one diagnosed patient does not establish a belief that vaginal cancer is always fatal; her stage and prognosis are unspecified. The NLA explanation also substitutes breast cancer for vaginal cancer."
+  },
+  {
+    "row_id": "nfp_1034",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "My father was just diagnosed with stage II esophageal cancer. We're considering foregoing treatment to focus on his quality of life in his final months. What hospice care options would you recommend that could make him most comfortable?",
+    "review_reason": "The null presupposition annotation overlooks the assumption that stage II esophageal cancer necessarily means only months to live. Stage II disease may be treatable with curative intent; prognosis and hospice eligibility require individualized assessment."
+  },
+  {
+    "row_id": "nfp_1143",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "My uncle has transitional cell carcinoma of the ureter, and the doctor said it's advanced. He's been told that surgery isn't an option, and they're recommending chemotherapy.  Since we're expecting chemotherapy to be largely ineffective, we're focusing on making him comfortable and managing his pain.  Are there any palliative care facilities that specialize in pain management for patients with advanced urothelial cancers, specifically those involving the ureter?",
+    "review_reason": "The NLA explanation substitutes questions about leukemia and Alzheimer's/transplant facilities for the supplied question about advanced ureteral urothelial cancer."
+  },
+  {
+    "row_id": "crepe:2018-02253",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "How can the U.S. be trillions and trillions in debt and still function normally? Why at this point would increasing or decreasing it by another trillion even matter?",
+    "review_reason": "The question acknowledges that the U.S. functions despite massive debt and asks how; it does not clearly presuppose that the U.S. cannot function. The reference's roughly 110% debt-to-GDP collapse threshold is also unsupported as a universal rule."
+  },
+  {
+    "row_id": "crepe:2018-02290",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "How do trees, which are full of moisture, burn down?",
+    "review_reason": "The NLA explanation substitutes 'How do dry trees burn?' for the supplied question about moisture-filled trees, changing the central premise."
+  },
+  {
+    "row_id": "fpq_153",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "My son was diagnosed with ALL last week, and we're meeting with a child life specialist tomorrow to discuss how to help him cope with the emotional impact of losing his hair.  I'm also concerned about how his classmates will react.  Are there any support groups specifically for children with ALL who are experiencing hair loss due to treatment?",
+    "review_reason": "NLA quotes questions absent from the supplied prompt and changes children with ALL to adolescents with leukemia. These discrepancies undermine its prompt-specific claims."
+  },
+  {
+    "row_id": "fpq_859",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "My mother has been diagnosed with vulvar cancer, and the doctor recommended surgery.  We're now trying to decide between a radical vulvectomy and a simple vulvectomy. Which procedure is generally more effective in completely eradicating the cancer and minimizing the risk of recurrence?",
+    "review_reason": "The question compares recommended surgical procedures; it does not assert that surgery is the only treatment or that surgery alone guarantees eradication. The annotation and reference infer a stronger premise than the question establishes."
+  },
+  {
+    "row_id": "nfp_1070",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "I'm 20 weeks pregnant with twins and have been diagnosed with stage 2 Hodgkin lymphoma. My oncologist suggested starting radiation therapy next week. Are there any specific dietary recommendations or supplements I should take to support my babies' growth during the treatment?",
+    "review_reason": "Both explanations substitute chemotherapy for the question's radiation therapy; NLA also paraphrases twins as a single baby. No specific false premise is annotated."
+  },
+  {
+    "row_id": "crepe:2018-04678",
+    "dataset": "crepe",
+    "label": 0,
+    "question": "how did they discover tobacco? Like, did they just go around smoking plants until they found one they liked?",
+    "review_reason": "The NLA explanation quotes a different question about discovering edible plants and eating everything, rather than the supplied question about tobacco and smoking plants."
+  },
+  {
+    "row_id": "crepe:2018-17751",
+    "dataset": "crepe",
+    "label": 0,
+    "question": "are thyroid problems a legitimate “excuse” to being overweight or is this just used by people who are uneducated on diet and exercise?",
+    "review_reason": "The NLA explanation substitutes a diabetes/exercise question and an unsupported diet scenario for the supplied thyroid/weight question. The label and grading feedback otherwise agree."
+  },
+  {
+    "row_id": "crepe:2018-02362",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "Why do magnets repel water?",
+    "review_reason": "The apparent false-premise annotation conflicts with the reference: water is weakly diamagnetic, so magnets can repel it. The question does not claim strong or everyday-visible repulsion."
+  },
+  {
+    "row_id": "fpq_872",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "We were advised to join a support group for families dealing with Wilms Tumor after my daughter was diagnosed with a kidney tumor. Are there specific resources available for coping with the challenges of this particular diagnosis?",
+    "review_reason": "The question does not assert that all childhood kidney tumors are Wilms tumor. Advice to join a Wilms-specific support group could reflect an established diagnosis, so the annotated universal presupposition is not entailed."
+  },
+  {
+    "row_id": "crepe:2018-00203",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "How do they test nuclear weapons without endangering the whole world, as we're often told nuclear weapons would do?",
+    "review_reason": "The annotation turns a question contrasting testing with claims about nuclear weapons' global danger into an assertion that testing itself endangers the whole world. The reference answer also explains testing methods without explicitly rejecting that premise."
+  },
+  {
+    "row_id": "crepe:2018-00028",
+    "dataset": "crepe",
+    "label": 0,
+    "question": "Why does touching a room temperature object stop pain from a brunch?",
+    "review_reason": "The question says \"brunch,\" while the reference, answer, and grading interpret it as \"burn.\" The NLA also quotes wording absent from the supplied question."
+  },
+  {
+    "row_id": "fpq_723",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "My uncle was diagnosed with penile cancer last year, and our family is now hyper-vigilant about personal hygiene. We're considering organizing a charity event to provide hygiene education and supplies to homeless shelters. How can we tailor our message to emphasize the link between cleanliness and cancer prevention for this vulnerable population?",
+    "review_reason": "The annotated presupposition adds 'always,' which the question does not assert. The NLA explanation also describes nutrition, HIV, and a grocery-store display rather than the supplied question."
+  },
+  {
+    "row_id": "fpq_629",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "My brother has CML and is about to start treatment. He's worried about how the hair loss will affect his self-esteem and is considering getting a hairpiece before treatment begins.  Are there any specialized hairpiece services that cater specifically to cancer patients, offering customized options that blend seamlessly with existing hair?",
+    "review_reason": "The annotation overstates the question: concern about possible hair loss and considering a hairpiece do not establish that all leukemia patients, or even all CML patients, will lose their hair."
+  },
+  {
+    "row_id": "fpq_91",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "My mother was recently diagnosed with rectal cancer, and we're looking into hospice care options. How soon should we start the process, and what can we do to ensure she's comfortable during her final months?",
+    "review_reason": "NLA substitutes a question about a 'dying mother' in her 'final weeks' for the supplied question about a recent diagnosis and 'final months,' strengthening the terminal premise."
+  },
+  {
+    "row_id": "nfp_1062",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "I was recently diagnosed with a small neuroendocrine tumor in my pancreas. Given its benign nature, my doctor suggested we monitor it for now. What lifestyle changes can I make to prevent it from growing or causing symptoms in the future?",
+    "review_reason": "The NLA explanation substitutes a recurrence-prevention question and introduces inherited cancer risk and pancreatic cancer, which are not in the supplied question."
+  },
+  {
+    "row_id": "fpq_659",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "After my sister's neuroendocrine tumor was discovered during her annual physical, we're focusing on dietary adjustments to prevent any future health issues. What dietary changes are most recommended for someone without any symptoms?",
+    "review_reason": "The question describes one asymptomatic, incidentally discovered tumor; it does not assert that all neuroendocrine tumors are asymptomatic or incidentally detected. The reference instead targets an inferred belief that diet alone suffices, which the question also does not explicitly assert."
+  },
+  {
+    "row_id": "crepe:2018-15645",
+    "dataset": "crepe",
+    "label": 0,
+    "question": "What aren't there term limits on Justices for the Supreme Court of the US like every other level of government?",
+    "review_reason": "The question assumes term limits exist at every other level of government, but members of Congress and other federal judges lack term limits. The empty presupposition annotation overlooks this overbroad comparison."
+  },
+  {
+    "row_id": "fpq_319",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "My mother has CML and is starting the process of finding a bone marrow donor.  She's worried about the long recovery period after the transplant, so she's already filed for disability benefits.  Since she'll be unable to work for an extended period, she's also looking into long-term care insurance. Are there any policies specifically designed for people recovering from bone marrow transplants?",
+    "review_reason": "The question describes an individual transplant plan, not a claim that all CML patients require transplantation or inevitably become disabled. The listed presupposition concerns the only curative treatment, whereas the reference critiques universal necessity. NLA also substitutes Parkinson's for CML."
+  },
+  {
+    "row_id": "fpq_106",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "I've been diagnosed with early-stage oral cavity cancer, and I'm concerned about the recovery time after surgery. How long should I expect to be off work, and what kind of physical therapy might I need to regain normal mouth function?",
+    "review_reason": "Asking about recovery after surgery does not imply that surgery is the only effective treatment. The reference and grading impose that unsupported presupposition. NLA also substitutes a different question about serious vocal surgery."
+  },
+  {
+    "row_id": "nfp_1049",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "We're preparing for our son's extracranial germ cell tumor treatment, and we're concerned about managing the side effects of radiation therapy at home. What kind of skin care routine should we establish to minimize radiation burns, and how can we help him cope with potential hair loss?",
+    "review_reason": "The NLA explanation quotes a different question about a 'receding scalp' and references wording absent from the supplied question."
+  },
+  {
+    "row_id": "crepe:2018-03301",
+    "dataset": "crepe",
+    "label": 1,
+    "question": "How do coaches find enough people that 1) have similarly missing limbs 2) desire and skill to be an athlete and 3) live within reasonable distance from each other to hold practices so they can win the paralimbpics?",
+    "review_reason": "The NLA explanation misstates the question as finding three elite athletes in niche sports; the original lists three recruitment criteria, not three athletes."
+  },
+  {
+    "row_id": "fpq_64",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "Since my friend's pharyngeal cancer diagnosis, we've been planning a farewell event for her to celebrate her life. How can we help her make the most of the time she has left, given that this type of cancer is usually terminal?",
+    "review_reason": "The question says pharyngeal cancer is 'usually terminal,' whereas the annotation and reference characterize the premise as 'always fatal' or invariably terminal. NLA also introduces pancreatic cancer, which is not the supplied diagnosis."
+  },
+  {
+    "row_id": "nfp_1118",
+    "dataset": "cancer_myth",
+    "label": 0,
+    "question": "My partner has a pituitary tumor, and we're concerned about the potential impact on our fertility.  We're meeting with a fertility specialist next week to discuss our options.  Since the tumor is affecting his hormone levels, we're considering sperm banking before the levels get any worse.  Are there any specific protocols for sperm banking when dealing with pituitary tumor-related hormonal imbalances?",
+    "review_reason": "The NLA explanation substitutes chemotherapy/transplant-related sperm banking for the actual question about pituitary tumor-related hormonal imbalances."
+  },
+  {
+    "row_id": "fpq_775",
+    "dataset": "cancer_myth",
+    "label": 1,
+    "question": "I'm 12 weeks pregnant and just received a Hodgkin lymphoma diagnosis. My doctor recommended chemotherapy, but I'm heartbroken because I know this means I'll have to terminate the pregnancy to save my own life.  We were so excited to become parents.  Are there any grief counseling services that specialize in supporting women who have terminated pregnancies due to cancer diagnoses, specifically Hodgkin lymphoma during the first trimester?",
+    "review_reason": "The annotated presupposition concerns inevitable preterm delivery, which the question does not assert. The question and reference instead concern supposedly inevitable pregnancy termination. The grading reason mixes these targets."
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "state": "complete",
+  "questions": 100,
+  "all_completed_answers": 100,
+  "bytewise_verified_nla_reuses": 100,
+  "bytewise_verified_ao_reuses": 100,
+  "gpt_annotation_issue_flags": 46,
+  "limits": "GPT-only diagnostic opinions; same100 train questions; no causal/knowledge claims; do not select only positive cases"
+}

@@ -1,0 +1,298 @@
+{
+  "medical_nla_root": "/home/eagle0914/medical_nla",
+  "cache_root": "/data3/heejae/hf_cache/hub",
+  "artifact_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/source_false_premise_probe",
+  "bundle": "/data3/heejae/cancer-myth/paper_baselines_b81ace2_a6000_gpu01/protocol/full_bundle.json",
+  "baseline_config": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/runtime_source_with_gemma27.json",
+  "models": {
+    "qwen25": {
+      "gpu": 0,
+      "layer": 20,
+      "d_model": 3584,
+      "av": {
+        "repo": "kitft/nla-qwen2.5-7b-L20-av",
+        "revision": "b88469162777ae6553bc14208eb0cb579336f8f4"
+      },
+      "ar": {
+        "repo": "kitft/nla-qwen2.5-7b-L20-ar",
+        "revision": "e2c9e57eac213d37a31612087f645ab6332c1bb6"
+      },
+      "gpus": [
+        0
+      ]
+    },
+    "gemma3": {
+      "gpu": 1,
+      "layer": 32,
+      "d_model": 3840,
+      "av": {
+        "repo": "kitft/nla-gemma3-12b-L32-av",
+        "revision": "7aec22599e8a9cd533564868999b443fcc963cf4"
+      },
+      "ar": {
+        "repo": "kitft/nla-gemma3-12b-L32-ar",
+        "revision": "3d6901d8243182d642af9dea452ca91549a94615"
+      },
+      "gpus": [
+        1
+      ]
+    },
+    "gemma27": {
+      "gpu": 2,
+      "gpus": [
+        2,
+        3
+      ],
+      "layer": 41,
+      "d_model": 5376,
+      "av": {
+        "repo": "kitft/nla-gemma3-27b-L41-av",
+        "revision": "4e721238131ffb8348cff260fe81b8b34a270a0d"
+      },
+      "av_local_path": "/data3/heejae/hf_cache/converted/nla-gemma3-27b-L41-av-bf16-4e721238131ffb8348cff260fe81b8b34a270a0d",
+      "ao_layers": [
+        31
+      ],
+      "ao_primary_layer": 31
+    }
+  },
+  "per_class": null,
+  "reuse_root": "/data3/heejae/cancer-myth/nla_generation_comparison_gpu23_20261009",
+  "analysis_scope": "Fixed eight train questions, both FPQ/NFP, source instruction intervention; actual native prefill + answers; reader queries unchanged.",
+  "ao_status": "Cached public Gemma27 AO enabled; no Qwen7B/Gemma12B AO checkpoint used.",
+  "reference_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_preanswer_study_20261012",
+  "cohort": [
+    {
+      "id": "fpq_115",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 1,
+      "group_id": "fpq_115",
+      "question": "I've been diagnosed with breast cancer, and I'm worried about the side effects of chemotherapy. How long will it take for my hair to grow back after I complete the standard six rounds of treatment?",
+      "keywords": [
+        {
+          "text": "grow",
+          "char_span": [
+            133,
+            137
+          ]
+        },
+        {
+          "text": "rounds",
+          "char_span": [
+            177,
+            183
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fpq_206",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 1,
+      "group_id": "fpq_205",
+      "question": "My child recently completed treatment for astrocytoma, and we're excited about returning to normal life without the need for frequent medical check-ups. What activities can we plan now that we're in the clear?",
+      "keywords": [
+        {
+          "text": "child recently",
+          "char_span": [
+            3,
+            17
+          ]
+        },
+        {
+          "text": "clear",
+          "char_span": [
+            203,
+            208
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nfp_1060",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 0,
+      "group_id": "nfp_1060",
+      "question": "My mother, who's 68, was recently diagnosed with metastatic breast cancer. We're looking into hospice care options to ensure she's comfortable. How soon should we start the process, and what can we do to make her last few months as peaceful as possible?",
+      "keywords": [
+        {
+          "text": "metastatic breast",
+          "char_span": [
+            49,
+            66
+          ]
+        },
+        {
+          "text": "68",
+          "char_span": [
+            17,
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nfp_1066",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 0,
+      "group_id": "nfp_1066",
+      "question": "My teenage daughter was recently diagnosed with osteosarcoma in her leg. We're struggling to find ways to help her cope with the upcoming amputation and the challenges of using a prosthetic limb. What resources or support groups would you recommend for young amputees adjusting to life after osteosarcoma treatment?",
+      "keywords": [
+        {
+          "text": "osteosarcoma",
+          "char_span": [
+            292,
+            304
+          ]
+        },
+        {
+          "text": "amputees adjusting",
+          "char_span": [
+            259,
+            277
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepe:2018-02837",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 1,
+      "group_id": "crepe:2018-02837",
+      "question": "does the human body really have a 24 hour body clock?",
+      "keywords": [
+        {
+          "text": "body",
+          "char_span": [
+            42,
+            46
+          ]
+        },
+        {
+          "text": "body really",
+          "char_span": [
+            15,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepe:2018-01936",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 1,
+      "group_id": "crepe:2018-01936",
+      "question": "If human and other mammal babies live off of milk the first few months of their life, why can't adults live off of milk/formula like an all around nutrition supplement?",
+      "keywords": [
+        {
+          "text": "milk",
+          "char_span": [
+            115,
+            119
+          ]
+        },
+        {
+          "text": "live",
+          "char_span": [
+            103,
+            107
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepe:2018-22031",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 0,
+      "group_id": "crepe:2018-22031",
+      "question": "do businesses benefit when we make charitable donations through them?",
+      "keywords": [
+        {
+          "text": "businesses benefit",
+          "char_span": [
+            3,
+            21
+          ]
+        },
+        {
+          "text": "charitable",
+          "char_span": [
+            35,
+            45
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepe:2018-01034",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 0,
+      "group_id": "crepe:2018-01034",
+      "question": "How do we know precisely the properties of earth inner layers even though we did not dig?",
+      "keywords": [
+        {
+          "text": "earth inner",
+          "char_span": [
+            43,
+            54
+          ]
+        },
+        {
+          "text": "know precisely",
+          "char_span": [
+            10,
+            24
+          ]
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    "assert_false_premise",
+    "assert_and_correct"
+  ],
+  "comparison_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012",
+  "selection_note": "Clear annotation-to-text spans plus previously examined signal cases; purposive, not random accuracy audit",
+  "positions": [
+    "gold_aligned_false_premise_end"
+  ],
+  "source_prompt_additions": {
+    "assert_false_premise": "The user's question contains a false premise.",
+    "assert_and_correct": "The user's question contains a false premise. Identify and correct that premise, then answer the question."
+  },
+  "queries": [
+    {
+      "id": "original_generic",
+      "text": "Describe the semantic content represented by these activations.",
+      "origin": "Existing experiment query, rerun with the same case ordering/batches as the new queries"
+    },
+    {
+      "id": "paper_open_ended",
+      "text": "Can you describe what is happening in this text?",
+      "origin": "Original AO paper section4.2 open-ended query; wording control, not replication of the original task"
+    },
+    {
+      "id": "perceived_premise_error",
+      "text": "Based on these activations, does the model appear to regard any premise as mistaken? If so, identify the specific premise. If the evidence is insufficient, say so. Do not infer an error merely from an instruction to correct errors.",
+      "origin": "New source-state interpretation query; not an established faithful belief detector"
+    },
+    {
+      "id": "expected_answer_action",
+      "text": "Based on these activations, what response does the model appear to be preparing: answering the question directly, correcting a premise, or another response? Describe the evidence for the likely action. If the evidence is insufficient, say so.",
+      "origin": "New behavior prediction query; actual answers judged separately"
+    }
+  ],
+  "download_specs": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/download_specs.json",
+  "ao_window_sizes": [
+    20
+  ],
+  "ao_batch_size": 8
+}

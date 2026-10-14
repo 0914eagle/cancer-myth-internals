@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/eb2446cebd4bb1c68e646652fc396b52ad5a66523a2f6638aa0b884452ae4cc6",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-17103",
+  "label": 1,
+  "candidate_key": "b375bfbd11bd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The target is the assumption that vitamin C supplementation boosts immunity beyond normal functioning without a deficiency, rather than its essential physiological role.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "explaining mechanisms of Vitamin C's immune role",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Neither text identifies the target limitation concerning supplementation without deficiency. The answer's qualification about preventing colds addresses a different claim."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "explaining the claim about Vitamin C and immune function",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "A healthy immune system doesn’t need boosting; it needs to function effectively.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader predicts mechanisms but does not state the deficiency-dependent limitation. The answer explicitly distinguishes support from boosting a healthy immune system."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

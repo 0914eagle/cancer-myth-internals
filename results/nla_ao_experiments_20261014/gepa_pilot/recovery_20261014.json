@@ -1,0 +1,10 @@
+{
+  "reason": "All8 GPUs queryable and fresh CUDA computation succeeds after external server recovery.",
+  "native_gpus": "0,1",
+  "reader_gpus": "2,3",
+  "batch_size": 1,
+  "model_prompt_generation_configuration_changed": false,
+  "completed_selections_retained": 6,
+  "user_authorization": "Resume remaining AO then frozen-candidate Haiku on independent heldout questions; add shuffled-description controls.",
+  "timestamp_utc": 1791942605.1448119
+}

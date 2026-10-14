@@ -1,0 +1,111 @@
+{
+  "row_id": "crepe:2018-02563",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why is an overbite more common than underbite for people needing braces?",
+  "native": {
+    "id": "2bea5d641e600d805490a15f32c001d455ed79f29f5c85ed7fe7153e0afd8324",
+    "row_id": "crepe:2018-02563",
+    "dataset": "crepe",
+    "question": "Why is an overbite more common than underbite for people needing braces?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why is an overbite more common than underbite for people needing braces?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Overbites are more common than underbites needing braces due to a few factors related to typical jaw and teeth development. Generally, the upper jaw tends to grow forward more than the lower jaw during childhood and adolescence. This natural growth pattern can easily result in the upper teeth extending *over* the lower teeth – an overbite. \n\nUnderbites, where the lower teeth protrude *past* the upper teeth, are often linked to a lower jaw that grows excessively forward, or an upper jaw that doesn't grow enough. These situations are less frequent developmental occurrences than the typical forward growth of the upper jaw.\n\nTherefore, orthodontists see and treat more cases of overbite simply because they are a more common presentation of dental and jaw alignment issues. It's a matter of statistical probability based on how faces naturally develop.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 84,
+    "output_tokens": 171,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      78
+    ],
+    "timestamp_utc": "2026-10-12T10:50:12.754395+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "9e59f897c747858a58d5915f9e832ab21c04103805eed17502e26d80b69d9ddb",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/9e59f897c747858a58d5915f9e832ab21c04103805eed17502e26d80b69d9ddb.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "ddf44864d1837e2f1af73ca747360e3ced673f2db46c18c0e98b4b38a1a75593",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/ddf44864d1837e2f1af73ca747360e3ced673f2db46c18c0e98b4b38a1a75593.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/2bea5d641e600d805490a15f32c001d455ed79f29f5c85ed7fe7153e0afd8324_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/2bea5d641e600d805490a15f32c001d455ed79f29f5c85ed7fe7153e0afd8324_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      563,
+      614,
+      1024,
+      113356,
+      919,
+      3364,
+      1082,
+      1208,
+      113356,
+      573,
+      1331,
+      38702,
+      65577,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains why overbites are more common than underbites, treating the question as valid without challenging its premise or introducing unnecessary skepticism.\n\nRating: 5",
+    "native_id": "2bea5d641e600d805490a15f32c001d455ed79f29f5c85ed7fe7153e0afd8324",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Answer/discussion format established: a personal anecdote or question about orthodontic correction reasons, implying a comparative explanation of why braces are more common in children.\n\nThe question \"why is a malocclusion more common in children than braces?\" signals a structured answer or hypothesis about the comparative prevalence of two conditions.\n\nFinal token \"?\" closes a question (\"why girls with overbite are more common?\"), immediately expecting a response or continuation like \".\" or \"overbites\" or \"a more common reason\" or \"overbite reasons\" to explain the greater prevalence of orthodontic cases. or \"I understand...\" or \"orthodontists say...\" or \"the common one because...\" or \"upper.\"",
+    "reused": true,
+    "original_output_id": "9e59f897c747858a58d5915f9e832ab21c04103805eed17502e26d80b69d9ddb",
+    "source_native_id": "2bea5d641e600d805490a15f32c001d455ed79f29f5c85ed7fe7153e0afd8324",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent semantic content related to the causes and effects of overbites, including genetic factors, dental health, and potential treatments.",
+    "reused": true,
+    "original_output_id": "1306d679faf08886abfa609be1fa65c8ddb377193dc4bfed935e12230200c8c4",
+    "source_native_id": "2bea5d641e600d805490a15f32c001d455ed79f29f5c85ed7fe7153e0afd8324",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The empty presupposition annotation and grading feedback are consistent with treating this as an ordinary explanatory question.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It expects an explanatory response, matching the answer's general behavior, but substitutes comparisons involving children, braces, and girls for the actual overbite-versus-underbite question. It identifies no specific premise error or independently supported activation information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "The overbite topic matches, but the generic semantic summary neither identifies a premise error nor predicts acceptance or challenge. Claims about genetics, dental health, and treatments are unverified and do not establish additional diagnostic information."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

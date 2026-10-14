@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/2a224d4318fb6cfd91c6a1a529437e85e523f3e1c93899833f9f1186d8345cec",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-18176",
+  "label": 0,
+  "candidate_key": "b375bfbd11bd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "ambiguous",
+    "annotation_reason": "Sufficiently dry bacon can be non-time/temperature-controlled, but crispness alone does not establish shelf stability. The reference overgeneralizes both cooked and uncooked bacon safety.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "Why can restaurants leave meat out on a buffet?",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "Lower water activity (meaning it's dry) inhibits bacterial growth.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses a broader restaurant-food topic. The answer offers qualified safety cautions rather than a categorical rejection; these do not establish spurious correction."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "Why can deli meat sit unrefrigerated?",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": true,
+      "answer_evidence": "it's not the \"crispness\" of the bacon that makes it safe, but rather the temperature at which it's held and the time it's held for.",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader drifts to generic deli-meat safety without judging the premise. The answer categorically dismisses drying as a sufficient safety mechanism without establishing this bacon's water activity."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

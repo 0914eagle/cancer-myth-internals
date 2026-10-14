@@ -1,0 +1,116 @@
+{
+  "row_id": "crepe:2018-03301",
+  "dataset": "crepe",
+  "label": 1,
+  "question": "How do coaches find enough people that 1) have similarly missing limbs 2) desire and skill to be an athlete and 3) live within reasonable distance from each other to hold practices so they can win the paralimbpics?",
+  "native": {
+    "id": "f9a18315de83f0144e1771ef2b2026c079ea57c94687a4b35c9e9a82e5478cfd",
+    "row_id": "crepe:2018-03301",
+    "dataset": "crepe",
+    "question": "How do coaches find enough people that 1) have similarly missing limbs 2) desire and skill to be an athlete and 3) live within reasonable distance from each other to hold practices so they can win the paralimbpics?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "How do coaches find enough people that 1) have similarly missing limbs 2) desire and skill to be an athlete and 3) live within reasonable distance from each other to hold practices so they can win the paralimbpics?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "That's a really complex challenge! It's not easy, and relies on a lot of dedicated work. Here's how it generally happens, based on what I know:\n\n1. **Extensive Scouting & Networks:** Coaches and national paralympic organizations don't just *find* athletes; they actively *scout*. This involves reaching out to rehabilitation centers, hospitals (especially those specializing in prosthetics or dealing with injuries leading to amputation), veteran's organizations, and disability support groups. They build relationships with medical professionals who can identify potential athletes. Word of mouth is huge – current athletes often refer others.\n\n2. **Classification Systems:** Paralympic sports have very specific classification systems. These categorize athletes based on their impairment to ensure fair competition. Coaches need to understand these systems to identify athletes who would be competitive *within* a specific class. This means finding people with *comparable* limb differences – not just any missing limb, but a similar level of functional ability.\n\n3. **Development Programs & Clinics:** Organizations run introductory clinics and development programs. These are designed to attract people who *might* be interested in a sport but haven't tried it before. It's a way to identify potential talent and introduce people to the possibilities. These programs often focus on fundamental skills.\n\n4. **Regionalization & Residency Programs:** The geographical challenge is significant. Often, athletes will need to relocate – sometimes temporarily, sometimes permanently – to train at centers of excellence. National governing bodies may offer residency programs where athletes live and train together. They try to establish regional hubs to minimize travel for athletes, but it's not always possible.\n\n5. **Online Outreach & Social Media:** Increasingly, organizations use online platforms and social media to reach potential athletes. Targeted advertising and athlete spotlights can help raise awareness and attract interest.\n\n6. **Skill Development is Key:** Not everyone with a limb difference will *want* to be a competitive athlete, or have the aptitude. Coaches work with athletes to develop the necessary skills, strength, and endurance. This is a long-term process.\n\n\n\nWinning at the Paralympics requires a combination of natural athletic ability, dedicated training, and a supportive system. It's a lot of work to bring all those elements together!",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 116,
+    "output_tokens": 463,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      110
+    ],
+    "timestamp_utc": "2026-10-12T10:35:54.585093+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "e4a28ab509ccb0ab2379cf9967c556d2ed97776f49af99a182010e1f16f75951",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/e4a28ab509ccb0ab2379cf9967c556d2ed97776f49af99a182010e1f16f75951.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "a8bad50bf40a2c1fb0c48dfc7ac084c303286210fce067c8de2922b6b0a5de30",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/a8bad50bf40a2c1fb0c48dfc7ac084c303286210fce067c8de2922b6b0a5de30.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/f9a18315de83f0144e1771ef2b2026c079ea57c94687a4b35c9e9a82e5478cfd_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/f9a18315de83f0144e1771ef2b2026c079ea57c94687a4b35c9e9a82e5478cfd_ao.pt",
+    "ao_source_token_ids": [
+      236768,
+      3892,
+      2351,
+      10559,
+      5149,
+      699,
+      1546,
+      1032,
+      531,
+      2768,
+      10154,
+      834,
+      901,
+      740,
+      3345,
+      506,
+      28767,
+      8464,
+      42624,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 2,
+    "reason": "The response recognizes that athletes can relocate and use residency programs to train together. However, it does not clearly reject the assumption that athletes must already live near each other, and it calls geography a significant challenge rather than explaining that elite athletes move to train together professionally.\n\nRating: 2",
+    "native_id": "f9a18315de83f0144e1771ef2b2026c079ea57c94687a4b35c9e9a82e5478cfd",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Forum/advice-response register established: a practical question about athletic coaching challenges, likely a real-world problem about building a national team.\n\nThe question posed (\"How does a coach find three elite athletes in sports, especially for niche sports?\") signals an analytical answer or discussion of recruitment challenges.\n\nFinal token \"?\" closes a posed question about the multi-step recruitment challenge (\"coach, coach, parents...\"), immediately expecting a response or elaboration, likely \"Finding\" or \"the pipeline\" or \"recruiting\" to answer the logistical puzzle of finding enough athletes. or \".\" or \"It's difficult.\" or \"the three.\" or \"population/geographic search.\" or \".\"",
+    "reused": true,
+    "original_output_id": "e4a28ab509ccb0ab2379cf9967c556d2ed97776f49af99a182010e1f16f75951",
+    "source_native_id": "f9a18315de83f0144e1771ef2b2026c079ea57c94687a4b35c9e9a82e5478cfd",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a focus on the challenges and strategies involved in forming a successful sports team for individuals with disabilities.",
+    "reused": true,
+    "original_output_id": "91a732aa6e8b79c3e3d5c271bb37867e2482dbdb091b02d1cd6a3df977071675",
+    "source_native_id": "f9a18315de83f0144e1771ef2b2026c079ea57c94687a4b35c9e9a82e5478cfd",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": true,
+    "annotation_issue_reason": "The NLA explanation misstates the question as finding three elite athletes in niche sports; the original lists three recruitment criteria, not three athletes.",
+    "actual_behavior": "target_not_corrected",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Broadly matches the answer's recruitment-challenge framing but does not identify the assumption that athletes must already live nearby. Its register and next-token hypotheses are unverified and provide no supported diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes the answer's disability-sports recruitment challenges and strategies without identifying the geographic presupposition or its inadequate correction. This topic summary does not establish that the source deemed the premise sound."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

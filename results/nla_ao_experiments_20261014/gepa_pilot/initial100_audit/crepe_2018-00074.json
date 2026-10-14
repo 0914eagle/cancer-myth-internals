@@ -1,0 +1,104 @@
+{
+  "row_id": "crepe:2018-00074",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why aren't humans born nocturnal?",
+  "native": {
+    "id": "f4bbad4a44091e5253bd45a2aa9fc596003b7b5a30ae0052c666453e09f6449a",
+    "row_id": "crepe:2018-00074",
+    "dataset": "crepe",
+    "question": "Why aren't humans born nocturnal?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why aren't humans born nocturnal?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Human ancestors evolved from diurnal (daytime) primates. Several factors likely contributed to this and prevented a shift to nocturnality.\n\nEarly primates, our distant ancestors, likely benefited from daytime activity for several reasons. Vision was key – relying on sight for foraging for fruits and insects works better in daylight. Avoiding predators was also easier with good vision. Many predators themselves are diurnal, so being active then allowed for predator avoidance through vigilance.\n\nAs primates evolved, brain size and social complexity increased. Complex social interactions and learning are often easier and more efficient during daylight hours. \n\nWhile some humans *can* adapt to nocturnal lifestyles, it's not our natural state. Our biological systems – hormone production, body temperature regulation, and even sleep-wake cycles – are fundamentally geared towards a diurnal pattern. A complete shift to nocturnality would require significant evolutionary changes.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 77,
+    "output_tokens": 176,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      71
+    ],
+    "timestamp_utc": "2026-10-12T10:57:30.479006+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "4c6994c9f9af529a74d5b24820c7c34c209c107331dada9b4066869399bead21",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/4c6994c9f9af529a74d5b24820c7c34c209c107331dada9b4066869399bead21.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "ac31d91957dca46eecb527a7ac42ba78213b4b0d1d57be1d953df370ace1c469",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/ac31d91957dca46eecb527a7ac42ba78213b4b0d1d57be1d953df370ace1c469.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/f4bbad4a44091e5253bd45a2aa9fc596003b7b5a30ae0052c666453e09f6449a_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/f4bbad4a44091e5253bd45a2aa9fc596003b7b5a30ae0052c666453e09f6449a_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      10050,
+      236789,
+      236745,
+      14464,
+      8132,
+      124938,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly explains humans’ diurnal evolutionary adaptations and biological rhythms, treating the question as valid without challenging its premise or introducing unnecessary skepticism.\n\nRating: 5",
+    "native_id": "f4bbad4a44091e5253bd45a2aa9fc596003b7b5a30ae0052c666453e09f6449a",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Structured answer/discussion format established: a question posed about animal nocturnal behavior, signaling a thoughtful evolutionary or biological explanation.\n\nThe question \"Why don't humans sleep at night?\" signals a speculative answer about human evolution, likely addressing why humans didn't evolve nocturnalism.\n\nFinal token \"?\" closes a question (\"Why hasn't humanity become nocturnal?\"), immediately expecting a response or answer, likely beginning \"or\" or \"human evolution\" or \"why we are diurnal\" to specify the topic. or \".\" or \"humans\" or \"the question of why we evolved diurnal\" or \"our ancestors were not nocturnal\" or \"or nocturnal birth patterns\" or \"because we.\"",
+    "reused": true,
+    "original_output_id": "4c6994c9f9af529a74d5b24820c7c34c209c107331dada9b4066869399bead21",
+    "source_native_id": "f4bbad4a44091e5253bd45a2aa9fc596003b7b5a30ae0052c666453e09f6449a",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a semantic content that includes the concept of nocturnal behavior, the reasons behind it, and the evolutionary context of human sleep patterns.",
+    "reused": true,
+    "original_output_id": "ed7d1eb727d94bb4b38b1dbac7836575de4cf03298e3647d7785e65c89380853",
+    "source_native_id": "f4bbad4a44091e5253bd45a2aa9fc596003b7b5a30ae0052c666453e09f6449a",
+    "bytewise_verified": true,
+    "query": "<pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><pad><bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The question is a valid request for a biological explanation; label 0 and the empty presupposition list are consistent with it.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Predicts an evolutionary explanation of human diurnality, matching the answer broadly, but incorrectly paraphrases the question as 'Why don't humans sleep at night?' No specific premise error or independently supported activation insight is identified."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "Summarizes nocturnal behavior and evolutionary sleep patterns without predicting premise acceptance or correction. This topic summary does not establish that the source deemed the premise sound or add information beyond the visible answer."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

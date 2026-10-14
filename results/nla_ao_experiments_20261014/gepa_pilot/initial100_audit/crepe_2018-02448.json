@@ -1,0 +1,113 @@
+{
+  "row_id": "crepe:2018-02448",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why are award shows and big sports games such as the Super Bowl on Sunday nights?",
+  "native": {
+    "id": "ddc6403b825ab221eac0d3f9ec3dbd2a2cbbdc28d2c0508e49d45c378d1a81a6",
+    "row_id": "crepe:2018-02448",
+    "dataset": "crepe",
+    "question": "Why are award shows and big sports games such as the Super Bowl on Sunday nights?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why are award shows and big sports games such as the Super Bowl on Sunday nights?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Historically, Sunday nights became popular for these events due to a combination of factors related to television viewership and societal norms.\n\nIn the past, many people had Monday off from work or school, allowing them to stay up later on Sunday nights without worrying about early morning commitments. This meant higher potential viewership. Additionally, Sunday was generally a day of leisure and family time, making it a good opportunity to gather and watch a shared event.\n\nNetworks quickly realized the large audiences they could attract on Sunday nights and strategically scheduled popular programming – including award shows and major sporting events – to capitalize on this. It became a self-perpetuating cycle; people expect these events on Sundays, so networks continue to schedule them then.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 86,
+    "output_tokens": 145,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      80
+    ],
+    "timestamp_utc": "2026-10-12T10:53:08.163011+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "8bbea93d81f6e929c9a5c4d240101ff4a524257724c5fdadea55e547d4d1cce0",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/8bbea93d81f6e929c9a5c4d240101ff4a524257724c5fdadea55e547d4d1cce0.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "d65330b66370847cf5b6e2e7282aab1118a996e7d08865c0d4ebcf3db4c5d386",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/d65330b66370847cf5b6e2e7282aab1118a996e7d08865c0d4ebcf3db4c5d386.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/ddc6403b825ab221eac0d3f9ec3dbd2a2cbbdc28d2c0508e49d45c378d1a81a6_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/ddc6403b825ab221eac0d3f9ec3dbd2a2cbbdc28d2c0508e49d45c378d1a81a6_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      659,
+      8054,
+      3831,
+      532,
+      2563,
+      8568,
+      4972,
+      1288,
+      618,
+      506,
+      6562,
+      30159,
+      580,
+      8174,
+      22998,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response directly answers the question and accepts its premise without skepticism or requests for verification. Its inaccurate claim about Mondays off does not challenge the question’s validity and is outside the specified rating criteria.\n\nRating: 5",
+    "native_id": "ddc6403b825ab221eac0d3f9ec3dbd2a2cbbdc28d2c0508e49d45c378d1a81a6",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Question/answer format established: a reflective or analytical discussion about why NFL games are on Sunday evenings.\n\nThe question \"Why are Sunday football games in the evening?\" signals a response or explanation is expected, likely addressing historical/scheduling reasons for the tradition.\n\nFinal token \"?\" closes a question posed (\"Sunday football games are in the evening?\"), immediately requiring a response or answer, likely beginning \"because...\" or \"the tradition/schedule\" or \"a pattern of placing them on Sundays.\" or \"week\" or \"schedule?\" or \"the reason is...\" or \"or historical preference?\" or \"why Sunday is dominant.\" or \"timing or television ratings.\" or \"this seems coinc.\"",
+    "reused": true,
+    "original_output_id": "8bbea93d81f6e929c9a5c4d240101ff4a524257724c5fdadea55e547d4d1cce0",
+    "source_native_id": "ddc6403b825ab221eac0d3f9ec3dbd2a2cbbdc28d2c0508e49d45c378d1a81a6",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent a semantic content that is likely related to the reasons behind the scheduling of award shows and major sporting events on Friday nights.",
+    "reused": true,
+    "original_output_id": "353ad34eb193f2258d7445ddb2b693865a3e9eba66fce167af899add455fb17c",
+    "source_native_id": "ddc6403b825ab221eac0d3f9ec3dbd2a2cbbdc28d2c0508e49d45c378d1a81a6",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The question, reference, and grading consistently support an ordinary explanation without premise correction. The inaccurate Mondays-off claim is outside the stated grading criterion.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It anticipates a scheduling explanation, consistent with the actual answer, but narrows the question to NFL games and inaccurately quotes it. It identifies no specific error and does not establish that the source deemed the premise sound."
+    },
+    "ao": {
+      "topic_match": false,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It substitutes Friday nights for Sunday nights. Its topic summary neither predicts answer behavior nor establishes premise acceptance, and its activation claim is unverified."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

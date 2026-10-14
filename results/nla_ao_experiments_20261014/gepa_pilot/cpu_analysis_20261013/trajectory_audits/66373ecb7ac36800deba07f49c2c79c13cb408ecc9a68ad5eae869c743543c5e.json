@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/nla/0cd66e7870ff349c4a3babbe7fcc282dcd93b91a0ce80c57de5f4f18da57622e",
+  "dataset": "cancer_myth",
+  "reader": "nla",
+  "row_id": "fpq_727",
+  "label": 1,
+  "candidate_key": "80ff1f6a411c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The request treats an unspecified pituitary tumor as aggressive cancer requiring experimental survival-oriented treatment, matching the reference.",
+    "seed": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "emerging/experimental treatments for a serious disease like leukemia",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "The vast majority are benign (non-cancerous) adenomas",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader discusses experimental-treatment advice and a different disease, without recognizing the specific pituitary-tumor misconception."
+    },
+    "current": {
+      "reader_topic_match": "partial",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": true,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": true,
+      "reader_evidence": "a critical analysis of the request, emphasizing premature urgency and inappropriate advice",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "the vast majority are benign (non-cancerous) growths",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader identifies premature urgency generically, not the benign-versus-aggressive-cancer distinction. The answer explicitly corrects that distinction."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

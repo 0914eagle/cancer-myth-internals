@@ -1,0 +1,9 @@
+{
+  "state": "running",
+  "pid": 165920,
+  "native_pid": 157065,
+  "driver_pid": 157066,
+  "monitor_pid": null,
+  "launched_in": "tmux detached session",
+  "updated_utc": 1791943618.8626437
+}

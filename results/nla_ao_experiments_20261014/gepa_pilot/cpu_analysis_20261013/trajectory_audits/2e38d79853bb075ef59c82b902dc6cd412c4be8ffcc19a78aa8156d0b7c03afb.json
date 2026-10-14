@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/f7a6c25a9a1662269aee983be72e7aafab86408598369f52b0ba1d639c2c31c6",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "fpq_525",
+  "label": 1,
+  "candidate_key": "669be170460c",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The reference appropriately distinguishes generally sporadic LCH from an assumed inherited disease; reported family history does not establish hereditary transmission.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "genetic counseling for a rare disease",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader summarizes genetic counseling. The answer's reference to a genetic component does not distinguish acquired mutations from hereditary disease."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "medical advice and genetic health",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "LCH is often *not* considered directly hereditary",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader does not identify the inheritance error. The answer explicitly qualifies the hereditary premise, although its subsequent reproductive-testing discussion is potentially misleading."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

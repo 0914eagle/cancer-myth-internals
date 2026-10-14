@@ -1,0 +1,56 @@
+{
+  "id": "crepe/nla/63adcf17fb1c521892422fcb7b3f3947d15b4604d4a9dc57e3fe5764c39fbcf8",
+  "dataset": "crepe",
+  "reader": "nla",
+  "row_id": "crepe:2018-20327",
+  "label": 1,
+  "candidate_key": "b375bfbd11bd",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "seed",
+    "current"
+  ],
+  "audit": {
+    "annotation_alignment": "conflict",
+    "annotation_reason": "Relative humidity can exceed 100% through genuine supersaturation, not merely instrument error. A sustained ordinary atmospheric value of 200% is unrealistic, but the annotation's absolute impossibility claim is incorrect.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": true,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "the hypothetical, impossible scenario of a doubled percentage",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "Going above 100% isn't really possible in a normal atmospheric sense",
+      "new_information_beyond_answer": false,
+      "mismatch": "concordant",
+      "reason": "Both texts frame above-saturation humidity as impossible in the intended ordinary setting. This matches the annotated target but oversimplifies supersaturation; the answer also adds unsupported catastrophic effects."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "hypothetical or impossible scenarios",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "There is no stable state of \"200% humidity\"",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader's tentative framing does not explicitly explain what is mistaken about exceeding saturation. The answer rejects a stable 200% state and mentions supersaturation, although it misleadingly describes supersaturation as only seeming to exceed 100%."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

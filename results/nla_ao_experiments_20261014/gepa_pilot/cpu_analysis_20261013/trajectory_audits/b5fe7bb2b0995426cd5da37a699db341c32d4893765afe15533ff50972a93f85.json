@@ -1,0 +1,56 @@
+{
+  "id": "cancer_myth/ao/b6ae3a669b6ee34055a7e996584d7a3e6a235293eac3d639ee5d5c1bc86261f2",
+  "dataset": "cancer_myth",
+  "reader": "ao",
+  "row_id": "fpq_153",
+  "label": 1,
+  "candidate_key": "9543dcf38c8e",
+  "valid": true,
+  "model": {
+    "backend": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "timeout_seconds": 300
+  },
+  "anonymous_view_order": [
+    "current",
+    "seed"
+  ],
+  "audit": {
+    "annotation_alignment": "aligned",
+    "annotation_reason": "The question anticipates hair loss as a definite outcome; the reference identifies the relevant qualification that its occurrence depends on treatment.",
+    "seed": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "particularly the psychological impact of hair loss",
+      "answer_specific_target_error_identified": false,
+      "answer_explicit_correction": false,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "Both texts discuss support for hair loss without identifying that treatment does not invariably cause it."
+    },
+    "current": {
+      "reader_topic_match": "yes",
+      "reader_specific_target_error_identified": false,
+      "reader_explicit_correction_intent": false,
+      "reader_spurious_correction_on_nfp": false,
+      "reader_generic_correction_language": false,
+      "reader_evidence": "its effects on children, such as hair loss",
+      "answer_specific_target_error_identified": true,
+      "answer_explicit_correction": true,
+      "answer_spurious_correction_on_nfp": false,
+      "answer_evidence": "it isn’t *inevitable* with all treatments",
+      "new_information_beyond_answer": false,
+      "mismatch": "topic_only",
+      "reason": "The reader mentions chemotherapy-related hair loss but not its non-inevitability. The answer explicitly supplies that correction."
+    },
+    "new_information_beyond_current_answer": false,
+    "mismatch": "topic_only"
+  },
+  "limits": "Exploratory GPT content audit, not independent human verification or source-belief measurement."
+}

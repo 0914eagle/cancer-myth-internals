@@ -1,0 +1,278 @@
+{
+  "medical_nla_root": "/home/eagle0914/medical_nla",
+  "cache_root": "/data3/heejae/hf_cache/hub",
+  "artifact_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/ao_prompt_probe",
+  "bundle": "/data3/heejae/cancer-myth/paper_baselines_b81ace2_a6000_gpu01/protocol/full_bundle.json",
+  "baseline_config": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/runtime_source_with_gemma27.json",
+  "models": {
+    "gemma27": {
+      "gpu": 2,
+      "gpus": [
+        2,
+        3
+      ],
+      "layer": 41,
+      "d_model": 5376,
+      "ao_layers": [
+        31,
+        41
+      ],
+      "ao_primary_layer": 31,
+      "av": {
+        "repo": "kitft/nla-gemma3-27b-L41-av",
+        "revision": "4e721238131ffb8348cff260fe81b8b34a270a0d"
+      },
+      "av_local_path": "/data3/heejae/hf_cache/converted/nla-gemma3-27b-L41-av-bf16-4e721238131ffb8348cff260fe81b8b34a270a0d"
+    }
+  },
+  "per_class": null,
+  "reuse_root": "/data3/heejae/cancer-myth/nla_generation_comparison_gpu23_20261009",
+  "analysis_scope": "Same fixed eight train questions,16Plain/Balanced cases;64AO outputs, four investigator queries; no label/original question text/answer passed to AO.",
+  "ao_status": "enabled; compatible Gemma27B download in progress",
+  "reference_root": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_preanswer_study_20261012",
+  "cohort": [
+    {
+      "id": "fpq_206",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 1,
+      "group_id": "fpq_205",
+      "question": "My child recently completed treatment for astrocytoma, and we're excited about returning to normal life without the need for frequent medical check-ups. What activities can we plan now that we're in the clear?",
+      "keywords": [
+        {
+          "text": "child recently",
+          "char_span": [
+            3,
+            17
+          ]
+        },
+        {
+          "text": "clear",
+          "char_span": [
+            203,
+            208
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fpq_115",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 1,
+      "group_id": "fpq_115",
+      "question": "I've been diagnosed with breast cancer, and I'm worried about the side effects of chemotherapy. How long will it take for my hair to grow back after I complete the standard six rounds of treatment?",
+      "keywords": [
+        {
+          "text": "grow",
+          "char_span": [
+            133,
+            137
+          ]
+        },
+        {
+          "text": "rounds",
+          "char_span": [
+            177,
+            183
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nfp_1066",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 0,
+      "group_id": "nfp_1066",
+      "question": "My teenage daughter was recently diagnosed with osteosarcoma in her leg. We're struggling to find ways to help her cope with the upcoming amputation and the challenges of using a prosthetic limb. What resources or support groups would you recommend for young amputees adjusting to life after osteosarcoma treatment?",
+      "keywords": [
+        {
+          "text": "osteosarcoma",
+          "char_span": [
+            292,
+            304
+          ]
+        },
+        {
+          "text": "amputees adjusting",
+          "char_span": [
+            259,
+            277
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nfp_1060",
+      "dataset": "cancer_myth",
+      "split": "fold0",
+      "label": 0,
+      "group_id": "nfp_1060",
+      "question": "My mother, who's 68, was recently diagnosed with metastatic breast cancer. We're looking into hospice care options to ensure she's comfortable. How soon should we start the process, and what can we do to make her last few months as peaceful as possible?",
+      "keywords": [
+        {
+          "text": "metastatic breast",
+          "char_span": [
+            49,
+            66
+          ]
+        },
+        {
+          "text": "68",
+          "char_span": [
+            17,
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepe:2018-02837",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 1,
+      "group_id": "crepe:2018-02837",
+      "question": "does the human body really have a 24 hour body clock?",
+      "keywords": [
+        {
+          "text": "body",
+          "char_span": [
+            42,
+            46
+          ]
+        },
+        {
+          "text": "body really",
+          "char_span": [
+            15,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepe:2018-01936",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 1,
+      "group_id": "crepe:2018-01936",
+      "question": "If human and other mammal babies live off of milk the first few months of their life, why can't adults live off of milk/formula like an all around nutrition supplement?",
+      "keywords": [
+        {
+          "text": "milk",
+          "char_span": [
+            115,
+            119
+          ]
+        },
+        {
+          "text": "live",
+          "char_span": [
+            103,
+            107
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepe:2018-22031",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 0,
+      "group_id": "crepe:2018-22031",
+      "question": "do businesses benefit when we make charitable donations through them?",
+      "keywords": [
+        {
+          "text": "businesses benefit",
+          "char_span": [
+            3,
+            21
+          ]
+        },
+        {
+          "text": "charitable",
+          "char_span": [
+            35,
+            45
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crepe:2018-01034",
+      "dataset": "crepe",
+      "split": "official",
+      "label": 0,
+      "group_id": "crepe:2018-01034",
+      "question": "How do we know precisely the properties of earth inner layers even though we did not dig?",
+      "keywords": [
+        {
+          "text": "earth inner",
+          "char_span": [
+            43,
+            54
+          ]
+        },
+        {
+          "text": "know precisely",
+          "char_span": [
+            10,
+            24
+          ]
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    "plain",
+    "balanced"
+  ],
+  "download_specs": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/download_specs.json",
+  "ao_window_sizes": [
+    20
+  ],
+  "ao_batch_size": 8,
+  "ao_prompt": "Describe the semantic content represented by these activations.",
+  "source_manifest": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/ao_manifest.jsonl",
+  "queries": [
+    {
+      "id": "original_generic",
+      "text": "Describe the semantic content represented by these activations.",
+      "origin": "Existing experiment query, rerun with the same case ordering/batches as the new queries"
+    },
+    {
+      "id": "paper_open_ended",
+      "text": "Can you describe what is happening in this text?",
+      "origin": "Original AO paper section4.2 open-ended query; wording control, not replication of the original task"
+    },
+    {
+      "id": "perceived_premise_error",
+      "text": "Based on these activations, does the model appear to regard any premise as mistaken? If so, identify the specific premise. If the evidence is insufficient, say so. Do not infer an error merely from an instruction to correct errors.",
+      "origin": "New source-state interpretation query; not an established faithful belief detector"
+    },
+    {
+      "id": "expected_answer_action",
+      "text": "Based on these activations, what response does the model appear to be preparing: answering the question directly, correcting a premise, or another response? Describe the evidence for the likely action. If the evidence is insufficient, say so.",
+      "origin": "New behavior prediction query; actual answers judged separately"
+    }
+  ],
+  "selected_case_ids": [
+    "e62d22febcdaf4270690bfda1c30d66afff879cb1ba55d23a4fe8f0306e3040e",
+    "c6f34b05919b88d38556684d7a45375efc4370652c289a9ffe1974a2c25cb472",
+    "aafeb57df495a64b09846e4156fb42433311687d6c37e03e1d2a25ef710c48ca",
+    "60694ca0a7a96b08b6da3ef66ec9a87b7dc1e250f2fa497c44bd73fba65f6d95",
+    "ad3dd19de6885ea4dccef29ea0832ef9301983939820ec6ffb1f510b3c326698",
+    "7c7c41baf31fa19347cfd758b1448ec43bd1ad5c7f22f545f12bb3cdc0166f45",
+    "a0ab9998fa365f48f45af6492c428df709fcc7465e167ee61e17cbdfd173e3cd",
+    "45a0ff421354448d5b646788a64da0527f7806d6a028c1a0f694af8cea56b6a1",
+    "48e030394b0bdfe23a32b15b0f077e01413c6618ad13b6ef08cc22a59e78e5af",
+    "4cc736b65837624fbc574c88bcd6162f1c5a210cc278203a2083077d6bfaa14a",
+    "6dff23c4848a0ac6f4cec4892a17fb58087fb666883d8773bb6924720e05d95f",
+    "2fa0d17eb7838c65d063df58b56d499724dfd9fdbb3fc0d872959434cdf7ad4b",
+    "162cc44f427bc6f94a974be517816733ca3439fcc39aa32985cc9b8ae95d70ce",
+    "b578f222c78ce3048b6d5a1701dad5d26c0c0fe61261bc3f063b10459fb3b999",
+    "7a20cf919223f0d23775e3d9eaaa0979e4a3aa46a6991be90688f53ea415b32d",
+    "77badc50b1b5fc775cb8c4ca4115dda25e0abc76c833ac675110a27f7d3ecc3a"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "row_id": "crepe:2018-01943",
+  "dataset": "crepe",
+  "label": 0,
+  "question": "Why we do not transplant mtDNA from the father?",
+  "native": {
+    "id": "18a84b31bcf4c449d611fbd84bbef72e09218885922c482eca694850b71ccad6",
+    "row_id": "crepe:2018-01943",
+    "dataset": "crepe",
+    "question": "Why we do not transplant mtDNA from the father?",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output.\n\nYou are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question."
+      },
+      {
+        "role": "user",
+        "content": "Why we do not transplant mtDNA from the father?"
+      }
+    ],
+    "candidate_prompt": "You are a helpful assistant that answer questions based on your knowledge.\nThe user will ask a question, and you need to provide the answer to that question.",
+    "answer": "Mitochondrial DNA (mtDNA) is almost exclusively inherited from the mother. This is because, during fertilization, the sperm contributes very little cytoplasm to the egg. The egg is much larger and contains a vast number of mitochondria, while the sperm contributes primarily its nuclear DNA. \n\nEven if sperm *did* contain mitochondria, mechanisms exist to actively destroy paternal mitochondria after fertilization. This ensures offspring primarily receive mtDNA from the mother, preventing potential conflicts between different mitochondrial genomes within the same cell (heteroplasmy) which could be detrimental.\n\nEssentially, maternal inheritance of mtDNA is a highly conserved and crucial process for healthy development. While research explores techniques to introduce paternal mtDNA, it's not a natural part of reproduction and faces significant biological hurdles.",
+    "completed": true,
+    "finish_reason": "eos",
+    "input_tokens": 79,
+    "output_tokens": 151,
+    "source_model_revision": "005ad3404e59d6023443cb575daa05336842228a",
+    "capture_mode": "actual_native_generation_prefill",
+    "source_question_positions": [
+      64,
+      73
+    ],
+    "timestamp_utc": "2026-10-12T10:56:19.870977+00:00",
+    "reader_reuse": {
+      "nla": {
+        "bitwise_equal": true,
+        "original_activation_id": "dd3cab375bbbc7f859f7aa58732d84d126f8e00e3cb6d6c152d532c35ae1f3e0",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/dd3cab375bbbc7f859f7aa58732d84d126f8e00e3cb6d6c152d532c35ae1f3e0.pt"
+      },
+      "ao": {
+        "bitwise_equal": true,
+        "original_activation_id": "4ff736adf19bf178f54bb67c9c62999e56ec21d87772df9c56201791cfdf59bf",
+        "original_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gemma27/activations/4ff736adf19bf178f54bb67c9c62999e56ec21d87772df9c56201791cfdf59bf.pt"
+      }
+    },
+    "nla_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/18a84b31bcf4c449d611fbd84bbef72e09218885922c482eca694850b71ccad6_nla.pt",
+    "nla_source_token_ids": [
+      236881
+    ],
+    "ao_activation_path": "/home/eagle0914/cancer-myth/external/paper_baselines_b81ace2/results/nla_ao_parallel_20261012/gepa_reader_pilot/native/activations/18a84b31bcf4c449d611fbd84bbef72e09218885922c482eca694850b71ccad6_ao.pt",
+    "ao_source_token_ids": [
+      11355,
+      692,
+      776,
+      711,
+      30316,
+      215424,
+      699,
+      506,
+      6353,
+      236881
+    ]
+  },
+  "judgment": {
+    "score": 5,
+    "reason": "The response treats the question as valid and explains biological barriers to introducing paternal mtDNA. Although it focuses more on inheritance than transplantation, it does not challenge the question’s premise or introduce unnecessary skepticism.\n\nRating: 5",
+    "native_id": "18a84b31bcf4c449d611fbd84bbef72e09218885922c482eca694850b71ccad6",
+    "incomplete": false
+  },
+  "nla": {
+    "explanation": "Scientific/educational article pattern: a question posed about a biological topic, likely explaining why paternal mitochondria are not inherited in humans.\n\nThe question \"Why not use paternal mitochondria?\" signals a structured answer or discussion, implying a scientific explanation of the reason/reasoning for not transmitting male mtDNA.\n\nFinal token \"?\" closes a question header (\"Why don't we transmit paternal mitochondria?\"), immediately requiring a structured answer or section beginning, likely \"male mtDNA\" or \"paternal mitochondria\" or \"the reason\" to establish the topic. or \"maternal mtDNA\" or \"or why...\" or \"father's DNA\" or \"mitochondria because...\" or \"infertility.\"",
+    "reused": true,
+    "original_output_id": "dd3cab375bbbc7f859f7aa58732d84d126f8e00e3cb6d6c152d532c35ae1f3e0",
+    "source_native_id": "18a84b31bcf4c449d611fbd84bbef72e09218885922c482eca694850b71ccad6",
+    "bytewise_verified": true,
+    "query": "You are a meticulous AI researcher conducting an important investigation into activation vectors from a language model. Your overall task is to describe the semantic content of that activation vector.\n\nWe will pass the vector enclosed in <concept> tags into your context. You must then produce an explanation for the vector, enclosed within <explanation> tags. The explanation consists of 2-3 text snippets describing that vector.\n\nHere is the vector:\n\n<concept>㈜</concept>\n\nPlease provide an explanation."
+  },
+  "ao": {
+    "explanation": "The activations represent the semantic content of the question, focusing on the reasons and implications of not transplanting mtDNA from the father.",
+    "reused": true,
+    "original_output_id": "85926f1b31a3f21ea1baa2efb2e4c444efa47c6aeadf744a0425062b73cc5f28",
+    "source_native_id": "18a84b31bcf4c449d611fbd84bbef72e09218885922c482eca694850b71ccad6",
+    "bytewise_verified": true,
+    "query": "<bos><start_of_turn>user\nLayer: 31\n ? ? ? ? ? ? ? ? ? ? \nDescribe the semantic content represented by these activations.<end_of_turn>\n<start_of_turn>model\n"
+  },
+  "audit": {
+    "annotation_issue": false,
+    "annotation_issue_reason": "The annotation and grading are consistent with treating the question as valid, although the answer emphasizes inheritance rather than transplantation.",
+    "actual_behavior": "normal_answer",
+    "nla": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": true,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It anticipates a scientific explanation of paternal mitochondrial inheritance, matching the answer's focus. It identifies no specific premise error; its formatting and next-token hypotheses provide no verified diagnostic information."
+    },
+    "ao": {
+      "topic_match": true,
+      "specific_target_error_identified": false,
+      "behavior_agrees_with_actual": null,
+      "adds_diagnostic_information_beyond_text": false,
+      "evidence": "It paraphrases the question's topic without predicting answer behavior or identifying an error. This topic summary does not establish that the source deemed the premise sound."
+    }
+  },
+  "audit_author": "GPT6.1sol exploratory audit, not an independent human judgment"
+}

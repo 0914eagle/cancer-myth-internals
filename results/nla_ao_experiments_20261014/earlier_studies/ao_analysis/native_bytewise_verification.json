@@ -1,0 +1,6 @@
+{
+  "records": 64,
+  "state": "complete",
+  "method": "torch.equal on float32 tensors reinterpreted as int32; exact per-element bits, including signed zeros",
+  "expected": 64
+}
