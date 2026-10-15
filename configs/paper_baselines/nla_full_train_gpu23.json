@@ -1,0 +1,37 @@
+{
+  "medical_nla_root": "/home/eagle0914/medical_nla",
+  "cache_root": "/data3/heejae/hf_cache/hub",
+  "artifact_root": "/data3/heejae/cancer-myth/nla_full_train_gpu23_20261009",
+  "bundle": "/data3/heejae/cancer-myth/paper_baselines_b81ace2_a6000_gpu01/protocol/full_bundle.json",
+  "baseline_config": "/data3/heejae/cancer-myth/paper_baselines_b81ace2_a6000_gpu01/protocol/runtime.json",
+  "models": {
+    "qwen25": {
+      "gpu": 2,
+      "layer": 20,
+      "d_model": 3584,
+      "av": {
+        "repo": "kitft/nla-qwen2.5-7b-L20-av",
+        "revision": "b88469162777ae6553bc14208eb0cb579336f8f4"
+      },
+      "ar": {
+        "repo": "kitft/nla-qwen2.5-7b-L20-ar",
+        "revision": "e2c9e57eac213d37a31612087f645ab6332c1bb6"
+      }
+    },
+    "gemma3": {
+      "gpu": 3,
+      "layer": 32,
+      "d_model": 3840,
+      "av": {
+        "repo": "kitft/nla-gemma3-12b-L32-av",
+        "revision": "7aec22599e8a9cd533564868999b443fcc963cf4"
+      },
+      "ar": {
+        "repo": "kitft/nla-gemma3-12b-L32-ar",
+        "revision": "3d6901d8243182d642af9dea452ca91549a94615"
+      }
+    }
+  },
+  "per_class": null,
+  "reuse_root": "/data3/heejae/cancer-myth/nla_generation_comparison_gpu23_20261009"
+}
