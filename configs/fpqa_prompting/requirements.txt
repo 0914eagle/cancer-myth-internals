@@ -3,3 +3,5 @@
 gepa==0.1.1
 pytest==8.4.2
 ruff==0.13.2
+# Well's original response parsers (kept intact in the source-backed runner).
+pydantic==2.12.5

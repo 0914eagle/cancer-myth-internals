@@ -1,8 +1,11 @@
 """Put auditable Korean progress labels directly in the existing three table layouts."""
 import collections,csv,datetime,hashlib,html,json,re
+import sys
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 BASE=Path(__file__).resolve().parent;ROOT=BASE.parents[2]
+sys.path.insert(0,str(ROOT))
+from scripts.paper_qa_sample import MANIFEST,select_rows
 RUN=ROOT/'results/paper_baselines_v4/main';GRADES=ROOT/'results/paper_baselines_v4/haiku'
 OUT=BASE/'current_v4';OUT.mkdir(exist_ok=True)
 MODELS=[('qwen25','Qwen2.5 7B'),('gemma3','Gemma 3 12B'),('luna6','GPT-6 Luna')]
@@ -19,12 +22,17 @@ def capture(run=RUN,grades=GRADES):
     b=read(ROOT/'results/paper_baselines_v4/protocol/bundle.json');look={r['id']:r for r in b['rows']}
     expected={d:{y:sum(look[i]['label']==y for s in b['splits'] if s['dataset']==d for i in s['test']) for y in (1,0)} for d in ('cancer_myth','crepe')}
     snapshot={'captured_at_kst':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),'bundle_sha256':b['content_sha256'],'cells':{},'counts':{}}
-    qa_sizes=collections.Counter(r['dataset'] for r in b['qa'])
+    qa_manifest=read(MANIFEST) if MANIFEST.exists() else None
+    qa_rows=select_rows(b,qa_manifest) if qa_manifest else b['qa']
+    qa_ids={(r['dataset'],r['id']) for r in qa_rows}
+    qa_sizes=collections.Counter(r['dataset'] for r in qa_rows)
+    snapshot['table3_sample']=qa_manifest
     for model,_ in MODELS:
         root=run/model;progress=read(root/'generation_progress.json') if (root/'generation_progress.json').exists() else {}
         counters=collections.defaultdict(collections.Counter)
         for table in ('table1','table12','table3'):
             for r in rows(root/table):
+                if table=='table3' and (r['dataset'],r['id']) not in qa_ids:continue
                 key=(table,r['dataset'],r['method'],r.get('label'),r.get('source',''),r.get('split',''))
                 counters[key]['generated']+=1
                 counters[key]['yes']+=r.get('verdict')==1
@@ -63,6 +71,7 @@ def capture(run=RUN,grades=GRADES):
         for table in ('table12','table3'):
             for p in (root/'failures'/table).rglob('*.json'):
                 r=read(p);rel=p.relative_to(root/'failures'/table)
+                if table=='table3' and (r['dataset'],r['id']) not in qa_ids:continue
                 key=(table,r['dataset'],r['method'],r.get('label'),rel.parts[0],rel.parts[1])
                 counters[key]['failed']+=1
         def count(table,dataset,method,y,source=None,split=None):
@@ -172,7 +181,8 @@ def render(snap,name,methods,groups):
                 box(x+2,y+2,cw-4,rh-4,fill);text(value,x+cw/2,y+rh/2,17 if len(value.split('\n')[0])>8 else 19)
                 row.append(value.replace('\n',' '))
         csvrows.append(row);line(left,y+rh,width-left,y+rh)
-    notes=['Cancer-Myth: 577 FPQ / 147 NFP. CREPE: 공통 test 500 FPQ / 500 NFP.' if name!='table3' else '분모: MedQA 1,273 / PubMedQA 1,000 / Medbullets 308 / MMLU 14,042 / GSM8K 1,319.',
+    qa_note='분모: MedQA 500 / PubMedQA 500 / Medbullets 308 / MMLU 500 / GSM8K 500. 공통 고정 무작위 표본(seed 20261014).' if snap.get('table3_sample') else '분모: MedQA 1,273 / PubMedQA 1,000 / Medbullets 308 / MMLU 14,042 / GSM8K 1,319.'
+    notes=['Cancer-Myth: 577 FPQ / 147 NFP. CREPE: 공통 test 500 FPQ / 500 NFP.' if name!='table3' else qa_note,
            'Table 2는 4점 이상 비율. 생성 실패는 분모에 포함하며 성공으로 세지 않습니다.' if name=='table2' else 'Table 1은 정답 라벨로 직접 평가합니다. 별도 LLM 채점이 필요 없습니다.' if name=='table1' else '일반 QA는 정답 비교로 자동 채점하며 생성 실패도 분모에 포함. 두 값은 Cancer-Myth / CREPE 설정 순서.',
            'TF-IDF는 모델 공통 판정입니다. 해당 없음 = Luna 내부 Probe 미지원.' if name=='table1' else 'PreWoMe·Extract+Verify: 자체 추출 평가 완료 시 교체. 추출 출처는 snapshot에 기록. Ours는 후속 실험.']
     for i,note in enumerate(notes):text(note,left,top+head+rh*len(methods)+27+i*29,18,False,'lm')

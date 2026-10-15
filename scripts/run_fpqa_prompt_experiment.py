@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from src.fpqa_prompting import (
     METHODS, Evaluator, RecordedCaller, detection_metrics, digest, freeze, load_rows,
-    response_metrics, seed_prompt, validate_splits, well_crepe_judge,
+    response_metrics, seed_prompt, validate_splits, well_crepe_judge, judge_template_name,
 )
 
 
@@ -36,7 +36,7 @@ def optimize(evaluator, prompt, train, dev, config, out, reflection):
                    if task == "detection" else "Correct false premises accurately and answer normal questions without inventing errors."),
         background="Only the user question is available at inference. Do not use tools or request gold annotations. Labels/references in evaluator feedback are training feedback, not inference inputs.",
         config=GEPAConfig(engine=EngineConfig(run_dir=str(out / "gepa"), max_metric_calls=config["max_metric_calls"],
-                                             parallel=False, cache_evaluation=True, seed=config["seed"]),
+                                             parallel=True, max_workers=config.get("workers", 1), cache_evaluation=True, seed=config["seed"]),
                           reflection=ReflectionConfig(reflection_lm=reflection)))
     best = result.best_candidate["system_prompt"]
     freeze(out / "optimized_prompt.json", {"system_prompt": best, "task": task,
@@ -49,7 +49,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("preflight", "optimize", "evaluate"))
     parser.add_argument("--data", type=Path, required=True, help="Prepared root containing manifest.json")
-    parser.add_argument("--dataset", choices=("crepe", "falseqa"), required=True)
+    parser.add_argument("--dataset", choices=("crepe", "falseqa", "cancer_myth"), required=True)
     parser.add_argument("--task", choices=("detection", "response"), required=True)
     parser.add_argument("--method", required=True)
     parser.add_argument("--config", type=Path, default=ROOT / "configs/fpqa_prompting/luna6_sonnet55.json")
@@ -62,12 +62,14 @@ def main():
     args = parser.parse_args()
     if args.method not in METHODS[args.task]:
         parser.error("Method does not match task")
-    if args.task == "response" and args.dataset != "crepe":
+    if args.task == "response" and args.dataset == "falseqa":
         parser.error("FalseQA response evaluation needs an independently specified reference-rebuttal rubric; detection is ready")
     if args.task == "detection" and args.objective != "balanced":
         parser.error("Detection optimization must include both labels")
     if args.command == "optimize" and args.method != "gepa":
         parser.error("Only GEPA is an optimization method")
+    if args.command == "optimize" and args.task == "response":
+        parser.error("Legacy response GEPA differs from Well. Use scripts/run_well_upstream_cli.py; preserve old results as legacy.")
     if args.limit < 0 or (args.command == "optimize" and args.limit):
         parser.error("--limit is for evaluation smoke tests only")
     config = json.loads(args.config.read_text())
@@ -95,8 +97,8 @@ def main():
     if args.task == "response":
         for row in [next(r for r in dev if r["label"] == y) for y in ({1} if args.objective == "fpq_only" else {0, 1})]:
             well_crepe_judge(args.well_root, row, "Preflight placeholder; not a generated answer.")
-        for kind in ("FPQ", "TPQ"):
-            path = args.well_root / f"data_gen/template/CREPE{kind}_template.py"
+        for label in (0, 1):
+            path = args.well_root / f"data_gen/template/{judge_template_name(args.dataset, label)}_template.py"
             template_hashes[path.name] = sha(path)
     plan = {"task": args.task, "dataset": args.dataset, "method": args.method,
             "objective": args.objective, "config": config, "prompt": prompt,

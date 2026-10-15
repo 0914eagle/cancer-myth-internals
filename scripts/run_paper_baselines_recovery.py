@@ -45,6 +45,8 @@ def recoverable_item_error(error,original):
 def install():
     from scripts import run_paper_baselines_v4 as runner
     from scripts import run_paper_baselines_resilient as resilient
+    from scripts.paper_qa_sample import install_qa_subset
+    install_qa_subset(runner)
     original=runner.V4Worker.external_call
     runner.V4Worker.external_call=lambda self,role,messages:validated_optimization_call(self,role,messages,original)
     old_item_error=resilient.item_error

@@ -16,10 +16,41 @@ from urllib.request import Request, urlopen
 COMMON = "Respond in English using only your existing knowledge. Do not use tools, browse, or access files. Return only the requested output."
 
 
-def envelope(messages):
+def codex_instruction_options(root, system, model):
+    """Set experiment base instructions, including an explicitly empty template.
+
+    Codex rejects empty model_instructions_file files. For the empty case use
+    its supported local catalog override; retain every other model field,
+    including persistent context and permissions. Never modify the real cache.
+    """
+    if system:
+        path = root / "instructions.txt"
+        path.write_text(system)
+        return {"model_instructions_file": str(path)}
+    cache_root = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
+    cache = json.loads((cache_root / "models_cache.json").read_text())
+    matches = [m for m in cache["models"] if m.get("slug") == model]
+    if len(matches) != 1:
+        raise ValueError("Exact selected model not found in Codex catalog; no fallback")
+    entry = matches[0]
+    if not isinstance(entry.get("model_messages"), dict) or "instructions_template" not in entry["model_messages"]:
+        raise ValueError("Unsupported Codex catalog instruction schema")
+    entry["model_messages"]["instructions_template"] = ""
+    path = root / "empty_base_catalog.json"
+    path.write_text(json.dumps({"models": [entry]}))
+    return {"model_catalog_json": str(path), "personality": "none"}
+
+
+def envelope(messages, *, exact=False):
     """Same system/user bytes for every backend; preserve multi-turn examples as text."""
     if any(m["role"] not in {"system", "user", "assistant"} for m in messages):
         raise ValueError("Unsupported message role")
+    if exact:
+        # Well's task, judge and reflection calls are system + one user message.
+        # Refuse an unsupported conversation rather than serialize it differently.
+        if [m["role"] for m in messages] != ["system", "user"]:
+            raise ValueError("Exact Well transport requires system + user messages")
+        return messages[0]["content"] or "", messages[1]["content"]
     system = COMMON + "\n\n" + "\n\n".join(m["content"] for m in messages if m["role"] == "system")
     rest = [m for m in messages if m["role"] != "system"]
     if len(rest) == 1 and rest[0]["role"] == "user":
@@ -86,7 +117,7 @@ class CLIBackend:
 
     def __call__(self, messages):
         c = self.config
-        system, user = envelope(messages)
+        system, user = envelope(messages, exact=c.get("exact_well_messages", False))
         if c["backend"] == "local_http":
             return self.local_http(system, user)
         with tempfile.TemporaryDirectory(prefix="fpqa-call-") as folder:
@@ -97,12 +128,10 @@ class CLIBackend:
                        "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}',
                        "--no-session-persistence", "--system-prompt", system, "--output-format", "json"]
             else:
-                instructions = root / "instructions.txt"
-                instructions.write_text(system)
                 cmd = ["codex", "exec", "--ignore-user-config", "--skip-git-repo-check",
                        "--ephemeral", "--sandbox", "read-only", "--model", c["model"],
                        "--json", "--output-last-message", str(root / "final.txt")]
-                options = {"model_instructions_file": str(instructions),
+                options = {**codex_instruction_options(root, system, c["model"]),
                            "model_reasoning_effort": c["effort"], "web_search": "disabled",
                            "project_doc_max_bytes": 0}
                 for name in ("shell_tool", "apps", "plugins", "multi_agent", "browser_use",
@@ -123,6 +152,8 @@ class CLIBackend:
             return answer, {"backend": c["backend"], "model_requested": c["model"],
                             "model_identity_source": model_source, "cli_version": version,
                             "system_text": system, "user_text": user,
+                            "empty_base_catalog": json.loads((root / "empty_base_catalog.json").read_text())
+                                if (root / "empty_base_catalog.json").exists() else None,
                             "raw": raw, "stderr": stderr}
 
     def local_http(self, system, user):

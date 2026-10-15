@@ -1,0 +1,22 @@
+{
+  "task_model": {
+    "backend": "codex",
+    "model": "gpt-6-luna",
+    "effort": "medium",
+    "timeout_seconds": 240
+  },
+  "judge_model": {
+    "backend": "codex",
+    "model": "gpt-6-luna",
+    "effort": "medium",
+    "timeout_seconds": 240
+  },
+  "reflection_model": {
+    "backend": "codex",
+    "model": "gpt-6-luna",
+    "effort": "medium",
+    "timeout_seconds": 240
+  },
+  "protocol": "well_upstream_balanced_no_rag_cli_v3",
+  "note": "Original Well balanced run_gepa/evaluator/parser/templates. No extra common instruction, answer cache or feedback fields. Engine settings come from original parser/job script. CLI sampling/provider context cannot be claimed identical to Gemini API temperature=0. Empty reflection system uses an empty base-template catalog. Transport errors abort immediately."
+}

@@ -1,0 +1,10 @@
+{
+  "task_model": {"backend": "codex", "model": "gpt-6-luna", "effort": "medium", "timeout_seconds": 240},
+  "judge_model": {"backend": "codex", "model": "gpt-6-luna", "effort": "medium", "timeout_seconds": 240},
+  "reflection_model": {"backend": "codex", "model": "gpt-6-luna", "effort": "medium", "timeout_seconds": 240},
+  "max_metric_calls": 500,
+  "seed": 42,
+  "workers": 5,
+  "protocol": "shared_question_only_cli_luna_only_test100_v1",
+  "note": "All roles GPT-6 Luna, independent calls. New optimization from Plain. Well rubric; same-family judge. Never mix Sonnet scores. CLI decoding defaults; medium effort."
+}

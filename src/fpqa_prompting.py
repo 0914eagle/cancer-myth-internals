@@ -7,6 +7,9 @@ from __future__ import annotations
 
 import ast
 from collections import Counter
+from contextlib import contextmanager
+import fcntl
+import os
 import hashlib
 import json
 from pathlib import Path
@@ -122,8 +125,7 @@ def _render_node(node, attributes):
 
 
 def well_crepe_judge(well_root, row, answer):
-    if row["dataset"] != "crepe":
-        raise ValueError("Response scoring currently supports CREPE only: FalseQA lacks standalone gold premise annotations")
+    judge_template_name(row["dataset"], row["label"])
     return well_response_judge(well_root, row, answer)
 
 
@@ -153,6 +155,41 @@ def well_response_judge(well_root, row, answer):
     return _render_node(generate.body[0].value, attributes)
 
 
+def judge_template_name(dataset, label):
+    if dataset == "crepe":
+        return "CREPEFPQ" if label else "CREPETPQ"
+    if dataset == "cancer_myth":
+        return "CancerMyth" if label else "CancerMythNFP"
+    raise ValueError("FalseQA lacks standalone gold premise annotations")
+
+
+@contextmanager
+def shared_call_slot(backend):
+    directory = os.getenv("FPQA_CALL_LIMIT_DIR")
+    if not directory:
+        yield
+        return
+    root = Path(directory)
+    root.mkdir(parents=True, exist_ok=True)
+    while True:
+        if (root / "STOP").exists():
+            raise RuntimeError("Suite STOP requested; no new calls")
+        for i in range(5):
+            handle = (root / f"{backend}_{i}.lock").open("a")
+            try:
+                fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                handle.close()
+                continue
+            try:
+                yield
+            finally:
+                fcntl.flock(handle, fcntl.LOCK_UN)
+                handle.close()
+            return
+        time.sleep(.2)
+
+
 class RecordedCaller:
     def __init__(self, config, out, factory=CLIBackend):
         self.config, self.out, self.factory = config, Path(out), factory
@@ -169,7 +206,8 @@ class RecordedCaller:
         if role not in self.local.clients:
             self.local.clients[role] = self.factory(conf)
         start = time.time()
-        text, meta = self.local.clients[role](messages)
+        with shared_call_slot(conf["backend"]):
+            text, meta = self.local.clients[role](messages)
         freeze(path, {"role": role, "config": conf, "messages": messages, "text": text,
                       "metadata": meta, "wall_seconds": time.time() - start})
         return text
