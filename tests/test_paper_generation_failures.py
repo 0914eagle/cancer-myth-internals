@@ -2,7 +2,7 @@ from collections import defaultdict
 import json
 from types import SimpleNamespace
 import pytest
-from scripts.run_paper_baselines_resilient import PendingWorker, TRUNCATED, record_paths, record_failure
+from scripts.run_paper_baselines_pending import PendingWorker, TRUNCATED, record_paths, record_failure
 from scripts.run_paper_baselines import Worker
 
 

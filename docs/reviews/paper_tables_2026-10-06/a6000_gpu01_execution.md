@@ -139,7 +139,7 @@ Qwen은 QA 4,063개 다음 `mmlu:4347`, Gemma는 QA 3,820개 다음 `mmlu:1184`�
 중단됐고, 두 모델 모두 Cancer fold0 Plain 242건의 Well 채점은 완료했다.
 기존 관리자는 이 오류를 `failed_other`로 기록했으므로 quota ping을 하지 않았다.
 
-`scripts/run_paper_baselines_resilient.py`를 별도 실행 정책으로 추가했다.
+`scripts/run_paper_baselines_pending.py`(작성 당시 이름 `run_paper_baselines_resilient.py`; 같은 이름의 quota 복구 모듈과 구분하려고 2026-10-15 개명)를 별도 실행 정책으로 추가했다.
 기존 평가 구현, 모델/프롬프트/생성 설정, identity와 성공 캐시는 그대로
 사용한다. 출력 한도에 도달한 평가 문항은 `generation_failures/`에 기록하고
 나머지 문항을 계속 처리한다. 실패 문항의 답변/점수를 대체하지 않으며,

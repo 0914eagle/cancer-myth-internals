@@ -13,7 +13,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts import run_paper_baselines as original
-from scripts.run_paper_baselines_resilient import PendingWorker, record_paths, record_failure
+from scripts.run_paper_baselines_pending import PendingWorker, record_paths, record_failure
 from scripts.watch_paper_sonnet_quota import quota_error
 from src.paper_baselines import sha, write_json
 

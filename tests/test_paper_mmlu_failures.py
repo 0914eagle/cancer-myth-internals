@@ -5,7 +5,7 @@ from types import SimpleNamespace
 import pytest
 from scripts.run_paper_baselines import Worker
 from scripts.run_paper_baselines_mmlu_resilient import MMLUWorker, recoverable_item_error
-from scripts.run_paper_baselines_resilient import record_paths
+from scripts.run_paper_baselines_pending import record_paths
 
 
 @pytest.mark.parametrize('error', [ValueError('Input exceeds pinned limit; no silent truncation'),
