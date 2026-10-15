@@ -124,10 +124,22 @@ def _render_node(node, attributes):
 def well_crepe_judge(well_root, row, answer):
     if row["dataset"] != "crepe":
         raise ValueError("Response scoring currently supports CREPE only: FalseQA lacks standalone gold premise annotations")
-    kind = "FPQ" if row["label"] else "TPQ"
+    return well_response_judge(well_root, row, answer)
+
+
+def well_response_judge(well_root, row, answer):
+    templates = {
+        ("crepe", 1): "CREPEFPQ_template.py",
+        ("crepe", 0): "CREPETPQ_template.py",
+        ("cancer_myth", 1): "CancerMyth_template.py",
+        ("cancer_myth", 0): "CancerMythNFP_template.py",
+    }
+    key = (row["dataset"], row["label"])
+    if key not in templates:
+        raise ValueError("No pinned Well response rubric for dataset/label: " + str(key))
     if row["label"] and not row["presuppositions"]:
-        raise ValueError("CREPE FPQ is missing its gold premise")
-    path = Path(well_root) / f"data_gen/template/CREPE{kind}_template.py"
+        raise ValueError("FPQ is missing its gold premise")
+    path = Path(well_root) / "data_gen/template" / templates[key]
     tree = ast.parse(path.read_text())
     cls = next(n for n in tree.body if isinstance(n, ast.ClassDef))
     generate = next(n for n in cls.body if isinstance(n, ast.FunctionDef) and n.name == "generate")

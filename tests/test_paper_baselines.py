@@ -106,6 +106,31 @@ def test_jsonl_unicode_line_separator(tmp_path):
     assert read_rows(p)==[{'question':'first\u2028second'}]
 
 
+@pytest.mark.parametrize('dataset,label,filename', [
+    ('cancer_myth',1,'CancerMyth_template.py'),
+    ('cancer_myth',0,'CancerMythNFP_template.py'),
+    ('crepe',1,'CREPEFPQ_template.py'),
+    ('crepe',0,'CREPETPQ_template.py'),
+])
+def test_response_judge_matches_pinned_dataset_rubric(dataset,label,filename):
+    import ast
+    from types import SimpleNamespace
+    from src.fpqa_prompting import well_response_judge
+    well=ROOT/'external/fpqa_20261002/Well'
+    if not well.exists():pytest.skip('Pinned Well checkout unavailable')
+    tree=ast.parse((well/'data_gen/template'/filename).read_text())
+    cls=next(n for n in tree.body if isinstance(n,ast.ClassDef))
+    fn=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='generate')
+    scope={'List':list,'Dict':dict}
+    exec(compile(ast.Module(body=[fn],type_ignores=[]),filename,'exec'),scope)
+    attrs=dict(question='QUESTION SENTINEL',model_final_answer='ANSWER SENTINEL',
+               presupposition='PREMISE SENTINEL',correction='REFERENCE SENTINEL',
+               answer='REFERENCE SENTINEL',system_role='system',user_role='user',model_role='assistant')
+    row=dict(dataset=dataset,label=label,question=attrs['question'],
+             presuppositions=[attrs['presupposition']],reference_answer=attrs['answer'])
+    assert well_response_judge(well,row,attrs['model_final_answer'])==scope['generate'](SimpleNamespace(**attrs))
+
+
 def test_official_well_templates_render_end_to_end_without_task_calls():
     from src.paper_baselines import WellBridge
     python=ROOT/'.venv/fpqa_prompting/bin/python'

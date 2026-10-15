@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 
 def handle(req, registry_path, well):
     from src.fpqa_well_pipelines import load_templates
-    from src.fpqa_prompting import well_crepe_judge
+    from src.fpqa_prompting import well_response_judge
     reg = json.loads(registry_path.read_text())
     for item in reg['well_templates'].values():
         path = well / 'prompting' / Path(item['source']).name
@@ -24,7 +24,7 @@ def handle(req, registry_path, well):
     sys.path.insert(0, str(well))
     response = importlib.import_module('response')
     if req['op'] == 'judge':
-        return well_crepe_judge(well, req['row'], req['answer'])
+        return well_response_judge(well, req['row'], req['answer'])
     if req['op'] == 'parse':
         return getattr(response, req['parser']).model_validate_plain_text(req['text']).get()
     templates = load_templates(well)
