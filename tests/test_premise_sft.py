@@ -18,6 +18,13 @@ class TemplateTokenizer:
 
 
 class PremiseSFTTests(unittest.TestCase):
+    def test_jsonl_preserves_unicode_line_separators(self):
+        rows = [{"text": "before\u2028middle\u2029after\u0085tail"}, {"text": "next row"}]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "rows.jsonl"
+            s.write_rows(path, rows)
+            self.assertEqual(s.read_rows(path), rows)
+
     def test_bundle_integrity_and_split_isolation(self):
         rows = s.cancer_rows()
         counts = s.audit_splits(rows)

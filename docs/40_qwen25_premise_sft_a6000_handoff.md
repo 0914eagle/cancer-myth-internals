@@ -2,6 +2,8 @@
 
 이 문서는 **실행 준비물과 계획**이다. 현재 머신에서는 모델 다운로드·GPU 학습을 실행하지 않았다. 다른 서버의 드라이버와 실제 최대 배치는 아래 preflight/smoke로 확인한다.
 
+**2026-09-30 A6000 실행 추가:** GPU 2에서 CM-premise, GPU 3에서 CREPE-premise의 3-epoch 학습을 완료했다. 최초 Table 2 비교 구성은 §9에 남겼다. **사용자 최신 지시: Base를 새로 생성하지 않고 기존 문항별 점수를 사용하며, CM-SFT와 CREPE-SFT의 세 조건 최종 입력에 `Answer the question.`을 추가한다. 현재 실행 절차는 §10이다.** 아래 “미실행” 서술은 최초 handoff 작성 당시의 검증 범위다.
+
 ## 1. 실험 목적과 비교
 
 목표는 **거짓 전제를 교정하면서 정상 질문을 불필요하게 반박하지 않는 답변**이다. 별도의 gate나 답변 라우팅을 필수로 두지 않는다. 현재 관찰은 목표 오류 누락·관련 설명만 제시·원래 가정 유지 등이며, 이 모두가 전제 추출 실패 때문이라는 인과 결론은 아니다.
@@ -244,7 +246,7 @@ CUDA_VISIBLE_DEVICES=0 "$PREMISE_ENV/bin/python" scripts/premise_sft.py generate
 
 집계는 JSON의 boolean을 그대로 사용한다. 별도 오탐 목표 문턱·자가 보고 확률·AUROC를 만들지 않는다. malformed/truncated/missing은 명시적으로 보고하고 No로 간주하지 않는다. 일부만 완료되면 분모와 `complete_valid=false`를 함께 확인해야 한다. `score.cases.jsonl`에는 질문·참조 전제·예측 전제가 들어가므로 의미상 목표 일치를 검토할 수 있다. 단순 문자열 일치를 의미 정확도로 보고하지 않는다.
 
-**최종 Well 채점은 이 패키지에서 자동 호출하지 않는다.** 생성 완료 후 기존과 같은 채점 프로토콜에 연결하되 joint의 구조화된 진단과 실제 최종 답변을 구분하고, 답변 없음/길이 제한도 별도 집계한다. 이 패키지의 `score`는 표 1의 진단 집계일 뿐 표 2의 Well 점수가 아니다. 토큰 한도에 걸린 답변은 `truncated=true`로 남으므로 충분한 동일 예산으로 재생성한 뒤 비교한다.
+**`premise_sft.py` 단독 실행은 최종 Well 채점을 자동 호출하지 않는다.** 이 파일의 `score`는 표 1의 진단 집계일 뿐 표 2의 Well 점수가 아니다. 사용자 지정 3종 프롬프트의 생성·Well 평가 연결은 새 `premise_table2.py`와 아래 §9의 launcher가 담당한다. 기존 raw/answer/diagnostic 결과와 §9의 3조건을 섞지 않는다. 답변 없음과 길이 제한도 별도 집계하며, 예산을 바꿀 경우 모든 모델에 같은 설정과 새 평가 경로를 사용한다.
 
 ## 8. 검증 범위와 한계
 
@@ -255,3 +257,117 @@ CUDA_VISIBLE_DEVICES=0 "$PREMISE_ENV/bin/python" scripts/premise_sft.py generate
 ```
 
 기존 실행 중인 분석이나 다른 GPU 작업을 재시작/중단하지 않는다. 다른 모델과 학습 환경을 섞지 않는다. 데이터 주석이나 출력 답변을 고쳐 실험할 경우 새로운 data/run 버전과 해시를 만든다.
+
+## 9. 실제 Table 2: Plain·CoT·무조건 교정 × SFT 전후 × Well 채점
+
+**이 최초 파이프라인은 사용자 지시로 중단했다.** CM-SFT Plain과 CREPE-SFT 세 조건은 각 147개 생성됐으며 전부 진단 JSON이었다. 새 Base Plain의 부분 생성도 보존하지만 이어 생성하거나 기존 Base 점수와 혼합하지 않는다. 최신 실행은 §10이며 이 절의 launcher를 중복 시작하지 않는다.
+
+이 비교의 질문은 **전제 JSON으로 SFT한 뒤, 기존 입력 프롬프트를 그대로 주었을 때 실제 답변의 교정·보존 성능이 어떻게 달라지는가**다. 재학습, 추가 gate, self-gated FP Identification, Extract+Verify를 실행하지 않는다.
+
+| 모델 조건 | 체크포인트 | 평가 자료 |
+|---|---|---|
+| Base | 고정 revision의 Qwen2.5-7B-Instruct | 동일한 Cancer-Myth test 147개 |
+| CM-SFT | `cm_premise_all_s17_gpu2_20260930/adapter` | 위와 동일 |
+| CREPE-SFT | `crepe_premise_s17_gpu3_20260930/adapter` | 위와 동일 |
+
+| 입력 조건 | 실제 실행 |
+|---|---|
+| `plain` | 원 질문만 native user turn에 넣는다. 별도 system/교정/JSON 출력 지시 없음 |
+| `zero_shot_cot` | 기존 `COT_REASON`의 `Let's think step by step.` → 같은 모델의 `COT_FINAL`로 별도 최종 답변 생성 |
+| `fp_unconditional` | 기존 `FP_ANSWER`를 FPQ·NFP 모두에 적용. 모델 자체 판별로 지시를 선택하지 않음 |
+
+프롬프트는 `src/baseline_generation.py`의 기존 상수를 그대로 재사용한다. Qwen native template의 기본 system 문자열은 공통으로 유지된다. Greedy, seed 17, BF16/SDPA, 최종 답변 1,024토큰, CoT 추론 1,024토큰을 모든 모델에 동일하게 적용한다. CoT 추론은 각 모델이 직접 생성하므로 SFT 전후에서 추론 내용 자체가 달라지는 것도 이 조건의 효과다.
+
+평가 문항은 동봉한 grouped test **FPQ 117 + NFP 30**이며 학습 질문과 겹치지 않는지 검증한다. 학습 target은 수정하지 않는다. Well 판정의 FPQ 참조는 다운로드된 고정 revision의 원본 `source_myth`와 `presupposition_correction`으로 질문별 join한다. 동봉 참조와의 차이는 `experiment.json.reference_changes`에 기록한다. 정답 전제·라벨·교정 설명은 답변 생성 프롬프트에 들어가지 않는다.
+
+### 한 번에 실행
+
+두 학습의 `complete.json`과 최종 adapter가 있어야 한다. GPU 2·3에 다른 작업이 없는지 확인한 뒤 저장소 root에서 실행한다. 설치된 환경에는 numpy 등 Well 평가 코드의 의존성이 이미 있다. 이 경로는 `run_baselines.sh`의 과거 GPU 0/1 launcher를 사용하지 않는다.
+
+```bash
+cd /home/eagle0914/cancer-myth
+source scripts/premise_sft_env.sh
+export TABLE2_OUT="$PREMISE_ART/eval/table2_prompt_sft_20260930_v1"
+export TABLE2_MAX_CALLS=1323
+setsid -f bash scripts/run_premise_table2.sh \
+  > "$PREMISE_ART/logs/table2_prompt_sft_20260930_v1.log" 2>&1 < /dev/null
+```
+
+**이미 실행 중인 위 평가를 중복 시작하지 않는다.** `logs/pipeline.pid`와 `pipeline_status.json`을 먼저 확인한다. GPU 2에서 CM/Base Plain을 먼저 생성하고 나머지 두 조건을 실행하며, GPU 3에서 CREPE의 세 조건을 순서대로 생성한다. 실행은 독립 세션으로 유지된다. 기존 생성 cache는 모델·adapter 해시·프롬프트·문항·예산이 같은 경우만 재사용한다. 모델/코드/예산이 바뀌면 새 평가 경로를 사용한다.
+
+최대 **9 × 147 = 1,323개 답변 채점**이며 동일한 판정 입력은 공유해 실제 채점 수를 줄인다. Sonnet 연결 사전 확인 호출은 판정 문항 수와 별도다. `TABLE2_MAX_CALLS`는 필수이며 1..1323 범위다. 기본 판정기는 기존 발표 Table 2와 같은 `claude-sonnet-5`이고 실제 사용 모델도 확인한다. 모든 답변 생성 후 `judge-plan → score → report`를 자동 실행한다. 채점 오류·누락이 있으면 `complete`로 표시하지 않는다.
+
+### 개별 단계와 점검
+
+```bash
+"$PREMISE_ENV/bin/python" scripts/premise_table2.py prepare \
+  --art "$PREMISE_ART" --out "$TABLE2_OUT" \
+  --cancer-run cm_premise_all_s17_gpu2_20260930 \
+  --crepe-run crepe_premise_s17_gpu3_20260930
+
+CUDA_VISIBLE_DEVICES=2 "$PREMISE_ENV/bin/python" scripts/premise_table2.py generate \
+  --out "$TABLE2_OUT" --condition cancer --methods plain zero_shot_cot fp_unconditional
+# Base는 --condition base, CREPE는 GPU 3 및 --condition crepe.
+
+"$PREMISE_ENV/bin/python" scripts/premise_table2.py judge-plan \
+  --out "$TABLE2_OUT" --backend claude --model claude-sonnet-5
+"$PREMISE_ENV/bin/python" scripts/premise_table2.py score \
+  --out "$TABLE2_OUT" --max-calls 1323
+"$PREMISE_ENV/bin/python" scripts/premise_table2.py report --out "$TABLE2_OUT"
+```
+
+judge-plan은 아홉 답변 파일의 모든 ID가 공통 평가 문항과 일치할 때만 성공한다. `score`는 아직 시작하지 않은 판정만 수행하며 실패한 판정은 자동 재시도하지 않는다. 누락/중단이 있으면 원인을 해결하고 별도 판정 계획을 만들어 기록한다.
+
+### 출력과 해석
+
+```text
+table2_prompt_sft_20260930_v1/
+  experiment.json                  # 문항·프롬프트·예산·모델 경로·참조 join 감사
+  questions.jsonl                  # 동일한 147개 평가 문항과 Well 참조
+  models/{base,cancer,crepe}/       # 원 생성 cache, CoT 추론, 토큰/EOS 기록
+  answers/{condition}_{method}.jsonl
+  well/{judge_plan.json,attempts.jsonl,report.json,report.md}
+  table2.{json,md}                 # FPQ/NFP별 ≥4, S5, 평균, 누락, 출력 형식, 길이 제한
+  table2_cases.jsonl               # 같은 질문·같은 조건의 Base/SFT 답변과 점수 쌍
+  pipeline_status.json
+  logs/{pipeline.pid,gpu2.log,gpu3.log,well.log}
+```
+
+Plain에서 전제 JSON만 출력하면 `diagnostic_only`, 잘린 진단 JSON은 `diagnostic_incomplete`로 따로 기록한다. **이 출력은 Well 판정기가 높은 점수를 주더라도 답변 성공 ≥4/S5 분자에 포함하지 않는다.** 원 출력과 원 판정 점수는 삭제하지 않는다. 평균은 원 Well 1–5점의 평균(0점 제외)이므로 출력 형식별 기록과 함께 보고한다. FPQ/NFP별 유효 채점 분모와 누락 수를 명시하고, 길이에 걸린 최종 답변·CoT 추론 수도 보존한다.
+
+`table2_cases.jsonl`의 paired 비교는 각 프롬프트 조건의 Base를 기준으로 한다. 기존 732개 전체 평가의 숫자를 이번 test 147개 결과와 직접 섞지 않는다. 고정된 예산에 걸리는 출력이 있으면 성능과 함께 보고하며 한 모델만 예산을 늘리지 않는다. 생성·채점이 완료되기 전의 표는 최종 결과가 아니다.
+
+관련 검증:
+
+```bash
+"$PREMISE_ENV/bin/python" -m pytest -q \
+  tests/test_premise_table2.py tests/test_baseline_generation.py \
+  tests/test_well_eval.py tests/test_premise_sft.py
+```
+
+## 10. 현재 실행: SFT 두 모델만, 세 조건 최종 입력에 답변 지시 추가
+
+기존 무지시 결과에서 CM-SFT Plain과 CREPE-SFT의 Plain/CoT/무조건 교정 모두 전제 JSON만 출력했다. 사용자 요청에 따라 새 평가 경로에서 **세 조건의 최종 생성 user prompt 끝에 공통으로 `\n\nAnswer the question.`을 붙인다.** 더 강한 JSON 금지나 교정 지시는 추가하지 않는다. CoT의 첫 추론 prompt는 기존 것을 유지하고, 추론을 읽어 최종 답변을 생성하는 두 번째 prompt에만 이 문장을 붙인다.
+
+```text
+Plain:             [원 질문]\n\nAnswer the question.
+Zero-shot CoT:     [기존 COT_FINAL + 해당 모델의 추론]\n\nAnswer the question.
+무조건 FP 교정:    [기존 FP_ANSWER + 원 질문]\n\nAnswer the question.
+```
+
+학습 체크포인트·test 147문항·greedy·1,024토큰 final/reasoning 예산은 동일하다. GPU 2는 CM-SFT, GPU 3은 CREPE-SFT만 생성한다. **Base 생성/재채점은 실행하지 않는다.** 기존 `docs/reviews/advisor_presentation_2026-09-23/answer_scores.csv`에서 Qwen의 세 방법 점수를 동일 test 147개 ID로 조회하고, 누락·중복·라벨 충돌·judge를 검사한다. 세 조건 모두 기존 점수 147개가 있다. 참조 CSV와 provenance 해시를 새 평가 경로에 기록한다.
+
+기존 Base는 추가 답변 문장 없이 생성된 결과이므로, 표에는 `historical_base`, `answer_instruction_added=false`로 명시한다. 새 SFT 결과는 추가 문장 조건이다. **이 비교를 프롬프트가 완전히 같은 순수 SFT 효과로 해석하지 않는다.** 기존 Base 출력 원문은 CSV에 없으므로 문항별 파일에는 기존 Base 점수만 연결한다.
+
+```bash
+cd /home/eagle0914/cancer-myth
+source scripts/premise_sft_env.sh
+TABLE2_MAX_CALLS=882 setsid -f bash scripts/run_premise_table2_answer.sh \
+  > "$PREMISE_ART/logs/table2_sft_answer_instruction_20260930_v1.log" 2>&1 < /dev/null
+```
+
+**이미 실행 중이며 중복 시작하지 않는다.** 결과 경로는 `$PREMISE_ART/eval/table2_sft_answer_instruction_20260930_v1`이다. 두 모델 × 세 조건 × 147문항 = **882개 새 SFT 답변**만 Well 채점하며 동일 판정 입력을 공유한다. 기존과 같은 `claude-sonnet-5` 판정기를 사용한다. 생성 완료 후 채점·집계를 자동 실행하며, 호출 상한은 1..882에서 명시적으로 지정한다.
+
+출력 구조는 §9와 같고 `answer_instruction_protocol.json`, `reused_base_scores.json`이 추가된다. `table2.md/json`은 기존 Base 세 행과 새 SFT 여섯 행을 구분하며, 진단 JSON 비율·길이 제한·점수 누락을 함께 표시한다. 원 JSON·원 Well 점수를 보존하고, 진단만 있는 출력을 답변 성공으로 세지 않는다. 이전 무지시 결과는 `$PREMISE_ART/eval/table2_prompt_sft_20260930_v1`에 보존된다.
+
+개별 명령은 `scripts/premise_table2_answer.py --help`를 따른다. `generate --condition`은 `cancer/crepe`만 허용한다. 세 조건 모두 final 입력에 같은 문장이 붙고 CoT reasoning에는 붙지 않는 것, Base를 생성/재채점하지 않는 것, 기존 점수 재사용과 보고서 구분을 포함해 관련 테스트 82개가 통과했다. 실제 점수는 Well 채점 완료 후 확인한다.

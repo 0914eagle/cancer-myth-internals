@@ -26,7 +26,8 @@ TARGETS = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down
 
 
 def read_rows(path):
-    return [json.loads(line) for line in Path(path).read_text().splitlines() if line.strip()]
+    # JSON strings may contain Unicode line separators; only LF delimits JSONL rows.
+    return [json.loads(line) for line in Path(path).read_text().split("\n") if line.strip()]
 
 
 def sha(path):

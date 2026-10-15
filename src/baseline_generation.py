@@ -71,10 +71,12 @@ PROMPTS = {
 }
 
 
-def gpu_guard():
+def gpu_guard(allowed=None):
     visible = os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
-    if visible not in {"0", "1", "0,1", "1,0"}:
-        raise ValueError("Only physical GPUs 0 and 1 are authorized")
+    if visible not in (allowed if allowed is not None else {"0", "1", "0,1", "1,0"}):
+        if allowed is None:
+            raise ValueError("Only physical GPUs 0 and 1 are authorized")
+        raise ValueError("Visible GPUs are outside this run's authorized GPU selection")
 
 
 def _atomic_json(path, value, *, frozen=False):
@@ -408,15 +410,16 @@ def _answer_one(runtime, out, q, method, final_tokens, review_tokens, extraction
             "status": "complete", "response": answer["text"], "details": details}
 
 
-def run_generation(questions, cfg, out_dir, methods, *, final_tokens=512, review_tokens=1024, extraction_tokens=512):
+def run_generation(questions, cfg, out_dir, methods, *, final_tokens=512, review_tokens=1024, extraction_tokens=512,
+                   runtime_factory=None, allowed_gpus=None):
     rows, methods, out = _question_rows(questions), list(methods), Path(out_dir)
     if not methods or len(set(methods)) != len(methods) or any(m not in METHODS for m in methods):
         raise ValueError("Select unique supported generation methods")
     if min(final_tokens, review_tokens, extraction_tokens) < 1:
         raise ValueError("Positive token budgets required")
-    gpu_guard()
+    gpu_guard(allowed_gpus)
     with output_lock(out / "generation"):
-        runtime = make_runtime(cfg)
+        runtime = (runtime_factory or make_runtime)(cfg)
         _freeze_identity(out, runtime, cfg)
         for method in methods:
             folder = out / "generation" / method

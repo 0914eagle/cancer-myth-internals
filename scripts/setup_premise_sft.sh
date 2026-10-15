@@ -13,7 +13,9 @@ if [[ ! -x "${PREMISE_ENV}/bin/python" ]]; then
 fi
 uv pip install --python "${PREMISE_ENV}/bin/python" 'torch==2.5.1+cu121' --index-url https://download.pytorch.org/whl/cu121
 # Pin torch again during dependency resolution: no latest-CUDA upgrade.
-uv pip install --python "${PREMISE_ENV}/bin/python" -r configs/premise_sft/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
+# Both indexes are official: PyTorch's index also contains stale requests wheels.
+# Compare versions across PyPI and PyTorch while keeping the exact torch pin.
+uv pip install --python "${PREMISE_ENV}/bin/python" -r configs/premise_sft/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121 --index-strategy unsafe-best-match
 uv pip check --python "${PREMISE_ENV}/bin/python"
 uv pip freeze --python "${PREMISE_ENV}/bin/python" > "${PREMISE_ART}/environment.freeze.txt"
 uv --version > "${PREMISE_ART}/uv-version.txt"
